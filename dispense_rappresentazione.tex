@@ -1,0 +1,356 @@
+\documentclass[11pt]{article}
+
+
+\usepackage{etex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage[a4paper]{geometry}
+\usepackage[pdftex]{graphicx}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{paralist}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{xy}
+\usepackage{multicol}
+\usepackage{slashbox}
+\usepackage{fancyhdr}
+\usepackage{makeidx}
+\usepackage{hyperref}
+\usepackage{wrapfig}
+\usepackage[T1,OT1]{fontenc} 
+\usepackage{chemfig}
+\usepackage{epigraph}
+
+
+\usepackage{grffile}
+\usepackage{tikz}
+\usepackage{pgf,tikz}
+\usetikzlibrary{shapes.geometric,calc}
+
+\usetikzlibrary{arrows}
+\topmargin 0cm
+\oddsidemargin 0cm
+\evensidemargin 0cm
+\textwidth 16.5cm
+\textheight	23.5cm
+\marginparwidth 2cm
+\marginparpush 2cm
+
+
+
+\title{Dispense del corso di Teoria della Rappresentazione}
+\author{Fabio Zoratti}
+\date{\today}
+
+
+
+
+
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposizione}
+\newtheorem{post}[thm]{Postulato}
+\newtheorem*{cor}{Corollario}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definizione}[section]
+\newtheorem{exmp}{Esempio}[section]
+\newtheorem{prob}{Problema}[section]
+\newtheorem{hint}{Suggerimento}[section]
+\newtheorem{sol}{Soluzione}[section]
+\newtheorem*{rem}{Osservazione}
+
+\theoremstyle{remark}
+\newtheorem*{note}{Nota}
+
+
+
+
+
+\newcommand{\C}{\mathbb{C}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{document}
+\maketitle
+
+Aggiungi l'esempio della prima lezione
+
+
+\section{Teoria dei gruppi}
+
+\begin{defn}[Gruppo] Un gruppo è un insieme con associata un operazione binaria $\cdot : G\times G \to G$ che gode di alcune proprietà
+\begin{enumerate}
+	\item Associatività \quad $(ab)c = a(bc)$
+	\item Esistenza unità \quad $ea = ae = a$
+	\item Esistenza inverso $a'$ per ogni elemento $a$ \quad $a' a = a a' = e$
+\end{enumerate}
+
+\end{defn}
+
+\paragraph{Esempi}
+\begin{enumerate}
+	\item $\mathbb{Z}, \mathbb{Q}, \mathbb{R}, \mathbb{C}$ con l'operazione di somma.
+	\item $\mathbb{Q}^*, \mathbb{R}^*, \mathbb{C}^*$ con l'operazione di moltiplicazione. (Senza lo 0)
+	\item $GL_n(\mathbb{R})$ oppure $GL(V)$
+	\item $f:I\to I $ biunivoca, con $I$ insieme e con l'operazione di composizione. Nel caso in cui $I$ sia un insieme finito, tanto vale scegliere $I = \{1,2,3,\ldots, n\}$. In tal caso questo gruppo si chiama $S_n$
+\end{enumerate}
+
+\paragraph{Alcuni teoremi elementari}
+\begin{enumerate}
+	\item L'unità $e$ è unica
+	
+	Dimostrazione: supponiamo per assurdo che siano due distinte, $e, e'$. Allora vale
+	
+	\[e = ee' = e' \qed\]
+	
+	\item L'inverso è unico.
+
+	Dimostrazione:
+	
+	Supponiamo per assurdo che siano due, $a', a''$
+	
+	\[(a' a)a'' = a'(aa'') \Rightarrow e a'' = a' e \qed \]
+	
+	\item Se ho $a_1, a_2, \ldots, a_n$, il prodotto di questi termini è ben definito senza bisogno di parentesi
+	\item Esistono le potenze, ovvero $\forall k \in \mathbb{Z}, \forall a \in G \exists b\in G | a^k = b$
+	
+	Vale sempre la regola
+	\[a^{k+h} = a^k \cdot a^h \]
+	
+	Ricorda che 
+	
+	\[ (ab)^{-1} = b^{-1}a^{-1}\]
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{defn}[Azione di un gruppo su un insieme]
+
+\label{defn:azione}
+\end{defn}
+
+
+\begin{defn}[Azione transitiva]
+
+
+
+\label{defn:azione transitiva}
+\end{defn}
+
+
+\begin{defn}[Orbita di un elemento]
+
+
+\label{defn:orbita}
+\end{defn}
+
+
+
+
+
+\newpage
+\section{Algebra multilineare}
+
+\subsection{Prodotto tensoriale}
+
+
+\begin{defn}[Prodotto tensoriale]
+
+\label{defn:prodotto tensoriale}
+\end{defn}
+
+
+
+
+
+
+
+\begin{defn}
+DEFINISCI TRACCIA DEL PRODOTTO TENSORE, OVVERO 
+
+\[ tr(f\otimes g)\]
+
+\end{defn}
+
+
+\begin{thm}
+Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la formula
+
+\[tr(f\otimes g) = tr(f) tr(g)  \]
+
+\end{thm}
+
+\textsc{Dimostrazione:}
+
+
+\subsection{Prodotto esterno e prodotto simmetrico}
+
+
+
+\begin{defn}[Prodotto esterno]
+
+
+\label{defn:prodotto esterno}
+\end{defn}
+
+
+
+
+
+\begin{thm}[Dimensione del prodotto esterno]
+
+
+
+\label{thm:prodotto esterno}
+\end{thm}
+
+
+
+
+
+
+
+
+\begin{defn}[Prodotto simmetrico]
+
+
+\label{defn:prodotto simmetrico}
+\end{defn}
+
+
+
+
+
+\begin{thm}[Dimensione del prodotto simmetrico]
+
+
+
+\label{thm:prodotto simmetrico}
+\end{thm}
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Prime proprietà delle rappresentazioni}
+
+\begin{defn}[Rappresentazione]
+
+\end{defn}
+
+
+\begin{defn}[Sottospazio invariante]
+
+\end{defn}
+
+
+\subsection{Operazioni con le rappresentazioni}
+
+\begin{defn}[Somma di rappresentazione]
+
+
+\end{defn}
+
+\begin{defn}[Prodotto di rappresentazioni]
+
+\end{defn}
+
+
+
+
+
+
+
+
+
+
+\begin{thm}[Lemma di Schur]
+
+
+\end{thm}
+
+
+
+
+
+
+
+
+\newpage
+\section{Teoria dei caratteri}
+
+
+\begin{defn}
+Sia $\rho: G \to V_\rho$ una rappresentazione di un gruppo $G$. Definiamo carattere di $\rho$ la funzione che associa ad ogni elemento del gruppo $G$ la traccia della matrice associata all'elemento, ovvero
+
+\[\chi_\rho(s) := tr (\rho(s)) \qquad \forall s \in G \]
+Notare che $\chi$ è una funzione che va dal gruppo in $\C^*$, ovvero $\chi: G \to \C^*$
+
+\end{defn}
+
+Vediamo delle proprietà elementari del carattere
+
+\textsc{Osservazioni:}
+\begin{enumerate}
+	\item Se $dim(\rho) = 1$ allora il carattere di $s$ è uguale a $\rho(s)$
+	\item $\chi_{\rho_1} = dim(\rho_1)$ \footnote{Al solito $\rho_1$ è la rappresentazione che manda ogni elemento nell'identità di $V_\rho$}
+	\item $\chi_{\rho + \sigma}(s) = \chi_\rho(s) + \chi_\sigma(s)$.\\ 
+	Questo è dovuto al fatto che la somma di rappresentazioni si può scrivere come matrice a blocchi. Una volta scritto così è evidente il risultato.
+	\item $\chi_{\rho\sigma}(s) = \chi_\rho(s)\chi_\sigma(s)$.\\ 
+	Questo deriva dal fatto che in generale se $f: V \to V$ e $g: W \to W$ sono endomorfismi di spazi vettoriali, allora vale $tr(f \otimes g) = tr(f)tr(g)$
+	
+	\item $\chi_{\rho^*}(s) = \overline{\chi_\rho(s)}$.\\
+			Se abbiamo un gruppo finito \footnote{Ricordiamo che $\rho^*(s) = (\rho(s)^{-1})^*$}, allora $\exists n | (\rho(s))^n = id$, per cui tutti gli autovalori di $\rho(s)$ sono radici ennesime dell'unità e $\rho(s)$ è diagonalizzabile LINKA IL PUNTO IN CUI LO DIMOSTRI. Dato che possiamo scrivere $\rho(s)$ in una base in modo che sia diagonale per ogni $s$, è evidente che gli autovalori dell'inversa saranno l'inverso degli autovalori, ma dato che hanno modulo 1, l'inverso è uguale al coniugio. 
+ \end{enumerate}
+
+
+
+\end{document}
