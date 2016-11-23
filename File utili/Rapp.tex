@@ -1,0 +1,353 @@
+\documentclass[a4paper,11pt]{article}
+
+\title{Elementi Di Teoria Delle Rappresentazioni}
+\author{F. Ghir\'o}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{amsfont}
+\usepackage{xfrac}
+\usepackage[italian]{babel}
+\usepackage{xifthen}
+\usepackage{xparse}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{bbm}
+\usepackage{dsfont}
+\usepackage{stmaryrd}
+%%% Bisogna Guardarci, ci sara' una sintassi piu' umana pd!
+%\usepackage{verbatim}
+%\usepackage[active,tightpage]{preview}
+%\PreviewEnvironment{tikzpicture}
+%\setlength\PreviewBorder{5pt}
+%\usetikzlibrary{matrix}
+%%%
+% Definiamo i vari ambienti
+\NewDocumentCommand{\ZZ}{G{}}{
+  \IfNoValueTF{#1}
+	{\mathbb{Z}}
+	{\mathbb{Z}_{#1}}
+}
+\NewDocumentCommand{\FF}{G{}}{
+  \IfNoValueTF{#1}
+	{\mathbb{F}}
+	{\mathbb{F}_{#1}}
+}
+\newcommand{\su}[2]{\sfrac{#1}{#2}}
+%insiemi numerici
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\CC}{\mathbb{C}}
+
+%\newcommand{\FF}[1]{\mathbb{F}_{#1}}
+%\newcommand{\ZZ}[1]{\mathbb{Z}_{#1}}
+
+\newcommand{\Nplus}{\NN^{+}}
+
+\newcommand{\cart}{\times}
+\newcommand{\Mtr}[3]{\mathcal{M}(#1, #2, #3)}
+
+
+\newcommand{\tc}{\mbox{ t.c. }}
+
+\newcommand{\Zx}{\mathbb{Z}[x]}
+\newcommand{\Qx}{\QQ[x]}
+\newcommand{\Zp}{\su{\mathbb{Z}}{p\mathbb{Z}}}
+\newcommand{\Zpx}{\Zp [x]}
+\newcommand{\Hint}{{\bf Hint: }}
+
+\newcommand{\degree}{\mbox{deg}}
+%varie
+\newcommand{\MCD}[2]{\mathcal{(} #1 \mathcal{,} #2 \mathcal{)}}
+\newcommand{\ex}[1]{\subsubsection*{#1}}
+\newcommand{\rec}[1]{{\bf #1}}
+\newcommand{\equip}{\sim}
+\newcommand{\card}{\mathbf{card}}
+\newcommand{\norm}[1]{\mid{#1}\mid}
+\newcommand{\todo}{{\bf TODO Prossimamente}}
+\newcommand{\NINI}{{\bf NINI }}
+\newcommand{\hide}[1]{{\color{white}{#1}}}
+\newcommand{\achtung}{{\bf \underline{Achtung!}}}
+%Gruppi
+\newcommand{\acts}{\curvearrowright}
+\newcommand{\normin}{\triangleleft}
+\newcommand{\gen}[1]{\langle #1 \rangle}
+%Spazi vettoriali
+\newcommand{\dsum}{\oplus}
+\newcommand{\ten}{\otimes}
+\newcommand{\Dsum}{\bigoplus}
+\newcommand{\Tensor}{\bigotimes}
+\newcommand{\Wedge}[1]{\bigwedge^{#1}}
+\newcommand{\dual}{^{\vee}}
+\newcommand{\Ker}{\mathcal{K}\mbox{er} }
+\newcommand{\nullspace}{\{0\}}
+%Funzioni
+\newcommand{\function}[3]{#1:#2 \rightarrow #3}
+\newcommand{\injfunction}[3]{#1:#2 \hookrightarrow #3}
+\newcommand{\inj}{ \hookrightarrow }
+%Testo matematico
+\newcommand{\thm}{\vskip 0.05cm \noindent \textbf{Thm:} }
+\newcommand{\proof}{\vskip 0.05cm \noindent \textbf{Dim:} }
+\newcommand{\definition}{\vskip 0.05cm \noindent \textbf{Def:} }
+\newcommand{\oss}{\vskip 0.05cm \noindent \textbf{Oss:} }
+\newcommand{\vlad}{\underline{\it Piccola idea di dimostrazione:} }
+\newcommand{\proofend}{\begin{flushright} $\blacksquare$ \end{flushright}}
+%\newcommand{\rmk}{\vskip 0.05cm \noindent \textbf{Rmk:} }
+
+\newcommand{\frdasx}{ \framebox[\width]{ $\Rightarrow$ } }
+\newcommand{\frdadx}{ \framebox[\width]{ $\Leftarrow$ } }
+
+\newcommand{\sxindx}{\framebox[\width]{ $\subseteq$}}
+\newcommand{\dxinsx}{\framebox[\width]{ $\supseteq$}}
+\newcommand{\existence}{\framebox[\width]{ $\exists$ }}
+\newcommand{\uniqueness}{\framebox[\width]{ ! }}
+
+\newcommand{\sse}{\Leftrightarrow}
+
+
+\begin{document}
+\maketitle
+\newpage
+\section*{Indice}
+\newpage
+\section{Notazioni}
+\begin{itemize}
+
+\item $V$ spazio vettoriale, $\#V = dim(V)$, $V\dual$ il suo duale
+\item $G$ gruppo, $H < G$ sottogruppo, $N \normin G$ sottogruppo normale
+\item $X$ insieme, $S(X)$ gruppo delle bigezioni di $X$ in s\`e
+\item $Y \inj X$: $Y$ immerso in $X$
+\item $\varphi :G \acts X$ azione di $G$ su $X$ tramite $\varphi$ (aka $\function{\varphi}{G}{S(X)}$ omomorfismo)
+\item $\delta_{i,j}$ indica la delta di Kronecker. \achtung \ Nel seguito $i$ e $j$ non saranno necessariamente indici ma qualsiasi oggetti (rappresentazioni, funzioni etc...) il significato sar\'a quello "classico'': 0 se oggetto1 diverso da oggetto2, 1 se sono isomorfi/uguali
+\end{itemize}
+
+\newpage
+%inizio capitolo
+\section{Algebra Lineare e Multilineare}
+\subsection*{Costruzioni Universali}
+{\bf Blanket Hypothesis:} D'ora in avanti $K$ indicher\'a un generico campo, $V$ un $K$-spazio vettoriale.\\
+
+\subsection{Somma diretta}
+\todo
+\definition Sia $W\subseteq V$ un ssv. Allora $U\subseteq V$ si dice {\bf supplementare} se $V=W\dsum U$ ({\bf da sistemare per bene:} la somma diretta non vive in $V$...).
+\\
+%fine somma diretta
+
+\subsection{Spazio quoziente}
+\definition Sia $W\subseteq V$ un sottospazio vettoriale di $V$. Un {\bf quoziente} di $V$ su $W$ \'e una coppia $(V/W,\pi)$, con $V/W$ $K$-spazio vettoriale e $\function{\pi}{V}{V/W}$ lineare tale che:
+\begin{itemize}
+\item $\pi$ \'e suriettiva;
+\item Se $U$ \'e un qualsiasi $K$-spazio vettoriale e $\function{\psi}{V}{U}$ lineare con $W\subseteq \Ker(\psi)$, $\exists !$ $\function{\varphi}{V/W}{U}$ che fa commutare il diagramma:
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+	\node (I) at (0,2) {$V$};
+	\node (W) at (1,0) {$V/W$};
+	\node (V) at (2,2) {$U$};
+
+	\draw[->] (I) -- node[above] {$\psi$} (V);
+	\draw[->] (I) -- node[left] {$\pi \ $} (W);
+	\draw[->] (W) -- node[right] {$\ \varphi$} (V);
+
+\end{tikzpicture}
+\end{center}
+\end{itemize}
+\oss $W\subseteq\Ker(\pi)$.\\
+\thm Sia $W\subseteq V$ un s.s.v. Allora $\exists !$ (a meno di isomorfismi) lo spazio quoziente.
+\proof \\
+\existence \\
+Poich\'e $W$ \'e un sottogruppo di un gruppo abeliano $V$, \'e possibile costruire il {\it gruppo} quoziente $ Q=V/W $. Basta ora definire una moltiplicazione per scalari $ \function{\circ}{K\cart Q}{V/W}$ che renda lineare la proiezione al quoziente. $\circ : (\lambda , [v]) = [\lambda v]$, le verifiche (buona definizione, assiomi di spazio vettoriale, linearità di $\pi$ etc...) sono banali. Lievemente pi\'u delicata la verifica della propriet\'a universale. Infatti sia $U$ un $K$-spazio e $\function{f}{V}{U}$ una mappa lineare con $W\subseteq\Ker(f)$, allora $\exists ! \function{\varphi}{Q}{U}$ omomorfismo di gruppi. Bisogna ora mostrare che $\varphi$ \'e anche omogenea; $\forall \lambda \in K$ e $\forall [v] \in Q$ $\varphi([\lambda v])= f(\lambda v)=\lambda f(v)= \lambda\varphi([v])$  $\Rightarrow$ il quoziente esiste nella categoria $\mbox{Vec}_{K}$ (per chi \'e abbastanza uomo da conoscere le categorie).\\
+\uniqueness \\
+Siano $(V/W, \pi_{1})$ e $(Q, \pi_{2})$ due quozienti di $V$ su $W$. Per propriet\'a universale di $Q$ la mappa $\pi_{1}$ si fattorizza al quoziente in $\function{\phi}{Q}{V/W}$, analogamente $\pi_{2}$ si fattorizza tramite $\pi_{1}$ in $\function{\psi}{V/W}{Q}$. Da cui il diagramma commutativo:
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+	\node (V) at (3,4) {$V$};
+	\node (Q) at (3,2) {$V/W$};
+	\node (quoz) at (6,0) {$Q$};
+	\node (s) at (0,0) {$Q$};
+
+	\draw[->] (V) -- node[left] {$\pi_{2} \ $} (s);
+	\draw[->] (V) -- node[right] {$\ \pi_{2}$} (quoz);
+	\draw[->] (V) -- node[auto] {$\pi_{1}$} (Q);
+	\draw[->] (s) -- node[below] {$\phi$} (Q);
+	\draw[->] (Q) -- node[below] {$\psi$} (quoz);
+	\draw[dashed, ->] (s) -- node[auto] {$\psi\circ \phi$} (quoz);
+
+\end{tikzpicture}
+\end{center}
+In particolare, $\psi\circ\phi$ fa commutare il triangolo esterno; ma anche l'identit\'a $\mathds{1}_{Q}$ lo fa $\Rightarrow$ $\psi\circ\phi \equiv \mathds{1}_{Q}$. Scambiando $Q$ e $V/W$ nel diagramma, si ottiene che $\phi\circ\psi \equiv \mathds{1}_{V/W}$ $\Rightarrow$ $\phi\equiv\psi^{-1}$ e $V/W \simeq Q$.\\
+\vlad per mostrare che due spazi sono uguali, costruisco due mappe (una per direzione) e mostro che la composizione \'e l'identit\'a (passando per la propriet\'a universale).
+\proofend
+\oss Questo dimostra anche che vale $W=\Ker(\pi)$.
+\\
+\thm $W, W' \subseteq V$ ssv,con $\injfunction{i_{W}}{W'}{V}$ l'inclusione e $\function{\pi}{V}{V/W}$ la proiezione al quoziente. Allora 
+$$ V=W\dsum W' \sse W' \simeq V/W \mbox{ tramite la mappa } \pi\circ i_{W'}$$
+%fine paragrafo quoziente
+\\
+\subsection{Basi e Spazi Vettoriali Liberi}
+{\bf Blanket Hypothesis:} $I$ \'e un generico insieme di indici.\\
+\definition $\function{e}{I}{V}$ si dice {\bf base} per $V$ se, data una qualsiasi funzione $\function{f}{I}{W}$ $\ $($W$ un $K$-spazio vettoriale), $\exists !\ \function{\varphi}{V}{W}$ lineare che chiuda diagramma:
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+	\node (I) at (0,2) {$I$};
+	\node (W) at (1,0) {$W$};
+	\node (V) at (2,2) {$V$};
+
+	\draw[->] (I) -- node[above] {$e$} (V);
+	\draw[->] (I) -- node[left] {$f \ $} (W);
+	\draw[->] (V) -- node[auto] {$\ \varphi$} (W);
+
+\end{tikzpicture}
+\end{center}
+
+
+\definition Una funzione $\function{a}{I}{K}$ si dice {\bf a supporto finito} se l'insieme $\{i\in I |\ a_{i} \neq 0\}$ \'e finito.\\
+
+\thm Sia $\function{e}{I}{V}$. Allora $e$ \'e base $\sse$ $\forall v\in V$ $\exists !\ \function{a}{I}{K}$ a supporto finito tale che $v=\sum_{i\in I}a_{i}e_{i}$
+\proof \\ $\frdadx$\\
+Sia $W$ un $K$-spazio e $\function{f}{I}{W}$ una funzione. Definisco $\function{\varphi}{V}{W}$,
+$\varphi:x=\sum_{i\in I}a_{i}e_{i} \mapsto \sum_{i\in I}a_{i}f(i)$. Questa \'e ben definita, lineare e fa commutare il diagramma (tutte facili verifiche).\\
+$\frdasx$\\
+Mostriamo prima l'esistenza di tale $a$ e poi l'unicit\'a.\\
+\\
+\existence\\
+Sia $W=\{v \in V |\ \exists \ \function{a}{I}{K} \mbox{ a supporto finito tale che } v=\sum_{i} a_{i}e_{i}\}$; questo \'e un sottospazio di $V$ e dunque \'e possibile considerare il quoziente $Q=V/W$, sia inoltre $\pi$ la proiezione. La tesi \'e allora equivalente a mostrare che $Q=\nullspace$; si consideri ora il seguente diagramma:
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+	\node (I) at (0,2) {$I$};
+	\node (W) at (1,0) {$Q$};
+	\node (V) at (2,2) {$V$};
+
+	\draw[->] (I) -- node[above] {$e$} (V);
+	\draw[->] (I) -- node[left] {$e\circ \pi$} (W);
+	\draw[->] (V) -- node[auto] {$\ \pi$} (W);
+
+\end{tikzpicture}
+\end{center}
+Poich\'e $\forall i \in I$ $\pi(e_{i})=0$ si ha che $\pi$ lo chiude. Tuttavia anche la mappa nulla $\function{\mathbb{O}}{V}{Q}$ chiude il diagramma, per unicit\'a si ha che $\pi \equiv \mathbb{O}$.\\
+\vlad per mostrare che un sottospazio \'e in realt\'a tutto, quoziento e mostro che viene banale.\\
+\\
+\uniqueness\\
+Basta mostrare che $\sum_{i\in I}a_{i}e_{i}=0$ $\Rightarrow$ $\forall i\in I$ $a_{i}=0$.\\
+{\bf P.A.} $\exists j\in I \tc a_{j}\neq0$. Sia $\function{f_{j}}{I}{K}$, $f_{j}:i\mapsto \delta_{i,j}$. Per propriet\'a universale di base $\exists !$ $\function{\varphi}{V}{K}$ che fa commutare il diagramma:
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]	
+	\node (I) at (0,2) {$I$};
+	\node (W) at (1,0) {$K$};
+	\node (V) at (2,2) {$V$};
+
+	\draw[->] (I) -- node[above] {$e$} (V);
+	\draw[->] (I) -- node[left] {$f_{j} \ $} (W);
+	\draw[->] (V) -- node[auto] {$\ \varphi$} (W);
+\end{tikzpicture}
+\end{center}
+Si ha quindi che $\varphi(e_{i})=\delta_{i, j}$, tuttavia $0=\varphi(0)=\varphi(\sum_{i\in I}a_{i}e_{i})=a_{j}$ \hfill $\lightning$
+\proofend
+\noindent Diamo ora un'altra dimostrazione di questo fatto utilizzando per\'o un approccio diverso, molto simile a quello usato per mostrare l'unicit\'a del quoziente.\\
+\proof Sia $W$ come sopra. Allora $\injfunction{i}{W}{V}$ immersione ($W\subseteq V$) ed $\exists !\function{\Phi}{V}{W}$ che chiude il primo triangolo:
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+	\node (I) at (3,4) {$I$};
+	\node (W) at (3,2) {$W$};
+	\node (V) at (6,0) {$V$};
+	\node (H) at (0,0) {$V$};
+
+	\draw[->] (I) -- node[auto] {$e$} (V);
+	\draw[->] (I) -- node[left] {$e \ $} (H);
+	\draw[->] (I) -- node[auto] {$e$} (W);
+	\draw[->] (H) -- node[below] {$\Phi$} (W);
+	\draw[->] (W) -- node[below] {$i$} (V);
+	\draw[dashed, ->] (H) -- node[auto] {$i\circ \Phi$} (V);
+
+\end{tikzpicture}
+\end{center}
+Si ha che $i \circ \Phi$ fa commutare il triangolo esterno. Ma anche l'identit\'a $\mathds{1}_{V}$ lo fa $\Rightarrow$ $i \circ \Phi \equiv \mathds{1}_{V}$ $\Rightarrow$ $i$ suriettiva, cio\'e $W=V$. \hfill $\blacksquare$\\
+\definition Sia $I$ insieme, $V$ $K$-spazio, si dice {\bf $K$-spazio vettoriale libero} su $I$ se $\exists$ $\function{e}{I}{V}$ base.\\
+\thm Ogni insieme ammette un $K$-spazio libero.
+\proof L'insieme $V=K^{(I)}=\{\function{f}{I}{K}| f \mbox{ \'e a supporto finito}\}$ ha una naturale struttura di $K$-spazio vettoriale ($f+g:i\mapsto f(i)+g(i)$ e $\lambda f:i\mapsto \lambda f(i)$). Inoltre $\function{e}{I}{V}$ $e:i\mapsto (j\mapsto \delta_{i,j})$ \'e una base (facile verifica con la caratterizzazione equivalente).\\
+\oss Siano $\function{e}{I}{V}$ e $\function{f}{I}{V}$ basi. Allora $\exists !$ $\function{\psi}{V}{V}$ isomorfismo tale che $\forall i\in I$ $\psi(e_{i})=f_{i}$.\\
+\thm Ogni spazio vettoriale ammette una base
+\proof classica applicazione del lemma di Zorn \todo
+\\
+\thm Ogni sottospazio vettoriale ammette un supplementare.
+\proof \todo
+%fine paragrafo basi
+
+\subsection{Mappe multilineari e prodotto tensore}
+\definition Siano $V, W, Z$ $K$-spazi vettoriali. Una mappa $\function{B}{V\cart W}{Z}$ si dice {\bf bilineare} se:
+\begin{itemize}
+\item $\forall v\in V$ la mappa $\function{B(v, \bullet)}{W}{Z}$ \'e lineare.
+\item $\forall w\in W$ la mappa $\function{B(\bullet, w)}{V}{Z}$ \'e lineare.
+\end{itemize}
+\definition Siano $V, W$ $K$-spazi. Un {\bf prodotto tensore} tra $V$ e $W$ \'e una coppia ($V\ten W,\Tensor$), con $V\ten W$ un $K$-spazio e $\function{\Tensor}{V\cart W}{V\ten W}$ mappa bilineare, tale che, se $Z$ \'e un $K$-spazio e $\function{h}{V\cart W}{Z}$ \'e una funzione bilineare, $\exists !$ $\function{\bar h}{V\ten W}{Z}$ lineare che chiuda il diagramma:
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+	\node (I) at (0,2) {$V\cart W$};
+	\node (W) at (1,0) {$V\ten W$};
+	\node (V) at (2,2) {$Z$};
+
+	\draw[->] (I) -- node[above] {$h$} (V);
+	\draw[->] (I) -- node[left] {$\Tensor$} (W);
+	\draw[->] (W) -- node[right] {$\ \bar h$} (V);
+
+\end{tikzpicture}
+\end{center}
+
+\thm Siano $V$ e $W$ $K$-spazi. Allora esiste il prodotto tensore ed \'e unico a meno di isomorfismi.
+\proof \\
+\uniqueness\\
+Siano $(P,T_{P})$ e $(Q, T_{Q})$ due prodotti tensori. Poich\'e $T_{Q}$ e $T_{P}$ sono bilineari, entrambe fattorizzano al prodotto tensore in $\Phi$ e $\Psi$ rispettivamente: 
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+	\node (vw) at (3,4) {$V\cart W$};
+	\node (q) at (3,2) {$Q$};
+	\node (p) at (6,0) {$P$};
+	\node (P) at (0,0) {$P$};
+
+	\draw[->] (vw) -- node[auto] {$T_{P}$} (p);
+	\draw[->] (vw) -- node[left] {$T_{P} \ $} (P);
+	\draw[->] (vw) -- node[auto] {$T_{Q}$} (q);
+	\draw[->] (P) -- node[below] {$\Phi$} (q);
+	\draw[->] (q) -- node[below] {$\Psi$} (p);
+	\draw[dashed, ->] (P) -- node[auto] {$\Psi\circ\Phi$} (p);
+
+\end{tikzpicture}
+\end{center}
+Da cui $\Psi\circ\Phi$ fa commutare il diagramma esterno $\Rightarrow$ $\Psi\circ\Phi \equiv \mathds{1}_{P}$.\\
+{\it Mutati mutandis,} si ottiene $\Phi\circ\Psi \equiv \mathds{1}_{Q}$ \hfill $\square$
+%fine paragrafo prodotto tensore
+
+\subsection{Mappe alternanti e potenze esterne}
+
+%fine paragrafo potenze esterne
+
+\subsection{Mappe e potenze simmetriche}
+
+%fine caapitolo costruzioni universali
+\newpage
+\section{Definizioni e Primi Risultati}
+\definition Sia $G$ gruppo, una {\bf rappresentazione} di $G$ consiste in una coppia $(V,\rho)$, con $V$ spazio vettoriale su $K$, $\function{\rho}{G}{End(V)}$ omomorfismo (in seguito il termine ``rappresentazione'' potr\'a essere usato per indicare solo uno dei due elementi della coppia).
+\\
+\oss Equivalentemente si pu\`o chiedere che $\rho:G\acts V$ sia un'azione lineare ($\rho(g) \in Aut(V) \subseteq S(V)$)
+\\
+\oss Dal momento che ogni elemento $g\in G$ \'e invertibile, \\ $Im(\rho)\subseteq Aut(V) \subseteq End(V)$. \\
+Se non specificato, il campo base \`e $\CC$; inoltre se $\rho$ \`e rappresentazione di $G$, lo spazio vettoriale su cui agisce si indica con $V_{\rho}$
+\\
+\definition $G$ gruppo, $\rho, \sigma$ rappresentazioni,  $\function{\psi}{V_{\rho}}{V_{\sigma}}$ si dice {\bf omomorfismo di rappresentazioni} se \`e lineare e $\forall g \in G$, $\sigma (g) \circ \psi = \psi \circ \rho (g)$; se $\psi$ \`e anche un isomorfismo (di spazi vettorali) allora si dice {\bf isomorfismo di rappresentazioni}.
+\\
+\oss Composizione di omomorfismi \`e omomorfismo, composizione di isomorfismi \`e isomorfismo; inverso di isomorfismo \`e isomorfismo (per gli eroi categorici: le rappresentazioni di un gruppo $G$ fissato sono la categoria $\mbox{Rep}_{G}$ dei funtori da $G$ a $\mbox{Vec}_{K}$).\\
+\definition Sia $G$ gruppo, $\rho$ rappresentazione, $\# V_{\rho} \in \NN$, si dice {\bf grado} di $ \rho$ la dimensione di $V_{\rho}$, \ $deg(\rho)=\# V_{\rho}$.\\
+
+\oss Una rapp. di grado 1 di $G$ \`e un omomorfismo da $G$ in $\CC^{*}$ (indipendentemente dallo spazio vettoriale su cui $G$ agisce).\\
+\\
+Ora un paio di teoremi fondamentali (lol):
+\thm Tutte le rappresentazioni di grado zero sono isomorfe.
+\thm Due rappresentazioni $\rho$ e $\sigma$ di grado 1 sono isomorfe $\sse$ $\forall g\in G  \\ \rho(g)=\sigma(g)$ 
+\end{document}
+
+

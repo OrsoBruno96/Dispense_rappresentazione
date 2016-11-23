@@ -48,11 +48,11 @@
 
 
 
-
+\makeindex
 
 \theoremstyle{plain}
 \newtheorem{thm}{Teorema}[section]
-\newtheorem{lem}[thm]{Lemma}
+\newtheorem{lemma}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposizione}
 \newtheorem{post}[thm]{Postulato}
 \newtheorem*{cor}{Corollario}
@@ -181,6 +181,12 @@
 
 \end{defn}
 
+
+\begin{defn}[Omomorfismo (isomorfismo) di gruppi]
+
+\end{defn}
+
+
 \begin{defn}[Azione di un gruppo su un insieme] Sia $G$ un gruppo e $I$ un insieme. Definiamo un azione $a$ di $G$ su $I$ una funzione $a:G\times I \to I$ che rispetti la regola di composizione, ovvero che se $h,h\in G$ e $i \in I$, valga
 
 \[ a(h,a(g,i)) = a(hg, i) \]
@@ -214,6 +220,15 @@ Normalmente si usa una notazione abbreviata in cui invece di scrivere $a(g,i)$ s
 \end{defn}
 
 
+\begin{defn}[Funzione $G$ equivariante]
+
+Dato un gruppo $G$ che agisce su due insiemi $I$ e $J$, una funzione $\phi: I \to J$ si dice $G$ equivariante se 
+
+\[ \phi(s \cdot_I i) = s \cdot_J \phi(i) \qquad \forall s \in G, \ \ \forall i \in I \]
+
+
+\end{defn}
+
 
 
 
@@ -232,6 +247,25 @@ Normalmente si usa una notazione abbreviata in cui invece di scrivere $a(g,i)$ s
 
 
 \newpage
+\subsection{Proprietà dei gruppi abeliani}
+
+
+
+\begin{thm}Ogni gruppo abeliano finito è isomorfo al prodotto di gruppi ciclici.
+
+
+\end{thm}
+
+\begin{rem} Sia $G$ un gruppo abeliano. Allora 
+
+\[ |G| = card(\{Hom(G \to \C^*) \})\]
+
+
+Se invece $G$ non è abeliano allora nella formula precedente all'uguale va sostituito un $>$
+
+\end{rem}
+
+
 \subsection{Proprietà del gruppi simmetrici}
 
 \begin{thm}[Ogni elemento $\sigma \in S_n$ si scrive in modo unico come prodotto di cicli disgiunti a meno dell'ordine dei fattori]
@@ -247,6 +281,10 @@ Normalmente si usa una notazione abbreviata in cui invece di scrivere $a(g,i)$ s
 
 
 \subsection{Proprietà dei gruppi ciclici}
+
+\begin{rem}
+Due gruppi ciclici dello stesso ordine sono isomorfi
+\end{rem}
 
 \subsection{Proprietà dei gruppi diedrali}
 
@@ -266,6 +304,16 @@ Normalmente si usa una notazione abbreviata in cui invece di scrivere $a(g,i)$ s
 
 \end{defn}
 
+
+\begin{lemma}
+ Sia $e:I\to V$ una base di $V$ e $W$ uno spazio vettoriale. $f: I \to W$ una funzione. Allora $\exists! \phi: V \to W$ lineare tale che
+
+\[\phi(e_i) = f_i \]
+
+Inoltre $\phi$ è un isomorfismo $\Leftrightarrow$ $f$ è una base.
+\end{lemma}
+
+
 \subsection{Prodotto tensoriale}
 
 
@@ -277,6 +325,58 @@ Normalmente si usa una notazione abbreviata in cui invece di scrivere $a(g,i)$ s
 
 \label{defn:prodotto tensoriale}
 \end{defn}
+
+
+\begin{prop}
+Se ho due prodotti tensoriali $V \otimes W$ e $V \overline{\otimes} W$, allora esiste un unico isomorfismo $\phi: V \otimes W \to V \overline{\otimes} W$ tale che
+
+\[ \phi (v\otimes w) = v \overline{\otimes} w\]
+\end{prop}
+
+
+\begin{note}
+\'E importante notare che non tutti gli elementi $z \in V \otimes W$ si scrivono come $z = v \otimes w$. In particolare, per fare un esempio concreto che mostra che questa cosa non funziona, prendiamo $W = V^*$. Vedremo fra poco che $V\otimes V^*$ è canonicamente isomorfo allo spazio delle applicazioni bilineari da $V$ in $\C$, che sappiamo scriverlo come matrici $n\times n$. Tuttavia se un elemento si scrive in termini di matrici come $z = v\otimes w$, allora la matrice associata a $z$ in una base avrà rango al massimo 1, ben lontano da coprire tutto lo spazio.
+\end{note}
+
+
+\begin{prop}
+\[\langle\{ v \otimes w | v \in V, w \in W\} \rangle  = V \otimes W\]
+
+\end{prop}
+
+
+\begin{defn}[Prodotto tensoriale di mappe lineari]
+
+\end{defn}
+
+\begin{rem}
+
+\[ id_V \otimes id_W = id_{V\otimes W}\]
+\end{rem}
+
+
+
+
+\begin{prop}
+
+Se $e_i$ è una base di $V$ e $f_i$ è una base di $W$ allora $e_i \otimes f_j$ è una base di $V \otimes W$
+\end{prop}
+
+
+\begin{cor}
+\[dim(V \otimes W) = dim V \cdot dim W \]
+
+\end{cor}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -355,6 +455,21 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \newpage
 \section{Prime proprietà delle rappresentazioni}
 
@@ -386,6 +501,9 @@ La dimensione di $V_\rho$ viene detta grado della rappresentazione.
 	Prendiamo come esempio $S_3$ e vediamo cosa succede. Notiamo innanzitutto che $ |S_3| = 3! = 6$
 	FINISCI DI SCRIVERE
 \end{enumerate}
+
+
+
 
 
 
@@ -429,6 +547,44 @@ Ricordiamo un teorema di algebra lineare per finire l'ultima parte della dimostr
 
 
 
+
+\paragraph{Rappresentazioni di grado 1}
+
+\begin{thm}[Le classi di isomorfismo delle rappresentazioni di grado 1 sono gli omomorfismi da $G$ in $\C^*$]
+
+
+\end{thm}
+
+
+\begin{exmp}[Rappresentazioni di grado 1 di $C_n$]
+
+\end{exmp}
+
+
+\begin{exmp}[Rappresentazioni di grado 1 di $S_3$]
+
+\end{exmp}
+
+\begin{exmp}[Rappresentazioni di grado 1 di $C_n \times C_n$]
+
+
+(generalizzazione a prodotto di $C_{n_i}$)
+\end{exmp}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
 \subsection{Operazioni con le rappresentazioni}
 
 \begin{defn}[Somma di rappresentazioni]
@@ -436,10 +592,38 @@ Ricordiamo un teorema di algebra lineare per finire l'ultima parte della dimostr
 \label{defn:somma di rappresentazioni}
 \end{defn}
 
+Osservazioni:
+
+\begin{enumerate}
+\item $\rho + \sigma \cong \sigma + \rho$
+\item $\rho + (\sigma + \tau) \cong (\rho + \sigma ) + \tau$
+\item Esiste l'elemento neutro che è la rappresentazione di grado 0 ma non esiste l'inverso.
+
+\end{enumerate}
+
+
+
+
+
 \begin{defn}[Prodotto di rappresentazioni]
 
 \label{defn:prodotto di rappresentazioni}
 \end{defn}
+
+
+Osservazioni:
+
+
+\begin{enumerate}
+\item $1\otimes \rho \cong \rho$
+\item $\rho \otimes \sigma \cong \sigma \otimes \rho$
+\item $0 \otimes \rho \cong 0$
+\item $\rho \otimes (\sigma \otimes \tau) \cong (\rho \otimes \sigma)\otimes \tau$
+\item $\rho \otimes (\sigma_1 + \sigma_2) \cong \rho \otimes \sigma_1 + \rho \otimes \sigma_2$
+
+\end{enumerate}
+
+
 
 
 
@@ -447,6 +631,16 @@ Ricordiamo un teorema di algebra lineare per finire l'ultima parte della dimostr
 
 \label{defn:rappresentazione duale}
 \end{defn}
+
+Osservazione: vale
+
+\[ (\rho + \sigma)^* \cong \rho^* + \sigma^* \]
+
+E l'isomorfismo è canonico. SCRIVI DIMOSTRAZIONE.
+
+
+
+
 
 \begin{defn}[Rappresentazione regolare]
 
@@ -474,6 +668,12 @@ Ricordiamo un teorema di algebra lineare per finire l'ultima parte della dimostr
 
 \end{defn}
 
+\begin{defn}[Sottorappresentazione]
+
+
+\end{defn}
+
+
 
 \begin{defn}[Rappresentazione irriducibile]
 
@@ -482,6 +682,15 @@ Ricordiamo un teorema di algebra lineare per finire l'ultima parte della dimostr
 \begin{rem} Normalmente la cosa che si fa più spesso in teoria della rappresentazione è cercare di scomporre la rappresentazione di un gruppo come somma di rappresentazioni irriducibili. Vedremo quindi adesso diversi teoremi che ci aiuteranno in questi problemi.
 
 \end{rem}
+
+
+
+\begin{exmp}[Rappresentazione regolare di $S_3$]
+
+
+\end{exmp}
+
+
 
 \begin{thm}[Le rappresentazioni di un gruppo finito sono completamente riducibili]
 
@@ -492,11 +701,122 @@ Ricordiamo un teorema di algebra lineare per finire l'ultima parte della dimostr
 \end{prop}
 
 
+\begin{lemma}
+Sia $h: V_\rho \times V_\rho \to \C$ una forma hermitiana definita positiva e invariante per $\rho: G \to GL(V_\rho)$ e sia $\rho|_W: G \to GL(W)$ una sottorappresentazione di $\rho$. Allora se $W^\perp$ è l'ortogonale di $W$, $\rho|_{W^\perp}: G \to GL(W^\perp)$ è una sottorappresentazione.
+
+
+
+
+\end{lemma}
+
+
+
+
+
+
+\begin{lemma}
+Sia $\rho: G \to GL(V_\rho)$ una rappresentazione di un gruppo finito $G$. Sia $\rho|_W: G \to GL(W)$ una sottorappresentazione di $\rho$. Allora esiste una sottorappresentazione $\sigma: G \to GL(W')$ tale che
+
+\[\rho = \rho|_W + \sigma \]
+\end{lemma}
+
+
+
+
+
+
+\begin{rem} Notare che il teorema precedente è falso per gruppi finiti. (Esempio con $\mathbb{Z}^+$ che Salvatore non ha scritto con cura. Porco salvatore)
+
+
+
+\end{rem}
+
+
+
+\begin{thm} Siano $\rho: G \to GL(V_\rho)$ e $\sigma: G \to GL(V_\sigma)$ sono rappresentazioni di $G$ e $f: V_\rho \to V_\sigma$ è un omomorfismo di rappresentazioni, allora $Im(f)$ è una sottorappresentazione di $\sigma$ e $Ker(f)$ è una sottorappresentazione di $V_\rho$
+
+\end{thm}
+
+
+
+
+
+\begin{thm}Sia $G$ un gruppo abeliano finito. Allora ogni rappresentazione di $G$ è isomorfa alla somma di rappresentazioni di grado 1.
+
+
+
+\end{thm}
+
+
+\begin{prop} La rappresentazione regolare $\mathcal{R}$ di $C_n$ è isomorfa alla somma delle $n$ rappresentazioni irriducibili di grado 1 di $C_n$.
+
+\end{prop}
+
+
+\begin{lemma}
+Date $\rho_1, \rho_2, \sigma$ rappresentazioni di $G$, allora
+
+\[Hom(\rho_1 + \rho_2, \sigma) \cong Hom(\rho_1, \sigma) \oplus Hom(\rho_2, \sigma)\]
+
+\end{lemma}
+
 
 \begin{thm}[Lemma di Schur]
 
 
 \end{thm}
+
+
+
+\begin{thm}
+Sia $\rho: G \to GL(V_\rho)$ una rappresentazione e 
+
+\[\rho = \dsum_{i=1}^N n_i \rho_i \]
+
+una sua scomposizione come somma di rappresentazioni irriducibili a due a due non isomorfe. Allora la scomposizione è unica.
+\end{thm}
+
+
+
+\begin{lemma}
+Sia $\rho$ una rappresentazione di $G$ e $\mathcal{R}$ la sua rappresentazione regolare. Allora 
+\[deg(\rho) = dim(Hom(\mathcal{R}, \rho))\]
+\end{lemma}
+
+
+
+
+\begin{thm}
+Sia $\mathcal{R}$ la rappresentazione regolare di $G$, un gruppo finito, e sia 
+
+\[ \mathcal{R} = \dsum_{i=1}^Nn_i \rho_i\]
+
+Con $\rho_i$ irriducibili e a due a due non isomorfe. Allora ogni rappresentazione irriducibile di $G$ è isomorfa ad una $\rho_i$. Inoltre $n_i = deg(\rho_i)$ 
+\end{thm}
+
+
+
+\begin{cor}
+Se $G$ è abeliano allora ha $|G|$ rappresentazioni irriducibili di grado 1 e $\mathcal{R}$ è la somma di queste.
+\end{cor}
+
+
+
+\begin{cor}
+Sia $G$ un gruppo finito. $G$ ha un numero finito di rappresentazioni irriducibili, a meno di isomorfismi. Inoltre
+\[|G| = \dsum n_i^2\]
+\end{cor}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
