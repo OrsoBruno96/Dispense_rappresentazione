@@ -155,11 +155,19 @@
 
 
 \begin{defn}[Sottogruppo]
+Sia $G$ un gruppo, $H\subseteq G$ si dice sottogruppo di $G$ se:
+\begin{itemize}
+	\item $e\in H$
+	\item $x,y\in H \Rightarrow xy\in H$
+\end{itemize}
 
 \end{defn}
 
 \begin{defn}[Sottogruppo normale]
-
+Sia $G$ un gruppo, $H\subseteq G$ si dice \textit{normale} in $G$ se
+\[
+	\forall h\in H, \forall g\in G\qquad ghg^{-1}\in H
+\]
 \end{defn}
 
 \begin{defn}[Gruppo quoziente]
@@ -183,7 +191,12 @@
 
 
 \begin{defn}[Omomorfismo (isomorfismo) di gruppi]
-
+Siano $G$ ed $H$ gruppi, un'applicazione $\varphi:G\to H$ si dice \textit{omomorfismo di gruppi} se
+\[
+	\forall g_1,g_2\in G\qquad \varphi(g_1 g_2)=\varphi(g_1)\varphi(g_2)
+\]
+dove la prima moltiplicazione è fatta in $G$ mentre la seconda in $H$.
+Se $\varphi$ è bigettiva, allora si dice \textit{isomorfismo}.
 \end{defn}
 
 
