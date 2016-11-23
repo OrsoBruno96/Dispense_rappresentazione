@@ -23,8 +23,7 @@
 \usepackage{hyperref}
 \usepackage{wrapfig}
 \usepackage[T1,OT1]{fontenc} 
-\usepackage{chemfig}
-\usepackage{epigraph}
+\usepackage[nohug,small]{diagrams}
 
 
 \usepackage{grffile}
@@ -74,8 +73,8 @@
 
 
 \newcommand{\C}{\mathbb{C}}
-
-
+\newcommand{\dsum}{\displaystyle\sum}
+\newcommand{\dint}{\displaystyle\int}
 
 
 
@@ -101,9 +100,11 @@
 \begin{document}
 \maketitle
 
-Aggiungi l'esempio della prima lezione
 
 
+
+
+\newpage
 \section{Teoria dei gruppi}
 
 \begin{defn}[Gruppo] Un gruppo è un insieme con associata un operazione binaria $\cdot : G\times G \to G$ che gode di alcune proprietà
@@ -153,14 +154,39 @@ Aggiungi l'esempio della prima lezione
 
 
 
+\begin{defn}[Sottogruppo]
+
+\end{defn}
+
+\begin{defn}[Sottogruppo normale]
+
+\end{defn}
+
+\begin{defn}[Gruppo quoziente]
+
+\end{defn}
+
+\begin{defn}[Classi di coniugio]
 
 
+\end{defn}
 
 
+\begin{exmp}[Le classi di coniugio di $GL_n(\C)$]
+
+\end{exmp}
 
 
+\begin{defn}[Prodotto di gruppi]
 
-\begin{defn}[Azione di un gruppo su un insieme]
+\end{defn}
+
+\begin{defn}[Azione di un gruppo su un insieme] Sia $G$ un gruppo e $I$ un insieme. Definiamo un azione $a$ di $G$ su $I$ una funzione $a:G\times I \to I$ che rispetti la regola di composizione, ovvero che se $h,h\in G$ e $i \in I$, valga
+
+\[ a(h,a(g,i)) = a(hg, i) \]
+
+Normalmente si usa una notazione abbreviata in cui invece di scrivere $a(g,i)$ si scrive direttamente $g\cdot i$ o addirittura $gi$
+
 
 \label{defn:azione}
 \end{defn}
@@ -183,27 +209,46 @@ Aggiungi l'esempio della prima lezione
 
 
 
+\begin{defn}[Azione semplicemente transitiva]
+
+\end{defn}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 \newpage
-\subsection{Un esempio ricorrente: $S_n$}
+\subsection{Proprietà del gruppi simmetrici}
 
 \begin{thm}[Ogni elemento $\sigma \in S_n$ si scrive in modo unico come prodotto di cicli disgiunti a meno dell'ordine dei fattori]
 
 
 \end{thm}
 
+\begin{prop}Il segno di un ciclo di lunghezza $k$ è esattamente $(-1)^{k-1}$
+
+
+\end{prop}
 
 
 
+\subsection{Proprietà dei gruppi ciclici}
 
-
-
-
-
-
+\subsection{Proprietà dei gruppi diedrali}
 
 
 
@@ -215,8 +260,17 @@ Aggiungi l'esempio della prima lezione
 
 \newpage
 \section{Algebra multilineare}
+\subsection{Alcune generalizzazioni di algebra lineare}
+
+\begin{defn}[Base di uno spazio vettoriale]
+
+\end{defn}
 
 \subsection{Prodotto tensoriale}
+
+
+% \[ \tridiag{V\times W}{ \otimes }{V\otimes W}{\phi}{Z}{f} \]
+  
 
 
 \begin{defn}[Prodotto tensoriale]
@@ -304,14 +358,75 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 \newpage
 \section{Prime proprietà delle rappresentazioni}
 
-\begin{defn}[Rappresentazione]
+\begin{defn}[Rappresentazione] Sia $G$ un gruppo. Una rappresentazione $\rho$ di $G$ è una coppia composta da uno spazio vettoriale di dimensione qualsiasi $V_\rho$ e una funzione $\rho: G \to GL(V_\rho)$ che manda ciascun elemento del gruppo in un'applicazione lineare di $V_\rho$, ovvero un suo endomorfismo. Affinché $\rho$ sia una rappresentazione deve essere un omomorfismo di gruppi, ovvero in parole semplici deve rispettare la regola di composizione. In formule, se $s, t \in G$ deve valere
+
+\[ \rho(st) v = \rho(s)\rho(t) v \qquad \forall v \in V_\rho, \quad \forall s,t \in G\]
+
+La dimensione di $V_\rho$ viene detta grado della rappresentazione.
+
+\end{defn}
+
+\begin{prop} $\rho(G)$ è evidentemente un sottogruppo di $GL(V_\rho)$, quindi esistono sempre inversi, potenze e tutte le cose che valgono per i gruppi.
+
+\end{prop}
+
+
+\textbf{Esempi.}
+\begin{enumerate}
+	\item La rappresentazione banale, di grado qualsiasi, indicata con $\rho_1$ che manda qualsiasi elemento di $g$ nell'identità di $V_\rho$, ovvero
+	
+	\[ \rho(s ) = id_{V_\rho} \qquad \forall s \in G\]
+	\item Dato $S_n$, il segno di un elemento $s\in S_n$ è una rappresentazione di grado 1. Infatti si ha $sgn(st) = sgn(s) sgn(t)$.
+	\item L'azione naturale di $S_n$ sui vettori della base. Prendiamo quindi $G = S_n$ e uno spazio vettoriale di dimensione $n$, che sarà sicuramente isomorfo a $\C^n$. Prendiamo la base canonica di $\C^n$ e la chiamiamo $e_i$. Descriviamo la rappresentazione $\rho: S_n \to GL(\C^n)$ dicendo cosa fa agli elementi della base. Per linearità si estenderà a tutto lo spazio.
+	
+	\[ \rho(s) e_i = e_{s(i)}\]
+	
+	Notare che in questo caso $deg(\rho) = n$. Notiamo inoltre che se rappresentiamo nella base canonica le matrici associate a $\rho(s)$ queste matrici sono unitarie. Inoltre, ogni colonna (e anche ogni riga) contiene esattamente un 1 e tutti gli altri sono 0.
+	
+	Prendiamo come esempio $S_3$ e vediamo cosa succede. Notiamo innanzitutto che $ |S_3| = 3! = 6$
+	FINISCI DI SCRIVERE
+\end{enumerate}
+
+
+
+
+
+\begin{prop}
+Sia $G$ un gruppo finito e $\rho: G \to GL(V_\rho)$ una sua rappresentazione. Allora $\forall g \in G$ la matrice $\rho(g)$ ammette una base di autovettori in $V_\rho$, ovvero è diagonalizzabile. Inoltre, tutti gli autovalori di $\rho(g)$ sono radici $n-$esime dell'unità.
+
+\textsc{Nota bene:} Per ogni matrice in generale la base è diversa, quindi le varie matrici in generale \textbf{non} sono simultaneamente diagonalizzabili. In particolare, tutte le matrici $\rho(s)$ sono simultaneamente diagonalizzabili $\Leftrightarrow$ $G$ è abeliano. 
+
+\label{prop:diagonalizzabilita rappresentazioni}
+\end{prop}
+
+\textsc{Dimostrazione:} Se $G$ è un gruppo finito, allora $\exists k | g^k = e$\footnote{Dato che $g$ è finito, se prendo l'insieme delle potenze $I = \{g^k| k\in \mathbb{Z}\}$, proprio perchè $G$ è finito si ha che $I$ ha un numero finito di elementi, quindi ci saranno $m,n \in \mathbb{Z}$ tali che $g^m = g^n = h$. Dato che nei gruppi esiste l'inverso, sarà $g^{n-m} = e$}. Dato che $\rho:G\to GL(V_\rho)$ mantiene queste proprietà in quanto omomorfismo, dovrà essere
+
+\[ \rho(g)^k = id\]
+
+Con il polinomio minimo si mostra facilmente che $\rho(g)$ è diagonalizzabile. MATEMATICI SCRIVETE IL PERCH\'E. Inoltre da questa formula è anche evidente che tutti gli autovalori di $\rho(g)$ hanno modulo $1$ e in particolare saranno radici $k-$esime dell'unità.
+
+Ricordiamo un teorema di algebra lineare per finire l'ultima parte della dimostrazione: due endomorfismi di uno spazio vettoriale diagonalizzabili sono simultaneamente diagonalizzabili $\Leftrightarrow$ commutano. Da questo teorema segue facilmente la seconda parte dell'enunciato. \qed
+
+
+
+
+
+\begin{defn}[Omomorfismo di rappresentazioni] 
+%Siano $G, H$ due gruppi e $\rho: G \to V_\rho$ e $\sigma: H \to V_\sigma$ due loro rappresentazioni. Una funzione lineare da $V_\rho \to V_\sigma$ \footnote{Ovvero un omomorfismo da $V_\rho$ a $V_\sigma$} è un omomorfismo di rappresentazioni se rispetta la regola di composizione
+
+
+%\[ \qquad \forall v,w \in V_\rho, V_\sigma\]
+
 
 \end{defn}
 
 
-\begin{defn}[Sottospazio invariante]
+
+\begin{defn}[Rappresentazioni isomorfe]
+
 
 \end{defn}
+
 
 
 \subsection{Operazioni con le rappresentazioni}
@@ -328,6 +443,11 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 
 
 
+\begin{defn}[Rappresentazione duale]
+
+\label{defn:rappresentazione duale}
+\end{defn}
+
 \begin{defn}[Rappresentazione regolare]
 
 \label{defn:rappresentazione regolare}
@@ -338,6 +458,38 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 
 \end{exmp}
 
+
+\begin{thm}
+
+\[R_G \cong \dsum_i deg(\rho_i) \rho_i \]
+
+\end{thm}
+
+
+
+\subsection{Sottospazi invarianti e scomposizione delle rappresentazioni}
+
+
+\begin{defn}[Sottospazio invariante]
+
+\end{defn}
+
+
+\begin{defn}[Rappresentazione irriducibile]
+
+\end{defn}
+
+\begin{rem} Normalmente la cosa che si fa più spesso in teoria della rappresentazione è cercare di scomporre la rappresentazione di un gruppo come somma di rappresentazioni irriducibili. Vedremo quindi adesso diversi teoremi che ci aiuteranno in questi problemi.
+
+\end{rem}
+
+\begin{thm}[Le rappresentazioni di un gruppo finito sono completamente riducibili]
+
+\end{thm}
+
+\begin{prop}[Prodotto hermitiano invariante]
+
+\end{prop}
 
 
 
@@ -358,7 +510,7 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 
 
 \begin{defn}
-Sia $\rho: G \to V_\rho$ una rappresentazione di un gruppo $G$. Definiamo carattere di $\rho$ la funzione che associa ad ogni elemento del gruppo $G$ la traccia della matrice associata all'elemento, ovvero
+Sia $\rho: G \to GL(V_\rho)$ una rappresentazione di un gruppo $G$. Definiamo carattere di $\rho$ la funzione che associa ad ogni elemento del gruppo $G$ la traccia della matrice associata all'elemento, ovvero
 
 \[\chi_\rho(s) := tr (\rho(s)) \qquad \forall s \in G \]
 Notare che $\chi$ è una funzione che va dal gruppo in $\C^*$, ovvero $\chi: G \to \C^*$
@@ -377,8 +529,38 @@ Vediamo delle proprietà elementari del carattere
 	Questo deriva dal fatto che in generale se $f: V \to V$ e $g: W \to W$ sono endomorfismi di spazi vettoriali, allora vale $tr(f \otimes g) = tr(f)tr(g)$
 	
 	\item $\chi_{\rho^*}(s) = \overline{\chi_\rho(s)}$.\\
-			Se abbiamo un gruppo finito \footnote{Ricordiamo che $\rho^*(s) = (\rho(s)^{-1})^*$}, allora $\exists n | (\rho(s))^n = id$, per cui tutti gli autovalori di $\rho(s)$ sono radici ennesime dell'unità e $\rho(s)$ è diagonalizzabile LINKA IL PUNTO IN CUI LO DIMOSTRI. Dato che possiamo scrivere $\rho(s)$ in una base in modo che sia diagonale per ogni $s$, è evidente che gli autovalori dell'inversa saranno l'inverso degli autovalori, ma dato che hanno modulo 1, l'inverso è uguale al coniugio. 
+			Se abbiamo un gruppo finito \footnote{Ricordiamo che $\rho^*(s) = (\rho(s)^{-1})^*$}, allora $\exists n | (\rho(s))^n = id$, per cui tutti gli autovalori di $\rho(s)$ sono radici ennesime dell'unità e $\rho(s)$ è diagonalizzabile\footnote{Si veda la proposizione \ref{prop:diagonalizzabilita rappresentazioni}}. Dato che possiamo scrivere $\rho(s)$ in una base in modo che sia diagonale per ogni $s$, è evidente che gli autovalori dell'inversa saranno l'inverso degli autovalori, ma dato che hanno modulo 1, l'inverso è uguale al coniugio. 
  \end{enumerate}
+
+
+
+
+
+\subsection{Esempi di rappresentazioni di gruppi finiti}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
