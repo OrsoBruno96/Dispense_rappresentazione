@@ -335,6 +335,11 @@ Inoltre $\phi$ è un isomorfismo $\Leftrightarrow$ $f$ è una base.
 
 
 \begin{defn}[Prodotto tensoriale]
+%    Siano $V, W$ due spazi vettoriali. Si dice prodotto tensore di $V$ e $W$, e si indica come $V\otimes W$, uno spazio vettoriale con una funzione bilineare $\otimes: V \times W \to V\otimes W$ tale che per ogni applicazione bilineare $f: V\times W \to  Z$ esiste un'unica applicazione lineare $\phi: V\otimes W \to Z$ che fa commutare il seguente diagramma:
+    
+%	\tridiag{V\times W}{ \otimes }{V \otimes W}{\phi}{Z}{f}
+
+
 
 \label{defn:prodotto tensoriale}
 \end{defn}
@@ -668,7 +673,7 @@ E l'isomorfismo è canonico. SCRIVI DIMOSTRAZIONE.
 
 \begin{thm}
 
-\[R_G \cong \dsum_i deg(\rho_i) \rho_i \]
+\[\mathcal{R}_G \cong \dsum_i deg(\rho_i) \rho_i \]
 
 \end{thm}
 
@@ -863,7 +868,65 @@ Vediamo delle proprietà elementari del carattere
 	
 	\item $\chi_{\rho^*}(s) = \overline{\chi_\rho(s)}$.\\
 			Se abbiamo un gruppo finito \footnote{Ricordiamo che $\rho^*(s) = (\rho(s)^{-1})^*$}, allora $\exists n | (\rho(s))^n = id$, per cui tutti gli autovalori di $\rho(s)$ sono radici ennesime dell'unità e $\rho(s)$ è diagonalizzabile\footnote{Si veda la proposizione \ref{prop:diagonalizzabilita rappresentazioni}}. Dato che possiamo scrivere $\rho(s)$ in una base in modo che sia diagonale per ogni $s$, è evidente che gli autovalori dell'inversa saranno l'inverso degli autovalori, ma dato che hanno modulo 1, l'inverso è uguale al coniugio. 
+
+	\item Notiamo inoltre che $\chi_\rho$ è costante sulle classi di coniugio di $G$, ovvero: dati $s, t \in G$, se esiste un elemento $r \in G | rsr^{-1} = t$, allora si ha 
+
+\[ \chi_\rho(s) = \chi_\rho(t) \]
+
+La motivazione è semplice: sappiamo che $tr(M A M^{-1}) = tr(A)$ in quanto la traccia è la somma degli autovalori ed è quindi un invariante di similitudine.
+
+Di conseguenza, non sarà necessario calcolare il carattere per ogni elemento del gruppo ma basterà farlo per le classi di coniugio di $G$.
+
  \end{enumerate}
+
+
+\begin{defn}[Prodotto hermitiano dei caratteri]
+
+\[ \langle f | g \rangle = \dfrac{1}{|G|} \dsum_{s \in G} \overline{f(s)} g(s) \]
+
+\end{defn}
+
+
+\begin{thm}[Relazioni di ortogonalità]
+Se $\rho$ e $\sigma$ sono rappresentazioni irriducibili di $G$, allora vale
+
+\[\langle \rho|\sigma \rangle = \begin{cases}
+1 \qquad \text{se } \rho \cong \sigma \\
+0 \qquad \text{altrimenti}\\
+\end{cases} \]
+
+\end{thm}
+
+Osservazioni:
+
+\begin{itemize}
+\item Ricordiamo che se $\rho$ è una rappresentazione di $G$, allora $\rho$ si può scrivere in modo unico come 
+
+\[ \rho = \dsum_i n_i \rho_i\]
+
+Dove le $\rho_i$ sono le rappresentazioni irriducibili di $G$ e gli $n_i$ sono numeri naturali $\geq 0$. Dall'equazione scritta sopra segue subito che
+
+\[ \chi_\rho = \dsum_i n_i \chi_{\rho_i}\]
+
+E possiamo ottenere un'informazione utile prendendo il prodotto scalare dell'equazione precedente con il carattere di una delle rappresentazioni $\rho_i$
+
+\[ \langle \chi_\rho | \chi_{\rho_j} \rangle = \dsum_i n_i \langle \chi_{\rho_i} | \chi_{\rho_j} \rangle \Rightarrow n_i \delta_{ij} = \langle \chi_\rho | \chi_{\rho_j} \rangle \Rightarrow n_i = \langle \chi_\rho | \chi_{\rho_i} \rangle\]
+
+
+\item Una rappresentazione di un gruppo $\rho$ è irriducibile $\Leftrightarrow \langle \chi_\rho | \chi_\rho \rangle = |\chi_\rho|^2 = 1$ 
+
+
+
+
+
+
+
+
+
+
+\end{itemize}
+
+
 
 
 
