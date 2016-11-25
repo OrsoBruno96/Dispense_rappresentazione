@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.11.21)  25 NOV 2016 22:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.11.21)  25 NOV 2016 23:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1362,20 +1362,20 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 [3] [4] [5] [6] [7] [8] [9] [10] [11]
 Commutative Diagram: try the PostScript option for better results
 [12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 963.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 963.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 965.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 965.
  (./dispense_rappresentazione.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 963.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 963.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 965.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 965.
 Package rerunfilecheck Info: File `dispense_rappresentazione.out' has not chang
 ed.
 (rerunfilecheck)             Checksum: 7BA22D3AC16F235BF7F3F09965EC943D;1098.
  ) 
 Here is how much of TeX's memory you used:
- 23585 strings out of 494934
- 401782 string characters out of 6180555
+ 23586 strings out of 494934
+ 401790 string characters out of 6180555
  518154 words of memory out of 5000000
- 26350 multiletter control sequences out of 15000+600000
+ 26351 multiletter control sequences out of 15000+600000
  16891 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  55i,13n,56p,860b,434s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1398,11 +1398,12 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/symbols/msbm10.pfb>
-Output written on dispense_rappresentazione.pdf (12 pages, 252924 bytes).
+msfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/symbols/msbm10.pfb>
+Output written on dispense_rappresentazione.pdf (12 pages, 262194 bytes).
 PDF statistics:
- 333 PDF objects out of 1000 (max. 8388607)
- 295 compressed objects within 3 object streams
+ 337 PDF objects out of 1000 (max. 8388607)
+ 298 compressed objects within 3 object streams
  125 named destinations out of 1000 (max. 500000)
  125 words of extra memory for PDF output out of 10000 (max. 10000000)
 

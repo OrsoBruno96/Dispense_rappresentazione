@@ -177,18 +177,17 @@ NON LO SCRIVO PERCHÈ È LUNGO, ASPETTO DI VEDERE COME/SE LO DEFINISCE LUI
 \end{defn}
 
 \begin{defn}[Classi di coniugio]
-Sia $G$ un gruppo, $x \in G$, la classe di coniugio di $x$ è l'insieme $\{ gxg^{-1} | g\in G \}$. Si dimostra facilmente che le classi di coniugio di tutti gli elementi di $G$ formano una partizione del gruppo stesso. Si osserva inoltre che un sottogruppo è normale se e solo se è unione di classi di coniugio (ATTENZIONE: è raro che unendo a caso classi di coniugio si ottenga un sottogruppo).
+Sia $G$ un gruppo, $x \in G$, la classe di coniugio di $x$ è l'insieme $\{ gxg^{-1} | g\in G \}$. Si dimostra facilmente che le classi di coniugio di tutti gli elementi di $G$ formano una partizione del gruppo stesso. Si osserva inoltre che un sottogruppo è normale se e solo se è unione di classi di coniugio.
 \end{defn}
 
 
 \begin{exmp}[Le classi di coniugio di $GL_n(\C)$]
-Nel caso del gruppo $GL_n(\C)$ due matrici stanno nella stessa classe di coniugio se e solo se sono simili, quindi per ogni classe di coniugio esiste un rappresentante canonico che è la forma di Jordan di una qualsiasi matrice nella classe (con opportune convenzioni sull'ordine dei blocchi e degli autovalori).
+
 \end{exmp}
 
-AGGIUNGERE DEFINIZIONE DI CENTRO
 
-\begin{defn}[Prodotto diretto di gruppi]
-Siano $G$ e $H$ gruppi. Si definisce prodotto diretto di $G$ e $H$ il gruppo $G \times H = \{ (g, h) | g \in G, h \in H\}$ con l'operazione componente per componente.
+\begin{defn}[Prodotto di gruppi]
+
 \end{defn}
 
 
