@@ -173,7 +173,7 @@ e si indica $H \trianglelefteq G$.
 \end{defn}
 
 \begin{defn}[Gruppo quoziente]
-NON LO SCRIVO PERCHÈ È LUNGO, ASPETTO DI VEDERE COME/SE LO DEFINISCE LUI
+NON LO SCRIVO PERCHÈ È LUNGO, ASPETTO DI come si compila latex su linuxVEDERE COME/SE LO DEFINISCE LUI
 \end{defn}
 
 \begin{defn}[Classi di coniugio]
@@ -469,7 +469,7 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 
 
 
-
+come si compila latex su linux
 
 
 
@@ -638,7 +638,7 @@ Osservazioni:
 \item $1\otimes \rho \cong \rho$
 \item $\rho \otimes \sigma \cong \sigma \otimes \rho$
 \item $0 \otimes \rho \cong 0$
-\item $\rho \otimes (\sigma \otimes \tau) \cong (\rho \otimes \sigma)\otimes \tau$
+\item $\rho \otimes (\sigma \otimes \tau) come si compila latex su linuxong (\rho \otimes \sigma)\otimes \tau$
 \item $\rho \otimes (\sigma_1 + \sigma_2) \cong \rho \otimes \sigma_1 + \rho \otimes \sigma_2$
 
 \end{enumerate}
@@ -861,26 +861,46 @@ Vediamo delle proprietà elementari del carattere
 
 \textsc{Osservazioni:}
 \begin{enumerate}
-	\item Se $dim(\rho) = 1$ allora il carattere di $s$ è uguale a $\rho(s)$
-	\item $\chi_{\rho_1} = dim(\rho_1)$ \footnote{Al solito $\rho_1$ è la rappresentazione che manda ogni elemento nell'identità di $V_\rho$}
+	\item Se $deg(\rho) = 1$ allora il carattere di $s$ è uguale a $\rho(s)$
+	\item $\chi_{\rho_1} = deg(\rho)$. \footnote{Al solito $\rho_1$ è la rappresentazione che manda ogni elemento nell'identità di $V_\rho$}\\
+	Questo è vero poichè $[\rho_1]=I_n\Rightarrow tr(\rho_1)=n$ ed $n=deg(\rho)$.
 	\item $\chi_{\rho + \sigma}(s) = \chi_\rho(s) + \chi_\sigma(s)$.\\ 
 	Questo è dovuto al fatto che la somma di rappresentazioni si può scrivere come matrice a blocchi. Una volta scritto così è evidente il risultato.
 	\item $\chi_{\rho\sigma}(s) = \chi_\rho(s)\chi_\sigma(s)$.\\ 
-	Questo deriva dal fatto che in generale se $f: V \to V$ e $g: W \to W$ sono endomorfismi di spazi vettoriali, allora vale $tr(f \otimes g) = tr(f)tr(g)$
+	Questo deriva dal seguente fatto generale:
 	
-	\item $\chi_{\rho^*}(s) = \overline{\chi_\rho(s)}$.\\
-			Se abbiamo un gruppo finito \footnote{Ricordiamo che $\rho^*(s) = (\rho(s)^{-1})^*$}, allora $\exists n | (\rho(s))^n = id$, per cui tutti gli autovalori di $\rho(s)$ sono radici ennesime dell'unità e $\rho(s)$ è diagonalizzabile\footnote{Si veda la proposizione \ref{prop:diagonalizzabilita rappresentazioni}}. Dato che possiamo scrivere $\rho(s)$ in una base in modo che sia diagonale per ogni $s$, è evidente che gli autovalori dell'inversa saranno l'inverso degli autovalori, ma dato che hanno modulo 1, l'inverso è uguale al coniugio. 
+\begin{lemma} 
+Se $f: V \to V$ e $g: W \to W$ sono endomorfismi di spazi vettoriali, allora $tr(f \otimes g) = tr(f)tr(g)$.
+\end{lemma}
+\textbf{Dimostrazione:} Iniziamo a considerare il caso in cui sia $f$ che $g$ siano diagonalizzabili: prendendo due basi $a:I\rightarrow V$ , $b:J\rightarrow W$ di autovettori rispettivamente per $f$ e per $g$, si verifica facilmente la verità della proposizione nella base indotta su $V\otimes W$ (ovvero in quella formata dagli $a_i\otimes b_j$).\\
+Ora, essendo la traccia una funzione continua e le matrice diagonalizzabili dense nello spazio delle matrici, la proprietà affermata dal lemma si estende al caso generale per continuità.
+	\item $\chi_{\rho}(s^{-1})=\overline{\chi_{\rho}(s)}$\\
+Essendo $G$ un gruppo finito, $\forall s\in G\ \rho(s)^n = id$ dove $n=|G|$: dunque tutti gli autovalori di $\rho(s)$ sono radici ennesime dell'unità e $\rho(s)$ è diagonalizzabile\footnote{Si veda la proposizione \ref{prop:diagonalizzabilita rappresentazioni}}. In tale base è evidente che:
+$$\chi_{\rho}(s^{-1})=tr(\rho (s^{-1}))=tr(\rho (s)^{-1})=\sum_i\lambda_i^{-1}=\sum_i\overline{\lambda_i}=\overline{tr(\rho(s))}=\overline{\chi_{\rho}(s)}$$
+in quanto, avendo gli autovalori modulo 1, l'inverso coincide con il coniugio.  	
+	\item $\chi_{\rho^*}(s)\footnote{Ricordiamo che $\rho^*(s) = (\rho(s)^{-1})^*$} = \overline{\chi_\rho(s)}$.\\
+		Per l'osservazione precedente vale che
+		$$\chi_{\rho^*}(s)=tr(^t\rho(s^{-1}))=tr(\rho(s^{-1}))=\overline{tr(\rho(s))}=\overline{\chi_\rho(s)}$$
+	\item $\chi_{\rho}(hsh^{-1})=\chi_{\rho}(s)$ ovvero $\chi_\rho$ è costante sulle classi di coniugio di $G$. La motivazione è semplice: se due elementi sono coniugati tra loro questo significa che le matrici corrispondenti saranno simili e la traccia è un invariante di similitudine.\\ \\
+Di conseguenza, non sarà necessario calcolare il carattere per ogni elemento del gruppo ma basterà farlo per le classi di coniugio di $G$.\\ \\
+Le funzioni che costanti sulle classi di coniugio di un gruppo vengono dette $funzioni\ di\ classe$.
+	\item Supponiamo di avere una rappresentazione per permutazioni. Sia $I$ un insieme finito e $G$ un gruppo allora 
+$$\chi_{\rho_{I}}(s)=\#punti\ fissi\ di\ \rho_I(s)=|I^s|$$
+dove $I^s:=\{i\in I| s\circ i=i\}$. La veridicità di questo fatto si vede scrivendo esplicitamente la matrice che rappresenta $\rho_I(s)$.
+\end{enumerate}
+\textbf{Esempio:} $G=S_3$, $I=\{1,2,3\}$. Allora
 
-	\item Notiamo inoltre che $\chi_\rho$ è costante sulle classi di coniugio di $G$, ovvero: dati $s, t \in G$, se esiste un elemento $r \in G | rsr^{-1} = t$, allora si ha 
-
-\[ \chi_\rho(s) = \chi_\rho(t) \]
-
-La motivazione è semplice: sappiamo che $tr(M A M^{-1}) = tr(A)$ in quanto la traccia è la somma degli autovalori ed è quindi un invariante di similitudine.
-
-Di conseguenza, non sarà necessario calcolare il carattere per ogni elemento del gruppo ma basterà farlo per le classi di coniugio di $G$.
-
- \end{enumerate}
-
+\[ \chi_{\rho_I}(s) = \begin{cases}
+3 \qquad \text{se } s=id \\
+1 \qquad \text{se } s\ \text{è una trasposizione}\\
+0 \qquad \text{se } s\ \text{è un treciclo}\\
+\end{cases} \]
+Ricordandoci che $\chi_{\rho_I}=\chi_{1+\rho}$ si ha che 
+\[ \chi_{\rho}(s) = \begin{cases}
+2 \qquad \ \ \text{se } s=id \\
+0 \qquad \ \ \text{se } s\ \text{è una trasposizione}\\
+-1\qquad \text{se } s\ \text{è un treciclo}\\
+\end{cases} \]
 
 \begin{defn}[Prodotto hermitiano dei caratteri]
 
@@ -892,9 +912,9 @@ Di conseguenza, non sarà necessario calcolare il carattere per ogni elemento de
 \begin{thm}[Relazioni di ortogonalità]
 Se $\rho$ e $\sigma$ sono rappresentazioni irriducibili di $G$, allora vale
 
-\[\langle \rho|\sigma \rangle = \begin{cases}
+\[\langle \chi_{\rho}|\chi_{\sigma} \rangle = \begin{cases}
 1 \qquad \text{se } \rho \cong \sigma \\
-0 \qquad \text{altrimenti}\\
+0 \qquad \text{altrimenti }\\
 \end{cases} \]
 
 \end{thm}
@@ -914,8 +934,10 @@ E possiamo ottenere un'informazione utile prendendo il prodotto scalare dell'equ
 
 \[ \langle \chi_\rho | \chi_{\rho_j} \rangle = \dsum_i n_i \langle \chi_{\rho_i} | \chi_{\rho_j} \rangle \Rightarrow n_i \delta_{ij} = \langle \chi_\rho | \chi_{\rho_j} \rangle \Rightarrow n_i = \langle \chi_\rho | \chi_{\rho_i} \rangle\]
 
+\item Se $\rho$ e $\sigma$ sono 2 rappresentazioni irriducibili allora $$\rho \cong \sigma \Leftrightarrow \chi_{\rho}=\chi_{\sigma}$$
 
-\item Una rappresentazione di un gruppo $\rho$ è irriducibile $\Leftrightarrow \langle \chi_\rho | \chi_\rho \rangle = |\chi_\rho|^2 = 1$ 
+\item $\langle \chi_\rho | \chi_\rho \rangle = |\chi_\rho|^2 = \sum_i n_i^2$.
+\item Conseguenza dell'ultima osservazione è che una rappresentazione di un gruppo $\rho$ è irriducibile $\Leftrightarrow \langle \chi_\rho | \chi_\rho \rangle = |\chi_\rho|^2 = 1$ 
 
 
 
