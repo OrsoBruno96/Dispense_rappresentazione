@@ -40,5 +40,23 @@ $ git pull origin
 Ricordatevi di aggiornare prima di partire per evitare di perdere lavoro
 
 
+Per vedere che cosa è cambiato rispetto all'ultima volta che avete lavorato sul file dovete fare un paio di cose semplici. Intanto digitate
+$ git log
+
+In cui compariranno tutti i commit delle modifiche precedenti. Cercate di capire qual è quello a cui siete rimasti e annotatevi le prime 4-5 cifre del brutto codice alfanumerico infinito che leggete, per esempio ab12.
+Poi guardate il codice dell'ultima versione e annotate pure quel codice, per esempio cd34. Digitate quindi
+$ git diff ab12 cd34
+
+é importante l'ordine prima vecchio e poi nuovo. A terminale vi verranno stampate le differenze fra le due versioni.
+
+
+
+
+
+
+
+
+
+
 Nei prossimi giorni cercherò di suddividere i compiti, per ora cercate di scrivere quello che è stato fatto nelle lezioni precedenti, dato che abbiamo cominciato con un mese di ritardo
 
