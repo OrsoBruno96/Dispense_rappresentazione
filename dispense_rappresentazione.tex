@@ -173,7 +173,7 @@ e si indica $H \trianglelefteq G$.
 \end{defn}
 
 \begin{defn}[Gruppo quoziente]
-NON LO SCRIVO PERCHÈ È LUNGO, ASPETTO DI come si compila latex su linuxVEDERE COME/SE LO DEFINISCE LUI
+NON LO SCRIVO PERCHÈ È LUNGO, ASPETTO DI VEDERE COME/SE LO DEFINISCE LUI
 \end{defn}
 
 \begin{defn}[Classi di coniugio]
@@ -469,10 +469,6 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 
 
 
-come si compila latex su linux
-
-
-
 
 
 
@@ -638,7 +634,7 @@ Osservazioni:
 \item $1\otimes \rho \cong \rho$
 \item $\rho \otimes \sigma \cong \sigma \otimes \rho$
 \item $0 \otimes \rho \cong 0$
-\item $\rho \otimes (\sigma \otimes \tau) come si compila latex su linuxong (\rho \otimes \sigma)\otimes \tau$
+\item $\rho \otimes (\sigma \otimes \tau) \cong (\rho \otimes \sigma)\otimes \tau$
 \item $\rho \otimes (\sigma_1 + \sigma_2) \cong \rho \otimes \sigma_1 + \rho \otimes \sigma_2$
 
 \end{enumerate}
@@ -812,6 +808,7 @@ Sia $\mathcal{R}$ la rappresentazione regolare di $G$, un gruppo finito, e sia
 \[ \mathcal{R} = \dsum_{i=1}^Nn_i \rho_i\]
 
 Con $\rho_i$ irriducibili e a due a due non isomorfe. Allora ogni rappresentazione irriducibile di $G$ è isomorfa ad una $\rho_i$. Inoltre $n_i = deg(\rho_i)$ 
+\label{thm: teorema importantissimo}
 \end{thm}
 
 
@@ -958,6 +955,122 @@ E possiamo ottenere un'informazione utile prendendo il prodotto scalare dell'equ
 
 \subsection{Esempi di rappresentazioni di gruppi finiti}
 
+\begin{exmp}[Tabella dei caratteri di $S_3$]
+
+La prima cosa da fare per costruire la tabella dei caratteri è vedere quanti elementi ha $S_3$, suddividerli in classi di coniugio e poi cercare le rappresentazioni irriducibili solo dopo aver fatto tutto questo. Notiamo subito che $S_3$ ha esattamente 3 classi di coniugio. La prima è ovviamente quella banale, composta solo dall'identità $e$. Poi c'è la classe delle trasposizioni $\{(1 2) ,(2 3), (1 3)\}$ che ha 3 elementi e poi ci sono i $3$cicli, ovvero $(1 2 3)$ e $(1 3 2)$. Possiamo cominciare a scrivere una tabella vuota $3\times 3$
+
+
+
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+$S_3$  & $e$ & $(1 2)$ & (1 2 3 )    \\
+ & 1 & 3 & 2 \\
+\hline
+ & &  & \\
+\hline
+& &  & \\
+\hline
+& &  & \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+Una rappresentazione irriducibile che c'è sempre è la rappresentazione banale di grado 1, ovvero quella che manda ogni elemento nell'identità. La tabella con questa informazione diventa
+
+
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+$S_3$  & $e$ & $(1 2)$ & (1 2 3 )    \\
+ & 1 & 3 & 2 \\
+\hline
+ $\rho_1$ & 1 & 1  & 1 \\
+\hline
+& &  & \\
+\hline
+& &  & \\
+\hline
+\end{tabular}
+\end{table}
+
+
+Un'altra rappresentazione che già conosciamo è il segno, $\epsilon$, che ricordiamo vale $(-1)^{n-1}$ dove $n$ è la lunghezza del ciclo. La tabella diventa
+
+
+
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+$S_3$  & $e$ & $(1 2)$ & (1 2 3 )    \\
+ & 1 & 3 & 2 \\
+\hline
+ $\rho_1$ & 1 & 1  & 1 \\
+\hline
+$\epsilon$ & 1 & -1 & 1 \\
+\hline
+& &  & \\
+\hline
+\end{tabular}
+\end{table}
+
+A questo punto ci sono due motivi per dire che l'ultima rappresentazione ha grado 2: il primo è che è l'unico modo di ottenere la relazione
+
+\[ |G | = \dsum_i n_i^2 \]
+
+Il secondo è che se fossero due rappresentazioni di grado 1 allora il gruppo avrebbe solo rappresentazioni irriducibili di grado 1 e un teorema che abbiamo fatto implicherebbe che $S_3$ sia abeliano, cosa palesemente falsa. 
+
+Per trovare il carattere dell'ultima rappresentazione possiamo agire in più modi. Innanzitutto la tabella ora ha la forma
+
+
+
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+$S_3$  & $e$ & $(1 2)$ & (1 2 3 )    \\
+ & 1 & 3 & 2 \\
+\hline
+ $\rho_1$ & 1 & 1  & 1 \\
+\hline
+$\epsilon$ & 1 & -1 & 1 \\
+\hline
+$\rho$ & 2 &  & \\
+\hline
+\end{tabular}
+\end{table}
+
+
+In generale ci saranno due numeri complessi $a, b$ nelle due caselle che mancano. Tuttavia noi sappiamo un sacco di teoremi che ci permettono di restringere il campo dei valori che possono avere. Per esempio noi sappiamo che 
+
+\[\langle \rho_i | \rho_j \rangle = \delta_{ij}\]
+ 
+Per cui imponendo che il prodotto scalare con entrambe le precedenti faccia 0 abbiamo due equazioni e due incognite, ovvero un problema risolvibile. L'altro modo è dire che
+
+\[ \mathcal{R} = 1 + \epsilon + 2\rho\]
+
+E dato che il carattere si comporta bene con la somma di rappresentazioni, 
+
+\[\chi_{\mathcal{R}} = \chi_1 + \chi_\epsilon + 2 \chi_\rho  \]
+
+Ma sappiamo anche che 
+
+\[ \chi_{\mathcal{R}}(s) = 
+\begin{cases}
+|G| \quad \text{se } s = e \\
+0 \quad \text{altrimenti}
+\end{cases}\]
+
+Per cui con agili conti riusciamo a completare la tabella
 
 
 
@@ -966,6 +1079,267 @@ E possiamo ottenere un'informazione utile prendendo il prodotto scalare dell'equ
 
 
 
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+$S_3$  & $e$ & $(1 2)$ & (1 2 3 )    \\
+ & 1 & 3 & 2 \\
+\hline
+ $\rho_1$ & 1 & 1  & 1 \\
+\hline
+$\epsilon$ & 1 & -1 & 1 \\
+\hline
+$\rho$ & 2 & 0 & 1 \\
+\hline
+\end{tabular}
+\caption{Tabella dei caratteri di $S_3$}
+\label{tabella caratteri s3}
+\end{table}
+
+L'ultimo modo è cercare di scomporre un'altra rappresentazione a caso di $S_3$, cercando di trovare la rappresentazione che ci manca. Per esempio ricordiamo l'azione di $S_3$ sui vettori di base di $\mathbb{R}^3$
+
+\[ \tau(s) e_i = e_{s(i)}\]
+
+Ricordiamo che il sottospazio di dimensione $1$ fatto dallo span del vettore $v = e_1 + e_2 + e_3$ è un sottospazio invariante in cui $\tau(s)$ è sostanzialmente l'identità. Il suo ortogonale è un altro sottospazio invariante su cui $\rho$ è irriducibile. Di conseguenza potremo scrivere
+
+\[ \tau = 1 + \rho\]
+
+E siamo sicuri che l'altra rappresentazione di grado 2 sia esattamente quella che stiamo cercando proprio grazie al teorema che ci dice che tutte le rappresentazioni irriducibili di un gruppo compaiono nella sua rappresentazione regolare. (Teorema \ref{thm: teorema importantissimo})
+
+Dato che è facile calcolare il carattere di $\tau(s)$ in quanto è uguale a $Fix(s)$, possiamo scrivere
+
+\[ Fix(s) = 1 + \chi_\rho\]
+
+Da cui si ricava subito il carattere della rappresentazione $\rho$
+
+
+
+\end{exmp}
+
+
+
+
+
+
+\begin{exmp}[Tabella dei caratteri di $S_4$]
+Facciamo la prima cosa importante: dividiamo $S_4$ in classi di coniugio. Per i soliti teoremi sugli $S_n$, le classi di coniugio saranno 
+\[\{e\}, \{(a b)\}, \{(a b c)\}, \{(a b c d)\}, \{(a b)(c d)\}\]
+
+E notiamo che sono 5. Possiamo quindi cominciare a compilare la tabella dei caratteri vuota
+
+
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$S_4$  & $e$ & $(1 2)$ & (1 2 3 ) & $(1 2 3 4)$ & $(1 2)(3 4)$ \\
+ & 1 & 6 & 8 & 6 & 3 \\
+\hline
+ $\rho_1$ & 1 & 1  & 1 & 1 & 1\\
+\hline
+& &  & & & \\
+\hline
+& &  & & & \\
+\hline
+& &  & & & \\
+\hline
+& &  & & & \\
+\hline
+\end{tabular}
+\end{table}
+
+
+Dove ho già messo la rappresentazione banale. Anche per $S_4$, essendo un gruppo simmetrico c'è la rappresentazione segno di grado 1. 
+
+
+
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$S_4$  & $e$ & $(1 2)$ & (1 2 3 ) & $(1 2 3 4)$ & $(1 2)(3 4)$ \\
+ & 1 & 6 & 8 & 6 & 3 \\
+\hline
+ $\rho_1$ & 1 & 1  & 1 & 1 & 1\\
+\hline
+$\epsilon$ & 1  & -1 & 1 & -1 & 1 \\
+\hline
+& &  & & & \\
+\hline
+& &  & & & \\
+\hline
+& &  & & & \\
+\hline
+\end{tabular}
+\end{table}
+
+Dato che $S_4$ ha $4! = 24$ elementi, dobbiamo adesso trovare un modo per ottenere 22 come somma di 3 quadrati. Si vede subito che devono essere $ <4 $, ma se fossero anche tutti al massimo 2 non ce la faremmo, per cui ne esiste almeno una di grado 3.
+
+\[ 22 = a^2 + b^2 + 3^2 \Rightarrow a^2 + b^2 = 13 \]
+
+A questo punto è facile vedere che l'unica soluzione è $(2,3)$, ovviamente a meno dell'ordine. La tabella diventa
+
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$S_4$  & $e$ & $(1 2)$ & (1 2 3 ) & $(1 2 3 4)$ & $(1 2)(3 4)$ \\
+ & 1 & 6 & 8 & 6 & 3 \\
+\hline
+ $\rho_1$ & 1 & 1  & 1 & 1 & 1\\
+\hline
+$\epsilon$ & 1  & -1 & 1 & -1 & 1 \\
+\hline
+& 2&  & & & \\
+\hline
+& 3&  & & & \\
+\hline
+& 3&  & & & \\
+\hline
+\end{tabular}
+\end{table}
+ 
+
+
+A questo punto bisogna fare cose a caso cercando le rappresentazioni irriducibili. Per esempio possiamo di nuovo considerare la rappresentazione per permutazioni
+
+
+
+\[ \tau(s) e_i = e_{s(i)}\]
+
+
+Che si scompone anche questa come
+
+\[ \tau = 1 + \rho\]
+
+Vorremmo sapere se $\rho$ è irriducibile. Potremmo invocare qualche teorema ma lo faremo con le mani calcolando il carattere di $\rho$
+
+
+\[ \chi_\rho(s) = Fix(s) - 1 = 
+\begin{cases}
+3 \quad \text{Se } s = e \\
+1 \quad \text{Se } s = (a b) \\
+0 \quad \text{Se } s = (a b c) \\
+-1 \quad \text{Se } s = (a b c d ), (a b) (c d)\\
+\end{cases}
+\]
+
+E andando a calcolare
+
+\[\langle\chi_\rho |\chi_\rho\rangle = \dfrac{1}{24}\left(3^2  + 6 \cdot 1^2  + 0 + (-1)^2 \cdot (3 +6 )\right) = 1\]
+ 
+
+Per cui è effettivamente irriducibile.  Aggiungiamola alla tabella
+
+
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$S_4$  & $e$ & $(1 2)$ & (1 2 3 ) & $(1 2 3 4)$ & $(1 2)(3 4)$ \\
+ & 1 & 6 & 8 & 6 & 3 \\
+\hline
+ $\rho_1$ & 1 & 1  & 1 & 1 & 1\\
+\hline
+$\epsilon$ & 1  & -1 & 1 & -1 & 1 \\
+\hline
+& 2&  & & & \\
+\hline
+$\rho$& 3 & 1 & 0 & -1 & -1\\
+\hline
+& 3&  & & & \\
+\hline
+\end{tabular}
+\end{table}
+
+
+A questo punto possiamo considerare $\rho\epsilon$ come altra rappresentazione. DIMOSTRA PRIMA CHE \'E UNA RAPPRESENTAZIONE DI $|G|$ ED \'E IRRIDUCIBILE
+
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$S_4$  & $e$ & $(1 2)$ & (1 2 3 ) & $(1 2 3 4)$ & $(1 2)(3 4)$ \\
+ & 1 & 6 & 8 & 6 & 3 \\
+\hline
+ $\rho_1$ & 1 & 1  & 1 & 1 & 1\\
+\hline
+$\epsilon$ & 1  & -1 & 1 & -1 & 1 \\
+\hline
+& 2&  & & & \\
+\hline
+$\rho$& 3 & 1 & 0 & -1 & -1\\
+\hline
+$\rho\epsilon$& 3 & -1 & 0 & 1 & -1\\
+\hline
+\end{tabular}
+\end{table}
+
+
+E a questo punto dato che ce ne manca solo una possiamo usare il trucco di prima e concludere
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$S_4$  & $e$ & $(1 2)$ & (1 2 3 ) & $(1 2 3 4)$ & $(1 2)(3 4)$ \\
+ & 1 & 6 & 8 & 6 & 3 \\
+\hline
+ $\rho_1$ & 1 & 1  & 1 & 1 & 1\\
+\hline
+$\epsilon$ & 1  & -1 & 1 & -1 & 1 \\
+\hline
+ $\sigma$& 2&  0 & -1& 0 & 2\\
+\hline
+$\rho$& 3 & 1 & 0 & -1 & -1\\
+\hline
+$\rho\epsilon$& 3 & -1 & 0 & 1 & -1\\
+\hline
+\end{tabular}
+\caption{Tabella dei caratteri di $S_4$}
+\label{tabella caratteri s4}
+\end{table}
+
+
+
+\end{exmp}
+
+
+
+
+
+\begin{exmp}[Tabella dei caratteri di $D_5$]
+
+La prima cosa da fare è dividere $D_5$ in classi di coniugio
+
+
+FINIRE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{exmp}
 
 
 
