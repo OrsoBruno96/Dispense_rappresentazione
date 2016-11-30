@@ -185,7 +185,14 @@ Sia $G$ un gruppo, $x \in G$, la classe di coniugio di $x$ è l'insieme $\{ gxg^
 Nel caso del gruppo $GL_n(\C)$ due matrici stanno nella stessa classe di coniugio se e solo se sono simili, quindi per ogni classe di coniugio esiste un rappresentante canonico che è la forma di Jordan di una qualsiasi matrice nella classe (con opportune convenzioni sull'ordine dei blocchi e degli autovalori).
 \end{exmp}
 
-AGGIUNGERE DEFINIZIONE DI CENTRO
+\begin{defn}[Centro di un gruppo]
+	Sia $G$ un gruppo, il \textit{centro} di $G$ si indica con $Z(G)$ ed è il sottoinsieme degli elementi che commutano con tutto $G$:
+	\[
+		Z(G)=\{ h\in G\ |\ hg=gh\ \forall g\in G \}
+	\]
+	\'E immediato verificare che $Z(G)$ è un sottogruppo di $G$.
+
+\end{defn}
 
 \begin{defn}[Prodotto diretto di gruppi]
 Siano $G$ e $H$ gruppi. Si definisce prodotto diretto di $G$ e $H$ il gruppo $G \times H = \{ (g, h) | g \in G, h \in H\}$ con l'operazione componente per componente.
@@ -214,24 +221,24 @@ Normalmente si usa una notazione abbreviata in cui invece di scrivere $a(g,i)$ s
 
 
 \begin{defn}[Azione transitiva]
-
-
-
+Un'azione di un gruppo $G$ su un insieme $I\neq \emptyset$ si dice \textit{transitiva} se $\forall\ i,j\in I\ \exists s\in G$ t.c. $j=s\cdot i$.
 \label{defn:azione transitiva}
 \end{defn}
 
-
+SAREBBE UTILE SCRIVERE UN COMANDO PER SCRIVERE ORB(X) SOLO CHE NON SO COME SI FA...
 \begin{defn}[Orbita di un elemento]
-
-
+Sia $G$ un gruppo che agisce sull'insieme $I$, dato $x\in I$ si chiama \textit{orbita} di $x$ in $G$ l'insieme $Orb_{G}(x)=\{ g\cdot x\ |\ g\in G \}$, se il gruppo utilizzato è chiaro si può scrivere semplicemente $Orb(x)$. Si osserva subito che un'azione è transitiva se e solo se induce una unica orbita.
 \label{defn:orbita}
 \end{defn}
+\begin{rem}
+	Le classi di coniugio sono le orbite degli elementi generate mediante l'azione per coniugio.
+\end{rem}
 
 
 
 
 \begin{defn}[Azione semplicemente transitiva]
-
+Un'azione di $G$ su un insieme $I\neq \emptyset$ di dice \textit{semplicemente transitiva} se $\forall\ i,j\in I\ \exists !\ s\in G$ t.c. $j=s\cdot i$.
 \end{defn}
 
 
@@ -545,7 +552,17 @@ Ricordiamo un teorema di algebra lineare per finire l'ultima parte della dimostr
 
 
 
-\begin{defn}[Omomorfismo di rappresentazioni] 
+\begin{defn}[Omomorfismo di rappresentazioni]
+Siano $\rho$ e $\sigma$ due rappresentazioni di $G$ su $V_{\rho}$ e $V_{\sigma}$ rispettivamente, un omomorfismo di spazi vettorali $\varphi:V_{\rho}\to V_{\sigma}$ si dice \textit{omomorfismo di rappresentazioni} se
+\[
+	\forall\ a\in G, \forall\ v\in V_{\rho}\quad \varphi(\rho(a)(v)) = \sigma(a)(\varphi(v))
+\]
+oppure equivalentemente
+\[
+	\forall\ a\in G\quad \varphi\circ \rho(a) = \sigma(a)\circ \varphi
+\]
+
+
 %Siano $G, H$ due gruppi e $\rho: G \to V_\rho$ e $\sigma: H \to V_\sigma$ due loro rappresentazioni. Una funzione lineare da $V_\rho \to V_\sigma$ \footnote{Ovvero un omomorfismo da $V_\rho$ a $V_\sigma$} è un omomorfismo di rappresentazioni se rispetta la regola di composizione
 
 
@@ -557,8 +574,7 @@ Ricordiamo un teorema di algebra lineare per finire l'ultima parte della dimostr
 
 
 \begin{defn}[Rappresentazioni isomorfe]
-
-
+Due rappresentazioni si dicono \textit{isomorfe} se esiste un omomorfismo di rappresentazioni tra di loro che è anche bigettivo.
 \end{defn}
 
 
@@ -681,17 +697,24 @@ E l'isomorfismo è canonico. SCRIVI DIMOSTRAZIONE.
 
 
 \begin{defn}[Sottospazio invariante]
+NON VA MESSO TUTTO ASSIEME NELLA DEFINIZIONE DI SOTTORAPPRESENTAZIONE???
 
 \end{defn}
 
 \begin{defn}[Sottorappresentazione]
-
+Sia $\rho$ una rappresentazione di $G$ su $V_{\rho}$, una sottorappresentazione di $\rho$ è un sottospazio vettoriale $W\subseteq V_{\rho}$ tale che $\rho(s)(W)\subseteq W\ \forall\ s\in G$. Posso definire una rappresentazione $\sigma$ con $V_{\sigma}=W$ e $\sigma(s)=\rho(s)\restriction W$ (la indicherò con $\sigma\subseteq \rho$).
+COME SI SCRIVE LA RESTRIZIONE DI UNA FUNZIONE A UN DOMINIO PIÙ PICCOLO?????
 
 \end{defn}
 
 
 
 \begin{defn}[Rappresentazione irriducibile]
+Una rappresentazione $\rho$ di $G$ è \textit{irriducibile} se
+\begin{enumerate}
+	\item $\rho \neq 0$ ($deg(\rho) \geq 1$)
+	\item $\rho$ non ha sottorappresentazioni non banali (diverse da 0 e $V_{\rho}$).
+\end{enumerate}
 
 \end{defn}
 
