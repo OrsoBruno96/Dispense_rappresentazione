@@ -190,7 +190,7 @@ Nel caso del gruppo $GL_n(\C)$ due matrici stanno nella stessa classe di coniugi
 	\[
 		Z(G)=\{ h\in G\ |\ hg=gh\ \forall g\in G \}
 	\]
-	\'E immediato verificare che $Z(G)$ è un sottogruppo di $G$.
+	\'E immediato verificare che $Z(G)$ è un sottogruppo normale di $G$.
 
 \end{defn}
 
@@ -310,7 +310,21 @@ Due gruppi ciclici dello stesso ordine sono isomorfi
 
 \subsection{Proprietà dei gruppi diedrali}
 
+\begin{defn}[Gruppo diedrale]
+L'insieme $D_n$ delle rotazioni e simmetrie di un poligono regolare di $n$ lati è un gruppo con l'operazione di composizione.
+Detta $\rho$ una rotazione di $2\pi/n$ (che ha ordine $n$, e per inverso ha $\rho^{n}$) e $\sigma$ una qualunque riflessione (che ha ordine $2$), esse generano
+il gruppo $D_n$, che si può quindi presentare nel seguente modo: $$D_n=<\rho,\sigma|\rho^n=\sigma^2=id,\ \sigma\rho\sigma=\rho^{-1}>$$
+\end{defn}
 
+\begin{rem}
+ Le $n$ potenze distinte di $\rho$ sono tutte e sole le rotazioni di $D_n$, mentre gli elementi della forma $\sigma\rho^{i},\ i=0,1,..,n-1$ 
+ sono tutte e sole le riflessioni. 
+\end{rem}
+
+\begin{rem}
+ Si dimostra facilmente che la relazione $\sigma\rho\sigma=\rho^{-1}$ è verificata da qualsiasi rotazione $\rho$
+ e qualsiasi riflessione $\sigma$.
+\end{rem}
 
 
 
@@ -323,12 +337,15 @@ Due gruppi ciclici dello stesso ordine sono isomorfi
 \subsection{Alcune generalizzazioni di algebra lineare}
 
 \begin{defn}[Base di uno spazio vettoriale]
-
+Sia $V$ uno spazio vettoriale e $I$ un insieme; una base di $V$ è una funzione $e: I \to V$ tale che 
+$\forall v \in V,\  \exists!\  a: I \to \mathbb{C}$ a supporto finito per cui vale $v=\sum_{i\in I}a_i e_i$. La funzione $a$ 
+valutata in $i$ prende il valore della $i$-esima coordinata del vettore $v$ nella base $e$. Questa definizione è compatibile con la 
+definizione di base come insieme di vettori generatori linearmente indipendenti.
 \end{defn}
 
 
 \begin{lemma}
- Sia $e:I\to V$ una base di $V$ e $W$ uno spazio vettoriale. $f: I \to W$ una funzione. Allora $\exists! \phi: V \to W$ lineare tale che
+ Sia $e:I\to V$ una base di $V$ e $W$ uno spazio vettoriale. $f: I \to W$ una funzione. Allora $\exists!\  \phi: V \to W$ lineare tale che
 
 \[\phi(e_i) = f_i \]
 
@@ -344,8 +361,12 @@ Inoltre $\phi$ è un isomorfismo $\Leftrightarrow$ $f$ è una base.
 
 
 \begin{defn}[Prodotto tensoriale]
-%    Siano $V, W$ due spazi vettoriali. Si dice prodotto tensore di $V$ e $W$, e si indica come $V\otimes W$, uno spazio vettoriale con una funzione bilineare $\otimes: V \times W \to V\otimes W$ tale che per ogni applicazione bilineare $f: V\times W \to  Z$ esiste un'unica applicazione lineare $\phi: V\otimes W \to Z$ che fa commutare il seguente diagramma:
-    
+   Siano $V, W$ due $\mathbb{C}$-spazi vettoriali. Si dice prodotto tensore di $V$ e $W$, 
+   e si indica come $V\otimes W$, uno spazio vettoriale con una funzione bilineare 
+   $\otimes: V \times W \to V\otimes W$ tale che per ogni data funzione bilineare $h: V\times W \to  Z$,
+   esiste unica $\phi: V\otimes W \to Z$ lineare per cui $\phi(v \otimes w)=h(v,w)$.
+   Questa proprietà viene detta proprietà universale e la funzione $\otimes: V \times W \to V\otimes W$
+   viene detta funzione universale.
 %	\tridiag{V\times W}{ \otimes }{V \otimes W}{\phi}{Z}{f}
 
 
@@ -355,7 +376,8 @@ Inoltre $\phi$ è un isomorfismo $\Leftrightarrow$ $f$ è una base.
 
 
 \begin{prop}
-Se ho due prodotti tensoriali $V \otimes W$ e $V \overline{\otimes} W$, allora esiste un unico isomorfismo $\phi: V \otimes W \to V \overline{\otimes} W$ tale che
+Se ho due prodotti tensoriali $V \otimes W$ e $V \overline{\otimes} W$, allora esiste un unico isomorfismo 
+$\phi: V \otimes W \to V \overline{\otimes} W$ tale che
 
 \[ \phi (v\otimes w) = v \overline{\otimes} w\]
 \end{prop}
@@ -431,10 +453,27 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 
 \subsection{Prodotto esterno e prodotto simmetrico}
 
+\begin{defn}[Applicazione $r$-lineare simmetrica/alternante]
+ Una applicazione $\phi: V^n \to Z$ si dice $r$-lineare se è lineare in ogni componente dopo aver fissato le altre $n-1$.
 
+ Inoltre $\phi$ si dice simmetrica se $\phi(v_{s(1)},..,v_{s(n)})=\phi(v_1,..,v_n),\ \forall s \in S_n$, mentre si dice 
+ alternante se $\phi(v_{s(1)},..,v_{s(n)})=\mathrm{sgn}(s)\phi(v_1,..,v_n),\ \forall s \in S_n$.
+ 
+\end{defn}
+
+\begin{prop}
+ Un'applicazione $h: V^n \to W$ è alternante se e solo se $h(v_1,..,v_n)=0$ se $v_i=v_j$ per qualche $i\neq j$.
+ \end{prop}
+
+ \begin{prop}
+  Un'applicazione $h: V^n \to W$ è nulla se i vettori $v_1,..,v_n$ sono linearmente dipendenti.
+ \end{prop}
 
 \begin{defn}[Prodotto esterno]
-
+Sia $n$ un intero positivo, $V$ uno spazio vettoriale. Un prodotto esterno è uno spazio vettoriale indicato con $\Lambda^n V$
+dotato di una funzione $n$-lineare alternante $\wedge: V^n \to \Lambda^n V$ che manda $(v_1,..,v_n)$ in 
+$v_i\wedge v_2\wedge..\wedge v_n \in \Lambda^n V$, tale che $\forall h: V^n \to Z$ $n$-lineare alternante, 
+esiste unica $\phi: \Lambda^n V \to Z $ lineare per cui vale $\phi(v_1\wedge v_2\wedge .. \wedge v_n)=h(v_1,..,v_n)$.
 
 \label{defn:prodotto esterno}
 \end{defn}
@@ -444,14 +483,15 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 
 
 \begin{thm}[Dimensione del prodotto esterno]
-
-
+Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i| 1 \leq i \leq n\}$ una base di $V$ e $k$ un intero positivo.
+Allora l'insieme $E=\{e_{i_1} \wedge e_{i_2} \wedge e_{i_k}| 1 \leq i_1 < i_2 <...< i_k \leq n\}$ è una base di $\Lambda^k V$ 
+e si ha $|E|= \binom {n}{k}$.
 
 \label{thm:prodotto esterno}
 \end{thm}
 
 
-
+MANCANO UN SACCO DI PROPRIETA' E LE DIMOSTRAZIONI
 
 
 
@@ -459,6 +499,10 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 
 \begin{defn}[Prodotto simmetrico]
 
+Sia $n$ un intero positivo, $V$ uno spazio vettoriale. Un prodotto simmetrico è uno spazio vettoriale indicato con $S^n V$
+dotato di una funzione $n$-lineare simmetrica $V^n \to \Lambda^n V$ che manda $(v_1,..,v_n)$ in 
+$v_i v_2..v_n \in S^n V$, tale che $\forall h: V^n \to Z$ $n$-lineare simmetrica, 
+esiste unica $\phi: S^n V \to Z $ lineare per cui vale $\phi(v_1 v_2 .. v_n)=h(v_1,..,v_n)$.
 
 \label{defn:prodotto simmetrico}
 \end{defn}
@@ -469,7 +513,9 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 
 \begin{thm}[Dimensione del prodotto simmetrico]
 
-
+Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i| 1 \leq i \leq n\}$ una base di $V$ e $k$ un intero positivo.
+Allora l'insieme $E=\{e_{i_1} \wedge e_{i_2} \wedge e_{i_k}| 1 \leq i_1 \leq i_2 \leq...\leq i_k \leq n\}$ è una base di $S^k V$ 
+e si ha $|E|= \binom {n+k-1}{k}$.
 
 \label{thm:prodotto simmetrico}
 \end{thm}
