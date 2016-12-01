@@ -470,10 +470,10 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
  \end{prop}
 
 \begin{defn}[Prodotto esterno]
-Sia $n$ un intero positivo, $V$ uno spazio vettoriale. Un prodotto esterno è uno spazio vettoriale indicato con $\Lambda^n V$
-dotato di una funzione $n$-lineare alternante $\wedge: V^n \to \Lambda^n V$ che manda $(v_1,..,v_n)$ in 
-$v_i\wedge v_2\wedge..\wedge v_n \in \Lambda^n V$, tale che $\forall h: V^n \to Z$ $n$-lineare alternante, 
-esiste unica $\phi: \Lambda^n V \to Z $ lineare per cui vale $\phi(v_1\wedge v_2\wedge .. \wedge v_n)=h(v_1,..,v_n)$.
+Sia $n$ un intero positivo, $V$ uno spazio vettoriale. Un prodotto esterno è uno spazio vettoriale indicato con $\bigwedge^n V$
+dotato di una funzione $n$-lineare alternante $\wedge: V^n \to \bigwedge^n V$ che manda $(v_1,..,v_n)$ in 
+$v_i\wedge v_2\wedge..\wedge v_n \in \bigwedge^n V$, tale che $\forall h: V^n \to Z$ $n$-lineare alternante, 
+esiste unica $\phi: \bigwedge^n V \to Z $ lineare per cui vale $\phi(v_1\wedge v_2\wedge .. \wedge v_n)=h(v_1,..,v_n)$.
 
 \label{defn:prodotto esterno}
 \end{defn}
@@ -484,7 +484,7 @@ esiste unica $\phi: \Lambda^n V \to Z $ lineare per cui vale $\phi(v_1\wedge v_2
 
 \begin{thm}[Dimensione del prodotto esterno]
 Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i| 1 \leq i \leq n\}$ una base di $V$ e $k$ un intero positivo.
-Allora l'insieme $E=\{e_{i_1} \wedge e_{i_2} \wedge e_{i_k}| 1 \leq i_1 < i_2 <...< i_k \leq n\}$ è una base di $\Lambda^k V$ 
+Allora l'insieme $E=\{e_{i_1} \wedge e_{i_2} \wedge e_{i_k}| 1 \leq i_1 < i_2 <...< i_k \leq n\}$ è una base di $\bigwedge^k V$ 
 e si ha $|E|= \binom {n}{k}$.
 
 \label{thm:prodotto esterno}
@@ -500,7 +500,7 @@ MANCANO UN SACCO DI PROPRIETA' E LE DIMOSTRAZIONI
 \begin{defn}[Prodotto simmetrico]
 
 Sia $n$ un intero positivo, $V$ uno spazio vettoriale. Un prodotto simmetrico è uno spazio vettoriale indicato con $S^n V$
-dotato di una funzione $n$-lineare simmetrica $V^n \to \Lambda^n V$ che manda $(v_1,..,v_n)$ in 
+dotato di una funzione $n$-lineare simmetrica $V^n \to \bigwedge^n V$ che manda $(v_1,..,v_n)$ in 
 $v_i v_2..v_n \in S^n V$, tale che $\forall h: V^n \to Z$ $n$-lineare simmetrica, 
 esiste unica $\phi: S^n V \to Z $ lineare per cui vale $\phi(v_1 v_2 .. v_n)=h(v_1,..,v_n)$.
 
@@ -947,8 +947,10 @@ in quanto, avendo gli autovalori modulo 1, l'inverso coincide con il coniugio.
 	\item $\chi_{\rho^*}(s)\footnote{Ricordiamo che $\rho^*(s) = (\rho(s)^{-1})^*$} = \overline{\chi_\rho(s)}$.\\
 		Per l'osservazione precedente vale che
 		$$\chi_{\rho^*}(s)=tr(^t\rho(s^{-1}))=tr(\rho(s^{-1}))=\overline{tr(\rho(s))}=\overline{\chi_\rho(s)}$$
-	\item $\chi_{\rho}(hsh^{-1})=\chi_{\rho}(s)$ ovvero $\chi_\rho$ è costante sulle classi di coniugio di $G$. La motivazione è semplice: se due elementi sono coniugati tra loro questo significa che le matrici corrispondenti saranno simili e la traccia è un invariante di similitudine.\\ \\
-Di conseguenza, non sarà necessario calcolare il carattere per ogni elemento del gruppo ma basterà farlo per le classi di coniugio di $G$.\\ \\
+	\item $\chi_{\rho}(hsh^{-1})=\chi_{\rho}(s)$ ovvero $\chi_\rho$ è costante sulle classi di coniugio di $G$. La motivazione è semplice: se due elementi sono coniugati tra loro questo significa che le matrici corrispondenti saranno simili e la traccia è un invariante di similitudine.
+	
+Di conseguenza, non sarà necessario calcolare il carattere per ogni elemento del gruppo ma basterà farlo per le classi di coniugio di $G$.
+
 Le funzioni che costanti sulle classi di coniugio di un gruppo vengono dette $funzioni\ di\ classe$.
 	\item Supponiamo di avere una rappresentazione per permutazioni. Sia $I$ un insieme finito e $G$ un gruppo allora 
 $$\chi_{\rho_{I}}(s)=\#punti\ fissi\ di\ \rho_I(s)=|I^s|$$
@@ -982,10 +984,57 @@ Se $\rho$ e $\sigma$ sono rappresentazioni irriducibili di $G$, allora vale
 1 \qquad \text{se } \rho \cong \sigma \\
 0 \qquad \text{altrimenti }\\
 \end{cases} \]
-
+\label{relazione di ortogonalita}
 \end{thm}
 
-Osservazioni:
+Per dimostrare questo teorema abbiamo bisogno di un lemma che ora enunciamo e dimostriamo.
+
+
+
+
+\begin{lemma}
+Se $(\rho, V_\rho)$ e $(\sigma, V_\sigma)$ sono rappresentazioni \footnote{Non necessariamente irriducibili} di $G$, allora vale
+
+\[ \langle \chi_\rho | \chi_\sigma \rangle  = dimHom (\sigma, \rho)\] 
+
+\end{lemma}
+\textsc{Dimostrazione:}
+
+L'idea principale per dimostrare questo lemma è di ridurci al caso più facile in cui una delle due rappresentazioni è quella banale. Per farlo notiamo un paio di cose
+
+\[ \langle \chi_\rho | \chi_\sigma \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \overline{\chi_\rho(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho^*}(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho^*\sigma}(s)  = \langle 1 | \chi_{\rho^* \sigma} \rangle \]
+
+Siamo passati da due rappresentazioni ad una sola. In particolare lo spazio vettoriale su cui agisce questa rappresentazione è 
+
+\[ V_{\rho^* \sigma} = V_{\rho}^* \otimes V_\sigma \cong Hom(V_\rho, V_\sigma)\]
+
+E questo isomorfismo segue semplicemente dalle proprietà del prodotto tensore di spazi vettoriali. Notiamo che sullo spazio degli omomorfismi\footnote{Dato che sono spazi vettoriali in questo caso si tratta semplicemente di applicazioni lineari} $Z = Hom(V_\rho, V_\sigma)$ è possibile definire una rappresentazione completamente analoga a $\rho^s\sigma$ in questo modo: se $f \in Z$, allora possiamo definire la rappresentazione $\tau, V_\tau = Z$ di $G$ in questo modo
+
+\[ \tau(s)f = \rho(s) \circ f \circ \sigma^{-1}(s)\]
+
+\'E possibile mostrare VI PREGO QUALCHE MATEMATICO LO FACCIA che se chiamo $\phi$ la mappa tale che
+
+\[
+\begin{cases}
+V_\rho^* \otimes V_\sigma \xrightarrow{\phi} Hom(V_\rho, V_\sigma)\\
+\rho^*\sigma \xrightarrow{\phi} \tau \\
+\end{cases}
+\]
+
+Allora $\phi$ è un isomorfismo di rappresentazioni. A questo punto possiamo andare a cercare i sottospazi invarianti per $\tau$, ovvero stiamo andando a cercare le sottorappresentazioni irriducibili di $\tau$ sperando di usare teoremi che già conosciamo. In particolare stiamo quindi cercando dei sottospazi $W \subset Z = Hom(V_\rho, V_\sigma)$ tali che $\tau(s) W \subset W \quad \forall s \in G$ 
+
+LA DIMOSTRAZIONE VA CONCLUSA QUANDO IL PROF FINISCE DI DIMOSTRARLA MARTED\'I
+
+\qed
+
+
+
+\textsc{Dimostrazione del teorema \ref{relazione di ortogonalita}:}
+
+A questo punto la tesi del teorema \ref{relazione di ortogonalita} segue dal lemma precedente applicato insieme al lemma di Schur. \qed
+
+
+\textsc{Osservazioni:}
 
 \begin{itemize}
 \item Ricordiamo che se $\rho$ è una rappresentazione di $G$, allora $\rho$ si può scrivere in modo unico come 
@@ -999,6 +1048,9 @@ Dove le $\rho_i$ sono le rappresentazioni irriducibili di $G$ e gli $n_i$ sono n
 E possiamo ottenere un'informazione utile prendendo il prodotto scalare dell'equazione precedente con il carattere di una delle rappresentazioni $\rho_i$
 
 \[ \langle \chi_\rho | \chi_{\rho_j} \rangle = \dsum_i n_i \langle \chi_{\rho_i} | \chi_{\rho_j} \rangle \Rightarrow n_i \delta_{ij} = \langle \chi_\rho | \chi_{\rho_j} \rangle \Rightarrow n_i = \langle \chi_\rho | \chi_{\rho_i} \rangle\]
+
+
+
 
 \item Se $\rho$ e $\sigma$ sono 2 rappresentazioni irriducibili allora $$\rho \cong \sigma \Leftrightarrow \chi_{\rho}=\chi_{\sigma}$$
 
@@ -1392,6 +1444,23 @@ FINIRE
 
 
 
+
+
+\subsubsection{I problemi della prima lezione visti con i nuovi strumenti}
+\begin{exmp}[Problema 1 prima lezione]
+
+
+\end{exmp}
+
+\begin{exmp}[Problema 2 prima lezione]
+
+
+\end{exmp}
+
+\begin{exmp}[Problema 3 prima lezione]
+
+
+\end{exmp}
 
 
 
