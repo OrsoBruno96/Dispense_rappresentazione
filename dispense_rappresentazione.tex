@@ -1459,6 +1459,89 @@ FINIRE
 
 \begin{exmp}[Problema 3 prima lezione]
 
+Consideriamo un cubo. Scriviamo un numero su ciascuna delle facce e consideriamo l'operazione $T$ che per ogni faccia sostituisce al numero presente la media dei numeri presenti sulle 4 facce del cubo adiacenti. Vogliamo studiare il comportamento dei numeri del cubo quando questa iterazione viene compiuta molte volte.
+
+
+Cerchiamo di formalizzare il problema usando la teoria della rappresentazione. Possiamo considerare l'insieme $F$ delle facce del cubo\footnote{Che ha quindi 6 elementi}. Una generica configurazione del cubo sarà esprimibile come 
+
+\[ v = \dsum_{f \in F} a_f e_f \]
+
+Dove $a_f \in \mathbb{C}$ e $e_f$ sono una base. L'operatore che sostituisce la media è lineare ma soprattuto commuta con le simmetrie del problema. Ora spiegherò meglio questo concetto.
+
+Consideriamo il gruppo $G$ delle rotazioni del cubo, ovvero 
+
+\[G = \{ g \in SO(3) | g(Cubo) \subset Cubo \} \]
+
+\'E ovvio che il problema è invariante per simmetria, ovvero se $g \in G$, allora vale
+
+\[ T v = g^{-1}T g v \]
+
+Che è la formula di un cambio di base. Questo si può scrivere come 
+
+\[gT = Tg \]
+
+Ovvero ci dice che $\forall g \in G$ le due operazioni commutano. Le due frasi precedenti sono state dette un po' alla garibaldina in quanto non è $g$ ad agire sul cubo ma è una sua rappresentazione di grado $|F| = 6$. Di conseguenza è bene scrivere in modo formale che $\tau: G \to GL(V_\tau)$ è una rappresentazione del gruppo di rotazioni del cubo in $\mathbb{C}^6$ e questa rappresentazione commuta con un operatore $T$, ovvero
+
+\[T\tau(g) = \tau(g) T \qquad \forall g \in G  \]
+
+
+L'obiettivo che ci poniamo ora è quello di riuscire a scomporre $\tau$ come somma di rappresentazioni irriducibili in quanto una volta trovata una scomposizione 
+
+\[ V_\tau = \bigoplus_{i = i}^n V_{\rho_i} \] 
+
+Allora potremo usare il lemma di Schur per dire che su ogni $V_{\rho_i}$ l'operatore $T$ si comporta come scalare ovvero \emph{è più che diagonalizzato}. Per riuscire a capire qualcosa di come sono fatte le rappresentazioni di questo gruppo è opportuno prima cercare di dare una struttura più chiara a questo gruppo.
+
+\'E possibile mostrare che QUALCUNO CHE HA VOGLIA DI FARLO LO FACCIA PLS $G \cong S_4$. A questo punto noi abbiamo una rappresentazione di grado 6 di $S_4$ che cerchiamo di scomporre come somma di rappresentazioni irriducibili. Tuttavia grazie al teorema \ref{thm: teorema importantissimo} sappiamo che tutte le sottorappresentazioni di $\tau$ saranno isomorfe alle sottorappresentazioni della rappresentazione regolare $\mathcal{R}(S_4)$, di cui abbiamo preventivamente calcolato la tabella dei caratteri \ref{tabella caratteri s4}. Dato che 
+
+
+\[\tau = \dsum_i n_i\rho_i \Rightarrow \chi_\tau  = \dsum_i n_i\chi_{\rho_i}\]
+
+Andiamo a calcolare i prodotti scalari dei caratteri delle rappresentazioni irriducibili di $S_4$ con il carattere di $\tau$ per trovare quali rappresentazioni compaiono. Per farlo calcoliamo prima il carattere di $\tau$
+
+
+SCRIVI CHE NON HO VOGLIA
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+
+
+\end{tabular}
+\end{table} 
+
+
+
+Per cui si ottiene
+
+\[\tau = 1 + \epsilon\rho + \sigma \]
+
+Ovvero
+
+\[V_\tau = V_1 \oplus V_{\epsilon\rho} \oplus V_{\sigma} \]
+
+
+Cerchiamo quindi di capire come sono fatti questi tre spazi che hanno rispettivaemente dimensione 1,3,2. 
+
+
+SCRIVI PI\'U DETTAGLIATO CHE DEVO ANDARE A LEZIONE
+
+\[V_1 =  span(e_1 + e_2 + ... + e_6) \]
+\[V_{\epsilon\rho} = \text{Le facce opposte hanno numeri opposti}\]
+\[V_{\sigma} = \text{Le facce opposte hanno numeri uguali e la somma di tutti è 0}\]
+
+Su questi spazi è facile vedere che effettivamente $T$ è scalare. In particolare
+
+\[
+\begin{cases}
+T|_{V_1} = 1 \\
+T|_{V_{\epsilon\rho}} = 0 \\
+T|_{V_\sigma} = -\frac{1}{2}\\
+\end{cases}
+\]
+
+E quindi è evidente che $T^n \to $ su ogni faccia viene la media dei numeri che c'erano all'inizio.
+
 
 \end{exmp}
 
