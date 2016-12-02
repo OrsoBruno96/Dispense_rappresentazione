@@ -190,12 +190,12 @@ Nel caso del gruppo $GL_n(\C)$ due matrici stanno nella stessa classe di coniugi
 	\[
 		Z(G)=\{ h\in G\ |\ hg=gh\ \forall g\in G \}
 	\]
-	\'E immediato verificare che $Z(G)$ è un sottogruppo normale di $G$.
+	\`E immediato verificare che $Z(G)$ è un sottogruppo normale di $G$.
 
 \end{defn}
 
 \begin{defn}[Prodotto diretto di gruppi]
-Siano $G$ e $H$ gruppi. Si definisce prodotto diretto di $G$ e $H$ il gruppo $G \times H = \{ (g, h) | g \in G, h \in H\}$ con l'operazione componente per componente.
+Siano $G$ e $H$ gruppi. Si definisce prodotto diretto di $G$ e $H$ il gruppo formato dall'insieme $G \times H = \{ (g, h) | g \in G, h \in H\}$ con l'operazione componente per componente, ovvero separatemente per i due gruppi di partenza.
 \end{defn}
 
 
@@ -209,7 +209,7 @@ Se $\varphi$ è bigettiva, allora si dice \textit{isomorfismo}.
 \end{defn}
 
 
-\begin{defn}[Azione di un gruppo su un insieme] Sia $G$ un gruppo e $I$ un insieme. Definiamo un azione $a$ di $G$ su $I$ una funzione $a:G\times I \to I$ che rispetti la regola di composizione, ovvero che se $h,h\in G$ e $i \in I$, valga
+\begin{defn}[Azione di un gruppo su un insieme] Sia $G$ un gruppo e $I$ un insieme. Definiamo un azione $a$ di $G$ su $I$ una funzione $a:G\times I \to I$ che rispetti la regola di composizione, ovvero che se $h,g\in G$ e $i \in I$, valga
 
 \[ a(h,a(g,i)) = a(hg, i) \]
 
@@ -384,7 +384,7 @@ $\phi: V \otimes W \to V \overline{\otimes} W$ tale che
 
 
 \begin{note}
-\'E importante notare che non tutti gli elementi $z \in V \otimes W$ si scrivono come $z = v \otimes w$. In particolare, per fare un esempio concreto che mostra che questa cosa non funziona, prendiamo $W = V^*$. Vedremo fra poco che $V\otimes V^*$ è canonicamente isomorfo allo spazio delle applicazioni bilineari da $V$ in $\C$, che sappiamo scriverlo come matrici $n\times n$. Tuttavia se un elemento si scrive in termini di matrici come $z = v\otimes w$, allora la matrice associata a $z$ in una base avrà rango al massimo 1, ben lontano da coprire tutto lo spazio.
+\`E importante notare che non tutti gli elementi $z \in V \otimes W$ si scrivono come $z = v \otimes w$. In particolare, per fare un esempio concreto che mostra che questa cosa non funziona, prendiamo $W = V^*$. Vedremo fra poco che $V\otimes V^*$ è canonicamente isomorfo allo spazio delle applicazioni bilineari da $V$ in $\C$, che sappiamo scriverlo come matrici $n\times n$. Tuttavia se un elemento si scrive in termini di matrici come $z = v\otimes w$, allora la matrice associata a $z$ in una base avrà rango al massimo 1, ben lontano da coprire tutto lo spazio.
 \end{note}
 
 
@@ -395,6 +395,7 @@ $\phi: V \otimes W \to V \overline{\otimes} W$ tale che
 
 
 \begin{defn}[Prodotto tensoriale di mappe lineari]
+Date $f:V \to V'$ e $g:W \to W'$ funzioni lineari, si definisce prodotto tensoriale tra $f$ e $g$ la funzione lineare $f \otimes g : V \otimes W \to V' \otimes W'$ tale che $(f \otimes g)(v \otimes w)=f(v) \otimes g(w)$ $\forall v\in V, w\in W$
 
 \end{defn}
 
@@ -706,9 +707,14 @@ Osservazioni:
 
 
 \begin{defn}[Rappresentazione duale]
-
+Sia $\rho$ una rappresentazione di $G$ su $v_\rho$. Allora la rappresentazione duale $\rho^*$ è la rappresentazione di $G$ su $v_\rho ^*$ tale che $\rho^*(s)=\rho(s^{-1})^t$
 \label{defn:rappresentazione duale}
 \end{defn}
+
+\begin{note}
+$\rho^*(s)=\rho(s^{-1})^t=\left(\rho(s)^{-1}\right)^t=\left(\rho(s)^t\right)^{-1}$. Inoltre, notare che la presenza di inverso e trasposto fa in modo che $\rho^*(s)$ sia una rappresentazione.
+\end{note}
+
 
 Osservazione: vale
 
@@ -818,10 +824,11 @@ Sia $\rho: G \to GL(V_\rho)$ una rappresentazione di un gruppo finito $G$. Sia $
 
 
 
-\begin{thm} Siano $\rho: G \to GL(V_\rho)$ e $\sigma: G \to GL(V_\sigma)$ sono rappresentazioni di $G$ e $f: V_\rho \to V_\sigma$ è un omomorfismo di rappresentazioni, allora $Im(f)$ è una sottorappresentazione di $\sigma$ e $Ker(f)$ è una sottorappresentazione di $V_\rho$
-
+\begin{thm} Se $\rho: G \to GL(V_\rho)$ e $\sigma: G \to GL(V_\sigma)$ sono rappresentazioni di $G$ e $f: V_\rho \to V_\sigma$ è un omomorfismo di rappresentazioni, allora $Im(f)$ è una sottorappresentazione di $\sigma$ e $Ker(f)$ è una sottorappresentazione di $V_\rho$
 \end{thm}
-
+\begin{proof}
+Se $v\in Ker(f)$ allora per la definizione di omomorfismo di rappresentazioni ho che $\forall s\in G$ $f(\rho(s)v)=\sigma(s)f(v)=0$ e quindi $\rho(s)v\in Ker(f)$. Allo stesso modo, se $w\in Im(f)$ allora $w=f(v)$ per qualche $v\in V_\rho$ e quindi sempre per la definizione di omomorfismo di rappresentazione $\sigma(s)w=\sigma(s)f(v)=f(\rho(s)v)\in Im(f)$
+\end{proof}
 
 
 
@@ -847,10 +854,12 @@ Date $\rho_1, \rho_2, \sigma$ rappresentazioni di $G$, allora
 
 
 \begin{thm}[Lemma di Schur]
-
-
+Siano $\rho$ e $\sigma$ due rappresentazioni irriducibili di $G$ gruppo finito e $\phi:\rho\to\sigma$ un omomorfismo di rappresentazioni, allora $\phi$ è un isomorfismo oppure è identicamente nullo. Se poi $f:\rho\to\rho$ è un omomorfismo di rappresentazioni, allora $f$ è una moltiplicazione per scalare.
 \end{thm}
-
+\begin{proof}
+Supponiamo che $\phi\neq0$, allora sappiamo che $Ker(\phi)\subseteq V_\rho$ è una sottorappresentazione di $\rho$, ma $\rho$ è irriducibile e quindi $Ker(\phi)=0\Rightarrow \phi$ iniettiva. Ma anche $Im(\phi)\subseteq V_{\sigma}$ è una sottorappresentazione di $\sigma$ e, non essendo nulla ed essendo $\sigma$ irriducibile, coincide con tutto $V_\sigma \Rightarrow \phi$ suriettiva, da cui $\phi$ è un isomorfismo.
+Consideriamo ora $f$: sia $\lambda$ un autovalore di $f$, che esiste perché $G$ è finito e stiamo lavorando su $\C$, allora $f-\lambda:V_\rho\to V_\rho$ è un omomorfismo di rappresentazioni. Ma non è iniettivo, perché c'è almeno un autovettore relativo a $\lambda$, e quindi per la prima parte del lemma di Schur ho che $f-\lambda$ è identicamente nullo, da cui ricaviamo che $f$ è la moltiplicazione per uno scalare ($\lambda$).
+\end{proof}
 
 
 \begin{thm}
