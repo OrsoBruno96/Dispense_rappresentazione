@@ -951,10 +951,16 @@ in quanto, avendo gli autovalori modulo 1, l'inverso coincide con il coniugio.
 	
 Di conseguenza, non sarà necessario calcolare il carattere per ogni elemento del gruppo ma basterà farlo per le classi di coniugio di $G$.
 
-Le funzioni che costanti sulle classi di coniugio di un gruppo vengono dette $funzioni\ di\ classe$.
+Le funzioni che costanti sulle classi di coniugio di un gruppo vengono dette $funzioni\ di\ classe$. L'insieme delle funzioni di classe di un gruppo viene normalmente indicato con $Cl(G)$ e si verifica che esso è un sottospazio di $\mathbb{C}^G$.
 	\item Supponiamo di avere una rappresentazione per permutazioni. Sia $I$ un insieme finito e $G$ un gruppo allora 
 $$\chi_{\rho_{I}}(s)=\#punti\ fissi\ di\ \rho_I(s)=|I^s|$$
 dove $I^s:=\{i\in I| s\circ i=i\}$. La veridicità di questo fatto si vede scrivendo esplicitamente la matrice che rappresenta $\rho_I(s)$.
+	\item Consideriamo la rappresentazione per permutazioni regolare $R$. Calcoliamone il carattere:
+	\[ \chi_{\mathcal{R}}(s) = \begin{cases}
+|G| \qquad \text{se } s=id \\
+0 \qquad \text{se } s\neq id\\
+\end{cases} \]
+semplicemente perchè $s\circ g=g\Leftrightarrow s=id$.
 \end{enumerate}
 \textbf{Esempio:} $G=S_3$, $I=\{1,2,3\}$. Allora
 
@@ -972,7 +978,7 @@ Ricordandoci che $\chi_{\rho_I}=\chi_{1+\rho}$ si ha che
 
 \begin{defn}[Prodotto hermitiano dei caratteri]
 
-\[ \langle f | g \rangle = \dfrac{1}{|G|} \dsum_{s \in G} \overline{f(s)} g(s) \]
+\[ \langle f | g \rangle = \dfrac{1}{|G|} \dsum_{s \in G} f(s)\overline{ g(s)} \]
 
 \end{defn}
 
@@ -995,20 +1001,20 @@ Per dimostrare questo teorema abbiamo bisogno di un lemma che ora enunciamo e di
 \begin{lemma}
 Se $(\rho, V_\rho)$ e $(\sigma, V_\sigma)$ sono rappresentazioni \footnote{Non necessariamente irriducibili} di $G$, allora vale
 
-\[ \langle \chi_\rho | \chi_\sigma \rangle  = dimHom (\sigma, \rho)\] 
+\[ \langle \chi_\rho | \chi_\sigma \rangle  = dim(Hom (\sigma, \rho))\] 
 
 \end{lemma}
 \textsc{Dimostrazione:}
 
 L'idea principale per dimostrare questo lemma è di ridurci al caso più facile in cui una delle due rappresentazioni è quella banale. Per farlo notiamo un paio di cose
 
-\[ \langle \chi_\rho | \chi_\sigma \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \overline{\chi_\rho(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho^*}(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho^*\sigma}(s)  = \langle 1 | \chi_{\rho^* \sigma} \rangle \]
+\[ \langle \chi_\rho | \chi_\sigma \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \chi_\rho(s)\overline{ \chi_\sigma(s)} = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho}(s)} \chi_\sigma^*(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho\sigma^*}(s)  = \langle \chi_{\rho\sigma^*} \rangle | 1\]
 
 Siamo passati da due rappresentazioni ad una sola. In particolare lo spazio vettoriale su cui agisce questa rappresentazione è 
 
-\[ V_{\rho^* \sigma} = V_{\rho}^* \otimes V_\sigma \cong Hom(V_\rho, V_\sigma)\]
+\[ V_{\rho \sigma^*} = V_{\rho} \otimes V_\sigma^* \cong Hom(V_\rho, V_\sigma)\]
 
-E questo isomorfismo segue semplicemente dalle proprietà del prodotto tensore di spazi vettoriali. Notiamo che sullo spazio degli omomorfismi\footnote{Dato che sono spazi vettoriali in questo caso si tratta semplicemente di applicazioni lineari} $Z = Hom(V_\rho, V_\sigma)$ è possibile definire una rappresentazione completamente analoga a $\rho^s\sigma$ in questo modo: se $f \in Z$, allora possiamo definire la rappresentazione $\tau, V_\tau = Z$ di $G$ in questo modo
+E questo isomorfismo segue semplicemente dalle proprietà del prodotto tensore di spazi vettoriali. Notiamo che sullo spazio degli omomorfismi\footnote{Dato che sono spazi vettoriali in questo caso si tratta semplicemente di applicazioni lineari} $Z = Hom(V_\rho, V_\sigma)$ è possibile definire una rappresentazione completamente analoga a $\rho\sigma^*$ in questo modo: se $f \in Z$, allora possiamo definire la rappresentazione $\tau, V_\tau = Z$ di $G$ in questo modo
 
 \[ \tau(s)f = \rho(s) \circ f \circ \sigma^{-1}(s)\]
 
@@ -1016,8 +1022,8 @@ E questo isomorfismo segue semplicemente dalle proprietà del prodotto tensore d
 
 \[
 \begin{cases}
-V_\rho^* \otimes V_\sigma \xrightarrow{\phi} Hom(V_\rho, V_\sigma)\\
-\rho^*\sigma \xrightarrow{\phi} \tau \\
+V_\rho \otimes V_\sigma^* \xrightarrow{\phi} Hom(V_\rho, V_\sigma)\\
+\rho\sigma^* \xrightarrow{\phi} \tau \\
 \end{cases}
 \]
 
@@ -1049,8 +1055,23 @@ E possiamo ottenere un'informazione utile prendendo il prodotto scalare dell'equ
 
 \[ \langle \chi_\rho | \chi_{\rho_j} \rangle = \dsum_i n_i \langle \chi_{\rho_i} | \chi_{\rho_j} \rangle \Rightarrow n_i \delta_{ij} = \langle \chi_\rho | \chi_{\rho_j} \rangle \Rightarrow n_i = \langle \chi_\rho | \chi_{\rho_i} \rangle\]
 
+\item Caso particolare interessante del fatto precedente riguarda la rappresentazione regolare di un gruppo. Difatti come sappiamo,
 
-
+\[ \chi_{\mathcal{R}}(s) = 
+\begin{cases}
+|G| \quad \text{se } s = e \\
+0 \quad \text{altrimenti}
+\end{cases}\]
+Quindi considerando una sottorappresentazione  si ha che 
+\[
+\langle \chi_{\mathcal{R}} | \chi_\rho \rangle = \frac{1}{|G|}|G|\chi_{\rho}(id)=\chi_{\rho}(id)=deg(\rho)
+\]
+In particolare se $\rho$ è una sottorappresentazione irriducibile allora
+\[ deg(\rho)=dim(Hom(\mathcal{R},\rho)) \]
+Quindi ottengo una conferma del teorema precedente 
+\[      
+\langle \chi_{\mathcal{R}} | \chi_\rho \rangle =dim(Hom(\mathcal{R},\rho))
+\]
 
 \item Se $\rho$ e $\sigma$ sono 2 rappresentazioni irriducibili allora $$\rho \cong \sigma \Leftrightarrow \chi_{\rho}=\chi_{\sigma}$$
 
@@ -1058,36 +1079,46 @@ E possiamo ottenere un'informazione utile prendendo il prodotto scalare dell'equ
 \item Conseguenza dell'ultima osservazione è che una rappresentazione di un gruppo $\rho$ è irriducibile $\Leftrightarrow \langle \chi_\rho | \chi_\rho \rangle = |\chi_\rho|^2 = 1$ 
 
 
+\end{itemize}
 
 
+\subsection{Tabella dei caratteri}
 
 
+Dato un gruppo $G$, possimo costruire la $tabella\ dei\ caratteri$ nel seguente modo:
+\begin{itemize}
+\item su ogni colonna mettiamo un rappresentante della classe di coniugio con sotto la cardinalità dell'orbita ovvero
 
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|c|c|c|c}
+\hline
+$G$  & $e$ & $orb(g_1)$ & $orb(g_2)$ & \\
+ & 1 & $|orb(g_1)|$ & $|orb(g_2)|$ & \\
+\hline
+ & &  & \\
+\end{tabular}
+\end{table}
 
+\item su ogni riga mettiamo una rappresentazione irriducibile del gruppo
+\item all'incrocio tra la rappresentazione $\rho_i$ e la classe di coniugio di $g_j$ inseriamo il valore di $\chi_{\rho_i(g_j)}$.
 
 
 \end{itemize}
 
 
 
-
-
-
-
 \subsection{Esempi di rappresentazioni di gruppi finiti}
 
-\begin{exmp}[Tabella dei caratteri di $S_3$]
-
+\begin{exmp}[Tabella dei caratteri di $S_3$] 
 La prima cosa da fare per costruire la tabella dei caratteri è vedere quanti elementi ha $S_3$, suddividerli in classi di coniugio e poi cercare le rappresentazioni irriducibili solo dopo aver fatto tutto questo. Notiamo subito che $S_3$ ha esattamente 3 classi di coniugio. La prima è ovviamente quella banale, composta solo dall'identità $e$. Poi c'è la classe delle trasposizioni $\{(1 2) ,(2 3), (1 3)\}$ che ha 3 elementi e poi ci sono i $3$cicli, ovvero $(1 2 3)$ e $(1 3 2)$. Possiamo cominciare a scrivere una tabella vuota $3\times 3$
-
-
 
 
 \begin{table}[!ht]
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
-$S_3$  & $e$ & $(1 2)$ & (1 2 3 )    \\
+$S_3$  & $e$ & $(1 2)$ & (1 2 3 )  \\
  & 1 & 3 & 2 \\
 \hline
  & &  & \\
@@ -1272,7 +1303,7 @@ $S_4$  & $e$ & $(1 2)$ & (1 2 3 ) & $(1 2 3 4)$ & $(1 2)(3 4)$ \\
 \end{table}
 
 
-Dove ho già messo la rappresentazione banale. Anche per $S_4$, essendo un gruppo simmetrico c'è la rappresentazione segno di grado 1. 
+dove ho già messo la rappresentazione banale. Anche per $S_4$, essendo un gruppo simmetrico c'è la rappresentazione segno di grado 1. 
 
 
 
@@ -1296,34 +1327,6 @@ $\epsilon$ & 1  & -1 & 1 & -1 & 1 \\
 \hline
 \end{tabular}
 \end{table}
-
-Dato che $S_4$ ha $4! = 24$ elementi, dobbiamo adesso trovare un modo per ottenere 22 come somma di 3 quadrati. Si vede subito che devono essere $ <4 $, ma se fossero anche tutti al massimo 2 non ce la faremmo, per cui ne esiste almeno una di grado 3.
-
-\[ 22 = a^2 + b^2 + 3^2 \Rightarrow a^2 + b^2 = 13 \]
-
-A questo punto è facile vedere che l'unica soluzione è $(2,3)$, ovviamente a meno dell'ordine. La tabella diventa
-
-
-\begin{table}[!ht]
-\centering
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-$S_4$  & $e$ & $(1 2)$ & (1 2 3 ) & $(1 2 3 4)$ & $(1 2)(3 4)$ \\
- & 1 & 6 & 8 & 6 & 3 \\
-\hline
- $\rho_1$ & 1 & 1  & 1 & 1 & 1\\
-\hline
-$\epsilon$ & 1  & -1 & 1 & -1 & 1 \\
-\hline
-& 2&  & & & \\
-\hline
-& 3&  & & & \\
-\hline
-& 3&  & & & \\
-\hline
-\end{tabular}
-\end{table}
- 
 
 
 A questo punto bisogna fare cose a caso cercando le rappresentazioni irriducibili. Per esempio possiamo di nuovo considerare la rappresentazione per permutazioni
@@ -1354,8 +1357,7 @@ E andando a calcolare
 \[\langle\chi_\rho |\chi_\rho\rangle = \dfrac{1}{24}\left(3^2  + 6 \cdot 1^2  + 0 + (-1)^2 \cdot (3 +6 )\right) = 1\]
  
 
-Per cui è effettivamente irriducibile.  Aggiungiamola alla tabella
-
+Per cui è effettivamente irriducibile.  Aggiungiamola alla tabella.
 
 
 \begin{table}[!ht]
@@ -1369,17 +1371,44 @@ $S_4$  & $e$ & $(1 2)$ & (1 2 3 ) & $(1 2 3 4)$ & $(1 2)(3 4)$ \\
 \hline
 $\epsilon$ & 1  & -1 & 1 & -1 & 1 \\
 \hline
-& 2&  & & & \\
-\hline
 $\rho$& 3 & 1 & 0 & -1 & -1\\
 \hline
-& 3&  & & & \\
+& &  & & & \\
+\hline
+& &  & & & \\
 \hline
 \end{tabular}
 \end{table}
 
+Abbiamo appena terminato le rappresentazioni che conoscevamo di $S_4$.\\
+\textbf{Ottimo consiglio:} Quando non vengono in mente altre rappresentazioni, considera due già presenti nella tabella e fanne il prodotto. Risulta utile il seguente lemma.
 
-A questo punto possiamo considerare $\rho\epsilon$ come altra rappresentazione. DIMOSTRA PRIMA CHE \'E UNA RAPPRESENTAZIONE DI $|G|$ ED \'E IRRIDUCIBILE
+\begin{lemma}
+Se $\rho$ e $\sigma$ sono due rappresentazioni e $deg(\rho)=1$ ( ovvero $\rho:G\rightarrow \mathbb{C}^*$), allora $\sigma$ è irriducibile $\Leftrightarrow$ $\rho\sigma$ lo è. Inoltre hanno lo stesso grado.
+\end{lemma}
+
+\textbf{Dimostrazione:} Che sia ancora a tutti gli effetti una rappresentazione si verifica esplicitamente sapendo che
+\[
+\forall s\in G \rho\sigma(s)=\rho(s)\sigma(s)
+\]
+Per dimostrare che è irriducibile si considera il fatto che
+\[
+\sigma \ irriducibile\ \Leftrightarrow 1=\langle\chi_{\sigma}|\chi_{\sigma}\rangle=\frac{1}{|G|}\sum_{s\in G}|\chi_{\sigma(s)}|^2
+\]
+Quindi...
+\[
+\langle \chi_{\rho\sigma}|\chi_{\rho\sigma}\rangle=\frac{1}{|G|}\sum_{S\in G}|\chi_{\rho\sigma(s)}|^2=\frac{1}{|G|}\sum_{s\in G}|\chi_{\rho(s)}\chi_{\sigma(s)}|^2=\frac{1}{|G|}|\rho(s)\chi_{\sigma(s)}|^2=\frac{1}{|G|}\sum_{s\in G}|\rho(s)|^2|\chi_{\sigma(s)}|^2
+\]
+ed essendo $\rho(s)$ una radice $n-$esima dell'unità dove $n$ è l'ordine di $G$ si ha che 
+\[1 | 
+\langle \chi_{\rho\sigma}|\chi_{\rho\sigma}\rangle=\frac{1}{|G|}\sum_{s\in G}
+|\chi_{\sigma(s)}|^2=\langle \chi_{\sigma}|\chi_{\sigma}\rangle
+\]
+Che abbiano lo stesso grado deriva dal fatto che
+\[
+\chi_{\rho\sigma}=\chi_{\rho}\chi_{\sigma}\Rightarrow deg(\rho\sigma)=\chi{\rho\sigma}(id)=\chi_{\rho}(id)\chi_{\sigma}(id)=deg(\rho)deg(\sigma)=deg(\sigma).
+\] \\
+Essendo $\epsilon$ di grado 1 e $\rho$ irriducibile allora anche $\rho\epsilon$ è un'altra rappresentazione irriducibile.
 
 
 \begin{table}[!ht]
@@ -1392,20 +1421,21 @@ $S_4$  & $e$ & $(1 2)$ & (1 2 3 ) & $(1 2 3 4)$ & $(1 2)(3 4)$ \\
  $\rho_1$ & 1 & 1  & 1 & 1 & 1\\
 \hline
 $\epsilon$ & 1  & -1 & 1 & -1 & 1 \\
-\hline
-& 2&  & & & \\
 \hline
 $\rho$& 3 & 1 & 0 & -1 & -1\\
 \hline
 $\rho\epsilon$& 3 & -1 & 0 & 1 & -1\\
 \hline
+& &  & & & \\
+\hline
 \end{tabular}
 \end{table}
 
 
-E a questo punto dato che ce ne manca solo una possiamo usare il trucco di prima e concludere
+E a questo punto dato che $|S_4|=24$ e che $1+1+3^2+3^2=20$ si possono avere due situazioni: $S_4$ potrebbe avere ancora 4 rappresentazioni irriducibili di grado 1 oppure solo più una di grado 2. Tuttavia abbiamo visto come $S_n$ ammetta solo due rappresentazioni irriducibili di grado 1 quindi siamo nel secondo caso.\\
+Dato che ce ne manca solo una possiamo usare il trucco di prima (differenza dalla rappresentazione $R$ ) e concludere:
 
-\begin{table}[!ht]
+\begin{table}[!ht] 
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
@@ -1415,17 +1445,67 @@ $S_4$  & $e$ & $(1 2)$ & (1 2 3 ) & $(1 2 3 4)$ & $(1 2)(3 4)$ \\
  $\rho_1$ & 1 & 1  & 1 & 1 & 1\\
 \hline
 $\epsilon$ & 1  & -1 & 1 & -1 & 1 \\
+\hline
+$\rho$& 3 & 1 & 0 & -1 & -1\\
+\hline
+$\rho\epsilon$& 3 & -1 & 0 & 1 & -1\\
 \hline
  $\sigma$& 2&  0 & -1& 0 & 2\\
-\hline
-$\rho$& 3 & 1 & 0 & -1 & -1\\
-\hline
-$\rho\epsilon$& 3 & -1 & 0 & 1 & -1\\
 \hline
 \end{tabular}
 \caption{Tabella dei caratteri di $S_4$}
 \label{tabella caratteri s4}
 \end{table}
+
+
+\textbf{Ossevazione:} Guardiamo la tabella, in particolare il "minore" ottenuto considerando le prime due e l'ultima riga e le prime 3 colonne. 
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+$S_4$  & $e$ & $(1 2)$ & (1 2 3 )    \\
+ & 1 & 6 & 8 \\
+\hline
+ $\rho_1$ & 1 & 1  & 1 \\
+\hline
+$\epsilon$ & 1 & -1 & 1 \\
+\hline
+$\sigma$ & 2 & 0 & 1 \\
+\hline
+\end{tabular}
+\end{table}
+Se la confrontiamo con la tabella dei caratteri di $S_3$ vediamo che sono analoghe. Intuitivamente $\rho$ in $S_3$ deriva dalla rappresentazione $\sigma$ di $S_4$ mediante un omomorfismo 
+\[
+S_4\rightarrow S_3
+\]
+che corrisponde ad una azione di $S_4$ su un insieme di 3 elementi. Tale insieme è il sottogruppo di Klein privato dell'unità ovvero
+\[
+\{ (12)(34),(13)(24),(14)(23)\}
+\]
+\\
+In questo caso non è servito ma potremmo trovarci in una situazione in cui i seguenti lemmi si rivela utile
+\begin{lemma}
+$\rho^* $ è irriducibile $ \Leftrightarrow \rho$ è irriducibile.
+\end{lemma}
+Infatti $\chi_{\rho^*}=\overline{\chi_\rho} $ e quindi analogamente al lemma precedente si vede che
+\[
+1=\langle\chi_{\rho}|\chi_{\rho}\rangle \Leftrightarrow 1=\langle\chi_{\rho^*}|\chi_{\rho^*}\rangle
+\]
+
+\begin{lemma}
+Se $\rho$ è una rappresentazione di grado $d$ di $G$, come sempre gruppo finito, allora:\\
+$(a)$ $|\chi_{\rho}(s)|\leq d$ \\
+$(b)$ Direttamente dal punto $(a)$ si decude che, 
+\[
+\chi_{\rho}(s)=d\Leftrightarrow \lambda_1,...,\lambda_d=1\Leftrightarrow \rho(s)=id
+\]
+dove $\lambda_1,..,\lambda_d$ sono gli autovalori della matrice $[\rho(s)]$.
+\end{lemma}
+\textbf{Dimostrazione:} Se $\lambda_1,..,\lambda_d$ sono gli autovalori della matrice $[\rho(s)]$ allora $\chi_{\rho}(s)=\sum_{i=1}^{d}\lambda_i$. Inoltre essendo $G$ finito $|\lambda_i|=1\forall i\in \{1,...,d\}$. Se ne deduce che
+\[
+|\chi_{\rho}(s)|\leq \sum_{i=1}^d |\lambda_i|=d
+\]
 
 
 
@@ -1442,7 +1522,7 @@ La prima cosa da fare è dividere $D_5$ in classi di coniugio
 
 FINIRE
 
-
+\end{exmp}
 
 
 
@@ -1560,7 +1640,7 @@ E quindi è evidente che $T^n \to $ su ogni faccia viene la media dei numeri che
 
 
 
-\end{exmp}
+
 
 
 
