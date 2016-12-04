@@ -73,6 +73,10 @@
 
 
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
 \newcommand{\dsum}{\displaystyle\sum}
 \newcommand{\dint}{\displaystyle\int}
 
@@ -99,7 +103,7 @@
 
 \begin{document}
 \maketitle
-
+\tableofcontents
 
 
 
@@ -333,6 +337,67 @@ il gruppo $D_n$, che si può quindi presentare nel seguente modo: $$D_n=<\rho,\s
 
 
 \newpage
+\section{Algebra lineare}
+In questa sezione diamo alcune definizioni e teoremi di algebra lineare che sono stati utilizzati nel corso o che sono utili per avere una visione d'insieme di certi argomenti. Non saranno presenti le dimostrazioni che possono essere trovate su molti libri di algebra lineare.
+\begin{thm}[Diagonalizzazione simultanea]
+\label{thm:diag_sim}
+	Date due matrici $M, N\in \mathcal{M}(n,n,\K)$, diremo che sono \textit{simultaneamente diagonalizzabili} se esiste una base comune di autovettori per entrambe.\\
+	Date $M, N\in \mathcal{M}(n,n,\K)$, se esse commutano e sono entrambe diagonalizzabili allora sono simultaneamente diagonalizzabili.
+\end{thm}
+\begin{cor}
+	Date $M_1,\ldots,M_k \in \mathcal{M}(n,n,\K)$, se $M_iM_j=M_jM_i\ \forall\ i, j$ e ogni $M_i$ è diagonalizzabile, allora esiste una base comune di autovettori per tutte quante.
+\end{cor}
+
+
+\begin{defn}[Ideale di un endomorfismo]
+	Se $p(x)=a_n x^n+\ldots+a_0$, allora scriviamo $p(f)$ per intendere $a_nf^n+\ldots+a_0f^0$ dove $f^0=Id$ e $f^k=\underbrace{f\circ\ldots\circ f}_{k \text{ volte}}$.\\
+	Sia $V$ un $\K$-spazio vettoriale, $f:V\to V$ un endomorfismo di $V$. Definiamo \textit{ideale di $f$} l'insieme
+	\[
+		I(f)=\left\{ p(x)\in \K[x]\ |\ p(f)=0 \right\}
+	\]
+	
+
+\end{defn}
+
+
+\begin{thm}[Teorema di decomposizione primaria]
+\label{thm:dec_primaria}
+	Siano $V$ un $\K$-spazio vettoriale, $f:V\to V$ un endomorfismo di $V$ e $q(x)\in I(f)$. Sia $q=q_1\cdot\ldots\cdot q_k$ tale che $MCD(q_i,q_j)=1\ \forall\ i\neq j$, allora $V=Ker(q_1(f))\oplus\dots\oplus Ker(q_k(f))$ e gli addendi sono $f$-invarianti.\\
+	In particolare se $f$ è triangolabile e $\lambda_1,\ldots,\lambda_k$ sono gli autovalori di $f$ con molteplicità geometrica rispettivamente $\alpha_1,\ldots,\alpha_k$, allora $V=Ker\left((f-\lambda_1 Id)^{\alpha_1}\right)\oplus\dots\oplus Ker\left((f-\lambda_k Id)^{\alpha_k}\right)$.
+\end{thm}
+
+\begin{thm}[Forma canonica di Jordan]
+	Sia $M\in \mathcal{M}(n,n,\K)$ una matrice triangolabile, siano $\lambda_1,\ldots,\lambda_k$ i suoi autovalori, allora $M$ è simile alla sua \textit{forma canonica di Jordan} che è nella forma
+	\begin{align*}
+		&\begin{pmatrix}
+			J_1 & & \\
+			& \ddots & \\
+			& & J_t
+		\end{pmatrix}		
+		&\text{ dove }J_i=\begin{pmatrix}
+		                  	\lambda & 1 & & & \\
+							& \lambda & 1 & & \\
+		                  	& & \ddots & \ddots & \\
+		                  	& & & \ddots & 1 & \\
+		                  	& & & & \lambda
+		                  \end{pmatrix} \text{ per qualche }\lambda \in \left\{ \lambda_1,\ldots,\lambda_k \right\}
+	\end{align*}
+	La dimensione e il numero di blocchi di ciascun tipo sono univocamente determinati dalla matrice $M$, ne segue che la forma canonica di Jordan è unica a meno di permutazione dei blocchi e dunque, scelta una convenzione sull'ordine dei blocchi, essa è un sistema completo di invarianti per similitudine: due matrici sono simili se e solo se hanno la stessa forma di Jordan.
+
+\end{thm}
+\begin{defn}[Forma hermitiana]
+Siano $V,W$ due $\C$-spazi vettoriali, una funzione $h:V\times V\to W$ si dice \textit{forma hermitiana} se $\forall v,w,z\in V,\ \forall \alpha \in \C$ vale che NON MI RICORDO DOVE AVEVA MESSO IL CONIUGATO
+\begin{gather*}
+	h(v,w) = \overline{h(w,v)}\\
+	h(v,\alpha w) = \alpha h(v,w)\\
+	h(v+z,w)=h(v,w)+h(z,w)
+\end{gather*}
+
+\end{defn}
+
+
+
+\newpage
 \section{Algebra multilineare}
 \subsection{Alcune generalizzazioni di algebra lineare}
 
@@ -457,24 +522,24 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 \begin{defn}[Applicazione $r$-lineare simmetrica/alternante]
  Una applicazione $\phi: V^n \to Z$ si dice $r$-lineare se è lineare in ogni componente dopo aver fissato le altre $n-1$.
 
- Inoltre $\phi$ si dice simmetrica se $\phi(v_{s(1)},..,v_{s(n)})=\phi(v_1,..,v_n),\ \forall s \in S_n$, mentre si dice 
- alternante se $\phi(v_{s(1)},..,v_{s(n)})=\mathrm{sgn}(s)\phi(v_1,..,v_n),\ \forall s \in S_n$.
+ Inoltre $\phi$ si dice simmetrica se $\phi(v_{s(1)},\ldots,v_{s(n)})=\phi(v_1,\ldots,v_n),\ \forall s \in S_n$, mentre si dice 
+ alternante se $\phi(v_{s(1)},\ldots,v_{s(n)})=\mathrm{sgn}(s)\phi(v_1,\ldots,v_n),\ \forall s \in S_n$.
  
 \end{defn}
 
 \begin{prop}
- Un'applicazione $h: V^n \to W$ è alternante se e solo se $h(v_1,..,v_n)=0$ se $v_i=v_j$ per qualche $i\neq j$.
+ Un'applicazione $h: V^n \to W$ è alternante se e solo se $h(v_1,\ldots,v_n)=0$ se $v_i=v_j$ per qualche $i\neq j$.
  \end{prop}
 
  \begin{prop}
-  Un'applicazione $h: V^n \to W$ è nulla se i vettori $v_1,..,v_n$ sono linearmente dipendenti.
+  Un'applicazione $h: V^n \to W$ è nulla se i vettori $v_1,\ldots,v_n$ sono linearmente dipendenti.
  \end{prop}
 
 \begin{defn}[Prodotto esterno]
 Sia $n$ un intero positivo, $V$ uno spazio vettoriale. Un prodotto esterno è uno spazio vettoriale indicato con $\bigwedge^n V$
-dotato di una funzione $n$-lineare alternante $\wedge: V^n \to \bigwedge^n V$ che manda $(v_1,..,v_n)$ in 
-$v_i\wedge v_2\wedge..\wedge v_n \in \bigwedge^n V$, tale che $\forall h: V^n \to Z$ $n$-lineare alternante, 
-esiste unica $\phi: \bigwedge^n V \to Z $ lineare per cui vale $\phi(v_1\wedge v_2\wedge .. \wedge v_n)=h(v_1,..,v_n)$.
+dotato di una funzione $n$-lineare alternante $\wedge: V^n \to \bigwedge^n V$ che manda $(v_1,\ldots,v_n)$ in 
+$v_1\wedge v_2\wedge\ldots\wedge v_n \in \bigwedge^n V$, tale che $\forall h: V^n \to Z$ $n$-lineare alternante, 
+esiste unica $\phi: \bigwedge^n V \to Z $ lineare per cui vale $\phi(v_1\wedge v_2\wedge \ldots \wedge v_n)=h(v_1,\ldots,v_n)$.
 
 \label{defn:prodotto esterno}
 \end{defn}
@@ -485,7 +550,7 @@ esiste unica $\phi: \bigwedge^n V \to Z $ lineare per cui vale $\phi(v_1\wedge v
 
 \begin{thm}[Dimensione del prodotto esterno]
 Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i| 1 \leq i \leq n\}$ una base di $V$ e $k$ un intero positivo.
-Allora l'insieme $E=\{e_{i_1} \wedge e_{i_2} \wedge e_{i_k}| 1 \leq i_1 < i_2 <...< i_k \leq n\}$ è una base di $\bigwedge^k V$ 
+Allora l'insieme $E=\{e_{i_1} \wedge e_{i_2}\wedge \ldots \wedge e_{i_k}| 1 \leq i_1 < i_2 <\ldots< i_k \leq n\}$ è una base di $\bigwedge^k V$ 
 e si ha $|E|= \binom {n}{k}$.
 
 \label{thm:prodotto esterno}
@@ -501,9 +566,9 @@ MANCANO UN SACCO DI PROPRIETA' E LE DIMOSTRAZIONI
 \begin{defn}[Prodotto simmetrico]
 
 Sia $n$ un intero positivo, $V$ uno spazio vettoriale. Un prodotto simmetrico è uno spazio vettoriale indicato con $S^n V$
-dotato di una funzione $n$-lineare simmetrica $V^n \to \bigwedge^n V$ che manda $(v_1,..,v_n)$ in 
-$v_i v_2..v_n \in S^n V$, tale che $\forall h: V^n \to Z$ $n$-lineare simmetrica, 
-esiste unica $\phi: S^n V \to Z $ lineare per cui vale $\phi(v_1 v_2 .. v_n)=h(v_1,..,v_n)$.
+dotato di una funzione $n$-lineare simmetrica $V^n \to \bigwedge^n V$ che manda $(v_1,\ldots,v_n)$ in 
+$v_1 v_2\ldots v_n \in S^n V$, tale che $\forall h: V^n \to Z$ $n$-lineare simmetrica, 
+esiste unica $\phi: S^n V \to Z $ lineare per cui vale $\phi(v_1 v_2 \ldots v_n)=h(v_1,\ldots,v_n)$.
 
 \label{defn:prodotto simmetrico}
 \end{defn}
@@ -515,7 +580,7 @@ esiste unica $\phi: S^n V \to Z $ lineare per cui vale $\phi(v_1 v_2 .. v_n)=h(v
 \begin{thm}[Dimensione del prodotto simmetrico]
 
 Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i| 1 \leq i \leq n\}$ una base di $V$ e $k$ un intero positivo.
-Allora l'insieme $E=\{e_{i_1} \wedge e_{i_2} \wedge e_{i_k}| 1 \leq i_1 \leq i_2 \leq...\leq i_k \leq n\}$ è una base di $S^k V$ 
+Allora l'insieme $E=\{e_{i_1} \wedge e_{i_2}\wedge\ldots \wedge e_{i_k}| 1 \leq i_1 \leq i_2 \leq\ldots\leq i_k \leq n\}$ è una base di $S^k V$ 
 e si ha $|E|= \binom {n+k-1}{k}$.
 
 \label{thm:prodotto simmetrico}
@@ -591,7 +656,7 @@ Sia $G$ un gruppo finito e $\rho: G \to GL(V_\rho)$ una sua rappresentazione. Al
 
 \[ \rho(g)^k = id\]
 
-Con il polinomio minimo si mostra facilmente che $\rho(g)$ è diagonalizzabile. MATEMATICI SCRIVETE IL PERCH\'E. Inoltre da questa formula è anche evidente che tutti gli autovalori di $\rho(g)$ hanno modulo $1$ e in particolare saranno radici $k-$esime dell'unità.
+Visto che il polinomio minimo di $\rho(g)$ non ha radici multiple, con il teorema di decomposizione primaria \eqref{thm:dec_primaria} si mostra facilmente che $\rho(g)$ è diagonalizzabile. Inoltre da questa formula è anche evidente che tutti gli autovalori di $\rho(g)$ hanno modulo $1$ e in particolare saranno radici $k-$esime dell'unità.
 
 Ricordiamo un teorema di algebra lineare per finire l'ultima parte della dimostrazione: due endomorfismi di uno spazio vettoriale diagonalizzabili sono simultaneamente diagonalizzabili $\Leftrightarrow$ commutano. Da questo teorema segue facilmente la seconda parte dell'enunciato. \qed
 
@@ -754,9 +819,7 @@ NON VA MESSO TUTTO ASSIEME NELLA DEFINIZIONE DI SOTTORAPPRESENTAZIONE???
 \end{defn}
 
 \begin{defn}[Sottorappresentazione]
-Sia $\rho$ una rappresentazione di $G$ su $V_{\rho}$, una sottorappresentazione di $\rho$ è un sottospazio vettoriale $W\subseteq V_{\rho}$ tale che $\rho(s)(W)\subseteq W\ \forall\ s\in G$. Posso definire una rappresentazione $\sigma$ con $V_{\sigma}=W$ e $\sigma(s)=\rho(s)\restriction W$ (la indicherò con $\sigma\subseteq \rho$).
-COME SI SCRIVE LA RESTRIZIONE DI UNA FUNZIONE A UN DOMINIO PIÙ PICCOLO?????
-
+Sia $\rho$ una rappresentazione di $G$ su $V_{\rho}$, una sottorappresentazione di $\rho$ è un sottospazio vettoriale $W\subseteq V_{\rho}$ tale che $\rho(s)(W)\subseteq W\ \forall\ s\in G$. Posso definire una rappresentazione $\sigma$ con $V_{\sigma}=W$ e $\sigma(s)=\rho(s)|_W$ (la indicherò con $\sigma\subseteq \rho$).
 \end{defn}
 
 
@@ -858,7 +921,7 @@ Siano $\rho$ e $\sigma$ due rappresentazioni irriducibili di $G$ gruppo finito e
 \end{thm}
 \begin{proof}
 Supponiamo che $\phi\neq0$, allora sappiamo che $Ker(\phi)\subseteq V_\rho$ è una sottorappresentazione di $\rho$, ma $\rho$ è irriducibile e quindi $Ker(\phi)=0\Rightarrow \phi$ iniettiva. Ma anche $Im(\phi)\subseteq V_{\sigma}$ è una sottorappresentazione di $\sigma$ e, non essendo nulla ed essendo $\sigma$ irriducibile, coincide con tutto $V_\sigma \Rightarrow \phi$ suriettiva, da cui $\phi$ è un isomorfismo.
-Consideriamo ora $f$: sia $\lambda$ un autovalore di $f$, che esiste perché $G$ è finito e stiamo lavorando su $\C$, allora $f-\lambda:V_\rho\to V_\rho$ è un omomorfismo di rappresentazioni. Ma non è iniettivo, perché c'è almeno un autovettore relativo a $\lambda$, e quindi per la prima parte del lemma di Schur ho che $f-\lambda$ è identicamente nullo, da cui ricaviamo che $f$ è la moltiplicazione per uno scalare ($\lambda$).
+Consideriamo ora $f$: sia $\lambda$ un autovalore di $f$, che esiste perché $G$ è finito e stiamo lavorando su $\C$, allora $f-\lambda Id:V_\rho\to V_\rho$ è un omomorfismo di rappresentazioni. Ma non è iniettivo, perché c'è almeno un autovettore relativo a $\lambda$, e quindi per la prima parte del lemma di Schur ho che $f-\lambda Id$ è identicamente nullo, da cui ricaviamo che $f$ è la moltiplicazione per uno scalare ($\lambda$).
 \end{proof}
 
 
