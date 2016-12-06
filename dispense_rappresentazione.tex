@@ -587,8 +587,33 @@ e si ha $|E|= \binom {n+k-1}{k}$.
 \end{thm}
 
 
+\begin{defn}[Potenza simmetrica e potenza esterna di un'applicazione lineare]
+
+Sia $f: V\to V$ un endomorfismo di uno spazio vettoriale. Definiamo 
+
+\[\bigwedge^k f : \bigwedge^k V \to \bigwedge^k V | f(v_1 \wedge \ldots \wedge v_n) = f(v_1) \wedge \ldots \wedge f(v_n) \]
+
+In modo analogo si definisce la potenza simmetrica.
 
 
+\end{defn}
+
+
+
+
+\begin{prop}
+Sia $f: V \to V$ un endomorfismo di uno spazio vettoriale. Allora vale
+
+\[ 
+\begin{cases}
+tr(\bigwedge^2 f ) = \dfrac{(tr(f))^2 - tr(f^2)}{2} \\
+tr(S^2 f ) = \dfrac{(tr(f))^2 + tr(f^2)}{2} \\
+\end{cases}
+\]
+
+
+
+\end{prop}
 
 
 
@@ -1074,36 +1099,105 @@ Per dimostrare questo teorema abbiamo bisogno di un lemma che ora enunciamo e di
 Se $(\rho, V_\rho)$ e $(\sigma, V_\sigma)$ sono rappresentazioni \footnote{Non necessariamente irriducibili} di $G$, allora vale
 
 \[ \langle \chi_\rho | \chi_\sigma \rangle  = dim(Hom (\sigma, \rho))\] 
-
+\label{lemma relazioni ortogonalita}
 \end{lemma}
 \textsc{Dimostrazione:}
 
 L'idea principale per dimostrare questo lemma è di ridurci al caso più facile in cui una delle due rappresentazioni è quella banale. Per farlo notiamo un paio di cose
 
-\[ \langle \chi_\rho | \chi_\sigma \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \chi_\rho(s)\overline{ \chi_\sigma(s)} = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho}(s)} \chi_\sigma^*(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho\sigma^*}(s)  = \langle \chi_{\rho\sigma^*} \rangle | 1\]
+\[ \langle \chi_\rho | \chi_\sigma \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \overline{\chi_\rho(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho^*}(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho^*\sigma}(s)  = \langle \chi_{\rho^*\sigma} \rangle | 1\]
 
 Siamo passati da due rappresentazioni ad una sola. In particolare lo spazio vettoriale su cui agisce questa rappresentazione è 
 
-\[ V_{\rho \sigma^*} = V_{\rho} \otimes V_\sigma^* \cong Hom(V_\rho, V_\sigma)\]
+\[ V_{\rho^* \sigma} = V_{\rho}^* \otimes V_\sigma \cong Hom(V_\rho, V_\sigma)\]
 
 E questo isomorfismo segue semplicemente dalle proprietà del prodotto tensore di spazi vettoriali. Notiamo che sullo spazio degli omomorfismi\footnote{Dato che sono spazi vettoriali in questo caso si tratta semplicemente di applicazioni lineari} $Z = Hom(V_\rho, V_\sigma)$ è possibile definire una rappresentazione completamente analoga a $\rho\sigma^*$ in questo modo: se $f \in Z$, allora possiamo definire la rappresentazione $\tau, V_\tau = Z$ di $G$ in questo modo
 
 \[ \tau(s)f = \rho(s) \circ f \circ \sigma^{-1}(s)\]
 
-\'E possibile mostrare VI PREGO QUALCHE MATEMATICO LO FACCIA che se chiamo $\phi$ la mappa tale che
+\'E possibile mostrare che se chiamo $\Psi$ la mappa tale che
 
 \[
 \begin{cases}
-V_\rho \otimes V_\sigma^* \xrightarrow{\phi} Hom(V_\rho, V_\sigma)\\
-\rho\sigma^* \xrightarrow{\phi} \tau \\
+V_\rho^* \otimes V_\sigma \xrightarrow{\Psi} Hom(V_\rho, V_\sigma)\\
+\rho\sigma^* \xrightarrow{\Psi} \tau \\
 \end{cases}
 \]
 
-Allora $\phi$ è un isomorfismo di rappresentazioni. A questo punto possiamo andare a cercare i sottospazi invarianti per $\tau$, ovvero stiamo andando a cercare le sottorappresentazioni irriducibili di $\tau$ sperando di usare teoremi che già conosciamo. In particolare stiamo quindi cercando dei sottospazi $W \subset Z = Hom(V_\rho, V_\sigma)$ tali che $\tau(s) W \subset W \quad \forall s \in G$ 
+Allora $\Psi$ è un isomorfismo di rappresentazioni. Dimostriamolo rapidamente. Innanzitutto definiamo in modo esplicito $\Psi$. Basterà definirlo per i tensori decomponibili, per il resto dello spazio basterà estenderlo per linearità.
 
-LA DIMOSTRAZIONE VA CONCLUSA QUANDO IL PROF FINISCE DI DIMOSTRARLA MARTED\'I
+\[ \Psi(\phi \otimes v ) (w) = \phi(w) v \qquad \forall \phi \in V_\rho^*, \forall v \in V_\sigma, \forall w \in V_\rho\]
+
+Per mostrare che è un isomorfismo di rappresentazioni ci basta mostrare che ha la giusta proprietà di commutazione in quanto sappiamo già che $\Psi$ è un isomorfismo di spazi vettoriali. Vediamo quindi di mostrare che 
+
+\[\Psi(\tau(s)\cdot (\phi \otimes v))(w) = \tau(s) \cdot \Psi(\phi \otimes v)(w) \qquad \forall s \in G \quad \text{eccetera} \]
+
+
+Partiamo dal membro di sinistra e facciamo i calcoli
+
+
+\[\Psi(\tau(s)\cdot (\phi \otimes v))(w) = \Psi\left( \rho(s) (\phi \otimes v ) \sigma(s)^{-1}  \right)(w)  = \]
+
+\[= \Psi((\phi \circ \sigma(s)^{-1})\otimes (\rho(s) v) )(w) =  \]
+
+\[ = (\phi \circ \sigma(s)^{-1}) (w) \rho(s) v = \phi(\sigma(s)^{-1} w) \rho(s) v\]
+
+\[ = \rho(s)\phi(\sigma(s)^{-1} w) v = \rho(s) \Psi(\phi \otimes v) \sigma(s)^{-1} (w) = \tau(s) \Psi (\phi \otimes v)(w)\]
+
+
+A questo punto possiamo andare a cercare i sottospazi invarianti per $\tau$, ovvero stiamo andando a cercare le sottorappresentazioni irriducibili di $\tau$ sperando di usare teoremi che già conosciamo. In particolare stiamo quindi cercando dei sottospazi $W \subset Z = Hom(V_\rho, V_\sigma)$ tali che $\tau(s) W \subset W \quad \forall s \in G$ 
+
+In particolare, cerchiamo le funzioni $f \in Hom(V_\sigma, V_\rho)$ tali che $\tau(s) f = f$. Dalla definizione di $\tau$ si vede che
+
+\[f = \tau(s) f =  \rho(s) \circ f \circ \sigma^{-1}(s) \Rightarrow  f \sigma(s)= \rho(s) f\] 
+
+
+Ovvero le applicazioni $f$ invarianti per $\tau $ sono gli omomorfismi di rappresentazioni da $(\rho, V_\rho) $ a $(\sigma, V_\sigma)$
+
+A questo punto
+
+\[ (V_{\sigma^*\rho})^G \cong Hom(V_\sigma, V_\rho)^G \cong Hom(\sigma, \rho)\]
+
+Per cui dato che noi stiamo cercando $dimHom(\sigma, \rho)$, basterà trovare $dim(V_{\sigma^*\rho})^G$
+
+Visto che ci siamo ricondotti al caso in cui una rappresentazione è banale, ora facciamo i conti cercando di trovare la dimensione dello spazio invariante per $G$. Scriviamo la definizione di quello che vogliamo calcolare
+
+
+\[ \langle \chi_\rho | 1 \rangle = \dfrac{1}{|G|} \dsum_{s \in G} tr \rho(s)\]
+
+Se definiamo l'operatore $T$ come operatore lineare
+
+\[ T = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s)\]
+
+
+Allora si nota che 
+
+\[ \rho(t) Tv = \dfrac{1}{|G|} \dsum_{s\in G} \rho(t)\rho(s) v = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s) = Tv\]
+
+Per cui sappiamo che $V_\rho^G \subseteq ImT$. L'obiettivo è mostrare che quella non è una disuguaglianza ma un'uguaglianza. In realtà questa è la disuguaglianza stupida in quanto se $v \in V_\rho^G$ allora è chiaro che $Tv = v$, basta applicare la definizione. Per cui $ImT = V_\rho^G$. A questo punto vogliamo calcolare la sua traccia. Per farlo notiamo che 
+
+\[T(Tv) = \ldots = Tv \qquad \text{Verifica banale}\]
+
+Per cui $T$ è un proiettore. A questo punto sappiamo dall'algebra lineare che
+
+\[ V_\rho = Ker T \oplus Im T = Ker T \oplus V_\rho^G\]
+
+Per cui $trT = dimImT = dimV_\rho^G$. Ma dalla catena di deduzioni che abbiamo fatto
+
+\[dimHom(V_\sigma, V_\rho) = dim(V_{\sigma^*\rho}^G) = trT = \langle \chi_{\sigma^*\rho} | 1 \rangle = \langle \chi_\sigma | \chi_\rho \rangle\]
 
 \qed
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1154,6 +1248,63 @@ Quindi ottengo una conferma del teorema precedente
 \end{itemize}
 
 
+
+
+\begin{cor}[Corollario del lemma \ref{lemma relazioni ortogonalita}: Lemma di Burnside]
+
+Consideriamo un'azione di un gruppo $G$ su un insieme $I$ e consideriamo una rappresentazione dell'azione di $G$, $(\rho_I, V_{\rho_I})$. Consideriamo
+
+\[\langle \chi_{\rho_I} | 1 \rangle = \dfrac{1}{|G|} \dsum_{s\in G} tr \rho_I(s)\]
+
+Ma è ovvio che 
+
+\[tr \rho_I(s) = |I^s| \qquad I^s = \{ i \in I | s \cdot i = i\} \]
+
+Per cui lo spazio $V_{\rho_I}^G = \{\dsum a_i e_i | \text{Alcune condizioni}\}$ sarà composto da i vettori che hanno i coefficienti $a_i$ costanti su ciascuna orbita di $G$ su $I$, proprio per lasciarlo invariante. Perciò 
+
+\[ dimV_{\rho_I}^G = \text{numero delle orbite } = |I/G|\]
+
+E con l'affermazione precedente si ottiene appunto il lemma di Burnside
+
+\[ |I/G| = \dfrac{1}{|G|} \dsum_{s\in G} |I^s|\]
+
+\qed
+\end{cor}
+
+
+
+\begin{thm} Sia $G$ un gruppo finito e siano $\rho_1, \ldots , \rho_r$ le sue rappresentazioni irriducibili. Sia inoltre 
+
+\[Cl(G)  \]
+
+Lo spazio delle funzioni da $G$ in $\C$ costanti sulle classi di coniugio di $G$
+
+Chiaramente $dimCl(G) = $ numero di classi di coniugio di $G$ $:= s$. La tesi del teorema è che $r = s$ dove $r$ è il numero di rappresentazioni irriducibili. 
+
+\textsc{Osservazione:} Per questo motivo la tabella dei caratteri sarà una tabella quadrata
+
+\end{thm}
+
+\textsc{Dimostrazione:}
+ DA SCRIVERE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Tabella dei caratteri}
 
 
@@ -1161,7 +1312,7 @@ Dato un gruppo $G$, possimo costruire la $tabella\ dei\ caratteri$ nel seguente 
 \begin{itemize}
 \item su ogni colonna mettiamo un rappresentante della classe di coniugio con sotto la cardinalità dell'orbita ovvero
 
-\begin{table}[!h]
+\begin{table}[!ht]
 \centering
 \begin{tabular}{|c|c|c|c|c}
 \hline
