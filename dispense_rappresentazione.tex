@@ -502,11 +502,12 @@ Se $e_i$ è una base di $V$ e $f_i$ è una base di $W$ allora $e_i \otimes f_j$ 
 \begin{defn}
 La \emph{traccia} di un elemento del prodotto tensoriale, ovvero 
 \[ tr(f\otimes g)\], 
-è l'unico funzionale lineare $f: V \otimes W \to \K$ che soddisfa le proprietà:
+è l'unico funzionale lineare $tr: V \otimes W \to \K$ che soddisfa le proprietà:
 \begin{enumerate}
-\item $ tr(f\otimes g) $ \dots, 
-\item 
+\item $tr[ (v_1 \otimes w_1) (v_2 \otimes w_2) ] = tr[ (v_2 \otimes w_2) (v_1 \otimes w_1) ] $ 
+\item $tr[ (id_V \otimes id_W)  ]  = \mbox{dim} V \cdot \mbox{dim} W $
 \end{enumerate}
+\end{defn}
 
 
 \begin{thm}
@@ -516,7 +517,7 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 
 \end{thm}
 
-\textsc{Dimostrazione:}
+\textsc{Dimostrazione:} L'applicazione $\phi: V x W \to \K$ che manda $(f\otimes g)$ in $tr(f) tr(g)$ è bilineare, e quindi corrisponde a un funzionale $\Phi: V x W \to \K$ lineare. Bisogna verificare che soddisfa le due proprietà della definizione.  È evidente che $\Phi[ (id_V \otimes id_W)  ]  $ 
 
 
 \subsection{Prodotto esterno e prodotto simmetrico}
