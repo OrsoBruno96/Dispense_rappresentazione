@@ -111,49 +111,50 @@
 \newpage
 \section{Teoria dei gruppi}
 
-\begin{defn}[Gruppo] Un gruppo è un insieme con associata un operazione binaria $\cdot : G\times G \to G$ che gode di alcune proprietà
+\begin{defn}[Gruppo] Un gruppo è un insieme dotato di un'operazione binaria $\cdot : G\times G \to G$ che gode delle seguenti proprietà:
 \begin{enumerate}
-	\item Associatività \quad $(ab)c = a(bc)$
-	\item Esistenza unità \quad $ea = ae = a$
-	\item Esistenza inverso $a'$ per ogni elemento $a$ \quad $a' a = a a' = e$
+	\item Associatività: presi comunque $a,b,c\in G$ vale che $(a\cdot b)\cdot c = a\cdot(b\cdot c)$
+	\item Esiste $e\in G$, chiamato \emph{unità}, o \emph{identità}, o \emph{elemento neutro}, tale che $\forall a\in G$ vale $e\cdot a = a = a\cdot e$
+	\item Per ogni $a\in G$ esiste un $a'$ tale che $a'\cdot a$ e $a\cdot a'$ sono unità, ovvero si comportano come l'elemento $e$ al punto precedente.
+		  Un tale $a'$ si dice \emph{inverso} di $a$.
 \end{enumerate}
-
+Per comodità di solito si omette il puntino. Se $G$ è finito, $card(G) = n$, si dice che $G$ ha \emph{ordine} $n$.
 \end{defn}
 
 \paragraph{Esempi}
 \begin{enumerate}
 	\item $\mathbb{Z}, \mathbb{Q}, \mathbb{R}, \mathbb{C}$ con l'operazione di somma.
-	\item $\mathbb{Q}^*, \mathbb{R}^*, \mathbb{C}^*$ con l'operazione di moltiplicazione. (Senza lo 0)
+	\item $\mathbb{Q}^*, \mathbb{R}^*, \mathbb{C}^*$ con l'operazione di moltiplicazione (senza lo 0).
 	\item $GL_n(\mathbb{R})$ oppure $GL(V)$
-	\item $f:I\to I $ biunivoca, con $I$ insieme e con l'operazione di composizione. Nel caso in cui $I$ sia un insieme finito, tanto vale scegliere $I = \{1,2,3,\ldots, n\}$. In tal caso questo gruppo si chiama $S_n$
+	\item $f:I\to I $ biunivoca, con $I$ insieme e con l'operazione di composizione. Nel caso in cui $I$ sia un insieme finito, tanto vale scegliere $I = \{1,2,3,\ldots, n\}$. In tal caso questo gruppo si chiama $S_n$.
 \end{enumerate}
 
 \paragraph{Alcuni teoremi elementari}
 \begin{enumerate}
-	\item L'unità $e$ è unica
+	\item L'unità $e$ è unica.
 	
-	Dimostrazione: supponiamo per assurdo che siano due distinte, $e, e'$. Allora vale
+	Dimostrazione: supponiamo che $e$ ed $e'$ siano entrambe unità. Allora vale
 	
-	\[e = ee' = e' \qed\]
+	\[e = ee' = e' \]
 	
-	\item L'inverso è unico.
+	\item Dato $a\in G$, l'inverso di $a$ è unico (e usualmente si denota con $a^{-1}$).
 
-	Dimostrazione:
+	Dimostrazione: supponiamo che $a', a''$ siano entrambi inversi di $a$. Allora
+		
+	\[(a' a)a'' = a'(aa'') \implies e a'' = a' e \implies a'' = a' \]
 	
-	Supponiamo per assurdo che siano due, $a', a''$
+	\item Dati $a_1, a_2, \ldots, a_n$, il prodotto $a_1\cdot a_2 \cdots\cdot a_n$ è ben definito senza bisogno di parentesi.
+	\item Se $ab = e$, allora anche $ba = e$, dunque $a$ e $b$ sono uno l'inverso dell'altro.
+
+	Dimostrazione: $ba = bae = babb^{-1} = beb^{-1} = bb^{-1} = e$.
 	
-	\[(a' a)a'' = a'(aa'') \Rightarrow e a'' = a' e \qed \]
-	
-	\item Se ho $a_1, a_2, \ldots, a_n$, il prodotto di questi termini è ben definito senza bisogno di parentesi
-	\item Esistono le potenze, ovvero $\forall k \in \mathbb{Z}, \forall a \in G \exists b\in G | a^k = b$
-	
-	Vale sempre la regola
-	\[a^{k+h} = a^k \cdot a^h \]
-	
-	Ricorda che 
-	
+	\item Dato un intero positivo $k$ e un elemento $a\in G$, definiamo $a^k=\underbrace{a\cdot a \cdots\cdot a}_{k\text{ volte}}$.
+	Inoltre poniamo $a^0 = e$ e infine $a^{-k} = (a^{-1})^k$, così abbiamo definito le potenze con esponente in $\Z$.
+	Non è difficile dimostrare che, se $k,h$ sono interi (non necessariamente positivi), valgono le usuali proprietà: 
+	\[a^{k+h} = a^k \cdot a^h \quad\quad\quad (a^k)^h = a^{kh} \]
+	Però non è vero in generale che $(ab)^k = a^kb^k$ (sarebbe vero se l'operazione fosse commutativa). Osserviamo infine che 
 	\[ (ab)^{-1} = b^{-1}a^{-1}\]
-
+	infatti $(ab)(b^{-1} a^{-1}) = a(bb^{-1})a^{-1} = aea^{-1} = aa^{-1} = e$.
 \end{enumerate}
 
 
@@ -162,14 +163,33 @@
 Sia $G$ un gruppo, $H\subseteq G$ si dice sottogruppo di $G$ se:
 \begin{itemize}
 	\item $e\in H$
-	\item $x,y\in H \Rightarrow xy\in H$
+	\item $x,y\in H \implies xy\in H$
+	\item $x\in H \implies x^{-1}\in H$
 \end{itemize}
-e si indica $H \leq G$.
-
+e si indica $H \leq G$. In altre parole $H$ è sottogruppo se,
+ereditando l'operazione di $G$, è esso stesso un gruppo.
 \end{defn}
 
+\begin{exmp}[Sottogruppo generato da un elemento]
+Sia $G$ un gruppo e $a$ un suo elemento. L'insieme delle potenze di $a$, ovvero $\{a^k | k\in\Z\}$, è un sottogruppo di $G$,
+che di solito viene denotato con $\langle a\rangle$.
+\end{exmp}
+
+\begin{rem}
+Se $G$ è gruppo, $a\in G$ ed esiste un intero $n>0$ tale che $a^n=e$, allora tutti gli elementi di $\langle a\rangle$ sono della forma
+$a^k$ per qualche $0\le k < n$. Infatti se si considera un qualsiasi $a^s$ con $s\in\Z$, si può scrivere $s=nq+r$ con $0\le r<n$.
+Allora \[a^s=a^{nq+r} = (a^n)^qa^r = e^qa^r = a^r\]
+Se $n$ è il minimo intero positivo tale che $a^n=e$, allora si dice che $a$ ha \emph{ordine} $n$. In tal caso è facile verificare che
+l'insieme $\langle a\rangle$ contiene esattamente $n$ elementi distinti, ovvero $a^0, a^1, \dots a^{n-1}$.
+Infatti, se fosse $a^i=a^j$ con $0\le i<j<n$, allora $a^{j-i}=e$, che sarebbe assurdo siccome $0<j-i<n$.
+
+Se $\langle a\rangle$ è finito (il che è certo se ad esempio $G$ è finito) allora di sicuro esiste $n>0$ tale che $a^n=e$. Infatti basta prendere $0\le i < j$
+tali che $a^i = a^j$ e osservare che $a^{j-i} = e$. Questi $i$ e $j$ esistono per forza perché se tutte le potenze fossero distinte allora $\langle a\rangle$ sarebbe infinito.
+\end{rem}
+
+
 \begin{defn}[Sottogruppo normale]
-Sia $G$ un gruppo, $H \leq G$ si dice \textit{normale} in $G$ se
+Sia $G$ un gruppo, $H \leq G$ si dice \emph{normale} in $G$ se
 \[
 	\forall h\in H, \forall g\in G\qquad ghg^{-1}\in H
 \]
@@ -209,11 +229,12 @@ Siano $G$ ed $H$ gruppi, un'applicazione $\varphi:G\to H$ si dice \textit{omomor
 	\forall g_1,g_2\in G\qquad \varphi(g_1 g_2)=\varphi(g_1)\varphi(g_2)
 \]
 dove la prima moltiplicazione è fatta in $G$ mentre la seconda in $H$.
-Se $\varphi$ è bigettiva, allora si dice \textit{isomorfismo}.
+Se $\varphi$ è bigettiva, allora si dice \textit{isomorfismo}, e i due gruppi si dicono \emph{isomorfi}.
+Indichiamo con $Hom(G,H)$ l'insieme degli omomorfismi da $G$ ad $H$.
 \end{defn}
 
 
-\begin{defn}[Azione di un gruppo su un insieme] Sia $G$ un gruppo e $I$ un insieme. Definiamo un azione $a$ di $G$ su $I$ una funzione $a:G\times I \to I$ che rispetti la regola di composizione, ovvero che se $h,g\in G$ e $i \in I$, valga
+\begin{defn}[Azione di un gruppo su un insieme] Sia $G$ un gruppo e $I$ un insieme. Chiamiamo azione $a$ di $G$ su $I$ una funzione $a:G\times I \to I$ che rispetti la regola di composizione, ovvero che se $h,g\in G$ e $i \in I$, valga
 
 \[ a(h,a(g,i)) = a(hg, i) \]
 
@@ -235,14 +256,17 @@ Sia $G$ un gruppo che agisce sull'insieme $I$, dato $x\in I$ si chiama \textit{o
 \label{defn:orbita}
 \end{defn}
 \begin{rem}
-	Le classi di coniugio sono le orbite degli elementi generate mediante l'azione per coniugio.
+	Un gruppo $G$ può agire su se stesso per coniugio, ovvero dati $g\in G$ (qui $G$ è pensato come gruppo che agisce) e $x\in G$ ($G$ pensato come insieme),
+	si pone $g\cdot x = gxg^{-1}$. Non è difficile verificare che si tratta davvero di una azione.
+	Osserviamo che le classi di coniugio sono le orbite degli elementi generate mediante l'azione per conugio.
 \end{rem}
 
 
 
 
 \begin{defn}[Azione semplicemente transitiva]
-Un'azione di $G$ su un insieme $I\neq \emptyset$ di dice \textit{semplicemente transitiva} se $\forall\ i,j\in I\ \exists !\ s\in G$ t.c. $j=s\cdot i$.
+Un'azione di $G$ su un insieme $I\neq \emptyset$ si dice \textit{semplicemente transitiva}
+se presi comunque $i,j\in I$ esiste un unico $s\in G$ tale che $j=s\cdot i$.
 \end{defn}
 
 
@@ -273,23 +297,61 @@ Dato un gruppo $G$ che agisce su due insiemi $I$ e $J$, una funzione $\phi: I \t
 
 
 \newpage
+\subsection{Proprietà dei gruppi ciclici}
+
+\begin{defn}[Gruppo ciclico] Un gruppo $G$ si dice ciclico se esiste un elemento $a\in G$ tale che ogni
+elemento di $G$ è una potenza di $a$, ovvero $G=\langle a\rangle$. Si dice che $a$ è un generatore di $G$.
+\end{defn}
+
+\begin{rem}
+Sia $G$ un gruppo ciclico di cardinalità $n$ e generatore $a$. Allora $n$ è il più piccolo intero positivo tale che $a^n = e$,
+e ogni elemento di $G$ si scrive in modo unico come $a^k$ con $0\le k < n$.
+\end{rem}
+
+\begin{exmp}[Radici dell'unità]
+Dato $n>0$ intero, l'insieme $\mu_n\subset \C^*$ delle radici $n$-esime dell'unità è un gruppo ciclico con $n$ elementi.
+\end{exmp}
+
+\begin{rem} Se $n$ è un intero positivo esiste (a meno di isomorfismo) un unico gruppo ciclico di cardinalità $n$.
+Abbiamo già visto che esiste (basta considerare $\mu_n$),
+inoltre dati due gruppi ciclici di cardinalità $n$ e generatori rispettivamente $a$ e $b$ è immediato costruire un
+isomorfismo $f:\langle a\rangle\to\langle b\rangle$ ponendo $f(a^k) = b^k$ per $0\le k < n$.
+\end{rem}
+
+
+\begin{prop} Sia $C_n$ un gruppo ciclico di cardinalità $n$. Allora
+\[ n = card(Hom(C_n,\C^*))\]
+\end{prop}
+\textsc{Dimostrazione:} Sia $a$ un generatore di $C_n$. Fissato $\omega\in\mu_n$ posso definire
+una funzione $f:C_n\to\C^*$ ponendo $f(a^k) = \omega^k$ per $0\le k < n$.
+Verifichiamo che $f\in Hom(C_n, \C^*)$. A tal fine prendiamo due elementi di $C_n$, che sono della forma $a^k, a^h$ per certi interi $0\le k,h < n$.
+\[f(a^k \cdot a^h) = f(a^{k+h}) = \omega^{k+h} = \omega^k \omega^h = f(a^k)f(a^h)\]
+Dunque $f$ è omomorfismo. Variando la scelta di $\omega\in\mu_n$ si producono effettivamente $n$ omomorfismi differenti (infatti se $\omega$ cambia allora cambia anche $f(a)$).
+Mostriamo che non ci sono altri omomorfismi oltre a questi.
+Sia $f\in Hom(C_n,\C^*)$. Visto che $a^n=e$, deve valere $f(a)^n = f(a^n) = 1$. Allora $f(a)$ deve essere una radice $n$-esima
+dell'unità, che chiamiamo $\omega$. A questo punto il fatto che $f$ è omomorfismo implica che $f(a^k) = \omega^k$ per ogni intero $k$. \qed
+
+
+
 \subsection{Proprietà dei gruppi abeliani}
+\begin{defn}[Gruppo abeliano] Un gruppo $G$ si dice abeliano se l'operazione di gruppo è commutativa, cioè $\quad\forall a,b\in G\quad ab=ba$.
+\end{defn}
 
+\begin{rem} Un gruppo ciclico è sempre abeliano.
+\end{rem}
 
-
-\begin{thm}Ogni gruppo abeliano finito è isomorfo al prodotto di gruppi ciclici.
-
-
+Potrebbe essere utile conoscere il seguente risultato, la cui dimostrazione richiederebbe una conoscenza più approfondita della teoria dei gruppi.
+\begin{thm}Ogni gruppo abeliano finito è isomorfo al prodotto diretto di gruppi ciclici.
 \end{thm}
 
 \begin{rem} Sia $G$ un gruppo abeliano. Allora 
+\[ |G| = card(Hom(G,\C^*))\]
 
-\[ |G| = card(\{Hom(G \to \C^*) \})\]
-
-
-Se invece $G$ non è abeliano allora nella formula precedente all'uguale va sostituito un $>$
-
+La dimostrazione si ottiene ricordando che $G$ è prodotto diretto di gruppi ciclici e facendo un ragionamento simile a quello
+della proposizione analoga per gruppi ciclici.
+Se invece $G$ non è abeliano allora nella formula precedente all'uguale va sostituito un $>$.
 \end{rem}
+
 
 
 \subsection{Proprietà del gruppi simmetrici}
@@ -306,18 +368,12 @@ Se invece $G$ non è abeliano allora nella formula precedente all'uguale va sost
 
 
 
-\subsection{Proprietà dei gruppi ciclici}
-
-\begin{rem}
-Due gruppi ciclici dello stesso ordine sono isomorfi
-\end{rem}
-
 \subsection{Proprietà dei gruppi diedrali}
 
 \begin{defn}[Gruppo diedrale]
 L'insieme $D_n$ delle rotazioni e simmetrie di un poligono regolare di $n$ lati è un gruppo con l'operazione di composizione.
 Detta $\rho$ una rotazione di $2\pi/n$ (che ha ordine $n$, e per inverso ha $\rho^{n}$) e $\sigma$ una qualunque riflessione (che ha ordine $2$), esse generano
-il gruppo $D_n$, che si può quindi presentare nel seguente modo: $$D_n=<\rho,\sigma|\rho^n=\sigma^2=id,\ \sigma\rho\sigma=\rho^{-1}>$$
+il gruppo $D_n$, che si può quindi presentare nel seguente modo: $$D_n=\langle\rho,\sigma|\rho^n=\sigma^2=id,\ \sigma\rho\sigma=\rho^{-1}\rangle$$
 \end{defn}
 
 \begin{rem}
