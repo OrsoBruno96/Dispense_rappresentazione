@@ -107,7 +107,6 @@
 \tableofcontents
 
 
-PROVA SCRITTURA CONTEMPORANEA
 
 \newpage
 \section{Teoria dei gruppi}
@@ -2100,8 +2099,40 @@ Vediamo un po' di proprietà interessanti. Per esempio se consideriamo
 allora questo insieme è un gruppo se munito della moltiplicazione. Possiamo andare a vedere la tabella dei caratteri di questo gruppo. 
 
 
+Per farlo possiamo cercare i sottogruppi normali $H_i$ di $Q_8$ e quozientare rispetto a quelli per cercare in modo facile delle rappresentazioni di grado 1. L'ultima rappresentazione che si trova deve avere dimensione $2$ perché $\sum n_i^2 = |G|$. Vedremo poco sotto che cosa significa questa rappresentazione.
 
-SCRIVI LA TABELLA DEI CARATTERI
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+& 1 & 1 & 2 & 2 & 2 \\
+$Q_8$ & 1 & -1 & $\pm i$ & $\pm j$ & $\pm k$ \\
+\hline
+$\rho_1$ & 1 & 1 & 1 & 1 & 1 \\
+\hline
+$\rho_i$ & 1 & 1 & 1 & -1 & -1 \\
+\hline
+$\rho_j$ & 1 & 1 & -1 & 1 & -1 \\
+\hline
+$\rho_k$ & 1 & 1 & -1 & -1 & 1 \\
+\hline
+$\rho_\HH$ & 2 & -2 & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\caption{Tabella dei caratteri di $Q_8$}
+\label{tab: caratteri q8}
+\end{table}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2112,7 +2143,47 @@ COSE RANDOM SCRITTE DI FRETTA PERCH\'E devo andare a lezione
 
 \[\HH = \left\{ \left \left(\begin{array}{cc} z & w \\ -\overline{w} & \overline z \end{array}\right) \right| z, w \in \C \right\} \]
 
-prova pota
+
+
+
+Matrici di spin di Pauli
+
+
+\[ 
+1_\HH = 
+\left(
+\begin{array}{cc}
+1 & 0 \\
+0 & 1 \\
+\end{array}
+\right)
+\qquad
+i_\HH = 
+\left(
+\begin{array}{cc}
+i & 0 \\
+0 & -i \\
+\end{array}
+\right)
+\qquad
+j_\HH = 
+\left(
+\begin{array}{cc}
+0 & 1 \\
+-1 & 0 \\
+\end{array}
+\right)
+\qquad
+k_\HH =
+\left(
+\begin{array}{cc}
+0 & i \\
+i & 0 \\
+\end{array}
+\right)
+\qquad
+\]
+
 
 
 
