@@ -1,3 +1,6 @@
+# Dispense per il corso "Introduzione alla Teoria della Rappresentazione" del secondo anno in normale tenuto dai professori Angelo Vistoli e Jacopo Gandini
+
+
 Queste dispense servono come supporto per lo studio del corso di Introduzione alla Teoria della rappresentazione tenuto in SNS nell'anno 2016/2017
 
 Il lavoro per la realizzazione è ancora da organizzare. Nel frattempo scrivo qualche indicazione per aiutare chi non ha mai usato git e contribuisce
@@ -5,7 +8,7 @@ Il lavoro per la realizzazione è ancora da organizzare. Nel frattempo scrivo qua
 Consiglio di usare i pc del collegio per evitare problemi. Per scaricare il repository in generale dovete scegliere una cartella dove posizionarlo e poi digitare in console
 $ git clone INDIRIZZO
 
-in questo caso l'indirizzo sarà
+In questo caso l'indirizzo sarà
 $ git clone https://github.com/OrsoBruno96/Dispense_rappresentazione.git
 
 Non toccate le cose nella cartella .git 
@@ -39,7 +42,6 @@ $ git pull origin
 
 Ricordatevi di aggiornare prima di partire per evitare di perdere lavoro
 
-
 Per vedere che cosa è cambiato rispetto all'ultima volta che avete lavorato sul file dovete fare un paio di cose semplici. Intanto digitate
 $ git log
 
@@ -49,14 +51,4 @@ $ git diff ab12 cd34
 
 é importante l'ordine prima vecchio e poi nuovo. A terminale vi verranno stampate le differenze fra le due versioni.
 
-
-
-
-
-
-
-
-
-
-Nei prossimi giorni cercherò di suddividere i compiti, per ora cercate di scrivere quello che è stato fatto nelle lezioni precedenti, dato che abbiamo cominciato con un mese di ritardo
 
