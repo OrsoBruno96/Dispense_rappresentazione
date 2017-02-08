@@ -77,6 +77,7 @@
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\HH}{\mathbb{H}}
 \newcommand{\dsum}{\displaystyle\sum}
 \newcommand{\dint}{\displaystyle\int}
 
@@ -1916,6 +1917,200 @@ E quindi è evidente che $T^n \to $ su ogni faccia viene la media dei numeri che
 
 
 
+
+\newpage
+\section{Rappresentazioni reali, complesse e quaternioniche}
+
+Ci poniamo un problema nuovo: quand'è che una rappresentazione, che abbiamo sempre definito su $\C$, funziona in modo uguale anche definendola solo su $\R$? Diamo una definizione più precisa
+
+\begin{defn}
+Diciamo che una rappresentazione $(\rho, V_\rho$ del gruppo $G$ è reale se esiste una base di $V_\rho$ tale che
+
+\[ \rho(g) \in M_n(\R) \ \ \forall g \in G\]
+
+\label{def: rappr reale}
+\end{defn}
+
+\begin{exmp}
+Prendiamo come gruppo un gruppo ciclico, per esempio $\Z / 3\Z$\footnote{Che per i fisici è isomorfo a $C_3$}. Evidentemente tutte le rappresentazioni non banali di $G$ non sono reali, in quanto sono di grado 1 e sono le radici dell'unità.
+
+\end{exmp}
+
+
+\begin{rem}
+Supponiamo di avere $\rho: G \to GL(V_\rho)$ con $V_\rho$ spazio vettoriale su $\C$ di dimensione $n$ (dimensione complessa). Allora possiamo definire  $V_\R$ uno spazio vettoriale su $\R$ (che avrà dimensione $2n$) e lavorare su quello, se il nostro obiettivo è quello di avere una rappresentazione reale.
+
+Equivalentemente, $\exists V_0 \subset V$ reale tale che QUI HO PERSO UN PEZZO SUGLI APPUNTI, QUALCUNO COMPLETI, 
+
+\[ V = \C \otimes_\R V_0 = V_0 \oplus i V_0\]
+
+\end{rem}
+
+
+
+
+\begin{rem}
+Se $\rho$ è irriducibile su $\C$, se prendo la sua versione reale definita come prima non è detto che rimanga irriducibile.
+
+\end{rem}
+
+
+Ora andremo a fare una classificazione delle rappresentazioni. Vedremo che ne esistono di 3 tipi:
+\begin{itemize}
+\item Reali
+\item Complesse
+\item Quaternioniche
+\end{itemize}
+
+
+
+La classificazione verrà fatta in base all'esistenza o meno di forme bilineari di un certo tipo invarianti sotto $G$. Vediamo come farlo formalmente.
+
+
+\begin{thm}
+
+Prendiamo una rappresentazione $(\rho, V_\rho)$ di $G$ reale, definita come in \ref{def: rappr reale}. Allora lo spazio vettoriale $V_\rho$ possiede una forma bilineare simmetrica invariante sotto l'azione della rappresentazione di $G$.
+
+\end{thm}
+
+\textsc{Dimostrazione:} Abbiamo supposto la rappresentazione reale. Esisterà quindi $V_0$, spazio vettoriale reale su cui agisce la rappresentazione. Sicuramente su questo spazio esiste una qualsiasi forma bilineare simmetrica $B_0$ non degenere
+
+\[ B_0 \in S^2 V_0^*\]
+
+Possiamo ora renderla invariante sotto l'azione di $G$ con il solito metodo del fare la media. Consideriamo quindi $\tilde B_0$ definito come
+
+
+\[ \tilde B_0(v_1, v_2) = \dfrac{1}{|G|} \dsum_{g\in G} B_0(\rho(g) v_1, \rho(g) v_2)\]
+
+
+
+
+Questo ha le caratteristiche precedenti ed è anche invariante sotto $G$. Possiamo a questo punto estenderla a forma bilineare su $V$ complessificandola in modo ovvio. Consideriamo quindi $B$
+
+\[B \in (S^2V^*)^G \]
+
+che definiamo sullo spazio $V = V_0 \oplus i V_0$ 
+
+\[B(v_1 + i v_1', v_2 + i v_2') = \left( \tilde B_0(v_1, v_2) - \tilde B_0(v_1', v_2')\right)  + i \left( \tilde B_0(v_1', v_2) + B_0(v_1, v_2')\right)\]
+
+
+
+
+\'E una banale verifica controllare che rispetta le caratteristiche richieste.
+\qed
+
+
+Vediamo ora il seguente lemma che ci servirà per la classificazione.
+
+\begin{lemma}
+Sia $(\rho, V_\rho)$ una rappresentazione di un gruppo $G$ su uno spazio vettoriale complesso. Allora esiste una forma bilineare non nulla invariante e non degenere. Questa forma è unica a meno di scalare.
+\end{lemma}
+
+\textsc{Dimostrazione:}
+
+Prendiamo un elemento $B$
+
+\[B \in \left(V^* \otimes V^*\right)^G \]
+
+\'E un fatto di algebra che 
+
+\[\left(V^* \otimes V^*\right)^G \cong Hom(V, V^*)^G \]
+
+A questo punto, se $\phi: V\to V^*$ è un omomorfismo di rappresentazioni, o $\phi$ è nullo o $\phi = \lambda Id$. Dato che la forma è non nulla, allora $\phi = \lambda Id$  \qed 
+
+
+Consideriamo un caso particolare per chiarire le idee. Vediamo per esempio quand'è che la forma non è solo nulla, ovvero si ha $\left(V^* \otimes V^*\right)^G \neq 0$
+
+QUALCUNO LO SCRIVA CON PAROLE PI\'U CHIARE
+
+\[ \left(V^* \otimes V^*\right)^G \neq 0 \Leftrightarrow Hom(V, V^*) ^G \neq 0 \Leftrightarrow \rho \cong \rho^* \Leftrightarrow \chi_\rho = \chi_{\rho^*} \Leftrightarrow \chi_{\rho} = \overline{\chi_{\rho}} \Leftrightarrow \chi_\rho \in \R\]
+
+
+Andiamo ora finalmente ad effettuare la nostra classificazione sulle rappresentazioni. Prima di farlo ricordiamo rapidamente il seguente fatto: SCRIVI LA DECOMPOSIZIONE IN SIMMETRICO E ALTERNO
+
+
+
+
+\begin{lemma}
+\begin{itemize}
+\item Sia $(\rho, V_\rho)$ una rappresentazione di $G$ su campo complesso. Allora 
+
+\[ B \in (V^* \otimes V^*)^G \Rightarrow B \in S^2V^* \vee B \in \bigwedge ^2 V^*\]
+
+\item Definiamo 
+
+\[ m_\rho = \dfrac{1}{|G|} \dsum_{g \in G} \chi_{\rho}(g^2)\]
+
+l'indicatore di Frobenius-Schur. Allora
+
+\[ m_\rho \in \{-1, 0, 1 \} \]
+
+\item{ \begin{enumerate}
+
+\item se $m_\rho = 0 \Rightarrow (V^*\otimes V^*)^G = 0$
+\item se $m_\rho = 1 \Rightarrow (S^2 V^*)^G \neq 0$
+\item se $m_\rho = -1 \Rightarrow (\bigwedge^2 V^*)^G \neq 0$
+\end{enumerate}
+}
+
+\end{itemize}
+\end{lemma}
+
+
+
+\textsc{Dimostrazione:}
+
+QUALCUNO LA SCRIVA
+
+
+\begin{defn}[Classificazione sull'indice di Frobenius]
+
+\begin{itemize}
+\item Se $m_\rho = 1$ la rappresentazione si dice \textbf{reale}
+\item Se $m_\rho = 0$ la rappresentazione si dice \textbf{complessa}
+\item Se $m_\rho = -1$ la rappresentazione si dice \textbf{quaternionica}
+\end{itemize}
+\end{defn}
+
+
+\subsection{Quaternioni}
+
+Ovviamente la parola quaternionica ha a che fare con il corpo dei quaternioni. Vediamo un po' di caratteristiche interessanti di questo oggetto.
+
+Il corpo $\HH$ si può vedere come
+
+\[\HH = \R \oplus i \R \oplus j \R \oplus k \R \]
+
+Con $i,j,k$ unità immaginarie che rispettano le seguenti regole
+
+\[ 
+\begin{cases}
+i^2 = j^2 = k^2 = -1 \\
+ij = - ji = k \\
+jk = -kj = i \\
+ki = - ik = j \\
+\end{cases}
+\]
+
+
+Vediamo un po' di proprietà interessanti. Per esempio se consideriamo 
+
+\[ Q_8 =  \{\pm 1, \pm i, \pm j, \pm k \}\]
+
+allora questo insieme è un gruppo se munito della moltiplicazione. Possiamo andare a vedere la tabella dei caratteri di questo gruppo. 
+
+
+
+SCRIVI LA TABELLA DEI CARATTERI
+
+
+
+\'E interessante notare che la tabella dei caratteri di $Q_8$ è uguale a quella di $D_4$, ma i due gruppi non sono isomorfi. Questo ci ricorda che la tabella dei caratteri dice tanto di un gruppo ma non tutto.
+
+
+COSE RANDOM SCRITTE DI FRETTA PERCH\'E devo andare a lezione
+
+\[\HH = \left\{ \left \left(\begin{array}{cc} z & w \\ -\overline{w} & \overline z \end{array}\right) \right| z, w \in \C \right\} \]
 
 
 
