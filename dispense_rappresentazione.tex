@@ -1923,13 +1923,15 @@ E quindi è evidente che $T^n \to $ su ogni faccia viene la media dei numeri che
 Ci poniamo un problema nuovo: quand'è che una rappresentazione, che abbiamo sempre definito su $\C$, funziona in modo uguale anche definendola solo su $\R$? Diamo una definizione più precisa
 
 \begin{defn}
-Diciamo che una rappresentazione $(\rho, V_\rho$ del gruppo $G$ è reale se esiste una base di $V_\rho$ tale che
+Diciamo che una rappresentazione $(\rho, V_\rho)$ del gruppo $G$ è reale se esiste una base di $V_\rho$ tale che
 
 \[ \rho(g) \in M_n(\R) \ \ \forall g \in G\]
 
 \label{def: rappr reale}
 \end{defn}
-
+Questa definizione è equivalente a chiedere che $\exists V_0 \subset V$ sottospazio vettoriale reale tale che: $V_0$ sia stabile ($G-$invariante ) e che 
+\[ V = \C \otimes_\R V_0 = V_0 \oplus i V_0\]
+Ne segue che $dim_\R V_0=dim_\C V$. Non è sempre detto che esista.
 \begin{exmp}
 Prendiamo come gruppo un gruppo ciclico, per esempio $\Z / 3\Z$\footnote{Che per i fisici è isomorfo a $C_3$}. Evidentemente tutte le rappresentazioni non banali di $G$ non sono reali, in quanto sono di grado 1 e sono le radici dell'unità.
 
@@ -1937,22 +1939,22 @@ Prendiamo come gruppo un gruppo ciclico, per esempio $\Z / 3\Z$\footnote{Che per
 
 
 \begin{rem}
-Supponiamo di avere $\rho: G \to GL(V_\rho)$ con $V_\rho$ spazio vettoriale su $\C$ di dimensione $n$ (dimensione complessa). Allora possiamo definire  $V_\R$ uno spazio vettoriale su $\R$ (che avrà dimensione $2n$) e lavorare su quello, se il nostro obiettivo è quello di avere una rappresentazione reale.
-
-Equivalentemente, $\exists V_0 \subset V$ reale tale che QUI HO PERSO UN PEZZO SUGLI APPUNTI, QUALCUNO COMPLETI, 
-
-\[ V = \C \otimes_\R V_0 = V_0 \oplus i V_0\]
-
+Supponiamo di avere $\rho: G \to GL(V_\rho)$ con $V_\rho$ spazio vettoriale su $\C$ di dimensione $n$ (dimensione di $V$ pensato come un $\C-$spazio vettoriale). Allora possiamo vederlo come uno spazio vettoriale costruito sul campo dei reali e  e lavorare su quello, se il nostro obiettivo è quello di avere una rappresentazione reale. Quando lo interpreteremo in questo modo scriveremo $V_\R$ (che essendo lo stesso spazio vettoriale su $\R$ avrà dimensione $2n$). 
 \end{rem}
 
 
 
+\begin{lemma}
+Sia $V$ una rappresentazione $/\C$ (tale scrittura significa $V$ visto come spazio vettoriale complesso) che sia però anche reale nel senso prima definito. Allora $V^{\R} $ NON è una rappresentazione irriducibile. 
+\end{lemma}
 
-\begin{rem}
-Se $\rho$ è irriducibile su $\C$, se prendo la sua versione reale definita come prima non è detto che rimanga irriducibile.
+\textsc{Dimostrazione:}
 
-\end{rem}
+Abbiamo detto che il fatto che $\rho$ possa essere vista come una rappresentazione reale equivale all'esistenza di un $V_0$ che mi faccia  il lavoro prima detto. Bene ma allora quel $V_0$ (essendo reale) lo possiamo in realtà vedere come un sottospazio di $V^{\R}$ $G-$invariante la cui dimensione è 
 
+\[dim_\R V_0=dim_\C V=\frac{1}{2}dim_{\R} V^{\R}\ \ \Rightarrow G\rightarrow GL(V_0) \]
+
+è una sottorappresentazine di $G/\R$.  \qed
 
 Ora andremo a fare una classificazione delle rappresentazioni. Vedremo che ne esistono di 3 tipi:
 \begin{itemize}
@@ -1968,11 +1970,15 @@ La classificazione verrà fatta in base all'esistenza o meno di forme bilineari 
 
 \begin{thm}
 
-Prendiamo una rappresentazione $(\rho, V_\rho)$ di $G$ reale, definita come in \ref{def: rappr reale}. Allora lo spazio vettoriale $V_\rho$ possiede una forma bilineare simmetrica invariante sotto l'azione della rappresentazione di $G$.
+Prendiamo una $(\rho, V_\rho)$ rappresentazione $/\C$ che sia reale: allora:
+\begin{enumerate}
+\item $\chi_\rho(g)\in \R$ $\forall g\in G$ 
+\item $V_\rho$ possiede una forma bilineare simmetrica $G-$invariante. Ovvero lo spazio delle forme bilineari simmetriche $S^2V^*\subset V\otimes V$ è tale che $(S^2V^*)^G\neq 0$.
+\end{enumerate} 
 
 \end{thm}
 
-\textsc{Dimostrazione:} Abbiamo supposto la rappresentazione reale. Esisterà quindi $V_0$, spazio vettoriale reale su cui agisce la rappresentazione. Sicuramente su questo spazio esiste una qualsiasi forma bilineare simmetrica $B_0$ non degenere
+\textsc{Dimostrazione:} Abbiamo supposto la rappresentazione reale. Quindi la matrice è reale ed in particolare lo sarà anche la sua traccia. Quindi il primo punto è vero. Ora veniamo al secondo punto: esisterà un $V_0$ spazio vettoriale reale $G-$invariante che tensorizzato con $\C$ da $V$. Consideriamo ora una forma bilineare simmetrica $B_0$ non degenere $/\R$
 
 \[ B_0 \in S^2 V_0^*\]
 
@@ -1984,11 +1990,11 @@ Possiamo ora renderla invariante sotto l'azione di $G$ con il solito metodo del 
 
 
 
-Questo ha le caratteristiche precedenti ed è anche invariante sotto $G$. Possiamo a questo punto estenderla a forma bilineare su $V$ complessificandola in modo ovvio. Consideriamo quindi $B$
+Questo ha le caratteristiche precedenti ed è anche invariante sotto $G$ (ovvero $\tilde B_0\in (S^2V_0^*)^G$). Possiamo a questo punto estenderla a forma bilineare su $V$ complessificandola in modo ovvio. Consideriamo quindi $B$
 
 \[B \in (S^2V^*)^G \]
 
-che definiamo sullo spazio $V = V_0 \oplus i V_0$ 
+che definiamo sullo spazio $V = V_0 \oplus i V_0$ nel seguente modo
 
 \[B(v_1 + i v_1', v_2 + i v_2') = \left( \tilde B_0(v_1, v_2) - \tilde B_0(v_1', v_2')\right)  + i \left( \tilde B_0(v_1', v_2) + B_0(v_1, v_2')\right)\]
 
@@ -2002,48 +2008,47 @@ che definiamo sullo spazio $V = V_0 \oplus i V_0$
 Vediamo ora il seguente lemma che ci servirà per la classificazione.
 
 \begin{lemma}
-Sia $(\rho, V_\rho)$ una rappresentazione di un gruppo $G$ su uno spazio vettoriale complesso. Allora esiste una forma bilineare non nulla invariante e non degenere. Questa forma è unica a meno di scalare.
+Sia $(\rho, V_\rho)$ una rappresentazione $/\C$. Allora ogni forma bilineare non nulla $G-$invariante è non degenere (in particolare quindi ne esiste almeno una). Inoltre è unica a meno di scalari, ovvero $dim (V^*\otimes V^*)^G=1$ .
 \end{lemma}
 
 \textsc{Dimostrazione:}
 
 Prendiamo un elemento $B$
 
-\[B \in \left(V^* \otimes V^*\right)^G \]
+\[B \in \left( V^* \otimes V^*\right) ^G \]
 
 \'E un fatto di algebra che 
 
 \[\left(V^* \otimes V^*\right)^G \cong Hom(V, V^*)^G \]
 
-A questo punto, se $\phi: V\to V^*$ è un omomorfismo di rappresentazioni, o $\phi$ è nullo o $\phi = \lambda Id$. Dato che la forma è non nulla, allora $\phi = \lambda Id$  \qed 
+A questo punto, se $\phi: V\to V^*$ è un omomorfismo di rappresentazioni, per il lemma di Schur o $\phi$ è nullo o $\phi$ è un isomorfismo. Dato che la forma è non nulla, allora $\phi = \lambda Id$ con $\lambda \in \C$.   \qed 
 
+Sia $V$ una rappresentazione $/\C$ irriducibile: quando è che $\exists$ una forma bilineare $G-$invariante? Ovvero quand'è che si ha $\left(V^* \otimes V^*\right)^G \neq 0$? Cerchiamo delle condizioni necessarie...
+\begin{lemma} 
+Sia $(\rho, V_\rho)$ una rappresentazione $/\C$ tale che sia reale: allora esiste un isomorfismo tra $V$ e $V^*$ ovvero esiste un isomorfismo tra $\rho$ e $\rho^*$ (a volte confondiamo la rappresentazione con il suo supporto).
+\end{lemma}
 
-Consideriamo un caso particolare per chiarire le idee. Vediamo per esempio quand'è che la forma non è solo nulla, ovvero si ha $\left(V^* \otimes V^*\right)^G \neq 0$
+\textsc{Dimostrazione:}
 
-QUALCUNO LO SCRIVA CON PAROLE PI\'U CHIARE
-
-\[ \left(V^* \otimes V^*\right)^G \neq 0 \Leftrightarrow Hom(V, V^*) ^G \neq 0 \Leftrightarrow \rho \cong \rho^* \Leftrightarrow \chi_\rho = \chi_{\rho^*} \Leftrightarrow \chi_{\rho} = \overline{\chi_{\rho}} \Leftrightarrow \chi_\rho \in \R\]
-
-
-Andiamo ora finalmente ad effettuare la nostra classificazione sulle rappresentazioni. Prima di farlo ricordiamo rapidamente il seguente fatto: SCRIVI LA DECOMPOSIZIONE IN SIMMETRICO E ALTERNO
-
-
-
+\[\rho \simeq \rho^* \Leftrightarrow \chi_\rho(g)=\chi_{\rho^*}(g)\ \forall g\in G\]
+ma dato che 
+\[\chi_{\rho^*}=\overline{\chi_\rho}\]
+allora
+\[ \chi_\rho(g)=\chi_{\rho^*}(g)\ \forall g\in G\Leftrightarrow \chi_\rho(g)=\overline{\chi_\rho}(g)\ \forall g\in G\]
+e questo è vero $\Leftrightarrow $ $\chi_\rho$ è una funzione reale. E ciò è vero se la rappresentazione è definibile $/\R$. \qed 
 
 \begin{lemma}
+Sia $(\rho, V_\rho)$ una rappresentazione $/\C$: allora
 \begin{itemize}
-\item Sia $(\rho, V_\rho)$ una rappresentazione di $G$ su campo complesso. Allora 
-
-\[ B \in (V^* \otimes V^*)^G \Rightarrow B \in S^2V^* \vee B \in \bigwedge ^2 V^*\]
-
-\item Definiamo 
+\item  $B \in (V^* \otimes V^*)^G \Rightarrow B \in S^2V^* \vee B \in \bigwedge ^2 V^*$
+\end{itemize}
+Definiamo 
 
 \[ m_\rho = \dfrac{1}{|G|} \dsum_{g \in G} \chi_{\rho}(g^2)\]
 
 l'indicatore di Frobenius-Schur. Allora
-
-\[ m_\rho \in \{-1, 0, 1 \} \]
-
+\begin{itemize}
+\item  $m_\rho \in \{-1, 0, 1 \}$
 \item{ \begin{enumerate}
 
 \item se $m_\rho = 0 \Rightarrow (V^*\otimes V^*)^G = 0$
@@ -2059,15 +2064,17 @@ l'indicatore di Frobenius-Schur. Allora
 
 \textsc{Dimostrazione:}
 
-QUALCUNO LA SCRIVA
-
+Abbiamo visto che $V^*\otimes V^*$ si può decomporre come somma diretta delle potenze simmetriche e alternanti ovvero
+\[V^*\otimes V^*=S^2V^*\oplus  \bigwedge ^2 V^*\]
+e inoltre per il lemma precedente sappiamo che $V^*\otimes V^*$ ha dimensione 1. 
+DEVO FINIRE DI SCRIVERLA 
 
 \begin{defn}[Classificazione sull'indice di Frobenius]
-
+Sia $\rho:G\rightarrow GL(V)$ una rappresentazione $/\C$: essa è detta
 \begin{itemize}
-\item Se $m_\rho = 1$ la rappresentazione si dice \textbf{reale}
-\item Se $m_\rho = 0$ la rappresentazione si dice \textbf{complessa}
-\item Se $m_\rho = -1$ la rappresentazione si dice \textbf{quaternionica}
+\item \textbf{reale} se $m_\rho = 1$  
+\item \textbf{complessa} se $m_\rho = 0$ 
+\item \textbf{quaternionica} se $m_\rho = -1$
 \end{itemize}
 \end{defn}
 
