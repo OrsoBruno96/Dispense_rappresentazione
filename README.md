@@ -1,4 +1,4 @@
-# Dispense per il corso "Introduzione alla Teoria della Rappresentazione" del secondo anno in normale tenuto dai professori Angelo Vistoli e Jacopo Gandini
+# Dispense per il corso "Introduzione alla Teoria della Rappresentazione" del secondo anno in Normale tenuto dai professori Angelo Vistoli e Jacopo Gandini
 
 
 Queste dispense servono come supporto per lo studio del corso di Introduzione alla Teoria della rappresentazione tenuto in SNS nell'anno 2016/2017
