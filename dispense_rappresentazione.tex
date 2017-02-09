@@ -2193,18 +2193,165 @@ i & 0 \\
 
 
 
+\begin{lemma}
+Sia $(\rho, V_\rho)$ una rappresentazione irriducibile su $\C$. Allora $\rho$ è reale secondo la definizione \ref{def: rappr reale} $\Leftrightarrow m_\rho = 1$ 
+\end{lemma}
+
+\textsc{Dimostrazione:} $\Rightarrow)$ già fatto.
+
+$\Leftarrow)$ Sia $B \in (S^2V_\rho^*)^G$, con $dim_\C V_\rho = n$. Noi stiamo cercando un certo $V_0 \subset V_\rho$ spazio vettoriale su $\R$ tale che $V_\rho = V_0 \oplus i V_0$ 
+
+Prendiamo ora una certa forma $h : V_\rho \times V_\rho \to \C$ hermitiana, definita positiva e $G-$invariante. Questa sicuramente esiste, è stato dimostrato nel teorema METTI IL LINK,
+
+Definiamo a questo punto un endomorfismo di $V_\rho$ che chiamiamo $\phi: V_\rho \to V_\rho$, definito come
+
+
+\[ B(x, y) = h(\phi(x), y)\] 
+
+Questa definizione ha senso per $y$ fissato (per Riesz).
+
+Che proprietà ha $\phi$? Possiamo notare che $\phi$ è $G$-equivariante, ovvero vale
+
+\[ \phi(\rho(g)x) = \rho(g) \phi(x)\]
+
+Mostriamolo rapidamente
+
+\[ h(\phi(\rho(g)x) , y) = B(\rho(g)x, y) = B(x, \rho(g^{-1} ) y) = h (\phi(x), \rho(g^{-1} ) y) = h(\rho(g)x, y)\]
+
+Questo non è male, in quanto se $\phi$ fosse lineare avremmo subito che $\phi$ è un omomorfismo di rappresentazioni irriducibili e potremmo usare Schur. Tuttavia
+
+\[ \phi(z_1 x_1 + z_2 x_2) = \overline{z_1} \phi(x_1) + \overline{z_2} \phi(x_2) \qquad \forall z_1, z_2 \in \C, \forall x_1, x_2 \in V_\rho\]
+
+SCRIVI PERCH\'E
+
+E quindi purtroppo $\phi$ non è davvero lineare. Però dato che in mezzo c'è  solo il coniugio, possiamo provare a vedere cosa fa $\phi^2$
+
+\[\phi^2(z_1 x_1 + z_2 x_2) = \phi(\overline{z_1} \phi(x_1) + \overline{z_2} \phi(x_2))  = z_1 \phi^2(x_1) + z_2 \phi^2(x_2) \qquad \forall z_1, z_2 \in \C, \forall x_1, x_2 \in V_\rho \] 
+
+
+E quindi effettivamente $\phi^2$ è un omomorfismo di rappresentazioni irriducibili. Per questo motivo possiamo applicare Schur e concludere che 
+
+\[ \phi^ 2 = \lambda Id_{V_\rho} \qquad \lambda \in \C\]
+
+
+Cosa possiamo dire su $\lambda$? Il claim è che sia $\lambda \in \R$ e $\lambda > 0$. Vediamo come si mostra
+
+\[h(\phi(x), y) = B(x, y) = B(y, x) = h(\phi(y), x) = \overline{h(x, \phi(y))} \]
+
+usando questo fatto possiamo considerare 
+
+\[ \lambda h(x, y) = h(\phi^2(x), y) = \overline{h(\phi(x), \phi(y))} = h(x, \phi^2(y)) = \overline{\lambda} h(x, y) \qquad \forall x, y \in V_\rho\]
+
+E questo ci dice ovviamente che $\lambda \in \R$. Per mostrare ora che $\lambda > 0$ dobbiamo sfruttare il fatto che la nostra forma hermitiana sia definita positiva. Per questo motivo andiamo a considerare
+
+\[\lambda h(x, x) = h (\phi^2(x), x) = \overline{h(\phi(x), \phi(x))} \Rightarrow \lambda = \dfrac{\overline{h(\phi(x), \phi(x))}}{ h(x,x)} \qquad \forall x \neq 0 \in V_\rho\]
+
+E dato che $h $ è definita positiva si ha anche $\lambda > 0$
+
+
+A questo punto possiamo (a meno di riscalare) scegliere $\lambda = 1$, ovvero $\phi^2 = Id$. A questo punto ci piacerebbe tornare a fare cose con $\phi$ e non $\phi^2$. Notiamo che se ci restringiamo a spazi vettoriali su $\R$, allora anche $\phi$ è lineare in quanto il coniugio non ci dà fastidio. Dato che quindi $\phi$ è un endomorfismo di uno spazio vettoriale reale tale che $\phi^2=1$, allora $\phi$ è diagonalizzabile e ha solo gli autovalori $\pm 1$.  Per questo motivo possiamo scomporre lo spazio di partenza $V_\rho = V_+ \oplus V_-$, con ovvia notazione per gli autospazi.
+
+
+A questo punto ci manca poco. $V_+$ e $V_-$ sono sottospazi reali del nostro spazio di partenza. Se mostriamo che sono isomorfi, abbiamo trovato la nostra scomposizione dello spazio $V_\rho$ in due spazi 
+
+\[ V_\rho = V_0 \oplus iV_0\]
+
+
+Proprio per questo motivo è intelligente notare che vale
+
+\[ i V_+ = V_- \]
+
+Mostriamo perché con il solito trucco della doppia inclusione. Prendiamo per esempio $x \in V_+$. Allora 
+
+\[ \phi(ix) = - i \phi(x) = -i x \]
+
+Ovvero il vettore $ix$ è autovettore di $\phi$ con autovalore $-1$. Applicando due volte questo ragionamento si ottiene facilmente
+
+\[ V_+ \cong V_- \qquad (i V_+ = V_-)\]
+
+Per cui a questo punto abbiamo finito \qed
 
 
 
+Ora vorremmo effettivamente capire il perché dei nomi dati nella classificazione delle rappresentazioni come reali, complesse e quaternioniche. Per questo motivo ci servono un paio di concetti di algebra.
+
+
+\begin{defn}[Algebra]
+Un algebra è uno spazio vettoriale $A$ con un altro prodotto $\cdot : A \times A \to A$ oltre a quello per uno scalare che rispetti alcune proprietà. In particolare il prodotto deve essere associativo (non necessariamente commutativo), bilineare rispetto alle caratteristiche di spazio vettoriale.
+
+Se esiste l'elemento neutro del prodotto, allora l'algebra si chiama unitaria.
+\end{defn}
+
+
+\begin{defn}{Algebra di divisione}
+Un algebra di divisione è un'algebra in cui ogni elemento escluso lo $0$ possiede un inverso moltiplicativo.
+
+\end{defn}
+
+\begin{exmp}
+Gli esempi più standard di algebra di divisione di dimensione finita sono per l'appunto i campi $\R$ e $\C$ come spazi vettoriali reali e il corpo $\HH$ come spazio vettoriale su $\R$. Questo esempio non è così scontato, come si vedrà fra poco nel teorema \ref{thm: frobenius}
+\end{exmp}
+
+
+\begin{rem}
+Consideriamo una rappresentazione $\rho, V_\rho$ irriducibile su $\R$ e consideriamo 
+
+\[ End_G(V_\rho)\]
+
+Possiamo a questo punto applicare la versione debole del lemma di Schur (quella forte vale per rappresentazioni su $\C$) e dire che ogni elemento di $End_G(V_\rho)$ o è la funzione nulla oppure è un isomorfismo, quindi ammette inverso. Per questo motivo $End_G(V_\rho)$ è un'algebra di divisione. Se il gruppo è finito, ovviamente l'algebra sarà di dimensione finita. 
+\end{rem}
+
+
+A questo punto vale la pena di dimostrare il seguente teorema di classificazione delle algebre di divisione.
+
+\begin{thm}[di Frobenius]
+\label{thm: frobenius}
+
+Sia $A$ un algebra di divisione di dimensione finita. Allora si ha 
+
+\[A \cong \R \quad \vee \quad  A \cong \C \quad \vee \quad A  \cong \HH \]
+
+\end{thm}
+
+\textsc{Dimostrazione:}
+
+QUI NON HO CAPITO COME MOSTRA CHE IN OGNI CASO $\R$ \'E UNA SOTTOALGEBRA DI $A$. QUALCUNO LO SCRIVA. 
+
+
+A questo punto sappiamo che  $\R \subseteq A$. Se $dim A = 1$ abbiamo finito, altrimenti possiamo assumere $dim A > 1$. 
+
+Vorremmo mostrare che in ogni caso esiste un sottospazio di $A$ isomorfo a $\C$. Per farlo andiamo a considerare il seguente fatto. Indichiamo con $A[\alpha]$ la sottoalgebra generata da un generico elemento $\alpha \in A$, ovvero consideriamo l'insieme
+
+\[A[\alpha] = \left\{ \dsum_{n = 0} ^N a_n \alpha^n | \ a_i \in \R, \alpha \in A   \right\} \]
+
+In particolare siamo interessati a considerare le sottoalgebre generate dagli $\alpha$ che non sono in $\R$, in quanto per gli $\alpha \in \R$ semplicemente otterremmo di nuovo un numero reale. Notiamo che in ogni caso lo spazio $A[\alpha]$ è comunque contenuto in $A$ e quindi ha dimensione finita, in particolare esisterà un certo $N$ per cui gli $\alpha^n$ sono linearmente dipendenti. Prendiamo quindi il minimo $N$ per cui questo avviene, ovvero consideriamo
+
+
+\[ \dsum_{n=0}^N a_n \alpha^n = 0 \]
+
+Questo si può esprimere dicendo che il polinomio 
+
+\[ p(x) = \dsum_{n = 0}^N a_n x^n \] 
+
+ha come radice $\alpha$, ovvero $p(\alpha) = 0$. Tuttavia $N$ è minimo, quindi questo polinomio è anche irriducibile. Ma su $\R$ i polinomi irriducibili non sono tanti. In particolare può avere grado 1 o 2. Vediamo rapidamente perché non può avere grado 1. Supponiamo per assurdo che quindi sia
+
+\[p(x) = a_0 + a_1 x\]
+
+Ma noi sappiamo che $p(\alpha) = 0$. Questo è assurdo perché vorrebbe dire che $\alpha \in \R$, cosa opposta a quella che avevamo assunto. Di conseguenza $p(x)$ ha grado esattamente 2. Senza perdita di generalità lo prendiamo monico, ovvero 
+
+\[ p(x) = a + bx + x^2\]
+
+A questo punto non è difficile mostrare che $A[\alpha]$ ha esattamente dimensione $2$, in quanto se $\alpha^2$ si scrive in termini di potenze inferiori lo faranno anche tutte le altre. Inoltre dato che $p(x)$ è irriducibile dovrà pure avere  $\Delta < 0$.
+
+A questo punto con un conto lungo ma banale si può mostrare che ogni elemento in $A[\alpha]$ ammette inverso in $A[\alpha]$, che è quindi un campo di dimensione $2$ che include $\R$. Da questo segue che 
+
+\[ A[\alpha] \cong \C \]
+
+Se $dim A =2 $ abbiamo finito. Altrimenti $dim A > 2$.
 
 
 
-
-
-
-
-
-
+DIMOSTRAZIONE DA FINIRE
 
 
 
