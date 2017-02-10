@@ -24,6 +24,7 @@
 \usepackage{wrapfig}
 \usepackage[T1,OT1]{fontenc} 
 \usepackage[nohug,small]{diagrams}
+\usepackage{bm}
 
 
 \usepackage{grffile}
@@ -2148,7 +2149,7 @@ $\rho_\HH$ & 2 & -2 & 0 & 0 & 0 \\
 
 COSE RANDOM SCRITTE DI FRETTA PERCH\'E devo andare a lezione
 
-\[\HH = \left\{ \left \left(\begin{array}{cc} z & w \\ -\overline{w} & \overline z \end{array}\right) \right| z, w \in \C \right\} \]
+%~ \[\HH = \left\{ \left \left(\begin{array}{cc} z & w \\ -\overline{w} & \overline z \end{array}\right) \right| z, w \in \C \right\} \]
 
 
 
@@ -2277,87 +2278,108 @@ Ora vorremmo effettivamente capire il perché dei nomi dati nella classificazion
 
 
 \begin{defn}[Algebra]
-Un algebra è uno spazio vettoriale $A$ con un altro prodotto $\cdot : A \times A \to A$ oltre a quello per uno scalare che rispetti alcune proprietà. In particolare il prodotto deve essere associativo (non necessariamente commutativo), bilineare rispetto alle caratteristiche di spazio vettoriale.
-
-Se esiste l'elemento neutro del prodotto, allora l'algebra si chiama unitaria.
+Un'algebra su $\R$ è uno spazio vettoriale reale $A$ dotato di una moltiplicazione $\cdot : A \times A \to A$ che sia associativa e bilineare.
+Inoltre imponiamo che vi sia un elemento neutro rispetto a questa moltiplicazione. Quest'ultima richiesta non fa parte della
+più generale definizione di algebra (le algebre che la soddisfano si dicono \emph{unitarie}), ma noi la inseriamo nella definizione
+poiché in questo corso non tratteremo mai algebre non unitarie.
 \end{defn}
 
 
-\begin{defn}{Algebra di divisione}
+\begin{defn}[Algebra di divisione]
 Un algebra di divisione è un'algebra in cui ogni elemento escluso lo $0$ possiede un inverso moltiplicativo.
-
 \end{defn}
 
 \begin{exmp}
-Gli esempi più standard di algebra di divisione di dimensione finita sono per l'appunto i campi $\R$ e $\C$ come spazi vettoriali reali e il corpo $\HH$ come spazio vettoriale su $\R$. Questo esempio non è così scontato, come si vedrà fra poco nel teorema \ref{thm: frobenius}
+Gli esempi più standard di algebra di divisione su $\R$ di dimensione finita sono i campi $\R$ e $\C$ come spazi vettoriali reali.
+Un esempio più sofisticato è dato dal corpo dei quaternioni $\HH$ (ovviamente visto come spazio vettoriale su $\R$).
 \end{exmp}
 
 
 \begin{rem}
-Consideriamo una rappresentazione $\rho, V_\rho$ irriducibile su $\R$ e consideriamo 
-
+Consideriamo una rappresentazione irriducibile $\rho:G\to GL(V_\rho)$ con $V_\rho$ spazo vettoriale su $\R$. Allora l'insieme degli endomorfismi
+di $\rho$ 
 \[ End_G(V_\rho)\]
-
-Possiamo a questo punto applicare la versione debole del lemma di Schur (quella forte vale per rappresentazioni su $\C$) e dire che ogni elemento di $End_G(V_\rho)$ o è la funzione nulla oppure è un isomorfismo, quindi ammette inverso. Per questo motivo $End_G(V_\rho)$ è un'algebra di divisione. Se il gruppo è finito, ovviamente l'algebra sarà di dimensione finita. 
+è un'algebra di divisione su $R$ se dotato della composizione.
+Infatti per lemma di Schur (in particolare la prima parte dell'enunciato, che vale su ogni campo) ogni elemento di $End_G(V_\rho)$ o è la funzione nulla oppure è un isomorfismo, quindi ammette inverso.
+Se il gruppo è finito, ovviamente l'algebra sarà di dimensione finita. 
 \end{rem}
 
 
-A questo punto vale la pena di dimostrare il seguente teorema di classificazione delle algebre di divisione.
-
+Presentiamo ora un sorprendente teorema che afferma che non ci sono altre algebre di divisione di dimensione finita oltre a quelle che abbiamo elencato come esempi, ovvero $\R, \C, \HH$.
 \begin{thm}[di Frobenius]
 \label{thm: frobenius}
-
-Sia $A$ un algebra di divisione di dimensione finita. Allora si ha 
-
+Sia $A$ un'algebra di divisione su $\R$ di dimensione finita. Allora si ha 
 \[A \cong \R \quad \vee \quad  A \cong \C \quad \vee \quad A  \cong \HH \]
-
 \end{thm}
 
 \textsc{Dimostrazione:}
+Indichiamo con $\bm{1}\in A$ l'elemento neutro rispetto alla moltiplicazione di $A$ (occhio: è un vettore di $A$, non un numero reale).
+Il sottospazio vettoriale generato da $\bm{1}$ è chiaramente isomorfo ad $\R$ come $\R-$spazio vettoriale, ma in
+realtà lo è anche come sottoalgebra: infatti se $a,b\in\R$ allora
+\[a\bm{1} \cdot b\bm{1} = ab (\bm{1}\cdot \bm{1}) = ab\bm{1} \]
+dove nel primo passaggio abbiamo usato la bilinearità e nel secondo il fatto che $\bm{1}$ è elemento neutro.
+Dunque, con un lieve abuso di notazione, possiamo scrivere $\R \subseteq A$, intendendo per $\R$ proprio il sottospazio generato da $\bm{1}$.
+Se $\dim A = 1$ allora sarebbe $A=\R$. D'ora in poi supponiamo $\dim A > 1$.
 
-QUI NON HO CAPITO COME MOSTRA CHE IN OGNI CASO $\R$ \'E UNA SOTTOALGEBRA DI $A$. QUALCUNO LO SCRIVA. 
-
-
-A questo punto sappiamo che  $\R \subseteq A$. Se $dim A = 1$ abbiamo finito, altrimenti possiamo assumere $dim A > 1$. 
-
-Vorremmo mostrare che in ogni caso esiste un sottospazio di $A$ isomorfo a $\C$. Per farlo andiamo a considerare il seguente fatto. Indichiamo con $A[\alpha]$ la sottoalgebra generata da un generico elemento $\alpha \in A$, ovvero consideriamo l'insieme
-
-\[A[\alpha] = \left\{ \dsum_{n = 0} ^N a_n \alpha^n | \ a_i \in \R, \alpha \in A   \right\} \]
-
-In particolare siamo interessati a considerare le sottoalgebre generate dagli $\alpha$ che non sono in $\R$, in quanto per gli $\alpha \in \R$ semplicemente otterremmo di nuovo un numero reale. Notiamo che in ogni caso lo spazio $A[\alpha]$ è comunque contenuto in $A$ e quindi ha dimensione finita, in particolare esisterà un certo $N$ per cui gli $\alpha^n$ sono linearmente dipendenti. Prendiamo quindi il minimo $N$ per cui questo avviene, ovvero consideriamo
-
-
+Vogliamo ora mostrare che esiste una sottoalgebra di $A$ isomorfa a $\C$.
+Sia $\alpha\in A \setminus\R$ e indichiamo con $A[\alpha]$ la sottoalgebra generata da $\alpha$, ovvero consideriamo l'insieme
+\[A[\alpha] = \left\{ \dsum_{n = 0} ^N a_n \alpha^n |\ N\in\mathbb{N}, \ a_i \in \R,\ \alpha \in A   \right\} \]
+L'algebra $A[\alpha]$, essendo contenuta in $A$, ha necessariamente dimensione finita, quindi esisterà un certo $N$ per cui gli elementi
+$\alpha^0, \alpha^1, \dots \alpha^N$ sono linearmente dipendenti. Più precisamente prendiamo il minimo $N$ per cui questo avviene.
+Allora esistono dei coefficienti $a_n$ reali tali che
 \[ \dsum_{n=0}^N a_n \alpha^n = 0 \]
-
-Questo si può esprimere dicendo che il polinomio 
-
+Ovvero il polinomio a coefficienti reali
 \[ p(x) = \dsum_{n = 0}^N a_n x^n \] 
-
-ha come radice $\alpha$, ovvero $p(\alpha) = 0$. Tuttavia $N$ è minimo, quindi questo polinomio è anche irriducibile. Ma su $\R$ i polinomi irriducibili non sono tanti. In particolare può avere grado 1 o 2. Vediamo rapidamente perché non può avere grado 1. Supponiamo per assurdo che quindi sia
-
+è annullato da $\alpha$.
+Se potessimo scomporre in modo non banale $p(x) = p_1(x)p_2(x)$ allora avremmo che $0 = p_1(\alpha)p_2(\alpha)$, dunque $\alpha$ annullerebbe uno dei due fattori (qui
+stiamo usando che $A$ è un'algebra unitaria), il che sarebbe assurdo vista l'ipotesi di minimalità di $N$.
+Dunque $p(x)$ deve essere irriducibile. Ma su $\R$ i polinomi irriducibili possono solo avere grado $1$ o $2$.
+Vediamo rapidamente perché non può avere grado $1$.
+Supponiamo per assurdo che sia
 \[p(x) = a_0 + a_1 x\]
-
-Ma noi sappiamo che $p(\alpha) = 0$. Questo è assurdo perché vorrebbe dire che $\alpha \in \R$, cosa opposta a quella che avevamo assunto. Di conseguenza $p(x)$ ha grado esattamente 2. Senza perdita di generalità lo prendiamo monico, ovvero 
-
-\[ p(x) = a + bx + x^2\]
-
-A questo punto non è difficile mostrare che $A[\alpha]$ ha esattamente dimensione $2$, in quanto se $\alpha^2$ si scrive in termini di potenze inferiori lo faranno anche tutte le altre. Inoltre dato che $p(x)$ è irriducibile dovrà pure avere  $\Delta < 0$.
-
-A questo punto con un conto lungo ma banale si può mostrare che ogni elemento in $A[\alpha]$ ammette inverso in $A[\alpha]$, che è quindi un campo di dimensione $2$ che include $\R$. Da questo segue che 
-
+Ma ciò vorrebbe dire che $a_0+a_1\cdot\alpha=0$, ovvero $\alpha=-a_0/a_1 \in \R$, ma noi avevamo assunto $\alpha\not\in\R$.
+Di conseguenza $p(x)$ ha grado esattamente $2$.
+Non è difficile mostrare che $A[\alpha]$ ha esattamente dimensione $2$: se $\alpha^2$ si scrive in termini di potenze inferiori lo faranno anche tutte le potenze successive,
+dunque ogni elemento di $A[\alpha]$ si può scrivere nella forma $x + \alpha y$ con $x,y$ reali e $\{1,\alpha\}$ è base di $A[\alpha]$, essendo i due elementi indipendenti.
+A meno di moltiplicare $p(x)$ per una costante per renderlo monico, possiamo scrivere 
+\[ p(x) = (x-s)^2+t^2\]
+con $s,t$ reali, $t\neq 0$. Se definiamo
+\[i = \frac{\alpha-s}{t}\]
+è facile osservare che $i^2 = -1$. Ora $\{1, i\}$ è base di $A[\alpha]$ (essendo $1$ e $i$ linearmente indipendenti) e il nostro $i$
+gioca esattamente lo stesso ruolo dell'unità immaginaria in $\C$. A questo punto è immediato esibire un isomorfismo
 \[ A[\alpha] \cong \C \]
+Se $\dim A =2 $ abbiamo finito. Supponiamo d'ora in poi $\dim A > 2$ e scriviamo $\C\subset A$ identificando $\C$ con la
+sottoalgebra $A[\alpha]$. Definiamo ora un'applicazione $\varphi:A\to A$ nel modo seguente:
+\[ \varphi(x) = -ixi = ixi^{-1} \]
+Osserviamo che $\varphi$ è $\R-$lineare, infatti presi $a,b\in\R$ e $x,y\in A$ si ha:
+\[ \varphi(ax+by) = i(ax+by)i^{-1} = i(ax)i^{-1} +i(by)i^{-1} = a\varphi(x) + b\varphi(y)\]
+Inoltre osserviamo che $\varphi^2$ è l'identità. Questo implica che possiamo decomporre
+\[ A = A_+ \oplus A_-\]
+dove $A_+$ e $A_-$ sono gli autospazi relativi rispettivamente agli autovalori $1$ e $-1$.
+In particolare gli elementi di $A_+$ sono esattamente quelli che commutano con $i$.
+Vogliamo ora mostrare che $A_+ = \C$.
+Sia $\beta\in A_+$. Imitando il ragionamento fatto prima con $\alpha$, possiamo considerare il polinomio a coefficienti complessi di minimo grado
+che si annulla in $\beta$. Come fatto prima osserviamo che deve essere irriducibile (questo passaggio richiede in realtà qualche cautela,
+ma tutto funziona come deve poiché $\beta$ commuta con tutti gli elementi di $\C$. Se avessimo preso $\beta\in A_-$ il ragionamento sarebbe errato).
+Ma gli unici polinomi irriducibili a coefficienti in $\C$ sono quelli di grado $1$, quindi $\beta\in\C$.
 
-Se $dim A =2 $ abbiamo finito. Altrimenti $dim A > 2$.
+Abbiamo dunque stabilito che $A_+ = \C$. Dato che $\dim A > 2$ possiamo prendere $z\in A_-$ non nullo.
+Consideriamo l'applicazione $\psi_z:A\to A$ definita da $\psi_z(x) = zx$.
+Osserviamo che valgono le seguenti implicazioni:
+\[ x\in A_+ \quad\implies\quad \varphi(\psi_z(x)) = \varphi(zx) = izxi^{-1} = izi^{-1}ixi^{-1} = -zx = -\psi_z(x)\]
+\[ x\in A_- \quad\implies\quad \varphi(\psi_z(x)) = \varphi(zx) = izxi^{-1} = izi^{-1}ixi^{-1} = (-z)(-x) = \psi_z(x)\]
+ovvero $\psi_z$ scambia $A_+$ e $A_-$. Inoltre $\psi_z$ è bigettiva e lineare, dunque concludiamo che $A_+\cong A_-$ come $\R-$spazi vettoriali e in particolare $\dim A = 4$.
 
+Con un ragionamento simile a quello che avevamo fatto per $\alpha$, osserviamo che $z^2$ è nel sottospazio generato da $1$ e $z$. Inoltre $z^2=\psi_z(z)\in A_+$.
+Visto che $Span(1,z) \cap A_+ = \R$ deve essere per forza $z^2\in\R$.
 
+Se fosse $z^2 \ge 0$ allora potremmo scrivere $z^2=r^2$ per qualche $r\in\R$.
+Visto che $r$ e $z$ commutano sarebbe allora $(z-r)(z+r)=0$, dunque uno dei due fattori sarebbe $0$, assurdo perché
+$z\not\in\R$. Pertanto $z^2 < 0$ e possiamo definire
+\[j = \frac{z}{\sqrt{-z^2}}\]
+così $j^2 = -1$. Infine definiamo $k = ij$.
 
-DIMOSTRAZIONE DA FINIRE
-
-
-
-
-
-
-
+Ora $k$ e $j$ sono indipendenti e sono in $A_-$, dunque formano una base di $A_-$. Allora $\{1,i,j,k\}$ è base per $A$ ed è facile
+verificare che questi quattro elementi rispettano le stesse regole di moltiplicazione dei quaternioni, pertanto si conclude che $A\cong\HH$ e la tesi è dimostrata.\qed
 
 \end{document}
