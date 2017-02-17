@@ -197,8 +197,43 @@ Sia $G$ un gruppo, $H \leq G$ si dice \emph{normale} in $G$ se
 e si indica $H \trianglelefteq G$.
 \end{defn}
 
+\begin{defn}[Laterale]
+	Sia $G$ un gruppo e $H<G$ un suo sottogruppo, definiamo \textit{laterale destro} o \textit{classe laterale destra} di $H$
+	un sottoinsieme di $G$ del tipo
+	\[
+		gH=\{ gh\ |\ h\in H\}
+	\]
+\end{defn}
+
+\begin{defn}[Quoziente]\label{defn:quoziente}
+	Sia $G$ un gruppo, $H<G$, chiamiamo \textit{quoziente} di $G$ per $H$ l'insieme delle classi laterali di $H$, che indicheremo con $G/H$, ovvero
+	\[
+		G/H=\{gH\ |\ g\in G\}
+	\]
+	dove vengono identificati gli insiemi uguali (infatti non è detto che se $g,g'\in G$, con $g\neq g'$, allora $gH\neq g'H$).
+\end{defn}
+
+\begin{thm}
+	Il quoziente di un gruppo $G$ per un suo sottogruppo $H$ fornisce una partizione di $G$: per ogni $g\in G$ esiste un unico $H$-laterale destro $g'H$ tale che $g\in g'H$. 
+\end{thm}
+\begin{proof}
+	Si osserva che $g\in gH$ visto che $gH=\{gh\ |\ h\in H\}$ e che $e\in H$, se si avesse che $g\in \alpha H$ allora $g=\alpha h_1$ per qualche $h_1$. Si osserva allora che i due laterali coinciderebbero:
+	\[
+		\alpha H=\{ \alpha h\ |\ h\in H\} = \{ \alpha h_1 h\ |\ h\in H \} = \{ gh\ |\ h\in H\} = gH
+	\]
+\end{proof}
+
+\begin{thm}[Teorema di Lagrange]
+	Sia $G$ un gruppo finito, $H<G$, allora $|H|$ divide $|G|$ e, in particolare, $\displaystyle |G/H|=\frac{|G|}{|H|}$; il numero $|G/H|$ viene chiamato \textit{indice} di $H$ in $G$.
+\end{thm}
+
+
 \begin{defn}[Gruppo quoziente]
-NON LO SCRIVO PERCHÈ È LUNGO, ASPETTO DI VEDERE COME/SE LO DEFINISCE LUI
+	Sia $G$ gruppo, $H\trianglelefteq G$ (osservare che si richiede che il sottogruppo sia \textit{normale}), allora chiameremo \textit{gruppo quoziente} di $G$ su $H$ l'insieme quoziente come l'abbiamo definito \eqref{defn:quoziente} munito della seguente operazione:
+	\[
+		(g_1H)\cdot(g_2H)=g_1g_2H
+	\]
+	Non riportiamo la dimostrazione del fatto che l'operazione così definita rispetti effettivamente gli assiomi dei gruppi.
 \end{defn}
 
 \begin{defn}[Classi di coniugio]
@@ -232,6 +267,15 @@ Siano $G$ ed $H$ gruppi, un'applicazione $\varphi:G\to H$ si dice \textit{omomor
 dove la prima moltiplicazione è fatta in $G$ mentre la seconda in $H$.
 Se $\varphi$ è bigettiva, allora si dice \textit{isomorfismo}, e i due gruppi si dicono \emph{isomorfi}.
 Indichiamo con $Hom(G,H)$ l'insieme degli omomorfismi da $G$ ad $H$.
+\end{defn}
+
+\begin{defn}
+	Siano $G$ e $H$ gruppi, $f:G\to H$ un omomorfismo di gruppi, allora definiamo
+	\begin{gather*}
+		Ker f = \{g\in G\ |\ f(g)=e_H\}\\
+		Imm f =\{ h\in H\ |\ \exists g\in G\text{ t.c. }f(g)=h\}
+	\end{gather*}
+	Non è difficile verificare che sia $Ker f$ che $Imm f$ sono sempre sottogruppi rispettivamente di $G$ e di $H$, inoltre si può osserevare che $Ker f$ è un sottogruppo normale di $G$.
 \end{defn}
 
 
@@ -443,14 +487,23 @@ In questa sezione diamo alcune definizioni e teoremi di algebra lineare che sono
 
 \end{thm}
 \begin{defn}[Forma hermitiana]
-Siano $V,W$ due $\C$-spazi vettoriali, una funzione $h:V\times V\to W$ si dice \textit{forma hermitiana} se $\forall v,w,z\in V,\ \forall \alpha \in \C$ vale che NON MI RICORDO DOVE AVEVA MESSO IL CONIUGATO
+Siano $V,W$ due $\C$-spazi vettoriali, una funzione $h:V\times V\to W$ si dice \textit{forma hermitiana} se $\forall v,w,z\in V,\ \forall \alpha \in \C$ vale che
 \begin{gather*}
 	h(v,w) = \overline{h(w,v)}\\
-	h(v,\alpha w) = \alpha h(v,w)\\
+	h(\alpha v, w) = \alpha h(v,w)\\
 	h(v+z,w)=h(v,w)+h(z,w)
 \end{gather*}
-
 \end{defn}
+
+\begin{defn}
+	Una forma hermitiana $\phi:V\times V\to \C$ è \textit{definita positiva} (rispettivamente \textit{negativa}) se $\forall\ v\in V, v\neq 0$ si ha che $\phi(v,v)>0$ (rispettivamente $\phi(v,v)<0$), ossarvare che $\phi(v,v)\in \R\ \forall\ v\in V$, dunque ha senso chiedere che sia maggiore o minore di $0$.\newline
+	Una forma hermitiana $\phi:V\times V\to \C$ è \textit{semidefinita positiva} (rispettivamente \textit{negativa}) se $\forall\ v\in V$ si ha che $\phi(v,v)\geq 0$ (rispettivamente $\phi(v,v)\leq 0$)
+\end{defn}
+
+\begin{thm}
+	Ogni forma hermitiana definita positiva su uno spazio vettoriale $V$ di dimensione finita ammette una \textit{base ortonormale}, ovvero esiste una base $\{v_1,\ldots,v_n\}$ di $V$ tale che $\phi(v_i,v_j)=\delta_{ij}$. 
+\end{thm}
+
 
 
 
