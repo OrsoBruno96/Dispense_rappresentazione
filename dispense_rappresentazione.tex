@@ -2291,7 +2291,8 @@ E quindi effettivamente $\phi^2$ è un omomorfismo di rappresentazioni irriducib
 Cosa possiamo dire su $\lambda$? Il claim è che sia $\lambda \in \R$ e $\lambda > 0$. Vediamo come si mostra
 
 \[h(\phi(x), y) = B(x, y) = B(y, x) = h(\phi(y), x) = \overline{h(x, \phi(y))} \]
-
+\newpage
+\section{Rappresentazioni reali, complesse e quaternioniche}
 usando questo fatto possiamo considerare 
 
 \[ \lambda h(x, y) = h(\phi^2(x), y) = \overline{h(\phi(x), \phi(y))} = h(x, \phi^2(y)) = \overline{\lambda} h(x, y) \qquad \forall x, y \in V_\rho\]
@@ -2407,12 +2408,12 @@ sottoalgebra $A[\alpha]$. Definiamo ora un'applicazione $\varphi:A\to A$ nel mod
 Osserviamo che $\varphi$ è $\R-$lineare, infatti presi $a,b\in\R$ e $x,y\in A$ si ha:
 \[ \varphi(ax+by) = i(ax+by)i^{-1} = i(ax)i^{-1} +i(by)i^{-1} = a\varphi(x) + b\varphi(y)\]
 Inoltre osserviamo che $\varphi^2$ è l'identità. Questo implica che possiamo decomporre
-\[ A = A_+ \oplus A_-\]
-dove $A_+$ e $A_-$ sono gli autospazi relativi rispettivamente agli autovalori $1$ e $-1$.
+\[ A = A_+ \oplus A_-\] dove $A_+$ e $A_-$ sono gli autospazi relativi rispettivamente agli autovalori $1$ e $-1$.
 In particolare gli elementi di $A_+$ sono esattamente quelli che commutano con $i$.
 Vogliamo ora mostrare che $A_+ = \C$.
 Sia $\beta\in A_+$. Imitando il ragionamento fatto prima con $\alpha$, possiamo considerare il polinomio a coefficienti complessi di minimo grado
-che si annulla in $\beta$. Come fatto prima osserviamo che deve essere irriducibile (questo passaggio richiede in realtà qualche cautela,
+che si annulla in $\beta$. Come fatto prima osserviamo che deve
+\section{Rappresentazioni reali, complesse e quaternioniche} essere irriducibile (questo passaggio richiede in realtà qualche cautela,
 ma tutto funziona come deve poiché $\beta$ commuta con tutti gli elementi di $\C$. Se avessimo preso $\beta\in A_-$ il ragionamento sarebbe errato).
 Ma gli unici polinomi irriducibili a coefficienti in $\C$ sono quelli di grado $1$, quindi $\beta\in\C$.
 
@@ -2426,13 +2427,92 @@ ovvero $\psi_z$ scambia $A_+$ e $A_-$. Inoltre $\psi_z$ è bigettiva e lineare, 
 Con un ragionamento simile a quello che avevamo fatto per $\alpha$, osserviamo che $z^2$ è nel sottospazio generato da $1$ e $z$. Inoltre $z^2=\psi_z(z)\in A_+$.
 Visto che $Span(1,z) \cap A_+ = \R$ deve essere per forza $z^2\in\R$.
 
+
+
 Se fosse $z^2 \ge 0$ allora potremmo scrivere $z^2=r^2$ per qualche $r\in\R$.
-Visto che $r$ e $z$ commutano sarebbe allora $(z-r)(z+r)=0$, dunque uno dei due fattori sarebbe $0$, assurdo perché
-$z\not\in\R$. Pertanto $z^2 < 0$ e possiamo definire
+Visto che $r$ e $z$ commutano sarebbe allora $(z-r)(z+r)=0$, dunque uno dei due fattori sarebbe $0$, assurdo perché $z\not\in\R$. Pertanto $z^2 < 0$ e possiamo definire
 \[j = \frac{z}{\sqrt{-z^2}}\]
 così $j^2 = -1$. Infine definiamo $k = ij$.
 
 Ora $k$ e $j$ sono indipendenti e sono in $A_-$, dunque formano una base di $A_-$. Allora $\{1,i,j,k\}$ è base per $A$ ed è facile
 verificare che questi quattro elementi rispettano le stesse regole di moltiplicazione dei quaternioni, pertanto si conclude che $A\cong\HH$ e la tesi è dimostrata.\qed
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Rappresentazioni indotte}
+Supponiamo di avere $\rho:H\rightarrow GL(V)$ una rappresentazione di $H<G$ con $G$ gruppo. Il nostro aim è quello di definire una $\widetilde{\rho}:G\rightarrow GL(V)$ rappresentazione di $G$ che estende $\rho$.
+
+\begin{defn}Indichiamo con $induzione\ da\ H\ in \ G\ di W$ il seguente spazio vettoriale:
+\[Ind_H^G(W)=\{f:G\rightarrow W: \rho(h)\circ f(gh)=f(g)\ \forall (g,h)\in G\times H\}   \]
+\end{defn}
+
+\textbf{Osservazione:} $Ind_H^G(W)$ è lo spazio vettoriale di una rappresentazione di $G$.
+Si consideri $N=\{f:G\rightarrow W\}$: definisco
+\[\rho_N:G\rightarrow GL(N) \textup{ tale che }(\rho_N(g)f)(g')=f(g^{-1}g')\]
+Si verifica che $\rho_N$ è una rappresentazione di $G$ su $N$. Notiamo innanzitutto che $Ind_H^G(W)\subseteq N$ e che tale sottospazio è $\rho_N-$invariante poichè detta $f\in Ind_H^G(W)$ si ha che
+\[ \rho_N(g)(f)(g')=f(g^{-1}g')=\rho(h)f(g^{-1}g'h)=\rho(h)\rho_N(g)(f)(g'h)\]
+ovvero $\rho_N(g)f\in Ind_H^G(W)$. Questo ci dice che $Ind_H^G(W)$ è una sottorappresentazione di $\rho_N$ chr chiamiamo $\rho_{ind}:G\rightarrow GL(Ind_H^G(W))$.
+
+\begin{exmp}
+$H=\{e\}$ e $W=\C$ con $\rho:H\rightarrow GL(\C)$: allora
+\[Ind_H^G(W)=\{f:G\rightarrow \C:\rho(e)f(gh)=f(g)\}=\{f:G\rightarrow \C\}\]
+\end{exmp}
+
+\textbf{Notazione:} Spesso indicheremo lo spazio vettoriale $\{f:G\rightarrow \C\}$ con $\C[G]=\bigoplus_{g\in G}\C e_g$ dove gli $\{e_g\}_{g\in G}$ sono una base di $\{f:G\rightarrow \C\}$. 
+In tal modo risulta che 
+\[\{f:G\rightarrow \C\}=\C[G]\otimes W\]
+sempre nel senso che se prendo $\{e_g\}_{g\in G}$ una base di $\C[G]$ e $\{w_i\}\in W$ una base di $W$ allora 
+\[e_g\otimes w_i:G\rightarrow W \textup{ tale che } g\mapsto w_i \textup{ e } g'\mapsto 0\ \forall g'\neq g\]
+
+Torniamo a $\rho_{ind}$: ricapitolando $\rho_{ind}:G\mapsto GL(Ind_H^G)$ tale che $g\mapsto \rho_{ind}(g)$ dove $\rho_{ind}(g)f(g')=f(g^{-1}g')$. Vediamo ora un po' delle sue caratteristiche. Poniamo per snellire la scrittura $V=Ind_H^G(W)$. Ricordandoci il nostro aim, di certo vogliamo che $W$ sia un sotospazio di $V$.
+
+\begin{defn}
+Data $f\in $
+\end{defn}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
