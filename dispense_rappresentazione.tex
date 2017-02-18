@@ -30,6 +30,7 @@
 \usepackage{grffile}
 \usepackage{tikz}
 \usepackage{pgf,tikz}
+\usetikzlibrary{matrix}
 \usetikzlibrary{shapes.geometric,calc}
 
 \usetikzlibrary{arrows}
@@ -2546,8 +2547,82 @@ Inoltre $\rho_{ind}|_H$ definisce una rappresentazione di $H$ su $V_{eH}$ isomor
 \end{thm}
 Vediamo ora degli esempi.
 \begin{enumerate}
-
+\item Abbiamo visto prima $H=\{e\}$ $W=\C$ allora $Ind_H^G(W)=\C[G]$ è la rappresentazione regolare di $G$. 
+\item $H\neq \{e\},\subseteq G$ e $\rho:H\rightarrow GL(W)$ la rappresentazione banale con $W=\C$. Allora
+\[Ind_H^G(\C)=\{f:G\rightarrow \C:\rho(h)f(gh)=f(gh)=f(g)\ \forall g,h\}\Rightarrow f \textup{ è costante sulle classi laterali di} H\]
+\[\Rightarrow Ind_H^G(\C)=\{f:G\rightarrow \C:f \textup{ è costante sulle classi laterali di }\ H\}=\C[G/H]\]
+\begin{tikzpicture}
+\matrix(m)[matrix of math nodes,row sep=3em,column sep=3em,minimum width=3em]
+{
+f:G& \C\\
+G/H& \\};
+\path[-stealth]
+(m-1-1) edge (m-1-2)
+(m-1-1) edge node [left] {$\pi$} (m-2-1)
+(m-2-1) edge node [right] {$\ f$} (m-1-2);
+\end{tikzpicture}\\
+$G/H$ è un insieme finito dove $G$ agisce per moltiplicazione a sinistra ($g(g'H)=gg'H$). Quindi $Ind_H^G(W)$ è la rappresentazione per permutazione associata all'azione di $G$ in $G/H$. \\
+\textbf{Recall:} $X$ è un $G-$insieme, sia $X= \bigsqcup X_i$ la decomposizione in $G-$orbite: allora 
+\[\C[X]=\bigoplus_{i=1}^{\#-orbite} \C[X_i]\] 
+\item $H\subseteq G$ e $\rho:H\rightarrow GL(W): \rho(h)=id\ \forall h\in H$. Nel caso in cui $W$ avesse dimensione 1 si torna all'esempio 1. Tuttavia anche se $dim(W)>1$, $Ind_H^G(W)=\{f:G\rightarrow \C:f \textup{ è costante sulle classi laterali di } H\}=\C[G/H]\otimes W$ 
 \end{enumerate}
+\textbf{Esercizio:} Supponiamo che $W=W_1\bigoplus W_2$ una rappresentazione di H non riducibile: allora 
+\[Ind_H^G(W)=Ind_H^G(W_1)\bigoplus Ind_H^G(W_2)\].
+
+
+\subsection{Formula di aggiunzione}
+Vediamo ora una proprietà universale di queste rappresentazioni indotte. Prima abbiamo definito passando da $\rho$ a $\rho_{ind}$ sostanzialmente una applicazione
+\[Ind:Rappr(H)\rightarrow Rappr(G)\]
+e abbiamo anche "l'inversa" ovvero la restrizione della rappresentazione ad H
+\[Res:Rappr(G)\rightarrow Rappr(H)\]
+e risulta che $Res_H^G(V)=V$ visto però come una rappresentazione di $H$ ($\rho_{res}=\rho|_H$). Che legame c'è tra queste due applicazioni? 
+\begin{thm}
+Sia $\rho:H\rightarrow GL(W)$ una rappresentazione di $H$ e sia $\sigma:G\rightarrow GL(U)$ una rappresentazione di $G$. Allora
+\[Hom_H(W,Res_H^G(U))\cong Hom_G(Ind_H^G(W),U)\]
+ovvero che ogni $\phi:W\rightarrow Res_H^G(U)$ omomorfismo di $H-$rappresentazione si estende in modo unico a un $\overset{\sim}{\phi}:Ind_H^G(W)\rightarrow U$ omomorfismo di $G-$rappresentazione
+\end{thm}
+\textsc{Dimostrazione:} sia $\phi:W\rightarrow Res_H^G(U)$ un omomorfismo di $H-$rappresentazione e sia $V:=Ind_H^G(W)=\bigotimes_{i=1}^{\#-orbite} \rho_{ind}(g_i)V_{eH}$. Essendo $V_{eH}\cong W$ come $H-$rappresentazioni, allora $\phi:V_{eH}\rightarrow Res_H^G(U)$: voglio estenderlo a $V$. Essendo $V$ definito come una somma diretta è sufficiente definire l'omomorfismo sui blocchi e per questo considero $V_{g_iH}$: ho che
+\[V_{g_iH}\overset{\rho_{g_i^{-1}}}{\rightarrow} V_{eH}\overset{\phi}{\rightarrow} Res_H^G(U)\overset{\sigma(g)}{\rightarrow} U\Rightarrow \sigma(g)\phi\rho_{ind}(g_i^{-1}):V_{g_iH}\rightarrow U\] 
+Incollando tutte queste applicazioni ottengo $\overset{\sim}{\phi}:Ind_H^G(W)\rightarrow U$ dove
+$\overset{\sim}{\phi}(v)=\sigma_{g}\circ \phi\circ \rho_{ind}(g^{-1})(v)$ con $v\in V_{gH}$. Si verifica che $\overset{\sim}{\phi}\in Hom_G(Ind_H^G(W),U)$. \\
+Vediamo ora che questa estensione è unica. Siano $\overset{\sim}{\phi_1}$ e $\overset{\sim}{\phi_2}$ due estensioni di $\phi$: valutiamole nello stesso elemento $v\in V_{gH}$.
+\[\overset{\sim}{\phi_1}(\rho_{ind}(g^{-1})v)=\phi(\rho_{ind}(g^{-1})(v))=\overset{\sim}{\phi_2}(\rho_{ind}(g^{-1})v)\]
+dove l'uguaglianza è vera perchè $\rho_{ind}(g^{-1})(v)\in V_{eH}$. Quindi coincidendo sui singoli blocchi le due estensioni coincidono anche su $V$. E quindi l'estensione è unica. \qed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
