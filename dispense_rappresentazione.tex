@@ -2291,8 +2291,6 @@ E quindi effettivamente $\phi^2$ è un omomorfismo di rappresentazioni irriducib
 Cosa possiamo dire su $\lambda$? Il claim è che sia $\lambda \in \R$ e $\lambda > 0$. Vediamo come si mostra
 
 \[h(\phi(x), y) = B(x, y) = B(y, x) = h(\phi(y), x) = \overline{h(x, \phi(y))} \]
-\newpage
-\section{Rappresentazioni reali, complesse e quaternioniche}
 usando questo fatto possiamo considerare 
 
 \[ \lambda h(x, y) = h(\phi^2(x), y) = \overline{h(\phi(x), \phi(y))} = h(x, \phi^2(y)) = \overline{\lambda} h(x, y) \qquad \forall x, y \in V_\rho\]
@@ -2412,8 +2410,7 @@ Inoltre osserviamo che $\varphi^2$ è l'identità. Questo implica che possiamo d
 In particolare gli elementi di $A_+$ sono esattamente quelli che commutano con $i$.
 Vogliamo ora mostrare che $A_+ = \C$.
 Sia $\beta\in A_+$. Imitando il ragionamento fatto prima con $\alpha$, possiamo considerare il polinomio a coefficienti complessi di minimo grado
-che si annulla in $\beta$. Come fatto prima osserviamo che deve
-\section{Rappresentazioni reali, complesse e quaternioniche} essere irriducibile (questo passaggio richiede in realtà qualche cautela,
+che si annulla in $\beta$. Come fatto prima osserviamo che deve essere irriducibile (questo passaggio richiede in realtà qualche cautela,
 ma tutto funziona come deve poiché $\beta$ commuta con tutti gli elementi di $\C$. Se avessimo preso $\beta\in A_-$ il ragionamento sarebbe errato).
 Ma gli unici polinomi irriducibili a coefficienti in $\C$ sono quelli di grado $1$, quindi $\beta\in\C$.
 
@@ -2474,35 +2471,78 @@ sempre nel senso che se prendo $\{e_g\}_{g\in G}$ una base di $\C[G]$ e $\{w_i\}
 Torniamo a $\rho_{ind}$: ricapitolando $\rho_{ind}:G\mapsto GL(Ind_H^G)$ tale che $g\mapsto \rho_{ind}(g)$ dove $\rho_{ind}(g)f(g')=f(g^{-1}g')$. Vediamo ora un po' delle sue caratteristiche. Poniamo per snellire la scrittura $V=Ind_H^G(W)$. Ricordandoci il nostro aim, di certo vogliamo che $W$ sia un sotospazio di $V$.
 
 \begin{defn}
-Data $f\in $
+Data $f\in \{f:\C\rightarrow W\}$ (che contiene $V$) definiamo il supporto di $f$ 
+
+\[Supp(f)=\{f\in G:f(g)\neq 0\}.\]
 \end{defn}
 
+\begin{defn}
+Dato $g\in G$ definiamo $V_g=\{f\in V : Supp(f)\subseteq gH \}$.
+\end{defn}
 
+\textbf{Osservazione:} se $g'\in gH$, allora $g'H=gH\Rightarrow V_g=V_{g'}$. Quindi più che dipendere dagli elementi di $G$, gli insiemi sopra definiti dipendono dalle classi laterali di $H$ in $G$. Perciò ora parleremo non più di $V_g$ bensì di $V_{gH}$.\\
+\textbf{Osservazione:} dato che le classsi laterali di $H$ sono una partizione di $G$, dette $\{g_iH\}_{i\in |G/H|}$ i rappresentanti delle classi laterali $gH$ al variare di $g$ in $G$ allora 
+\[G=\bigsqcup_{i=1}^{|G/H|} g_iH\] 
+e quindi ogni funzione la posso scrivere come combinazione lineare di $f_i\in V_{g_iH}$.
+\[\Rightarrow V=\bigotimes_{i=1}^{|G/H|} V_{g_iH}\]
+Voglio ora rintracciare $W$, in quanto sono interessata a trovare un sottospazio isomorfo a $W$ dento $V$. Notiamo innanzitutto che la scrittura precedente non è detto che sia una decomposizione di rappresentazioni, ma possiamo vedere subito che si comporta bene sotto l'azione di $\rho_{ind}$. 
+\begin{lemma}
+$\rho_{ind}$ permuta le varie $V_{gH}$ nel senso che $\rho_{ind}(g)V_{g'H}=V_{gg'H}$. 
+\end{lemma}
+\textsc{Dimostrazione:} Data $f\in V$, definisco
+\[f_i(g)=\begin{cases}
+f(g)& \textup{se } g\in g_iH\\
+0& \textup{altrimenti}
+\end{cases}\Rightarrow f=\sum_{i=1}^{|G/H|} f_i\ \textup{ e per come le ho definite } f_i\in V_{g_iH}\]
+Sia ora $f\in V_{g'H}$ e fissiamo un $g\in G$ allora
+\[\rho_{ind}(g)(f)(x)=f(g^{-1}x)\Rightarrow \rho_{ind}(g)(f)(x)\neq 0\leftrightarrow g^{-1}x\in Supp(f)\subseteq g'H\leftrightarrow x\in gSupp(f)\subseteq gg'H\]
+Ovvero $x\in Supp(\rho_{ind}(g)(f))\Leftrightarrow x\in gSupp(f)$. Ciò implica che
+\[ V_{g'H} \begin{matrix}
+\overset{\rho_{ind}(g)}{\longrightarrow}\\ 
+\underset{\rho_{ind}(g^{-1})}{\longleftarrow}
+\end{matrix} V_{gg'H} \]
+Essendo $\rho_{ind}(g),\rho_{ind}(g^{-1})\in GL(V)$ allora seguono iseguenti fatti:
+\begin{enumerate}
+\item $\rho_{ind}(g)V_{g'H}\subseteq V_{gg'H}$;
+\item $\rho_{ind}(g^{-1})V_{gg'H}\subseteq V_{g'H}$;
+\item $V_{g'H}\cong V_{gg'H}$, ovvero sono due spazi vettoriali isomorfi;
+\item $\rho_{ind}(g)^{-1}=\rho_{ind}(g^{-1})$;
+\end{enumerate}
+Quindi $\rho_{ind}(g)V_{g'H}=V_{gg'H}$. \qed
+\\ 
+\begin{cor}
+\[\forall i,j\in |G/H|\ \ \ V_{g_iH}\cong V_{g_jH}.\]
+In particolare hanno tutti la stessa dimensione e quindi
+\[dim(V)=|G/H|dim(V_{eH})=dim(Ind_H^G(W))\]
+\end{cor}
+Concentriamoci ora su $V_{eH}=\{f\in V:supp(f)\subseteq H\}$. Sia $h\in H$: allora $\rho_{ind}(h):V_{eH}\rightarrow V_{eH}$ in quanto $eH=hH$. Ciò significa che $\rho_{ind}|_{H}$ definisce una rappresentazione di $H$ in $V_{eH}$.
+\begin{lemma}
+La rappresentazione appena trovate di $H$ su $V_{eH}$ è naturalmente isomorfa a\\ $\rho:H\rightarrow GL(W)$.
+\end{lemma}
+\textsc{Dimostrazione:} Considero la seguente funzione: 
+\[\Phi:V_{eH}\rightarrow W\ \textup{tale che } f\mapsto f(e)\]
+ovvero la funzione che associa ad un $f$ la valutazione della stessa nell'elemento neutro. Verifichiamo innanzitutto che si tratta di un omomorfismo di rappresentazione. Ricordiamo chi è $V_{eH}$:
+\[V_{eH}=\{f:G\rightarrow W: \rho(h)f(gh)=f(g)\ \forall h,g\ \ \textup{e } Supp(f)\subseteq H\}\]
+$\Phi$ è un omo. di rappr. sse $\Phi(\rho_{ind}(h)f)=\rho(h)\Phi(f)\ \forall h\in H$.
+\[\Phi(\rho_{ind}(h)f))=\rho(h)\Phi(f) \Leftrightarrow (\rho_{ind}(h)f)(e)=\rho(h)(f(e))\Leftrightarrow f(h^{-1}e)=f(h^{-1})=\rho(h)f(e)\]
+ma ciò è vero in quanto le $f\in Ind_H^G(W)$. \\
+Verifichiamo che $\Phi$ è iniettiva. $Supp(f)\subseteq H$ e $\forall h\in H\ f(h)=\rho(h^{-1}f(e))$: questo mi dice che una volta che si è fissato il valore di $f(e)$ allora la funzione è univocamente determinata su $H$. D'altra parte so che in $G\setminus H$ la funzione è identicamente nulla $\Rightarrow$ quindi è univacamente determinata su tutto $G$. Allora detti $\Phi$ è iniettiva.\\
+Vediamo ora che è anche surgettiva. Sia $w\in W$ vogliamo $f\in V_{eH}$ che valutata in $e$ dia $w$. Definiamo $f_w:G\rightarrow W$ nel seguente modo: 
+\[f_w:=\begin{cases}
+\rho(h^{-1})(w)& \textup{ se } h\in H\\
+0& \forall g\in G\setminus H
+\end{cases}\]
+Si verifica che tale funzione soddisfa le proprietà richieste. \qed \\
+Dunque possiamo ora concludere il seguente teorema
+\begin{thm} Dette $g_1H,...,g_{|G/H|}H$ i rappresentanti delle classi laterali allora 
+\[Ind_H^G(W)=\bigoplus_{i=1}^{|G/H|}\rho_{ind}(g_i)V_{eH}\bigl( =\bigoplus_{i=1}^{|G/H|} V_{g_iH}\bigr) \]
+Inoltre $\rho_{ind}|_H$ definisce una rappresentazione di $H$ su $V_{eH}$ isomorfa a $\rho$. In particolare quindi 
+\[dim(Ind_H^G(W))=|G/H|dim(W)\] 
+\end{thm}
+Vediamo ora degli esempi.
+\begin{enumerate}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\end{enumerate}
 
 
 
