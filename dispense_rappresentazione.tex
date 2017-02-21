@@ -1076,10 +1076,31 @@ $\rho^*(s)=\rho(s^{-1})^t=\left(\rho(s)^{-1}\right)^t=\left(\rho(s)^t\right)^{-1
 
 
 \textsc{Osservazione:} vale
-
 \[ (\rho + \sigma)^* \cong \rho^* + \sigma^* \]
+\begin{proof}
+Consideriamo la funzione $\Theta : (V_\rho \oplus V_\sigma)^*\to V_\rho ^* \oplus V_\sigma ^*$ definita da
+\[ \Theta(f) = (f\circ \imath_{V_\rho}, f\circ \imath_{V_\sigma}) \]
+per ogni funzionale $f\in (V_\rho \oplus V_\sigma)^*$, dove $\imath_{V_\rho}$ e $\imath_{V_\rho}$ sono le immersioni di $V_\rho$ e $V_\sigma$ dentro la loro somma diretta.
+\`E facile osservare che si tratta di un'applicazione lineare. Consideriamo anche
+la funzione $\Xi: V_\rho ^* \oplus V_\sigma ^* \to (V_\rho \oplus V_\sigma)^*$ definita da
+\[ \Xi(h,k) = h\circ\pi_{V_\rho} + k\circ\pi_{V_\sigma} \]
+per ogni coppia di funzionali $h\in V_\rho ^*$, $k\in V_\sigma ^*$,
+dove $\pi_{V_\rho}$ e $\pi_{V_\sigma}$ indicano come al solito le proiezioni sui sottospazi. 
+Anche $\Xi$ è lineare, inoltre è facile osservare che $\Theta$ e $\Xi$ sono una l'inversa dell'altra. Dunque sono degli 
+isomorfismi. Resta da mostrare che $\Theta$ è omomorfismo di rappresentazioni. Prendiamo $g\in G$: dobbiamo mostrare che 
+\[ (\rho^*+\sigma^*)(g) \circ \Theta = \Theta \circ (\rho + \sigma)^*(g) \]
+ovvero che per ogni funzionale $f\in (V_\rho \oplus V_\sigma)^*$ vale
+\[ [(\rho^*+\sigma^*)(g)] (f\circ \imath_{V_\rho}, f\circ \imath_{V_\sigma}) = ([(\rho + \sigma)^*(g)f]\circ \imath_{V_\rho}, [(\rho + \sigma)^*(g)f]\circ \imath_{V_\sigma}) \]
+che si riscrive:
+\[ ([\rho^*(g)](f\circ \imath_{V_\rho}), [\sigma^*(g)](f\circ \imath_{V_\sigma})) = ([(\rho + \sigma)^*(g)f]\circ \imath_{V_\rho}, [(\rho + \sigma)^*(g)f]\circ \imath_{V_\sigma}) \]
+che è equivalente a:
+\[ (f\circ \imath_{V_\rho} \circ [\rho(g^{-1})], f\circ \imath_{V_\sigma}\circ[\sigma(g^{-1})]) = (f\circ [(\rho+\sigma)(g^{-1})] \circ \imath_{V_\rho} , f\circ[(\rho+\sigma)(g^{-1})]\circ \imath_{V_\sigma}) \]
+Ora basta osservare che $\imath_{V_\rho} \circ [\rho(g^{-1})] = [(\rho+\sigma)(g^{-1})] \circ \imath_{V_\rho}$
+e in modo del tutto analogo $\imath_{V_\sigma} \circ [\sigma(g^{-1})] = [(\rho+\sigma)(g^{-1})] \circ \imath_{V_\sigma}$,
+da cui la tesi.
 
-E l'isomorfismo è canonico. SCRIVI DIMOSTRAZIONE.
+Notiamo anche che l'isomorfismo è canonico, ovvero non dipende dal fatto di poter scegliere delle basi.
+\end{proof}
 
 
 
