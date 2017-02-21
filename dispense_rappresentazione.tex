@@ -289,6 +289,22 @@ Indichiamo con $Hom(G,H)$ l'insieme degli omomorfismi da $G$ ad $H$.
 	Non è difficile verificare che sia $Ker f$ che $Imm f$ sono sempre sottogruppi rispettivamente di $G$ e di $H$, inoltre si può osserevare che $Ker f$ è un sottogruppo normale di $G$.
 \end{defn}
 
+\begin{rem}
+	Non è difficile dimostrare che, dati $G$ e $H$ due gruppi e $f:G\to H$ un omomorfismo di gruppi, esso è \textit{iniettivo} se e solo se $Ker f = \{e\}$.
+\end{rem}
+
+
+\begin{thm}[Primo teorema di omomorfismo]\label{alg:primo_teo_omo}
+	Dati due gruppi $G$ e $H$ e un omomorfismo $f:G\to H$, vale che
+	\[
+		G/Ker f \cong Imm f
+	\]
+\end{thm}
+\begin{rem}
+	Se la $f$ del teorema precedente è iniettiva, allora $G/Ker f\cong G$ e quindi $G\cong Imm f$. Invece se $f$ è surgettiva, allora $G/Ker f\cong H$.
+\end{rem}
+
+
 
 \begin{defn}[Azione di un gruppo su un insieme] Sia $G$ un gruppo e $I$ un insieme. Chiamiamo azione $a$ di $G$ su $I$ una funzione $a:G\times I \to I$ che rispetti la regola di composizione, ovvero che se $h,g\in G$ e $i \in I$, valga
 
@@ -973,8 +989,7 @@ VORREI DISEGNARE IL DIAGRAMMA MA NON SONO CAPACE, SE QUALCUNO LO SA FARE PER FAV
 
 
 ovvero $\sigma(g)=\rho(\pi(g))$.\newline
-Questo metodo è particolarmente potente perchè, per ogni rappresentazione $\rho:G\to GL(\C)$, l'immagine è un gruppo abeliano, quindi, in virtù del primo teorema di omomorfismo, l'immagine di una qualsiasi rappresentazione $\rho$ di grado 1 è un quoziente abeliano di $G$.
-(ORA NON LO SCRIVO, MA BISOGNA AGGIUNGERE NELLA SEZIONE DI ALGEBRA IL PRIMO TEOREMA DI OMOMORFISMO E AGGIUNGERE IL LINK)
+Questo metodo è particolarmente potente perchè, per ogni rappresentazione $\rho:G\to GL(\C)$, l'immagine è un gruppo abeliano, quindi, in virtù del primo teorema di omomorfismo\eqref{alg:primo_teo_omo}, l'immagine di una qualsiasi rappresentazione $\rho$ di grado 1 è un quoziente abeliano di $G$.
 
 
 \begin{exmp}[Rappresentazioni di grado 1 di $S_3$]
@@ -1115,7 +1130,7 @@ Sia $\rho$ una rappresentazione di $G$ su $V_{\rho}$, una sottorappresentazione 
 \begin{defn}[Rappresentazione irriducibile]
 Una rappresentazione $\rho$ di $G$ è \textit{irriducibile} se
 \begin{enumerate}
-	\item $\rho \neq 0$ ($deg(\rho) \geq 1$)
+	\item $\rho \neq 0$ ($\deg(\rho) \geq 1$)
 	\item $\rho$ non ha sottorappresentazioni non banali (diverse da 0 e $V_{\rho}$).
 \end{enumerate}
 
