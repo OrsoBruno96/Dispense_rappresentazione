@@ -406,21 +406,115 @@ Se invece $G$ non è abeliano allora nella formula precedente all'uguale va sost
 
 
 
+
 \subsection{Proprietà del gruppi simmetrici}
+Il gruppo simmetrico $S_n$ è stato introdotto come l'insieme delle funzioni bigettive da $\{1,2,\dots,n\}$ in sé, dotato dell'operazione di composizione.
+Dunque $S_n$ agisce in modo naturale su $\{1,2,\dots,n\}$, permutandone gli elementi. Per descrivere un elemento $\sigma \in S_n$ 
+è spesso conveniente usare la notazione di prodotto di cicli disgiunti, che ora descriviamo informalmente.
 
-\begin{thm}[Ogni elemento $\sigma \in S_n$ si scrive in modo unico come prodotto di cicli disgiunti a meno dell'ordine dei fattori]
+Si comincia a costruire la lista $(1, \sigma(1), \sigma^2(1), \dots)$. Visto che abbiamo a disposizione un numero finito di elementi,
+ad un certo punto sarà $\sigma^k(1) = 1$. Allora se scriviamo $(1, \sigma(1), \sigma^2(1), \dots, \sigma^{k-1}(1))$ tutti i numeri tra le 
+parentesi saranno diversi tra loro (questo segue dal fatto che $\sigma$ è bigettiva). Inoltre ognuno dei numeri scritti viene mandato da $\sigma$
+nel numero immediatamente successivo nella lista, e l'ultimo numero viene mandato nel primo. Quello che abbiamo appena scritto è un \emph{ciclo}.
+\`E anche possibile che la lista sia semplicemente $(1)$, il che vorrebbe dire che $1$ viene lasciato fisso da $\sigma$.
+Se avessimo cominciato il procedimento con $\sigma(1)$ al posto di $1$ avremmo ottenuto $(\sigma(1), \sigma^2(1), \dots, \sigma^{k-1}(1), 1)$, che
+descrive ugualmente bene il modo in cui $\sigma$ sposta gli elementi scritti. Anche se la scrittura è diversa, per noi
+$(1, \sigma(1), \sigma^2(1), \dots, \sigma^{k-1}(1))$ e $(\sigma(1), \sigma^2(1), \dots, \sigma^{k-1}(1), 1)$ sono esattamente lo stesso ciclo,
+e un ragionamento analogo vale per gli altri numeri facenti parte della lista: non importa da quale si parte.
+Può darsi che non tutti i numeri da $1$ a $n$ compaiano nel ciclo appena scritto: in tal caso si prende un numero ancora non scritto e si ricomincia da capo
+da lui, creando una nuovo ciclo, e si continua così finché non sono stati scritti tutti i numeri.
+Alla fine ci ritroviamo un elenco di cicli che sono necessariamente disgiunti per via della bigettività di $\sigma$.
+\`E facile convincersi che in questo modo si descrive completamente $\sigma$. Inoltre a meno di variare
+l'ordine con cui sono scritti i cicli e di cambiare i ``punti di partenza'' dei singoli cicli questa scrittura come cicli disgiunti è unica.
+Riassumiamo quanto detto nel seguente teorema:
 
-
+\begin{thm}
+Ogni elemento $\sigma \in S_n$ si scrive in modo unico come prodotto di cicli disgiunti a meno dell'ordine dei fattori e a meno di 
+cambiare il modo in cui i singoli cicli sono presentati.
 \end{thm}
 
-\begin{prop}Il segno di un ciclo di lunghezza $k$ è esattamente $(-1)^{k-1}$
+Spesso nella scrittura in cicli disgiunti si tralasciano i cicli di lunghezza uno. Ad esempio $(3,5,7)(4,1)\in S_{12}$ ha perfettamente senso:
+i numeri $1,3,4,5,7$ vengono ``spostati'' da $\sigma$ nel modo descritto e tutti gli altri vengono lasciati fissi.
 
+I cicli, più che essere delle liste, vanno pensati come elementi di $S_n$, ovvero come funzioni bigettive da $\{1,\dots,n\}$ in sé.
+In quanto tali possono essere moltiplicati, nel senso di composizione delle funzioni. Ad esempio
+\[(1,2,3)\cdot(3,5)\]
+chiaramente non è la scrittura come prodotto di cicli disgiunti di un elemento di $S_n$, in quanto appunto i due cicli scritti
+non sono disgiunti. Ma il loro prodotto ha perfettamente senso, e usando la stessa convenzione
+che si usa di solito per la composizione di funzioni vanno fatti ``agire'' da destra a sinistra.
+Ad esempio il prodotto scritto manda il numero $5$ nel numero $1$ (infatti il ciclo a destra manda $5$ in $3$, il quale viene mandato in $1$ dal ciclo
+a sinistra). Se lo volessimo scrivere come prodotto di cicli disgiunti otterremmo:
+\[(1,2,3,5)\]
 
+\begin{thm}
+Ogni elemento $\sigma \in S_n$ si può scrivere come prodotto di \emph{trasposizioni}, ovvero cicli di lunghezza $2$, non necessariamente disgiunti.
+\end{thm}
+\textsc{Dimostrazione: }
+Considerato il teorema sulla decomposizione in cicli, basta mostrare la tesi nel caso in cui $\sigma$ è un ciclo.
+Supponiamo $\sigma = (a_1, a_2, \dots, a_k)$. Allora è facile verificare che
+\[\sigma = (a_1, a_k)\cdot (a_1, a_{k-1}) \cdot \dots \cdot (a_1, a_2)\]
+Qualcuno potrebbe essere turbato dal caso in cui il ciclo ha lunghezza $1$, ossia $\sigma$ è l'identità.
+In tal caso possiamo dire che $\sigma$ è il prodotto di un insieme vuoto di trasposizioni.
+Chi fosse ancora turbato potrebbe scrivere, almeno nel caso $n\ge 2$, $\sigma = (1,2)(1,2)$.
+\qed
+
+Osserviamo che il teorema precedente assicura solo l'esistenza di una scrittura come prodotto di trasposizioni
+ma non l'unicità. In effetti questa non sussiste, infatti se in fondo ad un prodotto di trasposizioni aggiungo $(1,2)(1,2)$
+allora il risultato non cambia. Per avere un esempio leggermente più sofisticato:
+\[(2,1)(2,3) = (1,3)(1,2)\]
+Tuttavia quello che non cambia è la parità del numero di trasposizioni, come precisato dal seguente teorema.
+\begin{thm}
+Siano $\tau_1, \tau_2, \dots, \tau_t, \sigma_1, \sigma_2, \dots, \sigma_s$ trasposizioni in $S_n$. Supponiamo che
+\[\tau_1\tau_2\dots\tau_t = \sigma_1\sigma_2\dots\sigma_s\]
+Allora $s\equiv t \mod 2$.
+\end{thm}
+\textsc{Cenno di dimostrazione: }
+Definiamo la seguente funzione $f:S_n\to\N$:
+\[f(\rho) = card\left(\left\{\quad(a,b)\in\{1,\dots,n\}^2 \quad | \quad a < b, \quad\rho(a) > \rho(b) \quad\right\}\right)\]
+Non è difficile verificare che se $\tau\in S_n$ è una trasposizione allora $f(\rho)$ e $f(\tau\rho)$ hanno parità diversa.
+Il risultato segue immediatamente visto che $f(\tau_1\tau_2\dots\tau_t) = f(\sigma_1\sigma_2\dots\sigma_s)$.
+\qed
+
+\begin{defn}[Segno di una permutazione]
+Il teorema appena visto permette di definire il \emph{segno} di ogni elemento $\sigma\in S_n$, che si pone uguale a $1$
+se $\sigma$ si scrive come prodotto di un numero pari di trasposizioni, si pone uguale a $-1$ altrimenti.
+\end{defn}
+
+\begin{prop}
+Il segno di un ciclo di lunghezza $k$ è esattamente $(-1)^{k-1}$
 \end{prop}
+\textsc{Dimostrazione: }
+Abbiamo già visto un modo in cui un ciclo di lunghezza $k$ si può scrivere come prodotto di trasposizioni:
+\[(a_1, a_2, \dots, a_k) = (a_1, a_k)\cdot (a_1, a_{k-1}) \cdot \dots \cdot (a_1, a_2)\]
+Dunque la tesi segue immediatamente.
+\qed
 
+\begin{defn}
+L'insieme degli elementi di $S_n$ aventi segno $+1$ è un sottogruppo di $S_n$,
+chiamato \emph{gruppo alterno} e indicato con $A_n$.
+\end{defn}
 
 
 \subsection{Proprietà dei gruppi diedrali}
+
+\begin{defn}[Gruppo diedrale]
+Consideriamo in $\R^2$ un poligono regolare di $n$ lati con centro nell'origine.
+L'insieme $D_n$ delle isometrie di $\R^2$ che mandano il poligono in sé è un gruppo con l'operazione di composizione.
+Si verifica che questo gruppo ha $2n$ elementi, di cui $n$ rotazioni (ovvero elementi di $O_2(\R)$ con determinante $1$)
+e $n$ riflessioni (ovvero elementi di $O_2(\R)$ con determinante $-1$).
+Inoltre, detta $\rho$ una rotazione di $2\pi/n$ (che ha ordine $n$, e per inverso ha $\rho^{n-1}$) e $\sigma$ una qualunque riflessione (che ha ordine $2$), esse generano
+il gruppo $D_n$, che si può presentare nel seguente modo: $$D_n=\langle\rho,\sigma|\rho^n=\sigma^2=id,\ \sigma\rho\sigma=\rho^{-1}\rangle$$
+\end{defn}
+
+\begin{rem}
+ Le $n$ potenze distinte di $\rho$ sono tutte e sole le rotazioni di $D_n$, mentre gli elementi della forma $\sigma\rho^{i},\ i=0,1,..,n-1$ 
+ sono tutte e sole le riflessioni. 
+\end{rem}
+
+\begin{rem}
+ Si dimostra facilmente che la relazione $\sigma\rho\sigma=\rho^{-1}$ è verificata da qualsiasi rotazione $\rho$
+ e qualsiasi riflessione $\sigma$.
+\end{rem}
 
 \begin{defn}[Gruppo diedrale]
 L'insieme $D_n$ delle rotazioni e simmetrie di un poligono regolare di $n$ lati è un gruppo con l'operazione di composizione.
@@ -471,7 +565,7 @@ In questa sezione diamo alcune definizioni e teoremi di algebra lineare che sono
 \begin{thm}[Teorema di decomposizione primaria]
 \label{thm:dec_primaria}
 	Siano $V$ un $\K$-spazio vettoriale, $f:V\to V$ un endomorfismo di $V$ e $q(x)\in I(f)$. Sia $q=q_1\cdot\ldots\cdot q_k$ tale che $MCD(q_i,q_j)=1\ \forall\ i\neq j$, allora $V=Ker(q_1(f))\oplus\dots\oplus Ker(q_k(f))$ e gli addendi sono $f$-invarianti.\\
-	In particolare se $f$ è triangolabile e $\lambda_1,\ldots,\lambda_k$ sono gli autovalori di $f$ con molteplicità geometrica rispettivamente $\alpha_1,\ldots,\alpha_k$, allora $V=Ker\left((f-\lambda_1 Id)^{\alpha_1}\right)\oplus\dots\oplus Ker\left((f-\lambda_k Id)^{\alpha_k}\right)$.
+	In particolare se $f$ è triangolabile e $\lambda_1,\ldots,\lambda_k$ sono gli autovalori di $f$ con molteplicità algebrica rispettivamente $\alpha_1,\ldots,\alpha_k$, allora $V=Ker\left((f-\lambda_1 Id)^{\alpha_1}\right)\oplus\dots\oplus Ker\left((f-\lambda_k Id)^{\alpha_k}\right)$.
 \end{thm}
 
 \begin{thm}[Forma canonica di Jordan]
@@ -519,20 +613,26 @@ Siano $V,W$ due $\C$-spazi vettoriali, una funzione $h:V\times V\to W$ si dice \
 \subsection{Alcune generalizzazioni di algebra lineare}
 
 \begin{defn}[Base di uno spazio vettoriale]
-Sia $V$ uno spazio vettoriale e $I$ un insieme; una base di $V$ è una funzione $e: I \to V$ tale che 
-$\forall v \in V,\  \exists!\  a: I \to \mathbb{C}$ a supporto finito per cui vale $v=\sum_{i\in I}a_i e_i$. La funzione $a$ 
-valutata in $i$ prende il valore della $i$-esima coordinata del vettore $v$ nella base $e$. Questa definizione è compatibile con la 
-definizione di base come insieme di vettori generatori linearmente indipendenti.
+Sia $V$ un $\K-$spazio vettoriale e $I$ un insieme; una base di $V$ è una funzione $e: I \to V$ tale che 
+per ogni $v \in V$ esiste un'unica funzione $a: I \to \K$ a supporto finito per cui vale $v=\sum_{i\in I}a_i e_i$.
+Questa definizione è compatibile con la definizione di base come insieme di vettori generatori linearmente indipendenti.
 \end{defn}
 
 
 \begin{lemma}
- Sia $e:I\to V$ una base di $V$ e $W$ uno spazio vettoriale. $f: I \to W$ una funzione. Allora $\exists!\  \phi: V \to W$ lineare tale che
-
+Siano $V,W$ dei $\K-$spazi vettoriali, sia $e:I\to V$ una base di $V$ e $f: I \to W$ una funzione. Allora $\exists!\  \phi: V \to W$ lineare tale che
 \[\phi(e_i) = f_i \]
-
 Inoltre $\phi$ è un isomorfismo $\Leftrightarrow$ $f$ è una base.
 \end{lemma}
+
+\begin{lemma}
+Dato $I$ insieme, esiste uno spazio vettoriale $V$ con base una certa $e:I\to V$.
+\end{lemma}
+\begin{proof}
+Definisco il seguente insieme, che è in modo naturale un $\C-$spazio vettoriale:
+\[ \C^I = \{ v:I\to\C \quad|\quad v \text{ ha supporto finito}\}\]
+Ora è facile osservare che $e:I\to\C^I$ definita da $e_i(j) = \delta_{i,j}$ è una base.
+\end{proof}
 
 
 \subsection{Prodotto tensoriale}
@@ -571,8 +671,7 @@ $\phi: V \otimes W \to V \overline{\otimes} W$ tale che
 
 
 \begin{prop}
-\[\langle\{ v \otimes w | v \in V, w \in W\} \rangle  = V \otimes W\]
-
+L'insieme degli elementi di $V\otimes W$ della forma $v\otimes w$ con $v\in V, w\in W$ generano tutto lo spazio $V\otimes W$.
 \end{prop}
 
 
@@ -792,7 +891,8 @@ La dimensione di $V_\rho$ viene detta grado della rappresentazione.
 \begin{prop}
 Sia $G$ un gruppo finito e $\rho: G \to GL(V_\rho)$ una sua rappresentazione. Allora $\forall g \in G$ la matrice $\rho(g)$ ammette una base di autovettori in $V_\rho$, ovvero è diagonalizzabile. Inoltre, tutti gli autovalori di $\rho(g)$ sono radici $n-$esime dell'unità.
 
-\textsc{Nota bene:} Per ogni matrice in generale la base è diversa, quindi le varie matrici in generale \textbf{non} sono simultaneamente diagonalizzabili. In particolare, tutte le matrici $\rho(s)$ sono simultaneamente diagonalizzabili $\Leftrightarrow$ $G$ è abeliano. 
+\textsc{Nota bene:} Per ogni matrice in generale la base è diversa, quindi le varie matrici in generale \textbf{non} sono simultaneamente diagonalizzabili.
+Però se $G$ è abeliano tutte le matrici $\rho(s)$ sono simultaneamente diagonalizzabili. 
 
 \label{prop:diagonalizzabilita rappresentazioni}
 \end{prop}
@@ -803,14 +903,16 @@ Sia $G$ un gruppo finito e $\rho: G \to GL(V_\rho)$ una sua rappresentazione. Al
 
 Visto che il polinomio minimo di $\rho(g)$ non ha radici multiple, con il teorema di decomposizione primaria \eqref{thm:dec_primaria} si mostra facilmente che $\rho(g)$ è diagonalizzabile. Inoltre da questa formula è anche evidente che tutti gli autovalori di $\rho(g)$ hanno modulo $1$ e in particolare saranno radici $k-$esime dell'unità.
 
-Ricordiamo un teorema di algebra lineare per finire l'ultima parte della dimostrazione: due endomorfismi di uno spazio vettoriale diagonalizzabili sono simultaneamente diagonalizzabili $\Leftrightarrow$ commutano. Da questo teorema segue facilmente la seconda parte dell'enunciato. \qed
-
+Ricordiamo un teorema di algebra lineare per mostrare che se $G$ è abeliano allora
+tutte le matrici $\rho(g)$ sono simultaneamente diagonalizzabili:
+due endomorfismi di uno spazio vettoriale diagonalizzabili sono simultaneamente diagonalizzabili se e solo se commutano tra loro.
+\qed
 
 
 
 
 \begin{defn}[Omomorfismo di rappresentazioni]
-Siano $\rho$ e $\sigma$ due rappresentazioni di $G$ su $V_{\rho}$ e $V_{\sigma}$ rispettivamente, un omomorfismo di spazi vettorali $\varphi:V_{\rho}\to V_{\sigma}$ si dice \textit{omomorfismo di rappresentazioni} se
+Siano $\rho$ e $\sigma$ due rappresentazioni di $G$ su $V_{\rho}$ e $V_{\sigma}$ rispettivamente. Un omomorfismo di spazi vettorali $\varphi:V_{\rho}\to V_{\sigma}$ si dice \textit{omomorfismo di rappresentazioni} se
 \[
 	\forall\ a\in G, \forall\ v\in V_{\rho}\quad \varphi(\rho(a)(v)) = \sigma(a)(\varphi(v))
 \]
@@ -2435,11 +2537,12 @@ di $\rho$
 \[ End_G(V_\rho)\]
 è un'algebra di divisione su $R$ se dotato della composizione.
 Infatti per lemma di Schur (in particolare la prima parte dell'enunciato, che vale su ogni campo) ogni elemento di $End_G(V_\rho)$ o è la funzione nulla oppure è un isomorfismo, quindi ammette inverso.
-Se il gruppo è finito, ovviamente l'algebra sarà di dimensione finita. 
+Se $\dim V_\rho = n$ allora $End_G(V_\rho)$, essendo contenuto in $End(V_\rho)$, ha dimensione finita, in particolare $\dim End_G(V_\rho)\le n^2$.
+Vedremo tuttavia che vale una limitazione molto più forte.
 \end{rem}
 
 
-Presentiamo ora un sorprendente teorema che afferma che non ci sono altre algebre di divisione di dimensione finita oltre a quelle che abbiamo elencato come esempi, ovvero $\R, \C, \HH$.
+Presentiamo ora un sorprendente teorema che afferma che non ci sono altre algebre di divisione di dimensione finita su $\R$ oltre a quelle che abbiamo elencato come esempi, ovvero $\R, \C, \HH$.
 \begin{thm}[di Frobenius]
 \label{thm: frobenius}
 Sia $A$ un'algebra di divisione su $\R$ di dimensione finita. Allora si ha 
@@ -2506,8 +2609,6 @@ ovvero $\psi_z$ scambia $A_+$ e $A_-$. Inoltre $\psi_z$ è bigettiva e lineare, 
 Con un ragionamento simile a quello che avevamo fatto per $\alpha$, osserviamo che $z^2$ è nel sottospazio generato da $1$ e $z$. Inoltre $z^2=\psi_z(z)\in A_+$.
 Visto che $Span(1,z) \cap A_+ = \R$ deve essere per forza $z^2\in\R$.
 
-
-
 Se fosse $z^2 \ge 0$ allora potremmo scrivere $z^2=r^2$ per qualche $r\in\R$.
 Visto che $r$ e $z$ commutano sarebbe allora $(z-r)(z+r)=0$, dunque uno dei due fattori sarebbe $0$, assurdo perché $z\not\in\R$. Pertanto $z^2 < 0$ e possiamo definire
 \[j = \frac{z}{\sqrt{-z^2}}\]
@@ -2515,6 +2616,37 @@ così $j^2 = -1$. Infine definiamo $k = ij$.
 
 Ora $k$ e $j$ sono indipendenti e sono in $A_-$, dunque formano una base di $A_-$. Allora $\{1,i,j,k\}$ è base per $A$ ed è facile
 verificare che questi quattro elementi rispettano le stesse regole di moltiplicazione dei quaternioni, pertanto si conclude che $A\cong\HH$ e la tesi è dimostrata.\qed
+
+Dal teorema precedente si ha immediatamente che se $G\to GL(V)$ è una rappresentazione irriducibile su $\R$ allora $End_G(V)$ è isomorfo a uno
+tra $\R, \C, \HH$.
+
+\begin{prop}
+Sia $\rho:G\to GL(V)$ rappresentazione irriducibile su $\R$. Allora:
+\begin{itemize}
+\item $End_G(V) \cong \R$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 1$
+\item $End_G(V) \cong \C$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 2$
+\item $End_G(V) \cong \HH$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 4$
+\end{itemize}
+\end{prop}
+\textsc{Dimostrazione: }
+Basta ricordare che $\dim End_G(V) = \langle\chi_\rho|\chi_\rho\rangle$ e la tesi segue subito
+dal teorema di Frobenius.
+\qed
+
+\begin{lemma}
+Sia $\rho:G\to GL(V)$ rappresentazione irriducibile su $\R$. Allora $\dim V^G = \langle\chi_\rho|\chi_1\rangle$
+\end{lemma}
+\textsc{Dimostrazione: }
+Definiamo un'applicazione lineare $R:V\to V$ nel seguente modo:
+\[ R = \frac{1}{|G|} \sum_{g\in G}{\rho(g)} \]
+Se prendiamo $v\in V$ e $s\in G$ allora
+\[ \rho(s) R(v) = \rho(s)\frac{1}{|G|} \sum_{g\in G}{\rho(g)v} = \frac{1}{|G|} \sum_{g\in G}{\rho(sg)v} = R(v)\]
+ovvero $R(v)\in V^G$.
+Inoltre se $w\in V^G$ allora $R(w)=w$. Di conseguenza $R^2 = R$ (cioè $R$ è una cosiddetta \emph{proiezione})
+e quindi $R$ si diagonalizza con autovalori $0$ e $1$. Inoltre l'autospazio relativo a $1$ è proprio $V^G$.
+Ciò implica che
+\[ \dim V^G = tr(R) = \frac{1}{|G|} \sum_{g\in G}{\chi_\rho(g)} = \langle\chi_\rho|\chi_1\rangle \]
+\qed
 
 
 
