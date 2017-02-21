@@ -633,7 +633,7 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 
 \end{thm}
 
-\textsc{Dimostrazione:} L'applicazione $\phi: V x W \to \K$ che manda $(f\otimes g)$ in $tr(f) tr(g)$ è bilineare, e quindi corrisponde a un funzionale $\Phi: V x W \to \K$ lineare. Bisogna verificare che soddisfa le due proprietà della definizione.  È evidente che $\Phi[ (id_V \otimes id_W)  ]  $ 
+\textsc{Dimostrazione:} L'applicazione $\phi: V \otimes W \to \K$ che manda $(f\otimes g)$ in $tr(f) tr(g)$ è bilineare, e quindi corrisponde a un funzionale $\Phi: V \otimes W \to \K$ lineare. Bisogna verificare che soddisfa le due proprietà della definizione.  È evidente che $\Phi[ (id_V \otimes id_W)  ]  $ 
 
 
 \subsection{Prodotto esterno e prodotto simmetrico}
@@ -876,11 +876,15 @@ Due rappresentazioni si dicono \textit{isomorfe} se esiste un omomorfismo di rap
 \subsection{Operazioni con le rappresentazioni}
 
 \begin{defn}[Somma di rappresentazioni]
+  Date due diverse rappresentazioni dello stesso gruppo $G$, $rho: G \to GL(V_\rho), \ \sigma: G \to GL(V_\sigma)$ si può definire la rappresentazione somma $\rho + \sigma$ definita sullo spazio vettoriale $V_\rho \oplus V_\sigma$ definita in modo ovvio
 
+  \[ (\rho + \sigma)(g) v = \rho(g) \pi_{V_\rho}(v) + \sigma(g) \pi_{V_\sigma}(v) \qquad \forall v \in V_\rho \oplus V_\sigma \]
+
+  Questa definizione ha senso, infatti proiettando $v$ sui due spazi di partenza le due rappresentazioni sono definite e rimangono nello spazio di partenza. Si può poi fare la somma se riportiamo il tutto nello spazio più grande.
 \label{defn:somma di rappresentazioni}
 \end{defn}
 
-Osservazioni:
+\textsc{Osservazioni:}
 
 \begin{enumerate}
 \item $\rho + \sigma \cong \sigma + \rho$
@@ -894,12 +898,17 @@ Osservazioni:
 
 
 \begin{defn}[Prodotto di rappresentazioni]
+  Date due rappresentazioni dello stesso gruppo $G$, $\rho: G \to GL(V_\rho), \sigma: G \to GL(V_\sigma)$ possiamo definire il prodotto di rappresentazioni che si indica con $\rho \otimes \sigma$  ma anche con $\rho\sigma$\footnote{Quest'ultima notazione può portare a confusione in quanto può essere scambiata con la composizione se le due rappresentazioni sono definite sullo stesso spazio, quindi cercheremo di evitarla.} definita sullo spazio $V_\rho \otimes V_\sigma$ tale che
 
+  \[ \rho \otimes \sigma(g) (v \otimes w) = \rho(g) v \otimes \sigma(g) w \qquad \forall v \in V_\rho, w \in V_\sigma\]
+
+  Non è restrittivo dare la definizione solo per gli elementi di $V_\rho \otimes V_\sigma$ decomponibili, in quanto sappiamo che sono una base dello spazio. Gli altri si otterranno per linearità.
+  
 \label{defn:prodotto di rappresentazioni}
 \end{defn}
 
 
-Osservazioni:
+\textsc{Osservazioni:}
 
 
 \begin{enumerate}
@@ -916,7 +925,7 @@ Osservazioni:
 
 
 \begin{defn}[Rappresentazione duale]
-Sia $\rho$ una rappresentazione di $G$ su $v_\rho$. Allora la rappresentazione duale $\rho^*$ è la rappresentazione di $G$ su $v_\rho ^*$ tale che $\rho^*(s)=\rho(s^{-1})^t$
+Sia $\rho$ una rappresentazione di $G$ su $V_\rho$. Allora la rappresentazione duale $\rho^*$ è la rappresentazione di $G$ su $V_\rho ^*$ tale che $\rho^*(s)=\rho(s^{-1})^t$
 \label{defn:rappresentazione duale}
 \end{defn}
 
@@ -925,7 +934,7 @@ $\rho^*(s)=\rho(s^{-1})^t=\left(\rho(s)^{-1}\right)^t=\left(\rho(s)^t\right)^{-1
 \end{note}
 
 
-Osservazione: vale
+\textsc{Osservazione:} vale
 
 \[ (\rho + \sigma)^* \cong \rho^* + \sigma^* \]
 
@@ -936,8 +945,19 @@ E l'isomorfismo è canonico. SCRIVI DIMOSTRAZIONE.
 
 
 \begin{defn}[Rappresentazione regolare]
+  Consideriamo un gruppo $G$, per semplicità finito, e consideriamo uno spazio vettoriale $V_\rho$ di dimensione $|G|$ su $\C$. Una base di questo spazio ha sicuramente dimensione $|G|$. Possiamo indicare gli elementi della base con $e_g, \ \ \forall g \in G$. Un generico vettore di questo spazio si scrive quindi come
 
-\label{defn:rappresentazione regolare}
+  \[ v = \dsum_{g \in G} a_g e_g \]
+
+  Dove $a_g$ sono dei numeri complessi. Possiamo definire una rappresentazione di $G$ su questo spazio in questo modo:
+
+  \[ \rho(h)v = \rho(h) \dsum_{g \in G} a_g e_g = \dsum_{g\in G} a_g \rho(h) e_g := \dsum_{g \in G} a_g e_{gh} \]
+
+  Notare che questa definizione ha senso in quanto essendo $G$ un gruppo, $gh \in G$ e quindi sicuramente $e_{gh}$ è un elemento della base. Questa particolare rappresentazione di $G$ si chiama \emph{rappresentazione regolare} di $G$
+
+
+  
+  \label{defn:rappresentazione regolare}
 \end{defn}
 
 \begin{exmp}[La rappresentazione regolare di $S_3$]
@@ -957,10 +977,6 @@ E l'isomorfismo è canonico. SCRIVI DIMOSTRAZIONE.
 \subsection{Sottospazi invarianti e scomposizione delle rappresentazioni}
 
 
-\begin{defn}[Sottospazio invariante]
-NON VA MESSO TUTTO ASSIEME NELLA DEFINIZIONE DI SOTTORAPPRESENTAZIONE???
-
-\end{defn}
 
 \begin{defn}[Sottorappresentazione]
 Sia $\rho$ una rappresentazione di $G$ su $V_{\rho}$, una sottorappresentazione di $\rho$ è un sottospazio vettoriale $W\subseteq V_{\rho}$ tale che $\rho(s)(W)\subseteq W\ \forall\ s\in G$. Posso definire una rappresentazione $\sigma$ con $V_{\sigma}=W$ e $\sigma(s)=\rho(s)|_W$ (la indicherò con $\sigma\subseteq \rho$).
@@ -991,23 +1007,48 @@ Una rappresentazione $\rho$ di $G$ è \textit{irriducibile} se
 
 
 \begin{thm}[Le rappresentazioni di un gruppo finito sono completamente riducibili]
-
+  Sia $G$ un gruppo finito e $\rho: G \to GL(V_\rho)$ una sua rappresentazione. Allora $\rho$ è completamente riducibile.
+  \label{thm:gruppo finito completamente riducibile}
 \end{thm}
+Per dimostrare questo teorema ci servono diversi lemmi che enunciamo e andiamo a dimostrare. Finiti i lemmi seguirà la dimostrazione.
 
-\begin{prop}[Prodotto hermitiano invariante]
 
+\begin{prop}[Prodotto hermitiano invariante] Sia $G$ un gruppo finito e $\rho: G \to V_\rho$ una sua rappresentazione. Allora lo spazio vettoriale $V_\rho$ ammette una forma hermitiana invariante sotto l'azione di $G$, ovvero un prodotto tale che $h(v,w) = h(\rho(g), v, \rho(g) w) \ \forall v,w\in V_\rho, \forall g \in G$
 \end{prop}
+
+\textsc{Dimostrazione:}
+
+Lo spazio $V_\rho$ ammette sicuramente una forma hermitiana, che chiamiamo $h$. Ora andiamo a fare una sorta di media per trasformare questa forma in una invariante. Consideriamo quindi
+
+\[h_G(v, w) := \dfrac{1}{|G|} \dsum_{g \in G} h(\rho(g)v,\rho(g) w) \]
+
+\'E abbastanza facile mostrare adesso che effettivamente $h_G$ è invariante sotto l'azione di $G$. Infatti,
+
+\[ h_G(\rho(h)v, \rho(h) w) = \dsum_{g \in G} h(\rho(gh)v , \rho(gh) w)\]
+
+Ma dato che $G$ è un gruppo, questo vuol dire solo \emph{far partire la somma da un indice diverso.} Di conseguenza $h_G$ è $G$-invariante \qed
 
 
 \begin{lemma}
 Sia $h: V_\rho \times V_\rho \to \C$ una forma hermitiana definita positiva e invariante per $\rho: G \to GL(V_\rho)$ e sia $\rho|_W: G \to GL(W)$ una sottorappresentazione di $\rho$. Allora se $W^\perp$ è l'ortogonale di $W$, $\rho|_{W^\perp}: G \to GL(W^\perp)$ è una sottorappresentazione.
 
-
-
-
 \end{lemma}
 
+\textsc{Dimostrazione:}
 
+Per noti teoremi di algebra lineare sappiamo che
+
+\[ V_\rho = W \oplus W^\perp \]
+
+Di conseguenza un generico vettore di $V_\rho$ si potrà scrivere come somma di $w_1 + w_2$, con $w_1 \in W$ e $w_2 \in W^\perp$. Inoltre sappiamo che $\rho_{|_W}$ è una sottorappresentazione. Mostriamo che anche $\rho_{|_W^\perp}$ è una sottorappresentazione: quello che dobbiamo mostrare è che $\rho(g) w_2 \in W^\perp \ \forall g \in G$. Dato che abbiamo un prodotto hermitiano la cosa più facile da verificare è che $w_2$ sia ortogonale a $W$. Consideriamo quindi l'espressione
+
+\[ 0 = h(w_1, w_2) \qquad \forall w_1 \in W, \forall w_2 \in W^\perp\]
+
+Ma noi sappiamo che $h$ è $G$-invariante, quindi
+
+\[ 0 = h(w_1, w_2) = h(\rho(g) w_1, \rho(g) w_2) \qquad \forall w_1 \in W, \forall w_2 \in W^\perp \]
+
+E dato che $\rho(g) W = W$ per ipotesi, abbiamo mostrato che $\rho(w_2) \in W^\perp$. \qed
 
 
 
@@ -1019,15 +1060,25 @@ Sia $\rho: G \to GL(V_\rho)$ una rappresentazione di un gruppo finito $G$. Sia $
 \end{lemma}
 
 
+\textsc{Dimostrazione:} La tesi segue dai due lemmi precedenti. L'ipotesi di gruppo finito si usa per l'esistenza della forma hermitiana invariante. \qed
 
 
 
+\begin{rem} Notare che il teorema precedente è falso per gruppi infiniti. (Esempio con $\mathbb{Z}^+$ che Salvatore non ha scritto con cura. Porco salvatore)
 
-\begin{rem} Notare che il teorema precedente è falso per gruppi finiti. (Esempio con $\mathbb{Z}^+$ che Salvatore non ha scritto con cura. Porco salvatore)
-
-
-
+  QUALCUNO SCRIVA L'ESEMPIO
 \end{rem}
+
+
+
+
+
+
+\textsc{Dimostrazione del teorema \ref{thm:gruppo finito completamente riducibile}:}
+
+Sia $\rho: G \to GL(V_\rho)$ una rappresentazione di $G$. Se $\rho$ è irriducibile, allora è completamente riducibile e quindi segue la tesi. Se invece esiste un sottospazio invariante $W$, allora per i lemmi precedenti esiste $Z \subset V_\rho$ tale che $V_\rho = W \oplus Z$ e tale che $Z$ sia una sottorappresentazione. Per induzione si procede fino ad ottenere la tesi. \qed
+
+
 
 
 
