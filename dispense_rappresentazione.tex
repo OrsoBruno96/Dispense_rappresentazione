@@ -84,6 +84,10 @@
 \newcommand{\dsum}{\displaystyle\sum}
 \newcommand{\dint}{\displaystyle\int}
 
+\newcommand{\ddim}{\textnormal{dim}}
+\newcommand{\ddeg}{\textnormal{deg}}
+\newcommand{\ttr}{\textnormal{tr}}
+
 
 
 
@@ -1576,15 +1580,42 @@ E con l'affermazione precedente si ottiene appunto il lemma di Burnside
 
 Lo spazio delle funzioni da $G$ in $\C$ costanti sulle classi di coniugio di $G$
 
-Chiaramente $dimCl(G) = $ numero di classi di coniugio di $G$ $:= s$. La tesi del teorema è che $r = s$ dove $r$ è il numero di rappresentazioni irriducibili. 
+Chiaramente $\ddim Cl(G) = $ numero di classi di coniugio di $G$ $:= s$. La tesi del teorema è che $r = s$ 
+dove $r$ è il numero di rappresentazioni irriducibili. 
 
-\textsc{Osservazione:} Per questo motivo la tabella dei caratteri sarà una tabella quadrata
+\textsc{Osservazione:} Per questo motivo la tabella dei caratteri sarà una tabella quadrata.
 
 \end{thm}
 
 \textsc{Dimostrazione:}
- DA SCRIVERE
+ 
+Mostriamo intanto che $r \leq s$: i caratteri di $\rho_1, \ldots , \rho_r$ sono infatti ortonormali rispetto alla forma hermitiana
+definita positiva $\langle . | .\rangle$, e quindi sono indipendenti (non posso avere più di $s$ vettori linearmente indipendenti 
+in uno spazio vettoriale di dimensione $s$).
 
+Verifichiamo ora che $\langle \chi_{\rho_1}, \ldots, \chi_{\rho_r} \rangle ^{\perp} = {0}$. Sia $f \in Cl(G)$ e $\rho$ una rappresentazione,
+definiamo $T_f= \frac{1}{|G|}\dsum_s f(s)\rho(s)$ e verifichiamo che è un omomorfismo di rappresentazioni: 
+$$ T_f \circ \rho(t) = \frac{1}{|G|}\dsum_s f(s)\rho(s) \rho(t) = \frac{1}{|G|}\dsum_s \rho(t) \rho(t^{-1}) f(s)\rho(s) \rho(t) =$$
+
+$$= \frac{1}{|G|}\rho(t) \dsum_s f(s) \rho(t^{-1}) \rho(s) \rho(t) = \frac{1}{|G|}\rho(t) \dsum_s f(s) \rho(t^{-1}st) = 
+\frac{1}{|G|}\rho(t) \dsum_{s'} f(s') \rho(s')= \rho(t) \circ T_f$$
+
+Abbiamo usato il fatto che $f(s)\in \C$, quindi commuta con $\rho(g)$, e che $f$ è una funzione di classe nella 
+sostituzione di $s$ con $s'= t^{-1}st$ (essendo il coniugio un automorfismo, cambia solo l'ordine della somma).
+
+Se $\rho$ è irriducibile, $T_f= \alpha I$ è uno scalare per il lemma di Schur, $\alpha= \frac{\ttr(T_f)}{\ddeg(\rho}$.
+Si ha $$\alpha =\frac{1}{\ddeg(\rho)}\ttr(T_f)=\frac{1}{\ddeg(\rho)|G|}\dsum_s f(s) \chi_\rho(s)=
+\frac{1}{\ddeg(\rho)} \langle f | \chi_{\rho^*} \rangle = 0$$ se $f \in \langle \chi_{\rho_1}, \ldots, \chi_{\rho_r} \rangle ^{\perp}$.
+
+Generalizziamo a quando $\rho$ non è irriducibile, ossia $\rho = \sigma_1+ \ldots + \sigma_n$, con $\sigma_i$ irriducibili. Allora 
+si ha $V_\rho = V_{\sigma_1}  \oplus \ldots \oplus V_{\sigma_n}$, ed essendo $T_f=0 $ su ogni $V_{\sigma_i}$, è nullo anche su $V_\rho$.
+
+Mostriamo che questo implica $f=0$: sia $R$ la rappresentazione regolare di $G$; si ha:
+$$ 0= |G| T_f (e_1) = \dsum_s f(s) R(s)(e_1) = \dsum_s f(s) e_s $$
+
+Di conseguenza $f(s)=0 \quad \forall s \in G$ essendo gli $e_s$ una base di $V_R$.
+In questo modo abbiamo mostrato che $\langle \chi_{\rho_1}, \ldots, \chi_{\rho_r} \rangle ^{\perp} = \{0\}$, quindi $r=s$.
+\qed
 
 
 
