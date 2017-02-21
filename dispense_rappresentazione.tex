@@ -897,7 +897,7 @@ Però se $G$ è abeliano tutte le matrici $\rho(s)$ sono simultaneamente diagona
 \label{prop:diagonalizzabilita rappresentazioni}
 \end{prop}
 
-\textsc{Dimostrazione:} Se $G$ è un gruppo finito, allora $\exists k | g^k = e$\footnote{Dato che $g$ è finito, se prendo l'insieme delle potenze $I = \{g^k| k\in \mathbb{Z}\}$, proprio perchè $G$ è finito si ha che $I$ ha un numero finito di elementi, quindi ci saranno $m,n \in \mathbb{Z}$ tali che $g^m = g^n = h$. Dato che nei gruppi esiste l'inverso, sarà $g^{n-m} = e$}. Dato che $\rho:G\to GL(V_\rho)$ mantiene queste proprietà in quanto omomorfismo, dovrà essere
+\textsc{Dimostrazione:} Se $G$ è un gruppo finito, allora esiste un intero positivo $k$ tale che $g^k = e$. Dato che $\rho:G\to GL(V_\rho)$ mantiene queste proprietà in quanto omomorfismo, dovrà essere
 
 \[ \rho(g)^k = id\]
 
@@ -940,8 +940,20 @@ Due rappresentazioni si dicono \textit{isomorfe} se esiste un omomorfismo di rap
 
 
 \paragraph{Rappresentazioni di grado 1}
-\begin{thm}[Le classi di isomorfismo delle rappresentazioni di grado 1 sono gli omomorfismi da $G$ in $\C^*$]
+Dato un gruppo $G$, le sue rappresentazioni di grado $1$ sono per definizione
+omomorfismi che vanno da $G$ all'insieme degli isomorfismi di $\C-$spazi vettoriali di dimensione $1$.
+Senza perdere di generalità possiamo supporre che lo spazio vettoriale sia proprio $\C$. Dunque le
+rappresentazioni di grado $1$ non sono altro che omomorfismi $G\to\C^*$.
+\begin{thm}
+Gli omomorfismi $G\to\C^*$ sono rappresentazioni di $G$ tra loro non isomorfe.
 \end{thm}
+\begin{proof}
+Siano $\rho:G\to\C^*$ e $\sigma:G\to\C^*$ rappresentazioni isomorfe. Allora
+esiste $\varphi:\C\to\C$ isomorfismo di $\C$ (ovvero $\varphi\in\C^*$) tale che per ogni $g\in G$ vale $\varphi \rho(g) = \sigma(g) \varphi$.
+Visto che $\C^*$ è commutativo abbiamo allora che $\rho(g) = \sigma(g)$ per ogni $g\in G$, il che vuol dire che 
+in realtà $\rho$ e $\sigma$ sono proprio la stessa rappresentazione.
+\end{proof}
+
 Negli esercizi sarà necessario trovare le possibili rappresentazioni di un gruppo $G$ (che qui supporremo finito), un buon punto di partenza è cercare per prima cosa le rappresentazioni di grado 1. Per fare questo c'è un metodo generale (indicheremo con $\rho$ la rappresentazione cercata e con $\mu_m$ il sottoinsieme di $\C$ che contiene le radici $m$-esime dell'unità):\footnote{stiamo cercando un omomorfismo di gruppi da $G$ a $GL(\C)=\C^*$}:
 \begin{enumerate}
 	\item cercare i generatori del gruppo $G$, che indicheremo con $g_1, \ldots, g_k$
