@@ -79,6 +79,7 @@
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\HH}{\mathbb{H}}
 \newcommand{\dsum}{\displaystyle\sum}
 \newcommand{\dint}{\displaystyle\int}
@@ -215,7 +216,7 @@ e si indica $H \trianglelefteq G$.
 \end{defn}
 
 \begin{rem}
-	Dato $G$ un gruppo, $H<G$, non è difficile mostrare che tutte le classi laterali di $H$ in $G$ hanno la stessa cardinalità.
+	Dato $G$ un gruppo, $H<G$, non è difficile mostrare che tutte le classi laterali di $H$ in $G$ hanno la stessa cardinalità, in particolare hanno tutte la cardinalità della classe $eH$, ma $eH=H$ come insieme, quindi tutte le classi laterali di $H$ hanno la stessa cardinalità di $H$.
 \end{rem}
 
 
@@ -837,16 +838,37 @@ Due rappresentazioni si dicono \textit{isomorfe} se esiste un omomorfismo di rap
 
 
 \paragraph{Rappresentazioni di grado 1}
-
 \begin{thm}[Le classi di isomorfismo delle rappresentazioni di grado 1 sono gli omomorfismi da $G$ in $\C^*$]
-
-
 \end{thm}
+Negli esercizi sarà necessario trovare le possibili rappresentazioni di un gruppo $G$ (che qui supporremo finito), un buon punto di partenza è cercare per prima cosa le rappresentazioni di grado 1. Per fare questo c'è un metodo generale (indicheremo con $\rho$ la rappresentazione cercata e con $\mu_m$ il sottoinsieme di $\C$ che contiene le radici $m$-esime dell'unità):\footnote{stiamo cercando un omomorfismo di gruppi da $G$ a $GL(\C)=\C^*$}:
+\begin{enumerate}
+	\item cercare i generatori del gruppo $G$, che indicheremo con $g_1, \ldots, g_k$
+	\item per ogni generatore $g_i$ trovare il suo ordine $n_i$ (ovvero il minimo intero $n_i$ tale che $g_i^{n_i}=e$)
+	\item imporre che $\rho(g_i)\in \mu_{n_i}$ per ogni $i=1,\ldots,k$
+	\item imporre infine che $\rho:G\to GL(\C)$ sia veramente un omomorfismo di gruppi (per ora abbiamo solo posto delle condizioni necessarie), per fare ciò bisogna controllare che le \textit{relazioni} con cui può essere presentato il gruppo siano rispettare nell'immagine\footnote{questo in parole povere significa che tutte le regole con cui vengono moltiplicati gli elementi devono essere rispettate, per dare una spiegazione formale servirebbero i prodotti liberi che però non sono necessari per questo corso}.
+\end{enumerate}
+Questo definisce un omomorfismo da $G$ a $\C^*$: dato $h\in G$ t.c. $h=g_{i_1}^{a_1}\cdots g_{i_t}^{a_t}$, allora $\rho(h) = \rho(g_{i_1})^{a_1}\cdots \rho(g_{i_t})^{a_t}$.
+\begin{rem}
+	Non è detto che tutte le rappresentazioni che si ottengono siano non isomorfe, questo metodo solamente le produce tutte.
+\end{rem}
 
 
 \begin{exmp}[Rappresentazioni di grado 1 di $C_n$]
-
+Dato $G=C_n$, prendiamo un suo generatore $g$ (un qualsiasi elemento di ordine $n$), imponiamo che $\rho(g)\in \mu_n$ (ovvero $\rho(g)=e^{2k\pi i/n}$ per qualche $k\in \{0,\ldots,n-1\}$). Visto che $\forall h\in G\ \exists k\in \N$ t.c. $h=g^k$, ho già definito $\rho$ su ogni elemento di $G$.\newline
+Ora abbiamo definito tutte le rappresentazioni di $C_n$ di grado 1, ma sono tutte distinte? In effetti mostriamo che in questo case il processo che abbiamo operato ha prodotto tutte rappresentazioni non isomorfe. Supponiamo di avere due rappresentazioni $\rho_1, \rho_2$ trovate con il metodo descritto sopra, supponiamo inoltre di avere $\varphi:\rho_1\to\rho_2$ un isomorfismo di rappresentazioni, vediamo che questo è assurdo: se fosse un isomorfismo di rappresentazioni dovrebbe valere che $\forall x\in \C, \forall g\in G$ $\varphi( \rho_1(g)x ) = \rho_2(g)( \varphi(x) )$, ma $\rho_1(g)$ è la moltiplicazione per uno scalare e $\varphi$ è lineare, quindi vorrebbe dire che $\rho_1(g)\varphi( x ) = \rho_2(g)( \varphi(x) )$, preso $x\neq 0$ si ottiene che $\rho_1(g)=\rho_2(g)\forall g\in G$, e questo è assurdo perchè differiscono almeno su un generatore di $G$.
 \end{exmp}
+
+L'esempio di prima era particolarmente semplice quindi non abbiamo dovuto faticare troppo, però il procedimento descritto è abbastanza laborioso con gruppi più complicati, vediamo un altro metodo che, conoscendo un quoziente abeliano di $G$, fornisce alcune rappresentazioni di grado 1 del gruppo.
+\subparagraph{}
+Sia $G$ un gruppo, $H\trianglelefteq G$ t.c. $G/H$ sia abeliano, allora trovando le rappresentazioni di $G/H$ di grado 1 siamo capaci di ricostruire delle rappresentazioni di grado 1 di $G$: consideriamo $\pi:G\to G/H$ la proiezione al quoziente, ovvero $\pi(g)=gH$, e un omomorfismo di gruppi $\rho:G/H\to \C^*$ (la rappresentazione di $G/H$), allora come omomorfismo $\sigma:G\to GL(\C)$ (ovvero una rappresentazione di $G$) prendiamo l'omomorfismo che fa commutare il seguente diagramma:
+
+
+VORREI DISEGNARE IL DIAGRAMMA MA NON SONO CAPACE, SE QUALCUNO LO SA FARE PER FAVORE LO FACCIA
+
+
+ovvero $\sigma(g)=\rho(\pi(g))$.\newline
+Questo metodo è particolarmente potente perchè, per ogni rappresentazione $\rho:G\to GL(\C)$, l'immagine è un gruppo abeliano, quindi, in virtù del primo teorema di omomorfismo, l'immagine di una qualsiasi rappresentazione $\rho$ di grado 1 è un quoziente abeliano di $G$.
+(ORA NON LO SCRIVO, MA BISOGNA AGGIUNGERE NELLA SEZIONE DI ALGEBRA IL PRIMO TEOREMA DI OMOMORFISMO E AGGIUNGERE IL LINK)
 
 
 \begin{exmp}[Rappresentazioni di grado 1 di $S_3$]
@@ -876,7 +898,7 @@ Due rappresentazioni si dicono \textit{isomorfe} se esiste un omomorfismo di rap
 \subsection{Operazioni con le rappresentazioni}
 
 \begin{defn}[Somma di rappresentazioni]
-  Date due diverse rappresentazioni dello stesso gruppo $G$, $rho: G \to GL(V_\rho), \ \sigma: G \to GL(V_\sigma)$ si può definire la rappresentazione somma $\rho + \sigma$ definita sullo spazio vettoriale $V_\rho \oplus V_\sigma$ definita in modo ovvio
+  Date due diverse rappresentazioni dello stesso gruppo $G$, $\rho: G \to GL(V_\rho), \ \sigma: G \to GL(V_\sigma)$ si può definire la rappresentazione somma $\rho + \sigma$ definita sullo spazio vettoriale $V_\rho \oplus V_\sigma$ definita in modo ovvio
 
   \[ (\rho + \sigma)(g) v = \rho(g) \pi_{V_\rho}(v) + \sigma(g) \pi_{V_\sigma}(v) \qquad \forall v \in V_\rho \oplus V_\sigma \]
 
@@ -1064,14 +1086,17 @@ Sia $\rho: G \to GL(V_\rho)$ una rappresentazione di un gruppo finito $G$. Sia $
 
 
 
-\begin{rem} Notare che il teorema precedente è falso per gruppi infiniti. (Esempio con $\mathbb{Z}^+$ che Salvatore non ha scritto con cura. Porco salvatore)
-
-  QUALCUNO SCRIVA L'ESEMPIO
+\begin{rem} Notare che il teorema precedente è falso per gruppi infiniti. Un esempio si può costruire prendendo $G=\Z$, $V=\C^2$, e come rappresentazione
+\begin{align*}
+	\rho:&\Z\to GL(\C^2)\\
+	&k\to M^k
+\end{align*}
+dove $M=\begin{pmatrix}
+        	1 & 1\\
+        	0 & 1
+        \end{pmatrix}$ è scritta nella base canonica.\newline
+Si vede subito che una sottorappresentazine è $Span(e_1)$ essendo $e_1$ autovettore per ogni $\rho(k)$, ma non esiste un suo complementare $G$-invariante: se esistesse avrebbe dimesione 1, quindi avremmo diagonalizzato $\rho(k)\ \forall k\in \Z$, ma sappiamo che tali endomorfismi non sono diagonalizzabili. 
 \end{rem}
-
-
-
-
 
 
 \textsc{Dimostrazione del teorema \ref{thm:gruppo finito completamente riducibile}:}
@@ -1092,10 +1117,10 @@ Se $v\in Ker(f)$ allora per la definizione di omomorfismo di rappresentazioni ho
 
 
 \begin{thm}Sia $G$ un gruppo abeliano finito. Allora ogni rappresentazione di $G$ è isomorfa alla somma di rappresentazioni di grado 1.
-
-
-
 \end{thm}
+\begin{proof}
+	\'E una conseguenza immediata della proposizione \eqref{prop:diagonalizzabilita rappresentazioni}: sia $\rho:G\to GL(V_{\rho})$, con $dim V_{\rho} = n$, dato che $G$ è finito $\forall g\in G$ $\rho(g)$ è diagonalizzabile inoltre, visto che è abeliano, si sfrutta l'osservazione alla fine della proposizione per dedurre che le $\rho(g)$ sono simultaneamente diagonalizzabili. A questo punto il teorema è dimostrato: sia $\{v_1,\ldots,v_n\}$ una base comune di autovettori, per ogni $1\leq i\leq n$ $Span(v_i)$ è una sottorappresentazione di grado 1 di $G$ (perchè invariante per $G$), visto che $V_{\rho}=Span(v_1)\oplus\ldots\oplus Span(v_n)$, allora $\rho\cong\rho_1+\ldots+\rho_n$, dove $\rho_i:G\to GL(Span(v_i))$.
+\end{proof}
 
 
 \begin{prop} La rappresentazione regolare $\mathcal{R}$ di $C_n$ è isomorfa alla somma delle $n$ rappresentazioni irriducibili di grado 1 di $C_n$.
