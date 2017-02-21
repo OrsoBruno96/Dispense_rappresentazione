@@ -86,9 +86,24 @@
 
 
 
-
-
-
+\newcommand{\tridiag}[6]{
+	\[
+	  \begin{diagram}
+	  #1 & \rTo^{#2}  & #3        \\
+	     & \rdTo_{#6} & \dTo>{#4}   \\
+	     &          & #5
+	  \end{diagram}
+	\]
+}  
+\newcommand{\quaddiag}[8]{
+      \[
+	\begin{diagram}
+	#1     & \rTo^{#2} & #3 \\
+	\dTo<{#6} &         & \dTo>{#4} \\
+	#7     & \rTo^{#8} & #5
+	\end{diagram}
+      \]
+}
 
 
 
@@ -637,22 +652,14 @@ Ora è facile osservare che $e:I\to\C^I$ definita da $e_i(j) = \delta_{i,j}$ è 
 
 \subsection{Prodotto tensoriale}
 
-
-% \[ \tridiag{V\times W}{ \otimes }{V\otimes W}{\phi}{Z}{f} \]
-  
-
-
 \begin{defn}[Prodotto tensoriale]
    Siano $V, W$ due $\mathbb{C}$-spazi vettoriali. Si dice prodotto tensore di $V$ e $W$, 
    e si indica come $V\otimes W$, uno spazio vettoriale con una funzione bilineare 
    $\otimes: V \times W \to V\otimes W$ tale che per ogni data funzione bilineare $h: V\times W \to  Z$,
-   esiste unica $\phi: V\otimes W \to Z$ lineare per cui $\phi(v \otimes w)=h(v,w)$.
-   Questa proprietà viene detta proprietà universale e la funzione $\otimes: V \times W \to V\otimes W$
+   esiste unica $\phi: V\otimes W \to Z$ lineare per cui $\phi(v \otimes w)=h(v,w)$. Ovvero questa $\phi$ fa commutare il diagramma:
+   \tridiag{V\times W}{ \otimes }{V \otimes W}{\phi}{Z}{h}
+   Questa proprietà viene detta proprietà universale del prodotto tensoriale e la funzione $\otimes: V \times W \to V\otimes W$
    viene detta funzione universale.
-%	\tridiag{V\times W}{ \otimes }{V \otimes W}{\phi}{Z}{f}
-
-
-
 \label{defn:prodotto tensoriale}
 \end{defn}
 
@@ -975,13 +982,11 @@ Ora abbiamo definito tutte le rappresentazioni di $C_n$ di grado 1, ma sono tutt
 L'esempio di prima era particolarmente semplice quindi non abbiamo dovuto faticare troppo, però il procedimento descritto è abbastanza laborioso con gruppi più complicati, vediamo un altro metodo che, conoscendo un quoziente abeliano di $G$, fornisce alcune rappresentazioni di grado 1 del gruppo.
 \subparagraph{}
 Sia $G$ un gruppo, $H\trianglelefteq G$ t.c. $G/H$ sia abeliano, allora trovando le rappresentazioni di $G/H$ di grado 1 siamo capaci di ricostruire delle rappresentazioni di grado 1 di $G$: consideriamo $\pi:G\to G/H$ la proiezione al quoziente, ovvero $\pi(g)=gH$, e un omomorfismo di gruppi $\rho:G/H\to \C^*$ (la rappresentazione di $G/H$), allora come omomorfismo $\sigma:G\to GL(\C)$ (ovvero una rappresentazione di $G$) prendiamo l'omomorfismo che fa commutare il seguente diagramma:
+\tridiag G \pi {G/H} \rho {GL(\C)} \sigma
+ovvero $\sigma(g)=\rho(\pi(g))$.
 
-
-VORREI DISEGNARE IL DIAGRAMMA MA NON SONO CAPACE, SE QUALCUNO LO SA FARE PER FAVORE LO FACCIA
-
-
-ovvero $\sigma(g)=\rho(\pi(g))$.\newline
-Questo metodo è particolarmente potente perchè, per ogni rappresentazione $\rho:G\to GL(\C)$, l'immagine è un gruppo abeliano, quindi, in virtù del primo teorema di omomorfismo, l'immagine di una qualsiasi rappresentazione $\rho$ di grado 1 è un quoziente abeliano di $G$.
+Questo metodo è particolarmente potente perché, per ogni rappresentazione $\sigma:G\to GL(\C)$, l'immagine è un gruppo abeliano, quindi, in virtù del primo teorema di omomorfismo, l'immagine di una qualsiasi rappresentazione $\sigma$ di grado 1 è un quoziente abeliano di $G$.
+Questo implica che in realtà il metodo esposto è in grado di trovare \textbf{tutte} le rappresentazioni di $G$ di grado $1$.
 (ORA NON LO SCRIVO, MA BISOGNA AGGIUNGERE NELLA SEZIONE DI ALGEBRA IL PRIMO TEOREMA DI OMOMORFISMO E AGGIUNGERE IL LINK)
 
 
