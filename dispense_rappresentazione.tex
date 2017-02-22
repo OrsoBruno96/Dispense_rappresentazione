@@ -1224,6 +1224,7 @@ Per dimostrare questo teorema ci servono diversi lemmi che enunciamo e andiamo a
 
 
 \begin{prop}[Prodotto hermitiano invariante] Sia $G$ un gruppo finito e $\rho: G \to V_\rho$ una sua rappresentazione. Allora lo spazio vettoriale $V_\rho$ ammette una forma hermitiana invariante sotto l'azione di $G$, ovvero un prodotto tale che $h(v,w) = h(\rho(g), v, \rho(g) w) \ \forall v,w\in V_\rho, \forall g \in G$
+\label{thm:esistenza hermitiana}
 \end{prop}
 
 \textsc{Dimostrazione:}
@@ -1323,6 +1324,48 @@ Date $\rho_1, \rho_2, \sigma$ rappresentazioni di $G$, allora
 
 \end{lemma}
 
+\textsc{Dimostrazione:}
+
+
+% Consideriamo il lato sinistro dell'uguaglianza. Un generico elemento $\phi \in Hom(\rho_1 + \rho_2, \sigma)$ è una mappa                                                                         %
+%                                                                                                                                                                                                  %
+% \[ \phi: V_{\rho_1} \oplus V_{\rho_2} \to V_\sigma \]                                                                                                                                            %
+%                                                                                                                                                                                                  %
+% che commuti con la rappresentazione, ovvero tale che                                                                                                                                             %
+%                                                                                                                                                                                                  %
+% \[ \phi\left( (\rho_1 + \rho_2 ) (g) v\right) = \sigma(g) \phi(v) \qquad \forall v \in V_{\rho_1} \oplus V_{\rho_2} \ , \forall g \in G\]                                                        %
+%                                                                                                                                                                                                  %
+%                                                                                                                                                                                                  %
+% Esibiamo una mappa $\Xi: Hom(\rho_1 + \rho_2, \sigma) \to Hom(\rho_1, \sigma) \oplus Hom(\rho_2, \sigma)$ nel modo più sensato e mostriamo che è un isomorfismo. In particolare, definiamo $\Xi$ %
+%                                                                                                                                                                                                  %
+%                                                                                                                                                                                                  %
+% \[ \Xi(\phi)(v) =  \phi\left( \pi_{V_{\rho_1} } (v)\right) + \phi\left( \pi_{V_{\rho_2}} (v) \right)\]                                                                                           %
+
+
+Consideriamo il lato destro dell'uguaglianza. Un elemento $\phi_i \in Hom(\rho_i, \sigma)$ si potrà scrivere
+
+\[
+\phi_i :V_{\rho_i} \to V_\sigma | \quad \phi_i\left( \rho_i(g) v\right) = \sigma(g) \phi_i(v) \qquad \forall v \in V_{\rho_i}, \ \forall g \in G 
+\]
+
+Esibiamo ora una mappa 
+\begin{align*}
+\Xi :  Hom(\rho_1, \sigma) \oplus Hom(\rho_2, \sigma) &\to Hom(\rho_1 + \rho_2, \sigma) \\
+\phi_1 , \phi_2                                       &\to \phi_1 + \phi_2 \\
+\end{align*}
+ in modo ovvio e mostriamo che è un isomorfismo. 
+
+\[ \Xi (\phi_1(v) + \phi_2(v)) = (\phi_1 + \phi_2) (v) \]
+
+
+Innanzitutto la funzione $\phi_1 + \phi_2 : V_{\rho_1} \oplus V_{\rho_2}$ è effettivamente un omomorfismo di rappresentazioni e il motivo è che le due rappresentazioni in un certo senso agiscono separatamente sui due spazi senza interferire, quindi la verifica è immediata. 
+
+$\Xi$ è inettiva in quanto per l'appunto le due rappresentazioni agiscono in modo separato sui due spazi e quindi affinché due coppie di $\phi_i$ diano lo stesso risultato, devono essere uguali le coppie.
+
+$\Xi$ inoltre è suriettiva in quanto PERCHÉ? 
+
+\qed
+
 
 \begin{thm}[Lemma di Schur]
 Siano $\rho: G \to GL(V_\rho)$ e $\sigma: G \to GL(V_\sigma)$ due rappresentazioni irriducibili di $G$ gruppo finito e $\phi:V_\rho \to V_\sigma$ un omomorfismo di rappresentazioni, allora $\phi$ è un isomorfismo oppure è identicamente nullo. Se poi $f:V_\rho\to V_\rho$ è un omomorfismo di rappresentazioni e lo spazio vettoriale $V_\rho$ è su $\C$ o su un campo algebricamente chiuso $\K$, allora $f$ è una moltiplicazione per scalare.
@@ -1350,6 +1393,48 @@ Sia $\rho$ una rappresentazione di $G$ e $\mathcal{R}$ la sua rappresentazione r
 
 
 
+\textsc{Dimostrazione:}
+
+Per i lemmi precedenti possiamo andare a scomporre sia $\rho$ che $\mathcal{R}$ in termini di rappresentazioni irriducibili a due a due non isomorfe, in particolare
+
+
+\[ 
+\begin{cases}
+\mathcal{R} = \dsum_{i = 1}^N n_i \mathcal{R}_i \\
+\rho = \dsum_{j = 1}^M m_j \rho_j \\
+\end{cases}
+\]
+
+
+E quindi si avrà 
+
+\[ deg(\rho) =  \dsum_{j = 1}^M m_j deg(\rho_j) \]
+
+Inoltre possiamo andare a scrivere lo spazio $Hom(\mathcal{R}, \rho)$ in modo molto migliore:
+
+
+\[Hom(\mathcal{R}, \rho) = Hom\left( \dsum_{i = 1}^N n_i \mathcal{R}_i , \dsum_{j = 1}^M m_j \rho_j \right) \cong \bigoplus_{i = 1}^N \bigoplus_{j=1}^M Hom(\mathcal{R}_i , \rho_j) ^{n_im_j}\]
+
+E quindi, calcolandone la dimensione,
+
+
+\[ dim (Hom(\mathcal{R}, \rho)) = \dsum_{i=1}^N \dsum_{j=1}^M n_im_j dim Hom(\mathcal{R}_i, \rho_j) \]
+
+A questo punto, dato che le rappresentazioni sono irriducibili, possiamo usare il lemma di Schur e dire che la dimensione di quegli omomorfismi è sempre o 0 o 1, se le rappresentazioni sono isomorfe o meno. Scriviamo in modo intelligente l'espressione in modo da mettere in evidenza delle cose utili.
+
+
+
+\[ dim (Hom(\mathcal{R}, \rho)) = \dsum_{j = 1}^M m_j \left( \dsum_{i = 1}^N n_i dimHom(\mathcal{R}_i, \rho_j)\right)\]
+
+Dato che le rappresentazioni $\mathcal{R}_i$ sono due a due non isomorfe, la sommatoria ha al più un termine
+
+
+E ORA COME SI CONCLUDE? DEVO USARE CHE $\mathcal{R}$ È LA RAPPRESENTAZIONE REGOLARE PER DIRE CHE PRENDE TUTTE LE RAPPRESENTAZIONI, MA NON SO FARLO. QUALCUNO CERCHI LA FINE DELLA DIMOSTRAZIONE E LA METTA
+
+
+
+
+
 
 \begin{thm}
 Sia $\mathcal{R}$ la rappresentazione regolare di $G$, un gruppo finito, e sia 
@@ -1359,6 +1444,17 @@ Sia $\mathcal{R}$ la rappresentazione regolare di $G$, un gruppo finito, e sia
 Con $\rho_i$ irriducibili e a due a due non isomorfe. Allora ogni rappresentazione irriducibile di $G$ è isomorfa ad una $\rho_i$. Inoltre $n_i = deg(\rho_i)$ 
 \label{thm: teorema importantissimo}
 \end{thm}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1488,7 +1584,7 @@ Se $(\rho, V_\rho)$ e $(\sigma, V_\sigma)$ sono rappresentazioni \footnote{Non n
 
 L'idea principale per dimostrare questo lemma è di ridurci al caso più facile in cui una delle due rappresentazioni è quella banale. Per farlo notiamo un paio di cose
 
-\[ \langle \chi_\rho | \chi_\sigma \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \overline{\chi_\rho(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho^*}(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho^*\sigma}(s)  = \langle \chi_{\rho^*\sigma} \rangle | 1\]
+\[ \langle \chi_\rho | \chi_\sigma \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \overline{\chi_\rho(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho^*}(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho^*\sigma}(s)  = \langle \chi_{\rho^*\sigma}  | 1 \rangle\]
 
 Siamo passati da due rappresentazioni ad una sola. In particolare lo spazio vettoriale su cui agisce questa rappresentazione è 
 
@@ -1500,12 +1596,12 @@ E questo isomorfismo segue semplicemente dalle proprietà del prodotto tensore d
 
 \'E possibile mostrare che se chiamo $\Psi$ la mappa tale che
 
-\[
-\begin{cases}
-V_\rho^* \otimes V_\sigma \xrightarrow{\Psi} Hom(V_\rho, V_\sigma)\\
-\rho\sigma^* \xrightarrow{\Psi} \tau \\
-\end{cases}
-\]
+
+\begin{align*}
+V_\rho^* \otimes V_\sigma &\xrightarrow{\Psi} Hom(V_\rho, V_\sigma)\\
+\rho\sigma^* &\xrightarrow{\Psi} \tau \\
+\end{align*}
+
 
 Allora $\Psi$ è un isomorfismo di rappresentazioni. Dimostriamolo rapidamente. Innanzitutto definiamo in modo esplicito $\Psi$. Basterà definirlo per i tensori decomponibili, per il resto dello spazio basterà estenderlo per linearità.
 
@@ -1685,15 +1781,15 @@ $$= \frac{1}{|G|}\rho(t) \dsum_s f(s) \rho(t^{-1}) \rho(s) \rho(t) = \frac{1}{|G
 Abbiamo usato il fatto che $f(s)\in \C$, quindi commuta con $\rho(g)$, e che $f$ è una funzione di classe nella 
 sostituzione di $s$ con $s'= t^{-1}st$ (essendo il coniugio un automorfismo, cambia solo l'ordine della somma).
 
-Se $\rho$ è irriducibile, $T_f= \alpha I$ è uno scalare per il lemma di Schur, $\alpha= \frac{\tr(T_f)}{\deg(\rho}$.
+Se $\rho$ è irriducibile, $T_f= \alpha I$ è uno scalare per il lemma di Schur, $\alpha= \frac{\tr(T_f)}{\deg(\rho)}$.
 Si ha $$\alpha =\frac{1}{\deg(\rho)}\tr(T_f)=\frac{1}{\deg(\rho)|G|}\dsum_s f(s) \chi_\rho(s)=
 \frac{1}{\deg(\rho)} \langle f | \chi_{\rho^*} \rangle = 0$$ se $f \in \langle \chi_{\rho_1}, \ldots, \chi_{\rho_r} \rangle ^{\perp}$.
 
 Generalizziamo a quando $\rho$ non è irriducibile, ossia $\rho = \sigma_1+ \ldots + \sigma_n$, con $\sigma_i$ irriducibili. Allora 
 si ha $V_\rho = V_{\sigma_1}  \oplus \ldots \oplus V_{\sigma_n}$, ed essendo $T_f=0 $ su ogni $V_{\sigma_i}$, è nullo anche su $V_\rho$.
 
-Mostriamo che questo implica $f=0$: sia $R$ la rappresentazione regolare di $G$; si ha:
-$$ 0= |G| T_f (e_1) = \dsum_s f(s) R(s)(e_1) = \dsum_s f(s) e_s $$
+Mostriamo che questo implica $f=0$: sia $\mathcal{R}$ la rappresentazione regolare di $G$; si ha:
+$$ 0= |G| T_f (e_1) = \dsum_s f(s) \mathcal{R}(s)(e_1) = \dsum_s f(s) e_s $$
 
 Di conseguenza $f(s)=0 \quad \forall s \in G$ essendo gli $e_s$ una base di $V_R$.
 In questo modo abbiamo mostrato che $\langle \chi_{\rho_1}, \ldots, \chi_{\rho_r} \rangle ^{\perp} = \{0\}$, quindi $r=s$.
@@ -2329,7 +2425,7 @@ Prendiamo una $(\rho, V_\rho)$ rappresentazione $/\C$ che sia reale: allora:
 
 \end{thm}
 
-\textsc{Dimostrazione:} Abbiamo supposto la rappresentazione reale. Quindi la matrice è reale ed in particolare lo sarà anche la sua traccia. Quindi il primo punto è vero. Ora veniamo al secondo punto: esisterà un $V_0$ spazio vettoriale reale $G-$invariante che tensorizzato con $\C$ da $V$. Consideriamo ora una forma bilineare simmetrica $B_0$ non degenere $/\R$
+\textsc{Dimostrazione:} Abbiamo supposto la rappresentazione reale. Quindi la matrice è reale ed in particolare lo sarà anche la sua traccia. Quindi il primo punto è vero. Ora veniamo al secondo punto: esisterà un $V_0$ spazio vettoriale reale $G-$invariante che tensorizzato con $\C$ dia $V$. Consideriamo ora una forma bilineare simmetrica $B_0$ non degenere $/\R$
 
 \[ B_0 \in S^2 V_0^*\]
 
@@ -2552,7 +2648,7 @@ Sia $(\rho, V_\rho)$ una rappresentazione irriducibile su $\C$. Allora $\rho$ è
 
 $\Leftarrow)$ Sia $B \in (S^2V_\rho^*)^G$, con $dim_\C V_\rho = n$. Noi stiamo cercando un certo $V_0 \subset V_\rho$ spazio vettoriale su $\R$ tale che $V_\rho = V_0 \oplus i V_0$ 
 
-Prendiamo ora una certa forma $h : V_\rho \times V_\rho \to \C$ hermitiana, definita positiva e $G-$invariante. Questa sicuramente esiste, è stato dimostrato nel teorema METTI IL LINK,
+Prendiamo ora una certa forma $h : V_\rho \times V_\rho \to \C$ hermitiana, definita positiva e $G-$invariante. Questa sicuramente esiste, è stato dimostrato nel teorema \ref{thm:esistenza hermitiana},
 
 Definiamo a questo punto un endomorfismo di $V_\rho$ che chiamiamo $\phi: V_\rho \to V_\rho$, definito come
 
