@@ -261,7 +261,7 @@ e si indica $H \trianglelefteq G$.
 \end{defn}
 
 \begin{defn}[Classi di coniugio]
-Sia $G$ un gruppo, $x \in G$, la classe di coniugio di $x$ è l'insieme $\{ gxg^{-1} | g\in G \}$. Si dimostra facilmente che le classi di coniugio di tutti gli elementi di $G$ formano una partizione del gruppo stesso. Si osserva inoltre che un sottogruppo è normale se e solo se è unione di classi di coniugio (ATTENZIONE: è raro che unendo a caso classi di coniugio si ottenga un sottogruppo).
+Sia $G$ un gruppo, $x \in G$, la classe di coniugio di $x$ è l'insieme $\{ gxg^{-1} | g\in G \}$. Si dimostra facilmente che le classi di coniugio di tutti gli elementi di $G$ formano una partizione del gruppo stesso. Si osserva inoltre che un sottogruppo è normale se e solo se è unione di classi di coniugio (\textsc{Attenzione:} è raro che unendo a caso classi di coniugio si ottenga un sottogruppo).
 \end{defn}
 
 
@@ -340,6 +340,15 @@ SAREBBE UTILE SCRIVERE UN COMANDO PER SCRIVERE ORB(X) SOLO CHE NON SO COME SI FA
 Sia $G$ un gruppo che agisce sull'insieme $I$, dato $x\in I$ si chiama \textit{orbita} di $x$ in $G$ l'insieme $Orb_{G}(x)=\{ g\cdot x\ |\ g\in G \}$, se il gruppo utilizzato è chiaro si può scrivere semplicemente $Orb(x)$. Si osserva subito che un'azione è transitiva se e solo se induce una unica orbita.
 \label{defn:orbita}
 \end{defn}
+
+\begin{rem} Le orbite di un gruppo $G$ sull'insieme $I$ formano una partizione dell'insieme. La verifica non è difficile. Vale inoltre la formula $|Orb_G(x)| \cdot |Stab_G(x)| = |G|$
+
+
+
+\end{rem}
+
+
+
 \begin{rem}
 	Un gruppo $G$ può agire su se stesso per coniugio, ovvero dati $g\in G$ (qui $G$ è pensato come gruppo che agisce) e $x\in G$ ($G$ pensato come insieme),
 	si pone $g\cdot x = gxg^{-1}$. Non è difficile verificare che si tratta davvero di una azione.
@@ -555,15 +564,7 @@ Detta $\rho$ una rotazione di $2\pi/n$ (che ha ordine $n$, e per inverso ha $\rh
 il gruppo $D_n$, che si può quindi presentare nel seguente modo: $$D_n=\langle\rho,\sigma|\rho^n=\sigma^2=id,\ \sigma\rho\sigma=\rho^{-1}\rangle$$
 \end{defn}
 
-\begin{rem}
- Le $n$ potenze distinte di $\rho$ sono tutte e sole le rotazioni di $D_n$, mentre gli elementi della forma $\sigma\rho^{i},\ i=0,1,..,n-1$ 
- sono tutte e sole le riflessioni. 
-\end{rem}
 
-\begin{rem}
- Si dimostra facilmente che la relazione $\sigma\rho\sigma=\rho^{-1}$ è verificata da qualsiasi rotazione $\rho$
- e qualsiasi riflessione $\sigma$.
-\end{rem}
 
 
 
@@ -741,13 +742,33 @@ Se $e_i$ è una base di $V$ e $f_i$ è una base di $W$ allora $e_i \otimes f_j$ 
 
 
 \begin{defn}
-La \emph{traccia} di un elemento del prodotto tensoriale, ovvero 
-\[ tr(f\otimes g)\], 
-è l'unico funzionale lineare $tr: V \otimes W \to \K$ che soddisfa le proprietà:
+
+
+% CHE ACCIDENTI VUOLE DIRE QUELLO CHE C'È SCRITTO QUI SOTTO??
+
+% La \emph{traccia} di un elemento del prodotto tensoriale, ovvero 
+% \[ tr(f\otimes g)\], 
+% è l'unico funzionale lineare $tr: V \otimes W \to \K$ che soddisfa le proprietà:
+% \begin{enumerate}
+% \item $tr[ (v_1 \otimes w_1) (v_2 \otimes w_2) ] = tr[ (v_2 \otimes w_2) (v_1 \otimes w_1) ] $ 
+% \item $tr[ (id_V \otimes id_W)  ]  = \mbox{dim} V \cdot \mbox{dim} W $
+% \end{enumerate}
+
+
+La \emph{traccia} viene definita come l'unica funzione $tr: End(V\otimes W) \to \K$, dove $V$ e $W$ sono spazi vettoriali su $\K$, tale che 
+
+
 \begin{enumerate}
-\item $tr[ (v_1 \otimes w_1) (v_2 \otimes w_2) ] = tr[ (v_2 \otimes w_2) (v_1 \otimes w_1) ] $ 
-\item $tr[ (id_V \otimes id_W)  ]  = \mbox{dim} V \cdot \mbox{dim} W $
+\item{ $tr\left( f \otimes g \circ h \otimes k   \right) = tr\left( h \otimes k \circ f \otimes g \right) \qquad \forall f, h \in End(V), \ \forall g, k \in End(W)$}
+\item{ $tr\left( id_V \otimes id_W \right) = dimV \cdot dimW$}
 \end{enumerate}
+
+
+
+
+
+
+
 \end{defn}
 
 
@@ -758,7 +779,7 @@ Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la
 
 \end{thm}
 
-\textsc{Dimostrazione:} L'applicazione $\phi: V \otimes W \to \K$ che manda $(f\otimes g)$ in $tr(f) tr(g)$ è bilineare, e quindi corrisponde a un funzionale $\Phi: V \otimes W \to \K$ lineare. Bisogna verificare che soddisfa le due proprietà della definizione.  È evidente che $\Phi[ (id_V \otimes id_W)  ]  $ 
+\textsc{Dimostrazione:} L'applicazione $\phi: V \otimes W \to \K$ che manda $(f\otimes g)$ in $tr(f) tr(g)$ è bilineare, e quindi corrisponde a un funzionale $\Phi: V \otimes W \to \K$ lineare. Bisogna verificare che soddisfi le due proprietà della definizione.  È evidente che $\Phi[ (id_V \otimes id_W)  ]  $ 
 
 
 \subsection{Prodotto esterno e prodotto simmetrico}
@@ -1171,6 +1192,17 @@ Una rappresentazione $\rho$ di $G$ è \textit{irriducibile} se
 
 \end{defn}
 
+
+\begin{defn}[Rappresentazione completamente riducibile]
+Una rappresentazione si dice completamente riducibile se si può scrivere come somma di rappresentazioni irriducibili.
+\end{defn}
+
+
+\begin{rem}
+Attenzione al gioco di parole in italiano: una rappresentazione irriducibile è completamente riducibile. Il nome della definizione può in effetti portare a confusione.
+\end{rem}
+
+
 \begin{rem} Normalmente la cosa che si fa più spesso in teoria della rappresentazione è cercare di scomporre la rappresentazione di un gruppo come somma di rappresentazioni irriducibili. Vedremo quindi adesso diversi teoremi che ci aiuteranno in questi problemi.
 
 \end{rem}
@@ -1293,10 +1325,10 @@ Date $\rho_1, \rho_2, \sigma$ rappresentazioni di $G$, allora
 
 
 \begin{thm}[Lemma di Schur]
-Siano $\rho$ e $\sigma$ due rappresentazioni irriducibili di $G$ gruppo finito e $\phi:\rho\to\sigma$ un omomorfismo di rappresentazioni, allora $\phi$ è un isomorfismo oppure è identicamente nullo. Se poi $f:\rho\to\rho$ è un omomorfismo di rappresentazioni, allora $f$ è una moltiplicazione per scalare.
+Siano $\rho: G \to GL(V_\rho)$ e $\sigma: G \to GL(V_\sigma)$ due rappresentazioni irriducibili di $G$ gruppo finito e $\phi:V_\rho \to V_\sigma$ un omomorfismo di rappresentazioni, allora $\phi$ è un isomorfismo oppure è identicamente nullo. Se poi $f:V_\rho\to V_\rho$ è un omomorfismo di rappresentazioni e lo spazio vettoriale $V_\rho$ è su $\C$ o su un campo algebricamente chiuso $\K$, allora $f$ è una moltiplicazione per scalare.
 \end{thm}
 \begin{proof}
-Supponiamo che $\phi\neq0$, allora sappiamo che $Ker(\phi)\subseteq V_\rho$ è una sottorappresentazione di $\rho$, ma $\rho$ è irriducibile e quindi $Ker(\phi)=0\Rightarrow \phi$ iniettiva. Ma anche $Im(\phi)\subseteq V_{\sigma}$ è una sottorappresentazione di $\sigma$ e, non essendo nulla ed essendo $\sigma$ irriducibile, coincide con tutto $V_\sigma \Rightarrow \phi$ suriettiva, da cui $\phi$ è un isomorfismo.
+Supponiamo che $\phi\neq 0$, allora sappiamo che $Ker(\phi)\subseteq V_\rho$ è una sottorappresentazione di $\rho$, ma $\rho$ è irriducibile e quindi $Ker(\phi)=0\Rightarrow \phi$ iniettiva. Ma anche $Im(\phi)\subseteq V_{\sigma}$ è una sottorappresentazione di $\sigma$ e, non essendo nulla ed essendo $\sigma$ irriducibile, coincide con tutto $V_\sigma \Rightarrow \phi$ suriettiva, da cui $\phi$ è un isomorfismo.
 Consideriamo ora $f$: sia $\lambda$ un autovalore di $f$, che esiste perché $G$ è finito e stiamo lavorando su $\C$, allora $f-\lambda Id:V_\rho\to V_\rho$ è un omomorfismo di rappresentazioni. Ma non è iniettivo, perché c'è almeno un autovettore relativo a $\lambda$, e quindi per la prima parte del lemma di Schur ho che $f-\lambda Id$ è identicamente nullo, da cui ricaviamo che $f$ è la moltiplicazione per uno scalare ($\lambda$).
 \end{proof}
 
