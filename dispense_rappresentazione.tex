@@ -260,6 +260,15 @@ e si indica $H \trianglelefteq G$.
 	Non riportiamo la dimostrazione del fatto che l'operazione così definita rispetti effettivamente gli assiomi dei gruppi.
 \end{defn}
 
+\begin{rem}
+	Attenzione a non farsi ingannare: ci si può chiedere se, dato $G$ gruppo con $H,K\trianglelefteq G$ tali che $H\cong K$, si possa concludere che $G/H\cong G/K$. Questo in generale è \textbf{falso}! Come esempio si può prendere $G=\Z$, $H=5\Z$ e $K=7\Z$, dove
+	\[
+		5\Z=\{ 5t|\ t\in \Z\}\qquad 7\Z=\{ 7t|\ t\in \Z\}
+	\]
+	Infatti evidentemente $H\cong \Z\cong K$, ma $G/H\cong \Z_5$ mentre $G/K\cong \Z_7$\footnote{Esistono controesempi anche con gruppi finiti.}.
+\end{rem}
+
+
 \begin{defn}[Classi di coniugio]
 Sia $G$ un gruppo, $x \in G$, la classe di coniugio di $x$ è l'insieme $\{ gxg^{-1} | g\in G \}$. Si dimostra facilmente che le classi di coniugio di tutti gli elementi di $G$ formano una partizione del gruppo stesso. Si osserva inoltre che un sottogruppo è normale se e solo se è unione di classi di coniugio (\textsc{Attenzione:} è raro che unendo a caso classi di coniugio si ottenga un sottogruppo).
 \end{defn}
@@ -985,7 +994,7 @@ Due rappresentazioni si dicono \textit{isomorfe} se esiste un omomorfismo di rap
 
 
 
-\paragraph{Rappresentazioni di grado 1}
+\paragraph{Rappresentazioni di grado 1}\label{par:rappr_deg_1}
 Dato un gruppo $G$, le sue rappresentazioni di grado $1$ sono per definizione
 omomorfismi che vanno da $G$ all'insieme degli isomorfismi di $\C-$spazi vettoriali di dimensione $1$.
 Senza perdere di generalità possiamo supporre che lo spazio vettoriale sia proprio $\C$. Dunque le
@@ -1018,13 +1027,13 @@ Dato $G=C_n$, prendiamo un suo generatore $g$ (un qualsiasi elemento di ordine $
 Ora abbiamo definito tutte le rappresentazioni di $C_n$ di grado 1, ma sono tutte distinte? In effetti mostriamo che in questo case il processo che abbiamo operato ha prodotto tutte rappresentazioni non isomorfe. Supponiamo di avere due rappresentazioni $\rho_1, \rho_2$ trovate con il metodo descritto sopra, supponiamo inoltre di avere $\varphi:\rho_1\to\rho_2$ un isomorfismo di rappresentazioni, vediamo che questo è assurdo: se fosse un isomorfismo di rappresentazioni dovrebbe valere che $\forall x\in \C, \forall g\in G$ $\varphi( \rho_1(g)x ) = \rho_2(g)( \varphi(x) )$, ma $\rho_1(g)$ è la moltiplicazione per uno scalare e $\varphi$ è lineare, quindi vorrebbe dire che $\rho_1(g)\varphi( x ) = \rho_2(g)( \varphi(x) )$, preso $x\neq 0$ si ottiene che $\rho_1(g)=\rho_2(g)\forall g\in G$, e questo è assurdo perchè differiscono almeno su un generatore di $G$.
 \end{exmp}
 
-L'esempio di prima era particolarmente semplice quindi non abbiamo dovuto faticare troppo, però il procedimento descritto è abbastanza laborioso con gruppi più complicati, vediamo un altro metodo che, conoscendo un quoziente abeliano di $G$, fornisce alcune rappresentazioni di grado 1 del gruppo.
+L'esempio di prima era particolarmente semplice quindi non abbiamo dovuto faticare troppo, però il procedimento descritto è abbastanza laborioso con gruppi più complicati, vediamo un altro metodo che, conoscendo un quoziente ciclico di $G$, fornisce alcune rappresentazioni di grado 1 del gruppo.
 \subparagraph{}
-Sia $G$ un gruppo, $H\trianglelefteq G$ t.c. $G/H$ sia abeliano, allora trovando le rappresentazioni di $G/H$ di grado 1 siamo capaci di ricostruire delle rappresentazioni di grado 1 di $G$: consideriamo $\pi:G\to G/H$ la proiezione al quoziente, ovvero $\pi(g)=gH$, e un omomorfismo di gruppi $\rho:G/H\to \C^*$ (la rappresentazione di $G/H$), allora come omomorfismo $\sigma:G\to GL(\C)$ (ovvero una rappresentazione di $G$) prendiamo l'omomorfismo che fa commutare il seguente diagramma:
+Sia $G$ un gruppo, $H\trianglelefteq G$ t.c. $G/H$ sia ciclico, allora trovando le rappresentazioni di $G/H$ di grado 1 siamo capaci di ricostruire delle rappresentazioni di grado 1 di $G$: consideriamo $\pi:G\to G/H$ la proiezione al quoziente, ovvero $\pi(g)=gH$, e un omomorfismo di gruppi $\rho:G/H\to \C^*$ (la rappresentazione di $G/H$), allora come omomorfismo $\sigma:G\to GL(\C)$ (ovvero una rappresentazione di $G$) prendiamo l'omomorfismo che fa commutare il seguente diagramma:
 \tridiag G \pi {G/H} \rho {GL(\C)} \sigma
 ovvero $\sigma(g)=\rho(\pi(g))$.
 
-Questo metodo è particolarmente potente perché, per ogni rappresentazione $\sigma:G\to GL(\C)$, l'immagine è un gruppo abeliano, quindi, in virtù del primo teorema di omomorfismo\eqref{alg:primo_teo_omo}, l'immagine di una qualsiasi rappresentazione $\sigma$ di grado 1 è un quoziente abeliano di $G$.
+Questo metodo è particolarmente potente perché, per ogni rappresentazione $\sigma:G\to GL(\C)$, l'immagine è un gruppo ciclico\footnote{\'E abbastanza facile convincersene ricordando che ogni elemeno di $G$ deve essere mandato in una radice dell'unità.}, quindi, in virtù del primo teorema di omomorfismo\eqref{alg:primo_teo_omo}, l'immagine di una qualsiasi rappresentazione $\sigma$ di grado 1 è un quoziente ciclico di $G$.
 Questo implica che in realtà il metodo esposto è in grado di trovare \textbf{tutte} le rappresentazioni di $G$ di grado $1$.
 
 
@@ -1038,6 +1047,9 @@ Questo implica che in realtà il metodo esposto è in grado di trovare \textbf{t
 (generalizzazione a prodotto di $C_{n_i}$)
 \end{exmp}
 
+\begin{rem}
+	\'E possibile generalizzare ulteriormente il secondo procedimento descritto. Sia $G$ un gruppo, $H\trianglelefteq G$ tale che conosciamo le rappresentazioni (irriducibili) di $G/H$, allora riusciamo a ricostruire delle rappresentazioni di $G$ allo stesso modo: sia $\rho:G/H\to GL(V)$ rappresentazione di $G/H$, $\pi:G\to G/H$ la proiezione al quoziente, si considera lo stesso omomorfismo $\sigma$ di prima: $\sigma(g) = \rho(\pi(g))$.
+\end{rem}
 
 
 
@@ -2553,56 +2565,44 @@ Vediamo un po' di proprietà interessanti. Per esempio se consideriamo
 allora questo insieme è un gruppo se munito della moltiplicazione. Possiamo andare a vedere la tabella dei caratteri di questo gruppo. 
 
 
-Per farlo possiamo cercare i sottogruppi normali $H_i$ di $Q_8$ e quozientare rispetto a quelli per cercare in modo facile delle rappresentazioni di grado 1. L'ultima rappresentazione che si trova deve avere dimensione $2$ perché $\sum n_i^2 = |G|$. Vedremo poco sotto che cosa significa questa rappresentazione.
+Per farlo possiamo utilizziamo il secondo metodo descritto nel paragrafo \eqref{par:rappr_deg_1}. Consideriamo si seguenti sottogruppi di $Q_8$
+\begin{align*}
+	H_1=\{ \pm1, \pm i \}\\
+	H_2=\{ \pm1, \pm j \}\\
+	H_3=\{ \pm1, \pm k \}
+\end{align*}
+\'E semplice verificare che $H_i$ è normale in $Q_8$ per $i=1,2,3$ e che $Q_8/H_i\cong \Z_2$\footnote{Visto che gli $H_i$ sono normali, $Q_8/H_i$ è un gruppo, avendo solo due elementi è necessariamente $\Z_2$.}. Di $\Z_2$ conosciamo le rappresentazioni di grado $1$: c'è la rappresentazione banale (che induce su $G$ la rappresentazione banale appunto) e $\rho:\Z_2\to \C^*$ che manda $[1]_2\to -1$. Da quest'ultima otteniamo le rappresentazioni che indicheremo con $\rho_i, \rho_j, \rho_k$ rispettivamente nel caso in cui quozientiamo per $H_1, H_2, H_3$; vediamo ora come calcolare una di queste, per esempio $\rho_i$, riportando il diagramma degli omomorfismi.
+\tridiag {Q_8} {\pi_1} {Q_8/H_1} \rho {\C^*} {\rho_i}
+Sia $g\in Q_8$, vogliamo capire quanto fa $\rho_i(g)$, ci sono due casi da considerare:
+\begin{enumerate}
+	\item se $g\in H_1$, allora $\pi(g) = eH_1$ dunque, visto che $eH_1$ è l'identità nel quoziente, $\rho_i(g)=1$
+	\item se $g\not\in H_1$, allora $\pi(g) =gH_1\neq eH_1$, quindi, per la definizione di $\rho$, $\rho_i(g)=-1$
+\end{enumerate}
 
 
-\begin{table}[!ht]
-\centering
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-& 1 & 1 & 2 & 2 & 2 \\
-$Q_8$ & 1 & -1 & $\pm i$ & $\pm j$ & $\pm k$ \\
-\hline
-$\rho_1$ & 1 & 1 & 1 & 1 & 1 \\
-\hline
-$\rho_i$ & 1 & 1 & 1 & -1 & -1 \\
-\hline
-$\rho_j$ & 1 & 1 & -1 & 1 & -1 \\
-\hline
-$\rho_k$ & 1 & 1 & -1 & -1 & 1 \\
-\hline
-$\rho_\HH$ & 2 & -2 & 0 & 0 & 0 \\
-\hline
-\end{tabular}
-\caption{Tabella dei caratteri di $Q_8$}
-\label{tab: caratteri q8}
-\end{table}
-
-
-
-
-
-
-
-
-
-
-
-
-
-\'E interessante notare che la tabella dei caratteri di $Q_8$ è uguale a quella di $D_4$, ma i due gruppi non sono isomorfi. Questo ci ricorda che la tabella dei caratteri dice tanto di un gruppo ma non tutto.
-
-
-COSE RANDOM SCRITTE DI FRETTA PERCH\'E devo andare a lezione
-
-%~ \[\HH = \left\{ \left \left(\begin{array}{cc} z & w \\ -\overline{w} & \overline z \end{array}\right) \right| z, w \in \C \right\} \]
-
-
-
-
-Matrici di spin di Pauli
-
-
+L'ultima rappresentazione che si trova deve avere dimensione $2$ perché abbiamo già trovato $4$ rappresentazioni di grado $1$ (quella banale più le tre $\rho_i, \rho_j, \rho_k$ essendo tutte non isomorfe\footnote{La verifica è immediata}), abbiamo inoltre esaurito le rappresentazioni di grado $1$: potremmo ancora quozientare per $H=\{ 1, -1 \}$, ma si vede abbastanza facilmente che $Q_8/H\cong Z_2\times\Z_2$, metre avevamo detto che cercavamo quozienti ciclici; dalla formula $\sum n_i^2=|Q_8| = 8$ si deduce quindi che l'ultima rappresentazione deve avere grado $2$. Quest'ultima si ottiene dalla rappresentazione matriciale dei quaternioni: è noto che i quaternioni possono essere presentati come un sottoinsieme delle matrici complesse $2\times 2$:
+\[
+	\HH = \left\{ 
+		\begin{pmatrix}
+	              	z & w\\
+	              	-\overline{w} & \overline{z}\\
+	              \end{pmatrix}
+	              \middle|\ z,w\in \C
+		\right\}
+\]
+La rappresentazione è determinata dall'omomorfismo $\rho_{\HH}:Q_8\to GL(\C^2)$ definito sui generatori:
+\[
+	\rho_{\HH}(i) = \begin{pmatrix}
+	          	i & 0\\
+	          	0 & -i\\
+	          \end{pmatrix}
+	\qquad
+	\rho_{\HH}(j) = \begin{pmatrix}
+	          	0 & 1\\
+	          	-1& 0\\
+	          \end{pmatrix}
+\]
+Quindi vediamo che gli elementi di $Q_8$ possono essere visti come matrici $2\times2$ complesse:
 \[ 
 1_\HH = 
 \left(
@@ -2637,6 +2637,45 @@ i & 0 \\
 \right)
 \qquad
 \]
+Matrici di spin di Pauli ?????????????????????????????????????????????
+
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+& 1 & 1 & 2 & 2 & 2 \\
+$Q_8$ & 1 & -1 & $\pm i$ & $\pm j$ & $\pm k$ \\
+\hline
+$\rho_1$ & 1 & 1 & 1 & 1 & 1 \\
+\hline
+$\rho_i$ & 1 & 1 & 1 & -1 & -1 \\
+\hline
+$\rho_j$ & 1 & 1 & -1 & 1 & -1 \\
+\hline
+$\rho_k$ & 1 & 1 & -1 & -1 & 1 \\
+\hline
+$\rho_\HH$ & 2 & -2 & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\caption{Tabella dei caratteri di $Q_8$}
+\label{tab: caratteri q8}
+\end{table}
+
+
+\'E interessante notare che la tabella dei caratteri di $Q_8$ è uguale a quella di $D_4$, ma i due gruppi non sono isomorfi. Questo ci ricorda che la tabella dei caratteri dice tanto di un gruppo ma non tutto.
+
+
+%COSE RANDOM SCRITTE DI FRETTA PERCH\'E devo andare a lezione
+
+%~ \[\HH = \left\{ \left \left(\begin{array}{cc} z & w \\ -\overline{w} & \overline z \end{array}\right) \right| z, w \in \C \right\} \]
+
+
+
+
+
+
+
 
 
 
