@@ -487,7 +487,7 @@ cambiare il modo in cui i singoli cicli sono presentati.
 Spesso nella scrittura in cicli disgiunti si tralasciano i cicli di lunghezza uno. Ad esempio $(3,5,7)(4,1)\in S_{12}$ ha perfettamente senso:
 i numeri $1,3,4,5,7$ vengono ``spostati'' da $\sigma$ nel modo descritto e tutti gli altri vengono lasciati fissi.
 
-I cicli, più che essere delle liste, vanno pensati come elementi di $S_n$, ovvero come funzioni bigettive da $\{1,\dots,n\}$ in sé.
+I cicli, più che essere dcome mettere i segni sopra le frecce in tikzpictureselle liste, vanno pensati come elementi di $S_n$, ovvero come funzioni bigettive da $\{1,\dots,n\}$ in sé.
 In quanto tali possono essere moltiplicati, nel senso di composizione delle funzioni. Ad esempio
 \[(1,2,3)\cdot(3,5)\]
 chiaramente non è la scrittura come prodotto di cicli disgiunti di un elemento di $S_n$, in quanto appunto i due cicli scritti
@@ -522,7 +522,7 @@ Allora $s\equiv t \mod 2$.
 \textsc{Cenno di dimostrazione: }
 Definiamo la seguente funzione $f:S_n\to\N$:
 \[f(\rho) = card\left(\left\{\quad(a,b)\in\{1,\dots,n\}^2 \quad | \quad a < b, \quad\rho(a) > \rho(b) \quad\right\}\right)\]
-Non è difficile verificare che se $\tau\in S_n$ è una trasposizione allora $f(\rho)$ e $f(\tau\rho)$ hanno parità diversa.
+Non è difficile verificare che se $\tau\in S_n$ è una trasposizione allora $f(\rho)$ e $f(\tau\rho)$ hanno parità divercome mettere i segni sopra le frecce in tikzpicturessa.
 Il risultato segue immediatamente visto che $f(\tau_1\tau_2\dots\tau_t) = f(\sigma_1\sigma_2\dots\sigma_s)$.
 \qed
 
@@ -560,7 +560,7 @@ il gruppo $D_n$, che si può presentare nel seguente modo: $$D_n=\langle\rho,\si
 \begin{rem}
  Le $n$ potenze distinte di $\rho$ sono tutte e sole le rotazioni di $D_n$, mentre gli elementi della forma $\sigma\rho^{i},\ i=0,1,..,n-1$ 
  sono tutte e sole le riflessioni. 
-\end{rem}
+\end{rem}come mettere i segni sopra le frecce in tikzpictures
 
 \begin{rem}
  Si dimostra facilmente che la relazione $\sigma\rho\sigma=\rho^{-1}$ è verificata da qualsiasi rotazione $\rho$
@@ -687,6 +687,7 @@ Ora è facile osservare che $e:I\to\C^I$ definita da $e_i(j) = \delta_{i,j}$ è 
 \label{defn:prodotto tensoriale}
 \end{defn}
 
+\textbf{Esempio:} $V=W=\C$ e come $\otimes$ prendo il prodotto ovvero $v\otimes w=vw$.
 
 \begin{prop}
 Se ho due prodotti tensoriali $V \otimes W$ e $V \overline{\otimes} W$, allora esiste un unico isomorfismo 
@@ -694,6 +695,50 @@ $\phi: V \otimes W \to V \overline{\otimes} W$ tale che
 
 \[ \phi (v\otimes w) = v \overline{\otimes} w\]
 \end{prop}
+\textbf{Dimostrazione:} considero i seguenti due diagrammi:
+ \tridiag{V\times W}{ \otimes }{V \otimes W}{  }{ V \overline{\otimes} W }{\overline{\otimes}} \tridiag{V\times W}{ \overline{\otimes} }{V \overline{\otimes} W}{}{V \otimes W}{\otimes}
+
+%
+%
+%non so come mettere i due diagrammi nella stessa riga
+%
+%
+La proprietà universale per il prodotto tensore $\otimes$ dice che $\exists !\phi:V\otimes W\rightarrow V\overline{\otimes}W$ lineare che fa commutare il primo diagramma: analogamente $\exists !\psi:V\overline{\otimes}\rightarrow V\otimes W$ lineare che fa commutare il secondo diagramma. Ora consideriamo i seguenti due diagrammi:
+
+\begin{tikzpicture}
+\matrix(m)[matrix of math nodes,row sep=2em,column sep=3em,minimum width=3em]
+{V\times W & V\otimes W\\
+           & V\overline{\otimes} W \\
+           & V\otimes W  \\ 
+};
+\path[-stealth]
+(m-1-1) edge node [left] {$\otimes$} (m-1-2)
+(m-1-1) edge node [right] { $\overline{\otimes}$ } (m-2-2)
+(m-1-1) edge node [left] { $\otimes$ } (m-3-2)
+(m-1-2) edge node [right] {$\phi$} (m-2-2)
+(m-2-2) edge node [right] {$\psi$} (m-3-2);
+\end{tikzpicture}     \ \    \begin{tikzpicture}
+\matrix(m)[matrix of math nodes,row sep=2em,column sep=3em,minimum width=3em]
+{V\times W & V\overline{\otimes} W\\
+           & V\otimes W \\
+           & V\overline{\otimes} W  \\ 
+};
+\path[-stealth]
+(m-1-1) edge node [left] {$\overline{\otimes}$} (m-1-2)
+(m-1-1) edge node [right] { $\otimes$ } (m-2-2)
+(m-1-1) edge node [left] { $\overline{\otimes}$ } (m-3-2)
+(m-1-2) edge node [right] {$\psi$} (m-2-2)
+(m-2-2) edge node [right] {$\phi$} (m-3-2);
+\end{tikzpicture}
+Tuttavia ci rendiamo conto che sempre per la proprietà universale già l'identità fa commutare i due diagrammi "più grandi" e che quindi per unicità possiamo concludere che $\phi\psi=\psi\phi=id\Rightarrow \phi=\psi^{-1}$ per unicità e $\phi$ è un isomorfismo. \qed\\ 
+Quindi quello che abbiamo dimostrato si traduce in
+\begin{thm}
+$V\otimes W$ esiste ed è unico a meno di isomorfismo.
+\end{thm}
+
+
+
+
 
 
 \begin{note}
@@ -704,6 +749,27 @@ $\phi: V \otimes W \to V \overline{\otimes} W$ tale che
 \begin{prop}
 L'insieme degli elementi di $V\otimes W$ della forma $v\otimes w$ con $v\in V, w\in W$ generano tutto lo spazio $V\otimes W$.
 \end{prop}
+
+\textbf{Dimostrazione:} Definisco
+\[<\{v\otimes w:v\in V,w\in W\}>=<A>\]
+voglio quindi dimostrare che $Z=V\otimes W$. Considero il diagramma:
+\tridiag{V\times W}{ \otimes }{V \otimes W}{  }{ <A> }{h}
+dove $h(v,w)=v\otimes w$ e dato che $A$ genera $<A>$ abbiamo ben definito una applicazione bilineare. Quindi $\exists !\phi:V\otimes W\rightarrow <A>$ che fa commutare il diagramma. Detta $i:<A>\rightarrow V\otimes W$ l'inclusione consideriamo il seguente diagramma:\\
+\begin{tikzpicture}
+\matrix(m)[matrix of math nodes,row sep=2em,column sep=3em,minimum width=3em]
+{V\times W & V\otimes W\\
+           & <A>\\
+           & V\times W  \\ 
+};
+\path[-stealth]
+(m-1-1) edge node [left] {$\otimes$} (m-1-2)
+(m-1-1) edge node [right] { $h$} (m-2-2)
+(m-1-1) edge node [left] { $i\circ h$ } (m-3-2)
+(m-1-2) edge node [right] {$\psi$} (m-2-2)
+(m-2-2) edge node [right] {$\ i$} (m-3-2);
+\end{tikzpicture}\\ tuttavia il diagramma grande commuta anche con $id_{V\otimes W}$ e quindi $i\circ\psi=id_{V\otimes W}\Rightarrow i$ è surgettiva $\Rightarrow <A>=V\otimes W$.
+
+
 
 
 \begin{defn}[Prodotto tensoriale di mappe lineari]
@@ -2567,7 +2633,7 @@ Per farlo possiamo utilizziamo il secondo metodo descritto nel paragrafo \eqref{
 	H_2=\{ \pm1, \pm j \}\\
 	H_3=\{ \pm1, \pm k \}
 \end{align*}
-\'E semplice verificare che $H_i$ è normale in $Q_8$ per $i=1,2,3$ e che $Q_8/H_i\cong \Z_2$\footnote{Visto che gli $H_i$ sono normali, $Q_8/H_i$ è un gruppo, avendo solo due elementi è necessariamente $\Z_2$.}. Di $\Z_2$ conosciamo le rappresentazioni di grado $1$: c'è la rappresentazione banale (che induce su $G$ la rappresentazione banale appunto) e $\rho:\Z_2\to \C^*$ che manda $[1]_2\to -1$. Da quest'ultima otteniamo le rappresentazioni che indicheremo con $\rho_i, \rho_j, \rho_k$ rispettivamente nel caso in cui quozientiamo per $H_1, H_2, H_3$; vediamo ora come calcolare una di queste, per esempio $\rho_i$, riportando il diagramma degli omomorfismi.
+\'E semplice verificare che $H_i$ è normale in $Q_8$ per $i=1,2,3$ e che $Q_8/H_i\cong \Z_2$\footnote{Visto che gli $H_i$ sono normali, $Q_8/H_i$ è un gruppo, avendo solo due elementi è necessariamente $\Z_2$.}. Di $\Z_2$ conosciamo le rappresentazioni di grado $1$: c'è la rappresentazione banale (che induce su $G$ la rappresentazione banale appunto) e $\rho:\Z_2\to \C^*$ che manda $[1]_2\to -1$. Da quest'ultima otteniamo le rappresentaziocome mettere i segni sopra le frecce in tikzpicturesni che indicheremo con $\rho_i, \rho_j, \rho_k$ rispettivamente nel caso in cui quozientiamo per $H_1, H_2, H_3$; vediamo ora come calcolare una di queste, per esempio $\rho_i$, riportando il diagramma degli omomorfismi.
 \tridiag {Q_8} {\pi_1} {Q_8/H_1} \rho {\C^*} {\rho_i}
 Sia $g\in Q_8$, vogliamo capire quanto fa $\rho_i(g)$, ci sono due casi da considerare:
 \begin{enumerate}
@@ -2590,7 +2656,7 @@ La rappresentazione è determinata dall'omomorfismo $\rho_{\HH}:Q_8\to GL(\C^2)$
 \[
 	\rho_{\HH}(i) = \begin{pmatrix}
 	          	i & 0\\
-	          	0 & -i\\
+	          	0 & -i\\come mettere i segni sopra le frecce in tikzpictures
 	          \end{pmatrix}
 	\qquad
 	\rho_{\HH}(j) = \begin{pmatrix}
@@ -2627,7 +2693,7 @@ j_\HH =
 k_\HH =
 \left(
 \begin{array}{cc}
-0 & i \\
+0 & i \\come mettere i segni sopra le frecce in tikzpictures
 i & 0 \\
 \end{array}
 \right)
@@ -2935,7 +3001,7 @@ Data $f\in \{f:\C\rightarrow W\}$ (che contiene $V$) definiamo il supporto di $f
 \end{defn}
 
 \begin{defn}
-Dato $g\in G$ definiamo $V_g=\{f\in V : Supp(f)\subseteq gH \}$.
+Dato $g\in G$ definiamo $V_g=\{f\in V : Supp(f)\subseteq gH \}$.come mettere i segni sopra le frecce in tikzpictures
 \end{defn}
 
 \textbf{Osservazione:} se $g'\in gH$, allora $g'H=gH\Rightarrow V_g=V_{g'}$. Quindi più che dipendere dagli elementi di $G$, gli insiemi sopra definiti dipendono dalle classi laterali di $H$ in $G$. Perciò ora parleremo non più di $V_g$ bensì di $V_{gH}$.\\
