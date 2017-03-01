@@ -567,11 +567,7 @@ il gruppo $D_n$, che si può presentare nel seguente modo: $$D_n=\langle\rho,\si
  e qualsiasi riflessione $\sigma$.
 \end{rem}
 
-\begin{defn}[Gruppo diedrale]
-L'insieme $D_n$ delle rotazioni e simmetrie di un poligono regolare di $n$ lati è un gruppo con l'operazione di composizione.
-Detta $\rho$ una rotazione di $2\pi/n$ (che ha ordine $n$, e per inverso ha $\rho^{n}$) e $\sigma$ una qualunque riflessione (che ha ordine $2$), esse generano
-il gruppo $D_n$, che si può quindi presentare nel seguente modo: $$D_n=\langle\rho,\sigma|\rho^n=\sigma^2=id,\ \sigma\rho\sigma=\rho^{-1}\rangle$$
-\end{defn}
+
 
 
 
@@ -1235,7 +1231,7 @@ Attenzione al gioco di parole in italiano: una rappresentazione irriducibile è 
 Per dimostrare questo teorema ci servono diversi lemmi che enunciamo e andiamo a dimostrare. Finiti i lemmi seguirà la dimostrazione.
 
 
-\begin{prop}[Prodotto hermitiano invariante] Sia $G$ un gruppo finito e $\rho: G \to V_\rho$ una sua rappresentazione. Allora lo spazio vettoriale $V_\rho$ ammette una forma hermitiana invariante sotto l'azione di $G$, ovvero un prodotto tale che $h(v,w) = h(\rho(g), v, \rho(g) w) \ \forall v,w\in V_\rho, \forall g \in G$
+\begin{prop}[Prodotto hermitiano invariante] Sia $G$ un gruppo finito e $\rho: G \to V_\rho$ una sua rappresentazione. Allora lo spazio vettoriale $V_\rho$ ammette una forma hermitiana invariante sotto l'azione di $G$, ovvero un prodotto tale che $h(v,w) = h(\rho(g) v, \rho(g) w) \ \forall v,w\in V_\rho, \forall g \in G$
 \label{thm:esistenza hermitiana}
 \end{prop}
 
@@ -1983,7 +1979,7 @@ $S_3$  & $e$ & $(1 2)$ & (1 2 3 )    \\
 \hline
 $\epsilon$ & 1 & -1 & 1 \\
 \hline
-$\rho$ & 2 & 0 & 1 \\
+$\rho$ & 2 & 0 & -1 \\
 \hline
 \end{tabular}
 \caption{Tabella dei caratteri di $S_3$}
@@ -2212,7 +2208,7 @@ $S_4$  & $e$ & $(1 2)$ & (1 2 3 )    \\
 \hline
 $\epsilon$ & 1 & -1 & 1 \\
 \hline
-$\sigma$ & 2 & 0 & 1 \\
+$\sigma$ & 2 & 0 & -1 \\
 \hline
 \end{tabular}
 \end{table}
@@ -3050,23 +3046,103 @@ dove l'uguaglianza è vera perchè $\rho_{ind}(g^{-1})(v)\in V_{eH}$. Quindi coi
 
 
 
+\subsubsection{Le rappresentazioni dei gruppi diedrali $D_{2n}$}
+Per fare un esempio di come si possano usare le rappresentazioni indotte, studiamo le rappresentazioni dei gruppi diedrali. Ricordiamo che i gruppi diedrali hanno due generatori, che in accordo con quello che è stato fatto all'inizio del corso chiameremo $\sigma$ e $\tau$. Il gruppo $G = D_{2n}$ si scrive quindi
+
+\[ D_{2n} = \{ 1, \sigma, \sigma^2, ... \sigma^{n-1}, \tau, \tau\sigma, ... \tau\sigma^{n-1} | \ \tau^2 = \sigma^n = 1, \quad, \sigma\tau = \tau\sigma^{n-1} \}\]
+
+
+Consideriamo l'ovvio sottogruppo $H$ generato da $\sigma$, che è evidentemente un gruppo ciclico, isomorfo a $\Z / n \Z$. Le rappresentazioni di questo gruppo, dato che è abeliano, sono decisamente banali, in quanto sono di grado 1 e sono le radici ennesime dell'unità. In particolare la rappresentazione $\rho_k$ è univocamente determinata dal suo valore sul generatore. Indicheremo in modo naturale
+
+\[\rho_k(\sigma) = \omega^k  \qquad \omega = e^{\frac{2\pi i}{n}}\]
+
+
+Studiamo ora la rappresentazione che induce $\rho_k$, ovvero studiamo $Ind_G^H \rho_k$, che per amore di brevità indicheremo con $Ind \rho_k$. \'E abbastanza utile notare che noi conosciamo la dimensione della rappresentazione indotta, in quanto conosciamo la formula
+
+\[ dim Ind^H_G \rho_k = |G/H| deg \rho_k = 2 \cdot 1 = 2\]
+
+Per andare avanti è intelligente ricordare la definizione di questo spazio. Indicheremo con $W$ lo spazio su cui agisce $Ind \rho_k$ (che è ovviamente isomorfo a $\C^2$)
+
+
+\[ Ind \rho_k = \{ f : G \to W \ f(gh) = \rho(h)^{-1} f(g) \quad \forall g \in G, \forall h \in H \}\]
+
+Possiamo prendere una base di questo spazio per scrivere la matrice che le rappresenta e calcolarne poi il carattere, per esempio. Scegliamo questa base: prendiamo le funzioni $f_H, f_{\tau H}$ definite da 
+
+\[ 
+\begin{cases}
+f_H (e) = 1 \\
+f_H (\tau) = 0 \\
+\end{cases}
+\qquad
+\begin{cases}
+f_{\tau H} (e) = 0 \\
+f_{\tau H } (\tau) = 1 \\
+\end{cases}
+\]
 
 
 
+Evidentemente questa è una base e, data la definizione dello spazio, è anche sufficiente a determinare il comportamento delle funzioni su tutto il gruppo $G$.
+
+In particolare una generica funzione $f \in Ind \rho_k$ si potrà scrivere come $\C$ combinazione lineare delle due funzioni appena definite, ovvero
+
+\[ f = a f_H + b f_{\tau H} \qquad a,b \in \C\]
+
+
+Possiamo ovviamente esprimere la funzione in modo diretto come
+
+\[ f(g) = f(1) f_H(g) + f(\tau) f_{\tau H} (g) \]
+
+Ora che abbiamo lo spazio dove agiscono le rappresentazioni indotte, dobbiamo trovare esplicitamente le rappresentazioni. Per ogni $\rho_k$, indicheremo con $\hat \rho_k$ la sua indotta. Per vedere come è fatta, facciamola agire sulla base dello spazio. In questo modo potremo scriverla come matrice.
+
+Dobbiamo quindi calcolare
+
+\[ 
+\begin{cases}
+\hat \rho_k (\sigma) f_H \\ 
+\hat \rho_k (\sigma) f_{\tau H} \\
+\end{cases}
+\qquad
+\begin{cases}
+\hat \rho_k (\tau) f_H \\
+\hat \rho_k (\tau) f_{\tau H}\\
+\end{cases}
+\]
+
+Facciamo questa cosa in quanto in realtà dovremmo calcolare su ogni elemento del gruppo la matrice, ma sappiamo che $\sigma$ e $\tau$ generano il gruppo, ed è più facile moltiplicare matrici piuttosto che fare conti di questo tipo.  Per esempio
+
+
+\[ 
+\hat \rho_k (\sigma) f_H(1) = f_H(\sigma^{-1}) = \rho_k(\sigma) f_H(1) = \omega^k f_H(1)
+\]
+
+Con conti analoghi si ottiene
+
+
+\[ 
+\hat \rho_k (\sigma) = 
+\left(
+\begin{array}{cc}
+\omega^k & 0 \\
+0 & \omega^{-k} \\
+\end{array}
+\right)
+\qquad
+\hat \rho_k (\tau) = 
+\left(
+\begin{array}{cc}
+0 & 1 \\
+1 & 0 \\
+\end{array}
+\right)
+\]
+
+
+A questo punto abbiamo un sacco di rappresentazioni di $D_{2n}$. Se vogliamo costruire tutte le rappresentazioni del gruppo dobbiamo domandarci se sono irriducibili o meno e in caso decomporle. Alcuni casi particolari si vedono abbastanza facilmente. Per esempio, per $k=0$, $\hat \rho_k(\sigma) = Id$. Di conseguenza, tutte le $\hat \rho_0$ sono simultaneamente diagonalizzabili e quindi in realtà la rappresentazione non sarà irriducibile in quanto il gruppo diventa abeliano.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+BISOGNA FINIRE CHE DEVO ANDARE A LEZIONE.
 
 
 
