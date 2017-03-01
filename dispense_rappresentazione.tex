@@ -3165,6 +3165,144 @@ BISOGNA FINIRE CHE DEVO ANDARE A LEZIONE.
 
 
 
+\newpage
+\section{Rappresentazioni di gruppi compatti}
+
+Ci piacerebbe in qualche modo estendere quello che abbiamo fatto per i gruppi finiti ad una categoria particolare di gruppi infiniti, in particolare i gruppi compatti. Per farlo, abbiamo bisogno di un po' di definizioni che generalizzino quello che abbiamo fatto. 
+
+
+\begin{defn}[Gruppo topologico] Dato un insieme $G$, una funzione $\cdot: G\times G \to G$ e un sottoinsieme delle parti di $G$, $\tau$, la terna $(G, \cdot, \tau)$ si dice gruppo topologico se valgono le seguenti proprietà:
+
+\begin{itemize}
+\item $(G, \cdot)$ è un gruppo.
+\item $(G, \tau)$ è uno spazio topologico.
+\item Le due operazioni $\cdot : G \times G \to G$ e $i: G \to G$, la seconda definita come la mappa che manda $g $ in $g^{-1}$,  sono continue secondo la topologia indotta da $\tau$.
+\end{itemize}
+
+\end{defn}
+
+
+La definizione che abbiamo dato sopra è in un certo senso l'unica che si poteva dare per mettere insieme topologia e gruppi, in quanto le prime due sono obbligate e la terza di dice che in qualche modo vogliamo che le due operazioni di gruppo e di topologia si parlino fra di loro e che non siano indipendenti. Si possono fare diversi esempi, come
+
+
+\begin{itemize}
+\item $G$ finito, con la topologia discreta
+\item $G$ qualsiasi, con la topologia discreta
+\item Il gruppo additivo dei numeri reali $(\R, +)$ con la topologia euclidea
+\item Il gruppo $GL_n (\R)$ (o anche su $\C$), con la topologia indotta da quella di $M_n(\R)$
+
+\end{itemize}
+
+
+In questo corso non parleremo di rappresentazioni di gruppi topologici in generale, ma solo di alcuni, ovvero quelli compatti. Per cui diamo la definizione
+
+\begin{defn}
+$(G, \cdot, \tau)$ si dice compatto se $(G, \tau)$ è compatto.
+\end{defn}
+
+
+Facciamo un po' di esempi di gruppi compatti che andremo a trattare
+
+\begin{itemize}
+\item I gruppi finiti, con la topologia discreta.
+\item I gruppi $O_n, SO_n, U_n, SU_n$
+\end{itemize}
+
+In particolare può essere utile notare alcuni fatti noti che possono aiutare, cioé
+
+\[ 
+\begin{cases}
+O_2(\R) \cong \mathbb{S}^1 \\
+U_2(\C) \cong \mathbb{S}^3 \\
+\end{cases}
+\]
+
+A questo punto sarà opportuno definire una generalizzazione delle rappresentazioni usando lo strumento topologico che abbiamo a disposizione. 
+
+
+\begin{defn}[Rappresentazione continua]
+Consideriamo una rappresentazione del gruppo topologico $G$, $\rho: G \to GL(V_\rho)$. Diciamo che la rappresentazione è continua se la mappa
+
+\[ \rho: G \to GL(V_\rho)\]
+
+è continua. Per il primo termine bisogna considerare la topologia su $G$, che è definita in quanto il gruppo è topologico, mentre su $GL(V_\rho)$ si usa la topologia euclidea. 
+\end{defn}
+
+Facciamo alcuni esempi
+\begin{itemize}
+\item Se $G$ è finito, ovviamente con la topologia discreta ogni rappresentazione è continua. In un certo senso questo non è così banale, in quanto ci dice che quello che andremo a fare sarà una generalizzazione di quello che abbiamo fatto per gruppi finiti.
+\item Un'altra rappresentazione banale: la rappresentazione del gruppo $GL(V)$ in $GL(V)$ tramite l'identità, che è evidentemente continua
+
+\item La mappa esponenziale $e^x: (\R, +) \to (\R^+, \cdot )$ che associa $x$ a $e^x$
+\end{itemize}
+
+
+
+Per chiarirci le idee, andremo a studiare nel dettaglio un gruppo particolare, ovvero $\mathbb{S}^1$, che è ovviamente isomorfo a $SO_2(\R)$. Cerchiamo quindi innanzitutto le sue rappresentazioni irriducibili su spazi di dimensione finita sui complessi. 
+
+Possiamo rapidamente notare che in questo caso la situazione è semplice, in quanto il gruppo è abeliano. Per questo motivo, 
+
+\[ gh = hg \qquad \forall g,h \in G \]
+
+e quindi 
+
+\[ \rho(g)\rho(h) = \rho(h)\rho(g) \qquad \forall g, h \in G\]
+
+Il che vuol dire che, fissato $h$, $\rho(h)$ è un'omomorfismo di rappresentazioni irriducibili su $\C$. Possiamo allora applicare la versione forte di Schur e dire che $\rho(h) = \lambda(h) Id$ per qualche $\lambda \in \C$. Tuttavia quello che abbiamo fatto vale per ogni $h \in G$, per cui tutti i $\rho(g) $ sono in realtà scalari. Questo ci dice che le rappresentazioni irriducibili di $\mathbb{S}^1$ sono tutte di grado 1. A questo punto il nostro obiettivo è trovarle.
+
+
+\begin{prop} Le rappresentazioni irriducibili di $\mathbb{S}^1$ sono tutte e sole le $\rho_n$ tali che
+
+\[ \rho_n(z) = z^n \qquad \forall n \in \Z\]
+
+\end{prop}
+
+
+\textsc{Dimostrazione:}
+
+QUALCUNO LA SCRIVA
+
+
+\qed
+
+A questo punto il nostro obiettivo sarebbe quello di cercare la stessa cosa che abbiamo fatto per i gruppi finiti, ovvero scomporre una rappresentazione generica come somme di rappresentazioni irriducibili. Per farlo in sostanza abbiamo inventato quel prodotto hermitiano invariante che da solo ci ha permesso praticamente di fare tutto. Sarebbe molto bello avere una cosa simile anche per questi gruppi topologici. In particolare per i gruppi compatti possiamo andare a cercare di definire qualcosa di molto simile.
+
+
+\begin{defn}[Integrazione su un gruppo]
+Sia $G$ un gruppo topologico. Consideriamo un'applicazione $I$ 
+
+\[I: C_{\R}(G) \to \R \]
+
+Dove tutto funziona uguale se al posto di $\R$ mettiamo $\C$ e per $\C_\R$ si intendono le funzioni continue. La mappa $I$ si dice integrazione se rispetta le seguenti proprietà.
+
+
+\begin{itemize}
+\item{ \'E lineare. 
+\[I(a f + b g) = aI(f) + bI(g) \]}
+\item{ Se la funzione $f$ è positiva ($ > 0$), allora anche l'integrale deve essere positivo ($> 0$)}
+
+\end{itemize}
+
+A questo punto, in analogia con quello che abbiamo fatto con i prodotti finiti, cerchiamo di trovare quello invariante. 
+
+
+
+
+
+
+
+\end{defn}
+
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
