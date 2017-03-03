@@ -487,7 +487,7 @@ cambiare il modo in cui i singoli cicli sono presentati.
 Spesso nella scrittura in cicli disgiunti si tralasciano i cicli di lunghezza uno. Ad esempio $(3,5,7)(4,1)\in S_{12}$ ha perfettamente senso:
 i numeri $1,3,4,5,7$ vengono ``spostati'' da $\sigma$ nel modo descritto e tutti gli altri vengono lasciati fissi.
 
-I cicli, più che essere dcome mettere i segni sopra le frecce in tikzpictureselle liste, vanno pensati come elementi di $S_n$, ovvero come funzioni bigettive da $\{1,\dots,n\}$ in sé.
+I cicli, più che essere delle liste, vanno pensati come elementi di $S_n$, ovvero come funzioni bigettive da $\{1,\dots,n\}$ in sé.
 In quanto tali possono essere moltiplicati, nel senso di composizione delle funzioni. Ad esempio
 \[(1,2,3)\cdot(3,5)\]
 chiaramente non è la scrittura come prodotto di cicli disgiunti di un elemento di $S_n$, in quanto appunto i due cicli scritti
@@ -522,7 +522,7 @@ Allora $s\equiv t \mod 2$.
 \textsc{Cenno di dimostrazione: }
 Definiamo la seguente funzione $f:S_n\to\N$:
 \[f(\rho) = card\left(\left\{\quad(a,b)\in\{1,\dots,n\}^2 \quad | \quad a < b, \quad\rho(a) > \rho(b) \quad\right\}\right)\]
-Non è difficile verificare che se $\tau\in S_n$ è una trasposizione allora $f(\rho)$ e $f(\tau\rho)$ hanno parità divercome mettere i segni sopra le frecce in tikzpicturessa.
+Non è difficile verificare che se $\tau\in S_n$ è una trasposizione allora $f(\rho)$ e $f(\tau\rho)$ hanno parità diversa.
 Il risultato segue immediatamente visto che $f(\tau_1\tau_2\dots\tau_t) = f(\sigma_1\sigma_2\dots\sigma_s)$.
 \qed
 
@@ -560,7 +560,7 @@ il gruppo $D_n$, che si può presentare nel seguente modo: $$D_n=\langle\rho,\si
 \begin{rem}
  Le $n$ potenze distinte di $\rho$ sono tutte e sole le rotazioni di $D_n$, mentre gli elementi della forma $\sigma\rho^{i},\ i=0,1,..,n-1$ 
  sono tutte e sole le riflessioni. 
-\end{rem}come mettere i segni sopra le frecce in tikzpictures
+\end{rem}
 
 \begin{rem}
  Si dimostra facilmente che la relazione $\sigma\rho\sigma=\rho^{-1}$ è verificata da qualsiasi rotazione $\rho$
@@ -2633,7 +2633,7 @@ Per farlo possiamo utilizziamo il secondo metodo descritto nel paragrafo \eqref{
 	H_2=\{ \pm1, \pm j \}\\
 	H_3=\{ \pm1, \pm k \}
 \end{align*}
-\'E semplice verificare che $H_i$ è normale in $Q_8$ per $i=1,2,3$ e che $Q_8/H_i\cong \Z_2$\footnote{Visto che gli $H_i$ sono normali, $Q_8/H_i$ è un gruppo, avendo solo due elementi è necessariamente $\Z_2$.}. Di $\Z_2$ conosciamo le rappresentazioni di grado $1$: c'è la rappresentazione banale (che induce su $G$ la rappresentazione banale appunto) e $\rho:\Z_2\to \C^*$ che manda $[1]_2\to -1$. Da quest'ultima otteniamo le rappresentaziocome mettere i segni sopra le frecce in tikzpicturesni che indicheremo con $\rho_i, \rho_j, \rho_k$ rispettivamente nel caso in cui quozientiamo per $H_1, H_2, H_3$; vediamo ora come calcolare una di queste, per esempio $\rho_i$, riportando il diagramma degli omomorfismi.
+\'E semplice verificare che $H_i$ è normale in $Q_8$ per $i=1,2,3$ e che $Q_8/H_i\cong \Z_2$\footnote{Visto che gli $H_i$ sono normali, $Q_8/H_i$ è un gruppo, avendo solo due elementi è necessariamente $\Z_2$.}. Di $\Z_2$ conosciamo le rappresentazioni di grado $1$: c'è la rappresentazione banale (che induce su $G$ la rappresentazione banale appunto) e $\rho:\Z_2\to \C^*$ che manda $[1]_2\to -1$. Da quest'ultima otteniamo le rappresentazioni che indicheremo con $\rho_i, \rho_j, \rho_k$ rispettivamente nel caso in cui quozientiamo per $H_1, H_2, H_3$; vediamo ora come calcolare una di queste, per esempio $\rho_i$, riportando il diagramma degli omomorfismi.
 \tridiag {Q_8} {\pi_1} {Q_8/H_1} \rho {\C^*} {\rho_i}
 Sia $g\in Q_8$, vogliamo capire quanto fa $\rho_i(g)$, ci sono due casi da considerare:
 \begin{enumerate}
@@ -2656,7 +2656,7 @@ La rappresentazione è determinata dall'omomorfismo $\rho_{\HH}:Q_8\to GL(\C^2)$
 \[
 	\rho_{\HH}(i) = \begin{pmatrix}
 	          	i & 0\\
-	          	0 & -i\\come mettere i segni sopra le frecce in tikzpictures
+	          	0 & -i\\
 	          \end{pmatrix}
 	\qquad
 	\rho_{\HH}(j) = \begin{pmatrix}
@@ -2693,7 +2693,7 @@ j_\HH =
 k_\HH =
 \left(
 \begin{array}{cc}
-0 & i \\come mettere i segni sopra le frecce in tikzpictures
+0 & i \\
 i & 0 \\
 \end{array}
 \right)
@@ -2970,7 +2970,7 @@ Ciò implica che
 \section{Rappresentazioni indotte}
 Supponiamo di avere $\rho:H\rightarrow GL(V)$ una rappresentazione di $H<G$ con $G$ gruppo. Il nostro aim è quello di definire una $\widetilde{\rho}:G\rightarrow GL(V)$ rappresentazione di $G$ che estende $\rho$.
 
-\begin{defn}Indichiamo con $induzione\ da\ H\ in \ G\ di W$ il seguente spazio vettoriale:
+\begin{defn}Indichiamo con \emph{induzione da $H$ in $G$ di $W$} il seguente spazio vettoriale:
 \[Ind_H^G(W)=\{f:G\rightarrow W: \rho(h)\circ f(gh)=f(g)\ \forall (g,h)\in G\times H\}   \]
 \end{defn}
 
@@ -2979,11 +2979,11 @@ Si consideri $N=\{f:G\rightarrow W\}$: definisco
 \[\rho_N:G\rightarrow GL(N) \textup{ tale che }(\rho_N(g)f)(g')=f(g^{-1}g')\]
 Si verifica che $\rho_N$ è una rappresentazione di $G$ su $N$. Notiamo innanzitutto che $Ind_H^G(W)\subseteq N$ e che tale sottospazio è $\rho_N-$invariante poichè detta $f\in Ind_H^G(W)$ si ha che
 \[ \rho_N(g)(f)(g')=f(g^{-1}g')=\rho(h)f(g^{-1}g'h)=\rho(h)\rho_N(g)(f)(g'h)\]
-ovvero $\rho_N(g)f\in Ind_H^G(W)$. Questo ci dice che $Ind_H^G(W)$ è una sottorappresentazione di $\rho_N$ chr chiamiamo $\rho_{ind}:G\rightarrow GL(Ind_H^G(W))$.
+ovvero $\rho_N(g)f\in Ind_H^G(W)$. Questo ci dice che $Ind_H^G(W)$ è una sottorappresentazione di $\rho_N$ che chiamiamo $\rho_{ind}:G\rightarrow GL(Ind_H^G(W))$.
 
 \begin{exmp}
 $H=\{e\}$ e $W=\C$ con $\rho:H\rightarrow GL(\C)$: allora
-\[Ind_H^G(W)=\{f:G\rightarrow \C:\rho(e)f(gh)=f(g)\}=\{f:G\rightarrow \C\}\]
+\[Ind_H^G(W)=\{f:G\rightarrow \C:\rho(e)f(ge)=f(g)\}=\{f:G\rightarrow \C\}\]
 \end{exmp}
 
 \textbf{Notazione:} Spesso indicheremo lo spazio vettoriale $\{f:G\rightarrow \C\}$ con $\C[G]=\bigoplus_{g\in G}\C e_g$ dove gli $\{e_g\}_{g\in G}$ sono una base di $\{f:G\rightarrow \C\}$. 
@@ -3001,7 +3001,7 @@ Data $f\in \{f:\C\rightarrow W\}$ (che contiene $V$) definiamo il supporto di $f
 \end{defn}
 
 \begin{defn}
-Dato $g\in G$ definiamo $V_g=\{f\in V : Supp(f)\subseteq gH \}$.come mettere i segni sopra le frecce in tikzpictures
+Dato $g\in G$ definiamo $V_g=\{f\in V : Supp(f)\subseteq gH \}$.
 \end{defn}
 
 \textbf{Osservazione:} se $g'\in gH$, allora $g'H=gH\Rightarrow V_g=V_{g'}$. Quindi più che dipendere dagli elementi di $G$, gli insiemi sopra definiti dipendono dalle classi laterali di $H$ in $G$. Perciò ora parleremo non più di $V_g$ bensì di $V_{gH}$.\\
@@ -3010,9 +3010,11 @@ Dato $g\in G$ definiamo $V_g=\{f\in V : Supp(f)\subseteq gH \}$.come mettere i s
 e quindi ogni funzione la posso scrivere come combinazione lineare di $f_i\in V_{g_iH}$.
 \[\Rightarrow V=\bigotimes_{i=1}^{|G/H|} V_{g_iH}\]
 Voglio ora rintracciare $W$, in quanto sono interessata a trovare un sottospazio isomorfo a $W$ dento $V$. Notiamo innanzitutto che la scrittura precedente non è detto che sia una decomposizione di rappresentazioni, ma possiamo vedere subito che si comporta bene sotto l'azione di $\rho_{ind}$. 
+
 \begin{lemma}
 $\rho_{ind}$ permuta le varie $V_{gH}$ nel senso che $\rho_{ind}(g)V_{g'H}=V_{gg'H}$. 
 \end{lemma}
+
 \textsc{Dimostrazione:} Data $f\in V$, definisco
 \[f_i(g)=\begin{cases}
 f(g)& \textup{se } g\in g_iH\\
@@ -3070,6 +3072,7 @@ Vediamo ora degli esempi.
 \[Ind_H^G(\C)=\{f:G\rightarrow \C:\rho(h)f(gh)=f(gh)=f(g)\ \forall g,h\}\Rightarrow f \textup{ è costante sulle classi laterali di} H\]
 \[\Rightarrow Ind_H^G(\C)=\{f:G\rightarrow \C:f \textup{ è costante sulle classi laterali di }\ H\}=\C[G/H]\]
 \begin{tikzpicture}
+\centering
 \matrix(m)[matrix of math nodes,row sep=3em,column sep=3em,minimum width=3em]
 {
 f:G& \C\\
