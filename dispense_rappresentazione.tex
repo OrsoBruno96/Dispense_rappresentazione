@@ -89,22 +89,18 @@
 
 
 \newcommand{\tridiag}[6]{
-	\[
 	  \begin{diagram}
 	  #1 & \rTo^{#2}  & #3        \\
 	     & \rdTo_{#6} & \dTo>{#4}   \\
 	     &          & #5
 	  \end{diagram}
-	\]
 }  
 \newcommand{\quaddiag}[8]{
-      \[
 	\begin{diagram}
 	#1     & \rTo^{#2} & #3 \\
 	\dTo<{#6} &         & \dTo>{#4} \\
 	#7     & \rTo^{#8} & #5
 	\end{diagram}
-      \]
 }
 
 
@@ -681,7 +677,7 @@ Ora è facile osservare che $e:I\to\C^I$ definita da $e_i(j) = \delta_{i,j}$ è 
    e si indica come $V\otimes W$, uno spazio vettoriale con una funzione bilineare 
    $\otimes: V \times W \to V\otimes W$ tale che per ogni data funzione bilineare $h: V\times W \to  Z$,
    esiste unica $\phi: V\otimes W \to Z$ lineare per cui $\phi(v \otimes w)=h(v,w)$. Ovvero questa $\phi$ fa commutare il diagramma:
-   \tridiag{V\times W}{ \otimes }{V \otimes W}{\phi}{Z}{h}
+   \[\tridiag{V\times W}{ \otimes }{V \otimes W}{\phi}{Z}{h}\]
    Questa proprietà viene detta proprietà universale del prodotto tensoriale e la funzione $\otimes: V \times W \to V\otimes W$
    viene detta funzione universale.
 \label{defn:prodotto tensoriale}
@@ -696,40 +692,32 @@ $\phi: V \otimes W \to V \overline{\otimes} W$ tale che
 \[ \phi (v\otimes w) = v \overline{\otimes} w\]
 \end{prop}
 \textbf{Dimostrazione:} considero i seguenti due diagrammi:
- \tridiag{V\times W}{ \otimes }{V \otimes W}{  }{ V \overline{\otimes} W }{\overline{\otimes}} \tridiag{V\times W}{ \overline{\otimes} }{V \overline{\otimes} W}{}{V \otimes W}{\otimes}
 
-%
-%
-%non so come mettere i due diagrammi nella stessa riga
-%
-%
+\[
+\tridiag{V\times W}{ \otimes }{V \otimes W}{  }{ V \overline{\otimes} W }{\overline{\otimes}} \qquad
+\tridiag{V\times W}{ \overline{\otimes} }{V \overline{\otimes} W}{}{V \otimes W}{\otimes}
+\]
+
 La proprietà universale per il prodotto tensore $\otimes$ dice che $\exists !\phi:V\otimes W\rightarrow V\overline{\otimes}W$ lineare che fa commutare il primo diagramma: analogamente $\exists !\psi:V\overline{\otimes}\rightarrow V\otimes W$ lineare che fa commutare il secondo diagramma. Ora consideriamo i seguenti due diagrammi:
 
-\begin{tikzpicture}
-\matrix(m)[matrix of math nodes,row sep=2em,column sep=3em,minimum width=3em]
-{V\times W & V\otimes W\\
-           & V\overline{\otimes} W \\
-           & V\otimes W  \\ 
-};
-\path[-stealth]
-(m-1-1) edge node [left] {$\otimes$} (m-1-2)
-(m-1-1) edge node [right] { $\overline{\otimes}$ } (m-2-2)
-(m-1-1) edge node [left] { $\otimes$ } (m-3-2)
-(m-1-2) edge node [right] {$\phi$} (m-2-2)
-(m-2-2) edge node [right] {$\psi$} (m-3-2);
-\end{tikzpicture}     \ \    \begin{tikzpicture}
-\matrix(m)[matrix of math nodes,row sep=2em,column sep=3em,minimum width=3em]
-{V\times W & V\overline{\otimes} W\\
-           & V\otimes W \\
-           & V\overline{\otimes} W  \\ 
-};
-\path[-stealth]
-(m-1-1) edge node [left] {$\overline{\otimes}$} (m-1-2)
-(m-1-1) edge node [right] { $\otimes$ } (m-2-2)
-(m-1-1) edge node [left] { $\overline{\otimes}$ } (m-3-2)
-(m-1-2) edge node [right] {$\psi$} (m-2-2)
-(m-2-2) edge node [right] {$\phi$} (m-3-2);
-\end{tikzpicture}
+\[
+\begin{diagram}
+            &                            & V\otimes W               \\
+            & \ruTo^{\otimes}            & \dTo>{\phi}              \\
+ V\times W  & \rTo^{\overline{\otimes}}  &  V\overline{\otimes} W   \\
+            & \rdTo_{\otimes}            & \dTo>{\psi}              \\
+            &                            & V\otimes W               \\
+\end{diagram}
+\qquad
+\begin{diagram}
+            &                            & V\overline{\otimes} W    \\
+            & \ruTo^{\overline{\otimes}} & \dTo>{\psi}              \\
+ V\times W  & \rTo^{\otimes}             &  V\otimes W              \\
+            & \rdTo_{\overline{\otimes}} & \dTo>{\phi}              \\
+            &                            & V\overline{\otimes} W    \\
+\end{diagram}
+\]
+
 Tuttavia ci rendiamo conto che sempre per la proprietà universale già l'identità fa commutare i due diagrammi "più grandi" e che quindi per unicità possiamo concludere che $\phi\psi=\psi\phi=id\Rightarrow \phi=\psi^{-1}$ per unicità e $\phi$ è un isomorfismo. \qed\\ 
 Quindi quello che abbiamo dimostrato si traduce in
 \begin{thm}
@@ -751,23 +739,21 @@ L'insieme degli elementi di $V\otimes W$ della forma $v\otimes w$ con $v\in V, w
 \end{prop}
 
 \textbf{Dimostrazione:} Definisco
-\[<\{v\otimes w:v\in V,w\in W\}>=<A>\]
+\[\langle\{v\otimes w:v\in V,w\in W\}\rangle=\langle A\rangle\]
 voglio quindi dimostrare che $Z=V\otimes W$. Considero il diagramma:
-\tridiag{V\times W}{ \otimes }{V \otimes W}{  }{ <A> }{h}
-dove $h(v,w)=v\otimes w$ e dato che $A$ genera $<A>$ abbiamo ben definito una applicazione bilineare. Quindi $\exists !\phi:V\otimes W\rightarrow <A>$ che fa commutare il diagramma. Detta $i:<A>\rightarrow V\otimes W$ l'inclusione consideriamo il seguente diagramma:\\
-\begin{tikzpicture}
-\matrix(m)[matrix of math nodes,row sep=2em,column sep=3em,minimum width=3em]
-{V\times W & V\otimes W\\
-           & <A>\\
-           & V\times W  \\ 
-};
-\path[-stealth]
-(m-1-1) edge node [left] {$\otimes$} (m-1-2)
-(m-1-1) edge node [right] { $h$} (m-2-2)
-(m-1-1) edge node [left] { $i\circ h$ } (m-3-2)
-(m-1-2) edge node [right] {$\psi$} (m-2-2)
-(m-2-2) edge node [right] {$\ i$} (m-3-2);
-\end{tikzpicture}\\ tuttavia il diagramma grande commuta anche con $id_{V\otimes W}$ e quindi $i\circ\psi=id_{V\otimes W}\Rightarrow i$ è surgettiva $\Rightarrow <A>=V\otimes W$.
+\[\tridiag{V\times W}{ \otimes }{V \otimes W}{  }{ \langle A\rangle }{h}\]
+dove $h(v,w)=v\otimes w$ e dato che $A$ genera $\langle A\rangle$ abbiamo ben definito una applicazione bilineare. Quindi $\exists !\phi:V\otimes W\rightarrow \langle A\rangle$ che fa commutare il diagramma. Detta $i:\langle A\rangle\rightarrow V\otimes W$ l'inclusione consideriamo il seguente diagramma:\\
+
+\[
+\begin{diagram}
+            &                       & V\otimes W               \\
+            & \ruTo^{\otimes}       & \dTo>{\psi}              \\
+ V\times W  & \rTo^{h}              & \langle A \rangle   \\
+            & \rdTo_{i\circ h}      & \dTo>{i}              \\
+            &                       & V\times W               \\
+\end{diagram}
+\]
+tuttavia il diagramma grande commuta anche con $id_{V\otimes W}$ e quindi $i\circ\psi=id_{V\otimes W}\Rightarrow i$ è surgettiva $\Rightarrow \langle A\rangle=V\otimes W$.
 
 
 
@@ -1092,7 +1078,7 @@ Ora abbiamo definito tutte le rappresentazioni di $C_n$ di grado 1, ma sono tutt
 L'esempio di prima era particolarmente semplice quindi non abbiamo dovuto faticare troppo, però il procedimento descritto è abbastanza laborioso con gruppi più complicati, vediamo un altro metodo che, conoscendo un quoziente ciclico di $G$, fornisce alcune rappresentazioni di grado 1 del gruppo.
 \subparagraph{}
 Sia $G$ un gruppo, $H\trianglelefteq G$ t.c. $G/H$ sia ciclico, allora trovando le rappresentazioni di $G/H$ di grado 1 siamo capaci di ricostruire delle rappresentazioni di grado 1 di $G$: consideriamo $\pi:G\to G/H$ la proiezione al quoziente, ovvero $\pi(g)=gH$, e un omomorfismo di gruppi $\rho:G/H\to \C^*$ (la rappresentazione di $G/H$), allora come omomorfismo $\sigma:G\to GL(\C)$ (ovvero una rappresentazione di $G$) prendiamo l'omomorfismo che fa commutare il seguente diagramma:
-\tridiag G \pi {G/H} \rho {GL(\C)} \sigma
+\[\tridiag G \pi {G/H} \rho {GL(\C)} \sigma\]
 ovvero $\sigma(g)=\rho(\pi(g))$.
 
 Questo metodo è particolarmente potente perché, per ogni rappresentazione $\sigma:G\to GL(\C)$, l'immagine è un gruppo ciclico\footnote{\'E abbastanza facile convincersene ricordando che ogni elemeno di $G$ deve essere mandato in una radice dell'unità.}, quindi, in virtù del primo teorema di omomorfismo\eqref{alg:primo_teo_omo}, l'immagine di una qualsiasi rappresentazione $\sigma$ di grado 1 è un quoziente ciclico di $G$.
@@ -2634,7 +2620,7 @@ Per farlo possiamo utilizziamo il secondo metodo descritto nel paragrafo \eqref{
 	H_3=\{ \pm1, \pm k \}
 \end{align*}
 \'E semplice verificare che $H_i$ è normale in $Q_8$ per $i=1,2,3$ e che $Q_8/H_i\cong \Z_2$\footnote{Visto che gli $H_i$ sono normali, $Q_8/H_i$ è un gruppo, avendo solo due elementi è necessariamente $\Z_2$.}. Di $\Z_2$ conosciamo le rappresentazioni di grado $1$: c'è la rappresentazione banale (che induce su $G$ la rappresentazione banale appunto) e $\rho:\Z_2\to \C^*$ che manda $[1]_2\to -1$. Da quest'ultima otteniamo le rappresentazioni che indicheremo con $\rho_i, \rho_j, \rho_k$ rispettivamente nel caso in cui quozientiamo per $H_1, H_2, H_3$; vediamo ora come calcolare una di queste, per esempio $\rho_i$, riportando il diagramma degli omomorfismi.
-\tridiag {Q_8} {\pi_1} {Q_8/H_1} \rho {\C^*} {\rho_i}
+\[\tridiag {Q_8} {\pi_1} {Q_8/H_1} \rho {\C^*} {\rho_i}\]
 Sia $g\in Q_8$, vogliamo capire quanto fa $\rho_i(g)$, ci sono due casi da considerare:
 \begin{enumerate}
 	\item se $g\in H_1$, allora $\pi(g) = eH_1$ dunque, visto che $eH_1$ è l'identità nel quoziente, $\rho_i(g)=1$
