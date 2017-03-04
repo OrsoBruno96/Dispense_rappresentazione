@@ -51,4 +51,4 @@ $ git diff ab12 cd34
 
 é importante l'ordine prima vecchio e poi nuovo. A terminale vi verranno stampate le differenze fra le due versioni.
 
-
+Per l'utilizzo del pacchetto *diagrams* può essere utile il seguente manuale: http://www.paultaylor.eu/diagrams/manual.pdf
