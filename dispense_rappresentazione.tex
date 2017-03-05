@@ -3257,37 +3257,28 @@ $(G, \cdot, \tau)$ si dice compatto se $(G, \tau)$ è compatto.
 
 
 Facciamo un po' di esempi di gruppi compatti che andremo a trattare
-
 \begin{itemize}
 \item I gruppi finiti, con la topologia discreta.
 \item I gruppi $O_n, SO_n, U_n, SU_n$
 \end{itemize}
 
 In particolare può essere utile notare alcuni fatti noti che possono aiutare, cioé
+\begin{align*}
+SO_2(\R) \cong \mathbb{S}^1 \\
+SU_2(\C) \cong \mathbb{S}^3
+\end{align*}
 
-\[ 
-\begin{cases}
-O_2(\R) \cong \mathbb{S}^1 \\
-U_2(\C) \cong \mathbb{S}^3 \\
-\end{cases}
-\]
-
-A questo punto sarà opportuno definire una generalizzazione delle rappresentazioni usando lo strumento topologico che abbiamo a disposizione. 
-
-
+A questo punto sarà opportuno dare una nozione di rappresentazione in cui entra in gioco la topologia di $G$, oltre alla sua struttura di gruppo. 
 \begin{defn}[Rappresentazione continua]
 Consideriamo una rappresentazione del gruppo topologico $G$, $\rho: G \to GL(V_\rho)$. Diciamo che la rappresentazione è continua se la mappa
-
 \[ \rho: G \to GL(V_\rho)\]
-
 è continua. Per il primo termine bisogna considerare la topologia su $G$, che è definita in quanto il gruppo è topologico, mentre su $GL(V_\rho)$ si usa la topologia euclidea. 
 \end{defn}
 
 Facciamo alcuni esempi
 \begin{itemize}
 \item Se $G$ è finito, ovviamente con la topologia discreta ogni rappresentazione è continua. In un certo senso questo non è così banale, in quanto ci dice che quello che andremo a fare sarà una generalizzazione di quello che abbiamo fatto per gruppi finiti.
-\item Un'altra rappresentazione banale: la rappresentazione del gruppo $GL(V)$ in $GL(V)$ tramite l'identità, che è evidentemente continua
-
+\item Un'altra rappresentazione del tutto ovvia: la rappresentazione del gruppo $GL(V)$ in $GL(V)$ tramite l'identità, che è evidentemente continua
 \item La mappa esponenziale $e^x: (\R, +) \to (\R^+, \cdot )$ che associa $x$ a $e^x$
 \end{itemize}
 
@@ -3300,112 +3291,68 @@ Per chiarirci le idee, andremo a studiare nel dettaglio un gruppo particolare, o
 
 \textsc{Osservazione:}
 Possiamo rapidamente notare che in questo caso la situazione è semplice, in quanto il gruppo è abeliano. Per questo motivo, 
-
 \[ gh = hg \qquad \forall g,h \in G \]
-
 e quindi 
-
 \[ \rho(g)\rho(h) = \rho(h)\rho(g) \qquad \forall g, h \in G\]
-
 Il che vuol dire che, fissato $h$, $\rho(h)$ è un'omomorfismo di rappresentazioni irriducibili su $\C$. Possiamo allora applicare la versione forte di Schur e dire che $\rho(h) = \lambda(h) Id$ per qualche $\lambda \in \C$. Tuttavia quello che abbiamo fatto vale per ogni $h \in G$, per cui tutti i $\rho(g) $ sono in realtà scalari. Questo ci dice che le rappresentazioni irriducibili di $\mathbb{S}^1$ sono tutte di grado 1. A questo punto il nostro obiettivo è trovarle.
 
 
-\begin{prop} Le rappresentazioni irriducibili di $\mathbb{S}^1$ sono tutte e sole le $\rho_n$ tali che
-
-\[ \rho_n(z) = z^n \qquad \forall n \in \Z\]
-
+\begin{prop} Le rappresentazioni irriducibili di $\mathbb{S}^1$ sono tutte e sole le $\rho_n:\mathbb{S}^1\to\C^*$ definite, al variare da $n$ in $\Z$, nel seguente modo:
+\[ \rho_n(z) = z^n \]
 \end{prop}
 
 
 \textsc{Dimostrazione:}
-Le prime osservazioni ovvie da fare sono le seguenti: le rappresentazioni irriducibili avranno dimensione $1$, per cui saranno omomorfismi in $\C^*$. Inoltre dovrà per forza essere $|\rho(z)| = 1 \quad \forall z \in \mathbb{S}^1$. Questo si dimostra abbastanza facilmente. Supponiamo per assurdo infatti che si abbia
+Innanzitutto notiamo che le $\rho_n$ definite nell'enunciato sono effettivamente delle rappresentazioni irriducibili di $\mathbb{S}^1$, quindi bisogna solo verificare che non ce ne sono altre.
 
+Sappiamo che le rappresentazioni irriducibili dovranno avere dimensione $1$, per cui saranno omomorfismi $\rho:\mathbb{S}^1\to\C^*$. Inoltre dovrà per forza essere $|\rho(z)| = 1 \quad \forall z \in \mathbb{S}^1$. Questo si dimostra abbastanza facilmente. Supponiamo per assurdo infatti che si abbia
 \[ |\rho(x)| > 1\]
-
-Per qualche $x$. Allora anche $\rho(x)^n$ farebbe parte di $\rho(G)$. Tuttavia qui c'è un assurdo in quanto $\rho(G)$ è compatto perché la rappresentazione è continua, mentre $\rho(x)^n$ non è limitato. Se invece per assurdo fosse $|\rho(x)| < 1$ si potrebbe usare lo stesso argomento notando che $|\rho(x^{-1})| > 1$.
-
-Di conseguenza sappiamo che sicuramente $\rho(\mathbb{S}^1) \subseteq \mathbb{S}^1$
-A questo punto per andare avanti con la dimostrazione dobbiamo utilizzare delle nozioni di topologia che non abbiamo ancora. In particolare dobbiamo utilizzare la nozione di rivestimento universale. Consideriamo la mappa
-
+per qualche $x$. Allora anche $\rho(x)^n$ farebbe parte di $\rho(G)$. Tuttavia qui c'è un assurdo in quanto $\rho(G)$ è compatto perché la rappresentazione è continua, mentre $\rho(x)^n$ non è limitato. Se invece per assurdo fosse $|\rho(x)| < 1$ si potrebbe usare lo stesso argomento notando che $|\rho(x^{-1})| > 1$.
+Di conseguenza sappiamo che $\rho(\mathbb{S}^1) \subseteq \mathbb{S}^1$.
+Consideriamo ora la mappa
 \begin{align*} 
 \phi : (\R, +) &\to \mathbb{S}^1 \\
-x &\to  e^{ix} \\
+x &\to  e^{ix}
 \end{align*}
-
-Si può dimostrare che questa mappa è l'unica che soddisfi le proprietà del rivestimento universale da $\R$ a $\mathbb{S}^1$. Ci è utile perché in qualche modo scarica il problema di trovare le rappresentazioni da e verso $\mathbb{S}^1$ a cercare delle rappresentazioni da e verso $(\R, +)$. Per l'unicità del rivestimento concluderemo che sono anche tutte. 
-
-Vorremo ora quindi trovare $\theta: \R \to \R$ che sia un omomorfismo di rappresentazioni continue, per procedere con la dimostrazione. Graficamente possiamo vedere la situazione in questo modo
-
+che è evidentemente continua ed è omomorfismo di gruppi.
+Sia $\hat\rho$ l'applicazione che fa commutare il seguente diagramma:
+\[\tridiag \R \phi {\mathbb{S}^1} \rho {\mathbb{S}^1} {\hat\rho}\]
+Essendo composizione di omomorfismi continui, anche $\hat\rho$ è omomorfismo continuo. Si può dimostrare (ma non lo facciamo in questa sede) che esiste un'applicazione continua $\theta:\R\to\R$ che fa commutare il diagramma:
+%~ Si può dimostrare che questa mappa è l'unica che soddisfi le proprietà del rivestimento universale da $\R$ a $\mathbb{S}^1$. Ci è utile perché in qualche modo scarica il problema di trovare le rappresentazioni da e verso $\mathbb{S}^1$ a cercare delle rappresentazioni da e verso $(\R, +)$. Per l'unicità del rivestimento concluderemo che sono anche tutte. 
 \[
 \begin{diagram}
-   (\R, +)            & \rTo^{ \phi }              & \mathbb{S}^1              \\
-\dTo<{\theta}         & \rdTo^{\hat \rho}            & \dTo>{\rho}                \\
-    (\R, +)           &  \rTo^{\phi}               & \mathbb{S}^1               \\
+    \R          & \rTo^{ \phi }         & \mathbb{S}^1           \\
+\dTo<{\theta}   & \rdTo^{\hat \rho}     & \dTo>{\rho}            \\
+    \R          &  \rTo_{\phi}          & \mathbb{S}^1           \\
 \end{diagram}
 \]
-
-
-Il nostro obiettivo per procedere è quindi di trovare quali sono le funzioni $\theta$ che fanno commutare il diagramma. Questa $\theta$, se esiste, dovrà rispettare la seguente proprietà
-
-
+A questo punto $\theta(0)$ deve essere un multiplo intero di $2\pi$, visto che deve risultare $e^{i\theta(0)} = \hat\rho(0) = 1$.
+Quindi, a meno di traslare $\theta$ di un multiplo intero di $2\pi$ (il che non interferisce con la commutatività del diagramma), possiamo assumere $\theta(0) = 0$. Dati $x,y$ reali deve valere
 \[ e^{i\theta(x+y)} = \hat \rho(x+y) = \hat \rho(x ) \hat \rho(y) = e^{i\theta(x)} e^{i \theta(y)}\]
-
-Per cui deve essere
-
+per cui deve essere
 \[ \theta(x+y) - \theta(x) - \theta(y) \in 2\pi \Z \qquad \forall x, y \in \R \]
-
-In particolare, $\theta$ è continua e l'espressione sopra ha immagine puntiforme. Per questo motivo l'espressione precedente deve essere costante. 
-
-\[ \theta(x + y) = \theta(x ) + \theta (y) + c \qquad c \in 2\pi \Z, \forall x,y\in \R\]
-
-Usando alcuni trucchetti possiamo mostrare che deve essere $c = 0$. \footnote{Infatti possiamo scrivere $\theta(x + 0) = \theta(0) + \theta(x) + c \Rightarrow \theta(0) = -c$. Una volta fatto questo scriviamo $\theta(x-x) = \theta(x) - \theta(x) +c \Rightarrow c = -c$.}Una volta fatto questo abbiamo quasi finito, infatti
-
-\[ \theta(x+y) = \theta(x) + \theta(y)\]
-
-ha come soluzioni continue solo $\theta(x) = \alpha x$, con $\alpha \in \R$. Non solo, possiamo ancora dare delle informazioni a riguardo di $\alpha$. Infatti, dato che $\mathbb{S}^1$ è "periodico", deve essere
-
-\[ 1 = \hat \rho(1) = \hat \rho(2\pi) = e^{i\alpha 2\pi}\]
-
-Per cui in realtà si ha $\alpha \in \Z$. Per questo motivo per ogni $n \in \Z$ possiamo definire
-
-\[ \hat \rho_n (x) = e^{i2\pi nx}\]
-
-Per cui per ogni $n$ otteniamo una $\rho_n$ che fa commutare il diagramma se $\rho_n(z) = z^n$
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Ma visto che $\theta$ è continua l'espressione sopra deve essere necessariamente costante al variare di $x$ e $y$. Ponendo $x=y=0$ ricaviamo che tale costante è $0$, dunque
+\[ \theta(x + y) = \theta(x ) + \theta (y) \qquad \forall x,y\in \R\]
+A questo punto si osserva (sfruttando la continuità di $\theta$) che deve essere $\theta(x) = \alpha x$, con $\alpha \in \R$. Non solo, possiamo dare delle informazioni a riguardo di $\alpha$. Infatti, dato che $\hat\rho$ è ``periodico'', deve essere
+\[ 1 = \hat\rho(0) = \hat\rho(2\pi) = e^{i\alpha 2\pi}\]
+per cui in realtà si ha $\alpha \in \Z$. 
+Ricapitolando, abbiamo mostrato che per ogni $x\in\R$ vale che
+\[e^{i 2\alpha\pi x} = \rho(e^{ix}) \]
+dove $\alpha$ è un intero fissato. Ovvero per ogni $z\in\mathbb{S}^1$ vale
+\[ \rho_\alpha(z) = z^\alpha = \rho(z) \]
+che è quello che volevamo mostrare.
 \qed
 
 A questo punto il nostro obiettivo sarebbe quello di cercare la stessa cosa che abbiamo fatto per i gruppi finiti, ovvero scomporre una rappresentazione generica come somme di rappresentazioni irriducibili. Per farlo in sostanza abbiamo inventato quel prodotto hermitiano invariante che da solo ci ha permesso praticamente di fare tutto. Sarebbe molto bello avere una cosa simile anche per questi gruppi topologici. In particolare per i gruppi compatti possiamo andare a cercare di definire qualcosa di molto simile.
 
 
 \begin{defn}[Integrazione su un gruppo]
-Sia $G$ un gruppo topologico. Consideriamo un'applicazione $I$ 
-
-\[I: C_{\R}(G) \to \R \]
-
-\footnote{Tutto funziona allo stesso modo se al posto di $\R$ mettiamo $\C$. In futuro non si baderà a questa distinzione.} dove con $C_\R$ si intendono le funzioni continue da $G$ in $\R$. La mappa $I$ si dice integrazione se rispetta le seguenti proprietà.
-
-
+Sia $G$ un gruppo topologico. Consideriamo un'applicazione $I: C_{\R}(G) \to \R$
+dove con $C_\R$ si intendono le funzioni continue da $G$ in $\R$\footnote{Tutto funziona allo stesso modo se al posto di $\R$ mettiamo $\C$. In futuro non si baderà a questa distinzione.}. La mappa $I$ si dice integrazione se rispetta le seguenti proprietà.
 \begin{itemize}
-\item{ \'E lineare. 
-\[I(a f + b g) = aI(f) + bI(g) \]}
-\item{ Se la funzione $f$ è positiva ($ > 0$), allora anche l'integrale deve essere positivo ($> 0$)}
-
+\item \`E lineare: $I(a f + b g) = aI(f) + bI(g)$.
+\item Se la funzione $f$ è positiva ($ > 0$), allora anche l'integrale deve essere positivo ($> 0$).
 \end{itemize}
-
-
 \end{defn}
 
 
