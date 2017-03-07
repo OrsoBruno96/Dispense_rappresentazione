@@ -84,7 +84,8 @@
 \newcommand{\dsum}{\displaystyle\sum}
 \newcommand{\dint}{\displaystyle\int}
 
-\newcommand{\tr}{\textnormal{tr}}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Hom}{Hom}
 
 
 
@@ -1219,18 +1220,6 @@ Notiamo infine che l'isomorfismo trovato è canonico, ovvero non dipende da alcu
   \label{defn:rappresentazione regolare}
 \end{defn}
 
-\begin{exmp}[La rappresentazione regolare di $S_3$]
-
-
-\end{exmp}
-
-
-\begin{thm}
-
-\[\mathcal{R}_G \cong \dsum_i deg(\rho_i) \rho_i \]
-
-\end{thm}
-
 
 
 \subsection{Sottospazi invarianti e scomposizione delle rappresentazioni}
@@ -1435,6 +1424,9 @@ Supponiamo che $\phi\neq 0$, allora sappiamo che $Ker(\phi)\subseteq V_\rho$ è 
 Consideriamo ora $f$: sia $\lambda$ un autovalore di $f$, che esiste perché $G$ è finito e stiamo lavorando su $\C$, allora $f-\lambda Id:V_\rho\to V_\rho$ è un omomorfismo di rappresentazioni. Ma non è iniettivo, perché c'è almeno un autovettore relativo a $\lambda$, e quindi per la prima parte del lemma di Schur ho che $f-\lambda Id$ è identicamente nullo, da cui ricaviamo che $f$ è la moltiplicazione per uno scalare ($\lambda$).
 \end{proof}
 
+Come immediato corollario, notiamo che, prese due rappresentazioni irriducibili $\rho$ e $\sigma$, si ha che $\dim\left(\Hom(\rho,\sigma)\right)$ è uguale a 1 se $\rho\simeq\sigma$, ed è uguale a 0 se $\rho\not\simeq\sigma$. Generalizzando, se $\rho$ si scompone in somma di rappresentazioni irriducibili come $\rho=\sum n_i\rho_i$, allora $\dim\left(\Hom(\rho,\rho_i)\right)=n_i$.
+
+
 
 \begin{thm}
 Sia $\rho: G \to GL(V_\rho)$ una rappresentazione e 
@@ -1446,65 +1438,22 @@ una sua scomposizione come somma di rappresentazioni irriducibili a due a due no
 
 
 
-\begin{lemma}
-Sia $\rho$ una rappresentazione di $G$ e $\mathcal{R}$ la sua rappresentazione regolare. Allora 
-\[deg(\rho) = dim(Hom(\mathcal{R}, \rho))\]
-\end{lemma}
-
-
-
-\textsc{Dimostrazione:}
-
-Per i lemmi precedenti possiamo andare a scomporre sia $\rho$ che $\mathcal{R}$ in termini di rappresentazioni irriducibili a due a due non isomorfe, in particolare
-
-
-\[ 
-\begin{cases}
-\mathcal{R} = \dsum_{i = 1}^N n_i \mathcal{R}_i \\
-\rho = \dsum_{j = 1}^M m_j \rho_j \\
-\end{cases}
-\]
-
-
-E quindi si avrà 
-
-\[ deg(\rho) =  \dsum_{j = 1}^M m_j deg(\rho_j) \]
-
-Inoltre possiamo andare a scrivere lo spazio $Hom(\mathcal{R}, \rho)$ in modo molto migliore:
-
-
-\[Hom(\mathcal{R}, \rho) = Hom\left( \dsum_{i = 1}^N n_i \mathcal{R}_i , \dsum_{j = 1}^M m_j \rho_j \right) \cong \bigoplus_{i = 1}^N \bigoplus_{j=1}^M Hom(\mathcal{R}_i , \rho_j) ^{n_im_j}\]
-
-E quindi, calcolandone la dimensione,
-
-
-\[ dim (Hom(\mathcal{R}, \rho)) = \dsum_{i=1}^N \dsum_{j=1}^M n_im_j dim Hom(\mathcal{R}_i, \rho_j) \]
-
-A questo punto, dato che le rappresentazioni sono irriducibili, possiamo usare il lemma di Schur e dire che la dimensione di quegli omomorfismi è sempre o 0 o 1, se le rappresentazioni sono isomorfe o meno. Scriviamo in modo intelligente l'espressione in modo da mettere in evidenza delle cose utili.
-
-
-
-\[ dim (Hom(\mathcal{R}, \rho)) = \dsum_{j = 1}^M m_j \left( \dsum_{i = 1}^N n_i dimHom(\mathcal{R}_i, \rho_j)\right)\]
-
-Dato che le rappresentazioni $\mathcal{R}_i$ sono due a due non isomorfe, la sommatoria ha al più un termine
-
-
-E ORA COME SI CONCLUDE? DEVO USARE CHE $\mathcal{R}$ È LA RAPPRESENTAZIONE REGOLARE PER DIRE CHE PRENDE TUTTE LE RAPPRESENTAZIONI, MA NON SO FARLO. QUALCUNO CERCHI LA FINE DELLA DIMOSTRAZIONE E LA METTA
-
-
-
 
 
 
 \begin{thm}
 Sia $\mathcal{R}$ la rappresentazione regolare di $G$, un gruppo finito, e sia 
-
-\[ \mathcal{R} = \dsum_{i=1}^Nn_i \rho_i\]
-
-Con $\rho_i$ irriducibili e a due a due non isomorfe. Allora ogni rappresentazione irriducibile di $G$ è isomorfa ad una $\rho_i$. Inoltre $n_i = deg(\rho_i)$ 
+\[ \mathcal{R} = \dsum_{i=1}^Nn_i \rho_i,\]
+con $\rho_i$ irriducibili e a due a due non isomorfe. Allora ogni rappresentazione irriducibile di $G$ è isomorfa ad una $\rho_i$. Inoltre $n_i = \deg(\rho_i).$ 
 \label{thm: teorema importantissimo}
 \end{thm}
+\begin{proof}
+Per il corollario del Lemma di Schur, la tesi è equivalente al seguente fatto: se $\rho$ è una rappresentazione irriducibile di $G$, allora $\dim\left(\Hom(\mathcal{R},\rho)\right)=\deg\rho$ (in realtà non useremo l'ipotesi di irriducibilità di $\rho$). Costruiamo dunque un isomorfismo tra gli spazi vettoriali $\Hom(\mathcal{R},\rho)$ e $V_\rho$.
 
+Chiamando $e_g$ l'elemento della base di $V_\mathcal{R}$ associato a $g\in G$, notiamo preliminarmente che, presa $\varphi\in\Hom(\mathcal{R},\rho)$, vale $\varphi(e_g)=\varphi(\mathcal{R}(g)e_{1})=\rho(g)\varphi(e_1)$, dove con $1$ si indica l'elemento neutro di $G$. Quindi, il valore di $\varphi(e_1)$ determina completamente $\varphi(e_g)$ per ogni $g$, e quindi determina completamente $\varphi$.
+
+Sia allora $\Phi\colon\Hom(\mathcal{R},\rho)\to V_\rho$ tale che $\Phi(\varphi)=\varphi(e_{1})$. Per quanto appena visto, $\Phi$ è iniettiva. D'altra parte, lo stesso ragionamento ci permette anche di dimostrare facilmente che $\Phi$ è suriettiva: per ogni $v\in V_\rho$, la funzione $\varphi_v$ tale che $\varphi_v(e_g)=\rho(g)v$ è tale che $\Phi(\varphi_v)=\varphi_v(e_1)=\rho(1)v=v$. La linearità di $\Phi$ consente di concludere.
+\end{proof}
 
 
 
