@@ -86,6 +86,7 @@
 
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
 
 
 
@@ -652,9 +653,14 @@ Siano $V,W$ due $\C$-spazi vettoriali, una funzione $h:V\times V\to W$ si dice \
 Sia $V$ un $\K-$spazio vettoriale e $I$ un insieme; una base di $V$ è una funzione $e: I \to V$ tale che 
 per ogni $v \in V$ esiste un'unica funzione $a: I \to \K$ a supporto finito per cui vale $v=\sum_{i\in I}a_i e_i$.
 Questa definizione è compatibile con la definizione di base come insieme di vettori generatori linearmente indipendenti.
+
+Spesso useremo una notazione del tipo $\{e_i\}_{i\in I}$ per indicare una base di uno spazio vettoriale $V$. Ciò sottintende
+una funzione $e:I\to V$ che manda $i\to e_i$, in accordo con la definizione che abbiamo appena dato.
 \end{defn}
 
-
+Alcuni dei risultati a cui arriveremo sono validi anche per $I$ infiniti, ma per semplicità consideriamo solo
+spazi vettoriali finitamente generati (per cui esiste una base $e: I \to V$ con $I$ insieme finito).
+Questo primo lemma dovrebbe essere noto a chiunque abbia un minimo di familiarità con l'algebra lineare:
 \begin{lemma}
 Siano $V,W$ dei $\K-$spazi vettoriali, sia $e:I\to V$ una base di $V$ e $f: I \to W$ una funzione. Allora $\exists!\  \phi: V \to W$ lineare tale che
 \[\phi(e_i) = f_i \]
@@ -684,23 +690,23 @@ Ora è facile osservare che $e:I\to\C^I$ definita da $e_i(j) = \delta_{i,j}$ è 
 \label{defn:prodotto tensoriale}
 \end{defn}
 
-\textbf{Esempio:} $V=W=\C$ e come $\otimes$ prendo il prodotto ovvero $v\otimes w=vw$.
+\begin{exmp} $V=W=V\otimes W = \C$ e come $\otimes$ prendo il prodotto ovvero $v\otimes w=vw$.
+\end{exmp}
+\begin{exmp} $W$ un qualsiasi $\K-$spazio vettoriale, $V=\K$. Allora posso prendere $\K\otimes W = W$ e come $\otimes$ prendo il prodotto per scalari $\alpha\otimes w=\alpha w$.
+\end{exmp}
 
 \begin{prop}
 Se ho due prodotti tensoriali $V \otimes W$ e $V \overline{\otimes} W$, allora esiste un unico isomorfismo 
-$\phi: V \otimes W \to V \overline{\otimes} W$ tale che
-
+$\phi: V \otimes W \to V \overline{\otimes} W$ tale che, fissati comunque $v\in V, w\in W$, valga
 \[ \phi (v\otimes w) = v \overline{\otimes} w\]
 \end{prop}
-\textbf{Dimostrazione:} considero i seguenti due diagrammi:
-
+\begin{proof}
+Considero i seguenti due diagrammi:
 \[
 \tridiag{V\times W}{ \otimes }{V \otimes W}{  }{ V \overline{\otimes} W }{\overline{\otimes}} \qquad
 \tridiag{V\times W}{ \overline{\otimes} }{V \overline{\otimes} W}{}{V \otimes W}{\otimes}
 \]
-
-La proprietà universale per il prodotto tensore $\otimes$ dice che $\exists !\phi:V\otimes W\rightarrow V\overline{\otimes}W$ lineare che fa commutare il primo diagramma: analogamente $\exists !\psi:V\overline{\otimes}\rightarrow V\otimes W$ lineare che fa commutare il secondo diagramma. Ora consideriamo i seguenti due diagrammi:
-
+La proprietà universale per il prodotto tensore $\otimes$ dice che $\exists !\phi:V\otimes W\rightarrow V\overline{\otimes}W$ lineare che fa commutare il primo diagramma: analogamente $\exists !\psi:V\overline{\otimes}W\rightarrow V\otimes W$ lineare che fa commutare il secondo diagramma. Ora consideriamo i seguenti due diagrammi:
 \[
 \begin{diagram}
             &                            & V\otimes W               \\
@@ -718,16 +724,14 @@ La proprietà universale per il prodotto tensore $\otimes$ dice che $\exists !\p
             &                            & V\overline{\otimes} W    \\
 \end{diagram}
 \]
+Ma noi conosciamo già un'applicazione lineare che fa commutare i due diagrammi ``più grandi'': l'identità. Quindi per unicità possiamo concludere che $\phi\psi=\psi\phi=id$, ovvero $\phi$ e $\psi$ sono una l'inversa dell'altra e in particolare $\phi$ è un isomorfismo.
+\end{proof}
 
-Tuttavia ci rendiamo conto che sempre per la proprietà universale già l'identità fa commutare i due diagrammi "più grandi" e che quindi per unicità possiamo concludere che $\phi\psi=\psi\phi=id\Rightarrow \phi=\psi^{-1}$ per unicità e $\phi$ è un isomorfismo. \qed\\ 
-Quindi quello che abbiamo dimostrato si traduce in
+Si può dimostrare inoltre che dati due spazi vettoriali $V$ e $W$ esiste sempre 
+un loro prodotto tensoriale, dunque abbiamo il seguente risultato:
 \begin{thm}
 $V\otimes W$ esiste ed è unico a meno di isomorfismo.
 \end{thm}
-
-
-
-
 
 
 \begin{note}
@@ -736,15 +740,14 @@ $V\otimes W$ esiste ed è unico a meno di isomorfismo.
 
 
 \begin{prop}
-L'insieme degli elementi di $V\otimes W$ della forma $v\otimes w$ con $v\in V, w\in W$ generano tutto lo spazio $V\otimes W$.
+L'insieme degli elementi di $V\otimes W$ della forma $v\otimes w$ con $v\in V, w\in W$ genera tutto lo spazio $V\otimes W$.
 \end{prop}
 
-\textbf{Dimostrazione:} Definisco
+\begin{proof} Consideriamo il sottospazio generato dagli elementi della forma $v\otimes w$:
 \[\langle\{v\otimes w:v\in V,w\in W\}\rangle=\langle A\rangle\]
-voglio quindi dimostrare che $Z=V\otimes W$. Considero il diagramma:
+Vogliamo quindi dimostrare che $\langle A\rangle=V\otimes W$. Consideriamo il diagramma:
 \[\tridiag{V\times W}{ \otimes }{V \otimes W}{  }{ \langle A\rangle }{h}\]
-dove $h(v,w)=v\otimes w$ e dato che $A$ genera $\langle A\rangle$ abbiamo ben definito una applicazione bilineare. Quindi $\exists !\phi:V\otimes W\rightarrow \langle A\rangle$ che fa commutare il diagramma. Detta $i:\langle A\rangle\rightarrow V\otimes W$ l'inclusione consideriamo il seguente diagramma:\\
-
+dove $h(v,w)=v\otimes w$ è ovviamente un'applicazione bilineare. Quindi $\exists !\psi:V\otimes W\rightarrow \langle A\rangle$ che fa commutare il diagramma. Detta $i:\langle A\rangle\rightarrow V\otimes W$ l'inclusione consideriamo il seguente diagramma:
 \[
 \begin{diagram}
             &                       & V\otimes W               \\
@@ -755,89 +758,99 @@ dove $h(v,w)=v\otimes w$ e dato che $A$ genera $\langle A\rangle$ abbiamo ben de
 \end{diagram}
 \]
 tuttavia il diagramma grande commuta anche con $id_{V\otimes W}$ e quindi $i\circ\psi=id_{V\otimes W}\Rightarrow i$ è surgettiva $\Rightarrow \langle A\rangle=V\otimes W$.
-
-
+\end{proof}
 
 
 \begin{defn}[Prodotto tensoriale di mappe lineari]
-Date $f:V \to V'$ e $g:W \to W'$ funzioni lineari, si definisce prodotto tensoriale tra $f$ e $g$ la funzione lineare $f \otimes g : V \otimes W \to V' \otimes W'$ tale che $(f \otimes g)(v \otimes w)=f(v) \otimes g(w)$ $\forall v\in V, w\in W$
+Date $f:V \to V'$ e $g:W \to W'$ funzioni lineari, si definisce prodotto tensoriale tra $f$ e $g$ l'unica funzione lineare $f \otimes g : V \otimes W \to V' \otimes W'$ tale che $(f \otimes g)(v \otimes w)=f(v) \otimes g(w)$ $\forall v\in V, w\in W$.
 
+Una funzione con tale proprietà esiste ed è unica poiché l'applicazione $V\times W \to V'\otimes W'$ che manda $(v,w)$ in $f(v)\otimes g(w)$ è bilineare.
 \end{defn}
 
 \begin{rem}
-
-\[ id_V \otimes id_W = id_{V\otimes W}\]
+$id_V \otimes id_W = id_{V\otimes W}$
 \end{rem}
 
 
+\begin{prop}
+Siano $V$ e $W$ $\K-$spazi vettoriali e sia $\{e_i\}_{i\in I}$ una base di $V$. Allora ogni elemento di $V\otimes W$ si scrive in modo unico come:
+\[ \sum_{i\in I} e_i \otimes w_i\]
+con $w_i\in W$.
+\end{prop}
+\begin{proof}
+Sia $x$ un elemento di $V\otimes W$.
+Visto che gli elementi della forma $v\otimes w$ generano l'intero spazio $V\otimes W$, possiamo scrivere
+\[ x = \sum_{j=1}^N v_j\otimes w_j \]
+scegliendo opportunamente $N\in \N$, $v_j\in V$, $w_j\in W$ per $j=1\dots N$. Visto che $\{e_i\}_{i\in I}$ è base di $V$:
+\[ x = \sum_{j=1}^N v_j\otimes w_j  = \sum_{j=1}^N \left(\sum_{i\in I} a_{i,j}e_i\right)\otimes w_j = \sum_{i,j} a_{i,j}(e_i\otimes w_j) = \sum_{i\in I} e_i\otimes\tilde w_i\]
+dove si è posto $\tilde w_i = \sum_j a_{i,j}e_j$.
+Quindi siamo riusciti ad ottenere una scrittura del tipo che volevamo. Resta da mostrare che questa scrittura è unica,
+ovvero che gli elementi $\tilde w_i$ sono univocamente determinati.
 
+Consideriamo la base $\{e_i^*\}_{i\in I}$ di $V^*$ duale rispetto a $\{e_i\}_{i\in I}$. Fissato un $k\in I$ possiamo considerare l'applicazione
+lineare $e_k^*\otimes id_W: V\otimes W \to \K\otimes W$. Valutandola in $x$ otteniamo:
+\[ (e_k^*\otimes id_W) \left(\sum_{i\in I} e_i\otimes\tilde w_i \right) = \sum_{i\in I} e_k^*(e_i)\otimes\tilde w_k = 1\otimes \tilde w_k\]
+Ma $\K\otimes W$ è isomorfo in modo naturale a $W$, e questo isomorfismo porta l'elemento $1\otimes \tilde w_k$ in $\tilde w_k$.
+Quest'ultimo, pertanto, è univocamente determinato.
+\end{proof}
 
 \begin{prop}
-
-Se $e_i$ è una base di $V$ e $f_i$ è una base di $W$ allora $e_i \otimes f_j$ è una base di $V \otimes W$
+Se $\{e_i\}_{i\in I}$ è una base di $V$ e $\{f_j\}_{j\in J}$ è una base di $W$ allora $\{e_i \otimes f_j\}_{(i,j)\in I\times J}$ è una base di $V \otimes W$.
 \end{prop}
-
+\begin{proof}
+Dato $x\in V\otimes W$ sappiamo che si può scrivere in modo unico $x = \sum_{i\in I} e_i\otimes w_i$.
+Ora, per ogni $i\in I$, il vettore $w_i$ si scrive in modo unico come $w_i = \sum_{j\in J} a_{i,j}f_j$.
+Da questo segue abbastanza facilmente che $x$ si scrive in modo unico come $\sum_{i,j} a_{i,j}(e_i\otimes f_j)$.
+\end{proof}
 
 \begin{cor}
-\[dim(V \otimes W) = dim V \cdot dim W \]
-
+$\dim(V \otimes W) = \dim V \cdot \dim W$
 \end{cor}
 
 
+\begin{prop}
+Siano $V$ e $W$ spazi vettoriali. Allora $V^*\otimes W$ è isomorfo allo spazio vettoriale $\Hom(V,W)$ delle applicazioni lineari da $V$ a $W$.
+\end{prop}
+\begin{proof}
+Definiamo $\theta: V^*\times W \to \Hom(V,W)$ come la funzione che manda la coppia $(f, w)\in V^*\times W$ nella funzione  $h_{f,w}$ definita da:
+$h_{f,w}(v) = f(v)w$ per ogni $v\in V$. Non è difficile osservare che $\theta$ è bilineare, quindi induce una funzione lineare
+$\phi : V^*\otimes W \to \Hom(V,W)$ tale che, dati comunque $f\in V^*, w\in W, v\in V$, soddisfa $\phi(f\otimes w)(v) = f(v)w$.
+Mostriamo che $\phi$ è un isomorfismo di spazi vettoriali.
 
+Fissiamo $\{v_i\}_{i\in I}$ una base di $V$, $\{v_i^*\}_{i\in I}$ la base duale, $\{w_j\}_{j\in J}$ una base di $W$.
+Ora abbiamo 
+\[\phi(v_i^*\otimes w_j)(v_k) = \delta_{i,k} w_j\]
+Ciò vuol dire che, se scriviamo la matrice dell'applicazione $\phi(v_i^*\otimes w_j):V\to W$ secondo le basi date, questa presenta un $1$ all'incrocio
+tra l'$i-$esima colonna e la $j-$esima riga, mentre è nulla altrove.
+Dunque $\phi$ manda la base $\{v_i^*\otimes w_j\}_{(i,j)\in I\times J}$ dello spazio $V\otimes W$ in una base dello spazio $\Hom(V,W)$,
+quindi è un isomorfismo.
+\end{proof}
 
+\begin{rem}
+In particolare, ponendo $W=V$, otteniamo che $\End(V)$ è isomorfo a $V^*\otimes V$.
 
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{defn}
-
-
-% CHE ACCIDENTI VUOLE DIRE QUELLO CHE C'È SCRITTO QUI SOTTO??
-
-% La \emph{traccia} di un elemento del prodotto tensoriale, ovvero 
-% \[ tr(f\otimes g)\], 
-% è l'unico funzionale lineare $tr: V \otimes W \to \K$ che soddisfa le proprietà:
-% \begin{enumerate}
-% \item $tr[ (v_1 \otimes w_1) (v_2 \otimes w_2) ] = tr[ (v_2 \otimes w_2) (v_1 \otimes w_1) ] $ 
-% \item $tr[ (id_V \otimes id_W)  ]  = \mbox{dim} V \cdot \mbox{dim} W $
-% \end{enumerate}
-
-
-La \emph{traccia} viene definita come l'unica funzione $tr: End(V\otimes W) \to \K$, dove $V$ e $W$ sono spazi vettoriali su $\K$, tale che 
-
-
-\begin{enumerate}
-\item{ $tr\left( f \otimes g \circ h \otimes k   \right) = tr\left( h \otimes k \circ f \otimes g \right) \qquad \forall f, h \in End(V), \ \forall g, k \in End(W)$}
-\item{ $tr\left( id_V \otimes id_W \right) = dimV \cdot dimW$}
-\end{enumerate}
-
-
-
-
-
-
-
-\end{defn}
+Esiste un'applicazione in un certo senso ``naturale'' $t:V^*\otimes V \to \K$, dove $\K$ è il campo degli scalari, definita da
+$t(f\otimes v) = f(v)$.
+Se indichiamo con $\phi$ l'isomorfismo $V^*\otimes V\to \End(V)$ che abbiamo definito nel corso della precedente dimostrazione,
+otteniamo una funzione lineare $\tr = t\circ \phi: \End(V)\to \K$. Non è difficile vedere che questa $\tr$ che abbiamo appena definito 
+coincide con la classica funzione ``traccia''. Il modo in cui l'abbiamo definita noi rende evidente il fatto che la traccia non dipende
+dalla base scelta per scrivere la matrice di un endomorfismo.
+\end{rem}
 
 
 \begin{thm}
 Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la formula
-
-\[tr(f\otimes g) = tr(f) tr(g)  \]
-
+\[\tr(f\otimes g) = \tr(f) \tr(g)  \]
 \end{thm}
-
-\textsc{Dimostrazione:} L'applicazione $\phi: V \otimes W \to \K$ che manda $(f\otimes g)$ in $tr(f) tr(g)$ è bilineare, e quindi corrisponde a un funzionale $\Phi: V \otimes W \to \K$ lineare. Bisogna verificare che soddisfi le due proprietà della definizione.  È evidente che $\Phi[ (id_V \otimes id_W)  ]  $ 
+\begin{proof}
+Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{w_j\}_{j\in J}$ una base di $W$, e come al solito indichiamo gli elementi delle basi duali aggiungendo un asterisco.
+\begin{align*}
+ \tr(f\otimes g) &= \sum_{(i,j)\in I\times J} (v_i^*\otimes w_j^*) (f\otimes g)(v_i\otimes w_j) =\\
+                 &= \sum_{(i,j)\in I\times J} v_i^*(f(v_i))\cdot w_j^*(g(w_j)) =\\
+                 &= \left(\sum_{i\in I} v_i^*(f(v_i))\right) \cdot \left(\sum_{j\in J} w_j^*(g(w_j))\right) =\\
+                 &= \tr(f) \cdot \tr(g)
+\end{align*}
+\end{proof}
 
 
 \subsection{Prodotto esterno e prodotto simmetrico}
@@ -2779,10 +2792,10 @@ Un esempio più sofisticato è dato dal corpo dei quaternioni $\HH$ (ovviamente 
 \begin{rem}
 Consideriamo una rappresentazione irriducibile $\rho:G\to GL(V_\rho)$ con $V_\rho$ spazo vettoriale su $\R$. Allora l'insieme degli endomorfismi
 di $\rho$ 
-\[ End_G(V_\rho)\]
+\[ \End_G(V_\rho)\]
 è un'algebra di divisione su $R$ se dotato della composizione.
 Infatti per lemma di Schur (in particolare la prima parte dell'enunciato, che vale su ogni campo) ogni elemento di $End_G(V_\rho)$ o è la funzione nulla oppure è un isomorfismo, quindi ammette inverso.
-Se $\dim V_\rho = n$ allora $End_G(V_\rho)$, essendo contenuto in $End(V_\rho)$, ha dimensione finita, in particolare $\dim End_G(V_\rho)\le n^2$.
+Se $\dim V_\rho = n$ allora $\End_G(V_\rho)$, essendo contenuto in $\End(V_\rho)$, ha dimensione finita, in particolare $\dim \End_G(V_\rho)\le n^2$.
 Vedremo tuttavia che vale una limitazione molto più forte.
 \end{rem}
 
@@ -2862,19 +2875,19 @@ così $j^2 = -1$. Infine definiamo $k = ij$.
 Ora $k$ e $j$ sono indipendenti e sono in $A_-$, dunque formano una base di $A_-$. Allora $\{1,i,j,k\}$ è base per $A$ ed è facile
 verificare che questi quattro elementi rispettano le stesse regole di moltiplicazione dei quaternioni, pertanto si conclude che $A\cong\HH$ e la tesi è dimostrata.\qed
 
-Dal teorema precedente si ha immediatamente che se $G\to GL(V)$ è una rappresentazione irriducibile su $\R$ allora $End_G(V)$ è isomorfo a uno
+Dal teorema precedente si ha immediatamente che se $G\to GL(V)$ è una rappresentazione irriducibile su $\R$ allora $\End_G(V)$ è isomorfo a uno
 tra $\R, \C, \HH$.
 
 \begin{prop}
 Sia $\rho:G\to GL(V)$ rappresentazione irriducibile su $\R$. Allora:
 \begin{itemize}
-\item $End_G(V) \cong \R$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 1$
-\item $End_G(V) \cong \C$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 2$
-\item $End_G(V) \cong \HH$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 4$
+\item $\End_G(V) \cong \R$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 1$
+\item $\End_G(V) \cong \C$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 2$
+\item $\End_G(V) \cong \HH$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 4$
 \end{itemize}
 \end{prop}
 \textsc{Dimostrazione: }
-Basta ricordare che $\dim End_G(V) = \langle\chi_\rho|\chi_\rho\rangle$ e la tesi segue subito
+Basta ricordare che $\dim \End_G(V) = \langle\chi_\rho|\chi_\rho\rangle$ e la tesi segue subito
 dal teorema di Frobenius.
 \qed
 
