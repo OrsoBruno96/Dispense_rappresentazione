@@ -842,6 +842,10 @@ Iniziamo a considerare il caso in cui sia $f$ che $g$ siano diagonalizzabili: pr
 Ora, essendo la traccia una funzione continua e le matrice diagonalizzabili dense nello spazio delle matrici, la proprietà affermata dal lemma si estende al caso generale per continuità.
 \end{proof}
 
+\begin{thm}
+Sia $V$ spazio vettoriale. Allora $V^*\otimes V^*$ è isomorfo allo spazio vettoriale delle forme bilineari $V\times V\to \C$.
+\end{thm}
+
 
 \subsection{Prodotto esterno e prodotto simmetrico}
 
@@ -862,61 +866,36 @@ Ora, essendo la traccia una funzione continua e le matrice diagonalizzabili dens
   $h(v_1,\dots,v_n)=0$.
 \end{prop}
 
+
 \begin{defn}[Prodotto esterno]
 Sia $n$ un intero positivo, $V$ uno spazio vettoriale. Un prodotto esterno è uno spazio vettoriale indicato con $\bigwedge^n V$
 dotato di una funzione $n-$lineare alternante $\wedge: V^n \to \bigwedge^n V$ che manda $(v_1,\ldots,v_n)$ in 
 $v_1\wedge v_2\wedge\ldots\wedge v_n \in \bigwedge^n V$, tale che presa comunque una funzione $h: V^n \to Z$ $n-$lineare alternante, 
 esiste un'unica $\phi: \bigwedge^n V \to Z $ lineare per cui vale $\phi(v_1\wedge v_2\wedge \ldots \wedge v_n)=h(v_1,\ldots,v_n)$.
-
 \label{defn:prodotto esterno}
 \end{defn}
 
-
-
-
-
-\begin{thm}[Dimensione del prodotto esterno]
-Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i\}_{i=1}^n$ una base di $V$ e $k$ un intero positivo.
-Allora l'insieme
-\[E=\{e_{i_1} \wedge e_{i_2}\wedge \ldots \wedge e_{i_k} \quad|\quad 1 \leq i_1 < i_2 <\ldots< i_k \leq n\}\]
-è una base di $\bigwedge^k V$ di cardinalità $|E|= \binom {n}{k}$.
-
-\label{thm:prodotto esterno}
-\end{thm}
-
-
-MANCANO UN SACCO DI PROPRIETA' E LE DIMOSTRAZIONI
-
-
-
-
-
 \begin{defn}[Prodotto simmetrico]
-
 Sia $n$ un intero positivo, $V$ uno spazio vettoriale. Un prodotto simmetrico è uno spazio vettoriale indicato con $S^n V$
 dotato di una funzione $n-$lineare simmetrica $V^n \to \bigwedge^n V$ che manda $(v_1,\ldots,v_n)$ in 
 $v_1 v_2\ldots v_n \in S^n V$, tale che presa comunque una funzione $h: V^n \to Z$ $n-$lineare simmetrica, 
 esiste un'unica $\phi: S^n V \to Z $ lineare per cui vale $\phi(v_1 v_2 \ldots v_n)=h(v_1,\ldots,v_n)$.
-
 \label{defn:prodotto simmetrico}
 \end{defn}
 
 
-
-
-
-\begin{thm}[Dimensione del prodotto simmetrico]
-
-Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i\}_{i=1}^n$ una base di $V$ e $k$ un intero positivo.
-Allora l'insieme 
-\[E=\{e_{i_1} \wedge e_{i_2}\wedge\ldots \wedge e_{i_k} \quad|\quad 1 \leq i_1 \leq i_2 \leq\ldots\leq i_k \leq n\}\]
-è una base di $S^k V$ di cardinalità $|E|= \binom {n+k-1}{k}$.
-\label{thm:prodotto simmetrico}
-\end{thm}
+\begin{prop}[Proprietà dei prodotti esterni e simmetrici]
+Sia $V$ uno spazio vettoriale e $n$ un numero naturale.
+\begin{itemize}
+\item $\bigwedge^nV$ e $S^nV$ esistono.
+\item $\bigwedge^nV$ e $S^nV$ sono unici a meno di un unico isomorfismo.
+\item $\bigwedge^nV$ è generato dai vettori del tipo $v_1\wedge \dots \wedge v_n$, e analogamente 
+      $S^nV$ è generato dai vettori del tipo $v_1\dots v_n$.
+\end{itemize}
+\end{prop}
 
 
 \begin{defn}[Potenza simmetrica e potenza esterna di un'applicazione lineare]
-
 Sia $f: V\to V$ un endomorfismo di uno spazio vettoriale. Definiamo 
 $\bigwedge^k f : \bigwedge^k V \to \bigwedge^k V$ la funzione che manda $v_1 \wedge \ldots \wedge v_n$ in $f(v_1) \wedge \ldots \wedge f(v_n)$
 
@@ -924,20 +903,63 @@ In modo analogo si definisce la potenza simmetrica.
 \end{defn}
 
 
+\begin{rem} Siano $V$, $W$, $Z$ spazi vettoriali.
+\begin{itemize}
+   \item $\bigwedge^k Id_V = Id_{\bigwedge^kV}$
+   \item Date due applicazioni lineari $f:V\to W$ e $g:W\to Z$ allora $\bigwedge^k(g\circ f) = \bigwedge^kg\circ\bigwedge^kf$
+\end{itemize}
+\end{rem}
+
+\begin{thm}[Dimensione del prodotto esterno]
+Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i\}_{i=1}^n$ una base di $V$ e $k$ un intero positivo.
+Allora l'insieme
+\[E=\{e_{i_1} \wedge e_{i_2}\wedge \ldots \wedge e_{i_k} \quad|\quad 1 \leq i_1 < i_2 <\ldots< i_k \leq n\}\]
+è una base di $\bigwedge^k V$ di cardinalità $|E|= \binom {n}{k}$.
+\label{thm:prodotto esterno}
+\end{thm}
+
+
+\begin{thm}[Dimensione del prodotto simmetrico]
+Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i\}_{i=1}^n$ una base di $V$ e $k$ un intero positivo.
+Allora l'insieme 
+\[E=\{e_{i_1} \wedge e_{i_2}\wedge\ldots \wedge e_{i_k} \quad|\quad 1 \leq i_1 \leq i_2 \leq\ldots\leq i_k \leq n\}\]
+è una base di $S^k V$ di cardinalità $|E|= \binom {n+k-1}{k}$.
+\label{thm:prodotto simmetrico}
+\end{thm}
+
+Sia $V$ uno spazio vettoriale di dimensione $n$. Allora sappiamo che:
+\begin{itemize}
+\item $\dim V\otimes V = n^2$
+\item $\dim S^2V = \frac{n(n+1)}{2}$
+\item $\dim \bigwedge^2V = \frac{n(n-1)}{2}$
+\end{itemize}
+Possiamo definire in modo abbastanza naturale un'applicazione lineare $V\otimes V\to \bigwedge^2V\oplus S^2V$,
+mandando il vettore $v\otimes w$ nella coppia $(v\wedge w, vw)$. In effetti questa applicazione è un isomorfismo.
+\begin{proof}
+Per uguaglianza delle dimensioni degli spazi di partenza e di arrivo, mi basta dimostrare che è surgettiva.
+Per ogni coppia $v\in V$, $w\in W$ abbiamo che:
+\[\frac{v\otimes w + w\otimes v}{2} \to (0, vw)\]
+\[\frac{v\otimes w - w\otimes v}{2} \to (v\wedge w, 0)\]
+Quindi $\bigwedge^2V$ e $S^2V$ sono contenuti nell'immagine. Ma da questo segue subito la tesi.
+\end{proof}
+
+
+\begin{thm}
+Sia $V$ spazio vettoriale. Allora $S^2V^*$ è isomorfo allo spazio vettoriale delle forme bilineari simmetriche $V\times V\to \C$.
+\end{thm}
+\begin{thm}
+Sia $V$ spazio vettoriale. Allora $\bigwedge^2V^*$ è isomorfo allo spazio vettoriale delle forme bilineari antisimmetriche $V\times V\to \C$.
+\end{thm}
 
 
 \begin{prop}
 Sia $f: V \to V$ un endomorfismo di uno spazio vettoriale. Allora vale
-
 \[ 
 \begin{cases}
 \tr(\bigwedge^2 f ) = \dfrac{(\tr(f))^2 - \tr(f^2)}{2} \\
 \tr(S^2 f ) = \dfrac{(\tr(f))^2 + \tr(f^2)}{2} \\
 \end{cases}
 \]
-
-
-
 \end{prop}
 
 
@@ -2421,7 +2443,7 @@ Dunque abbiamo il seguente risultato:
 
 
 \begin{prop}
-	Se $\rho:G\to GL(V)$ è irriducibile ($V$ è un $C-$spazio vettoriale), allora $\rho$ è reale se e solo se $\rho^\R$ è riducibile.
+	Se $\rho:G\to GL(V)$ è irriducibile ($V$ è un $\C-$spazio vettoriale), allora $\rho$ è reale se e solo se $\rho^\R$ è riducibile.
 \end{prop}
 \begin{proof}
 	Se $\rho$ è rappresentazione reale, sia $\{v_1,\dots v_n\}$ una 
@@ -2441,7 +2463,7 @@ Dunque abbiamo il seguente risultato:
 	a coefficienti reali per ogni $g\in G$, ovvero $\rho$ è reale secondo la definizione \ref{def: rappr reale}.
 \end{proof}
 
-Ora andremo a fare una classificazione delle rappresentazioni. Vedremo che ne esistono di 3 tipi:
+Ora andremo a fare una classificazione delle rappresentazioni in 3 tipi diversi:
 \begin{itemize}
 \item Reali
 \item Complesse
@@ -2454,24 +2476,26 @@ Iniziamo con alcune proprietà soddisfatte dalle rappresentazioni reali:
 Prendiamo una $\rho:G\to GL(V)$ rappresentazione $/\C$ che sia reale. Allora:
 \begin{enumerate}
 \item $\chi_\rho(g)\in \R$ $\forall g\in G$ 
-\item $V$ possiede una forma bilineare simmetrica $G-$invariante. Ovvero lo spazio delle forme bilineari simmetriche $S^2V^*\subset V\otimes V$ è tale che $(S^2V^*)^G\neq 0$.
+\item $V$ possiede una forma bilineare simmetrica $G-$invariante. Ovvero lo spazio delle forme bilineari simmetriche $S^2V^*\subset V^*\otimes V^*$ è tale che $(S^2V^*)^G\neq 0$.
 \end{enumerate} 
 \end{thm}
 
 \begin{proof}
-Abbiamo supposto la rappresentazione reale. Quindi la matrice è reale ed in particolare lo sarà anche la sua traccia. Quindi il primo punto è vero. Ora veniamo al secondo punto: esisterà un $V_0$ spazio vettoriale reale $G-$invariante che tensorizzato con $\C$ dia $V$. Consideriamo ora una forma bilineare simmetrica $B_0$ non degenere $/\R$
+Abbiamo supposto la rappresentazione reale. Quindi la matrice è reale ed in particolare lo sarà anche la sua traccia. Quindi il primo punto è vero. Ora veniamo al secondo punto: esisterà un $V_0$ spazio vettoriale reale $G-$invariante che tensorizzato con $\C$ dia $V^\R$. Consideriamo ora una forma bilineare simmetrica $B_0$ non degenere $/\R$
 \[ B_0 \in S^2 V_0^*\]
 Possiamo ora renderla invariante sotto l'azione di $G$ con il solito metodo del fare la media. Consideriamo quindi $\tilde B_0$ definito come
 \[ \tilde B_0(v_1, v_2) = \dfrac{1}{|G|} \dsum_{g\in G} B_0(\rho(g) v_1, \rho(g) v_2)\]
-Questo ha le caratteristiche precedenti ed è anche invariante sotto $G$ (ovvero $\tilde B_0\in (S^2V_0^*)^G$). Possiamo a questo punto estenderla a forma bilineare su $V$ complessificandola in modo ovvio. Consideriamo quindi $B$
-\[B \in (S^2V^*)^G \]
-che definiamo sullo spazio $V = V_0 \oplus i V_0$ nel seguente modo
+Questo ha le caratteristiche precedenti ed è anche invariante sotto $G$, ovvero $\tilde B_0\in (S^2V_0^*)^G$. Possiamo a questo punto estenderla a forma bilineare su $V$ complessificandola in modo ovvio. Costruiamo quindi $B \in (S^2V^*)^G$ definendola nel seguente modo:
 \[B(v_1 + i v_1', v_2 + i v_2') = \left( \tilde B_0(v_1, v_2) - \tilde B_0(v_1', v_2')\right)  + i \left( \tilde B_0(v_1', v_2) + B_0(v_1, v_2')\right)\]
 \`E una banale verifica controllare che rispetta le caratteristiche richieste.
 \end{proof}
 
+\begin{rem}
+Supponiamo che $\rho:G\to GL(V)$ sia una rappresentazione irriducibile. Allora il fatto che esiste una forma bilineare $G-$invariante
+equivale a $(V^*\otimes V^*)^G\neq 0$. Ma ricordando che $(V^*\otimes V^*)^G \cong \Hom(V,V^*)^G$ (che è l'insieme degli omomorfismi di rappresentazioni) ciò vuol dire che $\rho$ e $\rho^*$ sono isomorfi, il che si traduce in $\chi_\rho = \chi_{\rho^*}$. Ma questo avviene esattamente quando $\chi_\rho$ assume solo valori reali. Ciò significa che la seconda condizione trovata (che prevede l'esistenza di una forma bilineare simmetrica invariante) è strettamente più forte della prima (che è soddisfatta anche nel caso in cui esista una forma bilineare invariante non necessariamente simmetrica).
+\end{rem}
 
-Vediamo ora il seguente lemma che ci servirà per la classificazione.
+Vediamo ora un lemma che ci servirà per la classificazione.
 \begin{lemma}
 Sia $V$ una $G-$rappresentazione $/\C$. Allora ogni forma bilineare non nulla $G-$invariante è non degenere. Inoltre, se esiste, è unica a meno di scalari, ovvero $\dim (V^*\otimes V^*)^G\le1$.
 \end{lemma}
@@ -2484,47 +2508,33 @@ A questo punto, se esiste una forma bilineare non nulla invariante, questa corri
 Per il lemma di Schur o $\phi$ è nullo o $\phi$ è un isomorfismo. Dato che la forma è non nulla, allora $\phi = \lambda Id$ con $\lambda \in \C\setminus\{0\}$.
 \end{proof}
 
-Sia $V$ una rappresentazione $/\C$ irriducibile: quando è che esiste una forma bilineare $G-$invariante? Ovvero quand'è che si ha $\left(V^* \otimes V^*\right)^G \neq 0$? Cerchiamo delle condizioni necessarie...
-\begin{lemma} 
-Sia $(\rho, V_\rho)$ una rappresentazione $/\C$ tale che sia reale: allora esiste un isomorfismo tra $V$ e $V^*$ ovvero esiste un isomorfismo tra $\rho$ e $\rho^*$ (a volte confondiamo la rappresentazione con il suo supporto).
-\end{lemma}
-\begin{proof}
-\[\rho \simeq \rho^* \Leftrightarrow \chi_\rho(g)=\chi_{\rho^*}(g)\ \forall g\in G\]
-ma dato che 
-\[\chi_{\rho^*}=\overline{\chi_\rho}\]
-allora
-\[ \chi_\rho(g)=\chi_{\rho^*}(g)\ \forall g\in G\Leftrightarrow \chi_\rho(g)=\overline{\chi_\rho}(g)\ \forall g\in G\]
-e questo è vero $\Leftrightarrow $ $\chi_\rho$ è una funzione reale. E ciò è vero se la rappresentazione è definibile $/\R$.
-\end{proof}
 
-\begin{lemma}
-Sia $(\rho, V_\rho)$ una rappresentazione $/\C$: allora
-\begin{itemize}
-\item  $B \in (V^* \otimes V^*)^G \Rightarrow B \in S^2V^* \vee B \in \bigwedge ^2 V^*$
-\end{itemize}
-Definiamo 
-\[ m_\rho = \dfrac{1}{|G|} \dsum_{g \in G} \chi_{\rho}(g^2)\]
-l'indicatore di Frobenius-Schur. Allora
-\begin{itemize}
+\begin{thm}
+Sia $\rho:G\to GL(V_\rho)$ una rappresentazione $/\C$. Definiamo 
+$m_\rho = \dfrac{1}{|G|} \dsum_{g \in G} \chi_{\rho}(g^2)$
+ detto ``indicatore di Frobenius-Schur''. Allora
+\begin{enumerate}
+\item Se $B \in (V^* \otimes V^*)^G$ allora $B \in S^2V^*$ oppure $B \in \bigwedge ^2 V^*$
 \item  $m_\rho \in \{-1, 0, 1 \}$
-\item{ \begin{enumerate}
-   \item se $m_\rho = 0 \Rightarrow (V^*\otimes V^*)^G = 0$
-   \item se $m_\rho = 1 \Rightarrow (S^2 V^*)^G \neq 0$
-   \item se $m_\rho = -1 \Rightarrow (\bigwedge^2 V^*)^G \neq 0$
-\end{enumerate}
-}
+\item{ \begin{itemize}
+   \item se $m_\rho = 0$ allora $(V^*\otimes V^*)^G = 0$
+   \item se $m_\rho = 1$ allora $(S^2 V^*)^G \neq 0$
+   \item se $m_\rho = -1$ allora $(\bigwedge^2 V^*)^G \neq 0$
 \end{itemize}
-\end{lemma}
+}
+\end{enumerate}
+\end{thm}
 
 \begin{proof}
-Abbiamo visto che $V^*\otimes V^*$ si può decomporre come somma diretta delle potenze simmetriche e alternanti ovvero
-\[V^*\otimes V^*=S^2V^*\oplus  \bigwedge ^2 V^*\]
-e inoltre per il lemma precedente sappiamo che $V^*\otimes V^*$ ha dimensione 1. 
+Indichiamo $W = (V^*\otimes V^*)^G$ lo spazio delle forme bilineari $G-$invarianti, che è sottorappresentazione di $V^*\otimes V^*$.
+Vogliamo dimostrare che $W\subseteq S^2V^*$ oppure $W\subseteq \bigwedge^2V^*$.
+Dal lemma precedente sappiamo che $\dim W \le 1$. Se $\dim W = 0$ allora si ha automaticamente la tesi.
+Supponiamo ora $\dim W = 1$, dunque $W$ è rappresentazione irriducibile di $G$.
 
-DA FINIRE
+LA FINISCO DOMANI
 \end{proof}
 
-\begin{defn}[Classificazione sull'indice di Frobenius]
+\begin{defn}[Classificazione tramite l'indice di Frobenius]
 Sia $\rho:G\rightarrow GL(V)$ una rappresentazione $/\C$: essa è detta
 \begin{itemize}
 \item \textbf{reale} se $m_\rho = 1$  
