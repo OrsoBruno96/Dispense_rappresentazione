@@ -2515,7 +2515,7 @@ che definiamo sullo spazio $V = V_0 \oplus i V_0$ nel seguente modo
 Vediamo ora il seguente lemma che ci servirà per la classificazione.
 
 \begin{lemma}
-Sia $(\rho, V_\rho)$ una rappresentazione $/\C$. Allora ogni forma bilineare non nulla $G-$invariante è non degenere (in particolare quindi ne esiste almeno una). Inoltre è unica a meno di scalari, ovvero $dim (V^*\otimes V^*)^G=1$ .
+Sia $(\rho, V_\rho)$ una rappresentazione irriducibile di $G$ su $\C$. Allora ogni forma bilineare non nulla $G-$invariante è non degenere. Inoltre è unica a meno di scalari, ovvero se ne esiste almeno una, si ha $dim (V^*\otimes V^*)^G=1$ .
 \end{lemma}
 
 \textsc{Dimostrazione:}
@@ -2685,7 +2685,8 @@ i & 0 \\
 \right)
 \qquad
 \]
-Matrici di spin di Pauli ?????????????????????????????????????????????
+
+Queste 4 matrici prendono il nome di matrici di spin di Pauli in quanto hanno alcune applicazioni in Fisica. Possiamo infine ricostruire quindi la tabella dei caratteri di $Q_8$
 
 
 \begin{table}[!ht]
@@ -2756,7 +2757,10 @@ Questo non è male, in quanto se $\phi$ fosse lineare avremmo subito che $\phi$ 
 
 \[ \phi(z_1 x_1 + z_2 x_2) = \overline{z_1} \phi(x_1) + \overline{z_2} \phi(x_2) \qquad \forall z_1, z_2 \in \C, \forall x_1, x_2 \in V_\rho\]
 
-SCRIVI PERCH\'E
+La linearità rispetto ai vettori è abbastanza evidente. L'antilinearità rispetto agli scalari deriva essenzialmente dal fatto che stiamo usando un prodotto hermitiano invece di un prodotto scalare. Infatti
+
+\[ h( \phi(zx) , y) = B(zx, y) = B(x, zy) = h(\phi(x), zy) = \overline{z} h(\phi(x), y) \]
+
 
 E quindi purtroppo $\phi$ non è davvero lineare. Però dato che in mezzo c'è  solo il coniugio, possiamo provare a vedere cosa fa $\phi^2$
 
@@ -2954,7 +2958,7 @@ Ciò implica che
 
 \newpage
 \section{Rappresentazioni indotte}
-Supponiamo di avere $\rho:H\rightarrow GL(V)$ una rappresentazione di $H<G$ con $G$ gruppo. Il nostro aim è quello di definire una $\widetilde{\rho}:G\rightarrow GL(V)$ rappresentazione di $G$ che estende $\rho$.
+Supponiamo di avere $\rho:H\rightarrow GL(V)$ una rappresentazione di $H<G$ con $G$ gruppo. Il nostro obiettivo è quello di definire una $\widetilde{\rho}:G\rightarrow GL(V)$ rappresentazione di $G$ che estende $\rho$.
 
 \begin{defn}Indichiamo con \emph{induzione da $H$ in $G$ di $W$} il seguente spazio vettoriale:
 \[Ind_H^G(W)=\{f:G\rightarrow W: \rho(h)\circ f(gh)=f(g)\ \forall (g,h)\in G\times H\}   \]
@@ -2994,8 +2998,8 @@ Dato $g\in G$ definiamo $V_g=\{f\in V : Supp(f)\subseteq gH \}$.
 \textbf{Osservazione:} dato che le classsi laterali di $H$ sono una partizione di $G$, dette $\{g_iH\}_{i\in |G/H|}$ i rappresentanti delle classi laterali $gH$ al variare di $g$ in $G$ allora 
 \[G=\bigsqcup_{i=1}^{|G/H|} g_iH\] 
 e quindi ogni funzione la posso scrivere come combinazione lineare di $f_i\in V_{g_iH}$.
-\[\Rightarrow V=\bigotimes_{i=1}^{|G/H|} V_{g_iH}\]
-Voglio ora rintracciare $W$, in quanto sono interessata a trovare un sottospazio isomorfo a $W$ dento $V$. Notiamo innanzitutto che la scrittura precedente non è detto che sia una decomposizione di rappresentazioni, ma possiamo vedere subito che si comporta bene sotto l'azione di $\rho_{ind}$. 
+\[\Rightarrow V=\bigoplus_{i=1}^{|G/H|} V_{g_iH}\]
+Voglio ora rintracciare $W$, in quanto sono interessata a trovare un sottospazio isomorfo a $W$ dentro $V$. Notiamo innanzitutto che la scrittura precedente non è detto che sia una decomposizione di rappresentazioni, ma possiamo vedere subito che si comporta bene sotto l'azione di $\rho_{ind}$. 
 
 \begin{lemma}
 $\rho_{ind}$ permuta le varie $V_{gH}$ nel senso che $\rho_{ind}(g)V_{g'H}=V_{gg'H}$. 
@@ -3035,7 +3039,7 @@ La rappresentazione appena trovate di $H$ su $V_{eH}$ è naturalmente isomorfa a
 \[\Phi:V_{eH}\rightarrow W\ \textup{tale che } f\mapsto f(e)\]
 ovvero la funzione che associa ad un $f$ la valutazione della stessa nell'elemento neutro. Verifichiamo innanzitutto che si tratta di un omomorfismo di rappresentazione. Ricordiamo chi è $V_{eH}$:
 \[V_{eH}=\{f:G\rightarrow W: \rho(h)f(gh)=f(g)\ \forall h,g\ \ \textup{e } Supp(f)\subseteq H\}\]
-$\Phi$ è un omo. di rappr. sse $\Phi(\rho_{ind}(h)f)=\rho(h)\Phi(f)\ \forall h\in H$.
+$\Phi$ è un omomorfisimo di rappresentazioni $\Leftrightarrow$ $\Phi(\rho_{ind}(h)f)=\rho(h)\Phi(f)\ \forall h\in H$.
 \[\Phi(\rho_{ind}(h)f))=\rho(h)\Phi(f) \Leftrightarrow (\rho_{ind}(h)f)(e)=\rho(h)(f(e))\Leftrightarrow f(h^{-1}e)=f(h^{-1})=\rho(h)f(e)\]
 ma ciò è vero in quanto le $f\in Ind_H^G(W)$. \\
 Verifichiamo che $\Phi$ è iniettiva. $Supp(f)\subseteq H$ e $\forall h\in H\ f(h)=\rho(h^{-1}f(e))$: questo mi dice che una volta che si è fissato il valore di $f(e)$ allora la funzione è univocamente determinata su $H$. D'altra parte so che in $G\setminus H$ la funzione è identicamente nulla $\Rightarrow$ quindi è univacamente determinata su tutto $G$. Allora detti $\Phi$ è iniettiva.\\
@@ -3057,17 +3061,29 @@ Vediamo ora degli esempi.
 \item $H\neq \{e\},\subseteq G$ e $\rho:H\rightarrow GL(W)$ la rappresentazione banale con $W=\C$. Allora
 \[Ind_H^G(\C)=\{f:G\rightarrow \C:\rho(h)f(gh)=f(gh)=f(g)\ \forall g,h\}\Rightarrow f \textup{ è costante sulle classi laterali di} H\]
 \[\Rightarrow Ind_H^G(\C)=\{f:G\rightarrow \C:f \textup{ è costante sulle classi laterali di }\ H\}=\C[G/H]\]
-\begin{tikzpicture}
-\centering
-\matrix(m)[matrix of math nodes,row sep=3em,column sep=3em,minimum width=3em]
-{
-f:G& \C\\
-G/H& \\};
-\path[-stealth]
-(m-1-1) edge (m-1-2)
-(m-1-1) edge node [left] {$\pi$} (m-2-1)
-(m-2-1) edge node [right] {$\ f$} (m-1-2);
-\end{tikzpicture}\\
+
+
+%% \begin{tikzpicture}
+%% \centering
+%% \matrix(m)[matrix of math nodes,row sep=3em,column sep=3em,minimum width=3em]
+%% {
+%% f:G& \C\\
+%% G/H& \\};
+%% \path[-stealth]
+%% (m-1-1) edge (m-1-2)
+%% (m-1-1) edge node [left] {$\pi$} (m-2-1)
+%% (m-2-1) edge node [right] {$\ f$} (m-1-2);
+%% \end{tikzpicture}\\
+
+\[
+\begin{diagram}
+G          & \rTo^{f}            & \C \\
+\dTo<{\pi} & \ruTo>{f \circ \pi} &    \\
+G/H        &                     &    \\
+\end{diagram}
+\]
+
+
 $G/H$ è un insieme finito dove $G$ agisce per moltiplicazione a sinistra ($g(g'H)=gg'H$). Quindi $Ind_H^G(W)$ è la rappresentazione per permutazione associata all'azione di $G$ in $G/H$. \\
 \textbf{Recall:} $X$ è un $G-$insieme, sia $X= \bigsqcup X_i$ la decomposizione in $G-$orbite: allora 
 \[\C[X]=\bigoplus_{i=1}^{\#-orbite} \C[X_i]\] 
@@ -3338,17 +3354,9 @@ Dove tutto funziona uguale se al posto di $\R$ mettiamo $\C$ e per $\C_\R$ si in
 
 \end{itemize}
 
-A questo punto, in analogia con quello che abbiamo fatto con i prodotti finiti, cerchiamo di trovare quello invariante. 
-
-
-
-
-
-
-
 \end{defn}
 
-
+A questo punto, in analogia con quello che abbiamo fatto con i prodotti finiti, cerchiamo di trovare quello invariante. 
 
 
 
