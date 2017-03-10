@@ -84,7 +84,9 @@
 \newcommand{\dsum}{\displaystyle\sum}
 \newcommand{\dint}{\displaystyle\int}
 
-\newcommand{\tr}{\textnormal{tr}}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
 
 
 
@@ -651,9 +653,14 @@ Siano $V,W$ due $\C$-spazi vettoriali, una funzione $h:V\times V\to W$ si dice \
 Sia $V$ un $\K-$spazio vettoriale e $I$ un insieme; una base di $V$ è una funzione $e: I \to V$ tale che 
 per ogni $v \in V$ esiste un'unica funzione $a: I \to \K$ a supporto finito per cui vale $v=\sum_{i\in I}a_i e_i$.
 Questa definizione è compatibile con la definizione di base come insieme di vettori generatori linearmente indipendenti.
+
+Spesso useremo una notazione del tipo $\{e_i\}_{i\in I}$ per indicare una base di uno spazio vettoriale $V$. Ciò sottintende
+una funzione $e:I\to V$ che manda $i\to e_i$, in accordo con la definizione che abbiamo appena dato.
 \end{defn}
 
-
+Alcuni dei risultati a cui arriveremo sono validi anche per $I$ infiniti, ma per semplicità consideriamo solo
+spazi vettoriali finitamente generati (per cui esiste una base $e: I \to V$ con $I$ insieme finito).
+Questo primo lemma dovrebbe essere noto a chiunque abbia un minimo di familiarità con l'algebra lineare:
 \begin{lemma}
 Siano $V,W$ dei $\K-$spazi vettoriali, sia $e:I\to V$ una base di $V$ e $f: I \to W$ una funzione. Allora $\exists!\  \phi: V \to W$ lineare tale che
 \[\phi(e_i) = f_i \]
@@ -683,23 +690,23 @@ Ora è facile osservare che $e:I\to\C^I$ definita da $e_i(j) = \delta_{i,j}$ è 
 \label{defn:prodotto tensoriale}
 \end{defn}
 
-\textbf{Esempio:} $V=W=\C$ e come $\otimes$ prendo il prodotto ovvero $v\otimes w=vw$.
+\begin{exmp} $V=W=V\otimes W = \C$ e come $\otimes$ prendo il prodotto ovvero $v\otimes w=vw$.
+\end{exmp}
+\begin{exmp} $W$ un qualsiasi $\K-$spazio vettoriale, $V=\K$. Allora posso prendere $\K\otimes W = W$ e come $\otimes$ prendo il prodotto per scalari $\alpha\otimes w=\alpha w$.
+\end{exmp}
 
 \begin{prop}
 Se ho due prodotti tensoriali $V \otimes W$ e $V \overline{\otimes} W$, allora esiste un unico isomorfismo 
-$\phi: V \otimes W \to V \overline{\otimes} W$ tale che
-
+$\phi: V \otimes W \to V \overline{\otimes} W$ tale che, fissati comunque $v\in V, w\in W$, valga
 \[ \phi (v\otimes w) = v \overline{\otimes} w\]
 \end{prop}
-\textbf{Dimostrazione:} considero i seguenti due diagrammi:
-
+\begin{proof}
+Considero i seguenti due diagrammi:
 \[
 \tridiag{V\times W}{ \otimes }{V \otimes W}{  }{ V \overline{\otimes} W }{\overline{\otimes}} \qquad
 \tridiag{V\times W}{ \overline{\otimes} }{V \overline{\otimes} W}{}{V \otimes W}{\otimes}
 \]
-
-La proprietà universale per il prodotto tensore $\otimes$ dice che $\exists !\phi:V\otimes W\rightarrow V\overline{\otimes}W$ lineare che fa commutare il primo diagramma: analogamente $\exists !\psi:V\overline{\otimes}\rightarrow V\otimes W$ lineare che fa commutare il secondo diagramma. Ora consideriamo i seguenti due diagrammi:
-
+La proprietà universale per il prodotto tensore $\otimes$ dice che $\exists !\phi:V\otimes W\rightarrow V\overline{\otimes}W$ lineare che fa commutare il primo diagramma: analogamente $\exists !\psi:V\overline{\otimes}W\rightarrow V\otimes W$ lineare che fa commutare il secondo diagramma. Ora consideriamo i seguenti due diagrammi:
 \[
 \begin{diagram}
             &                            & V\otimes W               \\
@@ -717,16 +724,14 @@ La proprietà universale per il prodotto tensore $\otimes$ dice che $\exists !\p
             &                            & V\overline{\otimes} W    \\
 \end{diagram}
 \]
+Ma noi conosciamo già un'applicazione lineare che fa commutare i due diagrammi ``più grandi'': l'identità. Quindi per unicità possiamo concludere che $\phi\psi=\psi\phi=id$, ovvero $\phi$ e $\psi$ sono una l'inversa dell'altra e in particolare $\phi$ è un isomorfismo.
+\end{proof}
 
-Tuttavia ci rendiamo conto che sempre per la proprietà universale già l'identità fa commutare i due diagrammi "più grandi" e che quindi per unicità possiamo concludere che $\phi\psi=\psi\phi=id\Rightarrow \phi=\psi^{-1}$ per unicità e $\phi$ è un isomorfismo. \qed\\ 
-Quindi quello che abbiamo dimostrato si traduce in
+Si può dimostrare inoltre che dati due spazi vettoriali $V$ e $W$ esiste sempre 
+un loro prodotto tensoriale, dunque abbiamo il seguente risultato:
 \begin{thm}
 $V\otimes W$ esiste ed è unico a meno di isomorfismo.
 \end{thm}
-
-
-
-
 
 
 \begin{note}
@@ -735,15 +740,14 @@ $V\otimes W$ esiste ed è unico a meno di isomorfismo.
 
 
 \begin{prop}
-L'insieme degli elementi di $V\otimes W$ della forma $v\otimes w$ con $v\in V, w\in W$ generano tutto lo spazio $V\otimes W$.
+L'insieme degli elementi di $V\otimes W$ della forma $v\otimes w$ con $v\in V, w\in W$ genera tutto lo spazio $V\otimes W$.
 \end{prop}
 
-\textbf{Dimostrazione:} Definisco
+\begin{proof} Consideriamo il sottospazio generato dagli elementi della forma $v\otimes w$:
 \[\langle\{v\otimes w:v\in V,w\in W\}\rangle=\langle A\rangle\]
-voglio quindi dimostrare che $Z=V\otimes W$. Considero il diagramma:
+Vogliamo quindi dimostrare che $\langle A\rangle=V\otimes W$. Consideriamo il diagramma:
 \[\tridiag{V\times W}{ \otimes }{V \otimes W}{  }{ \langle A\rangle }{h}\]
-dove $h(v,w)=v\otimes w$ e dato che $A$ genera $\langle A\rangle$ abbiamo ben definito una applicazione bilineare. Quindi $\exists !\phi:V\otimes W\rightarrow \langle A\rangle$ che fa commutare il diagramma. Detta $i:\langle A\rangle\rightarrow V\otimes W$ l'inclusione consideriamo il seguente diagramma:\\
-
+dove $h(v,w)=v\otimes w$ è ovviamente un'applicazione bilineare. Quindi $\exists !\psi:V\otimes W\rightarrow \langle A\rangle$ che fa commutare il diagramma. Detta $i:\langle A\rangle\rightarrow V\otimes W$ l'inclusione consideriamo il seguente diagramma:
 \[
 \begin{diagram}
             &                       & V\otimes W               \\
@@ -754,89 +758,99 @@ dove $h(v,w)=v\otimes w$ e dato che $A$ genera $\langle A\rangle$ abbiamo ben de
 \end{diagram}
 \]
 tuttavia il diagramma grande commuta anche con $id_{V\otimes W}$ e quindi $i\circ\psi=id_{V\otimes W}\Rightarrow i$ è surgettiva $\Rightarrow \langle A\rangle=V\otimes W$.
-
-
+\end{proof}
 
 
 \begin{defn}[Prodotto tensoriale di mappe lineari]
-Date $f:V \to V'$ e $g:W \to W'$ funzioni lineari, si definisce prodotto tensoriale tra $f$ e $g$ la funzione lineare $f \otimes g : V \otimes W \to V' \otimes W'$ tale che $(f \otimes g)(v \otimes w)=f(v) \otimes g(w)$ $\forall v\in V, w\in W$
+Date $f:V \to V'$ e $g:W \to W'$ funzioni lineari, si definisce prodotto tensoriale tra $f$ e $g$ l'unica funzione lineare $f \otimes g : V \otimes W \to V' \otimes W'$ tale che $(f \otimes g)(v \otimes w)=f(v) \otimes g(w)$ $\forall v\in V, w\in W$.
 
+Una funzione con tale proprietà esiste ed è unica poiché l'applicazione $V\times W \to V'\otimes W'$ che manda $(v,w)$ in $f(v)\otimes g(w)$ è bilineare.
 \end{defn}
 
 \begin{rem}
-
-\[ id_V \otimes id_W = id_{V\otimes W}\]
+$id_V \otimes id_W = id_{V\otimes W}$
 \end{rem}
 
 
+\begin{prop}
+Siano $V$ e $W$ $\K-$spazi vettoriali e sia $\{e_i\}_{i\in I}$ una base di $V$. Allora ogni elemento di $V\otimes W$ si scrive in modo unico come:
+\[ \sum_{i\in I} e_i \otimes w_i\]
+con $w_i\in W$.
+\end{prop}
+\begin{proof}
+Sia $x$ un elemento di $V\otimes W$.
+Visto che gli elementi della forma $v\otimes w$ generano l'intero spazio $V\otimes W$, possiamo scrivere
+\[ x = \sum_{j=1}^N v_j\otimes w_j \]
+scegliendo opportunamente $N\in \N$, $v_j\in V$, $w_j\in W$ per $j=1\dots N$. Visto che $\{e_i\}_{i\in I}$ è base di $V$:
+\[ x = \sum_{j=1}^N v_j\otimes w_j  = \sum_{j=1}^N \left(\sum_{i\in I} a_{i,j}e_i\right)\otimes w_j = \sum_{i,j} a_{i,j}(e_i\otimes w_j) = \sum_{i\in I} e_i\otimes\tilde w_i\]
+dove si è posto $\tilde w_i = \sum_j a_{i,j}e_j$.
+Quindi siamo riusciti ad ottenere una scrittura del tipo che volevamo. Resta da mostrare che questa scrittura è unica,
+ovvero che gli elementi $\tilde w_i$ sono univocamente determinati.
 
+Consideriamo la base $\{e_i^*\}_{i\in I}$ di $V^*$ duale rispetto a $\{e_i\}_{i\in I}$. Fissato un $k\in I$ possiamo considerare l'applicazione
+lineare $e_k^*\otimes id_W: V\otimes W \to \K\otimes W$. Valutandola in $x$ otteniamo:
+\[ (e_k^*\otimes id_W) \left(\sum_{i\in I} e_i\otimes\tilde w_i \right) = \sum_{i\in I} e_k^*(e_i)\otimes\tilde w_k = 1\otimes \tilde w_k\]
+Ma $\K\otimes W$ è isomorfo in modo naturale a $W$, e questo isomorfismo porta l'elemento $1\otimes \tilde w_k$ in $\tilde w_k$.
+Quest'ultimo, pertanto, è univocamente determinato.
+\end{proof}
 
 \begin{prop}
-
-Se $e_i$ è una base di $V$ e $f_i$ è una base di $W$ allora $e_i \otimes f_j$ è una base di $V \otimes W$
+Se $\{e_i\}_{i\in I}$ è una base di $V$ e $\{f_j\}_{j\in J}$ è una base di $W$ allora $\{e_i \otimes f_j\}_{(i,j)\in I\times J}$ è una base di $V \otimes W$.
 \end{prop}
-
+\begin{proof}
+Dato $x\in V\otimes W$ sappiamo che si può scrivere in modo unico $x = \sum_{i\in I} e_i\otimes w_i$.
+Ora, per ogni $i\in I$, il vettore $w_i$ si scrive in modo unico come $w_i = \sum_{j\in J} a_{i,j}f_j$.
+Da questo segue abbastanza facilmente che $x$ si scrive in modo unico come $\sum_{i,j} a_{i,j}(e_i\otimes f_j)$.
+\end{proof}
 
 \begin{cor}
-\[dim(V \otimes W) = dim V \cdot dim W \]
-
+$\dim(V \otimes W) = \dim V \cdot \dim W$
 \end{cor}
 
 
+\begin{prop}
+Siano $V$ e $W$ spazi vettoriali. Allora $V^*\otimes W$ è isomorfo allo spazio vettoriale $\Hom(V,W)$ delle applicazioni lineari da $V$ a $W$.
+\end{prop}
+\begin{proof}
+Definiamo $\theta: V^*\times W \to \Hom(V,W)$ come la funzione che manda la coppia $(f, w)\in V^*\times W$ nella funzione  $h_{f,w}$ definita da:
+$h_{f,w}(v) = f(v)w$ per ogni $v\in V$. Non è difficile osservare che $\theta$ è bilineare, quindi induce una funzione lineare
+$\phi : V^*\otimes W \to \Hom(V,W)$ tale che, dati comunque $f\in V^*, w\in W, v\in V$, soddisfa $\phi(f\otimes w)(v) = f(v)w$.
+Mostriamo che $\phi$ è un isomorfismo di spazi vettoriali.
 
+Fissiamo $\{v_i\}_{i\in I}$ una base di $V$, $\{v_i^*\}_{i\in I}$ la base duale, $\{w_j\}_{j\in J}$ una base di $W$.
+Ora abbiamo 
+\[\phi(v_i^*\otimes w_j)(v_k) = \delta_{i,k} w_j\]
+Ciò vuol dire che, se scriviamo la matrice dell'applicazione $\phi(v_i^*\otimes w_j):V\to W$ secondo le basi date, questa presenta un $1$ all'incrocio
+tra l'$i-$esima colonna e la $j-$esima riga, mentre è nulla altrove.
+Dunque $\phi$ manda la base $\{v_i^*\otimes w_j\}_{(i,j)\in I\times J}$ dello spazio $V\otimes W$ in una base dello spazio $\Hom(V,W)$,
+quindi è un isomorfismo.
+\end{proof}
 
+\begin{rem}
+In particolare, ponendo $W=V$, otteniamo che $\End(V)$ è isomorfo a $V^*\otimes V$.
 
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{defn}
-
-
-% CHE ACCIDENTI VUOLE DIRE QUELLO CHE C'È SCRITTO QUI SOTTO??
-
-% La \emph{traccia} di un elemento del prodotto tensoriale, ovvero 
-% \[ tr(f\otimes g)\], 
-% è l'unico funzionale lineare $tr: V \otimes W \to \K$ che soddisfa le proprietà:
-% \begin{enumerate}
-% \item $tr[ (v_1 \otimes w_1) (v_2 \otimes w_2) ] = tr[ (v_2 \otimes w_2) (v_1 \otimes w_1) ] $ 
-% \item $tr[ (id_V \otimes id_W)  ]  = \mbox{dim} V \cdot \mbox{dim} W $
-% \end{enumerate}
-
-
-La \emph{traccia} viene definita come l'unica funzione $tr: End(V\otimes W) \to \K$, dove $V$ e $W$ sono spazi vettoriali su $\K$, tale che 
-
-
-\begin{enumerate}
-\item{ $tr\left( f \otimes g \circ h \otimes k   \right) = tr\left( h \otimes k \circ f \otimes g \right) \qquad \forall f, h \in End(V), \ \forall g, k \in End(W)$}
-\item{ $tr\left( id_V \otimes id_W \right) = dimV \cdot dimW$}
-\end{enumerate}
-
-
-
-
-
-
-
-\end{defn}
+Esiste un'applicazione in un certo senso ``naturale'' $t:V^*\otimes V \to \K$, dove $\K$ è il campo degli scalari, definita da
+$t(f\otimes v) = f(v)$.
+Se indichiamo con $\phi$ l'isomorfismo $V^*\otimes V\to \End(V)$ che abbiamo definito nel corso della precedente dimostrazione,
+otteniamo una funzione lineare $\tr = t\circ \phi: \End(V)\to \K$. Non è difficile vedere che questa $\tr$ che abbiamo appena definito 
+coincide con la classica funzione ``traccia''. Il modo in cui l'abbiamo definita noi rende evidente il fatto che la traccia non dipende
+dalla base scelta per scrivere la matrice di un endomorfismo.
+\end{rem}
 
 
 \begin{thm}
 Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la formula
-
-\[tr(f\otimes g) = tr(f) tr(g)  \]
-
+\[\tr(f\otimes g) = \tr(f) \tr(g)  \]
 \end{thm}
-
-\textsc{Dimostrazione:} L'applicazione $\phi: V \otimes W \to \K$ che manda $(f\otimes g)$ in $tr(f) tr(g)$ è bilineare, e quindi corrisponde a un funzionale $\Phi: V \otimes W \to \K$ lineare. Bisogna verificare che soddisfi le due proprietà della definizione.  È evidente che $\Phi[ (id_V \otimes id_W)  ]  $ 
+\begin{proof}
+Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{w_j\}_{j\in J}$ una base di $W$, e come al solito indichiamo gli elementi delle basi duali aggiungendo un asterisco.
+\begin{align*}
+ \tr(f\otimes g) &= \sum_{(i,j)\in I\times J} (v_i^*\otimes w_j^*) (f\otimes g)(v_i\otimes w_j) =\\
+                 &= \sum_{(i,j)\in I\times J} v_i^*(f(v_i))\cdot w_j^*(g(w_j)) =\\
+                 &= \left(\sum_{i\in I} v_i^*(f(v_i))\right) \cdot \left(\sum_{j\in J} w_j^*(g(w_j))\right) =\\
+                 &= \tr(f) \cdot \tr(g)
+\end{align*}
+\end{proof}
 
 
 \subsection{Prodotto esterno e prodotto simmetrico}
@@ -1122,13 +1136,20 @@ Questo implica che in realtà il metodo esposto è in grado di trovare \textbf{t
   Questa definizione ha senso, infatti proiettando $v$ sui due spazi di partenza le due rappresentazioni sono definite e rimangono nello spazio di partenza. Si può poi fare la somma se riportiamo il tutto nello spazio più grande.
 \label{defn:somma di rappresentazioni}
 \end{defn}
-
+Matricialmente $(\rho+\sigma)_g$ si rappresenta come
+\[ [(\rho+\sigma)_g]= \begin{bmatrix}
+[\rho_g] & 0\\ 
+0 & [\sigma_g]
+\end{bmatrix} \]
+dove si intende ovviamente che la base ha i primi vettori in $V_{\rho}$, i secondi in $V_{\sigma}$.\\
 \textsc{Osservazioni:}
 
 \begin{enumerate}
+\item $deg(\rho+\sigma)=deg(\rho)+deg(\sigma)$
 \item $\rho + \sigma \cong \sigma + \rho$
 \item $\rho + (\sigma + \tau) \cong (\rho + \sigma ) + \tau$
 \item Esiste l'elemento neutro che è la rappresentazione di grado 0 ma non esiste l'inverso.
+\item se $deg(\rho)=1$ allora $\rho(g^{-1})=\rho(g^{-1})^t=\rho^*(g)\Rightarrow \rho^*(g)=\rho(g)^{-1}$.
 
 \end{enumerate}
 
@@ -1166,6 +1187,11 @@ Questo implica che in realtà il metodo esposto è in grado di trovare \textbf{t
 \begin{defn}[Rappresentazione duale]
 Sia $\rho$ una rappresentazione di $G$ su $V_\rho$. Allora la rappresentazione duale $\rho^*$ è la rappresentazione di $G$ su $V_\rho ^*$ tale che $\rho^*(s)=\rho(s^{-1})^t$
 \label{defn:rappresentazione duale}
+\end{defn}
+
+\begin{defn}[Definizione equivalente di duale]
+Sia $\rho$ una rappresentazione di $G$ su $V$. Definiamo la rappresentazione duale $\rho^*$ come l'unica rappresentazione tale che
+\[\rho_g^*(f)(\rho_g(v))=f(v)\ \ \forall g\in G,\forall v\in V,\forall f\in V^*\]
 \end{defn}
 
 \begin{note}
@@ -1219,18 +1245,6 @@ Notiamo infine che l'isomorfismo trovato è canonico, ovvero non dipende da alcu
   \label{defn:rappresentazione regolare}
 \end{defn}
 
-\begin{exmp}[La rappresentazione regolare di $S_3$]
-
-
-\end{exmp}
-
-
-\begin{thm}
-
-\[\mathcal{R}_G \cong \dsum_i deg(\rho_i) \rho_i \]
-
-\end{thm}
-
 
 
 \subsection{Sottospazi invarianti e scomposizione delle rappresentazioni}
@@ -1241,6 +1255,7 @@ Notiamo infine che l'isomorfismo trovato è canonico, ovvero non dipende da alcu
 Sia $\rho$ una rappresentazione di $G$ su $V_{\rho}$, una sottorappresentazione di $\rho$ è un sottospazio vettoriale $W\subseteq V_{\rho}$ tale che $\rho(s)(W)\subseteq W\ \forall\ s\in G$. Posso definire una rappresentazione $\sigma$ con $V_{\sigma}=W$ e $\sigma(s)=\rho(s)|_W$ (la indicherò con $\sigma\subseteq \rho$).
 \end{defn}
 
+\textbf{Notazione:} $V_{\rho}^G=\{v\in V_{\rho}: \rho(s)v=v\ \forall s\in G\}$.
 
 
 \begin{defn}[Rappresentazione irriducibile]
@@ -1435,6 +1450,9 @@ Supponiamo che $\phi\neq 0$, allora sappiamo che $Ker(\phi)\subseteq V_\rho$ è 
 Consideriamo ora $f$: sia $\lambda$ un autovalore di $f$, che esiste perché $G$ è finito e stiamo lavorando su $\C$, allora $f-\lambda Id:V_\rho\to V_\rho$ è un omomorfismo di rappresentazioni. Ma non è iniettivo, perché c'è almeno un autovettore relativo a $\lambda$, e quindi per la prima parte del lemma di Schur ho che $f-\lambda Id$ è identicamente nullo, da cui ricaviamo che $f$ è la moltiplicazione per uno scalare ($\lambda$).
 \end{proof}
 
+Come immediato corollario, notiamo che, prese due rappresentazioni irriducibili $\rho$ e $\sigma$, si ha che $\dim\left(\Hom(\rho,\sigma)\right)$ è uguale a 1 se $\rho\simeq\sigma$, ed è uguale a 0 se $\rho\not\simeq\sigma$. Generalizzando, se $\rho$ si scompone in somma di rappresentazioni irriducibili come $\rho=\sum n_i\rho_i$, allora $\dim\left(\Hom(\rho,\rho_i)\right)=n_i$.
+
+
 
 \begin{thm}
 Sia $\rho: G \to GL(V_\rho)$ una rappresentazione e 
@@ -1446,65 +1464,22 @@ una sua scomposizione come somma di rappresentazioni irriducibili a due a due no
 
 
 
-\begin{lemma}
-Sia $\rho$ una rappresentazione di $G$ e $\mathcal{R}$ la sua rappresentazione regolare. Allora 
-\[deg(\rho) = dim(Hom(\mathcal{R}, \rho))\]
-\end{lemma}
-
-
-
-\textsc{Dimostrazione:}
-
-Per i lemmi precedenti possiamo andare a scomporre sia $\rho$ che $\mathcal{R}$ in termini di rappresentazioni irriducibili a due a due non isomorfe, in particolare
-
-
-\[ 
-\begin{cases}
-\mathcal{R} = \dsum_{i = 1}^N n_i \mathcal{R}_i \\
-\rho = \dsum_{j = 1}^M m_j \rho_j \\
-\end{cases}
-\]
-
-
-E quindi si avrà 
-
-\[ deg(\rho) =  \dsum_{j = 1}^M m_j deg(\rho_j) \]
-
-Inoltre possiamo andare a scrivere lo spazio $Hom(\mathcal{R}, \rho)$ in modo molto migliore:
-
-
-\[Hom(\mathcal{R}, \rho) = Hom\left( \dsum_{i = 1}^N n_i \mathcal{R}_i , \dsum_{j = 1}^M m_j \rho_j \right) \cong \bigoplus_{i = 1}^N \bigoplus_{j=1}^M Hom(\mathcal{R}_i , \rho_j) ^{n_im_j}\]
-
-E quindi, calcolandone la dimensione,
-
-
-\[ dim (Hom(\mathcal{R}, \rho)) = \dsum_{i=1}^N \dsum_{j=1}^M n_im_j dim Hom(\mathcal{R}_i, \rho_j) \]
-
-A questo punto, dato che le rappresentazioni sono irriducibili, possiamo usare il lemma di Schur e dire che la dimensione di quegli omomorfismi è sempre o 0 o 1, se le rappresentazioni sono isomorfe o meno. Scriviamo in modo intelligente l'espressione in modo da mettere in evidenza delle cose utili.
-
-
-
-\[ dim (Hom(\mathcal{R}, \rho)) = \dsum_{j = 1}^M m_j \left( \dsum_{i = 1}^N n_i dimHom(\mathcal{R}_i, \rho_j)\right)\]
-
-Dato che le rappresentazioni $\mathcal{R}_i$ sono due a due non isomorfe, la sommatoria ha al più un termine
-
-
-E ORA COME SI CONCLUDE? DEVO USARE CHE $\mathcal{R}$ È LA RAPPRESENTAZIONE REGOLARE PER DIRE CHE PRENDE TUTTE LE RAPPRESENTAZIONI, MA NON SO FARLO. QUALCUNO CERCHI LA FINE DELLA DIMOSTRAZIONE E LA METTA
-
-
-
 
 
 
 \begin{thm}
 Sia $\mathcal{R}$ la rappresentazione regolare di $G$, un gruppo finito, e sia 
-
-\[ \mathcal{R} = \dsum_{i=1}^Nn_i \rho_i\]
-
-Con $\rho_i$ irriducibili e a due a due non isomorfe. Allora ogni rappresentazione irriducibile di $G$ è isomorfa ad una $\rho_i$. Inoltre $n_i = deg(\rho_i)$ 
+\[ \mathcal{R} = \dsum_{i=1}^Nn_i \rho_i,\]
+con $\rho_i$ irriducibili e a due a due non isomorfe. Allora ogni rappresentazione irriducibile di $G$ è isomorfa ad una $\rho_i$. Inoltre $n_i = \deg(\rho_i).$ 
 \label{thm: teorema importantissimo}
 \end{thm}
+\begin{proof}
+Per il corollario del Lemma di Schur, la tesi è equivalente al seguente fatto: se $\rho$ è una rappresentazione irriducibile di $G$, allora $\dim\left(\Hom(\mathcal{R},\rho)\right)=\deg\rho$ (in realtà non useremo l'ipotesi di irriducibilità di $\rho$). Costruiamo dunque un isomorfismo tra gli spazi vettoriali $\Hom(\mathcal{R},\rho)$ e $V_\rho$.
 
+Chiamando $e_g$ l'elemento della base di $V_\mathcal{R}$ associato a $g\in G$, notiamo preliminarmente che, presa $\varphi\in\Hom(\mathcal{R},\rho)$, vale $\varphi(e_g)=\varphi(\mathcal{R}(g)e_{1})=\rho(g)\varphi(e_1)$, dove con $1$ si indica l'elemento neutro di $G$. Quindi, il valore di $\varphi(e_1)$ determina completamente $\varphi(e_g)$ per ogni $g$, e quindi determina completamente $\varphi$.
+
+Sia allora $\Phi\colon\Hom(\mathcal{R},\rho)\to V_\rho$ tale che $\Phi(\varphi)=\varphi(e_{1})$. Per quanto appena visto, $\Phi$ è iniettiva. D'altra parte, lo stesso ragionamento ci permette anche di dimostrare facilmente che $\Phi$ è suriettiva: per ogni $v\in V_\rho$, la funzione $\varphi_v$ tale che $\varphi_v(e_g)=\rho(g)v$ è tale che $\Phi(\varphi_v)=\varphi_v(e_1)=\rho(1)v=v$. La linearità di $\Phi$ consente di concludere.
+\end{proof}
 
 
 
@@ -1637,85 +1612,61 @@ Per dimostrare questo teorema abbiamo bisogno di un lemma che ora enunciamo e di
 \begin{lemma}
 Se $(\rho, V_\rho)$ e $(\sigma, V_\sigma)$ sono rappresentazioni \footnote{Non necessariamente irriducibili} di $G$, allora vale
 
-\[ \langle \chi_\rho | \chi_\sigma \rangle  = dim(Hom (\sigma, \rho))\] 
+\[ \langle \chi_\sigma | \chi_\rho \rangle  = dim(Hom (\rho, \sigma))\] 
 \label{lemma relazioni ortogonalita}
 \end{lemma}
 \textsc{Dimostrazione:}
 
 L'idea principale per dimostrare questo lemma è di ridurci al caso più facile in cui una delle due rappresentazioni è quella banale. Per farlo notiamo un paio di cose
 
-\[ \langle \chi_\rho | \chi_\sigma \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \overline{\chi_\rho(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho^*}(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho^*\sigma}(s)  = \langle \chi_{\rho^*\sigma}  | 1 \rangle\]
+\[ \langle \chi_\sigma | \chi_\rho \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \chi_\sigma(s) \overline{\chi_\rho(s)} = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho^*}(s)} \chi_{\sigma}(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho^*\sigma}(s)  = \langle \chi_{\rho^*\sigma}  | 1 \rangle\]
 
 Siamo passati da due rappresentazioni ad una sola. In particolare lo spazio vettoriale su cui agisce questa rappresentazione è 
 
 \[ V_{\rho^* \sigma} = V_{\rho}^* \otimes V_\sigma \cong Hom(V_\rho, V_\sigma)\]
 
-E questo isomorfismo segue semplicemente dalle proprietà del prodotto tensore di spazi vettoriali. Notiamo che sullo spazio degli omomorfismi\footnote{Dato che sono spazi vettoriali in questo caso si tratta semplicemente di applicazioni lineari} $Z = Hom(V_\rho, V_\sigma)$ è possibile definire una rappresentazione completamente analoga a $\rho\sigma^*$ in questo modo: se $f \in Z$, allora possiamo definire la rappresentazione $\tau, V_\tau = Z$ di $G$ in questo modo
+E questo isomorfismo segue semplicemente dalle proprietà del prodotto tensore di spazi vettoriali. Definiamo su $Z$\footnote{Dato che sono spazi vettoriali in questo caso si tratta semplicemente di applicazioni lineari}$ = Hom(V_\rho, V_\sigma)$ la seguente rappresentazione: se $f \in Z$, allora possiamo definire la rappresentazione $\tau, V_\tau = Z$ di $G$ in questo modo
 
-\[ \tau(s)f = \rho(s) \circ f \circ \sigma^{-1}(s)\]
+\[ \tau(s)f = \sigma(s) \circ f \circ \rho^{-1}(s)\]
 
-\'E possibile mostrare che se chiamo $\Psi$ la mappa tale che
-
-
-\begin{align*}
-V_\rho^* \otimes V_\sigma &\xrightarrow{\Psi} Hom(V_\rho, V_\sigma)\\
-\rho\sigma^* &\xrightarrow{\Psi} \tau \\
-\end{align*}
-
-
-Allora $\Psi$ è un isomorfismo di rappresentazioni. Dimostriamolo rapidamente. Innanzitutto definiamo in modo esplicito $\Psi$. Basterà definirlo per i tensori decomponibili, per il resto dello spazio basterà estenderlo per linearità.
+Si verifica manualmente che sia una buona definizione. Ora volgliamo vedere che $Z$ e $V_{\rho^*\sigma}$ sono isomorfi anche come rappresentazioni. Chiamo $\Psi:V_\rho^* \otimes V_\sigma\rightarrow Hom(V_\rho, V_\sigma)$ la mappa tale che
 
 \[ \Psi(\phi \otimes v ) (w) = \phi(w) v \qquad \forall \phi \in V_\rho^*, \forall v \in V_\sigma, \forall w \in V_\rho\]
 
-Per mostrare che è un isomorfismo di rappresentazioni ci basta mostrare che ha la giusta proprietà di commutazione in quanto sappiamo già che $\Psi$ è un isomorfismo di spazi vettoriali. Vediamo quindi di mostrare che 
-
-\[\Psi(\tau(s)\cdot (\phi \otimes v))(w) = \tau(s) \cdot \Psi(\phi \otimes v)(w) \qquad \forall s \in G \quad \text{eccetera} \]
-
-
-Partiamo dal membro di sinistra e facciamo i calcoli
+Voglio mostrare che $\Psi$ è un isomorfismo di rappresentazioni. Innanzitutto notiamo che è stato sufficiente definirlo per i tensori decomponibili, dato che per il resto dello spazio basta estenderlo per linearità.
+Precedentemente abbiamo già mostrato che $\Psi$ è un isomorfismo di spazi vettoriali. Quindi per concludere la dimostrazine è sufficiente dimostrare che è un omomorfismo di rappresentazione ovvero
 
 
-\[\Psi(\tau(s)\cdot (\phi \otimes v))(w) = \Psi\left( \rho(s) (\phi \otimes v ) \sigma(s)^{-1}  \right)(w)  = \]
 
-\[= \Psi((\phi \circ \sigma(s)^{-1})\otimes (\rho(s) v) )(w) =  \]
+\[ \Psi((\rho^*\otimes\sigma(s))(\phi\otimes v))=\tau(s)(\Psi(\phi\otimes v)) \qquad \forall v\in V_{\sigma}, \phi\in V^*_{\rho}, s\in G \]
+e questo è vero sse
+\[ \Psi((\rho^*\otimes\sigma(s))(\phi\otimes v)) (w)=\tau(s)(\Psi(\phi\otimes v)) (w) \qquad \forall w\in V_{\rho}, v\in V_{\sigma}, \phi\in V^*_{\rho}, s\in G \]
+Riscriviamo il secondo membro
+\[ \tau(s)(\Psi(\phi\otimes v)) (w)= \sigma(s)\circ  \Psi(\phi\otimes v) \circ \rho^{-1}(s) (w) = \sigma(s)( \phi(\rho^{-1}(s)(w))v )=\phi(\rho^{-1}(s)(w)) \sigma(s)(v) \]
+ed ora il primo
+\[ \Psi(\rho^*\otimes\sigma(s)(\phi\otimes v)) (w)= \Psi (\rho^*(s) (\phi) \otimes \sigma(s)(v)) (w) = \rho^*(s)(\phi)(w)\sigma(s)(v) \]
+e dato che l'applicazione duale è stata definita come l'unica tale che 
+\[ \rho^*_s(\phi)\circ \rho_s=\phi\]
+allora i due membri sono uguali e $\Psi$ è un omomorfismo di rappresentazione. Ne segue che 
+\[ (V_{\rho^*\sigma})^G \cong Hom(V_\rho, V_\sigma)^G \cong Hom(\rho, \sigma)\]
+Per cui dato che noi stiamo cercando $dim(Hom(\rho, \sigma))$, basterà trovare $dim(V_{\rho^*\sigma})^G$.
+\begin{lemma}
+Sia $\rho$ una rappresentazione di un gruppo finito $G$. Allora
+$dim(V_{\rho})^G=tr(T)$ dove
+\[ T = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s).\]
+\end{lemma}
 
-\[ = (\phi \circ \sigma(s)^{-1}) (w) \rho(s) v = \phi(\sigma(s)^{-1} w) \rho(s) v\]
+Prima di iniziare la dimostrazione diamo una giustificazione della scelta della applicazione lineare $T$: questa è stata dettata dal fatto che
+\[ tr(T)=tr (\dfrac{1}{|G|} \dsum_{s\in G} \rho(s))= \dfrac{1}{|G|} \dsum_{s\in G} tr(\rho(s))= \langle \chi_\rho| 1 \rangle \]
+Si nota anzitutto che 
 
-\[ = \rho(s)\phi(\sigma(s)^{-1} w) v = \rho(s) \Psi(\phi \otimes v) \sigma(s)^{-1} (w) = \tau(s) \Psi (\phi \otimes v)(w)\]
+\[ \rho(t) T(v) = \dfrac{1}{|G|} \dsum_{s\in G} \rho(t)\rho(s) v = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s) = T(v)\]
 
+ovvero $ImT\subseteq V_\rho^G$. D'altra parte se $v \in V_\rho^G$ allora è chiaro che $Tv = v$ (basta applicare la definizione). Per cui $ImT = V_\rho^G$. 
 
-A questo punto possiamo andare a cercare i sottospazi invarianti per $\tau$, ovvero stiamo andando a cercare le sottorappresentazioni irriducibili di $\tau$ sperando di usare teoremi che già conosciamo. In particolare stiamo quindi cercando dei sottospazi $W \subset Z = Hom(V_\rho, V_\sigma)$ tali che $\tau(s) W \subset W \quad \forall s \in G$ 
+Inoltre 
 
-In particolare, cerchiamo le funzioni $f \in Hom(V_\sigma, V_\rho)$ tali che $\tau(s) f = f$. Dalla definizione di $\tau$ si vede che
-
-\[f = \tau(s) f =  \rho(s) \circ f \circ \sigma^{-1}(s) \Rightarrow  f \sigma(s)= \rho(s) f\] 
-
-
-Ovvero le applicazioni $f$ invarianti per $\tau $ sono gli omomorfismi di rappresentazioni da $(\rho, V_\rho) $ a $(\sigma, V_\sigma)$
-
-A questo punto
-
-\[ (V_{\sigma^*\rho})^G \cong Hom(V_\sigma, V_\rho)^G \cong Hom(\sigma, \rho)\]
-
-Per cui dato che noi stiamo cercando $dimHom(\sigma, \rho)$, basterà trovare $dim(V_{\sigma^*\rho})^G$
-
-Visto che ci siamo ricondotti al caso in cui una rappresentazione è banale, ora facciamo i conti cercando di trovare la dimensione dello spazio invariante per $G$. Scriviamo la definizione di quello che vogliamo calcolare
-
-
-\[ \langle \chi_\rho | 1 \rangle = \dfrac{1}{|G|} \dsum_{s \in G} tr \rho(s)\]
-
-Se definiamo l'operatore $T$ come operatore lineare
-
-\[ T = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s)\]
-
-
-Allora si nota che 
-
-\[ \rho(t) Tv = \dfrac{1}{|G|} \dsum_{s\in G} \rho(t)\rho(s) v = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s) = Tv\]
-
-Per cui sappiamo che $V_\rho^G \subseteq ImT$. L'obiettivo è mostrare che quella non è una disuguaglianza ma un'uguaglianza. In realtà questa è la disuguaglianza stupida in quanto se $v \in V_\rho^G$ allora è chiaro che $Tv = v$, basta applicare la definizione. Per cui $ImT = V_\rho^G$. A questo punto vogliamo calcolare la sua traccia. Per farlo notiamo che 
-
-\[T(Tv) = \ldots = Tv \qquad \text{Verifica banale}\]
+\[T(Tv) = \ldots = Tv \qquad \text{verifica banale}\]
 
 Per cui $T$ è un proiettore. A questo punto sappiamo dall'algebra lineare che
 
@@ -1723,11 +1674,15 @@ Per cui $T$ è un proiettore. A questo punto sappiamo dall'algebra lineare che
 
 Per cui $trT = dimImT = dimV_\rho^G$. Ma dalla catena di deduzioni che abbiamo fatto
 
-\[dimHom(V_\sigma, V_\rho) = dim(V_{\sigma^*\rho}^G) = trT = \langle \chi_{\sigma^*\rho} | 1 \rangle = \langle \chi_\sigma | \chi_\rho \rangle\]
+\[dim(Hom(V_\rho, V_\sigma)) = dim(V_{\rho^*\sigma}^G) = trT = \langle \chi_{\rho^*\sigma} | 1 \rangle = \langle \chi_\sigma | \chi_\rho \rangle\]
 
 \qed
 
-
+\textbf{Osservazione:}
+\[\langle \chi_\sigma | \chi_\rho \rangle=\overline{\langle \chi_\rho | \chi_\sigma \rangle}\]
+ovvero per quanto appena dimostrato
+\[ dim(Hom(V_\rho, V_\sigma))=\overline{dim(Hom(V_\sigma, V_\rho))}\]
+tuttavia essendo dei numeri naturali deduciamo che le eguaglianze sussistono anche senza il coniugio.
 
 
 
@@ -2834,10 +2789,10 @@ Un esempio più sofisticato è dato dal corpo dei quaternioni $\HH$ (ovviamente 
 \begin{rem}
 Consideriamo una rappresentazione irriducibile $\rho:G\to GL(V_\rho)$ con $V_\rho$ spazo vettoriale su $\R$. Allora l'insieme degli endomorfismi
 di $\rho$ 
-\[ End_G(V_\rho)\]
+\[ \End_G(V_\rho)\]
 è un'algebra di divisione su $R$ se dotato della composizione.
 Infatti per lemma di Schur (in particolare la prima parte dell'enunciato, che vale su ogni campo) ogni elemento di $End_G(V_\rho)$ o è la funzione nulla oppure è un isomorfismo, quindi ammette inverso.
-Se $\dim V_\rho = n$ allora $End_G(V_\rho)$, essendo contenuto in $End(V_\rho)$, ha dimensione finita, in particolare $\dim End_G(V_\rho)\le n^2$.
+Se $\dim V_\rho = n$ allora $\End_G(V_\rho)$, essendo contenuto in $\End(V_\rho)$, ha dimensione finita, in particolare $\dim \End_G(V_\rho)\le n^2$.
 Vedremo tuttavia che vale una limitazione molto più forte.
 \end{rem}
 
@@ -2917,19 +2872,19 @@ così $j^2 = -1$. Infine definiamo $k = ij$.
 Ora $k$ e $j$ sono indipendenti e sono in $A_-$, dunque formano una base di $A_-$. Allora $\{1,i,j,k\}$ è base per $A$ ed è facile
 verificare che questi quattro elementi rispettano le stesse regole di moltiplicazione dei quaternioni, pertanto si conclude che $A\cong\HH$ e la tesi è dimostrata.\qed
 
-Dal teorema precedente si ha immediatamente che se $G\to GL(V)$ è una rappresentazione irriducibile su $\R$ allora $End_G(V)$ è isomorfo a uno
+Dal teorema precedente si ha immediatamente che se $G\to GL(V)$ è una rappresentazione irriducibile su $\R$ allora $\End_G(V)$ è isomorfo a uno
 tra $\R, \C, \HH$.
 
 \begin{prop}
 Sia $\rho:G\to GL(V)$ rappresentazione irriducibile su $\R$. Allora:
 \begin{itemize}
-\item $End_G(V) \cong \R$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 1$
-\item $End_G(V) \cong \C$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 2$
-\item $End_G(V) \cong \HH$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 4$
+\item $\End_G(V) \cong \R$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 1$
+\item $\End_G(V) \cong \C$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 2$
+\item $\End_G(V) \cong \HH$ se e solo se $\langle\chi_\rho|\chi_\rho\rangle = 4$
 \end{itemize}
 \end{prop}
 \textsc{Dimostrazione: }
-Basta ricordare che $\dim End_G(V) = \langle\chi_\rho|\chi_\rho\rangle$ e la tesi segue subito
+Basta ricordare che $\dim \End_G(V) = \langle\chi_\rho|\chi_\rho\rangle$ e la tesi segue subito
 dal teorema di Frobenius.
 \qed
 
@@ -3273,94 +3228,120 @@ $(G, \cdot, \tau)$ si dice compatto se $(G, \tau)$ è compatto.
 
 
 Facciamo un po' di esempi di gruppi compatti che andremo a trattare
-
 \begin{itemize}
 \item I gruppi finiti, con la topologia discreta.
 \item I gruppi $O_n, SO_n, U_n, SU_n$
 \end{itemize}
 
 In particolare può essere utile notare alcuni fatti noti che possono aiutare, cioé
+\begin{align*}
+SO_2(\R) \cong \mathbb{S}^1 \\
+SU_2(\C) \cong \mathbb{S}^3
+\end{align*}
 
-\[ 
-\begin{cases}
-O_2(\R) \cong \mathbb{S}^1 \\
-U_2(\C) \cong \mathbb{S}^3 \\
-\end{cases}
-\]
-
-A questo punto sarà opportuno definire una generalizzazione delle rappresentazioni usando lo strumento topologico che abbiamo a disposizione. 
-
-
+A questo punto sarà opportuno dare una nozione di rappresentazione in cui entra in gioco la topologia di $G$, oltre alla sua struttura di gruppo. 
 \begin{defn}[Rappresentazione continua]
 Consideriamo una rappresentazione del gruppo topologico $G$, $\rho: G \to GL(V_\rho)$. Diciamo che la rappresentazione è continua se la mappa
-
 \[ \rho: G \to GL(V_\rho)\]
-
 è continua. Per il primo termine bisogna considerare la topologia su $G$, che è definita in quanto il gruppo è topologico, mentre su $GL(V_\rho)$ si usa la topologia euclidea. 
 \end{defn}
 
 Facciamo alcuni esempi
 \begin{itemize}
 \item Se $G$ è finito, ovviamente con la topologia discreta ogni rappresentazione è continua. In un certo senso questo non è così banale, in quanto ci dice che quello che andremo a fare sarà una generalizzazione di quello che abbiamo fatto per gruppi finiti.
-\item Un'altra rappresentazione banale: la rappresentazione del gruppo $GL(V)$ in $GL(V)$ tramite l'identità, che è evidentemente continua
-
+\item Un'altra rappresentazione del tutto ovvia: la rappresentazione del gruppo $GL(V)$ in $GL(V)$ tramite l'identità, che è evidentemente continua
 \item La mappa esponenziale $e^x: (\R, +) \to (\R^+, \cdot )$ che associa $x$ a $e^x$
 \end{itemize}
 
 
 
+\begin{exmp}
 Per chiarirci le idee, andremo a studiare nel dettaglio un gruppo particolare, ovvero $\mathbb{S}^1$, che è ovviamente isomorfo a $SO_2(\R)$. Cerchiamo quindi innanzitutto le sue rappresentazioni irriducibili su spazi di dimensione finita sui complessi. 
+\end{exmp}
 
+
+\textsc{Osservazione:}
 Possiamo rapidamente notare che in questo caso la situazione è semplice, in quanto il gruppo è abeliano. Per questo motivo, 
-
 \[ gh = hg \qquad \forall g,h \in G \]
-
 e quindi 
-
 \[ \rho(g)\rho(h) = \rho(h)\rho(g) \qquad \forall g, h \in G\]
-
 Il che vuol dire che, fissato $h$, $\rho(h)$ è un'omomorfismo di rappresentazioni irriducibili su $\C$. Possiamo allora applicare la versione forte di Schur e dire che $\rho(h) = \lambda(h) Id$ per qualche $\lambda \in \C$. Tuttavia quello che abbiamo fatto vale per ogni $h \in G$, per cui tutti i $\rho(g) $ sono in realtà scalari. Questo ci dice che le rappresentazioni irriducibili di $\mathbb{S}^1$ sono tutte di grado 1. A questo punto il nostro obiettivo è trovarle.
 
 
-\begin{prop} Le rappresentazioni irriducibili di $\mathbb{S}^1$ sono tutte e sole le $\rho_n$ tali che
-
-\[ \rho_n(z) = z^n \qquad \forall n \in \Z\]
-
+\begin{prop} Le rappresentazioni irriducibili di $\mathbb{S}^1$ sono tutte e sole le $\rho_n:\mathbb{S}^1\to\C^*$ definite, al variare da $n$ in $\Z$, nel seguente modo:
+\[ \rho_n(z) = z^n \]
 \end{prop}
 
 
 \textsc{Dimostrazione:}
+Innanzitutto notiamo che le $\rho_n$ definite nell'enunciato sono effettivamente delle rappresentazioni irriducibili di $\mathbb{S}^1$, quindi bisogna solo verificare che non ce ne sono altre.
 
-QUALCUNO LA SCRIVA
-
-
+Sappiamo che le rappresentazioni irriducibili dovranno avere dimensione $1$, per cui saranno omomorfismi $\rho:\mathbb{S}^1\to\C^*$. Inoltre dovrà per forza essere $|\rho(z)| = 1 \quad \forall z \in \mathbb{S}^1$. Questo si dimostra abbastanza facilmente. Supponiamo per assurdo infatti che si abbia
+\[ |\rho(x)| > 1\]
+per qualche $x$. Allora anche $\rho(x)^n$ farebbe parte di $\rho(G)$. Tuttavia qui c'è un assurdo in quanto $\rho(G)$ è compatto perché la rappresentazione è continua, mentre $\rho(x)^n$ non è limitato. Se invece per assurdo fosse $|\rho(x)| < 1$ si potrebbe usare lo stesso argomento notando che $|\rho(x^{-1})| > 1$.
+Di conseguenza sappiamo che $\rho(\mathbb{S}^1) \subseteq \mathbb{S}^1$.
+Consideriamo ora la mappa
+\begin{align*} 
+\phi : (\R, +) &\to \mathbb{S}^1 \\
+x &\to  e^{ix}
+\end{align*}
+che è evidentemente continua ed è omomorfismo di gruppi.
+Sia $\hat\rho$ l'applicazione che fa commutare il seguente diagramma:
+\[\tridiag \R \phi {\mathbb{S}^1} \rho {\mathbb{S}^1} {\hat\rho}\]
+Essendo composizione di omomorfismi continui, anche $\hat\rho$ è omomorfismo continuo. Si può dimostrare (ma non lo facciamo in questa sede) che esiste un'applicazione continua $\theta:\R\to\R$ che fa commutare il diagramma:
+%~ Si può dimostrare che questa mappa è l'unica che soddisfi le proprietà del rivestimento universale da $\R$ a $\mathbb{S}^1$. Ci è utile perché in qualche modo scarica il problema di trovare le rappresentazioni da e verso $\mathbb{S}^1$ a cercare delle rappresentazioni da e verso $(\R, +)$. Per l'unicità del rivestimento concluderemo che sono anche tutte. 
+\[
+\begin{diagram}
+    \R          & \rTo^{ \phi }         & \mathbb{S}^1           \\
+\dTo<{\theta}   & \rdTo^{\hat \rho}     & \dTo>{\rho}            \\
+    \R          &  \rTo_{\phi}          & \mathbb{S}^1           \\
+\end{diagram}
+\]
+A questo punto $\theta(0)$ deve essere un multiplo intero di $2\pi$, visto che deve risultare $e^{i\theta(0)} = \hat\rho(0) = 1$.
+Quindi, a meno di traslare $\theta$ di un multiplo intero di $2\pi$ (il che non interferisce con la commutatività del diagramma), possiamo assumere $\theta(0) = 0$. Dati $x,y$ reali deve valere
+\[ e^{i\theta(x+y)} = \hat \rho(x+y) = \hat \rho(x ) \hat \rho(y) = e^{i\theta(x)} e^{i \theta(y)}\]
+per cui deve essere
+\[ \theta(x+y) - \theta(x) - \theta(y) \in 2\pi \Z \qquad \forall x, y \in \R \]
+Ma visto che $\theta$ è continua l'espressione sopra deve essere necessariamente costante al variare di $x$ e $y$. Ponendo $x=y=0$ ricaviamo che tale costante è $0$, dunque
+\[ \theta(x + y) = \theta(x ) + \theta (y) \qquad \forall x,y\in \R\]
+A questo punto si osserva (sfruttando la continuità di $\theta$) che deve essere $\theta(x) = \alpha x$, con $\alpha \in \R$. Non solo, possiamo dare delle informazioni a riguardo di $\alpha$. Infatti, dato che $\hat\rho$ è ``periodico'', deve essere
+\[ 1 = \hat\rho(0) = \hat\rho(2\pi) = e^{i\alpha 2\pi}\]
+per cui in realtà si ha $\alpha \in \Z$. 
+Ricapitolando, abbiamo mostrato che per ogni $x\in\R$ vale che
+\[e^{i 2\alpha\pi x} = \rho(e^{ix}) \]
+dove $\alpha$ è un intero fissato. Ovvero per ogni $z\in\mathbb{S}^1$ vale
+\[ \rho_\alpha(z) = z^\alpha = \rho(z) \]
+che è quello che volevamo mostrare.
 \qed
 
 A questo punto il nostro obiettivo sarebbe quello di cercare la stessa cosa che abbiamo fatto per i gruppi finiti, ovvero scomporre una rappresentazione generica come somme di rappresentazioni irriducibili. Per farlo in sostanza abbiamo inventato quel prodotto hermitiano invariante che da solo ci ha permesso praticamente di fare tutto. Sarebbe molto bello avere una cosa simile anche per questi gruppi topologici. In particolare per i gruppi compatti possiamo andare a cercare di definire qualcosa di molto simile.
 
 
 \begin{defn}[Integrazione su un gruppo]
-Sia $G$ un gruppo topologico. Consideriamo un'applicazione $I$ 
-
-\[I: C_{\R}(G) \to \R \]
-
-Dove tutto funziona uguale se al posto di $\R$ mettiamo $\C$ e per $\C_\R$ si intendono le funzioni continue. La mappa $I$ si dice integrazione se rispetta le seguenti proprietà.
-
-
+Sia $G$ un gruppo topologico. Consideriamo un'applicazione $I: C_{\R}(G) \to \R$
+dove con $C_\R$ si intendono le funzioni continue da $G$ in $\R$\footnote{Tutto funziona allo stesso modo se al posto di $\R$ mettiamo $\C$. In futuro non si baderà a questa distinzione.}. La mappa $I$ si dice integrazione se rispetta le seguenti proprietà.
 \begin{itemize}
-\item{ \'E lineare. 
-\[I(a f + b g) = aI(f) + bI(g) \]}
-\item{ Se la funzione $f$ è positiva ($ > 0$), allora anche l'integrale deve essere positivo ($> 0$)}
-
+\item \`E lineare: $I(a f + b g) = aI(f) + bI(g)$.
+\item Se la funzione $f$ è positiva ($ > 0$), allora anche l'integrale deve essere positivo ($> 0$).
 \end{itemize}
-
 \end{defn}
+
 
 A questo punto, in analogia con quello che abbiamo fatto con i prodotti finiti, cerchiamo di trovare quello invariante. 
 
+\begin{defn} Sia $G$ un gruppo compatto e $\rho: G \to GL(V_\rho)$ una sua rappresentazione continua. Sia $I$ una integrazione su $G$. Si dice che $I$ è invariante sotto $\rho$ se 
+\[ I(f(x)) = I(f(\rho(g) x)) \qquad \forall g \in G\]
+\end{defn}
+
+Se questa integrazione esiste, allora in analogia a quanto fatto per i gruppi finiti possiamo enunciare e dimostrare il seguente teorema. 
+
+\begin{thm} Sia $G$ un gruppo compatto e $\rho : G \to GL(V_\rho)$ una sua rappresentazione continua, con $V_\rho$ di dimensione finita. Se esiste una integrazione invariante $I$, allora la rappresentazione è completamente riducibile.
 
 
+\end{thm}
 
+\textsc{Dimostrazione:}
+La dimostrazione è identica alla dimostrazione \ref{thm:gruppo finito completamente riducibile}, in cui al posto di $h_G$ si utilizza $I$. \qed
 
 
 
