@@ -1,3 +1,4 @@
+
 \documentclass[11pt]{article}
 
 
@@ -87,6 +88,9 @@
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Fix}{Fix}
 
 
 
@@ -338,13 +342,14 @@ Un'azione di un gruppo $G$ su un insieme $I\neq \emptyset$ si dice \textit{trans
 \label{defn:azione transitiva}
 \end{defn}
 
-SAREBBE UTILE SCRIVERE UN COMANDO PER SCRIVERE ORB(X) SOLO CHE NON SO COME SI FA...
+
 \begin{defn}[Orbita di un elemento]
-Sia $G$ un gruppo che agisce sull'insieme $I$, dato $x\in I$ si chiama \textit{orbita} di $x$ in $G$ l'insieme $Orb_{G}(x)=\{ g\cdot x\ |\ g\in G \}$, se il gruppo utilizzato è chiaro si può scrivere semplicemente $Orb(x)$. Si osserva subito che un'azione è transitiva se e solo se induce una unica orbita.
+Sia $G$ un gruppo che agisce sull'insieme $I$, dato $x\in I$ si chiama \textit{orbita} di $x$ in $G$ l'insieme $\Orb_{G}(x)=\{ g\cdot x\ |\ g\in G \}$, se il gruppo utilizzato è chiaro si può scrivere semplicemente $\Orb(x)$. Si osserva subito che un'azione è transitiva se e solo se induce una unica orbita.
 \label{defn:orbita}
 \end{defn}
 
-\begin{rem} Le orbite di un gruppo $G$ sull'insieme $I$ formano una partizione dell'insieme. La verifica non è difficile. Vale inoltre la formula $|Orb_G(x)| \cdot |Stab_G(x)| = |G|$
+
+\begin{rem} Le orbite di un gruppo $G$ sull'insieme $I$ formano una partizione dell'insieme. La verifica non è difficile. Vale inoltre la formula $|\Orb_G(x)| \cdot |\Stab_G(x)| = |G|$
 \end{rem}
 
 
@@ -365,12 +370,8 @@ se presi comunque $i,j\in I$ esiste un unico $s\in G$ tale che $j=s\cdot i$.
 
 
 \begin{defn}[Funzione $G$ equivariante]
-
 Dato un gruppo $G$ che agisce su due insiemi $I$ e $J$, una funzione $\phi: I \to J$ si dice $G$ equivariante se 
-
 \[ \phi(s \cdot_I i) = s \cdot_J \phi(i) \qquad \forall s \in G, \ \ \forall i \in I \]
-
-
 \end{defn}
 
 
@@ -930,8 +931,8 @@ Sia $f: V \to V$ un endomorfismo di uno spazio vettoriale. Allora vale
 
 \[ 
 \begin{cases}
-tr(\bigwedge^2 f ) = \dfrac{(tr(f))^2 - tr(f^2)}{2} \\
-tr(S^2 f ) = \dfrac{(tr(f))^2 + tr(f^2)}{2} \\
+\tr(\bigwedge^2 f ) = \dfrac{(\tr(f))^2 - \tr(f^2)}{2} \\
+\tr(S^2 f ) = \dfrac{(\tr(f))^2 + \tr(f^2)}{2} \\
 \end{cases}
 \]
 
@@ -991,7 +992,7 @@ $\rho(G)$ è evidentemente un sottogruppo di $GL(V)$, quindi esistono sempre inv
 \begin{exmp}
    L'azione naturale di $S_n$ sui vettori della base. Prendiamo quindi $G = S_n$ e uno spazio vettoriale di dimensione $n$, che quindi è isomorfo a $\C^n$. Prendiamo la base canonica di $\C^n$ e la indichiamo con $\{e_i\}_{i=1}^n$. Descriviamo la rappresentazione $\rho: S_n \to GL(\C^n)$ dicendo cosa fa agli elementi della base: per linearità si estenderà a tutto lo spazio.
 	\[ \rho(s) e_i = e_{s(i)}\]
-	Notare che in questo caso $deg(\rho) = n$. Notiamo inoltre che se rappresentiamo nella base canonica le matrici associate a $\rho(s)$ queste matrici sono unitarie. Inoltre, ogni colonna (e anche ogni riga) contiene esattamente un 1 e tutti gli altri sono 0.
+	Notare che in questo caso $\deg(\rho) = n$. Notiamo inoltre che se rappresentiamo nella base canonica le matrici associate a $\rho(s)$ queste matrici sono unitarie. Inoltre, ogni colonna (e anche ogni riga) contiene esattamente un 1 e tutti gli altri sono 0.
 	
 	Prendiamo come esempio $S_3$ e vediamo cosa succede. Notiamo innanzitutto che $ |S_3| = 3! = 6$
 	FINISCI DI SCRIVERE
@@ -1132,13 +1133,20 @@ Questo implica che in realtà il metodo esposto è in grado di trovare \textbf{t
   Questa definizione ha senso, infatti proiettando $v$ sui due spazi di partenza le due rappresentazioni sono definite e rimangono nello spazio di partenza. Si può poi fare la somma se riportiamo il tutto nello spazio più grande.
 \label{defn:somma di rappresentazioni}
 \end{defn}
-
+Matricialmente $(\rho+\sigma)_g$ si rappresenta come
+\[ [(\rho+\sigma)_g]= \begin{bmatrix}
+[\rho_g] & 0\\ 
+0 & [\sigma_g]
+\end{bmatrix} \]
+dove si intende ovviamente che la base ha i primi vettori in $V_{\rho}$, i secondi in $V_{\sigma}$.\\
 \textsc{Osservazioni:}
 
 \begin{enumerate}
+\item $\deg(\rho+\sigma)=\deg(\rho)+\deg(\sigma)$
 \item $\rho + \sigma \cong \sigma + \rho$
 \item $\rho + (\sigma + \tau) \cong (\rho + \sigma ) + \tau$
 \item Esiste l'elemento neutro che è la rappresentazione di grado 0 ma non esiste l'inverso.
+\item se $\deg(\rho)=1$ allora $\rho(g^{-1})=\rho(g^{-1})^t=\rho^*(g)\Rightarrow \rho^*(g)=\rho(g)^{-1}$.
 
 \end{enumerate}
 
@@ -1176,6 +1184,11 @@ Questo implica che in realtà il metodo esposto è in grado di trovare \textbf{t
 \begin{defn}[Rappresentazione duale]
 Sia $\rho$ una rappresentazione di $G$ su $V_\rho$. Allora la rappresentazione duale $\rho^*$ è la rappresentazione di $G$ su $V_\rho ^*$ tale che $\rho^*(s)=\rho(s^{-1})^t$
 \label{defn:rappresentazione duale}
+\end{defn}
+
+\begin{defn}[Definizione equivalente di duale]
+Sia $\rho$ una rappresentazione di $G$ su $V$. Definiamo la rappresentazione duale $\rho^*$ come l'unica rappresentazione tale che
+\[\rho_g^*(f)(\rho_g(v))=f(v)\ \ \forall g\in G,\forall v\in V,\forall f\in V^*\]
 \end{defn}
 
 \begin{note}
@@ -1239,6 +1252,7 @@ Notiamo infine che l'isomorfismo trovato è canonico, ovvero non dipende da alcu
 Sia $\rho$ una rappresentazione di $G$ su $V_{\rho}$, una sottorappresentazione di $\rho$ è un sottospazio vettoriale $W\subseteq V_{\rho}$ tale che $\rho(s)(W)\subseteq W\ \forall\ s\in G$. Posso definire una rappresentazione $\sigma$ con $V_{\sigma}=W$ e $\sigma(s)=\rho(s)|_W$ (la indicherò con $\sigma\subseteq \rho$).
 \end{defn}
 
+\textbf{Notazione:} $V_{\rho}^G=\{v\in V_{\rho}: \rho(s)v=v\ \forall s\in G\}$.
 
 
 \begin{defn}[Rappresentazione irriducibile]
@@ -1539,7 +1553,7 @@ Avendo ottenuto lo stesso risultato in entrambi i casi, si ha la tesi.
 \begin{defn}
 Sia $\rho: G \to GL(V_\rho)$ una rappresentazione di un gruppo $G$. Definiamo carattere di $\rho$ la funzione che associa ad ogni elemento del gruppo $G$ la traccia della matrice associata all'elemento, ovvero
 
-\[\chi_\rho(s) := tr (\rho(s)) \qquad \forall s \in G \]
+\[\chi_\rho(s) := \tr(\rho(s)) \qquad \forall s \in G \]
 Notare che $\chi_{\rho}$ è una funzione che va dal gruppo in $\C$, ovvero $\chi_{\rho}: G \to \C$
 
 \end{defn}
@@ -1550,18 +1564,18 @@ Vediamo delle proprietà elementari del carattere
 \begin{enumerate}
 	\item Se $deg(\rho) = 1$ allora il carattere di $s$ è uguale a $\rho(s)$
 	\item $\chi_{\rho_1} = deg(\rho)$. \footnote{Al solito $\rho_1$ è la rappresentazione che manda ogni elemento nell'identità di $V_\rho$}\\
-	Questo è vero poichè $[\rho_1]=I_n\Rightarrow tr(\rho_1)=n$ ed $n=deg(\rho)$.
+	Questo è vero poichè $[\rho_1]=I_n\Rightarrow \tr(\rho_1)=n$ ed $n=deg(\rho)$.
 	\item $\chi_{\rho + \sigma}(s) = \chi_\rho(s) + \chi_\sigma(s)$.\\ 
 	Questo è dovuto al fatto che la somma di rappresentazioni si può scrivere come matrice a blocchi. Una volta scritto così è evidente il risultato.
 	\item $\chi_{\rho\sigma}(s) = \chi_\rho(s)\chi_\sigma(s)$.\\ 
 	Questo deriva immediatamente dal teorema \ref{thm: tracciaprodotto}.
 	\item $\chi_{\rho}(s^{-1})=\overline{\chi_{\rho}(s)}$\\
 Essendo $G$ un gruppo finito, $\forall s\in G\ \rho(s)^n = id$ dove $n=|G|$: dunque tutti gli autovalori di $\rho(s)$ sono radici ennesime dell'unità e $\rho(s)$ è diagonalizzabile\footnote{Si veda la proposizione \ref{prop:diagonalizzabilita rappresentazioni}}. In tale base è evidente che:
-$$\chi_{\rho}(s^{-1})=tr(\rho (s^{-1}))=tr(\rho (s)^{-1})=\sum_i\lambda_i^{-1}=\sum_i\overline{\lambda_i}=\overline{tr(\rho(s))}=\overline{\chi_{\rho}(s)}$$
+$$\chi_{\rho}(s^{-1})=\tr(\rho (s^{-1}))=\tr(\rho (s)^{-1})=\sum_i\lambda_i^{-1}=\sum_i\overline{\lambda_i}=\overline{\tr(\rho(s))}=\overline{\chi_{\rho}(s)}$$
 in quanto, avendo gli autovalori modulo 1, l'inverso coincide con il coniugio.  	
 	\item $\chi_{\rho^*}(s)\footnote{Ricordiamo che $\rho^*(s) = (\rho(s)^{-1})^*$} = \overline{\chi_\rho(s)}$.\\
 		Per l'osservazione precedente vale che
-		$$\chi_{\rho^*}(s)=tr(^t\rho(s^{-1}))=tr(\rho(s^{-1}))=\overline{tr(\rho(s))}=\overline{\chi_\rho(s)}$$
+		$$\chi_{\rho^*}(s)=\tr(^t\rho(s^{-1}))=\tr(\rho(s^{-1}))=\overline{\tr(\rho(s))}=\overline{\chi_\rho(s)}$$
 	\item $\chi_{\rho}(hsh^{-1})=\chi_{\rho}(s)$ ovvero $\chi_\rho$ è costante sulle classi di coniugio di $G$. La motivazione è semplice: se due elementi sono coniugati tra loro questo significa che le matrici corrispondenti saranno simili e la traccia è un invariante di similitudine.
 	
 Di conseguenza, non sarà necessario calcolare il carattere per ogni elemento del gruppo ma basterà farlo per le classi di coniugio di $G$.
@@ -1616,48 +1630,35 @@ Per dimostrare questo teorema abbiamo bisogno di un lemma che ora enunciamo e di
 \begin{lemma}
 Se $(\rho, V_\rho)$ e $(\sigma, V_\sigma)$ sono rappresentazioni \footnote{Non necessariamente irriducibili} di $G$, allora vale
 
-\[ \langle \chi_\rho | \chi_\sigma \rangle  = dim(Hom (\sigma, \rho))\] 
+\[ \langle \chi_\sigma | \chi_\rho \rangle  = dim(Hom (\rho, \sigma))\] 
 \label{lemma relazioni ortogonalita}
 \end{lemma}
 \begin{proof}
 L'idea principale per dimostrare questo lemma è di ridurci al caso più facile in cui una delle due rappresentazioni è quella banale. Per farlo notiamo un paio di cose
-\[ \langle \chi_\rho | \chi_\sigma \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \overline{\chi_\rho(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho^*}(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho^*\sigma}(s)  = \langle \chi_{\rho^*\sigma}  | 1 \rangle\]
+\[ \langle \chi_\sigma | \chi_\rho \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \chi_\sigma(s) \overline{\chi_\rho(s)} = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho^*}(s)} \chi_{\sigma}(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho^*\sigma}(s)  = \langle \chi_{\rho^*\sigma}  | 1 \rangle\]
 Siamo passati da due rappresentazioni ad una sola. In particolare lo spazio vettoriale su cui agisce questa rappresentazione è 
 \[ V_{\rho^* \sigma} = V_{\rho}^* \otimes V_\sigma \cong \Hom(V_\rho, V_\sigma)\]
-dove l'isomorfismo di rappresentazioni è quello dimostrato nel teorema \ref{thm: isov*w}
+dove l'isomorfismo di rappresentazioni è quello dimostrato nel teorema \ref{thm: isov*w}.
+In particolare abbiamo che
+\[ (V_{\rho^*\sigma})^G \cong Hom(V_\rho, V_\sigma)^G \cong Hom(\rho, \sigma)\]
+Per cui dato che noi stiamo cercando $dim(Hom(\rho, \sigma))$, basterà trovare $dim(V_{\rho^*\sigma})^G$.
+\begin{lemma}
+Sia $\rho$ una rappresentazione di un gruppo finito $G$. Allora
+$dim(V_{\rho})^G=\tr(T)$ dove
+\[ T = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s).\]
+\end{lemma}
 
-A questo punto possiamo andare a cercare i sottospazi $G-$invarianti di $\Hom(V_\rho, V_\sigma)$, che non sono altro che le sue sottorappresentazioni irriducibili. In particolare stiamo quindi cercando dei sottospazi $W \subset Z = Hom(V_\rho, V_\sigma)$ tali che $s\cdot W \subset W \quad \forall s \in G$ 
+Prima di iniziare la dimostrazione diamo una giustificazione della scelta della applicazione lineare $T$: questa è stata dettata dal fatto che
+\[ \tr(T)=\tr(\dfrac{1}{|G|} \dsum_{s\in G} \rho(s))= \dfrac{1}{|G|} \dsum_{s\in G} \tr(\rho(s))= \langle \chi_\rho| 1 \rangle \]
+Si nota anzitutto che 
 
-In particolare, cerchiamo le funzioni $f \in Hom(V_\sigma, V_\rho)$ tali che $s\cdot f = f$. Ricordando come è definita l'azione di $G$ su $\Hom(V_\rho, V_\sigma)$ si vede che
+\[ \rho(t) T(v) = \dfrac{1}{|G|} \dsum_{s\in G} \rho(t)\rho(s) v = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s) = T(v)\]
 
-\[f = s\cdot f =  \rho(s) \circ f \circ \sigma^{-1}(s) \Rightarrow  f \sigma(s)= \rho(s) f\] 
+ovvero $ImT\subseteq V_\rho^G$. D'altra parte se $v \in V_\rho^G$ allora è chiaro che $Tv = v$ (basta applicare la definizione). Per cui $ImT = V_\rho^G$. 
 
+Inoltre 
 
-Ovvero le applicazioni $f$ invarianti per l'azione di $G$ sono gli omomorfismi di rappresentazioni da $(\rho, V_\rho) $ a $(\sigma, V_\sigma)$
-
-A questo punto
-
-\[ (V_{\sigma^*\rho})^G \cong Hom(V_\sigma, V_\rho)^G \cong Hom(\sigma, \rho)\]
-
-Per cui dato che noi stiamo cercando $dimHom(\sigma, \rho)$, basterà trovare $dim(V_{\sigma^*\rho})^G$
-
-Visto che ci siamo ricondotti al caso in cui una rappresentazione è banale, ora facciamo i conti cercando di trovare la dimensione dello spazio invariante per $G$. Scriviamo la definizione di quello che vogliamo calcolare
-
-
-\[ \langle \chi_\rho | 1 \rangle = \dfrac{1}{|G|} \dsum_{s \in G} tr \rho(s)\]
-
-Se definiamo l'operatore $T$ come operatore lineare
-
-\[ T = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s)\]
-
-
-Allora si nota che 
-
-\[ \rho(t) Tv = \dfrac{1}{|G|} \dsum_{s\in G} \rho(t)\rho(s) v = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s) = Tv\]
-
-Per cui sappiamo che $V_\rho^G \subseteq ImT$. L'obiettivo è mostrare che quella non è una disuguaglianza ma un'uguaglianza. In realtà questa è la disuguaglianza stupida in quanto se $v \in V_\rho^G$ allora è chiaro che $Tv = v$, basta applicare la definizione. Per cui $ImT = V_\rho^G$. A questo punto vogliamo calcolare la sua traccia. Per farlo notiamo che 
-
-\[T(Tv) = \ldots = Tv \qquad \text{Verifica banale}\]
+\[T(Tv) = \ldots = Tv \qquad \text{verifica banale}\]
 
 Per cui $T$ è un proiettore. A questo punto sappiamo dall'algebra lineare che
 
@@ -1665,11 +1666,15 @@ Per cui $T$ è un proiettore. A questo punto sappiamo dall'algebra lineare che
 
 Per cui $trT = dimImT = dimV_\rho^G$. Ma dalla catena di deduzioni che abbiamo fatto
 
-\[dimHom(V_\sigma, V_\rho) = dim(V_{\sigma^*\rho}^G) = trT = \langle \chi_{\sigma^*\rho} | 1 \rangle = \langle \chi_\sigma | \chi_\rho \rangle\]
+\[dim(Hom(V_\rho, V_\sigma)) = dim(V_{\rho^*\sigma}^G) = trT = \langle \chi_{\rho^*\sigma} | 1 \rangle = \langle \chi_\sigma | \chi_\rho \rangle\]
 
 \end{proof}
 
-
+\textbf{Osservazione:}
+\[\langle \chi_\sigma | \chi_\rho \rangle=\overline{\langle \chi_\rho | \chi_\sigma \rangle}\]
+ovvero per quanto appena dimostrato
+\[ dim(Hom(V_\rho, V_\sigma))=\overline{dim(Hom(V_\sigma, V_\rho))}\]
+tuttavia essendo dei numeri naturali deduciamo che le eguaglianze sussistono anche senza il coniugio.
 
 
 
@@ -1990,9 +1995,9 @@ Ricordiamo che il sottospazio di dimensione $1$ fatto dallo span del vettore $v 
 
 E siamo sicuri che l'altra rappresentazione di grado 2 sia esattamente quella che stiamo cercando proprio grazie al teorema che ci dice che tutte le rappresentazioni irriducibili di un gruppo compaiono nella sua rappresentazione regolare. (Teorema \ref{thm: teorema importantissimo})
 
-Dato che è facile calcolare il carattere di $\tau(s)$ in quanto è uguale a $Fix(s)$, possiamo scrivere
+Dato che è facile calcolare il carattere di $\tau(s)$ in quanto è uguale a $\Fix(s)$, possiamo scrivere
 
-\[ Fix(s) = 1 + \chi_\rho\]
+\[ \Fix(s) = 1 + \chi_\rho\]
 
 Da cui si ricava subito il carattere della rappresentazione $\rho$
 
@@ -2074,7 +2079,7 @@ Che si scompone anche questa come
 Vorremmo sapere se $\rho$ è irriducibile. Potremmo invocare qualche teorema ma lo faremo con le mani calcolando il carattere di $\rho$
 
 
-\[ \chi_\rho(s) = Fix(s) - 1 = 
+\[ \chi_\rho(s) = \Fix(s) - 1 = 
 \begin{cases}
 3 \quad \text{Se } s = e \\
 1 \quad \text{Se } s = (a b) \\
@@ -2468,7 +2473,7 @@ che definiamo sullo spazio $V = V_0 \oplus i V_0$ nel seguente modo
 
 Vediamo ora il seguente lemma che ci servirà per la classificazione.
 \begin{lemma}
-Sia $V$ una $G-$rappresentazione $/\C$. Allora ogni forma bilineare non nulla $G-$invariante è non degenere. Inoltre, se esiste, è unica a meno di scalari, ovvero $\dim (V^*\otimes V^*)^G=1$.
+Sia $V$ una $G-$rappresentazione $/\C$. Allora ogni forma bilineare non nulla $G-$invariante è non degenere. Inoltre, se esiste, è unica a meno di scalari, ovvero $\dim (V^*\otimes V^*)^G\le1$.
 \end{lemma}
 \begin{proof}
 Prendiamo un elemento $B \in \left( V^* \otimes V^*\right) ^G$.
@@ -2628,7 +2633,8 @@ i & 0 \\
 \right)
 \qquad
 \]
-Matrici di spin di Pauli ?????????????????????????????????????????????
+
+Queste 4 matrici prendono il nome di matrici di spin di Pauli in quanto hanno alcune applicazioni in Fisica. Possiamo infine ricostruire quindi la tabella dei caratteri di $Q_8$
 
 
 \begin{table}[!ht]
@@ -2699,7 +2705,10 @@ Questo non è male, in quanto se $\phi$ fosse lineare avremmo subito che $\phi$ 
 
 \[ \phi(z_1 x_1 + z_2 x_2) = \overline{z_1} \phi(x_1) + \overline{z_2} \phi(x_2) \qquad \forall z_1, z_2 \in \C, \forall x_1, x_2 \in V_\rho\]
 
-SCRIVI PERCH\'E
+La linearità rispetto ai vettori è abbastanza evidente. L'antilinearità rispetto agli scalari deriva essenzialmente dal fatto che stiamo usando un prodotto hermitiano invece di un prodotto scalare. Infatti
+
+\[ h( \phi(zx) , y) = B(zx, y) = B(x, zy) = h(\phi(x), zy) = \overline{z} h(\phi(x), y) \]
+
 
 E quindi purtroppo $\phi$ non è davvero lineare. Però dato che in mezzo c'è  solo il coniugio, possiamo provare a vedere cosa fa $\phi^2$
 
@@ -2884,7 +2893,7 @@ ovvero $R(v)\in V^G$.
 Inoltre se $w\in V^G$ allora $R(w)=w$. Di conseguenza $R^2 = R$ (cioè $R$ è una cosiddetta \emph{proiezione})
 e quindi $R$ si diagonalizza con autovalori $0$ e $1$. Inoltre l'autospazio relativo a $1$ è proprio $V^G$.
 Ciò implica che
-\[ \dim V^G = tr(R) = \frac{1}{|G|} \sum_{g\in G}{\chi_\rho(g)} = \langle\chi_\rho|\chi_1\rangle \]
+\[ \dim V^G = \tr(R) = \frac{1}{|G|} \sum_{g\in G}{\chi_\rho(g)} = \langle\chi_\rho|\chi_1\rangle \]
 \qed
 
 
@@ -2897,7 +2906,7 @@ Ciò implica che
 
 \newpage
 \section{Rappresentazioni indotte}
-Supponiamo di avere $\rho:H\rightarrow GL(V)$ una rappresentazione di $H<G$ con $G$ gruppo. Il nostro aim è quello di definire una $\widetilde{\rho}:G\rightarrow GL(V)$ rappresentazione di $G$ che estende $\rho$.
+Supponiamo di avere $\rho:H\rightarrow GL(V)$ una rappresentazione di $H<G$ con $G$ gruppo. Il nostro obiettivo è quello di definire una $\widetilde{\rho}:G\rightarrow GL(V)$ rappresentazione di $G$ che estende $\rho$.
 
 \begin{defn}Indichiamo con \emph{induzione da $H$ in $G$ di $W$} il seguente spazio vettoriale:
 \[Ind_H^G(W)=\{f:G\rightarrow W: \rho(h)\circ f(gh)=f(g)\ \forall (g,h)\in G\times H\}   \]
@@ -2937,8 +2946,8 @@ Dato $g\in G$ definiamo $V_g=\{f\in V : Supp(f)\subseteq gH \}$.
 \textbf{Osservazione:} dato che le classsi laterali di $H$ sono una partizione di $G$, dette $\{g_iH\}_{i\in |G/H|}$ i rappresentanti delle classi laterali $gH$ al variare di $g$ in $G$ allora 
 \[G=\bigsqcup_{i=1}^{|G/H|} g_iH\] 
 e quindi ogni funzione la posso scrivere come combinazione lineare di $f_i\in V_{g_iH}$.
-\[\Rightarrow V=\bigotimes_{i=1}^{|G/H|} V_{g_iH}\]
-Voglio ora rintracciare $W$, in quanto sono interessata a trovare un sottospazio isomorfo a $W$ dento $V$. Notiamo innanzitutto che la scrittura precedente non è detto che sia una decomposizione di rappresentazioni, ma possiamo vedere subito che si comporta bene sotto l'azione di $\rho_{ind}$. 
+\[\Rightarrow V=\bigoplus_{i=1}^{|G/H|} V_{g_iH}\]
+Voglio ora rintracciare $W$, in quanto sono interessata a trovare un sottospazio isomorfo a $W$ dentro $V$. Notiamo innanzitutto che la scrittura precedente non è detto che sia una decomposizione di rappresentazioni, ma possiamo vedere subito che si comporta bene sotto l'azione di $\rho_{ind}$. 
 
 \begin{lemma}
 $\rho_{ind}$ permuta le varie $V_{gH}$ nel senso che $\rho_{ind}(g)V_{g'H}=V_{gg'H}$. 
@@ -2978,7 +2987,7 @@ La rappresentazione appena trovate di $H$ su $V_{eH}$ è naturalmente isomorfa a
 \[\Phi:V_{eH}\rightarrow W\ \textup{tale che } f\mapsto f(e)\]
 ovvero la funzione che associa ad un $f$ la valutazione della stessa nell'elemento neutro. Verifichiamo innanzitutto che si tratta di un omomorfismo di rappresentazione. Ricordiamo chi è $V_{eH}$:
 \[V_{eH}=\{f:G\rightarrow W: \rho(h)f(gh)=f(g)\ \forall h,g\ \ \textup{e } Supp(f)\subseteq H\}\]
-$\Phi$ è un omo. di rappr. sse $\Phi(\rho_{ind}(h)f)=\rho(h)\Phi(f)\ \forall h\in H$.
+$\Phi$ è un omomorfisimo di rappresentazioni $\Leftrightarrow$ $\Phi(\rho_{ind}(h)f)=\rho(h)\Phi(f)\ \forall h\in H$.
 \[\Phi(\rho_{ind}(h)f))=\rho(h)\Phi(f) \Leftrightarrow (\rho_{ind}(h)f)(e)=\rho(h)(f(e))\Leftrightarrow f(h^{-1}e)=f(h^{-1})=\rho(h)f(e)\]
 ma ciò è vero in quanto le $f\in Ind_H^G(W)$. \\
 Verifichiamo che $\Phi$ è iniettiva. $Supp(f)\subseteq H$ e $\forall h\in H\ f(h)=\rho(h^{-1}f(e))$: questo mi dice che una volta che si è fissato il valore di $f(e)$ allora la funzione è univocamente determinata su $H$. D'altra parte so che in $G\setminus H$ la funzione è identicamente nulla $\Rightarrow$ quindi è univacamente determinata su tutto $G$. Allora detti $\Phi$ è iniettiva.\\
@@ -3000,17 +3009,29 @@ Vediamo ora degli esempi.
 \item $H\neq \{e\},\subseteq G$ e $\rho:H\rightarrow GL(W)$ la rappresentazione banale con $W=\C$. Allora
 \[Ind_H^G(\C)=\{f:G\rightarrow \C:\rho(h)f(gh)=f(gh)=f(g)\ \forall g,h\}\Rightarrow f \textup{ è costante sulle classi laterali di} H\]
 \[\Rightarrow Ind_H^G(\C)=\{f:G\rightarrow \C:f \textup{ è costante sulle classi laterali di }\ H\}=\C[G/H]\]
-\begin{tikzpicture}
-\centering
-\matrix(m)[matrix of math nodes,row sep=3em,column sep=3em,minimum width=3em]
-{
-f:G& \C\\
-G/H& \\};
-\path[-stealth]
-(m-1-1) edge (m-1-2)
-(m-1-1) edge node [left] {$\pi$} (m-2-1)
-(m-2-1) edge node [right] {$\ f$} (m-1-2);
-\end{tikzpicture}\\
+
+
+%% \begin{tikzpicture}
+%% \centering
+%% \matrix(m)[matrix of math nodes,row sep=3em,column sep=3em,minimum width=3em]
+%% {
+%% f:G& \C\\
+%% G/H& \\};
+%% \path[-stealth]
+%% (m-1-1) edge (m-1-2)
+%% (m-1-1) edge node [left] {$\pi$} (m-2-1)
+%% (m-2-1) edge node [right] {$\ f$} (m-1-2);
+%% \end{tikzpicture}\\
+
+\[
+\begin{diagram}
+G          & \rTo^{f}            & \C \\
+\dTo<{\pi} & \ruTo>{f \circ \pi} &    \\
+G/H        &                     &    \\
+\end{diagram}
+\]
+
+
 $G/H$ è un insieme finito dove $G$ agisce per moltiplicazione a sinistra ($g(g'H)=gg'H$). Quindi $Ind_H^G(W)$ è la rappresentazione per permutazione associata all'azione di $G$ in $G/H$. \\
 \textbf{Recall:} $X$ è un $G-$insieme, sia $X= \bigsqcup X_i$ la decomposizione in $G-$orbite: allora 
 \[\C[X]=\bigoplus_{i=1}^{\#-orbite} \C[X_i]\] 
@@ -3305,19 +3326,267 @@ A questo punto, in analogia con quello che abbiamo fatto con i prodotti finiti, 
 \[ I(f(x)) = I(f(\rho(g) x)) \qquad \forall g \in G\]
 \end{defn}
 
-Se questa integrazione esiste, allora in analogia a quanto fatto per i gruppi finiti possiamo enunciare e dimostrare il seguente teorema. 
+Se questa integrazione esiste, allora in analogia a quanto fatto per i gruppi finiti possiamo sperare che le rappresentazioni di un gruppo compatto siano completamente irriducibili.
+
+
+\begin{lemma}
+  Se esiste l'integrazione invariante su un gruppo, allora esiste una forma hermitiana definita positiva invariante sotto l'azione del gruppo.
+\end{lemma}
+\begin{proof}
+  Sia $h$ una forma hermitiana definita positiva su $V_\rho$. Consideriamo la quantità
+  \[ h_G(v,w) = I( h(\rho(g) v, \rho(g) w)) \]
+
+  Evidentemente è di nuovo una forma hermitiana definita positiva ed è invariante sotto $G$.
+
+
+\end{proof}
+
+
+
 
 \begin{thm} Sia $G$ un gruppo compatto e $\rho : G \to GL(V_\rho)$ una sua rappresentazione continua, con $V_\rho$ di dimensione finita. Se esiste una integrazione invariante $I$, allora la rappresentazione è completamente riducibile.
 
 \end{thm}
 
-\textsc{Dimostrazione:}
-La dimostrazione è identica alla dimostrazione \ref{thm:gruppo finito completamente riducibile}, in cui al posto di $h_G$ si utilizza $I$. \qed
+\begin{proof}
+  La dimostrazione è identica alla dimostrazione \ref{thm:gruppo finito completamente riducibile}, usando la forma hermitiana invariante appena definita. 
+\end{proof}
+
+
+\begin{thm}[Teorema di Haar]
+Per ogni gruppo compatto esiste l'integrazione invariante. 
+\end{thm}
+
+Di questo teorema non daremo la dimostrazione in questo corso. 
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+\newpage
+\subsubsection{Le rappresentazioni di $SU(2)$}
+
+
+
+Dopo aver studiato in dettaglio $\mathbb{S}^1$, vediamo come si comporta un suo parente stretto, $SU(2)$. Ricordiamo che $SU(2)$ è definito come un sottoinsieme di $GL(\C^2)$. In particolare ogni matrice di $SU(2)$ si può scrivere come 
+
+ \[ SU(2) = \left\{  \left(\begin{array}{cc} z & w \\ -\overline{w} & \overline z \end{array}\right) \quad z, w \in \C  , \qquad |z_1|^2 + |z_2|^2 = 1\right\} \]
+
+ È abbastanza naturale considerare $\C^2 \cong \R^4$ e accorgersi che in sostanza $SU(2) \cong \mathbb{S}^3$, in quanto tutti gli elementi rispettano l'equazione
+
+ \[ x_1 ^2 + x_2^2 + x_3^2 + x_4^2 = 1 \]
+
+ E scrivendo in questo modo ci accorgiamo subito che quindi $SU(2)$ è un gruppo compatto e connesso.
+
+ Come abbiamo fatto per $\mathbb{S}^1$, vorremmo andare a studiare tutte le sue rappresentazioni irriducibili. Per farlo, innanzitutto sarebbe intelligente farsi un'idea di come può essere fatta l'integrazione invariante su questo gruppo. Se lo immergiamo in $\R^4$, possiamo sfruttare l'integrazione lì definita e quindi fare un integrale triplo
+
+ \[ I(f) = \dint_{\mathbb{S}^3} f(g) dg = \dfrac{1}{2\pi^2} \dint_0^\pi \dint_0^{\pi} \dint_0 ^{2\pi} f(\theta, \phi, \psi) \sin^2\theta\sin\phi \ d\theta \ d\phi \ d\psi\]
+
+
+ L'invarianza dell'integrazione sotto l'azione di $G$ deriva sostanzialmente dal fatto che quando si cambia variabili bisogna moltiplicare l'integrando per il determinante dello Jacobiano. Tuttavia $det(SU(2)) = 1$ e quindi non ci sono problemi.
+
+
+ Vediamo ora le rappresentazioni di classificare tutte le rappresentazioni irriducibili di $SU(2)$. Consideriamo per esempio un'azione di $SU(2)$ sullo spazio $V_m = \C[xy]_m$ dei polinomi omogenei su $\C$ si grado $m$ definita in questo modo 
+
+ \[
+ \rho_m(A) f(x, y) = f(a_{11} x + a_{21} y , a_{12} x + a_{22} y) \qquad \forall f \in V_m, \forall A \in SU(2)
+ \]
+
+
+
+ Per farci un'idea di come sia fatta questa rappresentazione possiamo per esempio studiarla qualitativamente su un sottogruppo di $SU(2)$ che già conosciamo bene, ovvero $\mathbb{S}^1$. Una matrice di $\mathbb{S}^1 \subset SU(2)$ si potrà scrivere come
+
+ \[
+ A = 
+ \left(
+ \begin{array}{cc}
+   e^{i\theta} & 0 \\
+   0 & e^{-i\theta} \\
+ \end{array} 
+ \right)
+ \]
+
+
+ Possiamo prendere una base di $V_m$, la più scontata che ci viene in mente, e vedere come agisce su $V_m$ il nostro gruppo. La base più banale che ci può venire in mente è sicuramente $\{ x^ky^{m-k} \}_{k \in \{0, ..., n\}}$.
+
+ \[ \rho(A(\theta)) (x^ky^{m-k}) = e^{i(m-2k)} x^k y^{m-k} \]
+
+ Per cui abbiamo avuto un grosso colpo di fortuna in quanto abbiamo sparato una base a caso ed è già di autovettori per il sottogruppo che stiamo guardando.
+
+ BISOGNA FINIRE DI SCRIVERE
+
+ \begin{prop}
+   Le rappresentazioni irriducibili di $SU(2)$ sono tutte e sole le $\rho_m$ definite poco fa.
+ \end{prop}
+
+ \begin{proof}
+   QUALCUNO LA SCRIVA.
+ \end{proof}
+ 
+
+ \paragraph{Le classi di coniugio di $SU(2)$}
+ Dato che abbiamo dato tanto peso alla teoria del carattere per i gruppi finiti, probabilmente anche per i gruppi compatti ci saranno applicazioni interessanti. Dato che il carattere è una funzione di classe, è intelligente andare a studiare nel dettaglio le classi di coniugio di $SU(2)$.
+
+
+ Abbiamo già visto che possiamo immergere $\mathbb{S}^1$ in $SU(2)$. Vediamo come questo abbia a che fare con le classi di coniugio.
+
+
+ Ricordiamo che possiamo scrivere un generico punto di $\mathbb{S}^3$ come
+
+ \[
+ \begin{cases}
+ x_1 = \cos\theta \\
+ x_2 = \sin\theta\cos\phi \\
+ x_3 = \sin\theta\sin\phi\cos\psi \\
+ x_4 = \sin\theta\sin\phi\sin\psi \\
+ \end{cases}
+ \]
+
+ Per cui possiamo scrivere il generico elemento di $SU(2)$ come
+
+ \[
+ g(\theta, \phi, \psi) = 
+ \left(
+ \begin{array}{cc}
+   \cos\theta + i \sin\theta \cos\phi & \sin\theta\sin\phi( \cos\psi + i \sin\psi) \\
+   -\sin\theta\sin\phi(\cos\psi - i \sin\psi) & \cos\theta - i \sin\theta\cos\phi  \\
+
+ \end{array}
+ \right)
+ \]
+ 
+
+ Dato che le matrici di $SU(2)$ sono normali, possiamo usare il teorema spettrale normale per dire che sono tutte diagonalizzabili. Per questo motivo le classi di coniugio saranno tutte matrici di Jordan diagonali, senza 1 sulla sopradiagonale. Per questo motivo la classe di coniugio sarà univocamente determinata dagli autovalori della matrice. Il polinomio caratteristico di una matrice $2\times 2$ è
+
+ \[ p(t) = t^2 - \tr(M) t + det(M) \]
+
+ Ma dato che siamo in $SU(2)$ il determinante è 1. La traccia è invece con una banale somma $2\cos\theta$. I due autovalori hanno modulo 1 e quindi in sostanza sono $e^{i\theta}$ e $e^{-i\theta}$. Per questo motivo un generico elemento di $SU(2)$ è
+
+
+ \[
+ g(\theta, \phi, \psi) \sim \left(
+ \begin{array}{cc}
+   e^{i\theta} & 0 \\
+   0 & e^{-i\theta} \\
+ \end{array}
+ \right) = g(\theta, 0 , 0)
+ \]
+
+
+
+
+ Per questo motivo la funzione $\frac{1}{2} \tr(g) : SU(2) \to \R$ è una funzione suriettiva in $[-1,1]$ e le sue fibre sono le classi di coniugio.
+
+ \paragraph{Il carattere delle rappresentazioni irriducibili di $SU(2)$}
+
+
+ Prendiamo una funzione $f$
+
+ \[ f \in \C(SU(2)) ^\# = \{ \text{Funzioni di classe } f: SU(2) \to \C  \} \]
+
+ Sappiamo che se questa funzione è di classe, allora non dipende dal rappresentante della classe di coniugio. Per questo motivo possiamo quindi dire che
+
+ \[ f(g(\theta, \phi, \psi)) = f(g(\theta, 0 , 0)) \]
+ Vorremmo andare a studiare come si comporta l'integrazione invariante su questa funzione e poi considerare il caso particolare in cui questa funzione sia per l'appunto il carattere di $\rho$, una generica rappresentazione di $SU(2)$.
+
+ \begin{align*}
+ \dint_{\mathbb{S}^3} f(g) dg &= \dfrac{1}{2\pi^2} \dint_0^\pi \dint_0^{\pi} \dint_0 ^{2\pi} f(\theta, \phi, \psi) \sin^2\theta\sin\phi \ d\theta \ d\phi \ d\psi = \\
+ &=\dfrac{1}{2\pi^2} \dint_0^\pi \dint_0^{\pi} \dint_0 ^{2\pi} f(\theta, 0, 0) \sin^2\theta\sin\phi \ d\theta \ d\phi \ d\psi = \\
+ &= \dfrac{2}{\pi} \dint_0^\pi f(\theta, 0, 0) \sin^2\theta \ d\theta = \\
+  &= \dfrac{1}{\pi} \dint_0^{2\pi} f(\theta, 0, 0) \sin^2\theta \ d\theta 
+ \end{align*}
+ 
+ Quindi l'espressione si semplifica parecchio. Prendiamo ora per l'appunto una rappresentazione di $\rho$ e vediamo come si comporta il carattere. In particolare prendiamo una delle $\rho_m$ irriducibili che abbiamo trovato prima. Sappiamo che
+
+ \[ \rho_m: SU(2) \to GL(V_m) \qquad V_m = \bigoplus_{k=0}^m V_{m,k}\]
+ 
+ In particolare siamo già riusciti a diagonalizzare $\rho_m$. Avremo che
+
+ \begin{align*}
+   \chi_{\rho_m} (\theta, \phi, \psi) &= \chi_{\rho_m}(\theta) = \chi_{\rho_m}(e^{i\theta}) = \\
+   &= \dsum_{k=0}^m \rho_{m-2k}^{\mathbb{S}^1}(e^{i\theta}) = \dsum_{k=0}^m e^{i(m-2k)} \\
+   &= \dfrac{e^{i(m+i)\theta} - e^{-i(m+1)\theta}}{e^{i\theta} - e^{-i\theta}} = \dfrac{\sin((m+1)\theta)}{\sin\theta}
+ \end{align*} 
+ 
+
+
+ Per cui, in analogia a quanto fatto per i gruppi finiti, diamo la definizione di
+
+ \begin{defn}[Prodotto hermitiano di caratteri]
+
+   \[
+   \langle \chi_\rho | \chi_\sigma \rangle = \dint_G \chi_\rho(g) \overline{\chi_\sigma(g)} dg
+   \]
+
+ \end{defn}
+
+ Che andiamo prontamente a calcolare in questo caso
+
+ \[
+ \langle \chi_{\rho_n} | \chi_{\rho_m} \rangle = \dfrac{1}{\pi}\dint_0^{2\pi} \dfrac{\sin((n+1)\theta)}{\sin\theta} \dfrac{\sin((m+1)\theta)}{\sin\theta} \sin^2\theta \ d\theta = \delta_{mn}
+ \]
+
+
+ Cosa molto simile a quanto era già successo per i gruppi finiti. A questo punto viene il sospetto che possa esserci qualcosa di più profondo sotto. Vedremo fra poco dei teoremi che generalizzano questi risultati. 
+
+
+
+
+
+
+
+
+ \begin{thm}
+   Sia $G$ un gruppo compatto  e siano $\rho$ e $\sigma$ due sue rappresentazioni irriducibili. Allora vale
+   \[
+   \langle \chi_\rho | \chi_\sigma \rangle =
+   \begin{cases}
+     1 \qquad \text{se } \sigma \cong \rho \\
+     0 \qquad \text{altrimenti} \\
+   \end{cases}
+   \]
+ \end{thm}
+
+ \begin{proof}
+   DEVE FARLA GANDINI MARTEDÌ
+
+
+ \end{proof}
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 \end{document}
