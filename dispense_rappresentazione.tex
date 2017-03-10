@@ -316,9 +316,7 @@ Indichiamo con $Hom(G,H)$ l'insieme degli omomorfismi da $G$ ad $H$.
 
 \begin{thm}[Primo teorema di omomorfismo]\label{alg:primo_teo_omo}
 	Dati due gruppi $G$ e $H$ e un omomorfismo $f:G\to H$, vale che
-	\[
-		G/Ker f \cong Imm f
-	\]
+	\[ G/Ker f \cong Imm f\]
 \end{thm}
 \begin{rem}
 	Se la $f$ del teorema precedente è iniettiva, allora $G/Ker f\cong G$ e quindi $G\cong Imm f$. Invece se $f$ è surgettiva, allora $G/Ker f\cong H$.
@@ -327,9 +325,7 @@ Indichiamo con $Hom(G,H)$ l'insieme degli omomorfismi da $G$ ad $H$.
 
 
 \begin{defn}[Azione di un gruppo su un insieme] Sia $G$ un gruppo e $I$ un insieme. Chiamiamo azione $a$ di $G$ su $I$ una funzione $a:G\times I \to I$ che rispetti la regola di composizione, ovvero che se $h,g\in G$ e $i \in I$, valga
-
 \[ a(h,a(g,i)) = a(hg, i) \]
-
 Normalmente si usa una notazione abbreviata in cui invece di scrivere $a(g,i)$ si scrive direttamente $g\cdot i$ o addirittura $gi$
 
 
@@ -349,9 +345,6 @@ Sia $G$ un gruppo che agisce sull'insieme $I$, dato $x\in I$ si chiama \textit{o
 \end{defn}
 
 \begin{rem} Le orbite di un gruppo $G$ sull'insieme $I$ formano una partizione dell'insieme. La verifica non è difficile. Vale inoltre la formula $|Orb_G(x)| \cdot |Stab_G(x)| = |G|$
-
-
-
 \end{rem}
 
 
@@ -384,19 +377,6 @@ Dato un gruppo $G$ che agisce su due insiemi $I$ e $J$, una funzione $\phi: I \t
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 \newpage
 \subsection{Proprietà dei gruppi ciclici}
 
@@ -423,15 +403,15 @@ isomorfismo $f:\langle a\rangle\to\langle b\rangle$ ponendo $f(a^k) = b^k$ per $
 \begin{prop} Sia $C_n$ un gruppo ciclico di cardinalità $n$. Allora
 \[ n = card(Hom(C_n,\C^*))\]
 \end{prop}
-\textsc{Dimostrazione:} Sia $a$ un generatore di $C_n$. Fissato $\omega\in\mu_n$ posso definire
+\begin{proof} Sia $a$ un generatore di $C_n$. Fissato $\omega\in\mu_n$ posso definire
 una funzione $f:C_n\to\C^*$ ponendo $f(a^k) = \omega^k$ per $0\le k < n$.
 Verifichiamo che $f\in Hom(C_n, \C^*)$. A tal fine prendiamo due elementi di $C_n$, che sono della forma $a^k, a^h$ per certi interi $0\le k,h < n$.
 \[f(a^k \cdot a^h) = f(a^{k+h}) = \omega^{k+h} = \omega^k \omega^h = f(a^k)f(a^h)\]
 Dunque $f$ è omomorfismo. Variando la scelta di $\omega\in\mu_n$ si producono effettivamente $n$ omomorfismi differenti (infatti se $\omega$ cambia allora cambia anche $f(a)$).
 Mostriamo che non ci sono altri omomorfismi oltre a questi.
 Sia $f\in Hom(C_n,\C^*)$. Visto che $a^n=e$, deve valere $f(a)^n = f(a^n) = 1$. Allora $f(a)$ deve essere una radice $n$-esima
-dell'unità, che chiamiamo $\omega$. A questo punto il fatto che $f$ è omomorfismo implica che $f(a^k) = \omega^k$ per ogni intero $k$. \qed
-
+dell'unità, che chiamiamo $\omega$. A questo punto il fatto che $f$ è omomorfismo implica che $f(a^k) = \omega^k$ per ogni intero $k$.
+\end{proof}
 
 
 \subsection{Proprietà dei gruppi abeliani}
@@ -498,14 +478,14 @@ a sinistra). Se lo volessimo scrivere come prodotto di cicli disgiunti otterremm
 \begin{thm}
 Ogni elemento $\sigma \in S_n$ si può scrivere come prodotto di \emph{trasposizioni}, ovvero cicli di lunghezza $2$, non necessariamente disgiunti.
 \end{thm}
-\textsc{Dimostrazione: }
+\begin{proof}
 Considerato il teorema sulla decomposizione in cicli, basta mostrare la tesi nel caso in cui $\sigma$ è un ciclo.
 Supponiamo $\sigma = (a_1, a_2, \dots, a_k)$. Allora è facile verificare che
 \[\sigma = (a_1, a_k)\cdot (a_1, a_{k-1}) \cdot \dots \cdot (a_1, a_2)\]
 Qualcuno potrebbe essere turbato dal caso in cui il ciclo ha lunghezza $1$, ossia $\sigma$ è l'identità.
 In tal caso possiamo dire che $\sigma$ è il prodotto di un insieme vuoto di trasposizioni.
 Chi fosse ancora turbato potrebbe scrivere, almeno nel caso $n\ge 2$, $\sigma = (1,2)(1,2)$.
-\qed
+\end{proof}
 
 Osserviamo che il teorema precedente assicura solo l'esistenza di una scrittura come prodotto di trasposizioni
 ma non l'unicità. In effetti questa non sussiste, infatti se in fondo ad un prodotto di trasposizioni aggiungo $(1,2)(1,2)$
@@ -517,12 +497,12 @@ Siano $\tau_1, \tau_2, \dots, \tau_t, \sigma_1, \sigma_2, \dots, \sigma_s$ trasp
 \[\tau_1\tau_2\dots\tau_t = \sigma_1\sigma_2\dots\sigma_s\]
 Allora $s\equiv t \mod 2$.
 \end{thm}
-\textsc{Cenno di dimostrazione: }
+\begin{proof}[Cenno di dimostrazione]
 Definiamo la seguente funzione $f:S_n\to\N$:
 \[f(\rho) = card\left(\left\{\quad(a,b)\in\{1,\dots,n\}^2 \quad | \quad a < b, \quad\rho(a) > \rho(b) \quad\right\}\right)\]
 Non è difficile verificare che se $\tau\in S_n$ è una trasposizione allora $f(\rho)$ e $f(\tau\rho)$ hanno parità diversa.
 Il risultato segue immediatamente visto che $f(\tau_1\tau_2\dots\tau_t) = f(\sigma_1\sigma_2\dots\sigma_s)$.
-\qed
+\end{proof}
 
 \begin{defn}[Segno di una permutazione]
 Il teorema appena visto permette di definire il \emph{segno} di ogni elemento $\sigma\in S_n$, che si pone uguale a $1$
@@ -532,11 +512,11 @@ se $\sigma$ si scrive come prodotto di un numero pari di trasposizioni, si pone 
 \begin{prop}
 Il segno di un ciclo di lunghezza $k$ è esattamente $(-1)^{k-1}$
 \end{prop}
-\textsc{Dimostrazione: }
+\begin{proof}
 Abbiamo già visto un modo in cui un ciclo di lunghezza $k$ si può scrivere come prodotto di trasposizioni:
 \[(a_1, a_2, \dots, a_k) = (a_1, a_k)\cdot (a_1, a_{k-1}) \cdot \dots \cdot (a_1, a_2)\]
 Dunque la tesi segue immediatamente.
-\qed
+\end{proof}
 
 \begin{defn}
 L'insieme degli elementi di $S_n$ aventi segno $+1$ è un sottogruppo di $S_n$,
@@ -693,6 +673,9 @@ Ora è facile osservare che $e:I\to\C^I$ definita da $e_i(j) = \delta_{i,j}$ è 
 \begin{exmp} $V=W=V\otimes W = \C$ e come $\otimes$ prendo il prodotto ovvero $v\otimes w=vw$.
 \end{exmp}
 \begin{exmp} $W$ un qualsiasi $\K-$spazio vettoriale, $V=\K$. Allora posso prendere $\K\otimes W = W$ e come $\otimes$ prendo il prodotto per scalari $\alpha\otimes w=\alpha w$.
+
+Infatti se $h:\K\times W\to Z$ è una funzione bilineare, allora mi basta definire $\phi:W\to Z$ ponendo $\phi(w) = h(1, w)$. Si vede facilmente
+che così il diagramma commuta e non esiste nessun'altra $\phi$ che fa commutare il diagramma.
 \end{exmp}
 
 \begin{prop}
@@ -822,7 +805,7 @@ Ora abbiamo
 \[\phi(v_i^*\otimes w_j)(v_k) = \delta_{i,k} w_j\]
 Ciò vuol dire che, se scriviamo la matrice dell'applicazione $\phi(v_i^*\otimes w_j):V\to W$ secondo le basi date, questa presenta un $1$ all'incrocio
 tra l'$i-$esima colonna e la $j-$esima riga, mentre è nulla altrove.
-Dunque $\phi$ manda la base $\{v_i^*\otimes w_j\}_{(i,j)\in I\times J}$ dello spazio $V\otimes W$ in una base dello spazio $\Hom(V,W)$,
+Dunque $\phi$ manda la base $\{v_i^*\otimes w_j\}_{(i,j)\in I\times J}$ dello spazio $V^*\otimes W$ in una base dello spazio $\Hom(V,W)$,
 quindi è un isomorfismo.
 \end{proof}
 
@@ -841,6 +824,7 @@ dalla base scelta per scrivere la matrice di un endomorfismo.
 \begin{thm}
 Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la formula
 \[\tr(f\otimes g) = \tr(f) \tr(g)  \]
+\label{thm: tracciaprodotto}
 \end{thm}
 \begin{proof}
 Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{w_j\}_{j\in J}$ una base di $W$, e come al solito indichiamo gli elementi delle basi duali aggiungendo un asterisco.
@@ -851,31 +835,37 @@ Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{w_j\}_{j\in J}$ una base di $W$, e co
                  &= \tr(f) \cdot \tr(g)
 \end{align*}
 \end{proof}
+\begin{proof}[Dimostrazione alternativa per $\C-$spazi vettoriali]
+Iniziamo a considerare il caso in cui sia $f$ che $g$ siano diagonalizzabili: prendendo due basi $a:I\rightarrow V$ , $b:J\rightarrow W$ di autovettori rispettivamente per $f$ e per $g$, si verifica facilmente la verità della proposizione nella base indotta su $V\otimes W$ (ovvero in quella formata dagli $a_i\otimes b_j$).
+
+Ora, essendo la traccia una funzione continua e le matrice diagonalizzabili dense nello spazio delle matrici, la proprietà affermata dal lemma si estende al caso generale per continuità.
+\end{proof}
 
 
 \subsection{Prodotto esterno e prodotto simmetrico}
 
-\begin{defn}[Applicazione $r$-lineare simmetrica/alternante]
- Una applicazione $\phi: V^n \to Z$ si dice $r$-lineare se è lineare in ogni componente dopo aver fissato le altre $n-1$.
+\begin{defn}[Applicazione $n-$lineare simmetrica/alternante]
+ Una applicazione $\phi: V^n \to Z$ si dice $n-$lineare se è lineare in ogni componente dopo aver fissato le altre $n-1$.
 
- Inoltre $\phi$ si dice simmetrica se $\phi(v_{s(1)},\ldots,v_{s(n)})=\phi(v_1,\ldots,v_n),\ \forall s \in S_n$, mentre si dice 
- alternante se $\phi(v_{s(1)},\ldots,v_{s(n)})=\mathrm{sgn}(s)\phi(v_1,\ldots,v_n),\ \forall s \in S_n$.
- 
+ Inoltre $\phi$ si dice simmetrica se $\phi(v_{s(1)},\ldots,v_{s(n)})=\phi(v_1,\ldots,v_n)$ per ogni permutazione $s \in S_n$, mentre si dice 
+ alternante se $\phi(v_{s(1)},\ldots,v_{s(n)})=\mathrm{sgn}(s)\phi(v_1,\ldots,v_n)$ per ogni permutazione $s \in S_n$.
 \end{defn}
 
 \begin{prop}
- Un'applicazione $h: V^n \to W$ è alternante se e solo se $h(v_1,\ldots,v_n)=0$ se $v_i=v_j$ per qualche $i\neq j$.
- \end{prop}
+  Un'applicazione $n-$lineare $h: V^n \to W$ è alternante se e solo se, presi comunque $v_1,\dots,v_n\in V$
+  non tutti distinti tra loro, si ha che $h(v_1,\dots,v_n)=0$.
+\end{prop}
 
- \begin{prop}
-  Un'applicazione $h: V^n \to W$ è nulla se i vettori $v_1,\ldots,v_n$ sono linearmente dipendenti.
- \end{prop}
+\begin{prop}
+  Sia $h: V^n \to W$ un'applicazione $n-$lineare alternante. Se i vettori $v_1,\dots,v_n$ sono linearmente dipendenti allora
+  $h(v_1,\dots,v_n)=0$.
+\end{prop}
 
 \begin{defn}[Prodotto esterno]
 Sia $n$ un intero positivo, $V$ uno spazio vettoriale. Un prodotto esterno è uno spazio vettoriale indicato con $\bigwedge^n V$
-dotato di una funzione $n$-lineare alternante $\wedge: V^n \to \bigwedge^n V$ che manda $(v_1,\ldots,v_n)$ in 
-$v_1\wedge v_2\wedge\ldots\wedge v_n \in \bigwedge^n V$, tale che $\forall h: V^n \to Z$ $n$-lineare alternante, 
-esiste unica $\phi: \bigwedge^n V \to Z $ lineare per cui vale $\phi(v_1\wedge v_2\wedge \ldots \wedge v_n)=h(v_1,\ldots,v_n)$.
+dotato di una funzione $n-$lineare alternante $\wedge: V^n \to \bigwedge^n V$ che manda $(v_1,\ldots,v_n)$ in 
+$v_1\wedge v_2\wedge\ldots\wedge v_n \in \bigwedge^n V$, tale che presa comunque una funzione $h: V^n \to Z$ $n-$lineare alternante, 
+esiste un'unica $\phi: \bigwedge^n V \to Z $ lineare per cui vale $\phi(v_1\wedge v_2\wedge \ldots \wedge v_n)=h(v_1,\ldots,v_n)$.
 
 \label{defn:prodotto esterno}
 \end{defn}
@@ -885,9 +875,10 @@ esiste unica $\phi: \bigwedge^n V \to Z $ lineare per cui vale $\phi(v_1\wedge v
 
 
 \begin{thm}[Dimensione del prodotto esterno]
-Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i| 1 \leq i \leq n\}$ una base di $V$ e $k$ un intero positivo.
-Allora l'insieme $E=\{e_{i_1} \wedge e_{i_2}\wedge \ldots \wedge e_{i_k}| 1 \leq i_1 < i_2 <\ldots< i_k \leq n\}$ è una base di $\bigwedge^k V$ 
-e si ha $|E|= \binom {n}{k}$.
+Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i\}_{i=1}^n$ una base di $V$ e $k$ un intero positivo.
+Allora l'insieme
+\[E=\{e_{i_1} \wedge e_{i_2}\wedge \ldots \wedge e_{i_k} \quad|\quad 1 \leq i_1 < i_2 <\ldots< i_k \leq n\}\]
+è una base di $\bigwedge^k V$ di cardinalità $|E|= \binom {n}{k}$.
 
 \label{thm:prodotto esterno}
 \end{thm}
@@ -902,9 +893,9 @@ MANCANO UN SACCO DI PROPRIETA' E LE DIMOSTRAZIONI
 \begin{defn}[Prodotto simmetrico]
 
 Sia $n$ un intero positivo, $V$ uno spazio vettoriale. Un prodotto simmetrico è uno spazio vettoriale indicato con $S^n V$
-dotato di una funzione $n$-lineare simmetrica $V^n \to \bigwedge^n V$ che manda $(v_1,\ldots,v_n)$ in 
-$v_1 v_2\ldots v_n \in S^n V$, tale che $\forall h: V^n \to Z$ $n$-lineare simmetrica, 
-esiste unica $\phi: S^n V \to Z $ lineare per cui vale $\phi(v_1 v_2 \ldots v_n)=h(v_1,\ldots,v_n)$.
+dotato di una funzione $n-$lineare simmetrica $V^n \to \bigwedge^n V$ che manda $(v_1,\ldots,v_n)$ in 
+$v_1 v_2\ldots v_n \in S^n V$, tale che presa comunque una funzione $h: V^n \to Z$ $n-$lineare simmetrica, 
+esiste un'unica $\phi: S^n V \to Z $ lineare per cui vale $\phi(v_1 v_2 \ldots v_n)=h(v_1,\ldots,v_n)$.
 
 \label{defn:prodotto simmetrico}
 \end{defn}
@@ -915,10 +906,10 @@ esiste unica $\phi: S^n V \to Z $ lineare per cui vale $\phi(v_1 v_2 \ldots v_n)
 
 \begin{thm}[Dimensione del prodotto simmetrico]
 
-Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i| 1 \leq i \leq n\}$ una base di $V$ e $k$ un intero positivo.
-Allora l'insieme $E=\{e_{i_1} \wedge e_{i_2}\wedge\ldots \wedge e_{i_k}| 1 \leq i_1 \leq i_2 \leq\ldots\leq i_k \leq n\}$ è una base di $S^k V$ 
-e si ha $|E|= \binom {n+k-1}{k}$.
-
+Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i\}_{i=1}^n$ una base di $V$ e $k$ un intero positivo.
+Allora l'insieme 
+\[E=\{e_{i_1} \wedge e_{i_2}\wedge\ldots \wedge e_{i_k} \quad|\quad 1 \leq i_1 \leq i_2 \leq\ldots\leq i_k \leq n\}\]
+è una base di $S^k V$ di cardinalità $|E|= \binom {n+k-1}{k}$.
 \label{thm:prodotto simmetrico}
 \end{thm}
 
@@ -926,12 +917,9 @@ e si ha $|E|= \binom {n+k-1}{k}$.
 \begin{defn}[Potenza simmetrica e potenza esterna di un'applicazione lineare]
 
 Sia $f: V\to V$ un endomorfismo di uno spazio vettoriale. Definiamo 
-
-\[\bigwedge^k f : \bigwedge^k V \to \bigwedge^k V | f(v_1 \wedge \ldots \wedge v_n) = f(v_1) \wedge \ldots \wedge f(v_n) \]
+$\bigwedge^k f : \bigwedge^k V \to \bigwedge^k V$ la funzione che manda $v_1 \wedge \ldots \wedge v_n$ in $f(v_1) \wedge \ldots \wedge f(v_n)$
 
 In modo analogo si definisce la potenza simmetrica.
-
-
 \end{defn}
 
 
@@ -969,35 +957,45 @@ tr(S^2 f ) = \dfrac{(tr(f))^2 + tr(f^2)}{2} \\
 \newpage
 \section{Prime proprietà delle rappresentazioni}
 
-\begin{defn}[Rappresentazione] Sia $G$ un gruppo. Una rappresentazione $\rho$ di $G$ è una coppia composta da uno spazio vettoriale di dimensione qualsiasi $V_\rho$ e una funzione $\rho: G \to GL(V_\rho)$ che manda ciascun elemento del gruppo in un'applicazione lineare di $V_\rho$, ovvero un suo endomorfismo. Affinché $\rho$ sia una rappresentazione deve essere un omomorfismo di gruppi, ovvero in parole semplici deve rispettare la regola di composizione. In formule, se $s, t \in G$ deve valere
-
-\[ \rho(st) v = \rho(s)\rho(t) v \qquad \forall v \in V_\rho, \quad \forall s,t \in G\]
-
-La dimensione di $V_\rho$ viene detta grado della rappresentazione.
-
+\begin{defn}[Rappresentazione]
+	Sia $G$ un gruppo e $V$ uno spazio vettoriale. Una funzione $\rho: G \to GL(V)$ che manda ciascun elemento del gruppo in un'applicazione lineare invertibile di $V$
+	si dice rappresentazione di $G$ se è un omomorfismo di gruppi, ovvero in parole semplici deve rispettare la regola di composizione. In formule, se $s, t \in G$ deve valere
+	\[ \rho(st) v = \rho(s)\rho(t) v \qquad \forall v \in V, \quad \forall s,t \in G\]
 \end{defn}
 
-\begin{prop} $\rho(G)$ è evidentemente un sottogruppo di $GL(V_\rho)$, quindi esistono sempre inversi, potenze e tutte le cose che valgono per i gruppi.
+La dimensione di $V$ viene detta grado della rappresentazione.
+Per il momento consideriamo solo rappresentazioni su spazi vettoriali complessi, ovvero supponiamo che $V$ sia $\C-$spazio vettoriale.
 
-\end{prop}
+Con un piccolo abuso di linguaggio, spesso indicheremo con il nome di ``rappresentazione'' direttamente $V$, se è chiaro quale sia 
+la rappresentazione $\rho$ che stiamo considerando. Spesso indicheremo gli spazi vettoriali
+su cui è definita una rappresentazione $\rho$ con nomi del tipo $V_\rho$, dove il pedice ci ricorda la rappresentazione che stiamo considerando.
+
+\begin{rem}
+Detto in altri termini, una rappresentazione di un gruppo $G$ è un'azione lineare di $G$ su uno spazio vettoriale $V$.
+Se non c'è ambiguità (cioè se è chiaro quale rappresentazione stiamo considerando)
+possiamo scrivere semplicemente $g\cdot v$ in luogo di $\rho(g)v$ per allegerire la notazione.
+\end{rem}
+
+\begin{rem}
+$\rho(G)$ è evidentemente un sottogruppo di $GL(V)$, quindi esistono sempre inversi, potenze e valgono tutte le cose che sono vere per i gruppi.
+\end{rem}
 
 
-\textbf{Esempi.}
-\begin{enumerate}
-	\item La rappresentazione banale, di grado qualsiasi, indicata con $\rho_1$ che manda qualsiasi elemento di $g$ nell'identità di $V_\rho$, ovvero
-	
-	\[ \rho(s ) = id_{V_\rho} \qquad \forall s \in G\]
-	\item Dato $S_n$, il segno di un elemento $s\in S_n$ è una rappresentazione di grado 1. Infatti si ha $sgn(st) = sgn(s) sgn(t)$.
-	\item L'azione naturale di $S_n$ sui vettori della base. Prendiamo quindi $G = S_n$ e uno spazio vettoriale di dimensione $n$, che sarà sicuramente isomorfo a $\C^n$. Prendiamo la base canonica di $\C^n$ e la chiamiamo $e_i$. Descriviamo la rappresentazione $\rho: S_n \to GL(\C^n)$ dicendo cosa fa agli elementi della base. Per linearità si estenderà a tutto lo spazio.
-	
+\begin{exmp}
+   La rappresentazione banale, di grado qualsiasi, indicata con $\rho_1$ che manda qualsiasi elemento di $g$ nell'identità di $GL(V_{\rho_1})$, ovvero
+	\[ \rho(s ) = id_{V_{\rho_1}} \qquad \forall s \in G\]
+\end{exmp}
+\begin{exmp}
+   Dato $S_n$, il segno di un elemento $s\in S_n$ è una rappresentazione di grado 1. Infatti si ha $sgn(st) = sgn(s) sgn(t)$.
+\end{exmp}
+\begin{exmp}
+   L'azione naturale di $S_n$ sui vettori della base. Prendiamo quindi $G = S_n$ e uno spazio vettoriale di dimensione $n$, che quindi è isomorfo a $\C^n$. Prendiamo la base canonica di $\C^n$ e la indichiamo con $\{e_i\}_{i=1}^n$. Descriviamo la rappresentazione $\rho: S_n \to GL(\C^n)$ dicendo cosa fa agli elementi della base: per linearità si estenderà a tutto lo spazio.
 	\[ \rho(s) e_i = e_{s(i)}\]
-	
 	Notare che in questo caso $deg(\rho) = n$. Notiamo inoltre che se rappresentiamo nella base canonica le matrici associate a $\rho(s)$ queste matrici sono unitarie. Inoltre, ogni colonna (e anche ogni riga) contiene esattamente un 1 e tutti gli altri sono 0.
 	
 	Prendiamo come esempio $S_3$ e vediamo cosa succede. Notiamo innanzitutto che $ |S_3| = 3! = 6$
 	FINISCI DI SCRIVERE
-\end{enumerate}
-
+\end{exmp}
 
 
 
@@ -1008,22 +1006,20 @@ La dimensione di $V_\rho$ viene detta grado della rappresentazione.
 \begin{prop}
 Sia $G$ un gruppo finito e $\rho: G \to GL(V_\rho)$ una sua rappresentazione. Allora $\forall g \in G$ la matrice $\rho(g)$ ammette una base di autovettori in $V_\rho$, ovvero è diagonalizzabile. Inoltre, tutti gli autovalori di $\rho(g)$ sono radici $n-$esime dell'unità.
 
-\textsc{Nota bene:} Per ogni matrice in generale la base è diversa, quindi le varie matrici in generale \textbf{non} sono simultaneamente diagonalizzabili.
+\begin{note} Per ogni matrice in generale la base è diversa, quindi le varie matrici in generale \emph{non} sono simultaneamente diagonalizzabili.
 Però se $G$ è abeliano tutte le matrici $\rho(s)$ sono simultaneamente diagonalizzabili. 
-
+\end{note}
 \label{prop:diagonalizzabilita rappresentazioni}
 \end{prop}
 
-\textsc{Dimostrazione:} Se $G$ è un gruppo finito, allora esiste un intero positivo $k$ tale che $g^k = e$. Dato che $\rho:G\to GL(V_\rho)$ mantiene queste proprietà in quanto omomorfismo, dovrà essere
-
-\[ \rho(g)^k = id\]
+\begin{proof} Se $G$ è un gruppo finito, allora esiste un intero positivo $k$ tale che $g^k = e$. Dato che $\rho:G\to GL(V_\rho)$ mantiene queste proprietà in quanto omomorfismo, dovrà essere $\rho(g)^k = id$.
 
 Visto che il polinomio minimo di $\rho(g)$ non ha radici multiple, con il teorema di decomposizione primaria \eqref{thm:dec_primaria} si mostra facilmente che $\rho(g)$ è diagonalizzabile. Inoltre da questa formula è anche evidente che tutti gli autovalori di $\rho(g)$ hanno modulo $1$ e in particolare saranno radici $k-$esime dell'unità.
 
 Ricordiamo un teorema di algebra lineare per mostrare che se $G$ è abeliano allora
 tutte le matrici $\rho(g)$ sono simultaneamente diagonalizzabili:
 due endomorfismi di uno spazio vettoriale diagonalizzabili sono simultaneamente diagonalizzabili se e solo se commutano tra loro.
-\qed
+\end{proof}
 
 
 
@@ -1469,21 +1465,9 @@ Sia allora $\Phi\colon\Hom(\mathcal{R},\rho)\to V_\rho$ tale che $\Phi(\varphi)=
 \end{proof}
 
 
-
-
-
-
-
-
-
-
-
-
-
 \begin{cor}
 Se $G$ è abeliano allora ha $|G|$ rappresentazioni irriducibili di grado 1 e $\mathcal{R}$ è la somma di queste.
 \end{cor}
-
 
 
 \begin{cor}
@@ -1496,15 +1480,54 @@ Sia $G$ un gruppo finito. $G$ ha un numero finito di rappresentazioni irriducibi
 
 
 
+\newpage
+\subsection{Alcuni isomorfismi notevoli}
+Sia $G$ un gruppo e siano $\rho:G\to GL(V)$ e $\sigma:G\to GL(W)$ sue rappresentazioni.
+Sappiamo bene che l'insieme delle applicazioni lineari da $V$ in $W$,
+che denotiamo con $\Hom(V, W)$, è uno spazio vettoriale.
+Quello che vogliamo fare ora è rendere tale spazio vettoriale una rappresentazione di $G$,
+ovvero vogliamo definire un'azione lineare di $G$ su $\Hom(V, W)$. 
+Il modo naturale di farlo è il seguente:
+sia $\varphi\in\Hom(V, W)$. Definiamo $g\cdot \varphi\in\Hom(V, W)$ come la funzione che fa commutare il diagramma:
+\[ \quaddiag V \varphi W {\sigma(g)} W {\rho(g)} V {g\cdot \varphi} \]
+Ovvero esplicitamente: $g\cdot\varphi = \sigma(g) \circ \varphi\circ \rho(g^{-1})$
 
+La verifica che si tratti di un'azione di gruppo è molto semplice, inoltre è evidente dalla definizione che l'azione è lineare:
+dunque abbiamo davvero dotato $\Hom(V, W)$ di una struttura di $G-$rappresentazione.
 
+Sappiamo già che $\Hom(V, W)$ e $V^*\otimes W$ sono isomorfi come spazi vettoriali.
+Quello che vogliamo vedere è che sono isomorfi anche come $G-$rappresentazioni.
+Ovviamente la rappresentazione che si considera su $V^*\otimes W$ è la rappresentazione $\rho^*\otimes\sigma$, che per semplicità indichiamo con $\tau$.
 
-
-
-
-
-
-
+\begin{thm}
+$\Hom(V, W)$ e $V^*\otimes W$ sono isomorfi come $G-$rappresentazioni.
+\label{thm: isov*w}
+\end{thm}
+\begin{proof}
+Conosciamo già un isomomorfismo di spazi vettoriali $\Psi:V^*\otimes W \to \Hom(V, W)$, costruito in
+maniera tale che per ogni $f\in V^*, w\in W, v\in V$ si abbia $\Psi(f\otimes w)(v) = f(v)w$.
+Mostriamo che $\Psi$ è omomorfismo di rappresentazioni, ovvero che fissato $g\in G$ il seguente diagramma commuta:
+\[ \quaddiag {V^*\otimes W} \Psi {\Hom(V, W)} {g} {\Hom(V, W)} {\tau(g)} {V^*\otimes W} \Psi \]
+Ovvero dobbiamo controllare se
+\[ g\circ \Psi = \Psi \circ \tau(g)\]
+Possiamo limitarci a fare le verifiche sugli elementi decomponibili di $V^*\otimes W$, in
+quanto essi generano tutto lo spazio. Prendiamo dunque $f\in V^*$, $w\in W$ e consideriamo $f\otimes w$. Vogliamo mostrare che
+\[ g(\Psi(f\otimes w)) = \Psi(\tau(g)(f\otimes w))\]
+Quindi prendiamo $v\in V$ e vediamo dove viene mandato dalla funzione a sinistra:
+\begin{align*}
+         & g(\Psi(f\otimes w))\ (v)\\
+=  \qquad& \sigma(g)\ \Psi(f\otimes w)\ (\rho(g^{-1})\ v)\\
+=  \qquad& \sigma(g)\ f(\rho(g^{-1})\ v)\ w\\
+=  \qquad& f(\rho(g^{-1})\ v)\ \sigma(g)\ w
+\end{align*}
+Mentre dalla funzione a destra viene mandato in:
+\begin{align*}
+         & \Psi(\tau(g)(f\otimes w))\ (v)\\
+=  \qquad& \Psi([f\circ\rho(g^{-1})] \otimes [\sigma(g)w])\ (v)\\
+=  \qquad& f(\rho(g^{-1})v)\ \sigma(g)\ w
+\end{align*}
+Avendo ottenuto lo stesso risultato in entrambi i casi, si ha la tesi.
+\end{proof}
 
 
 
@@ -1531,13 +1554,7 @@ Vediamo delle proprietà elementari del carattere
 	\item $\chi_{\rho + \sigma}(s) = \chi_\rho(s) + \chi_\sigma(s)$.\\ 
 	Questo è dovuto al fatto che la somma di rappresentazioni si può scrivere come matrice a blocchi. Una volta scritto così è evidente il risultato.
 	\item $\chi_{\rho\sigma}(s) = \chi_\rho(s)\chi_\sigma(s)$.\\ 
-	Questo deriva dal seguente fatto generale:
-	
-\begin{lemma} 
-Se $f: V \to V$ e $g: W \to W$ sono endomorfismi di spazi vettoriali, allora $tr(f \otimes g) = tr(f)tr(g)$.
-\end{lemma}
-\textbf{Dimostrazione:} Iniziamo a considerare il caso in cui sia $f$ che $g$ siano diagonalizzabili: prendendo due basi $a:I\rightarrow V$ , $b:J\rightarrow W$ di autovettori rispettivamente per $f$ e per $g$, si verifica facilmente la verità della proposizione nella base indotta su $V\otimes W$ (ovvero in quella formata dagli $a_i\otimes b_j$).\\
-Ora, essendo la traccia una funzione continua e le matrice diagonalizzabili dense nello spazio delle matrici, la proprietà affermata dal lemma si estende al caso generale per continuità.
+	Questo deriva immediatamente dal teorema \ref{thm: tracciaprodotto}.
 	\item $\chi_{\rho}(s^{-1})=\overline{\chi_{\rho}(s)}$\\
 Essendo $G$ un gruppo finito, $\forall s\in G\ \rho(s)^n = id$ dove $n=|G|$: dunque tutti gli autovalori di $\rho(s)$ sono radici ennesime dell'unità e $\rho(s)$ è diagonalizzabile\footnote{Si veda la proposizione \ref{prop:diagonalizzabilita rappresentazioni}}. In tale base è evidente che:
 $$\chi_{\rho}(s^{-1})=tr(\rho (s^{-1}))=tr(\rho (s)^{-1})=\sum_i\lambda_i^{-1}=\sum_i\overline{\lambda_i}=\overline{tr(\rho(s))}=\overline{\chi_{\rho}(s)}$$
@@ -1602,58 +1619,21 @@ Se $(\rho, V_\rho)$ e $(\sigma, V_\sigma)$ sono rappresentazioni \footnote{Non n
 \[ \langle \chi_\rho | \chi_\sigma \rangle  = dim(Hom (\sigma, \rho))\] 
 \label{lemma relazioni ortogonalita}
 \end{lemma}
-\textsc{Dimostrazione:}
-
+\begin{proof}
 L'idea principale per dimostrare questo lemma è di ridurci al caso più facile in cui una delle due rappresentazioni è quella banale. Per farlo notiamo un paio di cose
-
 \[ \langle \chi_\rho | \chi_\sigma \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \overline{\chi_\rho(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho^*}(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho^*\sigma}(s)  = \langle \chi_{\rho^*\sigma}  | 1 \rangle\]
-
 Siamo passati da due rappresentazioni ad una sola. In particolare lo spazio vettoriale su cui agisce questa rappresentazione è 
+\[ V_{\rho^* \sigma} = V_{\rho}^* \otimes V_\sigma \cong \Hom(V_\rho, V_\sigma)\]
+dove l'isomorfismo di rappresentazioni è quello dimostrato nel teorema \ref{thm: isov*w}
 
-\[ V_{\rho^* \sigma} = V_{\rho}^* \otimes V_\sigma \cong Hom(V_\rho, V_\sigma)\]
+A questo punto possiamo andare a cercare i sottospazi $G-$invarianti di $\Hom(V_\rho, V_\sigma)$, che non sono altro che le sue sottorappresentazioni irriducibili. In particolare stiamo quindi cercando dei sottospazi $W \subset Z = Hom(V_\rho, V_\sigma)$ tali che $s\cdot W \subset W \quad \forall s \in G$ 
 
-E questo isomorfismo segue semplicemente dalle proprietà del prodotto tensore di spazi vettoriali. Notiamo che sullo spazio degli omomorfismi\footnote{Dato che sono spazi vettoriali in questo caso si tratta semplicemente di applicazioni lineari} $Z = Hom(V_\rho, V_\sigma)$ è possibile definire una rappresentazione completamente analoga a $\rho\sigma^*$ in questo modo: se $f \in Z$, allora possiamo definire la rappresentazione $\tau, V_\tau = Z$ di $G$ in questo modo
+In particolare, cerchiamo le funzioni $f \in Hom(V_\sigma, V_\rho)$ tali che $s\cdot f = f$. Ricordando come è definita l'azione di $G$ su $\Hom(V_\rho, V_\sigma)$ si vede che
 
-\[ \tau(s)f = \rho(s) \circ f \circ \sigma^{-1}(s)\]
-
-\'E possibile mostrare che se chiamo $\Psi$ la mappa tale che
-
-
-\begin{align*}
-V_\rho^* \otimes V_\sigma &\xrightarrow{\Psi} Hom(V_\rho, V_\sigma)\\
-\rho\sigma^* &\xrightarrow{\Psi} \tau \\
-\end{align*}
+\[f = s\cdot f =  \rho(s) \circ f \circ \sigma^{-1}(s) \Rightarrow  f \sigma(s)= \rho(s) f\] 
 
 
-Allora $\Psi$ è un isomorfismo di rappresentazioni. Dimostriamolo rapidamente. Innanzitutto definiamo in modo esplicito $\Psi$. Basterà definirlo per i tensori decomponibili, per il resto dello spazio basterà estenderlo per linearità.
-
-\[ \Psi(\phi \otimes v ) (w) = \phi(w) v \qquad \forall \phi \in V_\rho^*, \forall v \in V_\sigma, \forall w \in V_\rho\]
-
-Per mostrare che è un isomorfismo di rappresentazioni ci basta mostrare che ha la giusta proprietà di commutazione in quanto sappiamo già che $\Psi$ è un isomorfismo di spazi vettoriali. Vediamo quindi di mostrare che 
-
-\[\Psi(\tau(s)\cdot (\phi \otimes v))(w) = \tau(s) \cdot \Psi(\phi \otimes v)(w) \qquad \forall s \in G \quad \text{eccetera} \]
-
-
-Partiamo dal membro di sinistra e facciamo i calcoli
-
-
-\[\Psi(\tau(s)\cdot (\phi \otimes v))(w) = \Psi\left( \rho(s) (\phi \otimes v ) \sigma(s)^{-1}  \right)(w)  = \]
-
-\[= \Psi((\phi \circ \sigma(s)^{-1})\otimes (\rho(s) v) )(w) =  \]
-
-\[ = (\phi \circ \sigma(s)^{-1}) (w) \rho(s) v = \phi(\sigma(s)^{-1} w) \rho(s) v\]
-
-\[ = \rho(s)\phi(\sigma(s)^{-1} w) v = \rho(s) \Psi(\phi \otimes v) \sigma(s)^{-1} (w) = \tau(s) \Psi (\phi \otimes v)(w)\]
-
-
-A questo punto possiamo andare a cercare i sottospazi invarianti per $\tau$, ovvero stiamo andando a cercare le sottorappresentazioni irriducibili di $\tau$ sperando di usare teoremi che già conosciamo. In particolare stiamo quindi cercando dei sottospazi $W \subset Z = Hom(V_\rho, V_\sigma)$ tali che $\tau(s) W \subset W \quad \forall s \in G$ 
-
-In particolare, cerchiamo le funzioni $f \in Hom(V_\sigma, V_\rho)$ tali che $\tau(s) f = f$. Dalla definizione di $\tau$ si vede che
-
-\[f = \tau(s) f =  \rho(s) \circ f \circ \sigma^{-1}(s) \Rightarrow  f \sigma(s)= \rho(s) f\] 
-
-
-Ovvero le applicazioni $f$ invarianti per $\tau $ sono gli omomorfismi di rappresentazioni da $(\rho, V_\rho) $ a $(\sigma, V_\sigma)$
+Ovvero le applicazioni $f$ invarianti per l'azione di $G$ sono gli omomorfismi di rappresentazioni da $(\rho, V_\rho) $ a $(\sigma, V_\sigma)$
 
 A questo punto
 
@@ -1687,7 +1667,7 @@ Per cui $trT = dimImT = dimV_\rho^G$. Ma dalla catena di deduzioni che abbiamo f
 
 \[dimHom(V_\sigma, V_\rho) = dim(V_{\sigma^*\rho}^G) = trT = \langle \chi_{\sigma^*\rho} | 1 \rangle = \langle \chi_\sigma | \chi_\rho \rangle\]
 
-\qed
+\end{proof}
 
 
 
@@ -2389,41 +2369,72 @@ E quindi è evidente che $T^n \to $ su ogni faccia viene la media dei numeri che
 \newpage
 \section{Rappresentazioni reali, complesse e quaternioniche}
 
-Ci poniamo un problema nuovo: quand'è che una rappresentazione, che abbiamo sempre definito su $\C$, funziona in modo uguale anche definendola solo su $\R$? Diamo una definizione più precisa
+Sono di un certo interesse le rappresentazioni su $\C$ che possono essere espresse con matrici a coefficienti reali. Diamo una definizione precisa:
 
 \begin{defn}
-Diciamo che una rappresentazione $(\rho, V_\rho)$ del gruppo $G$ è reale se esiste una base di $V_\rho$ tale che
-
-\[ \rho(g) \in M_n(\R) \ \ \forall g \in G\]
-
+Diciamo che una rappresentazione $\rho:G\to GL(V_\rho)$ del gruppo $G$ è reale se esiste una base di $V_\rho$ secondo la quale
+le matrici di $\rho(g)$, al variare di $g$ nel gruppo, sono tutte a coefficienti reali.
 \label{def: rappr reale}
 \end{defn}
-Questa definizione è equivalente a chiedere che $\exists V_0 \subset V$ sottospazio vettoriale reale tale che: $V_0$ sia stabile ($G-$invariante ) e che 
-\[ V = \C \otimes_\R V_0 = V_0 \oplus i V_0\]
-Ne segue che $dim_\R V_0=dim_\C V$. Non è sempre detto che esista.
+
+Sia $V$ un $\C-$spazio vettoriale di dimensione $n$.
+Denotiamo con $V^\R$ lo spazio vettoriale su $\R$ che ha per ``insieme di vettori''
+lo stesso di $V$, con la stessa somma ma chiaramente con prodotto per scalari ristretto ad $\R$.
+Osserviamo che se $\{v_1, \dots, v_n\}$ è una base di $V$ allora 
+$\{v_1, \imath v_1, v_2, \imath v_2,\dots, v_n, \imath v_n\}$ è una base di $V^\R$, il quale di conseguenza ha dimensione $2n$.
+Se $\rho:G\to GL(V)$ è una rappresentazione del gruppo $G$, allora è definita 
+in modo naturale una rappresentazione $\rho^\R:G\to GL(V^\R)$, in cui gli il gruppo $G$
+agisce sullo spazio vettoriale esattamente come nella rappresentazione $\rho$ (se $G$ agisce 
+in modo $\C-$lineare, a maggior ragione l'azione è $\R-$lineare).
+
+Il fatto che $\rho$ sia una rappresentazione reale è equivalente a chiedere l'esistenza di un sottospazio $V_0 \subset V^\R$ che sia stabile sotto l'azione di $G$ e che abbia dimensione $n$. Cioè è possibile scomporre $V^\R$ come somma di sottorappresentazioni:
+\[ V^\R = V_0 \oplus i V_0 = \C \otimes V_0 \]
+
 \begin{exmp}
 Prendiamo come gruppo un gruppo ciclico, per esempio $\Z / 3\Z$\footnote{Che per i fisici è isomorfo a $C_3$}. Evidentemente tutte le rappresentazioni non banali di $G$ non sono reali, in quanto sono di grado 1 e sono le radici dell'unità.
-
 \end{exmp}
 
+Non è difficile osservare che se indichiamo con $\alpha_{i,j}$ i coefficienti della matrice $\rho(g)$
+rispetto alla base $\{v_1, \dots, v_n\}$, allora la matrice di $\rho^\R(g)$ rispetto alla base
+$\{v_1, \imath v_1,\dots, v_n, \imath v_n\}$ si ottiene
+ponendo al posto di $\alpha_{i,j}$ il blocchetto $2\times 2$:
+\[\begin{pmatrix}
+	\Re \alpha_{i,j} & -\Im \alpha_{i,j}\\
+	\Im \alpha_{i,j} & \Re \alpha_{i,j}\\
+\end{pmatrix}\]
+dove $\Re$ e $\Im$ indicano parte reale e immaginaria.
+Dunque abbiamo il seguente risultato:
 
-\begin{rem}
-Supponiamo di avere $\rho: G \to GL(V_\rho)$ con $V_\rho$ spazio vettoriale su $\C$ di dimensione $n$ (dimensione di $V$ pensato come un $\C-$spazio vettoriale). Allora possiamo vederlo come uno spazio vettoriale costruito sul campo dei reali e  e lavorare su quello, se il nostro obiettivo è quello di avere una rappresentazione reale. Quando lo interpreteremo in questo modo scriveremo $V_\R$ (che essendo lo stesso spazio vettoriale su $\R$ avrà dimensione $2n$). 
-\end{rem}
+\begin{prop}
+	$\chi_{\rho^\R}(g) = \chi_\rho(g) + \chi_{\rho^*}(g)$
+\end{prop} 
+\begin{proof}
+	Basta ricordare che $\chi_{\rho^*}$ è il complesso coniugato di $\chi_\rho$, dunque
+	$\chi_\rho(g) + \chi_{\rho^*}(g) = 2\Re \chi_\rho(g)$ è evidentemente la traccia di $\rho^\R(g)$ per
+	quanto detto sopra.
+\end{proof}
 
 
-
-\begin{lemma}
-Sia $V$ una rappresentazione $/\C$ (tale scrittura significa $V$ visto come spazio vettoriale complesso) che sia però anche reale nel senso prima definito. Allora $V^{\R} $ NON è una rappresentazione irriducibile. 
-\end{lemma}
-
-\textsc{Dimostrazione:}
-
-Abbiamo detto che il fatto che $\rho$ possa essere vista come una rappresentazione reale equivale all'esistenza di un $V_0$ che mi faccia  il lavoro prima detto. Bene ma allora quel $V_0$ (essendo reale) lo possiamo in realtà vedere come un sottospazio di $V^{\R}$ $G-$invariante la cui dimensione è 
-
-\[dim_\R V_0=dim_\C V=\frac{1}{2}dim_{\R} V^{\R}\ \ \Rightarrow G\rightarrow GL(V_0) \]
-
-è una sottorappresentazine di $G/\R$.  \qed
+\begin{prop}
+	Se $\rho:G\to GL(V)$ è irriducibile ($V$ è un $C-$spazio vettoriale), allora $\rho$ è reale se e solo se $\rho^\R$ è riducibile.
+\end{prop}
+\begin{proof}
+	Se $\rho$ è rappresentazione reale, sia $\{v_1,\dots v_n\}$ una 
+	base di $V$ tale che le matrici di $\rho(g)$ rispetto a tale base siano a coefficienti reali.
+	Ora, $V^\R$ ha per base $\{v_1, \imath v_1,\dots, v_n, \imath v_n\}$.
+	Indico con $V_0$ il sottospazio di $V^\R$ generato da $\{v_1,\dots v_n\}$, che ha dimensione $n$.
+	Ora, $V_0$ è $G-$invariante, dunque $\rho^\R$ è riducibile.
+	
+	Viceversa, supponiamo che $V^\R = U \oplus W$ sia scomposizione di rappresentazioni
+	con $U$ e $W$ diversi da $\{0\}$. A meno di scambiare $U$ e $W$ posso supporre $\dim U \le n$.
+	Il sottospazio di $V$ generato dai vettori di $U$ (con combinazioni lineari complesse) è $G-$invariante,
+	dunque essendo $\rho$ irriducibile tale sottospazio deve coincidere con $V$.
+	Tutto ciò si traduce nel fatto che $V^\R = U + \imath U$, e siccome $\dim\imath U = \dim U \le n$
+	deve essere necessariamente che $U$ e $\imath U$ sono in somma diretta e hanno 
+	entrambi dimensione $n$. Ora basta prendere una qualsiasi base di $U$,
+	la quale è anche base di $V$ (essendo costituita da $n$ vettori che generano $V$) ed è tale che la matrice di $\rho(g)$ è 
+	a coefficienti reali per ogni $g\in G$, ovvero $\rho$ è reale secondo la definizione \ref{def: rappr reale}.
+\end{proof}
 
 Ora andremo a fare una classificazione delle rappresentazioni. Vedremo che ne esistono di 3 tipi:
 \begin{itemize}
@@ -2431,80 +2442,55 @@ Ora andremo a fare una classificazione delle rappresentazioni. Vedremo che ne es
 \item Complesse
 \item Quaternioniche
 \end{itemize}
-
-
-
-La classificazione verrà fatta in base all'esistenza o meno di forme bilineari di un certo tipo invarianti sotto $G$. Vediamo come farlo formalmente.
-
+La classificazione verrà fatta in base all'esistenza o meno di forme bilineari di un certo tipo invarianti sotto $G$.
+Iniziamo con alcune proprietà soddisfatte dalle rappresentazioni reali:
 
 \begin{thm}
-
-Prendiamo una $(\rho, V_\rho)$ rappresentazione $/\C$ che sia reale: allora:
+Prendiamo una $\rho:G\to GL(V)$ rappresentazione $/\C$ che sia reale. Allora:
 \begin{enumerate}
 \item $\chi_\rho(g)\in \R$ $\forall g\in G$ 
-\item $V_\rho$ possiede una forma bilineare simmetrica $G-$invariante. Ovvero lo spazio delle forme bilineari simmetriche $S^2V^*\subset V\otimes V$ è tale che $(S^2V^*)^G\neq 0$.
+\item $V$ possiede una forma bilineare simmetrica $G-$invariante. Ovvero lo spazio delle forme bilineari simmetriche $S^2V^*\subset V\otimes V$ è tale che $(S^2V^*)^G\neq 0$.
 \end{enumerate} 
-
 \end{thm}
 
-\textsc{Dimostrazione:} Abbiamo supposto la rappresentazione reale. Quindi la matrice è reale ed in particolare lo sarà anche la sua traccia. Quindi il primo punto è vero. Ora veniamo al secondo punto: esisterà un $V_0$ spazio vettoriale reale $G-$invariante che tensorizzato con $\C$ dia $V$. Consideriamo ora una forma bilineare simmetrica $B_0$ non degenere $/\R$
-
+\begin{proof}
+Abbiamo supposto la rappresentazione reale. Quindi la matrice è reale ed in particolare lo sarà anche la sua traccia. Quindi il primo punto è vero. Ora veniamo al secondo punto: esisterà un $V_0$ spazio vettoriale reale $G-$invariante che tensorizzato con $\C$ dia $V$. Consideriamo ora una forma bilineare simmetrica $B_0$ non degenere $/\R$
 \[ B_0 \in S^2 V_0^*\]
-
 Possiamo ora renderla invariante sotto l'azione di $G$ con il solito metodo del fare la media. Consideriamo quindi $\tilde B_0$ definito come
-
-
 \[ \tilde B_0(v_1, v_2) = \dfrac{1}{|G|} \dsum_{g\in G} B_0(\rho(g) v_1, \rho(g) v_2)\]
-
-
-
-
 Questo ha le caratteristiche precedenti ed è anche invariante sotto $G$ (ovvero $\tilde B_0\in (S^2V_0^*)^G$). Possiamo a questo punto estenderla a forma bilineare su $V$ complessificandola in modo ovvio. Consideriamo quindi $B$
-
 \[B \in (S^2V^*)^G \]
-
 che definiamo sullo spazio $V = V_0 \oplus i V_0$ nel seguente modo
-
 \[B(v_1 + i v_1', v_2 + i v_2') = \left( \tilde B_0(v_1, v_2) - \tilde B_0(v_1', v_2')\right)  + i \left( \tilde B_0(v_1', v_2) + B_0(v_1, v_2')\right)\]
-
-
-
-
-\'E una banale verifica controllare che rispetta le caratteristiche richieste.
-\qed
+\`E una banale verifica controllare che rispetta le caratteristiche richieste.
+\end{proof}
 
 
 Vediamo ora il seguente lemma che ci servirà per la classificazione.
-
 \begin{lemma}
-Sia $(\rho, V_\rho)$ una rappresentazione $/\C$. Allora ogni forma bilineare non nulla $G-$invariante è non degenere (in particolare quindi ne esiste almeno una). Inoltre è unica a meno di scalari, ovvero $dim (V^*\otimes V^*)^G=1$ .
+Sia $V$ una $G-$rappresentazione $/\C$. Allora ogni forma bilineare non nulla $G-$invariante è non degenere. Inoltre, se esiste, è unica a meno di scalari, ovvero $\dim (V^*\otimes V^*)^G=1$.
 \end{lemma}
+\begin{proof}
+Prendiamo un elemento $B \in \left( V^* \otimes V^*\right) ^G$.
 
-\textsc{Dimostrazione:}
+Ricordiamo che $V^* \otimes V^*$ e $\Hom(V, V^*)$ sono $G-$rappresentazioni isomorfe. In particolare:
+\[\left(V^* \otimes V^*\right)^G \cong \Hom(V, V^*)^G \]
+A questo punto, se esiste una forma bilineare non nulla invariante, questa corrisponde ad un omomorfismo di rappresentazioni $\phi: V\to V^*$.
+Per il lemma di Schur o $\phi$ è nullo o $\phi$ è un isomorfismo. Dato che la forma è non nulla, allora $\phi = \lambda Id$ con $\lambda \in \C\setminus\{0\}$.
+\end{proof}
 
-Prendiamo un elemento $B$
-
-\[B \in \left( V^* \otimes V^*\right) ^G \]
-
-\'E un fatto di algebra che 
-
-\[\left(V^* \otimes V^*\right)^G \cong Hom(V, V^*)^G \]
-
-A questo punto, se $\phi: V\to V^*$ è un omomorfismo di rappresentazioni, per il lemma di Schur o $\phi$ è nullo o $\phi$ è un isomorfismo. Dato che la forma è non nulla, allora $\phi = \lambda Id$ con $\lambda \in \C$.   \qed 
-
-Sia $V$ una rappresentazione $/\C$ irriducibile: quando è che $\exists$ una forma bilineare $G-$invariante? Ovvero quand'è che si ha $\left(V^* \otimes V^*\right)^G \neq 0$? Cerchiamo delle condizioni necessarie...
+Sia $V$ una rappresentazione $/\C$ irriducibile: quando è che esiste una forma bilineare $G-$invariante? Ovvero quand'è che si ha $\left(V^* \otimes V^*\right)^G \neq 0$? Cerchiamo delle condizioni necessarie...
 \begin{lemma} 
 Sia $(\rho, V_\rho)$ una rappresentazione $/\C$ tale che sia reale: allora esiste un isomorfismo tra $V$ e $V^*$ ovvero esiste un isomorfismo tra $\rho$ e $\rho^*$ (a volte confondiamo la rappresentazione con il suo supporto).
 \end{lemma}
-
-\textsc{Dimostrazione:}
-
+\begin{proof}
 \[\rho \simeq \rho^* \Leftrightarrow \chi_\rho(g)=\chi_{\rho^*}(g)\ \forall g\in G\]
 ma dato che 
 \[\chi_{\rho^*}=\overline{\chi_\rho}\]
 allora
 \[ \chi_\rho(g)=\chi_{\rho^*}(g)\ \forall g\in G\Leftrightarrow \chi_\rho(g)=\overline{\chi_\rho}(g)\ \forall g\in G\]
-e questo è vero $\Leftrightarrow $ $\chi_\rho$ è una funzione reale. E ciò è vero se la rappresentazione è definibile $/\R$. \qed 
+e questo è vero $\Leftrightarrow $ $\chi_\rho$ è una funzione reale. E ciò è vero se la rappresentazione è definibile $/\R$.
+\end{proof}
 
 \begin{lemma}
 Sia $(\rho, V_\rho)$ una rappresentazione $/\C$: allora
@@ -2512,31 +2498,26 @@ Sia $(\rho, V_\rho)$ una rappresentazione $/\C$: allora
 \item  $B \in (V^* \otimes V^*)^G \Rightarrow B \in S^2V^* \vee B \in \bigwedge ^2 V^*$
 \end{itemize}
 Definiamo 
-
 \[ m_\rho = \dfrac{1}{|G|} \dsum_{g \in G} \chi_{\rho}(g^2)\]
-
 l'indicatore di Frobenius-Schur. Allora
 \begin{itemize}
 \item  $m_\rho \in \{-1, 0, 1 \}$
 \item{ \begin{enumerate}
-
-\item se $m_\rho = 0 \Rightarrow (V^*\otimes V^*)^G = 0$
-\item se $m_\rho = 1 \Rightarrow (S^2 V^*)^G \neq 0$
-\item se $m_\rho = -1 \Rightarrow (\bigwedge^2 V^*)^G \neq 0$
+   \item se $m_\rho = 0 \Rightarrow (V^*\otimes V^*)^G = 0$
+   \item se $m_\rho = 1 \Rightarrow (S^2 V^*)^G \neq 0$
+   \item se $m_\rho = -1 \Rightarrow (\bigwedge^2 V^*)^G \neq 0$
 \end{enumerate}
 }
-
 \end{itemize}
 \end{lemma}
 
-
-
-\textsc{Dimostrazione:}
-
+\begin{proof}
 Abbiamo visto che $V^*\otimes V^*$ si può decomporre come somma diretta delle potenze simmetriche e alternanti ovvero
 \[V^*\otimes V^*=S^2V^*\oplus  \bigwedge ^2 V^*\]
 e inoltre per il lemma precedente sappiamo che $V^*\otimes V^*$ ha dimensione 1. 
-DEVO FINIRE DI SCRIVERLA 
+
+DA FINIRE
+\end{proof}
 
 \begin{defn}[Classificazione sull'indice di Frobenius]
 Sia $\rho:G\rightarrow GL(V)$ una rappresentazione $/\C$: essa è detta
