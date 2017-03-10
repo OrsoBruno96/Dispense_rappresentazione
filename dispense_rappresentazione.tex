@@ -1136,13 +1136,20 @@ Questo implica che in realtà il metodo esposto è in grado di trovare \textbf{t
   Questa definizione ha senso, infatti proiettando $v$ sui due spazi di partenza le due rappresentazioni sono definite e rimangono nello spazio di partenza. Si può poi fare la somma se riportiamo il tutto nello spazio più grande.
 \label{defn:somma di rappresentazioni}
 \end{defn}
-
+Matricialmente $(\rho+\sigma)_g$ si rappresenta come
+\[ [(\rho+\sigma)_g]= \begin{bmatrix}
+[\rho_g] & 0\\ 
+0 & [\sigma_g]
+\end{bmatrix} \]
+dove si intende ovviamente che la base ha i primi vettori in $V_{\rho}$, i secondi in $V_{\sigma}$.\\
 \textsc{Osservazioni:}
 
 \begin{enumerate}
+\item $deg(\rho+\sigma)=deg(\rho)+deg(\sigma)$
 \item $\rho + \sigma \cong \sigma + \rho$
 \item $\rho + (\sigma + \tau) \cong (\rho + \sigma ) + \tau$
 \item Esiste l'elemento neutro che è la rappresentazione di grado 0 ma non esiste l'inverso.
+\item se $deg(\rho)=1$ allora $\rho(g^{-1})=\rho(g^{-1})^t=\rho^*(g)\Rightarrow \rho^*(g)=\rho(g)^{-1}$.
 
 \end{enumerate}
 
@@ -1180,6 +1187,11 @@ Questo implica che in realtà il metodo esposto è in grado di trovare \textbf{t
 \begin{defn}[Rappresentazione duale]
 Sia $\rho$ una rappresentazione di $G$ su $V_\rho$. Allora la rappresentazione duale $\rho^*$ è la rappresentazione di $G$ su $V_\rho ^*$ tale che $\rho^*(s)=\rho(s^{-1})^t$
 \label{defn:rappresentazione duale}
+\end{defn}
+
+\begin{defn}[Definizione equivalente di duale]
+Sia $\rho$ una rappresentazione di $G$ su $V$. Definiamo la rappresentazione duale $\rho^*$ come l'unica rappresentazione tale che
+\[\rho_g^*(f)(\rho_g(v))=f(v)\ \ \forall g\in G,\forall v\in V,\forall f\in V^*\]
 \end{defn}
 
 \begin{note}
@@ -1243,6 +1255,7 @@ Notiamo infine che l'isomorfismo trovato è canonico, ovvero non dipende da alcu
 Sia $\rho$ una rappresentazione di $G$ su $V_{\rho}$, una sottorappresentazione di $\rho$ è un sottospazio vettoriale $W\subseteq V_{\rho}$ tale che $\rho(s)(W)\subseteq W\ \forall\ s\in G$. Posso definire una rappresentazione $\sigma$ con $V_{\sigma}=W$ e $\sigma(s)=\rho(s)|_W$ (la indicherò con $\sigma\subseteq \rho$).
 \end{defn}
 
+\textbf{Notazione:} $V_{\rho}^G=\{v\in V_{\rho}: \rho(s)v=v\ \forall s\in G\}$.
 
 
 \begin{defn}[Rappresentazione irriducibile]
@@ -1599,85 +1612,61 @@ Per dimostrare questo teorema abbiamo bisogno di un lemma che ora enunciamo e di
 \begin{lemma}
 Se $(\rho, V_\rho)$ e $(\sigma, V_\sigma)$ sono rappresentazioni \footnote{Non necessariamente irriducibili} di $G$, allora vale
 
-\[ \langle \chi_\rho | \chi_\sigma \rangle  = dim(Hom (\sigma, \rho))\] 
+\[ \langle \chi_\sigma | \chi_\rho \rangle  = dim(Hom (\rho, \sigma))\] 
 \label{lemma relazioni ortogonalita}
 \end{lemma}
 \textsc{Dimostrazione:}
 
 L'idea principale per dimostrare questo lemma è di ridurci al caso più facile in cui una delle due rappresentazioni è quella banale. Per farlo notiamo un paio di cose
 
-\[ \langle \chi_\rho | \chi_\sigma \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \overline{\chi_\rho(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho^*}(s)} \chi_\sigma(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho^*\sigma}(s)  = \langle \chi_{\rho^*\sigma}  | 1 \rangle\]
+\[ \langle \chi_\sigma | \chi_\rho \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \chi_\sigma(s) \overline{\chi_\rho(s)} = \dfrac{1}{|G|} \dsum_{s\in G} {\chi_{\rho^*}(s)} \chi_{\sigma}(s) = \dfrac{1}{|G|} \dsum_{s\in G} \chi_{\rho^*\sigma}(s)  = \langle \chi_{\rho^*\sigma}  | 1 \rangle\]
 
 Siamo passati da due rappresentazioni ad una sola. In particolare lo spazio vettoriale su cui agisce questa rappresentazione è 
 
 \[ V_{\rho^* \sigma} = V_{\rho}^* \otimes V_\sigma \cong Hom(V_\rho, V_\sigma)\]
 
-E questo isomorfismo segue semplicemente dalle proprietà del prodotto tensore di spazi vettoriali. Notiamo che sullo spazio degli omomorfismi\footnote{Dato che sono spazi vettoriali in questo caso si tratta semplicemente di applicazioni lineari} $Z = Hom(V_\rho, V_\sigma)$ è possibile definire una rappresentazione completamente analoga a $\rho\sigma^*$ in questo modo: se $f \in Z$, allora possiamo definire la rappresentazione $\tau, V_\tau = Z$ di $G$ in questo modo
+E questo isomorfismo segue semplicemente dalle proprietà del prodotto tensore di spazi vettoriali. Definiamo su $Z$\footnote{Dato che sono spazi vettoriali in questo caso si tratta semplicemente di applicazioni lineari}$ = Hom(V_\rho, V_\sigma)$ la seguente rappresentazione: se $f \in Z$, allora possiamo definire la rappresentazione $\tau, V_\tau = Z$ di $G$ in questo modo
 
-\[ \tau(s)f = \rho(s) \circ f \circ \sigma^{-1}(s)\]
+\[ \tau(s)f = \sigma(s) \circ f \circ \rho^{-1}(s)\]
 
-\'E possibile mostrare che se chiamo $\Psi$ la mappa tale che
-
-
-\begin{align*}
-V_\rho^* \otimes V_\sigma &\xrightarrow{\Psi} Hom(V_\rho, V_\sigma)\\
-\rho\sigma^* &\xrightarrow{\Psi} \tau \\
-\end{align*}
-
-
-Allora $\Psi$ è un isomorfismo di rappresentazioni. Dimostriamolo rapidamente. Innanzitutto definiamo in modo esplicito $\Psi$. Basterà definirlo per i tensori decomponibili, per il resto dello spazio basterà estenderlo per linearità.
+Si verifica manualmente che sia una buona definizione. Ora volgliamo vedere che $Z$ e $V_{\rho^*\sigma}$ sono isomorfi anche come rappresentazioni. Chiamo $\Psi:V_\rho^* \otimes V_\sigma\rightarrow Hom(V_\rho, V_\sigma)$ la mappa tale che
 
 \[ \Psi(\phi \otimes v ) (w) = \phi(w) v \qquad \forall \phi \in V_\rho^*, \forall v \in V_\sigma, \forall w \in V_\rho\]
 
-Per mostrare che è un isomorfismo di rappresentazioni ci basta mostrare che ha la giusta proprietà di commutazione in quanto sappiamo già che $\Psi$ è un isomorfismo di spazi vettoriali. Vediamo quindi di mostrare che 
-
-\[\Psi(\tau(s)\cdot (\phi \otimes v))(w) = \tau(s) \cdot \Psi(\phi \otimes v)(w) \qquad \forall s \in G \quad \text{eccetera} \]
-
-
-Partiamo dal membro di sinistra e facciamo i calcoli
+Voglio mostrare che $\Psi$ è un isomorfismo di rappresentazioni. Innanzitutto notiamo che è stato sufficiente definirlo per i tensori decomponibili, dato che per il resto dello spazio basta estenderlo per linearità.
+Precedentemente abbiamo già mostrato che $\Psi$ è un isomorfismo di spazi vettoriali. Quindi per concludere la dimostrazine è sufficiente dimostrare che è un omomorfismo di rappresentazione ovvero
 
 
-\[\Psi(\tau(s)\cdot (\phi \otimes v))(w) = \Psi\left( \rho(s) (\phi \otimes v ) \sigma(s)^{-1}  \right)(w)  = \]
 
-\[= \Psi((\phi \circ \sigma(s)^{-1})\otimes (\rho(s) v) )(w) =  \]
+\[ \Psi((\rho^*\otimes\sigma(s))(\phi\otimes v))=\tau(s)(\Psi(\phi\otimes v)) \qquad \forall v\in V_{\sigma}, \phi\in V^*_{\rho}, s\in G \]
+e questo è vero sse
+\[ \Psi((\rho^*\otimes\sigma(s))(\phi\otimes v)) (w)=\tau(s)(\Psi(\phi\otimes v)) (w) \qquad \forall w\in V_{\rho}, v\in V_{\sigma}, \phi\in V^*_{\rho}, s\in G \]
+Riscriviamo il secondo membro
+\[ \tau(s)(\Psi(\phi\otimes v)) (w)= \sigma(s)\circ  \Psi(\phi\otimes v) \circ \rho^{-1}(s) (w) = \sigma(s)( \phi(\rho^{-1}(s)(w))v )=\phi(\rho^{-1}(s)(w)) \sigma(s)(v) \]
+ed ora il primo
+\[ \Psi(\rho^*\otimes\sigma(s)(\phi\otimes v)) (w)= \Psi (\rho^*(s) (\phi) \otimes \sigma(s)(v)) (w) = \rho^*(s)(\phi)(w)\sigma(s)(v) \]
+e dato che l'applicazione duale è stata definita come l'unica tale che 
+\[ \rho^*_s(\phi)\circ \rho_s=\phi\]
+allora i due membri sono uguali e $\Psi$ è un omomorfismo di rappresentazione. Ne segue che 
+\[ (V_{\rho^*\sigma})^G \cong Hom(V_\rho, V_\sigma)^G \cong Hom(\rho, \sigma)\]
+Per cui dato che noi stiamo cercando $dim(Hom(\rho, \sigma))$, basterà trovare $dim(V_{\rho^*\sigma})^G$.
+\begin{lemma}
+Sia $\rho$ una rappresentazione di un gruppo finito $G$. Allora
+$dim(V_{\rho})^G=tr(T)$ dove
+\[ T = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s).\]
+\end{lemma}
 
-\[ = (\phi \circ \sigma(s)^{-1}) (w) \rho(s) v = \phi(\sigma(s)^{-1} w) \rho(s) v\]
+Prima di iniziare la dimostrazione diamo una giustificazione della scelta della applicazione lineare $T$: questa è stata dettata dal fatto che
+\[ tr(T)=tr (\dfrac{1}{|G|} \dsum_{s\in G} \rho(s))= \dfrac{1}{|G|} \dsum_{s\in G} tr(\rho(s))= \langle \chi_\rho| 1 \rangle \]
+Si nota anzitutto che 
 
-\[ = \rho(s)\phi(\sigma(s)^{-1} w) v = \rho(s) \Psi(\phi \otimes v) \sigma(s)^{-1} (w) = \tau(s) \Psi (\phi \otimes v)(w)\]
+\[ \rho(t) T(v) = \dfrac{1}{|G|} \dsum_{s\in G} \rho(t)\rho(s) v = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s) = T(v)\]
 
+ovvero $ImT\subseteq V_\rho^G$. D'altra parte se $v \in V_\rho^G$ allora è chiaro che $Tv = v$ (basta applicare la definizione). Per cui $ImT = V_\rho^G$. 
 
-A questo punto possiamo andare a cercare i sottospazi invarianti per $\tau$, ovvero stiamo andando a cercare le sottorappresentazioni irriducibili di $\tau$ sperando di usare teoremi che già conosciamo. In particolare stiamo quindi cercando dei sottospazi $W \subset Z = Hom(V_\rho, V_\sigma)$ tali che $\tau(s) W \subset W \quad \forall s \in G$ 
+Inoltre 
 
-In particolare, cerchiamo le funzioni $f \in Hom(V_\sigma, V_\rho)$ tali che $\tau(s) f = f$. Dalla definizione di $\tau$ si vede che
-
-\[f = \tau(s) f =  \rho(s) \circ f \circ \sigma^{-1}(s) \Rightarrow  f \sigma(s)= \rho(s) f\] 
-
-
-Ovvero le applicazioni $f$ invarianti per $\tau $ sono gli omomorfismi di rappresentazioni da $(\rho, V_\rho) $ a $(\sigma, V_\sigma)$
-
-A questo punto
-
-\[ (V_{\sigma^*\rho})^G \cong Hom(V_\sigma, V_\rho)^G \cong Hom(\sigma, \rho)\]
-
-Per cui dato che noi stiamo cercando $dimHom(\sigma, \rho)$, basterà trovare $dim(V_{\sigma^*\rho})^G$
-
-Visto che ci siamo ricondotti al caso in cui una rappresentazione è banale, ora facciamo i conti cercando di trovare la dimensione dello spazio invariante per $G$. Scriviamo la definizione di quello che vogliamo calcolare
-
-
-\[ \langle \chi_\rho | 1 \rangle = \dfrac{1}{|G|} \dsum_{s \in G} tr \rho(s)\]
-
-Se definiamo l'operatore $T$ come operatore lineare
-
-\[ T = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s)\]
-
-
-Allora si nota che 
-
-\[ \rho(t) Tv = \dfrac{1}{|G|} \dsum_{s\in G} \rho(t)\rho(s) v = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s) = Tv\]
-
-Per cui sappiamo che $V_\rho^G \subseteq ImT$. L'obiettivo è mostrare che quella non è una disuguaglianza ma un'uguaglianza. In realtà questa è la disuguaglianza stupida in quanto se $v \in V_\rho^G$ allora è chiaro che $Tv = v$, basta applicare la definizione. Per cui $ImT = V_\rho^G$. A questo punto vogliamo calcolare la sua traccia. Per farlo notiamo che 
-
-\[T(Tv) = \ldots = Tv \qquad \text{Verifica banale}\]
+\[T(Tv) = \ldots = Tv \qquad \text{verifica banale}\]
 
 Per cui $T$ è un proiettore. A questo punto sappiamo dall'algebra lineare che
 
@@ -1685,11 +1674,15 @@ Per cui $T$ è un proiettore. A questo punto sappiamo dall'algebra lineare che
 
 Per cui $trT = dimImT = dimV_\rho^G$. Ma dalla catena di deduzioni che abbiamo fatto
 
-\[dimHom(V_\sigma, V_\rho) = dim(V_{\sigma^*\rho}^G) = trT = \langle \chi_{\sigma^*\rho} | 1 \rangle = \langle \chi_\sigma | \chi_\rho \rangle\]
+\[dim(Hom(V_\rho, V_\sigma)) = dim(V_{\rho^*\sigma}^G) = trT = \langle \chi_{\rho^*\sigma} | 1 \rangle = \langle \chi_\sigma | \chi_\rho \rangle\]
 
 \qed
 
-
+\textbf{Osservazione:}
+\[\langle \chi_\sigma | \chi_\rho \rangle=\overline{\langle \chi_\rho | \chi_\sigma \rangle}\]
+ovvero per quanto appena dimostrato
+\[ dim(Hom(V_\rho, V_\sigma))=\overline{dim(Hom(V_\sigma, V_\rho))}\]
+tuttavia essendo dei numeri naturali deduciamo che le eguaglianze sussistono anche senza il coniugio.
 
 
 
