@@ -2572,7 +2572,7 @@ Sia $B \in (S^2V_\rho^*)^G$, con $\dim_\C V_\rho = n$.
 Noi stiamo cercando un certo $V_0 \subset V_\rho$ spazio vettoriale su $\R$ tale che $V_\rho = V_0 \oplus i V_0$ .
 
 Prendiamo ora una certa forma $h : V_\rho \times V_\rho \to \C$ hermitiana, definita positiva e $G-$invariante. Questa sicuramente esiste, è stato dimostrato nel teorema \ref{thm:esistenza hermitiana}.
-Definiamo a questo punto un endomorfismo $\phi: V_\rho \to V_\rho$ imponendo che soddisfi $B(x, y) = h(\phi(x), y)$.
+Definiamo a questo punto un endomorfismo di spazi vettoriali reali $\phi: V_\rho \to V_\rho$ imponendo che soddisfi $B(x, y) = h(\phi(x), y)$.
 La bontà di tale definizione è garantita dal teorema di Riesz.
 
 Che proprietà ha $\phi$? Possiamo notare che $\phi$ è $G$-equivariante, ovvero vale $\phi(\rho(g)x) = \rho(g) \phi(x)$.
@@ -2582,7 +2582,7 @@ Questo non è male, in quanto se $\phi$ fosse lineare avremmo subito che $\phi$ 
 \[ \phi(z_1 x_1 + z_2 x_2) = \overline{z_1} \phi(x_1) + \overline{z_2} \phi(x_2) \qquad \forall z_1, z_2 \in \C, \forall x_1, x_2 \in V_\rho\]
 La linearità rispetto ai vettori è abbastanza evidente. L'antilinearità rispetto agli scalari deriva essenzialmente dal fatto che stiamo usando un prodotto hermitiano invece di un prodotto scalare. Infatti
 \[ h( \phi(zx) , y) = B(zx, y) = B(x, zy) = h(\phi(x), zy) = \overline{z} h(\phi(x), y) \]
-E quindi purtroppo $\phi$ non è davvero lineare. Vediamo però che $\phi^2$ si comporta meglio:
+E quindi purtroppo $\phi$ non è davvero lineare come applicazione tra spazi vettoriali sul campo $\C$. Vediamo però che $\phi^2$ si comporta meglio:
 \[\phi^2(z_1 x_1 + z_2 x_2) = \phi(\overline{z_1} \phi(x_1) + \overline{z_2} \phi(x_2))  = z_1 \phi^2(x_1) + z_2 \phi^2(x_2) \qquad \forall z_1, z_2 \in \C, \forall x_1, x_2 \in V_\rho \] 
 E quindi effettivamente $\phi^2$ è un omomorfismo di rappresentazioni irriducibili. Per questo motivo possiamo applicare Schur e concludere che 
 $\phi^ 2 = \lambda Id_{V_\rho}$ per un certo $\lambda \in \C$.
