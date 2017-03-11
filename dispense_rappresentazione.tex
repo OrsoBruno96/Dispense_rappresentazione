@@ -960,6 +960,7 @@ Sia $f: V \to V$ un endomorfismo di uno spazio vettoriale. Allora vale
 \tr(S^2 f ) = \dfrac{(\tr(f))^2 + \tr(f^2)}{2} \\
 \end{cases}
 \]
+\label{thm:tracciasymalt}
 \end{prop}
 
 
@@ -2476,7 +2477,7 @@ Iniziamo con alcune proprietà soddisfatte dalle rappresentazioni reali:
 Prendiamo una $\rho:G\to GL(V)$ rappresentazione $/\C$ che sia reale. Allora:
 \begin{enumerate}
 \item $\chi_\rho(g)\in \R$ $\forall g\in G$ 
-\item $V$ possiede una forma bilineare simmetrica $G-$invariante. Ovvero lo spazio delle forme bilineari simmetriche $S^2V^*\subset V^*\otimes V^*$ è tale che $(S^2V^*)^G\neq 0$.
+\item $V$ possiede una forma bilineare simmetrica $G-$invariante non nulla. Ovvero lo spazio delle forme bilineari simmetriche $S^2V^*\subset V^*\otimes V^*$ è tale che $(S^2V^*)^G\neq 0$.
 \end{enumerate} 
 \end{thm}
 
@@ -2491,13 +2492,13 @@ Questo ha le caratteristiche precedenti ed è anche invariante sotto $G$, ovvero
 \end{proof}
 
 \begin{rem}
-Supponiamo che $\rho:G\to GL(V)$ sia una rappresentazione irriducibile. Allora il fatto che esiste una forma bilineare $G-$invariante
+Supponiamo che $\rho:G\to GL(V)$ sia una rappresentazione irriducibile. Allora il fatto che esiste una forma bilineare $G-$invariante non nulla
 equivale a $(V^*\otimes V^*)^G\neq 0$. Ma ricordando che $(V^*\otimes V^*)^G \cong \Hom(V,V^*)^G$ (che è l'insieme degli omomorfismi di rappresentazioni) ciò vuol dire che $\rho$ e $\rho^*$ sono isomorfi, il che si traduce in $\chi_\rho = \chi_{\rho^*}$. Ma questo avviene esattamente quando $\chi_\rho$ assume solo valori reali. Ciò significa che la seconda condizione trovata (che prevede l'esistenza di una forma bilineare simmetrica invariante) è strettamente più forte della prima (che è soddisfatta anche nel caso in cui esista una forma bilineare invariante non necessariamente simmetrica).
 \end{rem}
 
 Vediamo ora un lemma che ci servirà per la classificazione.
 \begin{lemma}
-Sia $V$ una $G-$rappresentazione $/\C$. Allora ogni forma bilineare non nulla $G-$invariante è non degenere. Inoltre, se esiste, è unica a meno di scalari, ovvero $\dim (V^*\otimes V^*)^G\le1$.
+Sia $V$ una $G-$rappresentazione irriducibile $/\C$. Allora ogni forma bilineare non nulla $G-$invariante è non degenere. Inoltre, se esiste, è unica a meno di scalari, ovvero $\dim (V^*\otimes V^*)^G\le1$.
 \end{lemma}
 \begin{proof}
 Prendiamo un elemento $B \in \left( V^* \otimes V^*\right) ^G$.
@@ -2510,9 +2511,8 @@ Per il lemma di Schur o $\phi$ è nullo o $\phi$ è un isomorfismo. Dato che la 
 
 
 \begin{thm}
-Sia $\rho:G\to GL(V_\rho)$ una rappresentazione $/\C$. Definiamo 
-$m_\rho = \dfrac{1}{|G|} \dsum_{g \in G} \chi_{\rho}(g^2)$
- detto ``indicatore di Frobenius-Schur''. Allora
+Sia $\rho:G\to GL(V_\rho)$ una rappresentazione irriducibile $/\C$.\\
+Definiamo $m_\rho = \dfrac{1}{|G|} \dsum_{g \in G} \chi_{\rho}(g^2)$ detto ``indicatore di Frobenius-Schur''. Allora
 \begin{enumerate}
 \item Se $B \in (V^* \otimes V^*)^G$ allora $B \in S^2V^*$ oppure $B \in \bigwedge ^2 V^*$
 \item  $m_\rho \in \{-1, 0, 1 \}$
@@ -2529,13 +2529,30 @@ $m_\rho = \dfrac{1}{|G|} \dsum_{g \in G} \chi_{\rho}(g^2)$
 Indichiamo $W = (V^*\otimes V^*)^G$ lo spazio delle forme bilineari $G-$invarianti, che è sottorappresentazione di $V^*\otimes V^*$.
 Vogliamo dimostrare che $W\subseteq S^2V^*$ oppure $W\subseteq \bigwedge^2V^*$.
 Dal lemma precedente sappiamo che $\dim W \le 1$. Se $\dim W = 0$ allora si ha automaticamente la tesi.
-Supponiamo ora $\dim W = 1$, dunque $W$ è rappresentazione irriducibile di $G$.
+Supponiamo ora $\dim W = 1$.
 
-LA FINISCO DOMANI
+Ricordando che $V^*\otimes V^* \cong S^2V^* \oplus \bigwedge^2V^*$ è scomposizione in somma di rappresentazioni,
+consideriamo le proiezioni $p_{sym}:V^*\otimes V^* \to S^2V^*$ e $p_{alt}:V^*\otimes V^* \to \bigwedge^2V^*$
+che in particolare sono omomorfismi di rappresentazioni (la verifica è facile, comunque questo accade ogni volta che si ha una somma di rappresentazioni).
+
+Prendiamo ora $B\in W$ forma bilineare invariante non nulla. Allora almeno uno tra $p_{sym}(B)$ e $p_{alt}(B)$ è non nullo. Se fossero entrambi non nulli allora avremmo $\dim (V^*\otimes V^*)^G = \dim(S^2V^*)^G + \dim(\bigwedge^2V^*)^G \ge 2$, assurdo.
+Dunque $B$ deve essere simmetrica oppure alternante, e ciò dimostra il punto 1.
+
+Passiamo ora agli altri due punti. Ricordando il teorema \ref{thm:tracciasymalt} abbiamo che:
+\begin{itemize}
+\item $\dim(S^2V^*)^G = \langle 1|\chi_{S^2\rho^*}\rangle = \frac{1}{|G|}\dsum_{g\in G}\frac{\chi_\rho(g)^2 + \chi_\rho(g^2)}{2}$
+\item $\dim(\bigwedge^2V^*)^G = \langle 1|\chi_{\bigwedge^2\rho^*}\rangle = \frac{1}{|G|}\dsum_{g\in G}\frac{\chi_\rho(g)^2 - \chi_\rho(g^2)}{2}$
+\item $\dim(V^*\otimes V^*)^G = \langle 1|\chi_{\rho^*\otimes\rho^*}\rangle = \frac{1}{|G|}\dsum_{g\in G}\chi_\rho(g)^2$
+\end{itemize}
+dunque possiamo scrivere
+$\dim(S^2V^*)^G = \frac{\dim(V^*\otimes V^*)^G + m_\rho}{2}$;\ \ 
+$\dim(\bigwedge^2V^*)^G = \frac{\dim(V^*\otimes V^*)^G - m_\rho}{2}$.
+
+Ora, usando quanto ottenuto al punto 1 e distinguendo i casi in cui $V$ ammetta una forma simmetrica invariante, una forma antisimmetrica invariante, oppure non ammetta forme invarianti, si ottiene facilmente quanto affermato ai punti 2 e 3.
 \end{proof}
 
 \begin{defn}[Classificazione tramite l'indice di Frobenius]
-Sia $\rho:G\rightarrow GL(V)$ una rappresentazione $/\C$: essa è detta
+Sia $\rho:G\rightarrow GL(V)$ una rappresentazione irriducibile $/\C$: essa è detta
 \begin{itemize}
 \item \textbf{reale} se $m_\rho = 1$  
 \item \textbf{complessa} se $m_\rho = 0$ 
@@ -2543,17 +2560,76 @@ Sia $\rho:G\rightarrow GL(V)$ una rappresentazione $/\C$: essa è detta
 \end{itemize}
 \end{defn}
 
+Ma la nuova definizione che abbiamo dato è compatibile con la \ref{def: rappr reale} data inizialmente?
+La rassicurante risposta è data dal seguente lemma.
+\begin{lemma}
+Sia $\rho:G\to GL(V_\rho)$ una rappresentazione irriducibile su $\C$. Allora $\rho$ è reale secondo la definizione \ref{def: rappr reale} se e solo se $m_\rho = 1$.
+\end{lemma}
+\begin{proof}
+Sappiamo già che se $\rho$ è reale nel senso \ref{def: rappr reale} allora $m_\rho = 1$, in quanto $V_\rho$ ammette una forma simmetrica invariante non nulla. Mostriamo il viceversa.
+
+Sia $B \in (S^2V_\rho^*)^G$, con $\dim_\C V_\rho = n$.
+Noi stiamo cercando un certo $V_0 \subset V_\rho$ spazio vettoriale su $\R$ tale che $V_\rho = V_0 \oplus i V_0$ .
+
+Prendiamo ora una certa forma $h : V_\rho \times V_\rho \to \C$ hermitiana, definita positiva e $G-$invariante. Questa sicuramente esiste, è stato dimostrato nel teorema \ref{thm:esistenza hermitiana}.
+Definiamo a questo punto un endomorfismo $\phi: V_\rho \to V_\rho$ imponendo che soddisfi $B(x, y) = h(\phi(x), y)$.
+La bontà di tale definizione è garantita dal teorema di Riesz.
+
+Che proprietà ha $\phi$? Possiamo notare che $\phi$ è $G$-equivariante, ovvero vale $\phi(\rho(g)x) = \rho(g) \phi(x)$.
+Mostriamolo rapidamente
+\[ h(\phi(\rho(g)x) , y) = B(\rho(g)x, y) = B(x, \rho(g^{-1} ) y) = h (\phi(x), \rho(g^{-1} ) y) = h(\rho(g)x, y)\]
+Questo non è male, in quanto se $\phi$ fosse lineare avremmo subito che $\phi$ è un omomorfismo di rappresentazioni irriducibili e potremmo usare Schur. Tuttavia
+\[ \phi(z_1 x_1 + z_2 x_2) = \overline{z_1} \phi(x_1) + \overline{z_2} \phi(x_2) \qquad \forall z_1, z_2 \in \C, \forall x_1, x_2 \in V_\rho\]
+La linearità rispetto ai vettori è abbastanza evidente. L'antilinearità rispetto agli scalari deriva essenzialmente dal fatto che stiamo usando un prodotto hermitiano invece di un prodotto scalare. Infatti
+\[ h( \phi(zx) , y) = B(zx, y) = B(x, zy) = h(\phi(x), zy) = \overline{z} h(\phi(x), y) \]
+E quindi purtroppo $\phi$ non è davvero lineare. Vediamo però che $\phi^2$ si comporta meglio:
+\[\phi^2(z_1 x_1 + z_2 x_2) = \phi(\overline{z_1} \phi(x_1) + \overline{z_2} \phi(x_2))  = z_1 \phi^2(x_1) + z_2 \phi^2(x_2) \qquad \forall z_1, z_2 \in \C, \forall x_1, x_2 \in V_\rho \] 
+E quindi effettivamente $\phi^2$ è un omomorfismo di rappresentazioni irriducibili. Per questo motivo possiamo applicare Schur e concludere che 
+$\phi^ 2 = \lambda Id_{V_\rho}$ per un certo $\lambda \in \C$.
+
+Cosa possiamo dire su $\lambda$? Il claim è che sia $\lambda \in \R$ e $\lambda > 0$. Vediamo come si mostra
+\[h(\phi(x), y) = B(x, y) = B(y, x) = h(\phi(y), x) = \overline{h(x, \phi(y))} \]
+usando questo fatto possiamo considerare 
+\[ \lambda h(x, y) = h(\phi^2(x), y) = \overline{h(\phi(x), \phi(y))} = h(x, \phi^2(y)) = \overline{\lambda} h(x, y) \qquad \forall x, y \in V_\rho\]
+E questo ci dice ovviamente che $\lambda \in \R$. Per mostrare ora che $\lambda > 0$ dobbiamo sfruttare il fatto che la nostra forma hermitiana sia definita positiva. Per questo motivo andiamo a considerare
+\[\lambda h(x, x) = h (\phi^2(x), x) = \overline{h(\phi(x), \phi(x))} \Rightarrow \lambda = \dfrac{\overline{h(\phi(x), \phi(x))}}{ h(x,x)} \qquad \forall x \neq 0 \in V_\rho\]
+E dato che $h $ è definita positiva si ha anche $\lambda > 0$
+
+A questo punto possiamo (a meno di riscalare) scegliere $\lambda = 1$, ovvero $\phi^2 = Id$. A questo punto ci piacerebbe tornare a fare cose con $\phi$ e non $\phi^2$. Notiamo che se ci restringiamo a spazi vettoriali su $\R$, allora anche $\phi$ è lineare in quanto il coniugio non ci dà fastidio. Dato che quindi $\phi$ è un endomorfismo di uno spazio vettoriale reale tale che $\phi^2=1$, allora $\phi$ è diagonalizzabile e ha solo gli autovalori $\pm 1$.  Per questo motivo possiamo scomporre lo spazio di partenza $V_\rho = V_+ \oplus V_-$, con ovvia notazione per gli autospazi.
+
+A questo punto ci manca poco. $V_+$ e $V_-$ sono sottospazi reali del nostro spazio di partenza. Se mostriamo che sono isomorfi, abbiamo trovato la nostra scomposizione dello spazio $V_\rho$ in due spazi $V_\rho = V_0 \oplus iV_0$.
+Proprio per questo motivo è intelligente notare che vale $i V_+ = V_-$.
+Mostriamo perché con il solito trucco della doppia inclusione. Prendiamo per esempio $x \in V_+$. Allora 
+\[ \phi(ix) = - i \phi(x) = -i x \]
+Ovvero il vettore $ix$ è autovettore di $\phi$ con autovalore $-1$. Applicando due volte questo ragionamento si ottiene facilmente
+\[ V_+ \cong V_- \qquad (i V_+ = V_-)\]
+Per cui a questo punto abbiamo finito
+\end{proof}
+
+
+\begin{lemma}
+Sia $\rho:G\to GL(V)$ rappresentazione irriducibile su $\R$. Allora $\dim V^G = \langle\chi_\rho|\chi_1\rangle$
+\end{lemma}
+\begin{proof}
+Definiamo un'applicazione lineare $R:V\to V$ nel seguente modo:
+\[ R = \frac{1}{|G|} \sum_{g\in G}{\rho(g)} \]
+Se prendiamo $v\in V$ e $s\in G$ allora
+\[ \rho(s) R(v) = \rho(s)\frac{1}{|G|} \sum_{g\in G}{\rho(g)v} = \frac{1}{|G|} \sum_{g\in G}{\rho(sg)v} = R(v)\]
+ovvero $R(v)\in V^G$.
+Inoltre se $w\in V^G$ allora $R(w)=w$. Di conseguenza $R^2 = R$ (cioè $R$ è una cosiddetta \emph{proiezione})
+e quindi $R$ si diagonalizza con autovalori $0$ e $1$. Inoltre l'autospazio relativo a $1$ è proprio $V^G$.
+Ciò implica che
+\[ \dim V^G = \tr(R) = \frac{1}{|G|} \sum_{g\in G}{\chi_\rho(g)} = \langle\chi_\rho|\chi_1\rangle \]
+\end{proof}
+
 
 \subsection{Quaternioni}
 
-Ovviamente la parola quaternionica ha a che fare con il corpo dei quaternioni. Vediamo un po' di caratteristiche interessanti di questo oggetto.
+Ovviamente le rappresentazioni quaternioniche hanno a che fare con il corpo dei quaternioni. Vediamo un po' di caratteristiche interessanti di questo oggetto.
 
 Il corpo $\HH$ si può vedere come
-
 \[\HH = \R \oplus i \R \oplus j \R \oplus k \R \]
-
 Con $i,j,k$ unità immaginarie che rispettano le seguenti regole
-
 \[ 
 \begin{cases}
 i^2 = j^2 = k^2 = -1 \\
@@ -2563,13 +2639,9 @@ ki = - ik = j \\
 \end{cases}
 \]
 
-
 Vediamo un po' di proprietà interessanti. Per esempio se consideriamo 
-
 \[ Q_8 =  \{\pm 1, \pm i, \pm j, \pm k \}\]
-
 allora questo insieme è un gruppo se munito della moltiplicazione. Possiamo andare a vedere la tabella dei caratteri di questo gruppo. 
-
 
 Per farlo possiamo utilizziamo il secondo metodo descritto nel paragrafo \eqref{par:rappr_deg_1}. Consideriamo si seguenti sottogruppi di $Q_8$
 \begin{align*}
@@ -2646,7 +2718,6 @@ i & 0 \\
 
 Queste 4 matrici prendono il nome di matrici di spin di Pauli in quanto hanno alcune applicazioni in Fisica. Possiamo infine ricostruire quindi la tabella dei caratteri di $Q_8$
 
-
 \begin{table}[!ht]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
@@ -2673,98 +2744,6 @@ $\rho_\HH$ & 2 & -2 & 0 & 0 & 0 \\
 \'E interessante notare che la tabella dei caratteri di $Q_8$ è uguale a quella di $D_4$, ma i due gruppi non sono isomorfi. Questo ci ricorda che la tabella dei caratteri dice tanto di un gruppo ma non tutto.
 
 
-%COSE RANDOM SCRITTE DI FRETTA PERCH\'E devo andare a lezione
-
-%~ \[\HH = \left\{ \left \left(\begin{array}{cc} z & w \\ -\overline{w} & \overline z \end{array}\right) \right| z, w \in \C \right\} \]
-
-
-
-
-
-
-
-
-
-
-\begin{lemma}
-Sia $(\rho, V_\rho)$ una rappresentazione irriducibile su $\C$. Allora $\rho$ è reale secondo la definizione \ref{def: rappr reale} $\Leftrightarrow m_\rho = 1$ 
-\end{lemma}
-
-\textsc{Dimostrazione:} $\Rightarrow)$ già fatto.
-
-$\Leftarrow)$ Sia $B \in (S^2V_\rho^*)^G$, con $dim_\C V_\rho = n$. Noi stiamo cercando un certo $V_0 \subset V_\rho$ spazio vettoriale su $\R$ tale che $V_\rho = V_0 \oplus i V_0$ 
-
-Prendiamo ora una certa forma $h : V_\rho \times V_\rho \to \C$ hermitiana, definita positiva e $G-$invariante. Questa sicuramente esiste, è stato dimostrato nel teorema \ref{thm:esistenza hermitiana},
-
-Definiamo a questo punto un endomorfismo di $V_\rho$ che chiamiamo $\phi: V_\rho \to V_\rho$, definito come
-
-
-\[ B(x, y) = h(\phi(x), y)\] 
-
-Questa definizione ha senso per $y$ fissato (per Riesz).
-
-Che proprietà ha $\phi$? Possiamo notare che $\phi$ è $G$-equivariante, ovvero vale
-
-\[ \phi(\rho(g)x) = \rho(g) \phi(x)\]
-
-Mostriamolo rapidamente
-
-\[ h(\phi(\rho(g)x) , y) = B(\rho(g)x, y) = B(x, \rho(g^{-1} ) y) = h (\phi(x), \rho(g^{-1} ) y) = h(\rho(g)x, y)\]
-
-Questo non è male, in quanto se $\phi$ fosse lineare avremmo subito che $\phi$ è un omomorfismo di rappresentazioni irriducibili e potremmo usare Schur. Tuttavia
-
-\[ \phi(z_1 x_1 + z_2 x_2) = \overline{z_1} \phi(x_1) + \overline{z_2} \phi(x_2) \qquad \forall z_1, z_2 \in \C, \forall x_1, x_2 \in V_\rho\]
-
-La linearità rispetto ai vettori è abbastanza evidente. L'antilinearità rispetto agli scalari deriva essenzialmente dal fatto che stiamo usando un prodotto hermitiano invece di un prodotto scalare. Infatti
-
-\[ h( \phi(zx) , y) = B(zx, y) = B(x, zy) = h(\phi(x), zy) = \overline{z} h(\phi(x), y) \]
-
-
-E quindi purtroppo $\phi$ non è davvero lineare. Però dato che in mezzo c'è  solo il coniugio, possiamo provare a vedere cosa fa $\phi^2$
-
-\[\phi^2(z_1 x_1 + z_2 x_2) = \phi(\overline{z_1} \phi(x_1) + \overline{z_2} \phi(x_2))  = z_1 \phi^2(x_1) + z_2 \phi^2(x_2) \qquad \forall z_1, z_2 \in \C, \forall x_1, x_2 \in V_\rho \] 
-
-
-E quindi effettivamente $\phi^2$ è un omomorfismo di rappresentazioni irriducibili. Per questo motivo possiamo applicare Schur e concludere che 
-
-\[ \phi^ 2 = \lambda Id_{V_\rho} \qquad \lambda \in \C\]
-
-
-Cosa possiamo dire su $\lambda$? Il claim è che sia $\lambda \in \R$ e $\lambda > 0$. Vediamo come si mostra
-
-\[h(\phi(x), y) = B(x, y) = B(y, x) = h(\phi(y), x) = \overline{h(x, \phi(y))} \]
-usando questo fatto possiamo considerare 
-
-\[ \lambda h(x, y) = h(\phi^2(x), y) = \overline{h(\phi(x), \phi(y))} = h(x, \phi^2(y)) = \overline{\lambda} h(x, y) \qquad \forall x, y \in V_\rho\]
-
-E questo ci dice ovviamente che $\lambda \in \R$. Per mostrare ora che $\lambda > 0$ dobbiamo sfruttare il fatto che la nostra forma hermitiana sia definita positiva. Per questo motivo andiamo a considerare
-
-\[\lambda h(x, x) = h (\phi^2(x), x) = \overline{h(\phi(x), \phi(x))} \Rightarrow \lambda = \dfrac{\overline{h(\phi(x), \phi(x))}}{ h(x,x)} \qquad \forall x \neq 0 \in V_\rho\]
-
-E dato che $h $ è definita positiva si ha anche $\lambda > 0$
-
-
-A questo punto possiamo (a meno di riscalare) scegliere $\lambda = 1$, ovvero $\phi^2 = Id$. A questo punto ci piacerebbe tornare a fare cose con $\phi$ e non $\phi^2$. Notiamo che se ci restringiamo a spazi vettoriali su $\R$, allora anche $\phi$ è lineare in quanto il coniugio non ci dà fastidio. Dato che quindi $\phi$ è un endomorfismo di uno spazio vettoriale reale tale che $\phi^2=1$, allora $\phi$ è diagonalizzabile e ha solo gli autovalori $\pm 1$.  Per questo motivo possiamo scomporre lo spazio di partenza $V_\rho = V_+ \oplus V_-$, con ovvia notazione per gli autospazi.
-
-
-A questo punto ci manca poco. $V_+$ e $V_-$ sono sottospazi reali del nostro spazio di partenza. Se mostriamo che sono isomorfi, abbiamo trovato la nostra scomposizione dello spazio $V_\rho$ in due spazi 
-
-\[ V_\rho = V_0 \oplus iV_0\]
-
-
-Proprio per questo motivo è intelligente notare che vale
-
-\[ i V_+ = V_- \]
-
-Mostriamo perché con il solito trucco della doppia inclusione. Prendiamo per esempio $x \in V_+$. Allora 
-
-\[ \phi(ix) = - i \phi(x) = -i x \]
-
-Ovvero il vettore $ix$ è autovettore di $\phi$ con autovalore $-1$. Applicando due volte questo ragionamento si ottiene facilmente
-
-\[ V_+ \cong V_- \qquad (i V_+ = V_-)\]
-
-Per cui a questo punto abbiamo finito \qed
 
 
 
@@ -2891,20 +2870,6 @@ Basta ricordare che $\dim \End_G(V) = \langle\chi_\rho|\chi_\rho\rangle$ e la te
 dal teorema di Frobenius.
 \qed
 
-\begin{lemma}
-Sia $\rho:G\to GL(V)$ rappresentazione irriducibile su $\R$. Allora $\dim V^G = \langle\chi_\rho|\chi_1\rangle$
-\end{lemma}
-\textsc{Dimostrazione: }
-Definiamo un'applicazione lineare $R:V\to V$ nel seguente modo:
-\[ R = \frac{1}{|G|} \sum_{g\in G}{\rho(g)} \]
-Se prendiamo $v\in V$ e $s\in G$ allora
-\[ \rho(s) R(v) = \rho(s)\frac{1}{|G|} \sum_{g\in G}{\rho(g)v} = \frac{1}{|G|} \sum_{g\in G}{\rho(sg)v} = R(v)\]
-ovvero $R(v)\in V^G$.
-Inoltre se $w\in V^G$ allora $R(w)=w$. Di conseguenza $R^2 = R$ (cioè $R$ è una cosiddetta \emph{proiezione})
-e quindi $R$ si diagonalizza con autovalori $0$ e $1$. Inoltre l'autospazio relativo a $1$ è proprio $V^G$.
-Ciò implica che
-\[ \dim V^G = \tr(R) = \frac{1}{|G|} \sum_{g\in G}{\chi_\rho(g)} = \langle\chi_\rho|\chi_1\rangle \]
-\qed
 
 
 
