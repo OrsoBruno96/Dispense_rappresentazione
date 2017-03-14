@@ -3402,6 +3402,7 @@ Dopo aver studiato in dettaglio $\mathbb{S}^1$, vediamo come si comporta un suo 
  BISOGNA FINIRE DI SCRIVERE
 
  \begin{prop}
+   \label{prop:rapp su2}
    Le rappresentazioni irriducibili di $SU(2)$ sono tutte e sole le $\rho_m$ definite poco fa.
  \end{prop}
 
@@ -3523,6 +3524,7 @@ Dopo aver studiato in dettaglio $\mathbb{S}^1$, vediamo come si comporta un suo 
 
 
  \begin{thm}
+   \label{thm:ortogonalita compatto}
    Sia $G$ un gruppo compatto  e siano $\rho$ e $\sigma$ due sue rappresentazioni irriducibili. Allora vale
    \[
    \langle \chi_\rho | \chi_\sigma \rangle =
@@ -3533,35 +3535,187 @@ Dopo aver studiato in dettaglio $\mathbb{S}^1$, vediamo come si comporta un suo 
    \]
  \end{thm}
 
+ Per dimostrare il teorema appena enunciato ci servono un paio di lemmi:
+
+ \begin{lemma}
+   Siano $\rho: G \to GL(V)$ e $\sigma: G \to GL(W)$ due rappresentazioni\footnote{Non necessariamente irriducibili} di un gruppo compatto $G$ e sia $\phi \in \Hom(V, W)$ un omomorfismo di spazi vettoriali\footnote{Per gli amici, un'applicazione lineare.}. Allora possiamo definire un $\phi^G \in \Hom_G(V, W) $ nel seguente modo
+
+   \[ \langle \phi^G(v) | w \rangle = \dint_G \langle \sigma(g) \phi (\rho(g) v) | w\rangle dg\]
+
+   Dove $\langle \cdot | \cdot \rangle : W \times W \to \C$ è una forma hermitiana definita positiva.
+   
+ \end{lemma}
+
  \begin{proof}
-   DEVE FARLA GANDINI MARTEDÌ
+   Dobbiamo in sostanza dimostrare che l'omomorfismo che abbiamo definito è anche un omomorfismo di rappresentazioni, ovvero che è $G-$equivariante, in quanto la linearità è assicurata dal prodotto hermitiano. In formule, dobbiamo mostrare che
+   \[ \phi^G (\rho(g) v) = \sigma(g) \phi^G(v) \qquad \forall g \in G, \forall v \in V \Leftrightarrow \phi^G(v) = \sigma(g) ^{-1} \phi^G(\rho(g) v) \qquad \forall g \in G, \forall v \in V \]
+
+   In sostanza la tesi segue dalla definizione sfruttando il fatto che l'integrazione su $G$ sia invariante
 
 
+   \[ \langle \sigma(g) ^{-1} \phi^G(\rho(g) v) | w \rangle  = \dint_G \langle \sigma(hg) ^{-1} \phi^G(\rho(hg) v) | w \rangle dh = \langle \phi(v) | w \rangle\]
+
+   Dove ho saltato un paio di passaggi ma il succo è che essendo l'integrazione invariante per traslazioni di $G$, è evidente che l'oggetto definito in questo modo diventa invariante sotto $G$
  \end{proof}
+
+ \begin{lemma}
+   Siano $\rho: G \to V$ e $\sigma: G \to W$ rappresentazioni irriducibili di un gruppo compatto $G$ e sia $\phi \in \Hom(V, W)$. Allora
+
+   \[
+   \begin{cases}
+     \phi^G = 0 \qquad \text{se } \rho \ncong \sigma \\
+     \phi^G = \frac{\tr \phi}{dim V}Id_V \qquad \text{altrimenti} \\
+   \end{cases}
+   \]
+
+ \end{lemma}
+
+ \begin{proof}
+   Nel caso in cui le due rappresentazioni non siano isomorfe, la tesi segue banalmente dal lemma di Schur. Nell'altro caso, possiamo di nuovo usare Schur e dire che $V \cong W$ come spazi vettoriali, ma anche che in un certo senso sono lo stesso spazio, in quanto $\phi = \lambda Id$, sempre per Schur. L'unica cosa che rimane da mostrare è che vale proprio $\tr \phi^G = \tr \phi$. Per mostrarlo, possiamo fissare una base ortonormale di $V$, $\{ e_n\}_{n\in I}$ e notare che in questa base
+
+   \[ \tr(\psi) = \dsum_{n \in I}\langle \psi e_n | e_n \rangle \qquad \forall \psi \in \End(V)\]
+   Per cui,
+
+   \begin{align*} \tr \phi^G &= \dsum_{n \in I}\langle \phi^G e_n | e_n \rangle = \dsum_{n \in I} \dint_G \langle \rho(g)^{-1} \phi(\rho(g) e_n) | e_n \rangle dg = \\
+     &= \dsum_{n \in I}\dint_G \langle \phi(\rho(g) e_n) | \rho(g) e_n \rangle  dg = \dsum_{n \in I} \dint_G \langle \phi e_n |  e_n \rangle dg = \\
+     &= \dsum_{n\in I} \langle \phi e_n | e_n \rangle = \tr \phi
+   \end{align*}
+
+   
+ \end{proof}
+
+
+ \textsc{Dimostrazione del teorema \ref{thm:ortogonalita compatto}:}
+ Fissiamo una base ortonormale di $V$, $v_n$ e una base ortonormale di $W$, $w_n$. In base a quanto detto poco fa, avremo che
+
+ \begin{align*}
+   \langle \chi_\rho | \chi_\sigma \rangle &= \dint_G \chi_\rho(g) \overline{\chi_\sigma(g)} dg = \dint_G \tr(\rho(g)) \tr(\sigma(g)^{-1}) dg = \\
+   &= \dint_G \dsum_{i \in I} \left\langle \rho(g) v_i | v_i \rangle \dsum_{j \in J} \langle \sigma(g)^{-1} w_j | w_j \right\rangle dg = \\
+   &= \dsum_{i,j} \dint_G \langle \rho(g) \langle \sigma(g)^{-1} w_j | w_j \rangle v_i | v_i \rangle dg 
+ \end{align*} 
+
+ Se definiamo
+
+ \[ \phi_{ij} \in \Hom(W, V), \quad \phi(w) = \langle w | w_j \rangle v_i \]
+
+ e con quello che abbiamo fatto nel lemma poco sopra definiamo anche $\phi^G_{ij}$, possiamo notare che in effetti l'espressione poco sopra è proprio $\phi^G_{ij}$, ovvero
+
+ \begin{align*}
+   \langle \chi_\rho | \chi_\sigma \rangle = \dsum_{i,j} \langle \phi_{ij}^G v_i | w_j \rangle
+ \end{align*}
+
+ Se $\rho$ e $\sigma$ non sono isomorfe, allora si ha identicamente $\phi_{ij}^G = 0$ per ogni $i$ e $j$. Di conseguenza $\langle \chi_\rho | \chi_\sigma \rangle = 0$. Altrimenti, al solito posso identificare $V \cong W$ e possiamo usare l'altra parte del lemma precedente per dire che
+
+\begin{align*}
+   \langle \chi_\rho | \chi_\sigma \rangle = \dsum_{i,j} \langle \phi_{ij}^G v_i | v_j \rangle = \dsum_{i,j} \dfrac{\tr \phi_{ij}}{dimV} \langle v_i | v_j \rangle = \dsum_{i,j } \dfrac{\tr\phi_{ij}}{dimV} \delta_{ij} 
+ \end{align*}
+
+Tuttavia in sostanza la matriche che rappresenta $\phi_{ij}$ nelle base $v_i$ è evidentemente una matrice che ha tutti zeri tranne uno che è uno, esattamente nella posizione $(i,j)$, per cui
+
+
+\begin{align*}
+   \langle \chi_\rho | \chi_\sigma \rangle = \dsum_{i,j } \dfrac{\tr\phi_{ij}}{dimV} \delta_{ij} = \dsum_{i=j} \dfrac{1}{dimV} = 1
+ \end{align*}
+
+ \qed
+
+ \begin{cor}
+   Sia $G$ un gruppo compatto e $\rho$ una sua rappresentazione. Allora $\rho$ è irriducibile se e solo se $\langle \chi_\rho | \chi_\rho \rangle = 1$
+ \end{cor}
+
  
-
-
-
-
+ A questo punto possiamo concludere la dimostrazione del fatto che le rappresentazioni che abbiamo trovato prima di $SU(2)$ sono tutte e sole quelle irriducibili.
 
  
+ \begin{thm}
+   Sia $\rho$ una rappresentazione irriducibile di $SU(2)$. Allora $\exists m \in \N$ tale che $\rho \cong \rho_m$. Chiaramente le $\rho_m$ sono quelle definite nella proposizione \ref{prop:rapp su2}
+ \end{thm}
+
+ \begin{proof}
+   Supponiamo per assurdo che sia $\langle \chi_\rho | \chi_{\rho_m} \rangle = 0 \quad \forall m \in \N$. Vogliamo mostrare che deve essere $\rho = 0$. 
+
+
+   \begin{align*}
+     0 &= \langle \chi_\rho | \chi_{\rho_m} \rangle = \dint_G \chi_\rho(g) \overline{\chi_{\rho_m} (g)} dg = \\
+     &= \dfrac{1}{\pi} \dint_0^{2\pi} \chi_\rho(\theta) \dfrac{\sin((m+1)\theta)}{\sin\theta} \sin^2\theta  \ d\theta \\
+     &= \dfrac{1}{\pi} \dint_{0}^{2\pi} \left(\chi_\rho (\theta) \sin\theta \right) \sin(  (m+1) \theta) \ d\theta
+   \end{align*}
+
+   A questo punto possiamo ricordare che in realtà il carattere è una funzione di classe e in particolare si ha $\chi_\rho(\theta) = \chi_\rho(-\theta)$. La funzione $f(\theta) = \chi_\rho(\theta) \sin\theta \in C_\R[0,2\pi]$ è quindi dispari. Inoltre, è evidentemente anche $\mathbb{L}^2 [0,2\pi]$. Ma noi sappiamo dall'analisi che $\{\sin(nx)\}_{n\in \N}$ è una base delle funzioni dispari di $\mathbb{L}^2[0,2\pi]$. Di conseguenza si ha $f(\theta) = 0 \quad q.o.$, ma dato che è continua, $f(\theta) = 0$ identicamente. Per lo stesso motivo, si deve avere $\chi_\rho(\theta) = 0$
+   
+ \end{proof}
+
+
+ \newpage
+ \subsubsection{Le rappresentazioni irriducibili di $SO(3)$}
+
+ Abbiamo studiato in dettaglio due gruppi importanti, $\mathbb{S}^1$ e $SU(2)$. Sarebbe bello a questo punto sfruttare quello che abbiamo fatto per trovare le rappresentazioni di $SO(3)$, che ha notevole rilevanza fisica. In particolare, se riuscissimo a trovare un omomorfismo continuo $\phi$ da $SO(3)$ a $SU(2)$ potremmo notare sul seguente diagramma
+
+ \[
+ \begin{diagram}
+   SU(2)       & \rTo^{\rho_m}        & GL(V_m) \\
+   \uTo<{\phi} & \ruTo>{\hat{\rho}_m} & \\
+   SO(3)       &                      & \\
+ \end{diagram}
+ \]
+
+ \noindent che otteniamo gratis un sacco di rappresentazioni continue anche per $SO(3)$. Andiamo quindi a costruire questo omomorfismo.
+
+ \begin{defn}
+   Definiamo lo spazio vettoriale su $\R$, $\mathbb{E}$ in questo modo
+
+   \[ \mathbb{E } = \{ \text{Le matrici autoaggiunte a traccia nulla }\} = \left\{
+   \left(
+   \begin{array}{cc}
+     x_1 & x_2 + i x_3 \\
+     x_2 - i x_3 & -x_1 \\
+   \end{array}
+   \right)
+   \  \  x_i \in \R
+   \right\}\]
+
+ \end{defn}
+
+ Ci piacerebbe far agire in modo sensato $SU(2)$ su $\mathbb{E}$, sperando di vedere la struttura di $SO(3)$. Il primo tentativo può essere quello di definire
+
+ \[ \phi(g) x = gx \qquad \forall g \in SU(2) , x \in \mathbb{E}\]
+
+ Tuttavia questa azione non funziona in quanto non è per niente detto che la matrice in arrivo abbia di nuovo traccia nulla. Per mantenere la traccia invariata, la cosa più sensata da fare è agire per coniugio
+
+ \[ \phi(g) x = gxg^{-1} \qquad \forall g \in SU(2) , x \in \mathbb{E}\]
+
+ In questo caso è evidente che la matrice in arrivo ha traccia nulla. Controlliamo che sia anche autoaggiunta
+
+ \[ \left( \phi(g) x \right)^\dag = \left( g x g^{-1}\right)^\dag = (g^{-1})^\dag x^\dag g ^\dag = g x g^{-1} = \phi(g) x\]
+
+ In quanto $x$ è autoaggiunta e vale $g^{-1} = g^\dag \forall g \in SU(2)$. A questo punto se riuscissimo a trovare un prodotto scalare invariante sotto l'azione di $SU(2)$ potremmo dire di aver in qualche modo mappato $SU(2)$ in $O(3)$ e ci staremmo avvicinando all'obiettivo. In particolare notiamo che la funzione
+
+ \[ f(x) = -det (x) = x_1 ^2 + x_2^2 + x_3^2 \qquad \forall x \in \mathbb{E}\]
+
+ È in effetti una forma quadratica definita positiva su $\mathbb{E} \cong \R^3$ ed è anche invariante sotto $SU(2)$ in sostanza per la formula di Binet. Abbiamo quindi definito $\phi: SU(2) \in O(3)$ che è in sostanza un omomorfismo continuo di gruppi compatti. Inoltre, dato che $SU(2)$ è connesso, anche $\phi(SU(2))$ sarà connesso e conterrà l'identità. Per questo motivo possiamo quindi dire che
+
+ \[ \phi(SU(2)) \subseteq SO(3) \] 
+
+ A questo punto, è decisamente il caso di capire meglio come $\phi$ mappi un gruppo nell'altro in modo da sfruttare quello che sappiamo per uno anche per l'altro.
 
 
 
+\begin{lemma}
+  \begin{enumerate}
+    \item L'omomorfismo $\phi : SU(2) \to SO(3)$ sopra definito è surgettivo. 
+    \item Il nucleo dell'omomorfismo $\phi$ è composto da solo due matrici in $SU(2)$
+    \item
+      \[ SU(2) / Ker(\phi) \cong SO(3) \]
+  \end{enumerate}
+  \end{lemma}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ \begin{proof}
+   \begin{enumerate}
+     \item{}
+     \item{}
+     \item La tesi segue dalle proposizioni precedenti applicate insieme al primo teorema di omomorfismo.
+   \end{enumerate}
+   \end{proof}
  
 
 \end{document}
