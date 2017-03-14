@@ -964,7 +964,10 @@ Sia $f: V \to V$ un endomorfismo di uno spazio vettoriale. Allora vale
 \end{prop}
 
 
-
+\textbf{Dimostrazione:} siano $e_1,..,e_n$ una base di $V$ allora $\exists a_{ij}: f(e_j)=\sum_i a_{ij}e_i$. Se $i<j$
+\[ e_i\wedge e_j\rightarrow \bigwedge^2f(e_i\wedge e_j)=f(e_i)\wedge f(e_j)=(\sum_k a_{ki}e_k)\wedge(\sum_l a_{lj}e_l)=\sum_{k,l}a_{ki}a_{lj}(e_k\wedge e_l)=\sum_{k<l}(a_{ki}a_{lj}-a_{li}a_{kj})(e_k\wedge e_l)\]
+\[\Rightarrow tr(\bigwedge^2f)=\sum_{i<j}(a_{ii}a_{jj}-a_{ij}a_{ji})=\frac{1}{2}\sum_{i,j}(a_{ii}a_{jj}-a_{ij}a_{ji})= \dfrac{(\tr(f))^2 - \tr(f^2)}{2} \]
+Per $S^2f$ si dimostra in maniera analoga. \qed
 
 
 
@@ -1590,7 +1593,7 @@ Vediamo delle proprietà elementari del carattere
 	Questo è vero poichè $[\rho_1]=I_n\Rightarrow \tr(\rho_1)=n$ ed $n=deg(\rho)$.
 	\item $\chi_{\rho + \sigma}(s) = \chi_\rho(s) + \chi_\sigma(s)$.\\ 
 	Questo è dovuto al fatto che la somma di rappresentazioni si può scrivere come matrice a blocchi. Una volta scritto così è evidente il risultato.
-	\item $\chi_{\rho\sigma}(s) = \chi_\rho(s)\chi_\sigma(s)$.\\ 
+	\item $\chi_{\rho\sigma}(s) = \chi_\rho(s)\chi_\sigma(s)$. In particolare dunque $\chi_{\rho^2}=(\chi_\rho)^2$.\\ 
 	Questo deriva immediatamente dal teorema \ref{thm: tracciaprodotto}.
 	\item $\chi_{\rho}(s^{-1})=\overline{\chi_{\rho}(s)}$\\
 Essendo $G$ un gruppo finito, $\forall s\in G\ \rho(s)^n = id$ dove $n=|G|$: dunque tutti gli autovalori di $\rho(s)$ sono radici ennesime dell'unità e $\rho(s)$ è diagonalizzabile\footnote{Si veda la proposizione \ref{prop:diagonalizzabilita rappresentazioni}}. In tale base è evidente che:
@@ -1757,11 +1760,9 @@ Quindi ottengo una conferma del teorema precedente
 \end{itemize}
 
 
-
-
 \begin{cor}[Corollario del lemma \ref{lemma relazioni ortogonalita}: Lemma di Burnside]
 
-Consideriamo un'azione di un gruppo $G$ su un insieme $I$ e consideriamo una rappresentazione dell'azione di $G$, $(\rho_I, V_{\rho_I})$. Consideriamo
+Consideriamo un'azione di un gruppo $G$ su un insieme $I$ e consideriamo la rappresentazione per permutazioni corrispondente $(\rho_I, V_{\rho_I})$. Consideriamo
 
 \[\langle \chi_{\rho_I} | 1 \rangle = \dfrac{1}{|G|} \dsum_{s\in G} tr \rho_I(s)\]
 
@@ -1769,7 +1770,10 @@ Ma è ovvio che
 
 \[tr \rho_I(s) = |I^s| \qquad I^s = \{ i \in I | s \cdot i = i\} \]
 
-Per cui lo spazio $V_{\rho_I}^G = \{\dsum a_i e_i | \text{Alcune condizioni}\}$ sarà composto da i vettori che hanno i coefficienti $a_i$ costanti su ciascuna orbita di $G$ su $I$, proprio per lasciarlo invariante. Perciò 
+Per cui lo spazio 
+\[V_{\rho_I}^G = \{v\in V_{\rho_I}:\rho_I(s)v=v\ \forall s\in G\}=\{\sum_i a_i e_i :\rho_I(\sum_i a_i e_i)=\sum_i a_i e_i\ \forall s\in G\}=\]
+\[ =\{\sum_i a_i e_i :\sum_i a_i e_{s\circ i}=\sum_i a_i e_i\ \forall s\in G\}=\{ \sum_i a_i e_i: \sum_i (a_{s^{-1}\circ i}-a_i)e_i=0\ \forall s\in G \}\]
+sarà composto da i vettori che hanno i coefficienti $a_i$ costanti su ciascuna orbita di $G$ su $I$, proprio per lasciarlo invariante. Perciò 
 
 \[ dimV_{\rho_I}^G = \text{numero delle orbite } = |I/G|\]
 
@@ -1779,6 +1783,9 @@ E con l'affermazione precedente si ottiene appunto il lemma di Burnside
 
 \qed
 \end{cor}
+
+
+
 
 
 
