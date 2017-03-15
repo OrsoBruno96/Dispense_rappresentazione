@@ -2422,8 +2422,8 @@ in modo naturale una rappresentazione $\rho^\R:G\to GL(V^\R)$, in cui gli il gru
 agisce sullo spazio vettoriale esattamente come nella rappresentazione $\rho$ (se $G$ agisce 
 in modo $\C-$lineare, a maggior ragione l'azione è $\R-$lineare).
 
-Il fatto che $\rho$ sia una rappresentazione reale è equivalente a chiedere l'esistenza di un sottospazio $V_0 \subset V^\R$ che sia stabile sotto l'azione di $G$ e che abbia dimensione $n$. Cioè è possibile scomporre $V^\R$ come somma di sottorappresentazioni:
-\[ V^\R = V_0 \oplus i V_0 = \C \otimes V_0 \]
+Il fatto che $\rho$ sia una rappresentazione reale è equivalente a chiedere l'esistenza di un sottospazio reale $V_0 \subset V^\R$ che sia stabile sotto l'azione di $G$ e che abbia dimensione $n$. Cioè è possibile scomporre $V^\R$ come somma di sottorappresentazioni:
+\[ V^\R = V_0 \oplus i V_0 \]
 
 \begin{exmp}
 Prendiamo come gruppo un gruppo ciclico, per esempio $\Z / 3\Z$\footnote{Che per i fisici è isomorfo a $C_3$}. Evidentemente tutte le rappresentazioni non banali di $G$ non sono reali, in quanto sono di grado 1 e sono le radici dell'unità.
@@ -2628,6 +2628,36 @@ e quindi $R$ si diagonalizza con autovalori $0$ e $1$. Inoltre l'autospazio rela
 Ciò implica che
 \[ \dim V^G = \tr(R) = \frac{1}{|G|} \sum_{g\in G}{\chi_\rho(g)} = \langle\chi_\rho|\chi_1\rangle \]
 \end{proof}
+
+\begin{lemma} $\rho:G\rightarrow GL(V)$ rappresentazione irrid. $/_\C$: allora $\chi_\rho$ è reale sse $\rho$ è una rappresentazione reale o quaternionica. 
+\end{lemma}
+\textbf{Dimostrazione:} Abbiamo visto prima che $(V^*\otimes V^*)^G\neq 0\Rightarrow \chi_\rho=\chi_{\rho^*}\Rightarrow \chi_\rho$ è reale, e se $\rho$ è reale o quaternionica ha proprio $(V^*\otimes V^*)^G$ diverno da $0$. Viceversa $\chi_\rho$ reale implica $\chi_\rho=\chi_{\rho^*}$. D'altra parte dato che $\rho$ e $\rho^*$ sono entrambe rappresentazioni irriducibili allora $\rho\cong\rho^*\Leftrightarrow \chi_\rho =\chi_{\rho^*}$. Ciò significa che $Hom_G(V,V^*)\neq 0\Rightarrow \exists B\in (V^*\otimes V^*)^G\Rightarrow \rho$ può essere solo reale o quaternionica.\qed
+\\ \\
+\textbf{Esercizi:}
+\begin{enumerate}
+\item Mostrare che tutte le rappr. irrid. $/_\C$ si $S_4$ sono reali.
+\item $G$ gruppo ciclico di ordine dispari: allora le rappresentazioni non banali sono complesse.
+\end{enumerate} 
+
+\begin{thm}
+Sia $\rho:G\rightarrow GL(V)$ rappresentazione irrid. $/_\R$: allora $\exists \sigma:G\rightarrow GL(V_{\sigma})$ rappr. irrid. $/_\C$ tale che è vera una delle seguenti affermazioni:
+\begin{enumerate}
+\item $\chi_\rho=\chi_\sigma$;
+\item $\chi_\rho=\chi_\sigma+\chi_{\sigma^*}$;
+\item $\chi_\rho= 2\chi_\sigma$.
+\end{enumerate}
+\end{thm}
+
+\textbf{Dimostrazione:} Definisco $V^\C=\C\otimes V$ la complessificazione di $V$ (è semplicemente $V$ visto però come spazio vettoriale su $\C$). Vi sono due casi:
+\begin{enumerate}
+\item $\rho:G\rightarrow GL(V^\C)$ (che chiamiamo $\rho^\C$ solo per ricordardi che $V$ è visto come spazio vettoriale sui complessi) è una rappr. irrid. $/_C$;
+\item $\rho^\C:G\rightarrow GL(V^\C)$ è una rappr. rid. $/_C$.
+\end{enumerate}
+Se siamo nel primo caso $\sigma=\rho^\C$ è irrid. $/_\C$ e ovviamente $\chi_\rho=\chi_{\rho^\C}$.\\ 
+Se siamo nel secondo caso allora $V^\C=U\bigoplus W$ con $U$ e $W$ sottospazi $G-$invarianti. Quindi $\rho^\C=\rho_U+\rho_W$. Passiamo ora alla loro realificazione: $(\rho_\C)^\R=$
+DEVO FINIRE  
+
+
 
 
 \subsection{Quaternioni}
@@ -2915,7 +2945,7 @@ sempre nel senso che se prendo $\{e_g\}_{g\in G}$ una base di $\C[G]$ e $\{w_i\}
 Torniamo a $\rho_{ind}$: ricapitolando $\rho_{ind}:G\mapsto GL(Ind_H^G)$ tale che $g\mapsto \rho_{ind}(g)$ dove $\rho_{ind}(g)f(g')=f(g^{-1}g')$. Vediamo ora un po' delle sue caratteristiche. Poniamo per snellire la scrittura $V=Ind_H^G(W)$. Ricordandoci il nostro aim, di certo vogliamo che $W$ sia un sottospazio di $V$.
 
 \begin{defn}
-Data $f\in \{f:\C\rightarrow W\}$ (che contiene $V$) definiamo il supporto di $f$ 
+Data $f\in \{f:G\rightarrow W\}$ (che contiene $V$) definiamo il supporto di $f$ 
 
 \[Supp(f)=\{f\in G:f(g)\neq 0\}.\]
 \end{defn}
@@ -3034,7 +3064,7 @@ Sia $\rho:H\rightarrow GL(W)$ una rappresentazione di $H$ e sia $\sigma:G\righta
 \[Hom_H(W,Res_H^G(U))\cong Hom_G(Ind_H^G(W),U)\]
 ovvero che ogni $\phi:W\rightarrow Res_H^G(U)$ omomorfismo di $H-$rappresentazione si estende in modo unico a un $\overset{\sim}{\phi}:Ind_H^G(W)\rightarrow U$ omomorfismo di $G-$rappresentazione
 \end{thm}
-\textsc{Dimostrazione:} sia $\phi:W\rightarrow Res_H^G(U)$ un omomorfismo di $H-$rappresentazione e sia $V:=Ind_H^G(W)=\bigotimes_{i=1}^{\#-orbite} \rho_{ind}(g_i)V_{eH}$. Essendo $V_{eH}\cong W$ come $H-$rappresentazioni, allora $\phi:V_{eH}\rightarrow Res_H^G(U)$: voglio estenderlo a $V$. Essendo $V$ definito come una somma diretta è sufficiente definire l'omomorfismo sui blocchi e per questo considero $V_{g_iH}$: ho che
+\textsc{Dimostrazione:} sia $\phi:W\rightarrow Res_H^G(U)$ un omomorfismo di $H-$rappresentazione e sia $V:=Ind_H^G(W)=\bigoplus_{i=1}^{\#-orbite} \rho_{ind}(g_i)V_{eH}$. Essendo $V_{eH}\cong W$ come $H-$rappresentazioni, allora $\phi:V_{eH}\rightarrow Res_H^G(U)$: voglio estenderlo a $V$. Essendo $V$ definito come una somma diretta è sufficiente definire l'omomorfismo sui blocchi e per questo considero $V_{g_iH}$: ho che
 \[V_{g_iH}\overset{\rho_{g_i^{-1}}}{\rightarrow} V_{eH}\overset{\phi}{\rightarrow} Res_H^G(U)\overset{\sigma(g)}{\rightarrow} U\Rightarrow \sigma(g)\phi\rho_{ind}(g_i^{-1}):V_{g_iH}\rightarrow U\] 
 Incollando tutte queste applicazioni ottengo $\overset{\sim}{\phi}:Ind_H^G(W)\rightarrow U$ dove
 $\overset{\sim}{\phi}(v)=\sigma_{g}\circ \phi\circ \rho_{ind}(g^{-1})(v)$ con $v\in V_{gH}$. Si verifica che $\overset{\sim}{\phi}\in Hom_G(Ind_H^G(W),U)$. \\
