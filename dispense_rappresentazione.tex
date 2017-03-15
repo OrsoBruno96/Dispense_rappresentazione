@@ -3269,11 +3269,11 @@ Facciamo alcuni esempi
 Per chiarirci le idee, andremo a studiare nel dettaglio un gruppo particolare, ovvero $\mathbb{S}^1$, che è ovviamente isomorfo a $SO_2(\R)$. Cerchiamo quindi innanzitutto le sue rappresentazioni irriducibili su spazi di dimensione finita sui complessi. 
 
 \begin{lemma}
-Tutte le rappr. irrid. $/_\C$ di un gruppo compatto abeliano $G$ hanno dimensione 1. Di conseguenza, essendo $\mathbb{S}^1$ un gruppo compatto abeliano, tutte le rappresentazioni di $S^1$ irriducibili su uno spazio vettoriale complesso hanno dimensione 1.
+Tutte le rappr. irrid. $/_\C$ di un gruppo compatto abeliano $G$ hanno dimensione 1. Di conseguenza, essendo $\mathbb{S}^1$ un gruppo compatto abeliano, tutte le rappresentazioni di $\mathbb{S}^1$ irriducibili su uno spazio vettoriale complesso hanno dimensione 1.
 \end{lemma}
 \textbf{Dimostrazione:} $G$ è un gruppo compatto abeliano e sia $\rho:G\rightarrow GL(V)$ con $V$ $\C-$sp. vettoriale: quindi
 \[ gh = hg \qquad \forall g,h \in G \ \Rightarrow\ \rho(g)\rho(h) = \rho(h)\rho(g) \qquad \forall g, h \in G\]
-Il che vuol dire che, fissato $h$, $\rho(h)$ è un'omomorfismo di rappresentazioni irriducibili su $\C$, ovvero appartiene a $End_{S^1}(V)$ proprio perchè commuta con $\rho(g)$ per tutte le $g$. Sia $\lambda$ un autovalore di $\rho(h)$ (esiste perchè siamo su $\C$): allora $\rho(g)-\lambda Id\in End_{S^1}(V)$ e ha un nucleo $\Rightarrow$ per Schur il nucleo coincide con $V$ essendo $V$ irriducibile. Allora $\rho(h) \equiv \lambda(h) Id$. Quello che abbiamo fatto vale per ogni $h \in G$, per cui tutti i $\rho(g) $ sono in realtà scalari. Questo ci dice che ogni base di $V$ è una base di autovettori per $\rho(g)\ \forall g\in G$ e quindi ogni autospazio è $G-$invariante. Dunque le rappresentazioni irriducibili di $G$ sono tutte di grado 1.\qed
+Il che vuol dire che, fissato $h$, $\rho(h)$ è un'omomorfismo di rappresentazioni irriducibili su $\C$, ovvero appartiene a $End_{\mathbb{S}^1}(V)$ proprio perchè commuta con $\rho(g)$ per tutte le $g$. Sia $\lambda$ un autovalore di $\rho(h)$ (esiste perchè siamo su $\C$): allora $\rho(g)-\lambda Id\in End_{\mathbb{S}^1}(V)$ e ha un nucleo $\Rightarrow$ per Schur il nucleo coincide con $V$ essendo $V$ irriducibile. Allora $\rho(h) \equiv \lambda(h) Id$. Quello che abbiamo fatto vale per ogni $h \in G$, per cui tutti i $\rho(g) $ sono in realtà scalari. Questo ci dice che ogni base di $V$ è una base di autovettori per $\rho(g)\ \forall g\in G$ e quindi ogni autospazio è $G-$invariante. Dunque le rappresentazioni irriducibili di $G$ sono tutte di grado 1.\qed
 
 
 \begin{prop} Le rappresentazioni irriducibili di $\mathbb{S}^1$ sono tutte e sole le $\rho_n:\mathbb{S}^1\to\C^*$ definite, al variare da $n$ in $\Z$, nel seguente modo:
@@ -3413,7 +3413,7 @@ Dopo aver studiato in dettaglio $\mathbb{S}^1$, vediamo come si comporta un suo 
  L'invarianza dell'integrazione sotto l'azione di $G$ deriva sostanzialmente dal fatto che quando si cambia variabili bisogna moltiplicare l'integrando per il determinante dello Jacobiano. Tuttavia $det(SU(2)) = 1$ e quindi non ci sono problemi.
 
 
- Vediamo ora le rappresentazioni di classificare tutte le rappresentazioni irriducibili di $SU(2)$. Consideriamo per esempio un'azione di $SU(2)$ sullo spazio $V_m = \C[xy]_m$ dei polinomi omogenei su $\C$ si grado $m$ definita in questo modo 
+ Vediamo ora di classificare tutte le rappresentazioni irriducibili di $SU(2)$. Consideriamo per esempio un'azione di $SU(2)$ sullo spazio $V_m = \C[x,y]_m$ dei polinomi omogenei su $\C$ di grado $m$ definita in questo modo 
 
  \[
  \rho_m(A) f(x, y) = f(a_{11} x + a_{21} y , a_{12} x + a_{22} y) \qquad \forall f \in V_m, \forall A \in SU(2)
@@ -3440,7 +3440,6 @@ Dopo aver studiato in dettaglio $\mathbb{S}^1$, vediamo come si comporta un suo 
 
  Per cui abbiamo avuto un grosso colpo di fortuna in quanto abbiamo sparato una base a caso ed è già di autovettori per il sottogruppo che stiamo guardando.
 
- BISOGNA FINIRE DI SCRIVERE
 
  \begin{prop}
    \label{prop:rapp su2}
