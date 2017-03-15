@@ -3235,7 +3235,12 @@ $(G, \cdot, \tau)$ si dice compatto se $(G, \tau)$ è compatto.
 Facciamo un po' di esempi di gruppi compatti che andremo a trattare
 \begin{itemize}
 \item I gruppi finiti, con la topologia discreta.
-\item I gruppi $O_n, SO_n, U_n, SU_n$
+\item I gruppi $O_n, SO_n, U_n, SU_n$: dimostriamo che effettivamente lo sono (lo dimostriamo per $O_n$ perchè per $U_n$ la dimostrazione è analoga e gli altri sono sottogruppi).
+Se $G\subseteq \R^m$ dotato della topologia euclidea indotta allora
+\[G\ \text{compatto}\ \Leftrightarrow G\ \text{è chiuso in}\ \R^m\ \text{e limitato}\]
+Considero $O_n(\R)\subseteq \R^{n^2}$: esso è così descritto
+\[O_n(\R)=\{A\in M_n(\R):\ A^tA=I\}=\{A\in M_n(\R):\ \sum_{h=1}^{n}a_{ih}a_{jh}=\delta_{ij}\ \forall i,j=1,..,n\}\]
+$\Rightarrow O_n$ è chiuso poichè descritto da equazioni (risulta essere l'intersezione finita di cotroimmagini di chiusi $\{1\},\{0\}$). Inoltre per $i=j\Rightarrow \sum_{h=1}^n a_{ih}^2=1\Rightarrow |a_{ij}|\leq 1\ \forall i,j\Rightarrow O_n$ è limitato.
 \end{itemize}
 
 In particolare può essere utile notare alcuni fatti noti che possono aiutare, cioé
@@ -3260,17 +3265,15 @@ Facciamo alcuni esempi
 
 
 
-\begin{exmp}
+\subsection{Le rappresentazioni di $\mathbb{S}^1$}
 Per chiarirci le idee, andremo a studiare nel dettaglio un gruppo particolare, ovvero $\mathbb{S}^1$, che è ovviamente isomorfo a $SO_2(\R)$. Cerchiamo quindi innanzitutto le sue rappresentazioni irriducibili su spazi di dimensione finita sui complessi. 
-\end{exmp}
 
-
-\textsc{Osservazione:}
-Possiamo rapidamente notare che in questo caso la situazione è semplice, in quanto il gruppo è abeliano. Per questo motivo, 
-\[ gh = hg \qquad \forall g,h \in G \]
-e quindi 
-\[ \rho(g)\rho(h) = \rho(h)\rho(g) \qquad \forall g, h \in G\]
-Il che vuol dire che, fissato $h$, $\rho(h)$ è un'omomorfismo di rappresentazioni irriducibili su $\C$. Possiamo allora applicare la versione forte di Schur e dire che $\rho(h) = \lambda(h) Id$ per qualche $\lambda \in \C$. Tuttavia quello che abbiamo fatto vale per ogni $h \in G$, per cui tutti i $\rho(g) $ sono in realtà scalari. Questo ci dice che le rappresentazioni irriducibili di $\mathbb{S}^1$ sono tutte di grado 1. A questo punto il nostro obiettivo è trovarle.
+\begin{lemma}
+Tutte le rappr. irrid. $/_\C$ di un gruppo compatto abeliano $G$ hanno dimensione 1. Di conseguenza, essendo $\mathbb{S}^1$ un gruppo compatto abeliano, tutte le rappresentazioni di $S^1$ irriducibili su uno spazio vettoriale complesso hanno dimensione 1.
+\end{lemma}
+\textbf{Dimostrazione:} $G$ è un gruppo compatto abeliano e sia $\rho:G\rightarrow GL(V)$ con $V$ $\C-$sp. vettoriale: quindi
+\[ gh = hg \qquad \forall g,h \in G \ \Rightarrow\ \rho(g)\rho(h) = \rho(h)\rho(g) \qquad \forall g, h \in G\]
+Il che vuol dire che, fissato $h$, $\rho(h)$ è un'omomorfismo di rappresentazioni irriducibili su $\C$, ovvero appartiene a $End_{S^1}(V)$ proprio perchè commuta con $\rho(g)$ per tutte le $g$. Sia $\lambda$ un autovalore di $\rho(h)$ (esiste perchè siamo su $\C$): allora $\rho(g)-\lambda Id\in End_{S^1}(V)$ e ha un nucleo $\Rightarrow$ per Schur il nucleo coincide con $V$ essendo $V$ irriducibile. Allora $\rho(h) \equiv \lambda(h) Id$. Quello che abbiamo fatto vale per ogni $h \in G$, per cui tutti i $\rho(g) $ sono in realtà scalari. Questo ci dice che ogni base di $V$ è una base di autovettori per $\rho(g)\ \forall g\in G$ e quindi ogni autospazio è $G-$invariante. Dunque le rappresentazioni irriducibili di $G$ sono tutte di grado 1.\qed
 
 
 \begin{prop} Le rappresentazioni irriducibili di $\mathbb{S}^1$ sono tutte e sole le $\rho_n:\mathbb{S}^1\to\C^*$ definite, al variare da $n$ in $\Z$, nel seguente modo:
@@ -3283,14 +3286,14 @@ Innanzitutto notiamo che le $\rho_n$ definite nell'enunciato sono effettivamente
 
 Sappiamo che le rappresentazioni irriducibili dovranno avere dimensione $1$, per cui saranno omomorfismi $\rho:\mathbb{S}^1\to\C^*$. Inoltre dovrà per forza essere $|\rho(z)| = 1 \quad \forall z \in \mathbb{S}^1$. Questo si dimostra abbastanza facilmente. Supponiamo per assurdo infatti che si abbia
 \[ |\rho(x)| > 1\]
-per qualche $x$. Allora anche $\rho(x)^n$ farebbe parte di $\rho(G)$. Tuttavia qui c'è un assurdo in quanto $\rho(G)$ è compatto perché la rappresentazione è continua, mentre $\rho(x)^n$ non è limitato. Se invece per assurdo fosse $|\rho(x)| < 1$ si potrebbe usare lo stesso argomento notando che $|\rho(x^{-1})| > 1$.
+per qualche $x$. Allora anche $\rho(x)^n$ farebbe parte di $\rho(G)$. Tuttavia qui c'è un assurdo in quanto $\rho(G)$ è compatto perché la rappresentazione è continua (compatti vanno in compatti), mentre $\rho(x)^n$ non è limitato. Se invece per assurdo fosse $|\rho(x)| < 1$ si potrebbe usare lo stesso argomento notando che $|\rho(x^{-1})| > 1$.
 Di conseguenza sappiamo che $\rho(\mathbb{S}^1) \subseteq \mathbb{S}^1$.
 Consideriamo ora la mappa
 \begin{align*} 
 \phi : (\R, +) &\to \mathbb{S}^1 \\
 x &\to  e^{ix}
 \end{align*}
-che è evidentemente continua ed è omomorfismo di gruppi.
+che è evidentemente continua ed è omomorfismo di gruppi (è un rivestimento).
 Sia $\hat\rho$ l'applicazione che fa commutare il seguente diagramma:
 \[\tridiag \R \phi {\mathbb{S}^1} \rho {\mathbb{S}^1} {\hat\rho}\]
 Essendo composizione di omomorfismi continui, anche $\hat\rho$ è omomorfismo continuo. Si può dimostrare (ma non lo facciamo in questa sede) che esiste un'applicazione continua $\theta:\R\to\R$ che fa commutare il diagramma:
@@ -3302,20 +3305,20 @@ Essendo composizione di omomorfismi continui, anche $\hat\rho$ è omomorfismo co
     \R          &  \rTo_{\phi}          & \mathbb{S}^1           \\
 \end{diagram}
 \]
-A questo punto $\theta(0)$ deve essere un multiplo intero di $2\pi$, visto che deve risultare $e^{i\theta(0)} = \hat\rho(0) = 1$.
+Ovvero che fattorizza $\hat\rho=\phi\theta$. A questo punto $\theta(0)$ deve essere un multiplo intero di $2\pi$, visto che deve risultare $e^{i\theta(0)} = \hat\rho(0) = 1$.
 Quindi, a meno di traslare $\theta$ di un multiplo intero di $2\pi$ (il che non interferisce con la commutatività del diagramma), possiamo assumere $\theta(0) = 0$. Dati $x,y$ reali deve valere
-\[ e^{i\theta(x+y)} = \hat \rho(x+y) = \hat \rho(x ) \hat \rho(y) = e^{i\theta(x)} e^{i \theta(y)}\]
+\[ e^{i\theta(x+y)} = \hat \rho(x+y) = \hat \rho(x )+ \hat \rho(y) = e^{i\theta(x)+i \theta(y)}\]
 per cui deve essere
 \[ \theta(x+y) - \theta(x) - \theta(y) \in 2\pi \Z \qquad \forall x, y \in \R \]
-Ma visto che $\theta$ è continua l'espressione sopra deve essere necessariamente costante al variare di $x$ e $y$. Ponendo $x=y=0$ ricaviamo che tale costante è $0$, dunque
+Ma visto che $\theta$ è continua l'espressione sopra deve essere necessariamente costante al variare di $x$ e $y$. Ponendo $x=y=0$ ricaviamo che tale costante è $-\theta(0)=0$, dunque
 \[ \theta(x + y) = \theta(x ) + \theta (y) \qquad \forall x,y\in \R\]
-A questo punto si osserva (sfruttando la continuità di $\theta$) che deve essere $\theta(x) = \alpha x$, con $\alpha \in \R$. Non solo, possiamo dare delle informazioni a riguardo di $\alpha$. Infatti, dato che $\hat\rho$ è ``periodico'', deve essere
-\[ 1 = \hat\rho(0) = \hat\rho(2\pi) = e^{i\alpha 2\pi}\]
-per cui in realtà si ha $\alpha \in \Z$. 
+A questo punto si osserva (sfruttando la continuità di $\theta$) che deve essere $\theta(x) = \theta(1) x$, con $\alpha \in \R$. Non solo, possiamo dare delle informazioni a riguardo di $\theta(1)$. Infatti, dato che $\hat\rho$ è ``periodico'', deve essere
+\[ 1 = \hat\rho(0) = \hat\rho(2\pi) = e^{i\theta(1) 2\pi}\]
+per cui in realtà si ha $\theta(1) \in \Z$. 
 Ricapitolando, abbiamo mostrato che per ogni $x\in\R$ vale che
-\[e^{i 2\alpha\pi x} = \rho(e^{ix}) \]
-dove $\alpha$ è un intero fissato. Ovvero per ogni $z\in\mathbb{S}^1$ vale
-\[ \rho_\alpha(z) = z^\alpha = \rho(z) \]
+\[e^{i 2\pi\theta(1)x} = \rho(e^{ix}) \]
+dove $\theta(1)$ è un intero fissato. Ovvero per ogni $z\in\mathbb{S}^1$ vale
+\[ \rho_{\theta(1)}(z) = z^{\theta(1)} = \rho(z) \]
 che è quello che volevamo mostrare.
 \qed
 
@@ -3369,8 +3372,9 @@ Se questa integrazione esiste, allora in analogia a quanto fatto per i gruppi fi
 Per ogni gruppo compatto esiste l'integrazione invariante. 
 \end{thm}
 
-Di questo teorema non daremo la dimostrazione in questo corso. 
+Di questo teorema non daremo la dimostrazione in questo corso. \\
 
+\textbf{Esempi:}
 
 
 
@@ -3387,7 +3391,7 @@ Di questo teorema non daremo la dimostrazione in questo corso.
 
 
 \newpage
-\subsubsection{Le rappresentazioni di $SU(2)$}
+\subsection{Le rappresentazioni di $SU(2)$}
 
 
 
