@@ -3344,6 +3344,17 @@ A questo punto, in analogia con quello che abbiamo fatto con i prodotti finiti, 
 Se questa integrazione esiste, allora in analogia a quanto fatto per i gruppi finiti possiamo sperare che le rappresentazioni di un gruppo compatto siano completamente irriducibili.
 
 
+\textbf{Esempi:}
+\begin{enumerate}
+\item Nel caso dei gruppi finiti $I(f)=\frac{1}{|G|}\sum_{g\in G}f(g)$ è una integrazione invariante.
+\item Definiamone esplicitamente una su $\mathbb{S}^1$ 
+\[\dint_{\mathbb{S}^1}f(g)\ dg:=\frac{1}{2\pi}\dint_0^{2\pi}f(e^{i\theta})\ d\theta\]
+Le verifiche che sia una integrazione a tutti gl effetti sono banali: infatti che sia lineare e la positività derivano dalle proprietà dell'integrazione su $\R$ e l'invarianza deriva dal fatto che far agire $\mathbb{S}^1$ significa solo ruotare di un angolo ovvero riparametrizzare la circonferenza.
+Il diviso $2\pi$ è dovuto al fatto che vogliamo in generale avere una integrazione invariante normalizzata ovvero
+\[\dint_{\mathbb{S}^1}1\ dg=1\]
+Nel caso dei gruppi finiti dividevamo per la cardinalità del gruppo: ora che si parla di gruppi compatti possiamo immaginare che si divida per la "misura" del gruppo. 
+\end{enumerate}
+
 \begin{lemma}
   Se esiste l'integrazione invariante su un gruppo, allora esiste una forma hermitiana definita positiva invariante sotto l'azione del gruppo.
 \end{lemma}
@@ -3374,13 +3385,26 @@ Per ogni gruppo compatto esiste l'integrazione invariante.
 
 Di questo teorema non daremo la dimostrazione in questo corso. \\
 
-\textbf{Esempi:}
+Definiamo ora in $\C(\mathbb{S}^1)$ un prodotto hermitiano come segue
+\[(f_1,f_2):=\dint_{\mathbb{S}^1}f_1(g)\overline{f_2(g)}\ dg\]
+\'E una buona definizione ed è $\mathbb{S}^1$ invariante.\\
+\textbf{Osservazione:} 
+\[(\rho_n,\rho_m)=\dint_{\mathbb{S}^1}\rho_n(g)\overline{\rho_m(g)}\ dg=\frac{1}{2\pi}\dint_0^{2\pi}e^{in\theta}e^{-im\theta}\ d\theta=\frac{1}{2\pi}\dint_0^{2\pi}e^{i\theta (n-m)}\ d\theta \]
+\[\Rightarrow (\rho_n,\rho_m)=\left\{\begin{matrix}
+1 & n=m\\ 
+1 & n\neq m
+\end{matrix}\right.\Rightarrow (\rho_n,\rho_m)=\left\{\begin{matrix}
+1 & \rho_n\cong \rho_m\\ 
+1 & \rho_n\not{\cong} \rho_m
+\end{matrix}\right.\]
+ovvero $\{\rho_n\}_{n\in \N}$ formano un sistema ortonormale.
 
+\textbf{Corollario:} Sia $\rho: \mathbb{S}^1\rightarrow GL(V)$ una rappresentazione: allora
+\[\rho\cong \sum_n a_n\rho_n\ \ \text{con}\ n\in \N\ \text{ed}\ a_n\in \Z\]
+Più precisamente $a_n=(\rho,\rho_n)$.
+\\
 
-
-
-
-
+MANCA LA PARTE IN CUI PARLAVA DI FOURIER
 
 
 
@@ -3402,54 +3426,65 @@ Dopo aver studiato in dettaglio $\mathbb{S}^1$, vediamo come si comporta un suo 
  È abbastanza naturale considerare $\C^2 \cong \R^4$ e accorgersi che in sostanza $SU(2) \cong \mathbb{S}^3$, in quanto tutti gli elementi rispettano l'equazione
 
  \[ x_1 ^2 + x_2^2 + x_3^2 + x_4^2 = 1 \]
+E scrivendo in questo modo ci accorgiamo subito che quindi $SU(2)$ è un gruppo compatto e connesso.\\ \\
+\textbf{Corollario:} Ogni rappresentazione di $SU(2)$ è scomponibile in una somma di reppresentazioni irriducibili.\\ \\
+Nella sezione \textbf{6.1} abbiamo visto come i quaternioni possono essere visti come un sottoinsieme di 
+\[\mathbb{H}=\{\begin{pmatrix}
+ z_1& z_2\\ 
+ -\overline{z_2}& \overline{z_1} 
+\end{pmatrix}\in M_2(\C)\}\]
+Quindi $SU(2)$ può essere immerso in $\mathbb{Q}_8$ essendo un sottospazio di $\mathbb{H}$.\\
+ MANCA LA PARTE SU $\rho_H$ MA NON SO QUANTO SERVA.
 
- E scrivendo in questo modo ci accorgiamo subito che quindi $SU(2)$ è un gruppo compatto e connesso.
 
- Come abbiamo fatto per $\mathbb{S}^1$, vorremmo andare a studiare tutte le sue rappresentazioni irriducibili. Per farlo, innanzitutto sarebbe intelligente farsi un'idea di come può essere fatta l'integrazione invariante su questo gruppo. Se lo immergiamo in $\R^4$, possiamo sfruttare l'integrazione lì definita e quindi fare un integrale triplo
+ 
+Come abbiamo fatto per $\mathbb{S}^1$, vorremmo andare a studiare tutte le sue rappresentazioni irriducibili. Per farlo, innanzitutto sarebbe intelligente farsi un'idea di come può essere fatta l'integrazione invariante su questo gruppo. Se lo immergiamo in $\R^4$, possiamo sfruttare l'integrazione lì definita e quindi fare un integrale triplo
 
  \[ I(f) = \dint_{\mathbb{S}^3} f(g) dg = \dfrac{1}{2\pi^2} \dint_0^\pi \dint_0^{\pi} \dint_0 ^{2\pi} f(\theta, \phi, \psi) \sin^2\theta\sin\phi \ d\theta \ d\phi \ d\psi\]
 
 
- L'invarianza dell'integrazione sotto l'azione di $G$ deriva sostanzialmente dal fatto che quando si cambia variabili bisogna moltiplicare l'integrando per il determinante dello Jacobiano. Tuttavia $det(SU(2)) = 1$ e quindi non ci sono problemi.
+L'invarianza dell'integrazione sotto l'azione di $G$ deriva sostanzialmente dal fatto che quando si cambia variabili bisogna moltiplicare l'integrando per il determinante dello Jacobiano. Tuttavia $det(SU(2)) = 1$ e quindi non ci sono problemi.\\
 
-
- Vediamo ora di classificare tutte le rappresentazioni irriducibili di $SU(2)$. Consideriamo per esempio un'azione di $SU(2)$ sullo spazio $V_m = \C[x,y]_m$ dei polinomi omogenei su $\C$ di grado $m$ definita in questo modo 
+\paragraph{Rappresentazioni irriducibili}
+Vediamo ora di classificare tutte le rappresentazioni irriducibili di $SU(2)$. \\
+Consideriamo l'azione di $SU(2)$ sullo spazio $V_m = \C[x,y]_m$ dei polinomi omogenei su $\C$ di grado $m$ definita in questo modo 
 
  \[
  \rho_m(A) f(x, y) = f(a_{11} x + a_{21} y , a_{12} x + a_{22} y) \qquad \forall f \in V_m, \forall A \in SU(2)
  \]
 
+\begin{lemma} $\rho_m$ è una rappresentazione irriducibile di $SU(2)$ $\forall m\in \N$.
+\end{lemma}
+\textbf{Dimostrazione:} Cerchiamo di trovare un sottogruppo di $SU(2)$ di cui conosciamo già le rappresentazioni irriducibili e studiamo le $\rho_n$ ristrette a tale sottogruppo. Consideriamo il seguente insieme delle matrici speciali unitarie diagonali
+\[T=\{\begin{pmatrix}
+z & 0\\ 
+ 0& z
+\end{pmatrix}\in M_2(\C):\ |z|^2=1\}\subseteq SU(2)\Rightarrow T=\{\begin{pmatrix}
+e^{i\theta}& 0\\ 
+ 0& e^{i\theta}
+\end{pmatrix}: 0\leq \theta \leq 2\pi\}\]
+\'E evidente che $T$ sia isomorfo a $\mathbb{S}^1$. Dunque $\rho_m|_{\mathbb{S}^1}$ è una rappresentazine di $\mathbb{S}^1$ su $V_m$. Come agiscono le matrici in $T$? Per vederlo, consideriamo la base "canonica" di $V_m$, formata dai monomi $\{ x^ky^{m-k} \}_{k \in \{0, ..., m\}}$ e scriviamo
+\[V_m=\bigoplus_{k=0}^m \C (x^k y^{m-k})\]
+Dato un $\theta\in [0,2\pi]$ allora
+\[\rho_m\begin{pmatrix}
+e^{i\theta} & 0\\ 
+ 0& e^{i\theta}
+\end{pmatrix} (x^ky^{m-k}) = (xe^{i\theta})^k(ye^{i\theta})^{m-k}=e^{i(m-2k)} x^k y^{m-k} \]
+
+Ovvero, quello che abbiamo appena scoperto è che la base considerata è formata da autovettori per il sottogruppo $T$. Quindi, denotando con $\rho_n^{\mathbb{S}^1}$ le rappresentazioni irriducibili di $\mathbb{S}^1$, allora $\rho_m|_{\mathbb{S}^1}=\rho_{m-2k}^{\mathbb{S}^1}$.\\ \\
+Quindi ora di $V_m$ abbiamo una duplice scrittura:
+\[V_m=\bigoplus_{k=0}^m \C (x^k y^{m-k})=\bigoplus_{k=0}^m V_{\rho_{m-2k}^{\mathbb{S}^1}}\]
+dove la seconda scrittura è una somma diretta di rappresentazioni di $T$ irriducibili e a 2 a 2 non isomorfe. Consideriamo $W\neq \O \subseteq V_m$ sottospazio stabile per $SU(2)$: iniziamo con il dimostrare il seguente fatto: \\
+\textbf{Fatto:} Sia $\pi_k:V_m\rightarrow \C x^{m-k}y^k$ la proiezione di un vettore sulla sua componente $(m-k)-$esima. Allora se $\pi_k|_W\neq 0$ allora $V_{m,k}:=\C x^{m-k}y^k\in W$.\\ \\
+Dato che  $\{ x^ky^{m-k} \}_{k \in \{0, ..., m\}}$ sono una base di autovettori per le matrici in $T$ allora $\forall k,\ \pi_k\in Hom_T(V_m,V_{m,k}\Rightarrow \pi_k|_W\in Hom_T(W,V_{m,k})$. Se $\pi_k|_W\neq 0\Rightarrow W=Ker(\pi_k|_W)\bigoplus W_k$ dove la $dim(W_k)$ è forzata ad essere 1. Quindi $W_k\cong V_{m,k}$ come rappresentazioni. Tuttavia $V_{m,k}$ è l'unico sottospazio invariante per $\rho_{m-2k}^{\mathbb{S}^1}\Rightarrow V_{m,k}=W_k$.\\ \\
+Quindi dato che abbiamo supposto il nostro $W$ diverso dal vuoto, esiste un $k$ tale che $x^{m-k}y^k\in W$. Se mostriamo che $x^m\in W$ allora abbiamo concluso poichè data la generalità di $W$ avrei dimostrato che $x^m\in$ a tutti i sottospazi di $V_m$ non vuoti e invarianti per $SU(2)$. Quindi se $W$ fosse diverso da $V_m$ avrei $V_m=W\bigoplus U$ ma con $U\neq \O\Rightarrow x^m\in U\cap W$ il che è assurdo poichè devono essere in somma diretta. Per mostrare che $x^m\in W$ riusiamo il fatto e ci riduciamo a dover dimostrare che $\pi_0|_W\neq 0$. Considero al variare di $g\in SU(2)$ il vettore $\pi_0(\rho_m(g)(x^{m-k}y^k))$ dove $x^{m*k}y^k$ è il monomio che siamo sicuri appartenga a $W$. Bene, ma allora mi basta scegliere
+\[g=\frac{1}{\sqrt{2}}\begin{pmatrix}
+1& -1\\ 
+ 1& 1
+\end{pmatrix}\Rightarrow \rho_m(g)(x^{m-k}y^k)=x^m\]
+Quindi $W=V_m$. Le $\rho_m$ sono irriducibili.\qed
 
 
- Per farci un'idea di come sia fatta questa rappresentazione possiamo per esempio studiarla qualitativamente su un sottogruppo di $SU(2)$ che già conosciamo bene, ovvero $\mathbb{S}^1$. Una matrice di $\mathbb{S}^1 \subset SU(2)$ si potrà scrivere come
-
- \[
- A = 
- \left(
- \begin{array}{cc}
-   e^{i\theta} & 0 \\
-   0 & e^{-i\theta} \\
- \end{array} 
- \right)
- \]
-
-
- Possiamo prendere una base di $V_m$, la più scontata che ci viene in mente, e vedere come agisce su $V_m$ il nostro gruppo. La base più banale che ci può venire in mente è sicuramente $\{ x^ky^{m-k} \}_{k \in \{0, ..., n\}}$.
-
- \[ \rho(A(\theta)) (x^ky^{m-k}) = e^{i(m-2k)} x^k y^{m-k} \]
-
- Per cui abbiamo avuto un grosso colpo di fortuna in quanto abbiamo sparato una base a caso ed è già di autovettori per il sottogruppo che stiamo guardando.
-
-
- \begin{prop}
-   \label{prop:rapp su2}
-   Le rappresentazioni irriducibili di $SU(2)$ sono tutte e sole le $\rho_m$ definite poco fa.
- \end{prop}
-
- \begin{proof}
-   QUALCUNO LA SCRIVA.
- \end{proof}
- 
 
  \paragraph{Le classi di coniugio di $SU(2)$}
  Dato che abbiamo dato tanto peso alla teoria del carattere per i gruppi finiti, probabilmente anche per i gruppi compatti ci saranno applicazioni interessanti. Dato che il carattere è una funzione di classe, è intelligente andare a studiare nel dettaglio le classi di coniugio di $SU(2)$.
