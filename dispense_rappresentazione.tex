@@ -91,7 +91,7 @@
 \DeclareMathOperator{\Orb}{Orb}
 \DeclareMathOperator{\Stab}{Stab}
 \DeclareMathOperator{\Fix}{Fix}
-
+\DeclareMathOperator{\Ind}{Ind}
 
 
 \newcommand{\tridiag}[6]{
@@ -2836,7 +2836,7 @@ Consideriamo una rappresentazione irriducibile $\rho:G\to GL(V_\rho)$ con $V_\rh
 di $\rho$ 
 \[ \End_G(V_\rho)\]
 è un'algebra di divisione su $R$ se dotato della composizione.
-Infatti per lemma di Schur (in particolare la prima parte dell'enunciato, che vale su ogni campo) ogni elemento di $End_G(V_\rho)$ o è la funzione nulla oppure è un isomorfismo, quindi ammette inverso.
+Infatti per lemma di Schur (in particolare la prima parte dell'enunciato, che vale su ogni campo) ogni elemento di $\End_G(V_\rho)$ o è la funzione nulla oppure è un isomorfismo, quindi ammette inverso.
 Se $\dim V_\rho = n$ allora $\End_G(V_\rho)$, essendo contenuto in $\End(V_\rho)$, ha dimensione finita, in particolare $\dim \End_G(V_\rho)\le n^2$.
 Vedremo tuttavia che vale una limitazione molto più forte.
 \end{rem}
@@ -2953,19 +2953,19 @@ dal teorema di Frobenius.
 Supponiamo di avere $\rho:H\rightarrow GL(V)$ una rappresentazione di $H<G$ con $G$ gruppo. Il nostro obiettivo è quello di definire una $\widetilde{\rho}:G\rightarrow GL(V)$ rappresentazione di $G$ che estende $\rho$.
 
 \begin{defn}Indichiamo con \emph{induzione da $H$ in $G$ di $W$} il seguente spazio vettoriale:
-\[Ind_H^G(W)=\{f:G\rightarrow W: \rho(h)\circ f(gh)=f(g)\ \forall (g,h)\in G\times H\}   \]
+\[\Ind_H^G(W)=\{f:G\rightarrow W: \rho(h)\circ f(gh)=f(g)\ \forall (g,h)\in G\times H\}   \]
 \end{defn}
 
-\textbf{Osservazione:} $Ind_H^G(W)$ è lo spazio vettoriale di una rappresentazione di $G$.
+\textbf{Osservazione:} $\Ind_H^G(W)$ è lo spazio vettoriale di una rappresentazione di $G$.
 Si consideri $N=\{f:G\rightarrow W\}$: definisco
 \[\rho_N:G\rightarrow GL(N) \textup{ tale che }(\rho_N(g)f)(g')=f(g^{-1}g')\]
-Si verifica che $\rho_N$ è una rappresentazione di $G$ su $N$. Notiamo innanzitutto che $Ind_H^G(W)\subseteq N$ e che tale sottospazio è $\rho_N-$invariante poichè detta $f\in Ind_H^G(W)$ si ha che
+Si verifica che $\rho_N$ è una rappresentazione di $G$ su $N$. Notiamo innanzitutto che $\Ind_H^G(W)\subseteq N$ e che tale sottospazio è $\rho_N-$invariante poichè detta $f\in \Ind_H^G(W)$ si ha che
 \[ \rho_N(g)(f)(g')=f(g^{-1}g')=\rho(h)f(g^{-1}g'h)=\rho(h)\rho_N(g)(f)(g'h)\]
-ovvero $\rho_N(g)f\in Ind_H^G(W)$. Questo ci dice che $Ind_H^G(W)$ è una sottorappresentazione di $\rho_N$ che chiamiamo $\rho_{ind}:G\rightarrow GL(Ind_H^G(W))$.
+ovvero $\rho_N(g)f\in \Ind_H^G(W)$. Questo ci dice che $\Ind_H^G(W)$ è una sottorappresentazione di $\rho_N$ che chiamiamo $\rho_{ind}:G\rightarrow GL(\Ind_H^G(W))$.
 
 \begin{exmp}
 $H=\{e\}$ e $W=\C$ con $\rho:H\rightarrow GL(\C)$: allora
-\[Ind_H^G(W)=\{f:G\rightarrow \C:\rho(e)f(ge)=f(g)\}=\{f:G\rightarrow \C\}\]
+\[\Ind_H^G(W)=\{f:G\rightarrow \C:\rho(e)f(ge)=f(g)\}=\{f:G\rightarrow \C\}\]
 \end{exmp}
 
 \textbf{Notazione:} Spesso indicheremo lo spazio vettoriale $\{f:G\rightarrow \C\}$ con $\C[G]=\bigoplus_{g\in G}\C e_g$ dove gli $\{e_g\}_{g\in G}$ sono una base di $\{f:G\rightarrow \C\}$. 
@@ -2974,7 +2974,7 @@ In tal modo risulta che
 sempre nel senso che se prendo $\{e_g\}_{g\in G}$ una base di $\C[G]$ e $\{w_i\}\in W$ una base di $W$ allora 
 \[e_g\otimes w_i:G\rightarrow W \textup{ tale che } g\mapsto w_i \textup{ e } g'\mapsto 0\ \forall g'\neq g\]
 
-Torniamo a $\rho_{ind}$: ricapitolando $\rho_{ind}:G\mapsto GL(Ind_H^G)$ tale che $g\mapsto \rho_{ind}(g)$ dove $\rho_{ind}(g)f(g')=f(g^{-1}g')$. Vediamo ora un po' delle sue caratteristiche. Poniamo per snellire la scrittura $V=Ind_H^G(W)$. Ricordandoci il nostro aim, di certo vogliamo che $W$ sia un sottospazio di $V$.
+Torniamo a $\rho_{ind}$: ricapitolando $\rho_{ind}:G\mapsto GL(\Ind_H^G)$ tale che $g\mapsto \rho_{ind}(g)$ dove $\rho_{ind}(g)f(g')=f(g^{-1}g')$. Vediamo ora un po' delle sue caratteristiche. Poniamo per snellire la scrittura $V=\Ind_H^G(W)$. Ricordandoci il nostro aim, di certo vogliamo che $W$ sia un sottospazio di $V$.
 
 \begin{defn}
 Data $f\in \{f:G\rightarrow W\}$ (che contiene $V$) definiamo il supporto di $f$ 
@@ -3022,7 +3022,7 @@ $\rho_{ind}$ permuta le varie $V_{gH}$ nel senso che $\rho_{ind}(g)V_{g'H}=V_{gg
 \begin{cor}
 \[\forall i,j\in |G/H|\ \ \ V_{g_iH}\cong V_{g_jH}.\]
 In particolare hanno tutti la stessa dimensione e quindi
-\[dim(V)=|G/H|dim(V_{eH})=dim(Ind_H^G(W))\]
+\[\dim(V)=|G/H|\dim(V_{eH})=\dim(\Ind_H^G(W))\]
 \end{cor}
 Concentriamoci ora su $V_{eH}=\{f\in V:supp(f)\subseteq H\}$. Sia $h\in H$: allora $\rho_{ind}(h):V_{eH}\rightarrow V_{eH}$ in quanto $eH=hH$. Ciò significa che $\rho_{ind}|_{H}$ definisce una rappresentazione di $H$ in $V_{eH}$.
 \begin{lemma}
@@ -3035,7 +3035,7 @@ ovvero la funzione che associa ad un $f$ la valutazione della stessa nell'elemen
 \[V_{eH}=\{f:G\rightarrow W: \rho(h)f(gh)=f(g)\ \forall h,g\ \ \textup{e } Supp(f)\subseteq H\}\]
 $\Phi$ è un omomorfisimo di rappresentazioni $\Leftrightarrow$ $\Phi(\rho_{ind}(h)f)=\rho(h)\Phi(f)\ \forall h\in H$.
 \[\Phi(\rho_{ind}(h)f))=\rho(h)\Phi(f) \Leftrightarrow (\rho_{ind}(h)f)(e)=\rho(h)(f(e))\Leftrightarrow f(h^{-1}e)=f(h^{-1})=\rho(h)f(e)\]
-ma ciò è vero in quanto le $f\in Ind_H^G(W)$. \\
+ma ciò è vero in quanto le $f\in \Ind_H^G(W)$. \\
 Verifichiamo che $\Phi$ è iniettiva. $Supp(f)\subseteq H$ e $\forall h\in H\ f(h)=\rho(h^{-1}f(e))$: questo mi dice che una volta che si è fissato il valore di $f(e)$ allora la funzione è univocamente determinata su $H$. D'altra parte so che in $G\setminus H$ la funzione è identicamente nulla $\Rightarrow$ quindi è univacamente determinata su tutto $G$. Allora detti $\Phi$ è iniettiva.\\
 Vediamo ora che è anche surgettiva. Sia $w\in W$ vogliamo $f\in V_{eH}$ che valutata in $e$ dia $w$. Definiamo $f_w:G\rightarrow W$ nel seguente modo: 
 \[f_w:=\begin{cases}
@@ -3048,16 +3048,16 @@ Si verifica che tale funzione soddisfa le proprietà richieste.
 
 Dunque possiamo ora concludere il seguente teorema
 \begin{thm} Dette $g_1H,...,g_{|G/H|}H$ i rappresentanti delle classi laterali allora 
-\[Ind_H^G(W)=\bigoplus_{i=1}^{|G/H|}\rho_{ind}(g_i)V_{eH}\bigl( =\bigoplus_{i=1}^{|G/H|} V_{g_iH}\bigr) \]
+\[\Ind_H^G(W)=\bigoplus_{i=1}^{|G/H|}\rho_{ind}(g_i)V_{eH}\bigl( =\bigoplus_{i=1}^{|G/H|} V_{g_iH}\bigr) \]
 Inoltre $\rho_{ind}|_H$ definisce una rappresentazione di $H$ su $V_{eH}$ isomorfa a $\rho$. In particolare quindi 
-\[dim(Ind_H^G(W))=|G/H|dim(W)\] 
+\[\dim(\Ind_H^G(W))=|G/H|\dim(W)\] 
 \end{thm}
 Vediamo ora degli esempi.
 \begin{enumerate}
-\item Abbiamo visto prima $H=\{e\}$ $W=\C$ allora $Ind_H^G(W)=\C[G]$ è la rappresentazione regolare di $G$. 
+\item Abbiamo visto prima $H=\{e\}$ $W=\C$ allora $\Ind_H^G(W)=\C[G]$ è la rappresentazione regolare di $G$. 
 \item $H\neq \{e\},\subseteq G$ e $\rho:H\rightarrow GL(W)$ la rappresentazione banale con $W=\C$. Allora
-\[Ind_H^G(\C)=\{f:G\rightarrow \C:\rho(h)f(gh)=f(gh)=f(g)\ \forall g,h\}\Rightarrow f \textup{ è costante sulle classi laterali di} H\]
-\[\Rightarrow Ind_H^G(\C)=\{f:G\rightarrow \C:f \textup{ è costante sulle classi laterali di }\ H\}=\C[G/H]\]
+\[\Ind_H^G(\C)=\{f:G\rightarrow \C:\rho(h)f(gh)=f(gh)=f(g)\ \forall g,h\}\Rightarrow f \textup{ è costante sulle classi laterali di} H\]
+\[\Rightarrow \Ind_H^G(\C)=\{f:G\rightarrow \C:f \textup{ è costante sulle classi laterali di }\ H\}=\C[G/H]\]
 
 
 %% \begin{tikzpicture}
@@ -3081,30 +3081,30 @@ G/H        &                     &    \\
 \]
 
 
-$G/H$ è un insieme finito dove $G$ agisce per moltiplicazione a sinistra ($g(g'H)=gg'H$). Quindi $Ind_H^G(W)$ è la rappresentazione per permutazione associata all'azione di $G$ in $G/H$. \\
+$G/H$ è un insieme finito dove $G$ agisce per moltiplicazione a sinistra ($g(g'H)=gg'H$). Quindi $\Ind_H^G(W)$ è la rappresentazione per permutazione associata all'azione di $G$ in $G/H$. \\
 \textbf{Recall:} $X$ è un $G-$insieme, sia $X= \bigsqcup X_i$ la decomposizione in $G-$orbite: allora 
 \[\C[X]=\bigoplus_{i=1}^{\#-orbite} \C[X_i]\] 
-\item $H\subseteq G$ e $\rho:H\rightarrow GL(W): \rho(h)=id\ \forall h\in H$. Nel caso in cui $W$ avesse dimensione 1 si torna all'esempio 1. Tuttavia anche se $dim(W)>1$, $Ind_H^G(W)=\{f:G\rightarrow \C:f \textup{ è costante sulle classi laterali di } H\}=\C[G/H]\otimes W$ 
+\item $H\subseteq G$ e $\rho:H\rightarrow GL(W): \rho(h)=id\ \forall h\in H$. Nel caso in cui $W$ avesse dimensione 1 si torna all'esempio 1. Tuttavia anche se $\dim(W)>1$, $\Ind_H^G(W)=\{f:G\rightarrow \C:f \textup{ è costante sulle classi laterali di } H\}=\C[G/H]\otimes W$ 
 \end{enumerate}
 \textbf{Esercizio:} Supponiamo che $W=W_1\bigoplus W_2$ una rappresentazione di H non riducibile: allora 
-\[Ind_H^G(W)=Ind_H^G(W_1)\bigoplus Ind_H^G(W_2)\].
+\[\Ind_H^G(W)=\Ind_H^G(W_1)\bigoplus \Ind_H^G(W_2)\].
 
 
 \subsection{Formula di aggiunzione}
 Vediamo ora una proprietà universale di queste rappresentazioni indotte. Prima abbiamo definito passando da $\rho$ a $\rho_{ind}$ sostanzialmente una applicazione
-\[Ind:Rappr(H)\rightarrow Rappr(G)\]
+\[\Ind:Rappr(H)\rightarrow Rappr(G)\]
 e abbiamo anche "l'inversa" ovvero la restrizione della rappresentazione ad H
 \[Res:Rappr(G)\rightarrow Rappr(H)\]
 e risulta che $Res_H^G(V)=V$ visto però come una rappresentazione di $H$ ($\rho_{res}=\rho|_H$). Che legame c'è tra queste due applicazioni? 
 \begin{thm}
 Sia $\rho:H\rightarrow GL(W)$ una rappresentazione di $H$ e sia $\sigma:G\rightarrow GL(U)$ una rappresentazione di $G$. Allora
-\[\Hom_H(W,Res_H^G(U))\cong \Hom_G(Ind_H^G(W),U)\]
-ovvero che ogni $\phi:W\rightarrow Res_H^G(U)$ omomorfismo di $H-$rappresentazione si estende in modo unico a un $\overset{\sim}{\phi}:Ind_H^G(W)\rightarrow U$ omomorfismo di $G-$rappresentazione
+\[\Hom_H(W,Res_H^G(U))\cong \Hom_G(\Ind_H^G(W),U)\]
+ovvero che ogni $\phi:W\rightarrow Res_H^G(U)$ omomorfismo di $H-$rappresentazione si estende in modo unico a un $\overset{\sim}{\phi}:\Ind_H^G(W)\rightarrow U$ omomorfismo di $G-$rappresentazione
 \end{thm}
-\begin{proof} sia $\phi:W\rightarrow Res_H^G(U)$ un omomorfismo di $H-$rappresentazione e sia $V:=Ind_H^G(W)=\bigoplus_{i=1}^{\#-orbite} \rho_{ind}(g_i)V_{eH}$. Essendo $V_{eH}\cong W$ come $H-$rappresentazioni, allora $\phi:V_{eH}\rightarrow Res_H^G(U)$: voglio estenderlo a $V$. Essendo $V$ definito come una somma diretta è sufficiente definire l'omomorfismo sui blocchi e per questo considero $V_{g_iH}$: ho che
+\begin{proof} sia $\phi:W\rightarrow Res_H^G(U)$ un omomorfismo di $H-$rappresentazione e sia $V:=\Ind_H^G(W)=\bigoplus_{i=1}^{\#-orbite} \rho_{ind}(g_i)V_{eH}$. Essendo $V_{eH}\cong W$ come $H-$rappresentazioni, allora $\phi:V_{eH}\rightarrow Res_H^G(U)$: voglio estenderlo a $V$. Essendo $V$ definito come una somma diretta è sufficiente definire l'omomorfismo sui blocchi e per questo considero $V_{g_iH}$: ho che
 \[V_{g_iH}\overset{\rho_{g_i^{-1}}}{\rightarrow} V_{eH}\overset{\phi}{\rightarrow} Res_H^G(U)\overset{\sigma(g)}{\rightarrow} U\Rightarrow \sigma(g)\phi\rho_{ind}(g_i^{-1}):V_{g_iH}\rightarrow U\] 
-Incollando tutte queste applicazioni ottengo $\overset{\sim}{\phi}:Ind_H^G(W)\rightarrow U$ dove
-$\overset{\sim}{\phi}(v)=\sigma_{g}\circ \phi\circ \rho_{ind}(g^{-1})(v)$ con $v\in V_{gH}$. Si verifica che $\overset{\sim}{\phi}\in \Hom_G(Ind_H^G(W),U)$. \\
+Incollando tutte queste applicazioni ottengo $\overset{\sim}{\phi}:\Ind_H^G(W)\rightarrow U$ dove
+$\overset{\sim}{\phi}(v)=\sigma_{g}\circ \phi\circ \rho_{ind}(g^{-1})(v)$ con $v\in V_{gH}$. Si verifica che $\overset{\sim}{\phi}\in \Hom_G(\Ind_H^G(W),U)$. \\
 Vediamo ora che questa estensione è unica. Siano $\overset{\sim}{\phi_1}$ e $\overset{\sim}{\phi_2}$ due estensioni di $\phi$: valutiamole nello stesso elemento $v\in V_{gH}$.
 \[\overset{\sim}{\phi_1}(\rho_{ind}(g^{-1})v)=\phi(\rho_{ind}(g^{-1})(v))=\overset{\sim}{\phi_2}(\rho_{ind}(g^{-1})v)\]
 dove l'uguaglianza è vera perchè $\rho_{ind}(g^{-1})(v)\in V_{eH}$. Quindi coincidendo sui singoli blocchi le due estensioni coincidono anche su $V$. E quindi l'estensione è unica. 
@@ -3128,14 +3128,14 @@ Consideriamo l'ovvio sottogruppo $H$ generato da $\sigma$, che è evidentemente 
 \[\rho_k(\sigma) = \omega^k  \qquad \omega = e^{\frac{2\pi i}{n}}\]
 
 
-Studiamo ora la rappresentazione che induce $\rho_k$, ovvero studiamo $Ind_G^H \rho_k$, che per amore di brevità indicheremo con $Ind \rho_k$. \'E abbastanza utile notare che noi conosciamo la dimensione della rappresentazione indotta, in quanto conosciamo la formula
+Studiamo ora la rappresentazione che induce $\rho_k$, ovvero studiamo $\Ind_G^H \rho_k$, che per amore di brevità indicheremo con $\Ind \rho_k$. \'E abbastanza utile notare che noi conosciamo la dimensione della rappresentazione indotta, in quanto conosciamo la formula
 
-\[ dim Ind^H_G \rho_k = |G/H| deg \rho_k = 2 \cdot 1 = 2\]
+\[ \dim \Ind^H_G \rho_k = |G/H| deg \rho_k = 2 \cdot 1 = 2\]
 
-Per andare avanti è intelligente ricordare la definizione di questo spazio. Indicheremo con $W$ lo spazio su cui agisce $Ind \rho_k$ (che è ovviamente isomorfo a $\C^2$)
+Per andare avanti è intelligente ricordare la definizione di questo spazio. Indicheremo con $W$ lo spazio su cui agisce $\Ind \rho_k$ (che è ovviamente isomorfo a $\C^2$)
 
 
-\[ Ind \rho_k = \{ f : G \to W \ f(gh) = \rho(h)^{-1} f(g) \quad \forall g \in G, \forall h \in H \}\]
+\[ \Ind \rho_k = \{ f : G \to W \ f(gh) = \rho(h)^{-1} f(g) \quad \forall g \in G, \forall h \in H \}\]
 
 Possiamo prendere una base di questo spazio per scrivere la matrice che le rappresenta e calcolarne poi il carattere, per esempio. Scegliamo questa base: prendiamo le funzioni $f_H, f_{\tau H}$ definite da 
 
@@ -3155,7 +3155,7 @@ f_{\tau H } (\tau) = 1 \\
 
 Evidentemente questa è una base e, data la definizione dello spazio, è anche sufficiente a determinare il comportamento delle funzioni su tutto il gruppo $G$.
 
-In particolare una generica funzione $f \in Ind \rho_k$ si potrà scrivere come $\C$ combinazione lineare delle due funzioni appena definite, ovvero
+In particolare una generica funzione $f \in \Ind \rho_k$ si potrà scrivere come $\C$ combinazione lineare delle due funzioni appena definite, ovvero
 
 \[ f = a f_H + b f_{\tau H} \qquad a,b \in \C\]
 
@@ -3532,7 +3532,7 @@ dove la seconda scrittura è una somma diretta di rappresentazioni di $T$ irridu
 
 \textbf{Fatto:} Sia $\pi_k:V_m\rightarrow \C x^{m-k}y^k$ la proiezione di un vettore sulla sua componente $(m-k)-$esima. Allora se $\pi_k|_W\neq 0$ allora $V_{m,k}:=\C x^{m-k}y^k\in W$.
 
-Dato che  $\{ x^ky^{m-k} \}_{k \in \{0, ..., m\}}$ sono una base di autovettori per le matrici in $T$ allora $\forall k,\ \pi_k\in \Hom_T(V_m,V_{m,k}\Rightarrow \pi_k|_W\in \Hom_T(W,V_{m,k})$. Se $\pi_k|_W\neq 0\Rightarrow W=Ker(\pi_k|_W)\bigoplus W_k$ dove la $dim(W_k)$ è forzata ad essere 1. Quindi $W_k\cong V_{m,k}$ come rappresentazioni. Tuttavia $V_{m,k}$ è l'unico sottospazio invariante per $\rho_{m-2k}^{\mathbb{S}^1}\Rightarrow V_{m,k}=W_k$.
+Dato che  $\{ x^ky^{m-k} \}_{k \in \{0, ..., m\}}$ sono una base di autovettori per le matrici in $T$ allora $\forall k,\ \pi_k\in \Hom_T(V_m,V_{m,k}\Rightarrow \pi_k|_W\in \Hom_T(W,V_{m,k})$. Se $\pi_k|_W\neq 0\Rightarrow W=Ker(\pi_k|_W)\bigoplus W_k$ dove la $\dim(W_k)$ è forzata ad essere 1. Quindi $W_k\cong V_{m,k}$ come rappresentazioni. Tuttavia $V_{m,k}$ è l'unico sottospazio invariante per $\rho_{m-2k}^{\mathbb{S}^1}\Rightarrow V_{m,k}=W_k$.
 
 
 Quindi dato che abbiamo supposto il nostro $W$ diverso dal vuoto, esiste un $k$ tale che $x^{m-k}y^k\in W$. Se mostriamo che $x^m\in W$ allora abbiamo concluso poichè data la generalità di $W$ avrei dimostrato che $x^m\in$ a tutti i sottospazi di $V_m$ non vuoti e invarianti per $SU(2)$. Quindi se $W$ fosse diverso da $V_m$ avrei $V_m=W\bigoplus U$ ma con $U\neq $\O \ $ \Rightarrow x^m\in U\cap W$ il che è assurdo poichè devono essere in somma diretta. Per mostrare che $x^m\in W$ riusiamo il fatto e ci riduciamo a dover dimostrare che $\pi_0|_W\neq 0$. Considero al variare di $g\in SU(2)$ il vettore $\pi_0(\rho_m(g)(x^{m-k}y^k))$ dove $x^{m-k}y^k$ è il monomio che siamo sicuri appartenga a $W$. Bene, ma allora mi basta scegliere
@@ -3699,7 +3699,7 @@ Quindi $W=V_m$. Le $\rho_m$ sono irriducibili.
    \[
    \begin{cases}
      \phi^G = 0 \qquad \text{se } \rho \ncong \sigma \\
-     \phi^G = \frac{\tr \phi}{dim V}Id_V \qquad \text{altrimenti} \\
+     \phi^G = \frac{\tr \phi}{\dim V}Id_V \qquad \text{altrimenti} \\
    \end{cases}
    \]
 
@@ -3742,14 +3742,14 @@ Quindi $W=V_m$. Le $\rho_m$ sono irriducibili.
  Se $\rho$ e $\sigma$ non sono isomorfe, allora si ha identicamente $\phi_{ij}^G = 0$ per ogni $i$ e $j$. Di conseguenza $\langle \chi_\rho | \chi_\sigma \rangle = 0$. Altrimenti, al solito posso identificare $V \cong W$ e possiamo usare l'altra parte del lemma precedente per dire che
 
 \begin{align*}
-   \langle \chi_\rho | \chi_\sigma \rangle = \dsum_{i,j} \langle \phi_{ij}^G v_i | v_j \rangle = \dsum_{i,j} \dfrac{\tr \phi_{ij}}{dimV} \langle v_i | v_j \rangle = \dsum_{i,j } \dfrac{\tr\phi_{ij}}{dimV} \delta_{ij} 
+   \langle \chi_\rho | \chi_\sigma \rangle = \dsum_{i,j} \langle \phi_{ij}^G v_i | v_j \rangle = \dsum_{i,j} \dfrac{\tr \phi_{ij}}{\dim V} \langle v_i | v_j \rangle = \dsum_{i,j } \dfrac{\tr\phi_{ij}}{\dim V} \delta_{ij} 
  \end{align*}
 
 Tuttavia in sostanza la matriche che rappresenta $\phi_{ij}$ nelle base $v_i$ è evidentemente una matrice che ha tutti zeri tranne uno che è uno, esattamente nella posizione $(i,j)$, per cui
 
 
 \begin{align*}
-   \langle \chi_\rho | \chi_\sigma \rangle = \dsum_{i,j } \dfrac{\tr\phi_{ij}}{dimV} \delta_{ij} = \dsum_{i=j} \dfrac{1}{dimV} = 1
+   \langle \chi_\rho | \chi_\sigma \rangle = \dsum_{i,j } \dfrac{\tr\phi_{ij}}{\dim V} \delta_{ij} = \dsum_{i=j} \dfrac{1}{\dim V} = 1
  \end{align*}
 
  \qed
