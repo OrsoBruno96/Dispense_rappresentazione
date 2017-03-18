@@ -2585,10 +2585,18 @@ Sia $\rho:G\to GL(V_\rho)$ una rappresentazione irriducibile su $\C$. Allora $\r
 Sappiamo già che se $\rho$ è reale nel senso \ref{def: rappr reale} allora $m_\rho = 1$, in quanto $V_\rho$ ammette una forma simmetrica invariante non nulla. Mostriamo il viceversa.
 
 Sia $B \in (S^2V_\rho^*)^G$, con $\dim_\C V_\rho = n$.
-Noi stiamo cercando un certo $V_0 \subset V_\rho$ spazio vettoriale su $\R$ tale che $V_\rho = V_0 \oplus i V_0$ .
+Noi stiamo cercando un certo $V_0 \subset V_\rho$ spazio vettoriale su $\R$ tale che $V_\rho^\R = V_0 \oplus i V_0$ .
+
+
+
+% FRANCESCO GUARDA QUI
+% SEMBRA CHE METTENDO LA DEFINIZIONE DA UNA PARTE O DALL'ALTRA CAMBI TUTTO
+% HAI SPIEGAZIONI? HALP
+
+
 
 Prendiamo ora una certa forma $h : V_\rho \times V_\rho \to \C$ hermitiana, definita positiva e $G-$invariante. Questa sicuramente esiste, è stato dimostrato nel teorema \ref{thm:esistenza hermitiana}.
-Definiamo a questo punto un endomorfismo di spazi vettoriali reali $\phi: V_\rho \to V_\rho$ imponendo che soddisfi $B(x, y) = h(\phi(x), y)$.
+Definiamo a questo punto un endomorfismo di spazi vettoriali reali $\phi: V_\rho \to V_\rho$ imponendo che soddisfi $B(x, y) = h(x, \phi(y))$.
 La bontà di tale definizione è garantita dal teorema di Riesz.
 
 Che proprietà ha $\phi$? Possiamo notare che $\phi$ è $G$-equivariante, ovvero vale $\phi(\rho(g)x) = \rho(g) \phi(x)$.
@@ -2638,9 +2646,14 @@ Ciò implica che
 \[ \dim V^G = \tr(R) = \frac{1}{|G|} \sum_{g\in G}{\chi_\rho(g)} = \langle\chi_\rho|\chi_1\rangle \]
 \end{proof}
 
+\begin{note}
+Il proiettore $R$ sopra trovato si chiama \emph{proiettore di Reynolds}.
+\end{note}
+
+
 \begin{lemma} $\rho:G\rightarrow GL(V)$ rappresentazione irriducibile $/_\C$: allora $\chi_\rho$ è reale $\Leftrightarrow$ $\rho$ è una rappresentazione reale o quaternionica. 
 \end{lemma}
-\begin{proof} Abbiamo visto prima che $(V^*\otimes V^*)^G\neq 0\Rightarrow \chi_\rho=\chi_{\rho^*}\Rightarrow \chi_\rho$ è reale, e se $\rho$ è reale o quaternionica ha proprio $(V^*\otimes V^*)^G$ diverno da $0$. Viceversa $\chi_\rho$ reale implica $\chi_\rho=\chi_{\rho^*}$. D'altra parte dato che $\rho$ e $\rho^*$ sono entrambe rappresentazioni irriducibili allora $\rho\cong\rho^*\Leftrightarrow \chi_\rho =\chi_{\rho^*}$. Ciò significa che $Hom_G(V,V^*)\neq 0\Rightarrow \exists B\in (V^*\otimes V^*)^G\Rightarrow \rho$ può essere solo reale o quaternionica.
+\begin{proof} Abbiamo visto prima che $(V^*\otimes V^*)^G\neq 0\Rightarrow \chi_\rho=\chi_{\rho^*}\Rightarrow \chi_\rho$ è reale, e se $\rho$ è reale o quaternionica ha proprio $(V^*\otimes V^*)^G$ diverso da $0$. Viceversa $\chi_\rho$ reale implica $\chi_\rho=\chi_{\rho^*}$. D'altra parte dato che $\rho$ e $\rho^*$ sono entrambe rappresentazioni irriducibili allora $\rho\cong\rho^*\Leftrightarrow \chi_\rho =\chi_{\rho^*}$. Ciò significa che $\Hom_G(V,V^*)\neq 0\Rightarrow \exists B\in (V^*\otimes V^*)^G\Rightarrow \rho$ può essere solo reale o quaternionica.
 \end{proof}
 
 
