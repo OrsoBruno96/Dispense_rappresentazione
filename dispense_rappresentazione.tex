@@ -406,11 +406,11 @@ isomorfismo $f:\langle a\rangle\to\langle b\rangle$ ponendo $f(a^k) = b^k$ per $
 \end{prop}
 \begin{proof} Sia $a$ un generatore di $C_n$. Fissato $\omega\in\mu_n$ posso definire
 una funzione $f:C_n\to\C^*$ ponendo $f(a^k) = \omega^k$ per $0\le k < n$.
-Verifichiamo che $f\in Hom(C_n, \C^*)$. A tal fine prendiamo due elementi di $C_n$, che sono della forma $a^k, a^h$ per certi interi $0\le k,h < n$.
+Verifichiamo che $f\in \Hom(C_n, \C^*)$. A tal fine prendiamo due elementi di $C_n$, che sono della forma $a^k, a^h$ per certi interi $0\le k,h < n$.
 \[f(a^k \cdot a^h) = f(a^{k+h}) = \omega^{k+h} = \omega^k \omega^h = f(a^k)f(a^h)\]
 Dunque $f$ è omomorfismo. Variando la scelta di $\omega\in\mu_n$ si producono effettivamente $n$ omomorfismi differenti (infatti se $\omega$ cambia allora cambia anche $f(a)$).
 Mostriamo che non ci sono altri omomorfismi oltre a questi.
-Sia $f\in Hom(C_n,\C^*)$. Visto che $a^n=e$, deve valere $f(a)^n = f(a^n) = 1$. Allora $f(a)$ deve essere una radice $n$-esima
+Sia $f\in \Hom(C_n,\C^*)$. Visto che $a^n=e$, deve valere $f(a)^n = f(a^n) = 1$. Allora $f(a)$ deve essere una radice $n$-esima
 dell'unità, che chiamiamo $\omega$. A questo punto il fatto che $f$ è omomorfismo implica che $f(a^k) = \omega^k$ per ogni intero $k$.
 \end{proof}
 
@@ -1424,14 +1424,14 @@ Se $v\in Ker(f)$ allora per la definizione di omomorfismo di rappresentazioni ho
 \begin{lemma}
 Date $\rho_1, \rho_2, \sigma$ rappresentazioni di $G$, allora
 
-\[Hom(\rho_1 + \rho_2, \sigma) \cong Hom(\rho_1, \sigma) \oplus Hom(\rho_2, \sigma)\]
+\[Hom(\rho_1 + \rho_2, \sigma) \cong \Hom(\rho_1, \sigma) \oplus \Hom(\rho_2, \sigma)\]
 
 \end{lemma}
 
 \begin{proof}
 
 
-% Consideriamo il lato sinistro dell'uguaglianza. Un generico elemento $\phi \in Hom(\rho_1 + \rho_2, \sigma)$ è una mappa                                                                         %
+% Consideriamo il lato sinistro dell'uguaglianza. Un generico elemento $\phi \in \Hom(\rho_1 + \rho_2, \sigma)$ è una mappa                                                                         %
 %                                                                                                                                                                                                  %
 % \[ \phi: V_{\rho_1} \oplus V_{\rho_2} \to V_\sigma \]                                                                                                                                            %
 %                                                                                                                                                                                                  %
@@ -1440,13 +1440,13 @@ Date $\rho_1, \rho_2, \sigma$ rappresentazioni di $G$, allora
 % \[ \phi\left( (\rho_1 + \rho_2 ) (g) v\right) = \sigma(g) \phi(v) \qquad \forall v \in V_{\rho_1} \oplus V_{\rho_2} \ , \forall g \in G\]                                                        %
 %                                                                                                                                                                                                  %
 %                                                                                                                                                                                                  %
-% Esibiamo una mappa $\Xi: Hom(\rho_1 + \rho_2, \sigma) \to Hom(\rho_1, \sigma) \oplus Hom(\rho_2, \sigma)$ nel modo più sensato e mostriamo che è un isomorfismo. In particolare, definiamo $\Xi$ %
+% Esibiamo una mappa $\Xi: \Hom(\rho_1 + \rho_2, \sigma) \to \Hom(\rho_1, \sigma) \oplus \Hom(\rho_2, \sigma)$ nel modo più sensato e mostriamo che è un isomorfismo. In particolare, definiamo $\Xi$ %
 %                                                                                                                                                                                                  %
 %                                                                                                                                                                                                  %
 % \[ \Xi(\phi)(v) =  \phi\left( \pi_{V_{\rho_1} } (v)\right) + \phi\left( \pi_{V_{\rho_2}} (v) \right)\]                                                                                           %
 
 
-Consideriamo il lato destro dell'uguaglianza. Un elemento $\phi_i \in Hom(\rho_i, \sigma)$ si potrà scrivere
+Consideriamo il lato destro dell'uguaglianza. Un elemento $\phi_i \in \Hom(\rho_i, \sigma)$ si potrà scrivere
 
 \[
 \phi_i :V_{\rho_i} \to V_\sigma | \quad \phi_i\left( \rho_i(g) v\right) = \sigma(g) \phi_i(v) \qquad \forall v \in V_{\rho_i}, \ \forall g \in G 
@@ -1454,7 +1454,7 @@ Consideriamo il lato destro dell'uguaglianza. Un elemento $\phi_i \in Hom(\rho_i
 
 Esibiamo ora una mappa 
 \begin{align*}
-\Xi :  Hom(\rho_1, \sigma) \oplus Hom(\rho_2, \sigma) &\to Hom(\rho_1 + \rho_2, \sigma) \\
+\Xi :  \Hom(\rho_1, \sigma) \oplus \Hom(\rho_2, \sigma) &\to \Hom(\rho_1 + \rho_2, \sigma) \\
 \phi_1 , \phi_2                                       &\to \phi_1 + \phi_2 \\
 \end{align*}
  in modo ovvio e mostriamo che è un isomorfismo. 
@@ -1672,7 +1672,7 @@ Siamo passati da due rappresentazioni ad una sola. In particolare lo spazio vett
 \[ V_{\rho^* \sigma} = V_{\rho}^* \otimes V_\sigma \cong \Hom(V_\rho, V_\sigma)\]
 dove l'isomorfismo di rappresentazioni è quello dimostrato nel teorema \ref{thm: isov*w}.
 In particolare abbiamo che
-\[ (V_{\rho^*\sigma})^G \cong Hom(V_\rho, V_\sigma)^G \cong Hom(\rho, \sigma)\]
+\[ (V_{\rho^*\sigma})^G \cong \Hom(V_\rho, V_\sigma)^G \cong \Hom(\rho, \sigma)\]
 Per cui dato che noi stiamo cercando $dim(Hom(\rho, \sigma))$, basterà trovare $dim(V_{\rho^*\sigma})^G$.
 \begin{lemma}
 Sia $\rho$ una rappresentazione di un gruppo finito $G$. Allora
@@ -2638,7 +2638,7 @@ Ciò implica che
 \[ \dim V^G = \tr(R) = \frac{1}{|G|} \sum_{g\in G}{\chi_\rho(g)} = \langle\chi_\rho|\chi_1\rangle \]
 \end{proof}
 
-\begin{lemma} $\rho:G\rightarrow GL(V)$ rappresentazione irrid. $/_\C$: allora $\chi_\rho$ è reale sse $\rho$ è una rappresentazione reale o quaternionica. 
+\begin{lemma} $\rho:G\rightarrow GL(V)$ rappresentazione irriducibile $/_\C$: allora $\chi_\rho$ è reale $\Leftrightarrow$ $\rho$ è una rappresentazione reale o quaternionica. 
 \end{lemma}
 \begin{proof} Abbiamo visto prima che $(V^*\otimes V^*)^G\neq 0\Rightarrow \chi_\rho=\chi_{\rho^*}\Rightarrow \chi_\rho$ è reale, e se $\rho$ è reale o quaternionica ha proprio $(V^*\otimes V^*)^G$ diverno da $0$. Viceversa $\chi_\rho$ reale implica $\chi_\rho=\chi_{\rho^*}$. D'altra parte dato che $\rho$ e $\rho^*$ sono entrambe rappresentazioni irriducibili allora $\rho\cong\rho^*\Leftrightarrow \chi_\rho =\chi_{\rho^*}$. Ciò significa che $Hom_G(V,V^*)\neq 0\Rightarrow \exists B\in (V^*\otimes V^*)^G\Rightarrow \rho$ può essere solo reale o quaternionica.
 \end{proof}
@@ -2646,12 +2646,12 @@ Ciò implica che
 
 \textbf{Esercizi:}
 \begin{enumerate}
-\item Mostrare che tutte le rappr. irrid. $/_\C$ si $S_4$ sono reali.
+\item Mostrare che tutte le rappresentazioni irriducibili $/_\C$ si $S_4$ sono reali.
 \item $G$ gruppo ciclico di ordine dispari: allora le rappresentazioni non banali sono complesse.
 \end{enumerate} 
 
 \begin{thm}
-Sia $\rho:G\rightarrow GL(V)$ rappresentazione irrid. $/_\R$: allora $\exists \sigma:G\rightarrow GL(V_{\sigma})$ rappr. irrid. $/_\C$ tale che è vera una delle seguenti affermazioni:
+Sia $\rho:G\rightarrow GL(V)$ rappresentazione irriducibile $/_\R$: allora $\exists \sigma:G\rightarrow GL(V_{\sigma})$ rappresentazione irriducibile $/_\C$ tale che è vera una delle seguenti affermazioni:
 \begin{enumerate}
 \item $\chi_\rho=\chi_\sigma$;
 \item $\chi_\rho=\chi_\sigma+\chi_{\sigma^*}$;
@@ -2661,11 +2661,11 @@ Sia $\rho:G\rightarrow GL(V)$ rappresentazione irrid. $/_\R$: allora $\exists \s
 
 \begin{proof} Definisco $V^\C=\C\otimes V$ la complessificazione di $V$ (è semplicemente $V$ visto però come spazio vettoriale su $\C$). Vi sono due casi:
 \begin{enumerate}
-\item $\rho:G\rightarrow GL(V^\C)$ (che chiamiamo $\rho^\C$ solo per ricordardi che $V$ è visto come spazio vettoriale sui complessi) è una rappr. irrid. $/_C$;
-\item $\rho^\C:G\rightarrow GL(V^\C)$ è una rappr. rid. $/_C$.
+\item $\rho:G\rightarrow GL(V^\C)$ (che chiamiamo $\rho^\C$ solo per ricordardi che $V$ è visto come spazio vettoriale sui complessi) è una rappresentazione irriducibile $/_\C$;
+\item $\rho^\C:G\rightarrow GL(V^\C)$ è una rappresentazione riducibile $/_\C$.
 \end{enumerate}
-Se siamo nel primo caso $\sigma=\rho^\C$ è irrid. $/_\C$ e ovviamente $\chi_\rho=\chi_{\rho^\C}$.\\ 
-Se siamo nel secondo caso allora $V^\C=U\bigoplus W$ con $U$ e $W$ sottospazi $G-$invarianti. Quindi $\rho^\C=\rho_U+\rho_W$. Passiamo ora alla loro realificazione: $(\rho_\C)^\R=$
+Se siamo nel primo caso $\sigma=\rho^\C$ è irriducibile $/_\C$ e ovviamente $\chi_\rho=\chi_{\rho^\C}$.\\ 
+Se siamo nel secondo caso allora $V^\C=U\oplus W$ con $U$ e $W$ sottospazi $G-$invarianti. Quindi $\rho^\C=\rho_U+\rho_W$. Passiamo ora alla loro realificazione: $(\rho_\C)^\R=$
 DEVO FINIRE  
 
 \end{proof}
@@ -2673,7 +2673,7 @@ DEVO FINIRE
 
 
 \subsection{Quaternioni}
-
+\label{sec:quaternioni}
 Ovviamente le rappresentazioni quaternioniche hanno a che fare con il corpo dei quaternioni. Vediamo un po' di caratteristiche interessanti di questo oggetto.
 
 Il corpo $\HH$ si può vedere come
@@ -3084,13 +3084,13 @@ e abbiamo anche "l'inversa" ovvero la restrizione della rappresentazione ad H
 e risulta che $Res_H^G(V)=V$ visto però come una rappresentazione di $H$ ($\rho_{res}=\rho|_H$). Che legame c'è tra queste due applicazioni? 
 \begin{thm}
 Sia $\rho:H\rightarrow GL(W)$ una rappresentazione di $H$ e sia $\sigma:G\rightarrow GL(U)$ una rappresentazione di $G$. Allora
-\[Hom_H(W,Res_H^G(U))\cong Hom_G(Ind_H^G(W),U)\]
+\[\Hom_H(W,Res_H^G(U))\cong \Hom_G(Ind_H^G(W),U)\]
 ovvero che ogni $\phi:W\rightarrow Res_H^G(U)$ omomorfismo di $H-$rappresentazione si estende in modo unico a un $\overset{\sim}{\phi}:Ind_H^G(W)\rightarrow U$ omomorfismo di $G-$rappresentazione
 \end{thm}
 \begin{proof} sia $\phi:W\rightarrow Res_H^G(U)$ un omomorfismo di $H-$rappresentazione e sia $V:=Ind_H^G(W)=\bigoplus_{i=1}^{\#-orbite} \rho_{ind}(g_i)V_{eH}$. Essendo $V_{eH}\cong W$ come $H-$rappresentazioni, allora $\phi:V_{eH}\rightarrow Res_H^G(U)$: voglio estenderlo a $V$. Essendo $V$ definito come una somma diretta è sufficiente definire l'omomorfismo sui blocchi e per questo considero $V_{g_iH}$: ho che
 \[V_{g_iH}\overset{\rho_{g_i^{-1}}}{\rightarrow} V_{eH}\overset{\phi}{\rightarrow} Res_H^G(U)\overset{\sigma(g)}{\rightarrow} U\Rightarrow \sigma(g)\phi\rho_{ind}(g_i^{-1}):V_{g_iH}\rightarrow U\] 
 Incollando tutte queste applicazioni ottengo $\overset{\sim}{\phi}:Ind_H^G(W)\rightarrow U$ dove
-$\overset{\sim}{\phi}(v)=\sigma_{g}\circ \phi\circ \rho_{ind}(g^{-1})(v)$ con $v\in V_{gH}$. Si verifica che $\overset{\sim}{\phi}\in Hom_G(Ind_H^G(W),U)$. \\
+$\overset{\sim}{\phi}(v)=\sigma_{g}\circ \phi\circ \rho_{ind}(g^{-1})(v)$ con $v\in V_{gH}$. Si verifica che $\overset{\sim}{\phi}\in \Hom_G(Ind_H^G(W),U)$. \\
 Vediamo ora che questa estensione è unica. Siano $\overset{\sim}{\phi_1}$ e $\overset{\sim}{\phi_2}$ due estensioni di $\phi$: valutiamole nello stesso elemento $v\in V_{gH}$.
 \[\overset{\sim}{\phi_1}(\rho_{ind}(g^{-1})v)=\phi(\rho_{ind}(g^{-1})(v))=\overset{\sim}{\phi_2}(\rho_{ind}(g^{-1})v)\]
 dove l'uguaglianza è vera perchè $\rho_{ind}(g^{-1})(v)\in V_{eH}$. Quindi coincidendo sui singoli blocchi le due estensioni coincidono anche su $V$. E quindi l'estensione è unica. 
@@ -3295,7 +3295,7 @@ Facciamo alcuni esempi
 Per chiarirci le idee, andremo a studiare nel dettaglio un gruppo particolare, ovvero $\mathbb{S}^1$, che è ovviamente isomorfo a $SO_2(\R)$. Cerchiamo quindi innanzitutto le sue rappresentazioni irriducibili su spazi di dimensione finita sui complessi. 
 
 \begin{lemma}
-Tutte le rappr. irrid. $/_\C$ di un gruppo compatto abeliano $G$ hanno dimensione 1. Di conseguenza, essendo $\mathbb{S}^1$ un gruppo compatto abeliano, tutte le rappresentazioni di $\mathbb{S}^1$ irriducibili su uno spazio vettoriale complesso hanno dimensione 1.
+Tutte le rappresentazioni irriducibili $/_\C$ di un gruppo compatto abeliano $G$ hanno dimensione 1. Di conseguenza, essendo $\mathbb{S}^1$ un gruppo compatto abeliano, tutte le rappresentazioni di $\mathbb{S}^1$ irriducibili su uno spazio vettoriale complesso hanno dimensione 1.
 \end{lemma}
 \begin{proof}
   $G$ è un gruppo compatto abeliano e sia $\rho:G\rightarrow GL(V)$ con $V$ $\C-$sp. vettoriale: quindi
@@ -3413,19 +3413,19 @@ Nel caso dei gruppi finiti dividevamo per la cardinalità del gruppo: ora che si
 Per ogni gruppo compatto esiste l'integrazione invariante. 
 \end{thm}
 
-Di questo teorema non daremo la dimostrazione in questo corso. \\
+Di questo teorema non daremo la dimostrazione in questo corso. 
 
 Definiamo ora in $\C(\mathbb{S}^1)$ un prodotto hermitiano come segue
 \[(f_1,f_2):=\dint_{\mathbb{S}^1}f_1(g)\overline{f_2(g)}\ dg\]
-\'E una buona definizione ed è $\mathbb{S}^1$ invariante.\\
+\'E una buona definizione ed è $\mathbb{S}^1$ invariante.
 \textbf{Osservazione:} 
 \[(\rho_n,\rho_m)=\dint_{\mathbb{S}^1}\rho_n(g)\overline{\rho_m(g)}\ dg=\frac{1}{2\pi}\dint_0^{2\pi}e^{in\theta}e^{-im\theta}\ d\theta=\frac{1}{2\pi}\dint_0^{2\pi}e^{i\theta (n-m)}\ d\theta \]
 \[\Rightarrow (\rho_n,\rho_m)=\left\{\begin{matrix}
 1 & n=m\\ 
-1 & n\neq m
+0 & n\neq m
 \end{matrix}\right.\Rightarrow (\rho_n,\rho_m)=\left\{\begin{matrix}
 1 & \rho_n\cong \rho_m\\ 
-1 & \rho_n\not{\cong} \rho_m
+0 & \rho_n \ncong \rho_m
 \end{matrix}\right.\]
 ovvero $\{\rho_n\}_{n\in \N}$ formano un sistema ortonormale.
 
@@ -3460,7 +3460,7 @@ E scrivendo in questo modo ci accorgiamo subito che quindi $SU(2)$ è un gruppo 
 \begin{cor} 
 Ogni rappresentazione di $SU(2)$ è scomponibile in una somma di reppresentazioni irriducibili.
 \end{cor}
-Nella sezione \textbf{6.1} abbiamo visto come i quaternioni possono essere visti come un sottoinsieme di 
+Nella sezione \ref{sec:quaternioni} abbiamo visto come i quaternioni possono essere visti come un sottoinsieme di 
 
 
 \[
@@ -3479,10 +3479,10 @@ Come abbiamo fatto per $\mathbb{S}^1$, vorremmo andare a studiare tutte le sue r
  \[ I(f) = \dint_{\mathbb{S}^3} f(g) dg = \dfrac{1}{2\pi^2} \dint_0^\pi \dint_0^{\pi} \dint_0 ^{2\pi} f(\theta, \phi, \psi) \sin^2\theta\sin\phi \ d\theta \ d\phi \ d\psi\]
 
 
-L'invarianza dell'integrazione sotto l'azione di $G$ deriva sostanzialmente dal fatto che quando si cambia variabili bisogna moltiplicare l'integrando per il determinante dello Jacobiano. Tuttavia $det(SU(2)) = 1$ e quindi non ci sono problemi.\\
+L'invarianza dell'integrazione sotto l'azione di $G$ deriva sostanzialmente dal fatto che quando si cambia variabili bisogna moltiplicare l'integrando per il determinante dello Jacobiano. Tuttavia $det(SU(2)) = 1$ e quindi non ci sono problemi.
 
 \paragraph{Rappresentazioni irriducibili}
-Vediamo ora di classificare tutte le rappresentazioni irriducibili di $SU(2)$. \\
+Vediamo ora di classificare tutte le rappresentazioni irriducibili di $SU(2)$. 
 Consideriamo l'azione di $SU(2)$ sullo spazio $V_m = \C[x,y]_m$ dei polinomi omogenei su $\C$ di grado $m$ definita in questo modo 
 
  \[
@@ -3510,13 +3510,18 @@ e^{i\theta} & 0\\
  0& e^{i\theta}
 \end{pmatrix} (x^ky^{m-k}) = (xe^{i\theta})^k(ye^{i\theta})^{m-k}=e^{i(m-2k)} x^k y^{m-k} \]
 
-Ovvero, quello che abbiamo appena scoperto è che la base considerata è formata da autovettori per il sottogruppo $T$. Quindi, denotando con $\rho_n^{\mathbb{S}^1}$ le rappresentazioni irriducibili di $\mathbb{S}^1$, allora $\rho_m|_{\mathbb{S}^1}=\rho_{m-2k}^{\mathbb{S}^1}$.\\ \\
+Ovvero, quello che abbiamo appena scoperto è che la base considerata è formata da autovettori per il sottogruppo $T$. Quindi, denotando con $\rho_n^{\mathbb{S}^1}$ le rappresentazioni irriducibili di $\mathbb{S}^1$, allora $\rho_m|_{\mathbb{S}^1}=\rho_{m-2k}^{\mathbb{S}^1}$.
+
 Quindi ora di $V_m$ abbiamo una duplice scrittura:
 \[V_m=\bigoplus_{k=0}^m \C (x^k y^{m-k})=\bigoplus_{k=0}^m V_{\rho_{m-2k}^{\mathbb{S}^1}}\]
-dove la seconda scrittura è una somma diretta di rappresentazioni di $T$ irriducibili e a 2 a 2 non isomorfe. Consideriamo $W\neq \O \subseteq V_m$ sottospazio stabile per $SU(2)$: iniziamo con il dimostrare il seguente fatto: \\
-\textbf{Fatto:} Sia $\pi_k:V_m\rightarrow \C x^{m-k}y^k$ la proiezione di un vettore sulla sua componente $(m-k)-$esima. Allora se $\pi_k|_W\neq 0$ allora $V_{m,k}:=\C x^{m-k}y^k\in W$.\\ \\
-Dato che  $\{ x^ky^{m-k} \}_{k \in \{0, ..., m\}}$ sono una base di autovettori per le matrici in $T$ allora $\forall k,\ \pi_k\in \Hom_T(V_m,V_{m,k}\Rightarrow \pi_k|_W\in \Hom_T(W,V_{m,k})$. Se $\pi_k|_W\neq 0\Rightarrow W=Ker(\pi_k|_W)\bigoplus W_k$ dove la $dim(W_k)$ è forzata ad essere 1. Quindi $W_k\cong V_{m,k}$ come rappresentazioni. Tuttavia $V_{m,k}$ è l'unico sottospazio invariante per $\rho_{m-2k}^{\mathbb{S}^1}\Rightarrow V_{m,k}=W_k$.\\ \\
-Quindi dato che abbiamo supposto il nostro $W$ diverso dal vuoto, esiste un $k$ tale che $x^{m-k}y^k\in W$. Se mostriamo che $x^m\in W$ allora abbiamo concluso poichè data la generalità di $W$ avrei dimostrato che $x^m\in$ a tutti i sottospazi di $V_m$ non vuoti e invarianti per $SU(2)$. Quindi se $W$ fosse diverso da $V_m$ avrei $V_m=W\bigoplus U$ ma con $U\neq \O\Rightarrow x^m\in U\cap W$ il che è assurdo poichè devono essere in somma diretta. Per mostrare che $x^m\in W$ riusiamo il fatto e ci riduciamo a dover dimostrare che $\pi_0|_W\neq 0$. Considero al variare di $g\in SU(2)$ il vettore $\pi_0(\rho_m(g)(x^{m-k}y^k))$ dove $x^{m-k}y^k$ è il monomio che siamo sicuri appartenga a $W$. Bene, ma allora mi basta scegliere
+dove la seconda scrittura è una somma diretta di rappresentazioni di $T$ irriducibili e a 2 a 2 non isomorfe. Consideriamo $W\neq $ \O \ $ \subseteq V_m$ sottospazio stabile per $SU(2)$: iniziamo con il dimostrare il seguente fatto:
+
+\textbf{Fatto:} Sia $\pi_k:V_m\rightarrow \C x^{m-k}y^k$ la proiezione di un vettore sulla sua componente $(m-k)-$esima. Allora se $\pi_k|_W\neq 0$ allora $V_{m,k}:=\C x^{m-k}y^k\in W$.
+
+Dato che  $\{ x^ky^{m-k} \}_{k \in \{0, ..., m\}}$ sono una base di autovettori per le matrici in $T$ allora $\forall k,\ \pi_k\in \Hom_T(V_m,V_{m,k}\Rightarrow \pi_k|_W\in \Hom_T(W,V_{m,k})$. Se $\pi_k|_W\neq 0\Rightarrow W=Ker(\pi_k|_W)\bigoplus W_k$ dove la $dim(W_k)$ è forzata ad essere 1. Quindi $W_k\cong V_{m,k}$ come rappresentazioni. Tuttavia $V_{m,k}$ è l'unico sottospazio invariante per $\rho_{m-2k}^{\mathbb{S}^1}\Rightarrow V_{m,k}=W_k$.
+
+
+Quindi dato che abbiamo supposto il nostro $W$ diverso dal vuoto, esiste un $k$ tale che $x^{m-k}y^k\in W$. Se mostriamo che $x^m\in W$ allora abbiamo concluso poichè data la generalità di $W$ avrei dimostrato che $x^m\in$ a tutti i sottospazi di $V_m$ non vuoti e invarianti per $SU(2)$. Quindi se $W$ fosse diverso da $V_m$ avrei $V_m=W\bigoplus U$ ma con $U\neq $\O \ $ \Rightarrow x^m\in U\cap W$ il che è assurdo poichè devono essere in somma diretta. Per mostrare che $x^m\in W$ riusiamo il fatto e ci riduciamo a dover dimostrare che $\pi_0|_W\neq 0$. Considero al variare di $g\in SU(2)$ il vettore $\pi_0(\rho_m(g)(x^{m-k}y^k))$ dove $x^{m-k}y^k$ è il monomio che siamo sicuri appartenga a $W$. Bene, ma allora mi basta scegliere
 \[g=\frac{1}{\sqrt{2}}\begin{pmatrix}
 1& -1\\ 
  1& 1
@@ -3816,14 +3821,50 @@ Tuttavia in sostanza la matriche che rappresenta $\phi_{ij}$ nelle base $v_i$ è
 
 
 
-\begin{lemma}
+\begin{prop}
   \begin{enumerate}
     \item L'omomorfismo $\phi : SU(2) \to SO(3)$ sopra definito è surgettivo. 
     \item Il nucleo dell'omomorfismo $\phi$ è composto da solo due matrici in $SU(2)$
     \item
       \[ SU(2) / Ker(\phi) \cong SO(3) \]
   \end{enumerate}
-  \end{lemma}
+  \end{prop}
+
+Per dimostrare questa proposizione abbiamo bisogno di un lemma.
+
+
+\begin{lemma}
+  Sia $H \subseteq SO(3)$ un sottogruppo. Supponiamo che valgano le due seguenti affermazioni:
+
+  \begin{enumerate}
+  \item $H$ agisce transitivamente su $\mathbb{S}^2$
+    \item Esiste un asse $\langle e \rangle \subseteq \R^3$ tale che $H$ contiene tutte le rotazioni intorno a quell'asse.
+  \end{enumerate}
+
+  Allora si ha $H = SO(3)$
+\end{lemma}
+
+\begin{proof}
+  
+  
+
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  \begin{proof}
    \begin{enumerate}
