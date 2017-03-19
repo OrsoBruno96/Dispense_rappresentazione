@@ -823,7 +823,7 @@ In particolare, ponendo $W=V$, otteniamo che $\End(V)$ è isomorfo a $V^*\otimes
 Esiste un'applicazione in un certo senso ``naturale'' $t:V^*\otimes V \to \K$, dove $\K$ è il campo degli scalari, definita da
 $t(f\otimes v) = f(v)$.
 Se indichiamo con $\phi$ l'isomorfismo $V^*\otimes V\to \End(V)$ che abbiamo definito nel corso della precedente dimostrazione,
-otteniamo una funzione lineare $\tr = t\circ \phi: \End(V)\to \K$. Non è difficile vedere che questa $\tr$ che abbiamo appena definito 
+otteniamo una funzione lineare $\tr = t\circ \phi^{-1}: \End(V)\to \K$. Non è difficile vedere che questa $\tr$ che abbiamo appena definito 
 coincide con la classica funzione ``traccia''. Il modo in cui l'abbiamo definita noi rende evidente il fatto che la traccia non dipende
 dalla base scelta per scrivere la matrice di un endomorfismo.
 \end{rem}
@@ -884,7 +884,7 @@ esiste un'unica $\phi: \bigwedge^n V \to Z $ lineare per cui vale $\phi(v_1\wedg
 
 \begin{defn}[Prodotto simmetrico]
 Sia $n$ un intero positivo, $V$ uno spazio vettoriale. Un prodotto simmetrico è uno spazio vettoriale indicato con $S^n V$
-dotato di una funzione $n-$lineare simmetrica $V^n \to \bigwedge^n V$ che manda $(v_1,\ldots,v_n)$ in 
+dotato di una funzione $n-$lineare simmetrica $V^n \to S^n V$ che manda $(v_1,\ldots,v_n)$ in 
 $v_1 v_2\ldots v_n \in S^n V$, tale che presa comunque una funzione $h: V^n \to Z$ $n-$lineare simmetrica, 
 esiste un'unica $\phi: S^n V \to Z $ lineare per cui vale $\phi(v_1 v_2 \ldots v_n)=h(v_1,\ldots,v_n)$.
 \label{defn:prodotto simmetrico}
@@ -1268,7 +1268,7 @@ Notiamo infine che l'isomorfismo trovato è canonico, ovvero non dipende da alcu
 
   Dove $a_g$ sono dei numeri complessi. Possiamo definire una rappresentazione di $G$ su questo spazio in questo modo:
 
-  \[ \rho(h)v = \rho(h) \dsum_{g \in G} a_g e_g = \dsum_{g\in G} a_g \rho(h) e_g := \dsum_{g \in G} a_g e_{gh} \]
+  \[ \rho(h)v = \rho(h) \dsum_{g \in G} a_g e_g = \dsum_{g\in G} a_g \rho(h) e_g := \dsum_{g \in G} a_g e_{hg} \]
 
   Notare che questa definizione ha senso in quanto essendo $G$ un gruppo, $gh \in G$ e quindi sicuramente $e_{gh}$ è un elemento della base. Questa particolare rappresentazione di $G$ si chiama \emph{rappresentazione regolare} di $G$
 
@@ -1360,7 +1360,7 @@ Per noti teoremi di algebra lineare sappiamo che
 
 \[ V_\rho = W \oplus W^\perp \]
 
-Di conseguenza un generico vettore di $V_\rho$ si potrà scrivere come somma di $w_1 + w_2$, con $w_1 \in W$ e $w_2 \in W^\perp$. Inoltre sappiamo che $\rho_{|_W}$ è una sottorappresentazione. Mostriamo che anche $\rho_{|_W^\perp}$ è una sottorappresentazione: quello che dobbiamo mostrare è che $\rho(g) w_2 \in W^\perp \ \forall g \in G$. Dato che abbiamo un prodotto hermitiano la cosa più facile da verificare è che $w_2$ sia ortogonale a $W$. Consideriamo quindi l'espressione
+Di conseguenza un generico vettore di $V_\rho$ si potrà scrivere come somma di $w_1 + w_2$, con $w_1 \in W$ e $w_2 \in W^\perp$. Inoltre sappiamo che $\rho_{|_W}$ è una sottorappresentazione. Mostriamo che anche $\rho_{|_W^\perp}$ è una sottorappresentazione: quello che dobbiamo mostrare è che $\rho(g) w_2 \in W^\perp \ \forall g \in G$. Dato che abbiamo un prodotto hermitiano la cosa più facile da verificare è che $\rho(g) w_2$ sia ortogonale a $W$. Consideriamo quindi l'espressione
 
 \[ 0 = h(w_1, w_2) \qquad \forall w_1 \in W, \forall w_2 \in W^\perp\]
 
@@ -2988,7 +2988,7 @@ Torniamo a $\rho_{ind}$: ricapitolando $\rho_{ind}:G\mapsto GL(\Ind_H^G)$ tale c
 \begin{defn}
 Data $f\in \{f:G\rightarrow W\}$ (che contiene $V$) definiamo il supporto di $f$ 
 
-\[\Supp(f)=\{f\in G:f(g)\neq 0\}.\]
+\[\Supp(f)=\{g\in G:f(g)\neq 0\}.\]
 \end{defn}
 
 \begin{defn}
@@ -3474,7 +3474,7 @@ MANCA LA PARTE IN CUI PARLAVA DI FOURIER
 
 Dopo aver studiato in dettaglio $\mathbb{S}^1$, vediamo come si comporta un suo parente stretto, $SU(2)$. Ricordiamo che $SU(2)$ è definito come un sottoinsieme di $GL(\C^2)$. In particolare ogni matrice di $SU(2)$ si può scrivere come 
 
- \[ SU(2) = \left\{  \left(\begin{array}{cc} z & w \\ -\overline{w} & \overline z \end{array}\right) \quad z, w \in \C  , \qquad |z_1|^2 + |z_2|^2 = 1\right\} \]
+ \[ SU(2) = \left\{  \left(\begin{array}{cc} z_1 & z_2 \\ -\overline{z_2} & \overline z_1 \end{array}\right) \quad z_1, z_2 \in \C  , \qquad |z_1|^2 + |z_2|^2 = 1\right\} \]
 
  È abbastanza naturale considerare $\C^2 \cong \R^4$ e accorgersi che in sostanza $SU(2) \cong \mathbb{S}^3$, in quanto tutti gli elementi rispettano l'equazione
 
@@ -3734,8 +3734,8 @@ Quindi $W=V_m$. Le $\rho_m$ sono irriducibili.
 
  \begin{align*}
    \langle \chi_\rho | \chi_\sigma \rangle &= \dint_G \chi_\rho(g) \overline{\chi_\sigma(g)} dg = \dint_G \tr(\rho(g)) \tr(\sigma(g)^{-1}) dg = \\
-   &= \dint_G \dsum_{i \in I} \left\langle \rho(g) v_i | v_i \rangle \dsum_{j \in J} \langle \sigma(g)^{-1} w_j | w_j \right\rangle dg = \\
-   &= \dsum_{i,j} \dint_G \langle \rho(g) \langle \sigma(g)^{-1} w_j | w_j \rangle v_i | v_i \rangle dg 
+   &= \dint_G \dsum_{i \in I} \langle \rho(g) v_i | v_i \rangle \dsum_{j \in J} \langle \sigma(g)^{-1} w_j | w_j \rangle dg = \\
+   &= \dsum_{i,j} \dint_G \left\langle \rho(g) \langle \sigma(g)^{-1} w_j | w_j \rangle v_i | v_i \right\rangle dg 
  \end{align*} 
 
  Se definiamo
