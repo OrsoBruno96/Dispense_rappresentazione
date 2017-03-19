@@ -96,6 +96,8 @@
 \DeclareMathOperator{\Imm}{Im}
 \DeclareMathOperator{\Supp}{Supp}
 \DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Id}{Id}
+
 
 
 
@@ -575,7 +577,7 @@ In questa sezione diamo alcune definizioni e teoremi di algebra lineare che sono
 
 
 \begin{defn}[Ideale di un endomorfismo]
-	Se $p(x)=a_n x^n+\ldots+a_0$, allora scriviamo $p(f)$ per intendere $a_nf^n+\ldots+a_0f^0$ dove $f^0=Id$ e $f^k=\underbrace{f\circ\ldots\circ f}_{k \text{ volte}}$.\\
+	Se $p(x)=a_n x^n+\ldots+a_0$, allora scriviamo $p(f)$ per intendere $a_nf^n+\ldots+a_0f^0$ dove $f^0=\Id$ e $f^k=\underbrace{f\circ\ldots\circ f}_{k \text{ volte}}$.\\
 	Sia $V$ un $\K$-spazio vettoriale, $f:V\to V$ un endomorfismo di $V$. Definiamo \textit{ideale di $f$} l'insieme
 	\[
 		I(f)=\left\{ p(x)\in \K[x]\ |\ p(f)=0 \right\}
@@ -588,7 +590,7 @@ In questa sezione diamo alcune definizioni e teoremi di algebra lineare che sono
 \begin{thm}[Teorema di decomposizione primaria]
 \label{thm:dec_primaria}
 	Siano $V$ un $\K$-spazio vettoriale, $f:V\to V$ un endomorfismo di $V$ e $q(x)\in I(f)$. Sia $q=q_1\cdot\ldots\cdot q_k$ tale che $MCD(q_i,q_j)=1\ \forall\ i\neq j$, allora $V=\Ker(q_1(f))\oplus\dots\oplus \Ker(q_k(f))$ e gli addendi sono $f$-invarianti.\\
-	In particolare se $f$ è triangolabile e $\lambda_1,\ldots,\lambda_k$ sono gli autovalori di $f$ con molteplicità algebrica rispettivamente $\alpha_1,\ldots,\alpha_k$, allora $V=\Ker\left((f-\lambda_1 Id)^{\alpha_1}\right)\oplus\dots\oplus \Ker\left((f-\lambda_k Id)^{\alpha_k}\right)$.
+	In particolare se $f$ è triangolabile e $\lambda_1,\ldots,\lambda_k$ sono gli autovalori di $f$ con molteplicità algebrica rispettivamente $\alpha_1,\ldots,\alpha_k$, allora $V=\Ker\left((f-\lambda_1 \Id)^{\alpha_1}\right)\oplus\dots\oplus \Ker\left((f-\lambda_k \Id)^{\alpha_k}\right)$.
 \end{thm}
 
 \begin{thm}[Forma canonica di Jordan]
@@ -910,7 +912,7 @@ In modo analogo si definisce la potenza simmetrica.
 
 \begin{rem} Siano $V$, $W$, $Z$ spazi vettoriali.
 \begin{itemize}
-   \item $\bigwedge^k Id_V = Id_{\bigwedge^kV}$
+   \item $\bigwedge^k \Id_V = \Id_{\bigwedge^kV}$
    \item Date due applicazioni lineari $f:V\to W$ e $g:W\to Z$ allora $\bigwedge^k(g\circ f) = \bigwedge^kg\circ\bigwedge^kf$
 \end{itemize}
 \end{rem}
@@ -1481,7 +1483,7 @@ Siano $\rho: G \to GL(V_\rho)$ e $\sigma: G \to GL(V_\sigma)$ due rappresentazio
 \end{thm}
 \begin{proof}
 Supponiamo che $\phi\neq 0$, allora sappiamo che $\Ker(\phi)\subseteq V_\rho$ è una sottorappresentazione di $\rho$, ma $\rho$ è irriducibile e quindi $\Ker(\phi)=0\Rightarrow \phi$ iniettiva. Ma anche $\Imm(\phi)\subseteq V_{\sigma}$ è una sottorappresentazione di $\sigma$ e, non essendo nulla ed essendo $\sigma$ irriducibile, coincide con tutto $V_\sigma \Rightarrow \phi$ suriettiva, da cui $\phi$ è un isomorfismo.
-Consideriamo ora $f$: sia $\lambda$ un autovalore di $f$, che esiste perché $G$ è finito e stiamo lavorando su $\C$, allora $f-\lambda Id:V_\rho\to V_\rho$ è un omomorfismo di rappresentazioni. Ma non è iniettivo, perché c'è almeno un autovettore relativo a $\lambda$, e quindi per la prima parte del lemma di Schur ho che $f-\lambda Id$ è identicamente nullo, da cui ricaviamo che $f$ è la moltiplicazione per uno scalare ($\lambda$).
+Consideriamo ora $f$: sia $\lambda$ un autovalore di $f$, che esiste perché $G$ è finito e stiamo lavorando su $\C$, allora $f-\lambda \Id:V_\rho\to V_\rho$ è un omomorfismo di rappresentazioni. Ma non è iniettivo, perché c'è almeno un autovettore relativo a $\lambda$, e quindi per la prima parte del lemma di Schur ho che $f-\lambda \Id$ è identicamente nullo, da cui ricaviamo che $f$ è la moltiplicazione per uno scalare ($\lambda$).
 \end{proof}
 
 Come immediato corollario, notiamo che, prese due rappresentazioni irriducibili $\rho$ e $\sigma$, si ha che $\dim\left(\Hom(\rho,\sigma)\right)$ è uguale a 1 se $\rho\simeq\sigma$, ed è uguale a 0 se $\rho\not\simeq\sigma$. Generalizzando, se $\rho$ si scompone in somma di rappresentazioni irriducibili come $\rho=\sum n_i\rho_i$, allora $\dim\left(\Hom(\rho,\rho_i)\right)=n_i$.
@@ -2529,7 +2531,7 @@ Prendiamo un elemento $B \in \left( V^* \otimes V^*\right) ^G$.
 Ricordiamo che $V^* \otimes V^*$ e $\Hom(V, V^*)$ sono $G-$rappresentazioni isomorfe. In particolare:
 \[\left(V^* \otimes V^*\right)^G \cong \Hom(V, V^*)^G \]
 A questo punto, se esiste una forma bilineare non nulla invariante, questa corrisponde ad un omomorfismo di rappresentazioni $\phi: V\to V^*$.
-Per il lemma di Schur o $\phi$ è nullo o $\phi$ è un isomorfismo. Dato che la forma è non nulla, allora $\phi = \lambda Id$ con $\lambda \in \C\setminus\{0\}$.
+Per il lemma di Schur o $\phi$ è nullo o $\phi$ è un isomorfismo. Dato che la forma è non nulla, allora $\phi = \lambda \Id$ con $\lambda \in \C\setminus\{0\}$.
 \end{proof}
 
 
@@ -2616,7 +2618,7 @@ La linearità rispetto ai vettori è abbastanza evidente. L'antilinearità rispe
 E quindi purtroppo $\phi$ non è davvero lineare come applicazione tra spazi vettoriali sul campo $\C$. Vediamo però che $\phi^2$ si comporta meglio:
 \[\phi^2(z_1 x_1 + z_2 x_2) = \phi(\overline{z_1} \phi(x_1) + \overline{z_2} \phi(x_2))  = z_1 \phi^2(x_1) + z_2 \phi^2(x_2) \qquad \forall z_1, z_2 \in \C, \forall x_1, x_2 \in V_\rho \] 
 E quindi effettivamente $\phi^2$ è un omomorfismo di rappresentazioni irriducibili. Per questo motivo possiamo applicare Schur e concludere che 
-$\phi^ 2 = \lambda Id_{V_\rho}$ per un certo $\lambda \in \C$.
+$\phi^ 2 = \lambda \Id_{V_\rho}$ per un certo $\lambda \in \C$.
 
 Cosa possiamo dire su $\lambda$? Il claim è che sia $\lambda \in \R$ e $\lambda > 0$. Vediamo come si mostra
 \[h(\phi(x), y) = B(x, y) = B(y, x) = h(\phi(y), x) = \overline{h(x, \phi(y))} \]
@@ -2626,7 +2628,7 @@ E questo ci dice ovviamente che $\lambda \in \R$. Per mostrare ora che $\lambda 
 \[\lambda h(x, x) = h (\phi^2(x), x) = \overline{h(\phi(x), \phi(x))} \Rightarrow \lambda = \dfrac{\overline{h(\phi(x), \phi(x))}}{ h(x,x)} \qquad \forall x \neq 0 \in V_\rho\]
 E dato che $h $ è definita positiva si ha anche $\lambda > 0$
 
-A questo punto possiamo (a meno di riscalare) scegliere $\lambda = 1$, ovvero $\phi^2 = Id$. A questo punto ci piacerebbe tornare a fare cose con $\phi$ e non $\phi^2$. Notiamo che se ci restringiamo a spazi vettoriali su $\R$, allora anche $\phi$ è lineare in quanto il coniugio non ci dà fastidio. Dato che quindi $\phi$ è un endomorfismo di uno spazio vettoriale reale tale che $\phi^2=1$, allora $\phi$ è diagonalizzabile e ha solo gli autovalori $\pm 1$.  Per questo motivo possiamo scomporre lo spazio di partenza $V_\rho = V_+ \oplus V_-$, con ovvia notazione per gli autospazi.
+A questo punto possiamo (a meno di riscalare) scegliere $\lambda = 1$, ovvero $\phi^2 = \Id$. A questo punto ci piacerebbe tornare a fare cose con $\phi$ e non $\phi^2$. Notiamo che se ci restringiamo a spazi vettoriali su $\R$, allora anche $\phi$ è lineare in quanto il coniugio non ci dà fastidio. Dato che quindi $\phi$ è un endomorfismo di uno spazio vettoriale reale tale che $\phi^2=1$, allora $\phi$ è diagonalizzabile e ha solo gli autovalori $\pm 1$.  Per questo motivo possiamo scomporre lo spazio di partenza $V_\rho = V_+ \oplus V_-$, con ovvia notazione per gli autospazi.
 
 A questo punto ci manca poco. $V_+$ e $V_-$ sono sottospazi reali del nostro spazio di partenza. Se mostriamo che sono isomorfi, abbiamo trovato la nostra scomposizione dello spazio $V_\rho$ in due spazi $V_\rho = V_0 \oplus iV_0$.
 Proprio per questo motivo è intelligente notare che vale $i V_+ = V_-$.
@@ -3216,7 +3218,7 @@ Con conti analoghi si ottiene
 \]
 
 
-A questo punto abbiamo un sacco di rappresentazioni di $D_{2n}$. Se vogliamo costruire tutte le rappresentazioni del gruppo dobbiamo domandarci se sono irriducibili o meno e in caso decomporle. Alcuni casi particolari si vedono abbastanza facilmente. Per esempio, per $k=0$, $\hat \rho_k(\sigma) = Id$. Di conseguenza, tutte le $\hat \rho_0$ sono simultaneamente diagonalizzabili e quindi in realtà la rappresentazione non sarà irriducibile in quanto il gruppo diventa abeliano.
+A questo punto abbiamo un sacco di rappresentazioni di $D_{2n}$. Se vogliamo costruire tutte le rappresentazioni del gruppo dobbiamo domandarci se sono irriducibili o meno e in caso decomporle. Alcuni casi particolari si vedono abbastanza facilmente. Per esempio, per $k=0$, $\hat \rho_k(\sigma) = \Id$. Di conseguenza, tutte le $\hat \rho_0$ sono simultaneamente diagonalizzabili e quindi in realtà la rappresentazione non sarà irriducibile in quanto il gruppo diventa abeliano.
 
 
 
@@ -3321,7 +3323,7 @@ Tutte le rappresentazioni irriducibili $/_\C$ di un gruppo compatto abeliano $G$
 \begin{proof}
   $G$ è un gruppo compatto abeliano e sia $\rho:G\rightarrow GL(V)$ con $V$ $\C-$sp. vettoriale: quindi
   \[ gh = hg \qquad \forall g,h \in G \ \Rightarrow\ \rho(g)\rho(h) = \rho(h)\rho(g) \qquad \forall g, h \in G\]
-  Il che vuol dire che, fissato $h$, $\rho(h)$ è un'omomorfismo di rappresentazioni irriducibili su $\C$, ovvero appartiene a $End_{\mathbb{S}^1}(V)$ proprio perchè commuta con $\rho(g)$ per tutte le $g$. Sia $\lambda$ un autovalore di $\rho(h)$ (esiste perchè siamo su $\C$): allora $\rho(g)-\lambda Id\in End_{\mathbb{S}^1}(V)$ e ha un nucleo $\Rightarrow$ per Schur il nucleo coincide con $V$ essendo $V$ irriducibile. Allora $\rho(h) \equiv \lambda(h) Id$. Quello che abbiamo fatto vale per ogni $h \in G$, per cui tutti i $\rho(g) $ sono in realtà scalari. Questo ci dice che ogni base di $V$ è una base di autovettori per $\rho(g)\ \forall g\in G$ e quindi ogni autospazio è $G-$invariante. Dunque le rappresentazioni irriducibili di $G$ sono tutte di grado 1.
+  Il che vuol dire che, fissato $h$, $\rho(h)$ è un'omomorfismo di rappresentazioni irriducibili su $\C$, ovvero appartiene a $End_{\mathbb{S}^1}(V)$ proprio perchè commuta con $\rho(g)$ per tutte le $g$. Sia $\lambda$ un autovalore di $\rho(h)$ (esiste perchè siamo su $\C$): allora $\rho(g)-\lambda \Id\in End_{\mathbb{S}^1}(V)$ e ha un nucleo $\Rightarrow$ per Schur il nucleo coincide con $V$ essendo $V$ irriducibile. Allora $\rho(h) \equiv \lambda(h) \Id$. Quello che abbiamo fatto vale per ogni $h \in G$, per cui tutti i $\rho(g) $ sono in realtà scalari. Questo ci dice che ogni base di $V$ è una base di autovettori per $\rho(g)\ \forall g\in G$ e quindi ogni autospazio è $G-$invariante. Dunque le rappresentazioni irriducibili di $G$ sono tutte di grado 1.
 \end{proof}
 
 
@@ -3535,14 +3537,14 @@ Ovvero, quello che abbiamo appena scoperto è che la base considerata è formata
 
 Quindi ora di $V_m$ abbiamo una duplice scrittura:
 \[V_m=\bigoplus_{k=0}^m \C (x^k y^{m-k})=\bigoplus_{k=0}^m V_{\rho_{m-2k}^{\mathbb{S}^1}}\]
-dove la seconda scrittura è una somma diretta di rappresentazioni di $T$ irriducibili e a 2 a 2 non isomorfe. Consideriamo $W\neq $ \O \ $ \subseteq V_m$ sottospazio stabile per $SU(2)$: iniziamo con il dimostrare il seguente fatto:
+dove la seconda scrittura è una somma diretta di rappresentazioni di $T$ irriducibili e a 2 a 2 non isomorfe. Consideriamo $W\neq \emptyset \subseteq V_m$ sottospazio stabile per $SU(2)$: iniziamo con il dimostrare il seguente fatto:
 
-\textbf{Fatto:} Sia $\pi_k:V_m\rightarrow \C x^{m-k}y^k$ la proiezione di un vettore sulla sua componente $(m-k)-$esima. Allora se $\pi_k|_W\neq 0$ allora $V_{m,k}:=\C x^{m-k}y^k\in W$.
+\textbf{Fatto:} Sia $\pi_k:V_m\rightarrow \C [x^{m-k}y^k]$ la proiezione di un vettore sulla sua componente $(m-k)-$esima. Allora se $\pi_k|_W\neq 0$ allora $V_{m,k}:=\C[ x^{m-k}y^k]\in W$.
 
-Dato che  $\{ x^ky^{m-k} \}_{k \in \{0, ..., m\}}$ sono una base di autovettori per le matrici in $T$ allora $\forall k,\ \pi_k\in \Hom_T(V_m,V_{m,k}\Rightarrow \pi_k|_W\in \Hom_T(W,V_{m,k})$. Se $\pi_k|_W\neq 0\Rightarrow W=\Ker(\pi_k|_W)\bigoplus W_k$ dove la $\dim(W_k)$ è forzata ad essere 1. Quindi $W_k\cong V_{m,k}$ come rappresentazioni. Tuttavia $V_{m,k}$ è l'unico sottospazio invariante per $\rho_{m-2k}^{\mathbb{S}^1}\Rightarrow V_{m,k}=W_k$.
+Dato che  $\{ x^ky^{m-k} \}_{k \in \{0, ..., m\}}$ sono una base di autovettori per le matrici in $T$ allora $\forall k,\ \pi_k\in \Hom_T(V_m,V_{m,k} )\Rightarrow \pi_k|_W\in \Hom_T(W,V_{m,k})$. Se $\pi_k|_W\neq 0\Rightarrow W=\Ker(\pi_k|_W)\bigoplus W_k$ dove la $\dim(W_k)$ è forzata ad essere 1. Quindi $W_k\cong V_{m,k}$ come rappresentazioni. Tuttavia $V_{m,k}$ è l'unico sottospazio invariante per $\rho_{m-2k}^{\mathbb{S}^1}\Rightarrow V_{m,k}=W_k$.
 
 
-Quindi dato che abbiamo supposto il nostro $W$ diverso dal vuoto, esiste un $k$ tale che $x^{m-k}y^k\in W$. Se mostriamo che $x^m\in W$ allora abbiamo concluso poichè data la generalità di $W$ avrei dimostrato che $x^m\in$ a tutti i sottospazi di $V_m$ non vuoti e invarianti per $SU(2)$. Quindi se $W$ fosse diverso da $V_m$ avrei $V_m=W\bigoplus U$ ma con $U\neq $\O \ $ \Rightarrow x^m\in U\cap W$ il che è assurdo poichè devono essere in somma diretta. Per mostrare che $x^m\in W$ riusiamo il fatto e ci riduciamo a dover dimostrare che $\pi_0|_W\neq 0$. Considero al variare di $g\in SU(2)$ il vettore $\pi_0(\rho_m(g)(x^{m-k}y^k))$ dove $x^{m-k}y^k$ è il monomio che siamo sicuri appartenga a $W$. Bene, ma allora mi basta scegliere
+Quindi dato che abbiamo supposto il nostro $W$ diverso dal vuoto, esiste un $k$ tale che $x^{m-k}y^k\in W$. Se mostriamo che $x^m\in W$ allora abbiamo concluso poichè data la generalità di $W$ avrei dimostrato che $x^m\in$ a tutti i sottospazi di $V_m$ non vuoti e invarianti per $SU(2)$. Quindi se $W$ fosse diverso da $V_m$ avrei $V_m=W\bigoplus U$ ma con $U\neq \emptyset \Rightarrow x^m\in U\cap W$ il che è assurdo poichè devono essere in somma diretta. Per mostrare che $x^m\in W$ riusiamo il fatto e ci riduciamo a dover dimostrare che $\pi_0|_W\neq 0$. Considero al variare di $g\in SU(2)$ il vettore $\pi_0(\rho_m(g)(x^{m-k}y^k))$ dove $x^{m-k}y^k$ è il monomio che siamo sicuri appartenga a $W$. Bene, ma allora mi basta scegliere
 \[g=\frac{1}{\sqrt{2}}\begin{pmatrix}
 1& -1\\ 
  1& 1
@@ -3706,14 +3708,14 @@ Quindi $W=V_m$. Le $\rho_m$ sono irriducibili.
    \[
    \begin{cases}
      \phi^G = 0 \qquad \text{se } \rho \ncong \sigma \\
-     \phi^G = \frac{\tr \phi}{\dim V}Id_V \qquad \text{altrimenti} \\
+     \phi^G = \frac{\tr \phi}{\dim V}\Id_V \qquad \text{altrimenti} \\
    \end{cases}
    \]
 
  \end{lemma}
 
  \begin{proof}
-   Nel caso in cui le due rappresentazioni non siano isomorfe, la tesi segue banalmente dal lemma di Schur. Nell'altro caso, possiamo di nuovo usare Schur e dire che $V \cong W$ come spazi vettoriali, ma anche che in un certo senso sono lo stesso spazio, in quanto $\phi = \lambda Id$, sempre per Schur. L'unica cosa che rimane da mostrare è che vale proprio $\tr \phi^G = \tr \phi$. Per mostrarlo, possiamo fissare una base ortonormale di $V$, $\{ e_n\}_{n\in I}$ e notare che in questa base
+   Nel caso in cui le due rappresentazioni non siano isomorfe, la tesi segue banalmente dal lemma di Schur. Nell'altro caso, possiamo di nuovo usare Schur e dire che $V \cong W$ come spazi vettoriali, ma anche che in un certo senso sono lo stesso spazio, in quanto $\phi = \lambda \Id$, sempre per Schur. L'unica cosa che rimane da mostrare è che vale proprio $\tr \phi^G = \tr \phi$. Per mostrarlo, possiamo fissare una base ortonormale di $V$, $\{ e_n\}_{n\in I}$ e notare che in questa base
 
    \[ \tr(\psi) = \dsum_{n \in I}\langle \psi e_n | e_n \rangle \qquad \forall \psi \in \End(V)\]
    Per cui,
@@ -3842,7 +3844,8 @@ Tuttavia in sostanza la matriche che rappresenta $\phi_{ij}$ nelle base $v_i$ è
 
 
 
-\begin{prop}
+ \begin{prop}
+   \label{prop:omo su2 so3}
   \begin{enumerate}
     \item L'omomorfismo $\phi : SU(2) \to SO(3)$ sopra definito è surgettivo. 
     \item Il nucleo dell'omomorfismo $\phi$ è composto da solo due matrici in $SU(2)$
@@ -3866,10 +3869,10 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 \end{lemma}
 
 \begin{proof}
-  
-  
+  Consideriamo $|e| = 1$. Dato che $H$ agisce transitivamente su $\mathbb{S}^2$, $\forall g \in SO(3) \exists h \in H$
+  \[ ge = he \Rightarrow e = h^{-1}ge \Rightarrow h^{-1}g \in \Stab(e) \]
 
-
+  Ma lo stabilizzatore di $e$ è una rotazione intorno a quell'asse, quindi è in $H$
 \end{proof}
 
 
@@ -3887,13 +3890,157 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 
 
 
- \begin{proof}
+\textsc{Dimostrazione della proposizione \ref{prop:omo su2 so3}}
    \begin{enumerate}
-     \item{}
-     \item{}
+   \item{
+     Cerchiamo di usare il lemma che abbiamo appena mostrato. Dimostriamo che l'azione di $\rho(SU(2))$ su $\mathbb{S}^2$ è transitiva. Prendiamo una matrice $x$
+
+     \[ x \in \mathbb{E} \cap \mathbb{S}^2\]
+
+     Essendo una matrice autoaggiunta, per il teorema spettrale è unitariamente diagonalizzabile, ovvero $\exists g \in U(2) | gxg^{-1}$ è una matrice diagonale. In particolare, dato che $|\det(g)| = 1$, possiamo considerare $\hat g = \sqrt{\det(g)}g$ per dire che possiamo scegliere una matrice $\hat \rho \in SU(2)$. Nella sua forma diagonale la matrice sarà
+
+     \[ \hat g x \hat g^{-1} =
+     \left(
+     \begin{array}{cc}
+       \lambda & 0 \\
+       0 & -\lambda \\
+     \end{array}
+     \right)
+     \qquad \lambda \in \R
+     \]
+     e dovrà essere $-\det(m) = \lambda^2 = 1$, per cui $\lambda = \pm 1$. Dato che in $SU(2)$ c'è una matrice che scambia $\lambda$ con $-\lambda$, possiamo prendere WLOG $\lambda > 0$
+
+     
+     \[ \hat g x \hat g^{-1} =
+     \left(
+     \begin{array}{cc}
+       1 & 0 \\
+       0 & -1 \\
+     \end{array}
+     \right)
+     \]
+
+     E questo vuol dire che tutte le matrici di $\mathbb{E}$ sono coniugate alla stessa. Dato che l'azione di $SU(2)$ è per coniugio, questo vuol dire che c'è un'orbita sola, ovvero l'azione è transitiva.
+
+     Mostriamo ora che $\rho(SU(2))$ contiene tutte le rotazioni intorno ad un asse. Questo è semplice in quanto sappiamo che $\mathbb{S}^1 \subset SU(2)$. Vediamo come agisce
+
+     \[
+     \left(
+     \begin{array}{cc}
+       e^{i\theta} & 0 \\
+       0 & e^{-i\theta} \\
+     \end{array}
+     \right)
+     \left(
+     \begin{array}{cc}
+       x_1 & x_2 + i x_3 \\
+       x_2 - ix_3 & -x_1 \\
+     \end{array}
+     \right)
+     \left(
+     \begin{array}{cc}
+       e^{-i\theta} & 0 \\
+       0 & e^{i\theta} \\
+     \end{array}
+     \right)
+     =
+     \left(
+     \begin{array}{cc}
+       x_1 & e^{2i\theta}(x_2 + i x_3) \\
+       e^{-2i\theta}(x_2 - ix_3) & -x_1 \\
+     \end{array}
+     \right)
+     \]
+     Che è palesemente una rotazione intorno all'asse $x_1$ di angolo $2\theta$
+   }
+   \item{
+     Bisogna mostrare che il $\Ker$ dell'applicazione sono solo le matrici $\Id, -\Id$. Se vale $\rho(g) = \Id \quad \forall g \in SU(2)$, a maggior ragione vale 
+
+     \begin{align*}
+     \left(
+     \begin{array}{cc}
+       z_1 & z_2 \\
+       -\overline{z_2} & \overline{z_1} \\
+     \end{array}
+     \right)
+     \left(
+     \begin{array}{cc}
+       1 & 0 \\
+       0 & -1 \\
+     \end{array}
+     \right)
+     \left(
+     \begin{array}{cc}
+       \overline{z_1} & -z_2 \\
+       \overline{z_2} & -z_1 \\
+     \end{array}
+     \right)
+     &=
+      \left(
+     \begin{array}{cc}
+       1 & 0 \\
+       0 & 1 \\
+     \end{array}
+     \right) \\
+     \Rightarrow
+      \left(
+     \begin{array}{cc}
+       |z_1|^2-|z_2|^2 & -2z_1z_2 \\
+       -\overline{z_1z_2} & |z_1|^2 - |z_2|^2 \\
+     \end{array}
+     \right)
+     &=
+     \left(
+     \begin{array}{cc}
+       1 & 0 \\
+       0 & 1 \\
+     \end{array}
+     \right)
+     \end{align*}
+     E questa cosa è vera solo per $z_2 = 0$ e $|z_1| = 1$. Se andiamo a considerare il caso studiato poco fa, allora è evidente che deve essere solo $z_1 = \pm 1$
+
+
+   }
      \item La tesi segue dalle proposizioni precedenti applicate insieme al primo teorema di omomorfismo.
    \end{enumerate}
+
+
+
+
+   A questo punto abbiamo mostrato un isomorfismo di gruppi. Ci piacerebbe che il nostro isomorfismo fosse anche continuo, in modo da poter concludere quali siano tutte e sole le rappresentazioni irriducibili di $SO(3)$. Per farlo in qualche modo dobbiamo definire una topologia sul gruppo quoziente in modo astratto e verificare che corrisponda a quella che già conoscevamo.
+
+   \begin{defn}
+     Sia $G$ un gruppo topologico, $H$ un suo sottogruppo normale. Definiamo una topologia nel seguente modo su $G/H$: un sottoinsieme $U \subseteq G/H$ è aperto $\Leftrightarrow \pi^{-1}(U)$ è aperto in $G$. Sono banali verifiche che questa sia effettivamente una topologia su $G/H$. Inoltre questa definizione ci assicura che la mappa $\pi$ sia continua.
+   \end{defn}
+
+   \begin{rem}
+     A questo punto possiamo affemare che $SU(2) / \Ker\rho \cong SO(3)$ come gruppi topologici e non solo come gruppi.
+   \end{rem}
+
+
+
+   \begin{cor}
+     Una rappresentazione irriducibile $\rho_m$ di $SU(2)$ si può proiettare su $SO(3)$ se e solo se $- \Id \in \Ker \rho_m$.
+   \end{cor}
+
+
+   \begin{thm}
+     Le rappresentazioni irriducibili di $SO(3)$ sono tutte e sole quelle che si ottengono da $SU(2)$ che hanno $-\Id$ nel nucleo, ovvero le $\rho_m$ per $m$ pari.
+   \end{thm}
+
+
+   \begin{thm}[Formula di Clebsch-Gordon]
+     Consideriamo il prodotto tensore di due rappresentazioni irriducibili di $SU(2)$. Vale la formula
+     \[ \rho_n\otimes \rho_m = \dsum_{j=0}^m \rho_{m+n-2j} \qquad (n \geq m)\]
+   \end{thm}
+
+   \begin{proof}
+     Si tratta di un banale conto con i caratteri.
+
+     \begin{align*}
+       \chi_{\rho_n\otimes\rho_m} &= \chi_{\rho_n} \chi_{\rho_m} = \dfrac{e^{i(n+1)\theta} - e^{-i(n+1)\theta}}{e^{i\theta} - e^{-i\theta}} \cdot \dsum_{j=0}^m e^{i(m-2j)\theta} =\\ 
+                                  &= \cdots = \dsum_{j = 0}^m e^{i(n+m-2j)\theta}
+     \end{align*}
    \end{proof}
- 
 
 \end{document}
