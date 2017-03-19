@@ -92,6 +92,11 @@
 \DeclareMathOperator{\Stab}{Stab}
 \DeclareMathOperator{\Fix}{Fix}
 \DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Imm}{Im}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Res}{Res}
+
 
 
 \newcommand{\tridiag}[6]{
@@ -301,29 +306,29 @@ Siano $G$ ed $H$ gruppi, un'applicazione $\varphi:G\to H$ si dice \textit{omomor
 \]
 dove la prima moltiplicazione è fatta in $G$ mentre la seconda in $H$.
 Se $\varphi$ è bigettiva, allora si dice \textit{isomorfismo}, e i due gruppi si dicono \emph{isomorfi}.
-Indichiamo con $Hom(G,H)$ l'insieme degli omomorfismi da $G$ ad $H$.
+Indichiamo con $\Hom(G,H)$ l'insieme degli omomorfismi da $G$ ad $H$.
 \end{defn}
 
 \begin{defn}
 	Siano $G$ e $H$ gruppi, $f:G\to H$ un omomorfismo di gruppi, allora definiamo
 	\begin{gather*}
-		Ker f = \{g\in G\ |\ f(g)=e_H\}\\
-		Imm f =\{ h\in H\ |\ \exists g\in G\text{ t.c. }f(g)=h\}
+		\Ker f = \{g\in G\ |\ f(g)=e_H\}\\
+		\Imm f =\{ h\in H\ |\ \exists g\in G\text{ t.c. }f(g)=h\}
 	\end{gather*}
-	Non è difficile verificare che sia $Ker f$ che $Imm f$ sono sempre sottogruppi rispettivamente di $G$ e di $H$, inoltre si può osserevare che $Ker f$ è un sottogruppo normale di $G$.
+	Non è difficile verificare che sia $\Ker f$ che $\Im f$ sono sempre sottogruppi rispettivamente di $G$ e di $H$, inoltre si può osserevare che $\Ker f$ è un sottogruppo normale di $G$.
 \end{defn}
 
 \begin{rem}
-	Non è difficile dimostrare che, dati $G$ e $H$ due gruppi e $f:G\to H$ un omomorfismo di gruppi, esso è \textit{iniettivo} se e solo se $Ker f = \{e\}$.
+	Non è difficile dimostrare che, dati $G$ e $H$ due gruppi e $f:G\to H$ un omomorfismo di gruppi, esso è \textit{iniettivo} se e solo se $\Ker f = \{e\}$.
 \end{rem}
 
 
 \begin{thm}[Primo teorema di omomorfismo]\label{alg:primo_teo_omo}
 	Dati due gruppi $G$ e $H$ e un omomorfismo $f:G\to H$, vale che
-	\[ G/Ker f \cong Imm f\]
+	\[ G/\Ker f \cong \Imm f\]
 \end{thm}
 \begin{rem}
-	Se la $f$ del teorema precedente è iniettiva, allora $G/Ker f\cong G$ e quindi $G\cong Imm f$. Invece se $f$ è surgettiva, allora $G/Ker f\cong H$.
+	Se la $f$ del teorema precedente è iniettiva, allora $G/\Ker f\cong G$ e quindi $G\cong \Imm f$. Invece se $f$ è surgettiva, allora $G/\Ker f\cong H$.
 \end{rem}
 
 
@@ -402,7 +407,7 @@ isomorfismo $f:\langle a\rangle\to\langle b\rangle$ ponendo $f(a^k) = b^k$ per $
 
 
 \begin{prop} Sia $C_n$ un gruppo ciclico di cardinalità $n$. Allora
-\[ n = card(Hom(C_n,\C^*))\]
+\[ n = card(\Hom(C_n,\C^*))\]
 \end{prop}
 \begin{proof} Sia $a$ un generatore di $C_n$. Fissato $\omega\in\mu_n$ posso definire
 una funzione $f:C_n\to\C^*$ ponendo $f(a^k) = \omega^k$ per $0\le k < n$.
@@ -427,7 +432,7 @@ Potrebbe essere utile conoscere il seguente risultato, la cui dimostrazione rich
 \end{thm}
 
 \begin{rem} Sia $G$ un gruppo abeliano. Allora 
-\[ |G| = card(Hom(G,\C^*))\]
+\[ |G| = card(\Hom(G,\C^*))\]
 
 La dimostrazione si ottiene ricordando che $G$ è prodotto diretto di gruppi ciclici e facendo un ragionamento simile a quello
 della proposizione analoga per gruppi ciclici.
@@ -582,8 +587,8 @@ In questa sezione diamo alcune definizioni e teoremi di algebra lineare che sono
 
 \begin{thm}[Teorema di decomposizione primaria]
 \label{thm:dec_primaria}
-	Siano $V$ un $\K$-spazio vettoriale, $f:V\to V$ un endomorfismo di $V$ e $q(x)\in I(f)$. Sia $q=q_1\cdot\ldots\cdot q_k$ tale che $MCD(q_i,q_j)=1\ \forall\ i\neq j$, allora $V=Ker(q_1(f))\oplus\dots\oplus Ker(q_k(f))$ e gli addendi sono $f$-invarianti.\\
-	In particolare se $f$ è triangolabile e $\lambda_1,\ldots,\lambda_k$ sono gli autovalori di $f$ con molteplicità algebrica rispettivamente $\alpha_1,\ldots,\alpha_k$, allora $V=Ker\left((f-\lambda_1 Id)^{\alpha_1}\right)\oplus\dots\oplus Ker\left((f-\lambda_k Id)^{\alpha_k}\right)$.
+	Siano $V$ un $\K$-spazio vettoriale, $f:V\to V$ un endomorfismo di $V$ e $q(x)\in I(f)$. Sia $q=q_1\cdot\ldots\cdot q_k$ tale che $MCD(q_i,q_j)=1\ \forall\ i\neq j$, allora $V=\Ker(q_1(f))\oplus\dots\oplus \Ker(q_k(f))$ e gli addendi sono $f$-invarianti.\\
+	In particolare se $f$ è triangolabile e $\lambda_1,\ldots,\lambda_k$ sono gli autovalori di $f$ con molteplicità algebrica rispettivamente $\alpha_1,\ldots,\alpha_k$, allora $V=\Ker\left((f-\lambda_1 Id)^{\alpha_1}\right)\oplus\dots\oplus \Ker\left((f-\lambda_k Id)^{\alpha_k}\right)$.
 \end{thm}
 
 \begin{thm}[Forma canonica di Jordan]
@@ -1400,10 +1405,10 @@ Sia $\rho: G \to GL(V_\rho)$ una rappresentazione di $G$. Se $\rho$ è irriducib
 
 
 
-\begin{thm} Se $\rho: G \to GL(V_\rho)$ e $\sigma: G \to GL(V_\sigma)$ sono rappresentazioni di $G$ e $f: V_\rho \to V_\sigma$ è un omomorfismo di rappresentazioni, allora $Im(f)$ è una sottorappresentazione di $\sigma$ e $Ker(f)$ è una sottorappresentazione di $V_\rho$
+\begin{thm} Se $\rho: G \to GL(V_\rho)$ e $\sigma: G \to GL(V_\sigma)$ sono rappresentazioni di $G$ e $f: V_\rho \to V_\sigma$ è un omomorfismo di rappresentazioni, allora $\Imm(f)$ è una sottorappresentazione di $\sigma$ e $\Ker(f)$ è una sottorappresentazione di $V_\rho$
 \end{thm}
 \begin{proof}
-Se $v\in Ker(f)$ allora per la definizione di omomorfismo di rappresentazioni ho che $\forall s\in G$ $f(\rho(s)v)=\sigma(s)f(v)=0$ e quindi $\rho(s)v\in Ker(f)$. Allo stesso modo, se $w\in Im(f)$ allora $w=f(v)$ per qualche $v\in V_\rho$ e quindi sempre per la definizione di omomorfismo di rappresentazione $\sigma(s)w=\sigma(s)f(v)=f(\rho(s)v)\in Im(f)$
+Se $v\in \Ker(f)$ allora per la definizione di omomorfismo di rappresentazioni ho che $\forall s\in G$ $f(\rho(s)v)=\sigma(s)f(v)=0$ e quindi $\rho(s)v\in \Ker(f)$. Allo stesso modo, se $w\in \Imm(f)$ allora $w=f(v)$ per qualche $v\in V_\rho$ e quindi sempre per la definizione di omomorfismo di rappresentazione $\sigma(s)w=\sigma(s)f(v)=f(\rho(s)v)\in \Imm(f)$
 \end{proof}
 
 
@@ -1412,7 +1417,7 @@ Se $v\in Ker(f)$ allora per la definizione di omomorfismo di rappresentazioni ho
 \begin{thm}Sia $G$ un gruppo abeliano finito. Allora ogni rappresentazione di $G$ è isomorfa alla somma di rappresentazioni di grado 1.
 \end{thm}
 \begin{proof}
-	\'E una conseguenza immediata della proposizione \eqref{prop:diagonalizzabilita rappresentazioni}: sia $\rho:G\to GL(V_{\rho})$, con $dim V_{\rho} = n$, dato che $G$ è finito $\forall g\in G$ $\rho(g)$ è diagonalizzabile inoltre, visto che è abeliano, si sfrutta l'osservazione alla fine della proposizione per dedurre che le $\rho(g)$ sono simultaneamente diagonalizzabili. A questo punto il teorema è dimostrato: sia $\{v_1,\ldots,v_n\}$ una base comune di autovettori, per ogni $1\leq i\leq n$ $Span(v_i)$ è una sottorappresentazione di grado 1 di $G$ (perchè invariante per $G$), visto che $V_{\rho}=Span(v_1)\oplus\ldots\oplus Span(v_n)$, allora $\rho\cong\rho_1+\ldots+\rho_n$, dove $\rho_i:G\to GL(Span(v_i))$.
+	\'E una conseguenza immediata della proposizione \eqref{prop:diagonalizzabilita rappresentazioni}: sia $\rho:G\to GL(V_{\rho})$, con $\dim V_{\rho} = n$, dato che $G$ è finito $\forall g\in G$ $\rho(g)$ è diagonalizzabile inoltre, visto che è abeliano, si sfrutta l'osservazione alla fine della proposizione per dedurre che le $\rho(g)$ sono simultaneamente diagonalizzabili. A questo punto il teorema è dimostrato: sia $\{v_1,\ldots,v_n\}$ una base comune di autovettori, per ogni $1\leq i\leq n$ $Span(v_i)$ è una sottorappresentazione di grado 1 di $G$ (perchè invariante per $G$), visto che $V_{\rho}=Span(v_1)\oplus\ldots\oplus Span(v_n)$, allora $\rho\cong\rho_1+\ldots+\rho_n$, dove $\rho_i:G\to GL(Span(v_i))$.
 \end{proof}
 
 
@@ -1424,7 +1429,7 @@ Se $v\in Ker(f)$ allora per la definizione di omomorfismo di rappresentazioni ho
 \begin{lemma}
 Date $\rho_1, \rho_2, \sigma$ rappresentazioni di $G$, allora
 
-\[Hom(\rho_1 + \rho_2, \sigma) \cong \Hom(\rho_1, \sigma) \oplus \Hom(\rho_2, \sigma)\]
+\[\Hom(\rho_1 + \rho_2, \sigma) \cong \Hom(\rho_1, \sigma) \oplus \Hom(\rho_2, \sigma)\]
 
 \end{lemma}
 
@@ -1466,7 +1471,7 @@ Innanzitutto la funzione $\phi_1 + \phi_2 : V_{\rho_1} \oplus V_{\rho_2}$ è eff
 
 $\Xi$ è inettiva in quanto per l'appunto le due rappresentazioni agiscono in modo separato sui due spazi e quindi affinché due coppie di $\phi_i$ diano lo stesso risultato, devono essere uguali le coppie.
 
-$\Xi$ inoltre è suriettiva in quanto PERCHÉ? 
+$\Xi$ inoltre è suriettiva in quanto è un'applicazione lineare iniettiva fra spazi vettoriali che hanno la stessa dimensione.
 
 \end{proof}
 
@@ -1475,7 +1480,7 @@ $\Xi$ inoltre è suriettiva in quanto PERCHÉ?
 Siano $\rho: G \to GL(V_\rho)$ e $\sigma: G \to GL(V_\sigma)$ due rappresentazioni irriducibili di $G$ gruppo finito e $\phi:V_\rho \to V_\sigma$ un omomorfismo di rappresentazioni, allora $\phi$ è un isomorfismo oppure è identicamente nullo. Se poi $f:V_\rho\to V_\rho$ è un omomorfismo di rappresentazioni e lo spazio vettoriale $V_\rho$ è su $\C$ o su un campo algebricamente chiuso $\K$, allora $f$ è una moltiplicazione per scalare.
 \end{thm}
 \begin{proof}
-Supponiamo che $\phi\neq 0$, allora sappiamo che $Ker(\phi)\subseteq V_\rho$ è una sottorappresentazione di $\rho$, ma $\rho$ è irriducibile e quindi $Ker(\phi)=0\Rightarrow \phi$ iniettiva. Ma anche $Im(\phi)\subseteq V_{\sigma}$ è una sottorappresentazione di $\sigma$ e, non essendo nulla ed essendo $\sigma$ irriducibile, coincide con tutto $V_\sigma \Rightarrow \phi$ suriettiva, da cui $\phi$ è un isomorfismo.
+Supponiamo che $\phi\neq 0$, allora sappiamo che $\Ker(\phi)\subseteq V_\rho$ è una sottorappresentazione di $\rho$, ma $\rho$ è irriducibile e quindi $\Ker(\phi)=0\Rightarrow \phi$ iniettiva. Ma anche $\Imm(\phi)\subseteq V_{\sigma}$ è una sottorappresentazione di $\sigma$ e, non essendo nulla ed essendo $\sigma$ irriducibile, coincide con tutto $V_\sigma \Rightarrow \phi$ suriettiva, da cui $\phi$ è un isomorfismo.
 Consideriamo ora $f$: sia $\lambda$ un autovalore di $f$, che esiste perché $G$ è finito e stiamo lavorando su $\C$, allora $f-\lambda Id:V_\rho\to V_\rho$ è un omomorfismo di rappresentazioni. Ma non è iniettivo, perché c'è almeno un autovettore relativo a $\lambda$, e quindi per la prima parte del lemma di Schur ho che $f-\lambda Id$ è identicamente nullo, da cui ricaviamo che $f$ è la moltiplicazione per uno scalare ($\lambda$).
 \end{proof}
 
@@ -1594,9 +1599,9 @@ Vediamo delle proprietà elementari del carattere
 
 \textsc{Osservazioni:}
 \begin{enumerate}
-	\item Se $deg(\rho) = 1$ allora il carattere di $s$ è uguale a $\rho(s)$
-	\item $\chi_{\rho_1} = deg(\rho)$. \footnote{Al solito $\rho_1$ è la rappresentazione che manda ogni elemento nell'identità di $V_\rho$}\\
-	Questo è vero poichè $[\rho_1]=I_n\Rightarrow \tr(\rho_1)=n$ ed $n=deg(\rho)$.
+	\item Se $\deg(\rho) = 1$ allora il carattere di $s$ è uguale a $\rho(s)$
+	\item $\chi_{\rho_1} = \deg(\rho)$. \footnote{Al solito $\rho_1$ è la rappresentazione che manda ogni elemento nell'identità di $V_\rho$}\\
+	Questo è vero poichè $[\rho_1]=I_n\Rightarrow \tr(\rho_1)=n$ ed $n=\deg(\rho)$.
 	\item $\chi_{\rho + \sigma}(s) = \chi_\rho(s) + \chi_\sigma(s)$.\\ 
 	Questo è dovuto al fatto che la somma di rappresentazioni si può scrivere come matrice a blocchi. Una volta scritto così è evidente il risultato.
 	\item $\chi_{\rho\sigma}(s) = \chi_\rho(s)\chi_\sigma(s)$. In particolare dunque $\chi_{\rho^2}=(\chi_\rho)^2$.\\ 
@@ -1614,7 +1619,7 @@ Di conseguenza, non sarà necessario calcolare il carattere per ogni elemento de
 
 Le funzioni che costanti sulle classi di coniugio di un gruppo vengono dette $funzioni\ di\ classe$. L'insieme delle funzioni di classe di un gruppo viene normalmente indicato con $Cl(G)$ e si verifica che esso è un sottospazio di $\mathbb{C}^G$.
 	\item Supponiamo di avere una rappresentazione per permutazioni. Sia $I$ un insieme finito e $G$ un gruppo allora 
-$$\chi_{\rho_{I}}(s)=\#punti\ fissi\ di\ \rho_I(s)=|I^s|$$
+$$\chi_{\rho_{I}}(s)=\#\{ \text{punti fissi di } \rho_I(s) \} = |I^s|$$
 dove $I^s:=\{i\in I| s\circ i=i\}$. La veridicità di questo fatto si vede scrivendo esplicitamente la matrice che rappresenta $\rho_I(s)$.
 	\item Consideriamo la rappresentazione per permutazioni regolare $R$. Calcoliamone il carattere:
 	\[ \chi_{\mathcal{R}}(s) = \begin{cases}
@@ -1662,7 +1667,7 @@ Per dimostrare questo teorema abbiamo bisogno di un lemma che ora enunciamo e di
 \begin{lemma}
 Se $(\rho, V_\rho)$ e $(\sigma, V_\sigma)$ sono rappresentazioni \footnote{Non necessariamente irriducibili} di $G$, allora vale
 
-\[ \langle \chi_\sigma | \chi_\rho \rangle  = dim(Hom (\rho, \sigma))\] 
+\[ \langle \chi_\sigma | \chi_\rho \rangle  = \dim(\Hom (\rho, \sigma))\] 
 \label{lemma relazioni ortogonalita}
 \end{lemma}
 \begin{proof}
@@ -1673,20 +1678,20 @@ Siamo passati da due rappresentazioni ad una sola. In particolare lo spazio vett
 dove l'isomorfismo di rappresentazioni è quello dimostrato nel teorema \ref{thm: isov*w}.
 In particolare abbiamo che
 \[ (V_{\rho^*\sigma})^G \cong \Hom(V_\rho, V_\sigma)^G \cong \Hom(\rho, \sigma)\]
-Per cui dato che noi stiamo cercando $dim(Hom(\rho, \sigma))$, basterà trovare $dim(V_{\rho^*\sigma})^G$.
+Per cui dato che noi stiamo cercando $\dim(\Hom(\rho, \sigma))$, basterà trovare $\dim(V_{\rho^*\sigma})^G$.
 \begin{lemma}
 Sia $\rho$ una rappresentazione di un gruppo finito $G$. Allora
-$dim(V_{\rho})^G=\tr(T)$ dove
+$\dim(V_{\rho})^G=\tr(T)$ dove
 \[ T = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s).\]
 \end{lemma}
 
 Prima di iniziare la dimostrazione diamo una giustificazione della scelta della applicazione lineare $T$: questa è stata dettata dal fatto che
-\[ \tr(T)=\tr(\dfrac{1}{|G|} \dsum_{s\in G} \rho(s))= \dfrac{1}{|G|} \dsum_{s\in G} \tr(\rho(s))= \langle \chi_\rho| 1 \rangle \]
+\[ \tr(T)=\tr\left(\dfrac{1}{|G|} \dsum_{s\in G} \rho(s)\right)= \dfrac{1}{|G|} \dsum_{s\in G} \tr(\rho(s))= \langle \chi_\rho| 1 \rangle \]
 Si nota anzitutto che 
 
 \[ \rho(t) T(v) = \dfrac{1}{|G|} \dsum_{s\in G} \rho(t)\rho(s) v = \dfrac{1}{|G|} \dsum_{s\in G} \rho(s) = T(v)\]
 
-ovvero $ImT\subseteq V_\rho^G$. D'altra parte se $v \in V_\rho^G$ allora è chiaro che $Tv = v$ (basta applicare la definizione). Per cui $ImT = V_\rho^G$. 
+ovvero $\Imm T\subseteq V_\rho^G$. D'altra parte se $v \in V_\rho^G$ allora è chiaro che $Tv = v$ (basta applicare la definizione). Per cui $\Imm T = V_\rho^G$. 
 
 Inoltre 
 
@@ -1694,20 +1699,20 @@ Inoltre
 
 Per cui $T$ è un proiettore. A questo punto sappiamo dall'algebra lineare che
 
-\[ V_\rho = Ker T \oplus Im T = Ker T \oplus V_\rho^G\]
+\[ V_\rho = \Ker T \oplus \Imm T = \Ker T \oplus V_\rho^G\]
 
-Per cui $trT = dimImT = dimV_\rho^G$. Ma dalla catena di deduzioni che abbiamo fatto
+Per cui $\tr T = \dim \Imm T = \dim V_\rho^G$. Ma dalla catena di deduzioni che abbiamo fatto
 
-\[dim(Hom(V_\rho, V_\sigma)) = dim(V_{\rho^*\sigma}^G) = trT = \langle \chi_{\rho^*\sigma} | 1 \rangle = \langle \chi_\sigma | \chi_\rho \rangle\]
+\[\dim(\Hom(V_\rho, V_\sigma)) = \dim(V_{\rho^*\sigma}^G) = trT = \langle \chi_{\rho^*\sigma} | 1 \rangle = \langle \chi_\sigma | \chi_\rho \rangle\]
 
 \end{proof}
 
-\textbf{Osservazione:}
+\begin{rem}
 \[\langle \chi_\sigma | \chi_\rho \rangle=\overline{\langle \chi_\rho | \chi_\sigma \rangle}\]
 ovvero per quanto appena dimostrato
-\[ dim(Hom(V_\rho, V_\sigma))=\overline{dim(Hom(V_\sigma, V_\rho))}\]
+\[ \dim(\Hom(V_\rho, V_\sigma))=\overline{\dim(\Hom(V_\sigma, V_\rho))}\]
 tuttavia essendo dei numeri naturali deduciamo che le eguaglianze sussistono anche senza il coniugio.
-
+\end{rem}
 
 
 
@@ -1724,102 +1729,104 @@ tuttavia essendo dei numeri naturali deduciamo che le eguaglianze sussistono anc
 A questo punto la tesi del teorema \ref{relazione di ortogonalita} segue dal lemma precedente applicato insieme al lemma di Schur. \qed
 
 
-\textsc{Osservazioni:}
+\begin{rem}
 
-\begin{itemize}
-\item Ricordiamo che se $\rho$ è una rappresentazione di $G$, allora $\rho$ si può scrivere in modo unico come 
+  \begin{itemize}
+  \item Ricordiamo che se $\rho$ è una rappresentazione di $G$, allora $\rho$ si può scrivere in modo unico come 
+  
+    \[ \rho = \dsum_i n_i \rho_i\]
 
-\[ \rho = \dsum_i n_i \rho_i\]
+    Dove le $\rho_i$ sono le rappresentazioni irriducibili di $G$ e gli $n_i$ sono numeri naturali $\geq 0$. Dall'equazione scritta sopra segue subito che
+    
+    \[ \chi_\rho = \dsum_i n_i \chi_{\rho_i}\]
 
-Dove le $\rho_i$ sono le rappresentazioni irriducibili di $G$ e gli $n_i$ sono numeri naturali $\geq 0$. Dall'equazione scritta sopra segue subito che
+    E possiamo ottenere un'informazione utile prendendo il prodotto scalare dell'equazione precedente con il carattere di una delle rappresentazioni $\rho_i$
+    
+    \[ \langle \chi_\rho | \chi_{\rho_j} \rangle = \dsum_i n_i \langle \chi_{\rho_i} | \chi_{\rho_j} \rangle \Rightarrow n_i \delta_{ij} = \langle \chi_\rho | \chi_{\rho_j} \rangle \Rightarrow n_i = \langle \chi_\rho | \chi_{\rho_i} \rangle\]
 
-\[ \chi_\rho = \dsum_i n_i \chi_{\rho_i}\]
+  \item Caso particolare interessante del fatto precedente riguarda la rappresentazione regolare di un gruppo. Difatti come sappiamo,
+    
+    \[ \chi_{\mathcal{R}}(s) = 
+    \begin{cases}
+      |G| \quad \text{se } s = e \\
+      0 \quad \text{altrimenti}
+    \end{cases}\]
+    Quindi considerando una sottorappresentazione  si ha che 
+    \[
+    \langle \chi_{\mathcal{R}} | \chi_\rho \rangle = \frac{1}{|G|}|G|\chi_{\rho}(id)=\chi_{\rho}(id)=\deg(\rho)
+    \]
+    In particolare se $\rho$ è una sottorappresentazione irriducibile allora
+    \[ \deg(\rho)=\dim(\Hom(\mathcal{R},\rho)) \]
+    Quindi ottengo una conferma del teorema precedente 
+    \[      
+    \langle \chi_{\mathcal{R}} | \chi_\rho \rangle =\dim(\Hom(\mathcal{R},\rho))
+    \]
+    
+  \item Se $\rho$ e $\sigma$ sono 2 rappresentazioni irriducibili allora $$\rho \cong \sigma \Leftrightarrow \chi_{\rho}=\chi_{\sigma}$$
+    
+  \item $\langle \chi_\rho | \chi_\rho \rangle = |\chi_\rho|^2 = \sum_i n_i^2$.
+  \item Conseguenza dell'ultima osservazione è che una rappresentazione di un gruppo $\rho$ è irriducibile $\Leftrightarrow \langle \chi_\rho | \chi_\rho \rangle = |\chi_\rho|^2 = 1$ 
+    
+    
+  \end{itemize}
 
-E possiamo ottenere un'informazione utile prendendo il prodotto scalare dell'equazione precedente con il carattere di una delle rappresentazioni $\rho_i$
-
-\[ \langle \chi_\rho | \chi_{\rho_j} \rangle = \dsum_i n_i \langle \chi_{\rho_i} | \chi_{\rho_j} \rangle \Rightarrow n_i \delta_{ij} = \langle \chi_\rho | \chi_{\rho_j} \rangle \Rightarrow n_i = \langle \chi_\rho | \chi_{\rho_i} \rangle\]
-
-\item Caso particolare interessante del fatto precedente riguarda la rappresentazione regolare di un gruppo. Difatti come sappiamo,
-
-\[ \chi_{\mathcal{R}}(s) = 
-\begin{cases}
-|G| \quad \text{se } s = e \\
-0 \quad \text{altrimenti}
-\end{cases}\]
-Quindi considerando una sottorappresentazione  si ha che 
-\[
-\langle \chi_{\mathcal{R}} | \chi_\rho \rangle = \frac{1}{|G|}|G|\chi_{\rho}(id)=\chi_{\rho}(id)=deg(\rho)
-\]
-In particolare se $\rho$ è una sottorappresentazione irriducibile allora
-\[ deg(\rho)=dim(Hom(\mathcal{R},\rho)) \]
-Quindi ottengo una conferma del teorema precedente 
-\[      
-\langle \chi_{\mathcal{R}} | \chi_\rho \rangle =dim(Hom(\mathcal{R},\rho))
-\]
-
-\item Se $\rho$ e $\sigma$ sono 2 rappresentazioni irriducibili allora $$\rho \cong \sigma \Leftrightarrow \chi_{\rho}=\chi_{\sigma}$$
-
-\item $\langle \chi_\rho | \chi_\rho \rangle = |\chi_\rho|^2 = \sum_i n_i^2$.
-\item Conseguenza dell'ultima osservazione è che una rappresentazione di un gruppo $\rho$ è irriducibile $\Leftrightarrow \langle \chi_\rho | \chi_\rho \rangle = |\chi_\rho|^2 = 1$ 
-
-
-\end{itemize}
+\end{rem}
 
 
 \begin{cor}[Corollario del lemma \ref{lemma relazioni ortogonalita}: Lemma di Burnside]
 
-Consideriamo un'azione di un gruppo $G$ su un insieme $I$ e consideriamo la rappresentazione per permutazioni corrispondente $(\rho_I, V_{\rho_I})$. Consideriamo
+Sia $I$ un insieme finito e $G$ un gruppo finito che agisce su di esso. Vale allora la formula
+\[ |I/G| = \dfrac{1}{|G|} \dsum_{s\in G} |I^s|\]
+\end{cor}
 
-\[\langle \chi_{\rho_I} | 1 \rangle = \dfrac{1}{|G|} \dsum_{s\in G} tr \rho_I(s)\]
+\begin{proof}
+
+Consideriamo la rappresentazione per permutazioni corrispondente all'azione di $G$ sull'insieme $I$, $(\rho_I, V_{\rho_I})$. Consideriamo
+
+\[\langle \chi_{\rho_I} | 1 \rangle = \dfrac{1}{|G|} \dsum_{s\in G} \tr \rho_I(s)\]
 
 Ma è ovvio che 
 
-\[tr \rho_I(s) = |I^s| \qquad I^s = \{ i \in I | s \cdot i = i\} \]
+\[\tr \rho_I(s) = |I^s| \qquad I^s = \{ i \in I | s \cdot i = i\} \]
 
 Per cui lo spazio 
-\[V_{\rho_I}^G = \{v\in V_{\rho_I}:\rho_I(s)v=v\ \forall s\in G\}=\{\sum_i a_i e_i :\rho_I(\sum_i a_i e_i)=\sum_i a_i e_i\ \forall s\in G\}=\]
-\[ =\{\sum_i a_i e_i :\sum_i a_i e_{s\circ i}=\sum_i a_i e_i\ \forall s\in G\}=\{ \sum_i a_i e_i: \sum_i (a_{s^{-1}\circ i}-a_i)e_i=0\ \forall s\in G \}\]
+\begin{align*}
+V_{\rho_I}^G &= \{v\in V_{\rho_I}:\rho_I(s)v=v\  \forall s\in G\} = \left\{\sum_i a_i e_i :\rho_I\left(\sum_i a_i e_i\right)=\sum_i a_i e_i\ \forall s\in G \right\} \\
+&=\left\{\sum_i a_i e_i :\sum_i a_i e_{s\circ i}=\sum_i a_i e_i\ \forall s\in G \right\}= \left\{ \sum_i a_i e_i: \sum_i (a_{s^{-1}\circ i}-a_i)e_i=0\ \forall s\in G \right\}
+\end{align*}
 sarà composto da i vettori che hanno i coefficienti $a_i$ costanti su ciascuna orbita di $G$ su $I$, proprio per lasciarlo invariante. Perciò 
 
-\[ dimV_{\rho_I}^G = \text{numero delle orbite } = |I/G|\]
+\[ \dim V_{\rho_I}^G = \text{numero delle orbite } = |I/G|\]
 
 E con l'affermazione precedente si ottiene appunto il lemma di Burnside
-
-\[ |I/G| = \dfrac{1}{|G|} \dsum_{s\in G} |I^s|\]
-
-\qed
-\end{cor}
+\end{proof}
 
 
 
+\begin{thm} Sia $G$ un gruppo finito e siano $\rho_1, \ldots , \rho_r$ le sue rappresentazioni irriducibili. Sia inoltre $\C(G)^{\#}$ lo spazio delle funzioni da $G$ in $\C$ costanti sulle classi di coniugio di $G$.
 
-
-
-\begin{thm} Sia $G$ un gruppo finito e siano $\rho_1, \ldots , \rho_r$ le sue rappresentazioni irriducibili. Sia inoltre 
-
-\[Cl(G)  \]
-
-Lo spazio delle funzioni da $G$ in $\C$ costanti sulle classi di coniugio di $G$
-
-Chiaramente $\dim Cl(G) = $ numero di classi di coniugio di $G$ $:= s$. La tesi del teorema è che $r = s$ 
-dove $r$ è il numero di rappresentazioni irriducibili. 
-
-\textsc{Osservazione:} Per questo motivo la tabella dei caratteri sarà una tabella quadrata.
-
+Chiaramente $\dim \C(G)^\# = $ numero di classi di coniugio di $G$ $:= s$. La tesi del teorema è che $r = s$ dove $r$ è il numero di rappresentazioni irriducibili. 
 \end{thm}
+
+
+\begin{rem}
+ Per questo motivo la tabella dei caratteri sarà una tabella quadrata.
+\end{rem}
+
 
 \begin{proof}
  
 Mostriamo intanto che $r \leq s$: i caratteri di $\rho_1, \ldots , \rho_r$ sono infatti ortonormali rispetto alla forma hermitiana
-definita positiva $\langle . | .\rangle$, e quindi sono indipendenti (non posso avere più di $s$ vettori linearmente indipendenti 
+definita positiva $\langle \cdot | \cdot \rangle$, e quindi sono indipendenti (non posso avere più di $s$ vettori linearmente indipendenti 
 in uno spazio vettoriale di dimensione $s$).
 
-Verifichiamo ora che $\langle \chi_{\rho_1}, \ldots, \chi_{\rho_r} \rangle ^{\perp} = {0}$. Sia $f \in Cl(G)$ e $\rho$ una rappresentazione,
+Verifichiamo ora che $\langle \chi_{\rho_1}, \ldots, \chi_{\rho_r} \rangle ^{\perp} = {0}$. Sia $f \in \C(G)^\#$ e $\rho$ una rappresentazione,
 definiamo $T_f= \frac{1}{|G|}\dsum_s f(s)\rho(s)$ e verifichiamo che è un omomorfismo di rappresentazioni: 
-$$ T_f \circ \rho(t) = \frac{1}{|G|}\dsum_s f(s)\rho(s) \rho(t) = \frac{1}{|G|}\dsum_s \rho(t) \rho(t^{-1}) f(s)\rho(s) \rho(t) =$$
-
-$$= \frac{1}{|G|}\rho(t) \dsum_s f(s) \rho(t^{-1}) \rho(s) \rho(t) = \frac{1}{|G|}\rho(t) \dsum_s f(s) \rho(t^{-1}st) = 
-\frac{1}{|G|}\rho(t) \dsum_{s'} f(s') \rho(s')= \rho(t) \circ T_f$$
+\begin{align*}
+ T_f \circ \rho(t) &= \frac{1}{|G|}\dsum_s f(s)\rho(s) \rho(t) = \frac{1}{|G|}\dsum_s \rho(t) \rho(t^{-1}) f(s)\rho(s) \rho(t) = \\
+ &= \frac{1}{|G|}\rho(t) \dsum_s f(s) \rho(t^{-1}) \rho(s) \rho(t) = \frac{1}{|G|}\rho(t) \dsum_s f(s) \rho(t^{-1}st) =  \\
+ &= \frac{1}{|G|}\rho(t) \dsum_{s'} f(s') \rho(s')= \rho(t) \circ T_f 
+\end{align*}
 
 Abbiamo usato il fatto che $f(s)\in \C$, quindi commuta con $\rho(g)$, e che $f$ è una funzione di classe nella 
 sostituzione di $s$ con $s'= t^{-1}st$ (essendo il coniugio un automorfismo, cambia solo l'ordine della somma).
@@ -1865,8 +1872,8 @@ Dato un gruppo $G$, possimo costruire la $tabella\ dei\ caratteri$ nel seguente 
 \centering
 \begin{tabular}{|c|c|c|c|c}
 \hline
-$G$  & $e$ & $orb(g_1)$ & $orb(g_2)$ & \\
- & 1 & $|orb(g_1)|$ & $|orb(g_2)|$ & \\
+$G$  & $e$ & $\Orb(g_1)$ & $\Orb(g_2)$ & \\
+ & 1 & $|\Orb(g_1)|$ & $|\Orb(g_2)|$ & \\
 \hline
  & &  & \\
 \end{tabular}
@@ -2156,7 +2163,7 @@ Abbiamo appena terminato le rappresentazioni che conoscevamo di $S_4$.\\
 \textbf{Ottimo consiglio:} Quando non vengono in mente altre rappresentazioni, considera due già presenti nella tabella e fanne il prodotto. Risulta utile il seguente lemma.
 
 \begin{lemma}
-Se $\rho$ e $\sigma$ sono due rappresentazioni e $deg(\rho)=1$ ( ovvero $\rho:G\rightarrow \mathbb{C}^*$), allora $\sigma$ è irriducibile $\Leftrightarrow$ $\rho\sigma$ lo è. Inoltre hanno lo stesso grado.
+Se $\rho$ e $\sigma$ sono due rappresentazioni e $\deg(\rho)=1$ ( ovvero $\rho:G\rightarrow \mathbb{C}^*$), allora $\sigma$ è irriducibile $\Leftrightarrow$ $\rho\sigma$ lo è. Inoltre hanno lo stesso grado.
 \end{lemma}
 
 \begin{proof}
@@ -2166,7 +2173,7 @@ Che sia ancora a tutti gli effetti una rappresentazione si verifica esplicitamen
 \]
 Per dimostrare che è irriducibile si considera il fatto che
 \[
-\sigma \ irriducibile\ \Leftrightarrow 1=\langle\chi_{\sigma}|\chi_{\sigma}\rangle=\frac{1}{|G|}\sum_{s\in G}|\chi_{\sigma(s)}|^2
+\sigma \text{ irriducibile } \Leftrightarrow 1=\langle\chi_{\sigma}|\chi_{\sigma}\rangle=\frac{1}{|G|}\sum_{s\in G}|\chi_{\sigma(s)}|^2
 \]
 Quindi...
 \[
@@ -2179,7 +2186,7 @@ ed essendo $\rho(s)$ una radice $n-$esima dell'unità dove $n$ è l'ordine di $G
 \]
 Che abbiano lo stesso grado deriva dal fatto che
 \[
-\chi_{\rho\sigma}=\chi_{\rho}\chi_{\sigma}\Rightarrow deg(\rho\sigma)=\chi{\rho\sigma}(id)=\chi_{\rho}(id)\chi_{\sigma}(id)=deg(\rho)deg(\sigma)=deg(\sigma).
+\chi_{\rho\sigma}=\chi_{\rho}\chi_{\sigma}\Rightarrow \deg(\rho\sigma)=\chi{\rho\sigma}(id)=\chi_{\rho}(id)\chi_{\sigma}(id)=\deg(\rho)\deg(\sigma)=\deg(\sigma).
 \] \\
 Essendo $\epsilon$ di grado 1 e $\rho$ irriducibile allora anche $\rho\epsilon$ è un'altra rappresentazione irriducibile.
 \end{proof}
@@ -2206,7 +2213,7 @@ $\rho\epsilon$& 3 & -1 & 0 & 1 & -1\\
 
 
 E a questo punto dato che $|S_4|=24$ e che $1+1+3^2+3^2=20$ si possono avere due situazioni: $S_4$ potrebbe avere ancora 4 rappresentazioni irriducibili di grado 1 oppure solo più una di grado 2. Tuttavia abbiamo visto come $S_n$ ammetta solo due rappresentazioni irriducibili di grado 1 quindi siamo nel secondo caso.\\
-Dato che ce ne manca solo una possiamo usare il trucco di prima (differenza dalla rappresentazione $R$ ) e concludere:
+Dato che ce ne manca solo una possiamo usare il trucco di prima (differenza dalla rappresentazione $\mathcal{R}$ ) e concludere:
 
 \begin{table}[!ht] 
 \centering
@@ -2632,7 +2639,7 @@ Per cui a questo punto abbiamo finito
 
 
 \begin{lemma}
-Sia $\rho:G\to GL(V)$ rappresentazione irriducibile su $\R$. Allora $\dim V^G = \langle\chi_\rho|\chi_1\rangle$
+Sia $\rho:G\to GL(V)$ rappresentazione di un gruppo finito $G$. Allora $\dim V^G = \langle\chi_\rho|\chi_1\rangle$
 \end{lemma}
 \begin{proof}
 Definiamo un'applicazione lineare $R:V\to V$ nel seguente modo:
@@ -2979,11 +2986,11 @@ Torniamo a $\rho_{ind}$: ricapitolando $\rho_{ind}:G\mapsto GL(\Ind_H^G)$ tale c
 \begin{defn}
 Data $f\in \{f:G\rightarrow W\}$ (che contiene $V$) definiamo il supporto di $f$ 
 
-\[Supp(f)=\{f\in G:f(g)\neq 0\}.\]
+\[\Supp(f)=\{f\in G:f(g)\neq 0\}.\]
 \end{defn}
 
 \begin{defn}
-Dato $g\in G$ definiamo $V_g=\{f\in V : Supp(f)\subseteq gH \}$.
+Dato $g\in G$ definiamo $V_g=\{f\in V : \Supp(f)\subseteq gH \}$.
 \end{defn}
 
 \textbf{Osservazione:} se $g'\in gH$, allora $g'H=gH\Rightarrow V_g=V_{g'}$. Quindi più che dipendere dagli elementi di $G$, gli insiemi sopra definiti dipendono dalle classi laterali di $H$ in $G$. Perciò ora parleremo non più di $V_g$ bensì di $V_{gH}$.\\
@@ -2991,7 +2998,7 @@ Dato $g\in G$ definiamo $V_g=\{f\in V : Supp(f)\subseteq gH \}$.
 \[G=\bigsqcup_{i=1}^{|G/H|} g_iH\] 
 e quindi ogni funzione la posso scrivere come combinazione lineare di $f_i\in V_{g_iH}$.
 \[\Rightarrow V=\bigoplus_{i=1}^{|G/H|} V_{g_iH}\]
-Voglio ora rintracciare $W$, in quanto sono interessata a trovare un sottospazio isomorfo a $W$ dentro $V$. Notiamo innanzitutto che la scrittura precedente non è detto che sia una decomposizione di rappresentazioni, ma possiamo vedere subito che si comporta bene sotto l'azione di $\rho_{ind}$. 
+Voglio ora rintracciare $W$, in quanto sono interessato a trovare un sottospazio isomorfo a $W$ dentro $V$. Notiamo innanzitutto che la scrittura precedente non è detto che sia una decomposizione di rappresentazioni, ma possiamo vedere subito che si comporta bene sotto l'azione di $\rho_{ind}$. 
 
 \begin{lemma}
 $\rho_{ind}$ permuta le varie $V_{gH}$ nel senso che $\rho_{ind}(g)V_{g'H}=V_{gg'H}$. 
@@ -3003,8 +3010,8 @@ $\rho_{ind}$ permuta le varie $V_{gH}$ nel senso che $\rho_{ind}(g)V_{g'H}=V_{gg
     0& \textup{altrimenti}
   \end{cases}\Rightarrow f=\sum_{i=1}^{|G/H|} f_i\ \textup{ e per come le ho definite } f_i\in V_{g_iH}\]
   Sia ora $f\in V_{g'H}$ e fissiamo un $g\in G$ allora
-  \[\rho_{ind}(g)(f)(x)=f(g^{-1}x)\Rightarrow \rho_{ind}(g)(f)(x)\neq 0\leftrightarrow g^{-1}x\in Supp(f)\subseteq g'H\leftrightarrow x\in gSupp(f)\subseteq gg'H\]
-  Ovvero $x\in Supp(\rho_{ind}(g)(f))\Leftrightarrow x\in gSupp(f)$. Ciò implica che
+  \[\rho_{ind}(g)(f)(x)=f(g^{-1}x)\Rightarrow \rho_{ind}(g)(f)(x)\neq 0\leftrightarrow g^{-1}x\in \Supp(f)\subseteq g'H\leftrightarrow x\in g\Supp(f)\subseteq gg'H\]
+  Ovvero $x\in \Supp(\rho_{ind}(g)(f))\Leftrightarrow x\in g\Supp(f)$. Ciò implica che
   \[ V_{g'H} \begin{matrix}
     \overset{\rho_{ind}(g)}{\longrightarrow}\\ 
     \underset{\rho_{ind}(g^{-1})}{\longleftarrow}
@@ -3032,11 +3039,11 @@ La rappresentazione appena trovate di $H$ su $V_{eH}$ è naturalmente isomorfa a
 \begin{proof} Considero la seguente funzione: 
 \[\Phi:V_{eH}\rightarrow W\ \textup{tale che } f\mapsto f(e)\]
 ovvero la funzione che associa ad un $f$ la valutazione della stessa nell'elemento neutro. Verifichiamo innanzitutto che si tratta di un omomorfismo di rappresentazione. Ricordiamo chi è $V_{eH}$:
-\[V_{eH}=\{f:G\rightarrow W: \rho(h)f(gh)=f(g)\ \forall h,g\ \ \textup{e } Supp(f)\subseteq H\}\]
+\[V_{eH}=\{f:G\rightarrow W: \rho(h)f(gh)=f(g)\ \forall h,g\ \ \textup{e } \Supp(f)\subseteq H\}\]
 $\Phi$ è un omomorfisimo di rappresentazioni $\Leftrightarrow$ $\Phi(\rho_{ind}(h)f)=\rho(h)\Phi(f)\ \forall h\in H$.
 \[\Phi(\rho_{ind}(h)f))=\rho(h)\Phi(f) \Leftrightarrow (\rho_{ind}(h)f)(e)=\rho(h)(f(e))\Leftrightarrow f(h^{-1}e)=f(h^{-1})=\rho(h)f(e)\]
 ma ciò è vero in quanto le $f\in \Ind_H^G(W)$. \\
-Verifichiamo che $\Phi$ è iniettiva. $Supp(f)\subseteq H$ e $\forall h\in H\ f(h)=\rho(h^{-1}f(e))$: questo mi dice che una volta che si è fissato il valore di $f(e)$ allora la funzione è univocamente determinata su $H$. D'altra parte so che in $G\setminus H$ la funzione è identicamente nulla $\Rightarrow$ quindi è univacamente determinata su tutto $G$. Allora detti $\Phi$ è iniettiva.\\
+Verifichiamo che $\Phi$ è iniettiva. $\Supp(f)\subseteq H$ e $\forall h\in H\ f(h)=\rho(h^{-1}f(e))$: questo mi dice che una volta che si è fissato il valore di $f(e)$ allora la funzione è univocamente determinata su $H$. D'altra parte so che in $G\setminus H$ la funzione è identicamente nulla $\Rightarrow$ quindi è univacamente determinata su tutto $G$. Allora detti $\Phi$ è iniettiva.\\
 Vediamo ora che è anche surgettiva. Sia $w\in W$ vogliamo $f\in V_{eH}$ che valutata in $e$ dia $w$. Definiamo $f_w:G\rightarrow W$ nel seguente modo: 
 \[f_w:=\begin{cases}
 \rho(h^{-1})(w)& \textup{ se } h\in H\\
@@ -3087,26 +3094,26 @@ $G/H$ è un insieme finito dove $G$ agisce per moltiplicazione a sinistra ($g(g'
 \item $H\subseteq G$ e $\rho:H\rightarrow GL(W): \rho(h)=id\ \forall h\in H$. Nel caso in cui $W$ avesse dimensione 1 si torna all'esempio 1. Tuttavia anche se $\dim(W)>1$, $\Ind_H^G(W)=\{f:G\rightarrow \C:f \textup{ è costante sulle classi laterali di } H\}=\C[G/H]\otimes W$ 
 \end{enumerate}
 \textbf{Esercizio:} Supponiamo che $W=W_1\bigoplus W_2$ una rappresentazione di H non riducibile: allora 
-\[\Ind_H^G(W)=\Ind_H^G(W_1)\bigoplus \Ind_H^G(W_2)\].
+\[\Ind_H^G(W)=\Ind_H^G(W_1)\bigoplus \Ind_H^G(W_2)\]
 
 
 \subsection{Formula di aggiunzione}
 Vediamo ora una proprietà universale di queste rappresentazioni indotte. Prima abbiamo definito passando da $\rho$ a $\rho_{ind}$ sostanzialmente una applicazione
 \[\Ind:Rappr(H)\rightarrow Rappr(G)\]
 e abbiamo anche "l'inversa" ovvero la restrizione della rappresentazione ad H
-\[Res:Rappr(G)\rightarrow Rappr(H)\]
-e risulta che $Res_H^G(V)=V$ visto però come una rappresentazione di $H$ ($\rho_{res}=\rho|_H$). Che legame c'è tra queste due applicazioni? 
+\[\Res:Rappr(G)\rightarrow Rappr(H)\]
+e risulta che $\Res_H^G(V)=V$ visto però come una rappresentazione di $H$ ($\rho_{res}=\rho|_H$). Che legame c'è tra queste due applicazioni? 
 \begin{thm}
 Sia $\rho:H\rightarrow GL(W)$ una rappresentazione di $H$ e sia $\sigma:G\rightarrow GL(U)$ una rappresentazione di $G$. Allora
-\[\Hom_H(W,Res_H^G(U))\cong \Hom_G(\Ind_H^G(W),U)\]
-ovvero che ogni $\phi:W\rightarrow Res_H^G(U)$ omomorfismo di $H-$rappresentazione si estende in modo unico a un $\overset{\sim}{\phi}:\Ind_H^G(W)\rightarrow U$ omomorfismo di $G-$rappresentazione
+\[\Hom_H(W,\Res_H^G(U))\cong \Hom_G(\Ind_H^G(W),U)\]
+ovvero che ogni $\phi:W\rightarrow \Res_H^G(U)$ omomorfismo di $H-$rappresentazione si estende in modo unico a un $\hat{\phi}:\Ind_H^G(W)\rightarrow U$ omomorfismo di $G-$rappresentazione
 \end{thm}
-\begin{proof} sia $\phi:W\rightarrow Res_H^G(U)$ un omomorfismo di $H-$rappresentazione e sia $V:=\Ind_H^G(W)=\bigoplus_{i=1}^{\#-orbite} \rho_{ind}(g_i)V_{eH}$. Essendo $V_{eH}\cong W$ come $H-$rappresentazioni, allora $\phi:V_{eH}\rightarrow Res_H^G(U)$: voglio estenderlo a $V$. Essendo $V$ definito come una somma diretta è sufficiente definire l'omomorfismo sui blocchi e per questo considero $V_{g_iH}$: ho che
-\[V_{g_iH}\overset{\rho_{g_i^{-1}}}{\rightarrow} V_{eH}\overset{\phi}{\rightarrow} Res_H^G(U)\overset{\sigma(g)}{\rightarrow} U\Rightarrow \sigma(g)\phi\rho_{ind}(g_i^{-1}):V_{g_iH}\rightarrow U\] 
-Incollando tutte queste applicazioni ottengo $\overset{\sim}{\phi}:\Ind_H^G(W)\rightarrow U$ dove
-$\overset{\sim}{\phi}(v)=\sigma_{g}\circ \phi\circ \rho_{ind}(g^{-1})(v)$ con $v\in V_{gH}$. Si verifica che $\overset{\sim}{\phi}\in \Hom_G(\Ind_H^G(W),U)$. \\
-Vediamo ora che questa estensione è unica. Siano $\overset{\sim}{\phi_1}$ e $\overset{\sim}{\phi_2}$ due estensioni di $\phi$: valutiamole nello stesso elemento $v\in V_{gH}$.
-\[\overset{\sim}{\phi_1}(\rho_{ind}(g^{-1})v)=\phi(\rho_{ind}(g^{-1})(v))=\overset{\sim}{\phi_2}(\rho_{ind}(g^{-1})v)\]
+\begin{proof} sia $\phi:W\rightarrow \Res_H^G(U)$ un omomorfismo di $H-$rappresentazione e sia $V:=\Ind_H^G(W)=\bigoplus_{i=1}^{\#-orbite} \rho_{ind}(g_i)V_{eH}$. Essendo $V_{eH}\cong W$ come $H-$rappresentazioni, allora $\phi:V_{eH}\rightarrow \Res_H^G(U)$: voglio estenderlo a $V$. Essendo $V$ definito come una somma diretta è sufficiente definire l'omomorfismo sui blocchi e per questo considero $V_{g_iH}$: ho che
+\[V_{g_iH}\overset{\rho_{g_i^{-1}}}{\rightarrow} V_{eH}\overset{\phi}{\rightarrow} \Res_H^G(U)\overset{\sigma(g)}{\rightarrow} U\Rightarrow \sigma(g)\phi\rho_{ind}(g_i^{-1}):V_{g_iH}\rightarrow U\] 
+Incollando tutte queste applicazioni ottengo $\hat{\phi}:\Ind_H^G(W)\rightarrow U$ dove
+$\hat{\phi}(v)=\sigma_{g}\circ \phi\circ \rho_{ind}(g^{-1})(v)$ con $v\in V_{gH}$. Si verifica che $\hat{\phi}\in \Hom_G(\Ind_H^G(W),U)$. \\
+Vediamo ora che questa estensione è unica. Siano $\hat{\phi_1}$ e $\hat{\phi_2}$ due estensioni di $\phi$: valutiamole nello stesso elemento $v\in V_{gH}$.
+\[\hat{\phi_1}(\rho_{ind}(g^{-1})v)=\phi(\rho_{ind}(g^{-1})(v))=\hat{\phi_2}(\rho_{ind}(g^{-1})v)\]
 dove l'uguaglianza è vera perchè $\rho_{ind}(g^{-1})(v)\in V_{eH}$. Quindi coincidendo sui singoli blocchi le due estensioni coincidono anche su $V$. E quindi l'estensione è unica. 
 
 
@@ -3130,7 +3137,7 @@ Consideriamo l'ovvio sottogruppo $H$ generato da $\sigma$, che è evidentemente 
 
 Studiamo ora la rappresentazione che induce $\rho_k$, ovvero studiamo $\Ind_G^H \rho_k$, che per amore di brevità indicheremo con $\Ind \rho_k$. \'E abbastanza utile notare che noi conosciamo la dimensione della rappresentazione indotta, in quanto conosciamo la formula
 
-\[ \dim \Ind^H_G \rho_k = |G/H| deg \rho_k = 2 \cdot 1 = 2\]
+\[ \dim \Ind^H_G \rho_k = |G/H| \deg \rho_k = 2 \cdot 1 = 2\]
 
 Per andare avanti è intelligente ricordare la definizione di questo spazio. Indicheremo con $W$ lo spazio su cui agisce $\Ind \rho_k$ (che è ovviamente isomorfo a $\C^2$)
 
@@ -3532,7 +3539,7 @@ dove la seconda scrittura è una somma diretta di rappresentazioni di $T$ irridu
 
 \textbf{Fatto:} Sia $\pi_k:V_m\rightarrow \C x^{m-k}y^k$ la proiezione di un vettore sulla sua componente $(m-k)-$esima. Allora se $\pi_k|_W\neq 0$ allora $V_{m,k}:=\C x^{m-k}y^k\in W$.
 
-Dato che  $\{ x^ky^{m-k} \}_{k \in \{0, ..., m\}}$ sono una base di autovettori per le matrici in $T$ allora $\forall k,\ \pi_k\in \Hom_T(V_m,V_{m,k}\Rightarrow \pi_k|_W\in \Hom_T(W,V_{m,k})$. Se $\pi_k|_W\neq 0\Rightarrow W=Ker(\pi_k|_W)\bigoplus W_k$ dove la $\dim(W_k)$ è forzata ad essere 1. Quindi $W_k\cong V_{m,k}$ come rappresentazioni. Tuttavia $V_{m,k}$ è l'unico sottospazio invariante per $\rho_{m-2k}^{\mathbb{S}^1}\Rightarrow V_{m,k}=W_k$.
+Dato che  $\{ x^ky^{m-k} \}_{k \in \{0, ..., m\}}$ sono una base di autovettori per le matrici in $T$ allora $\forall k,\ \pi_k\in \Hom_T(V_m,V_{m,k}\Rightarrow \pi_k|_W\in \Hom_T(W,V_{m,k})$. Se $\pi_k|_W\neq 0\Rightarrow W=\Ker(\pi_k|_W)\bigoplus W_k$ dove la $\dim(W_k)$ è forzata ad essere 1. Quindi $W_k\cong V_{m,k}$ come rappresentazioni. Tuttavia $V_{m,k}$ è l'unico sottospazio invariante per $\rho_{m-2k}^{\mathbb{S}^1}\Rightarrow V_{m,k}=W_k$.
 
 
 Quindi dato che abbiamo supposto il nostro $W$ diverso dal vuoto, esiste un $k$ tale che $x^{m-k}y^k\in W$. Se mostriamo che $x^m\in W$ allora abbiamo concluso poichè data la generalità di $W$ avrei dimostrato che $x^m\in$ a tutti i sottospazi di $V_m$ non vuoti e invarianti per $SU(2)$. Quindi se $W$ fosse diverso da $V_m$ avrei $V_m=W\bigoplus U$ ma con $U\neq $\O \ $ \Rightarrow x^m\in U\cap W$ il che è assurdo poichè devono essere in somma diretta. Per mostrare che $x^m\in W$ riusiamo il fatto e ci riduciamo a dover dimostrare che $\pi_0|_W\neq 0$. Considero al variare di $g\in SU(2)$ il vettore $\pi_0(\rho_m(g)(x^{m-k}y^k))$ dove $x^{m-k}y^k$ è il monomio che siamo sicuri appartenga a $W$. Bene, ma allora mi basta scegliere
@@ -3840,7 +3847,7 @@ Tuttavia in sostanza la matriche che rappresenta $\phi_{ij}$ nelle base $v_i$ è
     \item L'omomorfismo $\phi : SU(2) \to SO(3)$ sopra definito è surgettivo. 
     \item Il nucleo dell'omomorfismo $\phi$ è composto da solo due matrici in $SU(2)$
     \item
-      \[ SU(2) / Ker(\phi) \cong SO(3) \]
+      \[ SU(2) / \Ker(\phi) \cong SO(3) \]
   \end{enumerate}
   \end{prop}
 
