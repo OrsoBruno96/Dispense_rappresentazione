@@ -3400,10 +3400,13 @@ dove con $C_\R$ si intendono le funzioni continue da $G$ in $\R$\footnote{Tutto 
 
 A questo punto, in analogia con quello che abbiamo fatto con i prodotti finiti, cerchiamo di trovare quello invariante. 
 
-\begin{defn} Sia $G$ un gruppo compatto e $\rho: G \to GL(V_\rho)$ una sua rappresentazione continua. Sia $I$ una integrazione su $G$. Si dice che $I$ è invariante sotto $\rho$ se 
-\[ I(f(x)) = I(f(\rho(g) x)) \qquad \forall g \in G\]
+%\begin{defn} Sia $G$ un gruppo compatto e $\rho: G \to GL(V_\rho)$ una sua rappresentazione continua. Sia $I$ una %ntegrazione su $G$. Si dice che $I$ è invariante sotto $\rho$ se 
+%\[ I(f(x)) = I(f(\rho(g) x)) \qquad \forall g \in G\]
+%\end{defn}
+\begin{defn} Sia $G$ un gruppo compatto e $I$ una integrazione su $G$. Si dice che $I$ è $G$-\textit{invariante} se $\forall f\in C_{\R}(G), \forall g\in G$ vale che
+\[ I(f) = I(L_g(f)) = I(R_g(f))\]
+dove $(L_g(f))(x) = f(g^{-1}x)$ e $(R_g(f))(x) = f(xg)$.
 \end{defn}
-
 Se questa integrazione esiste, allora in analogia a quanto fatto per i gruppi finiti possiamo sperare che le rappresentazioni di un gruppo compatto siano completamente irriducibili.
 
 
