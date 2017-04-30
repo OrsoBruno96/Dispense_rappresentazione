@@ -1235,8 +1235,10 @@ $\rho^*(s)=\rho(s^{-1})^t=\left(\rho(s)^{-1}\right)^t=\left(\rho(s)^t\right)^{-1
 \end{note}
 
 
-\textsc{Osservazione:} vale
-\[ (\rho + \sigma)^* \cong \rho^* + \sigma^* \]
+\begin{rem}
+	Vale che $(\rho + \sigma)^* \cong \rho^* + \sigma^*$
+\end{rem}
+
 \begin{proof}
 Consideriamo la funzione $\Theta : (V_\rho \oplus V_\sigma)^*\to V_\rho ^* \oplus V_\sigma ^*$ definita da
 \[ \Theta(f) = (f\circ \imath_{V_\rho}, f\circ \imath_{V_\sigma}) \]
@@ -3877,10 +3879,10 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 \end{lemma}
 
 \begin{proof}
-  Consideriamo $|e| = 1$. Dato che $H$ agisce transitivamente su $\mathbb{S}^2$, $\forall g \in SO(3) \exists h \in H$
+  Consideriamo $|e| = 1$. Dato che $H$ agisce transitivamente su $\mathbb{S}^2$, $\forall g \in SO(3)\ \exists h \in H$ tale che
   \[ ge = he \Rightarrow e = h^{-1}ge \Rightarrow h^{-1}g \in \Stab(e) \]
 
-  Ma lo stabilizzatore di $e$ è una rotazione intorno a quell'asse, quindi è in $H$
+  Ma lo stabilizzatore di $e$ è una rotazione intorno a quell'asse, quindi è in $H$, dunque $h^{-1}g\in H\ \forall g\in SO(3)$, ma allora $\forall g\in SO(3)$ abbiamo che $g\in H$
 \end{proof}
 
 
@@ -4043,4 +4045,179 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
      \end{align*}
    \end{proof}
 
+
+   
+   
+\newpage
+\section{Rappresentazioni di algebre}
+\subsection{Prime definizioni e esempi}
+	\begin{defn}
+		Un insieme $A$ si dice \textit{algebra} sul campo $\K$ (o più semplicemente $\K$\textit{-algebra}) se
+		\begin{itemize}
+			\item $A$ è uno spazio vettoriale su $\K$
+			\item il prodotto $\cdot:A\times A\to A$ è una funzione bilineare
+		\end{itemize}
+		Un'algebra si dice
+		\begin{itemize}
+			\item \textit{associativa} se il prodotto è associativo
+			\item \textit{unitaria} se $\exists 1_A\in A$ l'elemento neutro per il prodotto
+			\item \textit{commutativa} se il prodotto è commutativo
+		\end{itemize}
+	\end{defn}
+	\begin{exmp} Alcuni esempi di algebre sono:
+		\begin{enumerate}
+			\item Algebre di divisione $/\R$ (che abbiamo già incontrato)
+			\item $\K$ un campo
+			\item Se $V$ è uno spazio vettoriale su $\K$ allora $\End(V)$ è una $\K$-algebra
+			\item $\K[x_1,\ldots,x_n]$ è una $\K$-algebra
+			\item $\K<x_1,\ldots,x_n>$ è l'algebra libera, sono le parole nell'alfabeto $\{x_1,\ldots,x_n\}$, il prodotto è la concatenazione; è generata da $x_{i_1}\cdots x_{i_k}$ (simile come costruzione al gruppo libero su $n$ generatori)
+			\item Se $A$ è una $\K$-algebra, $I$ un suo ideale bilatero, allora $A/I$ è una $\K$-algebra
+		\end{enumerate}
+	\end{exmp}
+	\begin{exmp}
+		QUI ANDREBBE L'ALGEBRA UNIVERSALE INVILUPPANTE MA NON SO QUANTO SERVA...
+	\end{exmp}
+	Vorremmo ritrovare la teoria delle rappresentazioni che abbiamo fatto per i gruppi anche nella teoria che faremo sulle algebre, in quest'ottica definiamo il seguente insieme
+	\begin{defn}
+		Sia $G$ un gruppo, definiamo l'insieme delle combinazioni lineari formali degli elementi di $G$ a coefficienti in $\K$
+		\[
+			\K[G] = \left\{ \sum a_g e_g, a_g\in \K \right\}
+		\]
+		dove abbiamo una corrispondenza biunivoca tra $\{ g\in G \}$ e $\{ e_g \}_{g\in G}$.
+		Si osserva che $\K[G]$ è un $\K$-spazio vettoriale, definendo poi il prodotto sui vettori di base (ed estendendo per linearità) come $e_g\cdot e_h=e_{gh}$ si ottiene una $\K$-algebra. Essa è associativa perchè il prodotto in $G$ è associativo e unitaria poichè $e_1$ è l'unità di $\K[G]$.
+	\end{defn}
+	\begin{rem}
+		L'azione che avevamo nella rappresentazione regolare diventa il prodotto in $\K[G]$.
+	\end{rem}
+	\begin{defn}
+		Siano $A$ e $A'$ $\K$-algebre, sia $f:A\to A'$ una funzione, $f$ è un \textit{omomorfismo di $\K$-algebre} se
+		\begin{itemize}
+			\item $f:A\to A'$ è un omomorfismo di spazi vettoriali
+			\item $f(ab)=f(a)f(b)$
+			\item $f(1_A)=1_{A'}$
+		\end{itemize}
+	\end{defn}
+	\begin{defn}
+		Una \textit{rappresentazione di una $\K$-algebra} $A$ è un omomorfismo di $\K$-algebre
+		\[ f:A\to \End(V)\]
+		con $V$ un $\K$-spazio vettoriale, allora $V$ viene detto $A$\textit{-modulo}.
+	\end{defn}
+	\begin{defn}
+		Siano $V$ e $W$ degli $A$-moduli, un omomorfismo di spazi vettoriali $f:V\to W$ si dice \textit{omomorfismo di rappresentazioni} se 
+		\[\forall a\in A,\ \forall v\in V \quad f(av)=af(v)\]
+	\end{defn}
+	\begin{exercise}
+		Se $f$ è un isomorfismo di $A$-moduli, allora $f^{-1}$ è un isomorfismo di $A$-moduli. 
+	\end{exercise}
+	\begin{exmp}
+		Alcuni esempi di rappresentazioni sono
+		\begin{enumerate}
+			\item Se $A=\K$ allora le rappresentazioni di $A$ sono gli spazi vettoriali su $\K$ dove l'azione di $A$ è molto semplice: $\rho(a) = a\Id$.
+			\item Sia $G$ un gruppo finito, $A=\K[G]$, allora le rappresentazioni di $A$ come $\K$-algebra sono tutte e sole le rappresentazioni di $G$ come gruppo (le verifiche sono abbastanza semplici, da un lato si restringe l'azione agli elementi di base, dall'altro si estende per linearità).
+		\end{enumerate}
+	\end{exmp}
+	\begin{defn}
+		Siano $\rho_1, \rho_2$ delle rappresentazioni di $A$, allora definiamo $\rho_1+\rho_2$ sulla somma diretta
+		\[
+			\rho_1+\rho_2:A\to \End(V_1\oplus V_2)
+		\]
+		allo stesso modo di come abbiamo definito la somma di rappresentazioni di gruppi (scrivendo le matrici a blocchi).
+	\end{defn}
+
+	\begin{defn}
+		Sia $\rho:A\to \End(V)$ una rappresentazione, $\rho$ si dice \textit{irriducibile} se $V$ non ha sottomoduli (sottospazi invarianti per moltiplicazione per elementi di $A$) non banali, allora $V$ è detto $A$-modulo \textit{semplice}.
+	\end{defn}
+	\begin{defn}
+		Sia $\rho:A\to V$ una rappresentazione, $\rho$ è \textit{indecomponibile} ($V$ è indecomponibile come $A$-modulo) se non è somma diretta di rappresentazioni non banali.
+	\end{defn}
+	\begin{exmp}
+		Sia $A=\K[x]$ vista come $\K$-algebra, allora una rappresentazione è univocamente determinata dall'immagine di $x$, dunque per identificare una rappresentazione basterà sapere $V$ e $\rho(x)$. Se $\K = \overline{\K}$ si osserva che le rappresentazioni irriducibili sono quelle di grado $1$ e sono determinate dal parametro $\lambda\in \K$ tale che $\rho(x)=\lambda$. Si può vedere inoltre che le rappresentazioni indecomponibili sono solo quelle per cui $\rho(x)$ è simile a $J_{n,\lambda}$ dove $J_{n,\lambda}$ è il blocco di Jordan di dimensione $n$ e autovalore $\lambda$.\newline
+		Da questo esempio si osserva che il concetto di irriducibilità è diverso da quello di indecomponibilità.
+	\end{exmp}
+	\begin{exercise}
+		QUI CI SAREBBE UN ESERCIZIO CHE RIGUARDA LA MITICA ALGEBRA UNIVERSALE INVILUPPANTE...
+	\end{exercise}
+	\begin{lemma}[Schur]
+		Sia $A$ una $\K$-algebra, $\phi:V\to W$ un omomorfismo di $A$-moduli con $\phi \neq 0$, allora
+		\begin{enumerate}
+			\item se $V$ è semplice allora $\phi$ è iniettivo
+			\item se $W$ è semplice allora $\phi$ è surgettivo
+		\end{enumerate}
+		Dunque se $V$ e $W$ sono semplici allora $\phi$ è un isomorfismo.
+	\end{lemma}
+	\begin{proof}
+		Identica a quella fatta per i gruppi, dove si usa che $\Ker \phi$ e $\Imm \phi$ sono sottomoduli rispettivamente di $V$ e $W$.
+	\end{proof}
+	\begin{cor}
+		Se $\K$ è algebricamente chiuso, $\phi\in End_A(V)$, $V$ è un $A$-modulo semplice, allora $\exists \lambda \in \K^*$ tale che $\phi = \lambda \Id$.
+	\end{cor}
+	\begin{cor}
+		Se $V$ è un $A$-modulo semplice allora $\End_A(V)$ è un'algebra di divisione.
+	\end{cor}
+	Quello che abbiamo definito prima più precisamente si chiama \textit{$A$-modulo sinistro}, andiamo a dare un'altra definizione
+	\begin{defn}
+		Chiamiamo $A^{OP}$ l'\textit{algebra opposta} di $A$, $A^{OP}=A$ come spazio vettoriale, ma il prodotto in $A^{OP}$ è $a*b = ba$.
+	\end{defn}
+	\begin{defn}
+		Un \textit{$A$-modulo destro} è una rappresentazione di $A^{OP}$. Se $\rho:A^{OP}\to \End(V)$ è una rappresentazione allora $V$ è un $A$-modulo destro.
+	\end{defn}
+	\begin{exmp}
+		Alcuni esempi di algebre isomorfe alle loro algebre opposte
+		\begin{enumerate}
+			\item $\phi:M_n(\K) \to M_n(\K)$ dove $\phi(x)= x^T$ è un isomorfismo di algebre tra $\left(M_n(\K) \right)$ e $\left( M_n(\K) \right)^{OP}$.
+			\item $\phi:\K[G]\to \K[G]$ dove $\phi(e_g)=e_{g^{-1}}$ ed estendendolo per linearità, $\phi$ è un isomorfismo di algebre tra $\K[G]$ e $\K[G]^{OP}$.
+		\end{enumerate}
+	\end{exmp}
+	\begin{defn} Sia $\rho:A\to \End(V)$ una rappresentazione di $A$, definiamo la \textit{rappresentazione duale} $\rho^*:A^{OP}\to \End(V^*)$ dove
+	\[
+		(\rho^*(x)f)(v) = f(x\cdot v)
+	\]
+	\end{defn}
+	\begin{prop}
+		Abbiamo un isomomorfismo di algebre $A^{OP}\cong \End_A(A)$ dove $A$ è pensato come $A$-modulo sinistro.
+	\end{prop}
+	\begin{proof}
+		Se $x\in A$, definiamo $r_x:A\to A$ come $r_x(a)=ax$, allora $r_x\in \End_A(A)$ poichè $r_x(ba)=bax = br_x(a)$. Se $\phi\in \End_A(A)$ allora $\phi = r_{\phi(1)}$, e questo implica che l'applicazione che associa a $x$ $r_x$ è surgettiva, la verifica che è iniettiva è immediata.\\
+		BISOGNEREBBE SCRIVERE LE VERIFICHE CHE LUI NON HA FATTO...
+	\end{proof}
+\subsection{Ideali e quozienti}
+	\begin{defn}
+		Un ideale \textit{sinistro} di $A\supseteq I$ è un sottospazio vettoriale tale che $aI\subseteq I\ \forall a\in A$. Un ideale \textit{destro} è un sottospazio chiuso per la moltiplicazione a destra per elementi di $A$, un ideale è \textit{bilatero} se è sia destro che sinistro.
+	\end{defn}
+	\begin{rem}
+		$I$ è un ideale destro se e solo se $I$ è un $A^{OP}$-sottomodulo, $I$ è un ideale sinistro se e solo se è un $A$-sottomodulo.
+	\end{rem}
+	\begin{rem}
+		Se $I\subseteq A$ è un ideale sinistro allora $A/I$ è un $A$-modulo, se è un ideale destro allora $A/I$ è un $A^{OP}$-modulo, se $I$ è bilatero allora $A/I$ è un'algebra definendo $(a+I)(b+I)=ab+I$.
+	\end{rem}
+	\begin{exmp}
+		Sia $\phi:A\to A'$ un omomorfismo di algebre, allora $\Ker \phi$ è un ideale bilatero di $A$ e $\Imm \phi \cong A/\Ker \phi$ come algebre.
+	\end{exmp}
+	\begin{defn}
+		$A$ è un'\textit{algebra semplice} se non ha ideali bilateri non banali.
+	\end{defn}
+	\begin{rem}
+		Sia $V$ un $A$-modulo sinistro, fissiamo $v\in V$, sia $\phi:A\to V$ come $\phi(x)=x\cdot v$. Si osserva che $\phi$ è lineare e che è un omomorfismo di $A$-moduli vedendo $A$ come $A$-modulo, dunque $\Ker \phi$ è un ideale sinistro.
+	\end{rem}
+	\begin{rem}
+		In aggiunta alle ipotesi di prima sia $V$ un $A$-modulo semplice, $v\neq 0$, allora $\Imm \phi = V$ e dunque $V\cong A/\Ker \phi$ come $A$-moduli.
+	\end{rem}
+	\begin{defn}
+		Un $A$-modulo $V$ è detto \textit{semisemplice} se è somma diretta di $A$-moduli semplici. Equivalentemente $V$ è detto semisemplice se ogni sottomodulo ammette un complementare stabile.
+	\end{defn}
+	\begin{exercise}
+		Sia $A=\K[G]$ (CON G FINITO?????), allora ogni $A$-modulo di dimensione finita è semisemplice.
+	\end{exercise}
+	\begin{prop}
+		Sia $V$ un $A$-modulo semisemplice, allora $V$ è semplice se e solo se $\End_A(V)$ è un'algebra di divisione.
+	\end{prop}
+	\begin{proof}
+		\begin{enumerate}
+			\item[$\Rightarrow$)]Per il lemma di Schur.
+			\item[$\Leftarrow$)]Supponiamo che $V=V_1\oplus V_2$ sia una decomposizione in $A$-moduli. Siano $\pi_1:V\to V$ e $\pi_2:V\to V$ le proiezioni associate alla decomposizione. Si osserva $\pi_1$ e $\pi_2$ sono omomorfismi di $A$-moduli e che entrambi sono diversi da $0$, tuttavia $\pi_1\circ \pi_2 = 0$, quindi avremmo che $\End_A(V)$ non è un'algebra di divisione, assurdo.
+		\end{enumerate}
+
+	\end{proof}
+
+	
 \end{document}
