@@ -1734,9 +1734,10 @@ tuttavia essendo dei numeri naturali deduciamo che le eguaglianze sussistono anc
 
 
 
-\textsc{Dimostrazione del teorema \ref{relazione di ortogonalita}:}
+\begin{proof}[Dimostrazione del teorema \ref{relazione di ortogonalita}]
 
-A questo punto la tesi del teorema \ref{relazione di ortogonalita} segue dal lemma precedente applicato insieme al lemma di Schur. \qed
+A questo punto la tesi del teorema \ref{relazione di ortogonalita} segue dal lemma precedente applicato insieme al lemma di Schur.
+\end{proof}
 
 
 \begin{rem}
@@ -2673,11 +2674,20 @@ Il proiettore $R$ sopra trovato si chiama \emph{proiettore di Reynolds}.
 \end{proof}
 
 
-\textbf{Esercizi:}
-\begin{enumerate}
-\item Mostrare che tutte le rappresentazioni irriducibili $/_\C$ si $S_4$ sono reali.
-\item $G$ gruppo ciclico di ordine dispari: allora le rappresentazioni non banali sono complesse.
-\end{enumerate} 
+%\textbf{Esercizi:}
+%\begin{enumerate}
+%\item Mostrare che tutte le rappresentazioni irriducibili $/_\C$ si $S_4$ sono reali.
+%\item $G$ gruppo ciclico di ordine dispari: allora le rappresentazioni non banali sono complesse.
+%\end{enumerate} 
+\begin{exercise}
+	Mostrare che tutte le rappresentazioni irriducibili $/_\C$ si $S_4$ sono reali.
+\end{exercise}
+\begin{exercise}
+	Sia $G$ gruppo ciclico di ordine dispari, allora le rappresentazioni non banali sono complesse.
+\end{exercise}
+
+
+
 
 \begin{thm}
 Sia $\rho:G\rightarrow GL(V)$ rappresentazione irriducibile $/_\R$: allora $\exists \sigma:G\rightarrow GL(V_{\sigma})$ rappresentazione irriducibile $/_\C$ tale che è vera una delle seguenti affermazioni:
@@ -3412,16 +3422,17 @@ dove $(L_g(f))(x) = f(g^{-1}x)$ e $(R_g(f))(x) = f(xg)$.
 Se questa integrazione esiste, allora in analogia a quanto fatto per i gruppi finiti possiamo sperare che le rappresentazioni di un gruppo compatto siano completamente irriducibili.
 
 
-\textbf{Esempi:}
-\begin{enumerate}
-\item Nel caso dei gruppi finiti $I(f)=\frac{1}{|G|}\sum_{g\in G}f(g)$ è una integrazione invariante.
-\item Definiamone esplicitamente una su $\mathbb{S}^1$ 
-\[\dint_{\mathbb{S}^1}f(g)\ dg:=\frac{1}{2\pi}\dint_0^{2\pi}f(e^{i\theta})\ d\theta\]
-Le verifiche che sia una integrazione a tutti gli effetti sono banali: infatti che sia lineare e la positività derivano dalle proprietà dell'integrazione su $\R$ e l'invarianza deriva dal fatto che far agire $\mathbb{S}^1$ significa solo ruotare di un angolo ovvero riparametrizzare la circonferenza.
-Il diviso $2\pi$ è dovuto al fatto che vogliamo in generale avere una integrazione invariante normalizzata ovvero
-\[\dint_{\mathbb{S}^1}1\ dg=1\]
-Nel caso dei gruppi finiti dividevamo per la cardinalità del gruppo: ora che si parla di gruppi compatti possiamo immaginare che si divida per la "misura" del gruppo. 
-\end{enumerate}
+\begin{exmp}Alcuni esempi di integrazioni invarianti sono:
+	\begin{enumerate}
+		\item Nel caso dei gruppi finiti $I(f)=\frac{1}{|G|}\sum_{g\in G}f(g)$ è una integrazione invariante.
+		\item Definiamone esplicitamente una su $\mathbb{S}^1$ 
+		\[\dint_{\mathbb{S}^1}f(g)\ dg:=\frac{1}{2\pi}\dint_0^{2\pi}f(e^{i\theta})\ d\theta\]
+		Le verifiche che sia una integrazione a tutti gli effetti sono banali: infatti che sia lineare e la positività derivano dalle proprietà dell'integrazione su $\R$ e l'invarianza deriva dal fatto che far agire $\mathbb{S}^1$ significa solo ruotare di un angolo ovvero riparametrizzare la circonferenza.
+		Il diviso $2\pi$ è dovuto al fatto che vogliamo in generale avere una integrazione invariante normalizzata ovvero
+		\[\dint_{\mathbb{S}^1}1\ dg=1\]
+		Nel caso dei gruppi finiti dividevamo per la cardinalità del gruppo: ora che si parla di gruppi compatti possiamo immaginare che si divida per la "misura" del gruppo. 
+	\end{enumerate}
+\end{exmp}
 
 \begin{lemma}
   Se esiste l'integrazione invariante su un gruppo, allora esiste una forma hermitiana definita positiva invariante sotto l'azione del gruppo.
@@ -3496,18 +3507,16 @@ Dopo aver studiato in dettaglio $\mathbb{S}^1$, vediamo come si comporta un suo 
  \[ x_1 ^2 + x_2^2 + x_3^2 + x_4^2 = 1 \]
 E scrivendo in questo modo ci accorgiamo subito che quindi $SU(2)$ è un gruppo compatto e connesso.
 \begin{cor} 
-Ogni rappresentazione di $SU(2)$ è scomponibile in una somma di reppresentazioni irriducibili.
+Ogni rappresentazione di $SU(2)$ è scomponibile in una somma di rappresentazioni irriducibili.
 \end{cor}
-Nella sezione \ref{sec:quaternioni} abbiamo visto come i quaternioni possono essere visti come un sottoinsieme di 
-
-
+Nella sezione \ref{sec:quaternioni} abbiamo visto come i quaternioni possono essere visti come un sottoinsieme di $M_2(\C)$
 \[
 \mathbb{H}= \left\{\begin{pmatrix}
  z_1& z_2\\ 
  -\overline{z_2}& \overline{z_1} 
 \end{pmatrix}\in M_2(\C) \right\}
 \]
-Quindi $SU(2)$ può essere immerso in $\mathbb{Q}_8$ essendo un sottospazio di $\mathbb{H}$.\\
+Quindi $SU(2)$ può essere immerso in $\HH$ avendo le matrici la stessa struttura.\\
  MANCA LA PARTE SU $\rho_H$ MA NON SO QUANTO SERVA.
 
 
@@ -4070,7 +4079,7 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 			\item $\K$ un campo
 			\item Se $V$ è uno spazio vettoriale su $\K$ allora $\End(V)$ è una $\K$-algebra
 			\item $\K[x_1,\ldots,x_n]$ è una $\K$-algebra
-			\item $\K<x_1,\ldots,x_n>$ è l'algebra libera, sono le parole nell'alfabeto $\{x_1,\ldots,x_n\}$, il prodotto è la concatenazione; è generata da $x_{i_1}\cdots x_{i_k}$ (simile come costruzione al gruppo libero su $n$ generatori)
+			\item $\K<x_1,\ldots,x_n>$ è l'algebra libera con $n$ generatori, sono le parole nell'alfabeto $\{x_1,\ldots,x_n\}$, il prodotto è la concatenazione; è generata da $x_{i_1}\cdots x_{i_k}$ (simile come costruzione al gruppo libero su $n$ generatori)
 			\item Se $A$ è una $\K$-algebra, $I$ un suo ideale bilatero, allora $A/I$ è una $\K$-algebra
 		\end{enumerate}
 	\end{exmp}
