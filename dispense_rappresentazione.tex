@@ -1,4 +1,3 @@
-
 \documentclass[11pt]{article}
 
 
@@ -26,6 +25,7 @@
 \usepackage[T1,OT1]{fontenc} 
 \usepackage[nohug,small]{diagrams}
 \usepackage{bm}
+
 
 
 \usepackage{grffile}
@@ -85,6 +85,8 @@
 \newcommand{\HH}{\mathbb{H}}
 \newcommand{\dsum}{\displaystyle\sum}
 \newcommand{\dint}{\displaystyle\int}
+\newcommand*\quot[2]{{^{\textstyle #1}\big/_{\textstyle #2}}}
+
 
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\Hom}{Hom}
@@ -98,6 +100,7 @@
 \DeclareMathOperator{\Supp}{Supp}
 \DeclareMathOperator{\Res}{Res}
 \DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Char}{char}
 
 
 
@@ -4079,7 +4082,7 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 			\item $\K$ un campo
 			\item Se $V$ è uno spazio vettoriale su $\K$ allora $\End(V)$ è una $\K$-algebra
 			\item $\K[x_1,\ldots,x_n]$ è una $\K$-algebra
-			\item $\K<x_1,\ldots,x_n>$ è l'algebra libera con $n$ generatori, sono le parole nell'alfabeto $\{x_1,\ldots,x_n\}$, il prodotto è la concatenazione; è generata da $x_{i_1}\cdots x_{i_k}$ (simile come costruzione al gruppo libero su $n$ generatori)
+			\item $\K\langle x_1,\ldots,x_n\rangle$ è l'algebra libera con $n$ generatori, sono le parole nell'alfabeto $\{x_1,\ldots,x_n\}$, il prodotto è la concatenazione; è generata da $x_{i_1}\cdots x_{i_k}$ (simile come costruzione al gruppo libero su $n$ generatori)
 			\item Se $A$ è una $\K$-algebra, $I$ un suo ideale bilatero, allora $A/I$ è una $\K$-algebra
 		\end{enumerate}
 	\end{exmp}
@@ -4225,8 +4228,157 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 			\item[$\Rightarrow$)]Per il lemma di Schur.
 			\item[$\Leftarrow$)]Supponiamo che $V=V_1\oplus V_2$ sia una decomposizione in $A$-moduli. Siano $\pi_1:V\to V$ e $\pi_2:V\to V$ le proiezioni associate alla decomposizione. Si osserva $\pi_1$ e $\pi_2$ sono omomorfismi di $A$-moduli e che entrambi sono diversi da $0$, tuttavia $\pi_1\circ \pi_2 = 0$, quindi avremmo che $\End_A(V)$ non è un'algebra di divisione, assurdo.
 		\end{enumerate}
-
+	\end{proof}
+\subsection{Serie di composizione}
+	\begin{defn}
+		Sia $A$ una $\K$-algebra, $V$ un $A$-modulo di dimensione finita. Si chiama \textit{filtrazione} per $V$ una sequenza di sottomoduli tale che
+		\[
+			0=V_0\subseteq V_1\subseteq \ldots \subseteq V_n=V
+		\]
+		Diciamo che una filtrazione è una \textit{serie di composizione} (o serie di Jordan-Holder) se i quozienti $\displaystyle V_i/V_{i-1}$ sono tutti $A$-moduli semplici. Questi quozienti sono detti \textit{fattori di composizione} della serie.
+	\end{defn}
+	\begin{exercise}
+		Se $W\subseteq V$ sono $A$-moduli, allora $W$ è un sottomodulo proprio massimale se e solo se $V/W$ è semplice.
+	\end{exercise}
+	\begin{prop}
+		Ogni $A$-modulo $V$ di dimensione finita ammette una serie di composizione di lunghezza finita.
+	\end{prop}
+	\begin{proof}
+		Per induzione su $\dim V$: se $V$ è irriducibile ho finito, altrimenti sia $V_1$ un sottomodulo irriducibile (basta prenderne uno minimale). Consideriamo ora $V/V_1$, per ipotesi induttiva esso ammette una serie di decomposizione di lunghezza finita, prendendo le controimmagini della serie per $V/V_1$ tramite la proiezione al quoziente si ottiene una serie di Jordan-Holder.
+		\\FORSE DA SPIEGARE MEGLIO PERCHE'...
+	\end{proof}
+	\begin{rem}
+		Se $V$ è somma diretta di irriducibili ($V$ semisemplice), allora i fattori di composizione di qualsiasi serie per $V$ sono proprio gli irriducibili di $V$ contati con molteplicità.
+	\end{rem}
+	\begin{thm}[di Jordan-Holder]\label{thm:jordan-holder}
+		Sia $V$ un $A$-modulo di dimensione finita, allora tutte le serie di composizione per $V$ hanno la stessa lunghezza (che chiamiamo lunghezza del modulo), e gli stessi fattori di composizione (contati con molteplicità e a meno di permutazioni).
+	\end{thm}
+	\begin{proof}
+		Per induzione su $\dim V$: se $V$ è irriducibile ho finito, supponiamo dunque che abbia sottomoduli non banali, siano
+		\begin{gather*}
+			0=V_0\subseteq\ldots \subseteq V_m = V\qquad W_i=V_i/V_{i-1}\\
+			0=V'_0\subseteq\ldots \subseteq V'_m = V\qquad W'_i=V'_i/V'_{i-1}
+		\end{gather*}
+		due serie di Jordan-Holder per $V$. Se $V_1=V'_1$ considero $V/V_1$, per ipotesi induttiva ho l'unicità. Supponiamo dunque che $V_1\neq V'_1$, visto che $V_1$ e $V'_1$ sono irriducibili si ha che $V_1\cap V'_1=0$, dunque $V_1+V'_1=V_1\oplus V'_1$.\\
+		Considero il modulo $\quot{V}{V_1\oplus V'_1}$, siano $Z_1,\ldots,Z_p$ i fattori di composizione di una serie di Jordan-Holder per $\quot{V}{V_1\oplus V'_1}$. Ma allora si ha che
+		\begin{enumerate}
+			\item $V/V_1$ ammette due serie di composizione con fattori
+			\[
+				V'_1,Z_1,\ldots,Z_p\qquad W_2,\ldots,W_m
+			\]
+			\item $V/V'_1$ ammette due serie di composizione con fattori
+			\[
+				V_1,Z_1,\ldots,Z_p\qquad W'_2,\ldots,W'_n
+			\]
+		\end{enumerate}
+		Per ipotesi induttiva ho l'unicità delle serie per $V/V_1$ e $V/V'_1$, dunque si ha che $n=m=p+2$. Sempre per via dell'unicità si ha che
+		\begin{gather*}
+			\{ W'_1,Z_1,\ldots,Z_p\} = \{ W_2,\ldots,W_m\}\\
+			\{ W_1,Z_1,\ldots,Z_p\} = \{ W'_2,\ldots,W'_m\}
+		\end{gather*}
+		da cui, aggiungendo $W_1$ agli insiemi\footnote{non sono esattamente insiemi dato che devono contare i fattori con molteplicità} nella prima riga e $W'_1$ a quelli della seconda si ottiene
+		\begin{gather*}
+			\{ W'_1,W_1,Z_1,\ldots,Z_p\} = \{ W_1,W_2,\ldots,W_m\}\\
+			\{ W'_1,W_1,Z_1,\ldots,Z_p\} = \{ W'_1,W'_2,\ldots,W'_m\}
+		\end{gather*}
+		essendo uguali i membri di sinistra ho uguaglianza anche dei membri di destra e quindi segue la tesi.
+	\end{proof}
+	\begin{exmp}
+		Sia $A=\K[G]$ con $\Char \K \not | ord(G)$, allora ogni rappresentazione di dimensione dinita è somma di moduli irriducibili. I fattori di composizione coincidono con gli addendi irriducibili contati con molteplicità.
+	\end{exmp}
+	\begin{rem}
+		Sia $V$ un $A$-modulo, $W\subseteq V$ un sottomodulo, allora esiste sempre una serie di Jordan-Holder che contiene $W$ ($W=V_i$ per qualche $i$): basta considerare prima una serie per $W$ e comporla con la controimmagine tramite la proiezione al quoziente di una serie per $V/W$.
+	\end{rem}
+	\begin{cor}
+		Sia $V$ un $A$-modulo semplice con $\dim_{\K}A<\infty$, allora $V$ compare come fattore di composizione in qualsiasi serie di Jordan-Holder per $A$ (considerando $A$ come $A$-modulo sinistro).
+	\end{cor}
+	\begin{proof}
+		Fisso $v\in V, v\neq 0$ e considero $\phi:A\to V$ tale che $\phi(a) = av$, allora $\phi$ è surgettiva (siccome $V$ è semplice), $I=\Ker \phi \subseteq A$ è un ideale sinistro e si ha che $V\cong A/I$ come $A$-moduli. $I$ è un sottomodulo di $A$, quindi esiste una serie di composizione per $A$ che contiene $I$: esistono $I_0,\ldots,I_n$ ideali sinistri di $A$ tali che
+		\[
+			0=I_0\subseteq\ldots\subseteq I_n = A\qquad \text{con }I_k/I_{k-1}\text{ semplice }\forall k
+		\]
+		Sia $p\in \N$ tale che $I=I_p$, si osserva che $p=n-1$ poichè $A/I$ è semplice (dunque non posso allungare la serie), quindi $I_n/I_{n-1} = A/I\cong V$. Abbiamo provato dunque che in una serie di composizione troviamo un fattore uguale a $V$, avendo dimostrato l'unicità dei fattori della serie col teorema \eqref{thm:jordan-holder} segue la tesi.
+	\end{proof}
+	\begin{exmp}
+		Sia $A=\quot{\K[x]}{(x^n)}$, consideriamo la serie
+		\[
+			0\subset \quot{(x^{n-1})}{(x^n)}\subset \quot{(x^{n-2})}{(x^n)}\subset \ldots\subset \quot{\K[x]}{(x^n)} 
+		\]
+		Tutti i fattori di composizione sono isomorfi alla rappresentazione banale (dove $x$ agisce come $0$ e gli scalari agiscono come scalari), dunque l'unico modulo irriducibile è quello banale (OVVERO IL CAMPO K???). In particolare $\K[x]/(x^n)$ ammette un'unica rappresentazione irriducibile a meno di isomorfismo.
+	\end{exmp}
+	\begin{exmp}
+		Sia $A=M_n(\K)$, un modulo irriducibile è $\K^n$, per ogni $i=1,\ldots,n$ sia
+		\[
+			V_i = \left\{ M\in A : M_{p,q} = 0\ \forall q>i \right\}
+		\]
+		ovvero $V_i$ è l'insieme delle matrici appartenenti ad $A$ con le ultime $n-i$ colonne nulle (in realtà è un sottomodulo). Consideriamo la serie
+		\[
+			0\subset V_1\subset\ldots\subset V_n=M_n(\K)
+		\]
+		si osserva che $V_i/V_{i-1}\cong \K^n$, dunque tutti i quozienti sono irriducibili e isomorfi tra loro, ma allora $\K^n$ è l'unica rappresentazione irriducibile di $M_n(\K)$ a meno di isomorfismo.
+	\end{exmp}
+	\begin{thm}[Krull-Schmidt]\label{thm:krull-schmidt}
+		Sia $A$ una $\K$-algebra, $V$ un $A$-modulo con $\dim V<\infty$. Allora $V$ si decompone in modo unico come somma di rappresentazioni indecomponibili (a meno di isomorfismo e permutazioni).
+	\end{thm}
+	FORSE CONVIENE SPOSTARE L'ENUNCIATO DEL TEO PIÙ AVANTI...
+	\begin{defn}
+		Sia $x\in A$, $x$ è \textit{nilpotente} se $\exists\ n\in \N$ tale che $x^n=0$, $x$ è \textit{idempotente} se $x^2=x$.
+	\end{defn}
+	\begin{prop}
+		Sia $V$ un $A$-modulo, allora $V$ è indecomponibile se e solo se per ogni $\phi\in \End_A(V)$ idempotente si ha che $\phi=0$ o $\phi=\Id$.
+	\end{prop}
+	\begin{proof}
+		\begin{enumerate}
+			\item[$\Leftarrow)$] Se $V$ non è indecomponibile allora $V = W\oplus W'$ con $W,W'\neq V$, sia $p\in \End_A(V)$ la proiezione su $W$ associata, allora $p^2=p, p\neq 0, p\neq \Id$, assurdo.
+			\item[$\Rightarrow$)]Sia $p\in \End_A(V)$ tale che $p^2=p$, voglio vedere che $p=0$ o $p=\Id$. Si osserva subito che $\Ker p \cap \Imm p = 0$ (per l'ipotesi $p^2=p$), dunque $V=\Ker p\oplus \Imm p$, ma allora deve succedere che $\Ker p = 0$ o $\Imm p = 0$ (poichè $V$ è indecomponibile), se $\Imm p = 0$ allora $p=0$, se $\Ker p=0$ allora $p=\Id$ poichè $p^2=p$.
+		\end{enumerate}
+	\end{proof}
+	\begin{lemma}
+		Siano $V,W$ degli $A$-moduli indecomponibili di dimensione finita su $\K$, siano $\alpha\in \Hom_A(V,W)$ e $\beta\in \Hom_A(W,V)$ tali che $\beta\circ\alpha$ è un isomorfismo su $V$, allora $\alpha$ e $\beta$ sono isomorfismi.
+	\end{lemma}
+	\begin{proof}
+		Vediamo che $W=\Ker\beta\oplus\Imm \alpha$:
+		\begin{enumerate}
+			\item $\Ker \beta\cap\Imm\alpha = 0$ poichè altrimenti $\beta\circ\alpha$ avrebbe nucleo diverso da $0$ ma sappiamo che $\beta\circ\alpha$ è un isomorfismo.
+			\item Sia $x\in W$, sia $y=\left( \alpha\circ(\alpha\circ\beta)^{-1}\circ\beta \right)(x)$, allora $y\in \Imm \alpha$, consideriamo ora $\beta(y) = (\beta\circ\alpha)\circ(\beta\circ\alpha)^{-1}\circ\beta(x) = \beta(x)$, dunque $x-y\in \Ker \beta$, quindi $W=\Imm \alpha \oplus \Ker \beta$.
+		\end{enumerate}
+		Ma $W$ è indecomponibile, quindi $\Ker \beta = 0$ o $\Imm \alpha = 0$, la seconda situazione non può accadere (altrimenti $\beta\circ\alpha$ non sarebbe un isomorfismo), ma allora $\Ker \beta = 0$ e $\Imm \alpha = W$, visto che necessariamente $\alpha$ è iniettivo (altrimenti non lo sarebbe $\beta\circ\alpha$) si ha che $\alpha$ è un isomorfismo, e dunque anche $\beta$ lo è.
+	\end{proof}
+	\begin{prop}
+		Sia $V$ un $A$-modulo indecomponibile e $\phi\in \End_A(V)$, allora $\phi$ è un isomorfismo oppre è nilpotente.
+	\end{prop}
+	\begin{proof}
+		Sia $\phi\in \End_A(V)$, considero le due successioni
+		\begin{gather*}
+			\ldots\supseteq \Ker\phi^n\supseteq\Ker\phi^{n-1}\supseteq\ldots\supseteq\Ker\phi^0\\
+			\ldots\subseteq\Imm\phi^n\subseteq\Imm\phi^{n-1}\subseteq\ldots\subseteq\Imm\phi^0
+		\end{gather*}
+		Queste successioni si devono stabilizzare, sia dunque $N$ tale che $\Ker\phi^N=\Ker\phi^{N+1}$ e $\Imm\phi^N=\Imm\phi^{N+1}$, allora si ha che $\Ker\phi^N\cap\Imm\phi^N=0$ (altrimenti non si sarebbero stabilizzate le successioni), ma allora $V=\Ker\phi^N\oplus\Imm\phi^N$ per questioni di dimensioni.\\
+		Per ipotesi $V$ è indecomponibile dunque $\Imm\phi^N=0$ oppure $\Ker\phi^N=0$, se $\Imm\phi^N=0$ allora $\phi$ è nilpotente, se invece $\Ker\phi^N=0$ allora a maggior ragione $\Ker \phi=0$ e dunque $\phi$ è un isomorfismo.
+	\end{proof}
+	\begin{cor}
+		Sia $V$ un $A$-modulo indecomponibile, siano $\theta_1,\ldots,\theta_s\in \End_A(V)$ con $\theta_i$ nilpotente per $i=1,\ldots,s$, allora $\theta_1+\ldots+\theta_s$ è nilpotente.
+	\end{cor}
+	\begin{proof}
+		Sia $\displaystyle \theta=\sum_{i=1}^{s}\theta_i\in \End_A(V)$, per la proposizione precedente sappiamo che $\theta$ è un isomorfismo oppure è nilpotente. Procediamo per induzione su $s$:
+		\begin{itemize}
+			\item Se $s=1$ allora $\theta=\theta_1$ che è nilpotente.
+			\item Supponiamo la tesi vera per $s=n-1$ e dimostriamola per $s=n$: supponiamo per assurdo che $\theta$ sia un isomorfismo, allora avremmo che
+			\[
+				\Id = \theta^{-1}\theta_1+\ldots+\theta^{-1}\theta_n
+			\]
+			Si osserva subito che $\theta^{-1}\theta_i$ è nilpotente (dato che ha nucleo non nullo non è un isomorfismo e dunque è nilpotente), quindi
+			\[
+				\Id-\theta^{-1}\theta_n = \theta^{-1}\theta_1+\ldots+\theta^{-1}\theta_{n-1}
+			\]
+			Sappiamo per ipotesi induttiva che la somma di $n-1$ endomorfismi nilpotenti è ancora nilpotente, dunque il termine di destra dell'equazione è nilpotente, ma questo è assurdo essendo quello di sinistra un isomorfismo: se $\phi$ è nilpotente con indice di nilpotenza $k$ allora $\Id-\phi$ è un isomorfismo, infatti
+			\[
+				(\Id-\phi)\cdot(1+\phi+\ldots+\phi^{k-1}) = \Id-\underbrace{\phi^k}_{=0} = \Id
+			\]
+		\end{itemize}
 	\end{proof}
 
-	
+
+
+
 \end{document}
