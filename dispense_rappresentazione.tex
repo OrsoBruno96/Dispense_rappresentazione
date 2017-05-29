@@ -26,7 +26,8 @@
 \usepackage[nohug,small]{diagrams}
 \usepackage{bm}
 
-
+%\usepackage{genyoungtabtikz}
+\usepackage{ytableau}
 
 \usepackage{grffile}
 \usepackage{tikz}
@@ -4380,5 +4381,80 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 
 
 
+\section{Rappresentazioni di $S_n$}
+Cerchiamo ora quali sono le rappresentazioni del gruppo simmetrico; in particolare caratterizziamo i moduli semplici di $A=\Q[S_n]$.\\
+Come prima osservazione, sappiamo che le rappresentazioni irriducibili di un gruppo $G$ sono al più tante quante le classi di coniugio di $G$; per $G=S_n$, le classi di coniugio sono in corrispondenza biunivoca con le partizioni di $n$: infatti tutti gli elementi di una classe condividono la stessa struttura ciclica.\\
+A loro volta, le partizioni possono essere pensate come particolari tabelle, nel modo seguente.
+\begin{defn}
+	Una $n$-tabella è un insieme di $n$ quadratini disposti come in una scacchiera, in modo che il numero di quadratini presenti in ogni riga sia minore o uguale al numero di quadratini presenti nella riga sopra.
+\end{defn}
+Per costruire i moduli che ci interessano, è necessario riempire le tabelle con dei numeri.
+\begin{defn}
+	Un $n$-diagramma $D$ è una $n$-tabella dove in ogni quadratino vi è un numero da $1$ a $n$, in modo che ogni numero compaia una ed una sola volta nell'intera tabella.
+\end{defn}
+\begin{exmp}
+	Sia $n=7$, $\mathcal{C}$ la classe di coniugio di $(123)(45)(67)$; allora la partizione corrispondente a $\mathcal{C}$ è $3,2,2$, che ha la seguente tabella; uno dei possibili diagrammi è \\ $\ydiagram{3,2,2}$ $\ytableaushort{356,14,27}$
+\end{exmp}
+Osserviamo che $S_n$ agisce transitivamente sull'insieme dei diagrammi con la stessa forma nel modo ovvio.\\
+Fissato un diagramma $D$, siamo interessati ai seguenti due sottogruppi di $S_n$:
+\begin{defn}$ $
+	\begin{itemize}
+		\item $R(D)=\{\sigma\in S_n : \sigma(i) \text{ sta nella stessa riga di } i\;\forall i=1,\dots,n\}$
+		\item $C(D)=\{\sigma\in S_n : \sigma(i) \text{ sta nella stessa colonna di } i\;\forall i=1,\dots,n\}$
+	\end{itemize}
+\end{defn}
+Osserviamo che $R(D)\cup C(D)=\{id\}$.\\
+Possiamo ora definire l'elemento generatore degli ideali che che ci interessano.
+\begin{defn}
+	Dato un diagramma $D$, il suo simmetrizzatore è $$e_D=\left(\sum_{p\in R(D)}p \right)\left(\sum_{q\in C(D)}q\varepsilon_q\right)$$
+	Inoltre il modulo corrispondente è $V_D=Ae_D$
+\end{defn}
+\begin{prop}\label{prop:assorbimento eD}
+	Se $p\in R(D)$ e $q\in C(D)$ allora $pe_D=e_D$ e $e_Dq=e_D\varepsilon_q$
+\end{prop}
+\begin{prop}
+	Sia $g\in S_n$; allora $e_{gD}=ge_Dg^{-1}$
+\end{prop}
+\begin{proof}
+	Vediamo che $R(gD)=gR(D)g^{-1}$. Infatti $\sigma\in R(gD)\iff\sigma(i)$ sta nella stessa riga di $i$ all'interno del diagramma $gD$, ovvero $\sigma g (j)=g(g^{-1}\sigma g)(j)$ sta nella stessa riga di $g(j)$ (abbiamo scritto $i=g(j)$ con $j$ pensato in $D$); questo si verifica se e solo se $g^{-1}\sigma g(j)$ sta nella stessa riga di $j$ in $D$, ovvero $g^{-1}\sigma g(j)\in R(D)$, che è quello che volevamo.\\
+	Similmente $C(gD)=gC(D)g^{-1}$.\\
+	Allora $\displaystyle e_{gD}=\left(\sum_{p\in R(gD)}p \right)\cdot\left(\sum_{q\in C(gD)}q\varepsilon_q\right)=\left(\sum_{p'\in R(D)}gp'g^{-1} \right)\cdot\left(\sum_{q'\in C(D)}gq'g^{-1}\text{sgn}(gq'g^{-1})\right)$; tirando fuori dalle parentesi le $g$ e usando $\text{sgn}(gq'g^{-1})=\text{sgn}(q')$ si ha la tesi.
+\end{proof}
+\begin{cor}
+	Se $D$ e $D'$ sono diagrammi con la stessa forma, allora $V_D\cong V_{D'}$
+\end{cor}
+\begin{proof}
+	Poiché $D$ e $D'$ hanno la stessa forma, esiste un $g\in S_n$ tale che $D'=gD$, e perciò $e_{D'}=ge_Dg^{-1}$.\\
+	Allora $Ae_{D'}=Age_Dg^{-1}$. Osserviamo che $1=g^{-1}g\in Ag$ perciò $Ag=A$; inoltre $Ae_Dg^{-1}\cong Ae_D$ grazie all'omomorfismo $xe_Dg^{-1}\mapsto xe_D$ che è iniettivo
+\end{proof}
+\begin{lemma}
+	Sia $D$ un diagramma e $g\in S_n$. Allora possiamo scrivere $g=pq$ con $p\in R(D)$ e $q\in C(D)$ se e solo se nessuna coppia di numeri che si trova nella stessa diga di $D$ sta anche sulla stessa colonna di $gD$.
+\end{lemma}
+\begin{proof}$ $
+	\begin{itemize}
+		\item[$\Rightarrow$] Scrivo $g=pq$; siano $a,b$ due numeri sulla stessa riga di $D$. Allora $a,b$ stanno sulla stessa riga anche in $pD$. Inoltre $gD=(pqp^{-1})pD$ e $pqp^{-1}\in C(pD)$; perciò $gD$ ha le stesse colonne di $pD$, e in particolare poiché $a,b$ stavano in colonne diverse di $pD$, stanno anche su colonne diverse di $gD$.
+		\item[$\Leftarrow$] Per transitività mostro che $gD=pqD$ con certi $p,q$ della forma cercata. Guardo la prima colonna di $gD$: tutti i suoi elementi stanno in righe diverse di $D$ per ipotesi, quindi posso scegliere un $p_1\in R(D)$ tale che $p_1D$ e $gD$ abbiano gli stessi elementi nella prima colonna. Continuando in questo modo trovo un $p\in R(D)$ tale che $pD$ e $gD$ hanno le stesse colonne; allora esiste un $q'\in C(pD)$ per cui $q'pD=gD$; ma $q'=pqp^{-1}$ con $q\in C(D)$, perciò si ha proprio $pqD=gD$.
+	\end{itemize}
+\end{proof}
+Osserviamo che le partizioni di $n$ possono essere ordinate in modo lessicografico.\\
+Dimostriamo ora questo importante lemma di ortogonalità dei simmetrizzatori.
+\begin{lemma}
+	Sia $D$ un diagramma di forma $\lambda$ e $D'$ un diagramma di forma $\lambda'$; allora se $\lambda>\lambda'$ vale $e_{D'}\cdot e_{D}=0$
+\end{lemma}
+\begin{proof}
+	Per prima cosa vogliamo trovare due simboli $a,b$ nella stessa riga di $D$ e nella stessa colonna di $D'$; supponiamo per assurdo che non esistano.\\
+	Diciamo che $\lambda: a_1\ge\dots a_k$ e $\lambda':a_1'\ge\dots a_h'$; notiamo che gli $a_1$ simboli della prima riga di $D$ devono stare tutti in colonne diverse di $D'$, per l'ipotesi di assurdo. Ciò vuol dire che $D'$ ha almeno $a_1$ colonne, ma valeva anche $a_1\ge a_1'$: perciò si deve avere $a_1=a_1'$. Sia ora $m$ il numero di righe lunghe $a_1$ elementi di $\lambda$ e $m'$ il suo analogo; poiché $\lambda>\lambda'$ si ha $m\ge m'$. Inoltre tutti gli elementi delle prime $m$ righe di $D$ devono andare nelle prime $m'$ righe di $D'$, ma allora in $D$ ho $ma_1$ elementi da mettere in $m'a_1$ posti in $D'$, ovvero $m'\ge m$, perciò $m=m'$.\\
+	Non può essere che queste $m$ righe fossero tutta la tabella, poiché $\lambda$ e $\lambda'$ sono diversi; allora le tabelle continuano, e poiché gli elementi delle prime $m$ righe restano nelle prime $m$ righe, possiamo dimenticarci di loro e ripetere il ragionamento togliendo le prime $m$ righe sia da $\lambda$ che da $\lambda'$.\\
+	Ma quindi abbiamo creato un processo infinito, in cui ogni volta la lunghezza della prima riga decresce strettamente, il che è assurdo.\\
+	Allora abbiamo davvero $a,b$ nella stessa riga di $D$ e nella stessa colonna di $D'$; sia $t=(a,b)\in S_n$, allora $t\in R(D)\cup C(D')$.\\
+	Si ha dunque $e_{D'}\cdot e_{D}=e_{D'}\cdot t\cdot t\cdot e_{D}=(-e_{D'})\cdot e_D$ per l'osservazione \eqref{prop:assorbimento eD}, ovvero $2\cdot e_{D'}\cdot e_{D}=0$
+\end{proof}
+Troviamo ora una caratterizzazione di $V_D$
+\begin{lemma}
+	Fissiamo un diagramma $D$; sia $x\in A$ tale che $\forall p\in R(D),q\in C(D)$ si abbia $pxq=\varepsilon_qx$. Allora $\exists\gamma\in\Q$ tale che $x=\gamma e_D$.
+\end{lemma}
+\begin{proof}
+	Scriviamo $x=\sum a_gg$
+\end{proof}
 
 \end{document}
