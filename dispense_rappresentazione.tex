@@ -4427,7 +4427,7 @@ Possiamo ora definire l'elemento generatore degli ideali che che ci interessano.
 	Poiché $D$ e $D'$ hanno la stessa forma, esiste un $g\in S_n$ tale che $D'=gD$, e perciò $e_{D'}=ge_Dg^{-1}$.\\
 	Allora $Ae_{D'}=Age_Dg^{-1}$. Osserviamo che $1=g^{-1}g\in Ag$ perciò $Ag=A$; inoltre $Ae_Dg^{-1}\cong Ae_D$ grazie all'omomorfismo $xe_Dg^{-1}\mapsto xe_D$ che è iniettivo
 \end{proof}
-\begin{lemma}
+\begin{lemma}\label{Sn:g=pq}
 	Sia $D$ un diagramma e $g\in S_n$. Allora possiamo scrivere $g=pq$ con $p\in R(D)$ e $q\in C(D)$ se e solo se nessuna coppia di numeri che si trova nella stessa diga di $D$ sta anche sulla stessa colonna di $gD$.
 \end{lemma}
 \begin{proof}$ $
@@ -4438,7 +4438,7 @@ Possiamo ora definire l'elemento generatore degli ideali che che ci interessano.
 \end{proof}
 Osserviamo che le partizioni di $n$ possono essere ordinate in modo lessicografico.\\
 Dimostriamo ora questo importante lemma di ortogonalità dei simmetrizzatori.
-\begin{lemma}
+\begin{lemma}\label{Sn:ortogonalita}
 	Sia $D$ un diagramma di forma $\lambda$ e $D'$ un diagramma di forma $\lambda'$; allora se $\lambda>\lambda'$ vale $e_{D'}\cdot e_{D}=0$
 \end{lemma}
 \begin{proof}
@@ -4450,11 +4450,89 @@ Dimostriamo ora questo importante lemma di ortogonalità dei simmetrizzatori.
 	Si ha dunque $e_{D'}\cdot e_{D}=e_{D'}\cdot t\cdot t\cdot e_{D}=(-e_{D'})\cdot e_D$ per l'osservazione \eqref{prop:assorbimento eD}, ovvero $2\cdot e_{D'}\cdot e_{D}=0$
 \end{proof}
 Troviamo ora una caratterizzazione di $V_D$
-\begin{lemma}
+\begin{lemma}\label{Sn:caratterizzazione}
 	Fissiamo un diagramma $D$; sia $x\in A$ tale che $\forall p\in R(D),q\in C(D)$ si abbia $pxq=\varepsilon_qx$. Allora $\exists\gamma\in\Q$ tale che $x=\gamma e_D$.
 \end{lemma}
 \begin{proof}
-	Scriviamo $x=\sum a_gg$
+	Scriviamo $x=\sum a_gg$; l'ipotesi è che $x=\varepsilon_q p^{-1}x^{-1}=\varepsilon_q=\varepsilon_q\sum a_g p^{-1}gq^{-1}\sum a_{pgq}g$ shiftando gli indici $g\mapsto pgq$. Questo ci dice che $\varepsilon_q a_{pgq}=a_g$ per tutti i $p,q$; in particolare con $g=\mathrm{id}$ otteniamo $a_pq=\varepsilon_q a_1$, che sono esattamente i coefficienti di $e_D$.\\
+	Dimostriamo che se $g\neq pq$ con $p\in R(D),q\in C(D)$ allora $a_g=0$; per il lemma \eqref{Sn:g=pq} esistono $a,b$ sulla stessa riga di $D$ e sulla stessa colonna di $gD$. Allora $t=(a,b)\in R(D)\cap C(gD)$, e inoltre $q=g^{-1}tg\in C(D)$ è una trasposizione.\\
+	Allora usiamo la formula trovata con $p=t,q=g^{-1}tg$, da cui $a_g=-a_{tgg^{-1}tg}=-a_g$, cioè $a_g=0$
 \end{proof}
+\begin{prop}
+	Esiste un $\gamma\in\Q^\ast$ tale che $e_D^2=\gamma e_D$, ovvero $u_D=\gamma^{-1}u_D$ è idempotente
+\end{prop}
+\begin{proof}
+	Per il lemma precedente, mi basta far vedere che $pe_D^2q=\varepsilon_q e_D^2$; ma questa è ovvia poiché $pe_D^2q=(pe_D)(e_Dq)=e_D\cdot\varepsilon_q e_D$. Allora $e_D^2=\gamma e_D$.\\
+	La cosa che vogliamo è $\gamma\neq0$. Sia $T:A\mapsto Ae_D$ l'omomorfismo $T(x)=xe_D$, e calcoliamo $\tr T$ in due modi diversi.\\
+	Una base di $A$ è $S_n=\{g_1,g_s\dots,g_{n!}\}$ con $g_1=\mathrm{id}$. Se scriviamo $e_D=\sum a_i g_i$, si vede che il coefficiente di $g_j$ nella scrittura di $T(g_j)$ è esattamente $a_1$, poiché la moltiplicazione per un elemento di base permuta i coefficienti. Allora vale $\tr T=a_1\cdot n!=n!$ in quanto $a_1=1$ dalla definizione.\\
+	Consideriamo ora $\Imm T=Ae_D$ che è un sottospazio di $A$; se $x\in Ae_D$, allora $x=ye_D$ per cui $T(x)=ye_D^2=y\gamma e_D=\gamma x$, ovvero in $Ae_D$ tutti gli elementi sono autovettori. Allora è chiaro che se prendo una base di $Ae_D$ e la completo a base di $A$, $T$ si scriverà nella forma $\left(\begin{array}{ccccc}
+	\gamma & & & & \\
+	& \ddots & & & \\
+	& & \gamma & & \\
+	& & & \ddots & \\
+	& & & & 0
+	\end{array}\right)$ perciò $tr T=\gamma\cdot\dim Ae_D=\gamma m$.\\
+	Si ha dunque $n!=\tr T = \gamma m$, da cui $\gamma=\frac{n!}{m}\neq0$; dato che $e_D$ ha come coefficienti solo $\pm1$, allora $e_D^2\in\Z[S_n]$, perciò si deve avere $\gamma\in\N$, ovvero $\dim V_D\mid |S_n|$
+\end{proof}
+
+Armati di tutti questi lemmi possiamo avviarci alla conclusione, ovvero dimostrare che i $V_D$ sono tutte le rappresentazioni irriducibili, al variare della forma di $D$.
+
+\begin{prop}
+	Dato un diagramma $D$, $V_D=Ae_D$ è un ideale minimale, ovvero un sottomodulo semplice
+\end{prop}
+\begin{proof}
+	Grazie alla proposizione precedente, sappiamo che $u_D$ è idempotente ed è un multiplo scalare di $e_D$; perciò $Ae_D=Au_D$.\\
+	Usando il criterio METTERE IL REF QUANDO SARÀ SCRITTO, $Au_D$ è minimale se e solo se $u_DAu_D$ è un corpo, cosa che avviene se e solo se $e_DAe_D$ lo è.\\
+	Prendiamo $x\in e_DAe_D$, cioè $x=e_Dye_D$; osserviamo che $pxq=(pe_D)y(e_Dq)=e_Dye_D\varepsilon_q=\varepsilon_q x$, perciò per il lemma \eqref{Sn:caratterizzazione} abbiamo $x=ke_D$ con $k\in\Q$.\\
+	Allora $e_DAe_D=\Q e_D=\Q u_D$ che è un corpo isomorfo a $\Q$ con elemento neutro del prodotto proprio $u_D$.
+\end{proof}
+\begin{prop}
+	Siano $D,D'$ diagrammi di forma diversa $\lambda\neq\lambda'$, allora $V_D\not\cong V_{D'}$
+\end{prop}
+\begin{proof}
+	Supponiamo che $\lambda>\lambda'$. Per assurdo $V_D\cong V_{D'}$.\\
+	Essendo minimali, esiste un $a\in A$ tale che $Au_Da=Au_{D'}$, cioè $u_{D'}=bu_{D}a$. Allora $u_{D'}^2=u_{D'}\cdot u_{D'}=u_{D'}bu_{D}a$.\\
+	Tuttavia, $\forall g\in S_n$ vale che $u_{D'}gu_{D}g^{-1}=u_{D'}\cdot u_{gD}=0$ per il lemma \eqref{Sn:ortogonalita}. Ma allora $u_{D'}bu_{D}=0\;\forall b\in A$, che porterebbe a $u_{D'}=0$, assurdo.
+\end{proof}
+Possiamo ora unificare tutto il nostro lavoro nel seguente
+\begin{thm}$ $
+	\begin{enumerate}
+		\item C'è una corrispondenza biunivoca $\{\text{classi di coniugio di }S_n\} \leftrightarrow \{\text{partizioni di }n\} \leftrightarrow \{n-\text{tabelle}\}$
+		\item Abbiamo una mappa surgettiva $\{\text{diagrammi}\}\to\text{Irr}(S_n)$ data da $D\mapsto V_D=Ae_D$
+		\item $V_D\cong V_{D'}$ se e solo se $D$ e $D'$ hanno la stessa forma
+	\end{enumerate}
+\end{thm}
+
+Facciamo ora un po' di esempi e casi particolari.\\
+\begin{itemize}
+	\item 
+	\begin{ytableau}
+		$ $ & &\none[\cdots] & \\
+	\end{ytableau}\\
+	La tabella di una sola riga lunga $n$, a cui corrisponde $e_D=\sum_{\sigma\in S_n}\sigma$ cioè la rappresentazione banale.
+	
+	\item 
+	\begin{ytableau}
+		$ $ \\
+		\\
+		\none[\vdots]\\
+		\\
+	\end{ytableau}\\
+	La tabella di una sola colonna lunga $n$, a cui corrisponde $e_D=\sum_{\sigma\in S_n}\sigma\varepsilon_\sigma$ che è la rappresentazione segno.
+	
+	\item 
+	\begin{ytableau}
+		$ $ & &\none[\cdots] & \\
+		$ $\\
+	\end{ytableau}\\
+	La tabella con $n-1$ quadratini nella prima riga e $1$ nella seconda è la rappresentazione standard di $S_n$
+\end{itemize}
+
+Concludiamo con una formula che ci permette di calcolare la dimensione di una rappresentazione a partire dalla sua tabella.
+\begin{thm}[formula degli uncini]
+	Sia $\lambda$ una $n$-tabella, allora $$\dim V_\lambda=\frac{n!}{\prod_{i=1}^n\ell_i}$$ dove $\ell_i$ è la lunghezza dell'uncino che parte dalla casella $i$, ovvero il massimo percorso a L rovesciata che passa dalla casella $i$
+\end{thm}
+
+
 
 \end{document}
