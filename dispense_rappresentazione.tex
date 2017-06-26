@@ -4258,7 +4258,7 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 		Per induzione su $\dim V$: se $V$ è irriducibile ho finito, supponiamo dunque che abbia sottomoduli non banali, siano
 		\begin{gather*}
 			0=V_0\subseteq\ldots \subseteq V_m = V\qquad W_i=V_i/V_{i-1}\\
-			0=V'_0\subseteq\ldots \subseteq V'_m = V\qquad W'_i=V'_i/V'_{i-1}
+			0=V'_0\subseteq\ldots \subseteq V'_n = V\qquad W'_i=V'_i/V'_{i-1}
 		\end{gather*}
 		due serie di Jordan-Holder per $V$. Se $V_1=V'_1$ considero $V/V_1$, per ipotesi induttiva ho l'unicità. Supponiamo dunque che $V_1\neq V'_1$, visto che $V_1$ e $V'_1$ sono irriducibili si ha che $V_1\cap V'_1=0$, dunque $V_1+V'_1=V_1\oplus V'_1$.\\
 		Considero il modulo $\quot{V}{V_1\oplus V'_1}$, siano $Z_1,\ldots,Z_p$ i fattori di composizione di una serie di Jordan-Holder per $\quot{V}{V_1\oplus V'_1}$. Ma allora si ha che
@@ -4298,7 +4298,7 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 		\[
 			0=I_0\subseteq\ldots\subseteq I_n = A\qquad \text{con }I_k/I_{k-1}\text{ semplice }\forall k
 		\]
-		Sia $p\in \N$ tale che $I=I_p$, si osserva che $p=n-1$ poichè $A/I$ è semplice (dunque non posso allungare la serie), quindi $I_n/I_{n-1} = A/I\cong V$. Abbiamo provato dunque che in una serie di composizione troviamo un fattore uguale a $V$, avendo dimostrato l'unicità dei fattori della serie col teorema \eqref{thm:jordan-holder} segue la tesi.
+		Sia $p\in \N$ tale che $I=I_p$, si osserva che $p=n-1$ poichè $A/I$ è semplice (dunque non posso allungare la serie), quindi $I_n/I_{n-1} = A/I\cong V$. Abbiamo provato dunque che in una serie di composizione troviamo un fattore uguale a $V$, avendo dimostrato l'unicità dei fattori della serie col teorema \ref{thm:jordan-holder} segue la tesi.
 	\end{proof}
 	\begin{exmp}
 		Sia $A=\quot{\K[x]}{(x^n)}$, consideriamo la serie
@@ -4346,7 +4346,7 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 		Ma $W$ è indecomponibile, quindi $\Ker \beta = 0$ o $\Imm \alpha = 0$, la seconda situazione non può accadere (altrimenti $\beta\circ\alpha$ non sarebbe un isomorfismo), ma allora $\Ker \beta = 0$ e $\Imm \alpha = W$, visto che necessariamente $\alpha$ è iniettivo (altrimenti non lo sarebbe $\beta\circ\alpha$) si ha che $\alpha$ è un isomorfismo, e dunque anche $\beta$ lo è.
 	\end{proof}
 	\begin{prop}
-		Sia $V$ un $A$-modulo indecomponibile e $\phi\in \End_A(V)$, allora $\phi$ è un isomorfismo oppre è nilpotente.
+		Sia $V$ un $A$-modulo indecomponibile e $\phi\in \End_A(V)$, allora $\phi$ è un isomorfismo oppure è nilpotente.
 	\end{prop}
 	\begin{proof}
 		Sia $\phi\in \End_A(V)$, considero le due successioni
