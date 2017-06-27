@@ -25,6 +25,7 @@
 \usepackage[T1,OT1]{fontenc} 
 \usepackage[nohug,small]{diagrams}
 \usepackage{bm}
+\usepackage{faktor}
 
 %\usepackage{genyoungtabtikz}
 \usepackage{ytableau}
@@ -102,6 +103,7 @@
 \DeclareMathOperator{\Res}{Res}
 \DeclareMathOperator{\Id}{Id}
 \DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\ord}{ord}
 
 
 
@@ -4285,7 +4287,7 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 		essendo uguali i membri di sinistra ho uguaglianza anche dei membri di destra e quindi segue la tesi.
 	\end{proof}
 	\begin{exmp}
-		Sia $A=\K[G]$ con $\Char \K \not | ord(G)$, allora ogni rappresentazione di dimensione dinita è somma di moduli irriducibili. I fattori di composizione coincidono con gli addendi irriducibili contati con molteplicità.
+		Sia $A=\K[G]$ con $\Char \K \not \mid \ord(G)$, allora ogni rappresentazione di dimensione dinita è somma di moduli irriducibili. I fattori di composizione coincidono con gli addendi irriducibili contati con molteplicità.
 	\end{exmp}
 	\begin{rem}
 		Sia $V$ un $A$-modulo, $W\subseteq V$ un sottomodulo, allora esiste sempre una serie di Jordan-Holder che contiene $W$ ($W=V_i$ per qualche $i$): basta considerare prima una serie per $W$ e comporla con la controimmagine tramite la proiezione al quoziente di una serie per $V/W$.
@@ -4378,6 +4380,165 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 			\]
 		\end{itemize}
 	\end{proof}
+	
+	
+\subsection{Un teorema di divisibilità}
+  L'obiettivo di questa sezione è dimostrare il seguente teorema:
+  \begin{thm}\label{dim_mid_ordine}
+    Sia $G$ un gruppo finito, $V$ una rappresentazione irriducibile di $G$ su $\C$ (ovvero un $\C[G]$ modulo semplice). Allora $$\dim V\mid  \ord(G)$$
+  \end{thm}
+  \begin{rem}$ $
+   \begin{itemize}
+    \item Il teorema è falso su campi non algebricamente chiusi: basta considerare $\Z/3\Z$ su $\R$ che ha una rappresentazione irriducibile di grado 2.
+    \item Il teorema vale più in generale su un campo $\K$ algebricamente chiuso per cui $\Char \K \nmid \ord(G)$.
+    \item Se invece $\Char \K\mid \ord(G)$, il teorema è in generale falso: consideriamo $G=SL_2(\mathbb F_{13})$ e $\K=\overline{\mathbb F_{13}}$; prendiamo poi la rappresentazione $V=\K[x,y]_5$, che è irriducibile (IO NON SO FARLO) di grado $6$. Tuttavia $\ord(G)=\binom{14}{3}=2^2\cdot7\cdot13$, quindi non c'è divisibilità.
+   \end{itemize}
+  \end{rem}
+  Introduciamo ora alcuni concetti di teoria degli anelli.\\
+  Sia $R$ un anello commutativo unitario.\\
+  \begin{defn}
+    Un elemento $x\in R$ si dice \textit{integrale} su $\Z$ se è radice di un polinomio monico a coefficienti interi.\\
+    Se $x\in\C$ lo chiamo \textit{intero algebrico}.
+  \end{defn}
+  \begin{rem}\label{int_alg_raz}
+   Gli interi algebrici di $\Q$ sono esattamente gli interi, per il criterio delle radici razionali.
+  \end{rem}
+  Possiamo inoltre definire una struttura di modulo usando come scalari gli elementi di $R$:
+  \begin{defn}
+   Sia $M$ un gruppo abeliano; allora $M$ è un $R$-modulo se esiste un'applicazione $\cdot:R\times M\to M$ che soddisfa
+   \begin{itemize}
+    \item $r\cdot(m+n)=r\cdot m+r\cdot n\;\forall r\in R\;\forall m,n\in M$
+    \item $(r+s)\cdot m=r\cdot m+s\cdot m\;\forall r,s\in R\;\forall m\in M$
+    \item $r\cdot(s\cdot m)=(ab)\cdot m\;\forall r,s\in R\;\forall m\in M$
+   \end{itemize}
+   Diciamo inoltre che $M$ è finitamente generato se lo è come gruppo.
+  \end{defn}
+  \begin{rem}
+   Gli $\Z$-moduli sono esattamente i gruppi abeliani.
+  \end{rem}
+  Definiamo ora un'importante proprietà degli anelli
+  \begin{defn}
+   Un anello $R$ è detto \textit{Noetheriano} se tutti i suoi ideali sono finitamente generati; o equivalentemente, se ogni catena ascendente di ideali si stabilizza.
+  \end{defn}
+  \begin{thm}[base di Hilbert]
+   Se $R$ è un anello Noetheriano, allora anche $R[x]$ è Noetheriano.
+  \end{thm}
+  \begin{proof}
+   Sia $I\subset R[x]$ un ideale per assurdo non finitamente generato. Allora posso costruire una successione di polinomi $p_n$ tali che, se $I_n=(p_1,\dots,p_{n-1})$ allora $p_n\in I\setminus I_n$, e sceglo $p_n$ di grado minimale.\\
+   Definiamo ora $a_n$ come il termine di testa di $p_n$, e consideriamo $R\supset J=(a_1,a_2,\dots)$ l'ideale generato da tutti gli $a_i$.\\
+   Poiché $R$ è Noetheriano, vale che $J=(a_1,\dots,a_{N-1})$ per un certo $N$; ma allora posso scrivere $a_N=\sum_{i<N}b_ia_i$ con $b_i\in R$.\\
+   Prendo ora il polinomio $\displaystyle f=\sum_{i<N}b_i x^{\deg p_N -\deg p_i}p_i$ (è una buona definizione, poiché i gradi dei polinomi sono crescenti).
+   Osserviamo che $f\in I_N$ essendo combinazione lineare dei $p_i$; inoltre ha lo stesso grado e lo stesso coefficiente di testa di $p_N$.\\
+   Ma allora $p_N-f\in I\setminus I_N$, perché se fosse $p_N-f\in I_N$ avremmo $p_N=(p_N-f)+f\in I_N$; tuttavia $\deg (p_N-f)<\deg p_N$, che è assurdo in quanto $p_N$ ha grado minimo in $I\setminus I_N$
+  \end{proof}
+  \begin{cor}
+   Si vede facilmente per induzione che $R[x_1,x_2,\dots,x_n]$ è Noetheriano se $R$ lo è.
+  \end{cor}
+  \begin{prop}\label{sottomod_fin_gen}
+   Sia $R$ un anello Noetheriano, $M$ un $R$-modulo finitamente generato. Allora ogni sottomodulo di $M$ è finitamente generato.
+  \end{prop}
+  LUI FA UNA ZINGARATA ASSURDA. CREDO CHE INVECE DEL TEO DI HILBERT SERVA CHE $R^n$ SIA NOETH.
+  \begin{proof}
+   Scriviamo $M=Rm_1+Rm_2+\dots+Rm_n$, dove $m_1,\dots,m_n$ sono i generatori di $M$.\\
+   Consideriamo la mappa $\varphi:R^n\to M$ tale che $\varphi(a_1,\dots,a_n)=a_1m_1+\dots+a_nm_n$, che è surgettiva per ipotesi.\\
+   Detto allora $I=\ker\varphi$, si ha $M\cong\faktor{R^n}{I}$ e in particolare si ha la corrispondenza tra ideali di $M$, ovvero sottomoduli, e ideali di $R^n$ che contengono $I$.
+   Ovvero, se $N\subset M$ è un sottomodulo allora esiste un ideale $J\subset R^n$ tale che $N\cong\faktor{J}{I}$.\\
+   Se $R$ è Noetheriano, anche $R^n$ è Noetheriano, quindi $J$ è finitamente generato, e quindi lo è anche $N$ (i generatori sono le proiezioni di quelli di $J$).
+  \end{proof}
+  Possiamo ora dare un criterio di integralità per elementi di $R$.
+  \begin{prop}\label{crit_integ}
+   Dato $R$ anello commutativo unitario e un elemento $x\in R$, sono equivalenti:
+   \begin{itemize}
+    \item $x$ è integrale su $\Z$
+    \item Detto $\Z[x]\subset R$ il sottoanello generato da $x$, $\Z[x]$ è uno $\Z$-modulo finitamente generato
+    \item Esiste uno $\Z$-sottomodulo di $R$ finitamente generato che contiene $\Z[x]$
+   \end{itemize}
+  \end{prop}
+  \begin{proof}
+   \begin{itemize}
+    \item[$2)\iff 3)$] Usiamo la proposizione \ref{sottomod_fin_gen} ed il fatto che $\Z$ è Noetheriano.
+    \item[$1)\Rightarrow2)$] Sia $t^n+a_{n-1}t^{n-1}+\dots+a_0$ un polinomio a coefficienti interi che annulla $x$; allora $\Z[x]$ è generato da $\{1,x,\dots,x^{n-1}\}$.
+    \item[$2)\Rightarrow1)$] Osserviamo che $\Z[x]=\bigcup R_n$, con $R_n$ il sottomodulo generato da $\{1,x,\dots,x^{n-1}\}$. Se $\Z[x]$ è finitamente generato, allora deve essere $\Z[x]=R_N$ per un certo $N$.
+    Ma allora si ha semplicemente che $x^N=\sum_{i<N}a_ix^i$ con $a_i\in\Z$
+   \end{itemize}
+  \end{proof}
+  Per dimostrare un'importante proprietà degli elementi integrali, dobbiamo costruire il prodotto tensore di moduli.\\
+  \begin{defn}
+   Dati due $R$-moduli $M,N$ si dice prodotto tensore $M\otimes N$ un $R$-modulo $V$ per cui esiste una funzione bilineare $\psi:M\times N\to V$ tale che per ogni $R$-modulo $V'$ con una funzione bilineare $\phi:M\times N\to V'$ esiste un'unica funzione lineare $\phi':V\to V'$ che commuta.
+   \[\tridiag{M\times N}{ \psi }{M \otimes N}{\phi'}{V'}{\phi}\]
+   Si indica $m\otimes n=\psi(m,n)$
+  \end{defn}
+  Si dimostra che il prodotto tensore esiste ed è unico; un'idea di costruzione è la seguente.\\
+  Consideriamo il prodotto $M\times N$ con tutti i suoi elementi $(m,n)$ che identifichiamo con i simboli $m\ast n$; prendiamo ora $P$ il gruppo libero generato da tutti i simboli $m\ast n$.\\
+  Quozientiamo poi $P$ per le relazioni che ci interessano, ovvero:
+  \begin{itemize}
+   \item $m\ast n+m\ast n'-m\ast(n+n')$
+   \item $m\ast n+m'\ast n-(m+m')\ast n$
+   \item $(rm)\ast n-m\ast(rn)$
+  \end{itemize}
+  con $m\in M,n\in N,r\in R$.\\
+  L'ultima relazione ci dice come dotare questo gruppo di un prodotto per scalare, ovvero $r\cdot(m\otimes n)=(rm)\otimes n=m\otimes(rn)$.\\
+  Possiamo ora andare avanti con la seguente
+  \begin{prop}
+   L'insieme degli elementi di $R$ integrali su $\Z$ è un sottoanello di $R$
+  \end{prop}
+  \begin{proof}
+   Per il criterio \ref{crit_integ} se $x,y$ sono integrali su $\Z$, allora $\Z[x]$ e $\Z[y]$ sono finitamente generati.\\
+   Considero allora l'applicazione lineare $\phi:\Z[x]\otimes_\Z\Z[y]\to\Z[x,y]$ data da $\phi(p\otimes q)=p\cdot q$; questa è surgettiva poiché posso scomporre monomio per monomio.\\
+   Inoltre il prodotto tensore di due moduli finitamente generati è finitamente generato; ma allora $\Z[x,y]$ è immagine di un modulo finitamente generato, quindi anche lui è finitamente generato.\\
+   Applicando di nuovo il criterio \ref{crit_integ}, abbiamo che $x+y$ e $xy$ sono integrali su $\Z$, in quanto $\Z[x+y]$ e $\Z[xy]$ sono sottomoduli di $\Z[x,y]$
+  \end{proof}
+
+  Ritorniamo ora al nostro $\C[G]$; ricordiamo che per UN CRITERIO A CASO FATTO PRIMA (MAGARI SI PUÒ SPOSTARE QUA?) $Z(\C[G])$ ha per base gli elementi $c_i=\sum_{x\in\mathcal C_i}x$ dove $\mathcal C_i$ sono le classi di coniugio di $G$.\\
+  \begin{prop}
+   Sia $Z(\C[G])\ni u=\sum u_ic_i$; se $u_i$ sono interi algebrici, allora $u$ è integrale su $\Z$.
+  \end{prop}
+  \begin{proof}
+   Poiché gli elementi integrali sono un sottoanello, ci basta mostrare che tutti i $c_i$ sono integrali.\\
+   Osserviamo che per ogni $j,k$ l'elemento $c_jc_k$ appartiene ancora al centro, e dunque è combinazione lineare dei $c_i$; questo vuol dire che $\Z[c_1,\dots,c_k]$ è finitamente generato (in particolare dai $c_i$).\\
+   Ma allora di nuovo per il criterio \ref{crit_integ}, dato che $\Z[c_i]\subset\Z[c_1,\dots,c_k]$, abbiamo che $c_i$ è integrale.
+  \end{proof}
+  \begin{lemma}\label{u_int_alg}
+   Sia $V$ una rappresentazione irriducibile di $G$, $\chi$ il suo carattere, $Z(\C[G])\ni u=\sum gu_g$ con $u_g$ interi algebrici. Allora $$\frac1{\dim V}\sum u_g\chi(g)$$ è un intero algebrico.
+  \end{lemma}
+  \begin{proof}
+   Per Schur, $u$ agisce su $V$ come lo scalare $\displaystyle\frac{\tr(u)}{\dim V}=\frac{\sum u_g\chi(g)}{\dim V}$.\\
+   Abbiamo allora un'omomorfismo $\varphi:Z(\C[G])\to\C$ dato proprio da $\displaystyle\varphi(u)=\frac{\sum u_g\chi(g)}{\dim V}$, in quanto $(u_1u_2)v=u_1(u_2v)$ con $v\in V$, cioè $\varphi(u_1u_2)v=\varphi(u_1)\varphi(u_2)v$.\\
+   Per il lemma precedente sappiamo che $u$ è integrale, quindi soddisfa un polinomio monico; sfruttando il fatto che $\varphi$ è omomorfismo, sappiamo che anche $\varphi(u)$ soddisfa lo stesso polinomio monico, ovvero $\varphi(u)$ è un intero algebrico.
+  \end{proof}
+  Armati di questo lemma possiamo finalmente dimostrare il teorema \ref{dim_mid_ordine}
+  \begin{proof}
+   Sia $\chi$ il carattere della rappresentazione; poiché il gruppo è finito vale $g^{\ord(G)}=1$, da cui gli autovalori di $g$ sono tutti radici dell'unità; allora $\chi(g)$ è intero algebrico, essendo somma di radici dell'unità che sono interi algebrici.\\
+   Poniamo $\displaystyle u=\sum_{g\in G}\chi(g^{-1})g$ e osserviamo che appartiene al centro: $\displaystyle hu=\sum_{g\in G} \chi((hg)^{-1}h)hg=\sum_{\sigma\in G} \chi(\sigma h)\sigma$ e similmente $\displaystyle uh=\sum_{\tau\in G}\chi(h\tau)\tau$; poiché $\tr(\sigma h)=\tr(h\sigma)$, abbiamo $uh=hu\;\forall h\in G$.\\
+   Ma allora per il lemma \ref{u_int_alg} $z=\displaystyle\frac1{\dim V}\sum_{g\in G}\chi(g^{-1})\chi(g)$ è un intero algebrico.\\
+   Osserviamo che $\displaystyle z=\frac{\ord(G)}{\dim V}\cdot \frac{\sum \chi(g^{-1})\chi(g)}{\ord(G)}=\frac{\ord(G)}{\dim V}\cdot\langle \chi,\chi\rangle$; essendo $V$ irriducibile, il prodotto dei caratteri vale $1$.\\
+   Quindi si ha che $\dfrac{\ord(G)}{\dim V}\in\Q$ è un intero algebrico, e quindi per l'osservazione \ref{int_alg_raz} sta in $\Z$.
+  \end{proof}
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 
 
 
