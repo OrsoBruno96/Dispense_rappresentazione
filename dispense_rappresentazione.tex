@@ -26,6 +26,8 @@
 \usepackage[nohug,small]{diagrams}
 \usepackage{bm}
 \usepackage{faktor}
+\usepackage{mathtools}
+
 
 %\usepackage{genyoungtabtikz}
 \usepackage{ytableau}
@@ -4320,10 +4322,9 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 		\]
 		si osserva che $V_i/V_{i-1}\cong \K^n$, dunque tutti i quozienti sono irriducibili e isomorfi tra loro, ma allora $\K^n$ è l'unica rappresentazione irriducibile di $M_n(\K)$ a meno di isomorfismo.
 	\end{exmp}
-	\begin{thm}[Krull-Schmidt]\label{thm:krull-schmidt}
-		Sia $A$ una $\K$-algebra, $V$ un $A$-modulo con $\dim V<\infty$. Allora $V$ si decompone in modo unico come somma di rappresentazioni indecomponibili (a meno di isomorfismo e permutazioni).
-	\end{thm}
-	FORSE CONVIENE SPOSTARE L'ENUNCIATO DEL TEO PIÙ AVANTI...
+	
+	
+\subsection{Teorema di Krull-Schmidt}
 	\begin{defn}
 		Sia $x\in A$, $x$ è \textit{nilpotente} se $\exists\ n\in \N$ tale che $x^n=0$, $x$ è \textit{idempotente} se $x^2=x$.
 	\end{defn}
@@ -4336,7 +4337,7 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 			\item[$\Rightarrow$)]Sia $p\in \End_A(V)$ tale che $p^2=p$, voglio vedere che $p=0$ o $p=\Id$. Si osserva subito che $\Ker p \cap \Imm p = 0$ (per l'ipotesi $p^2=p$), dunque $V=\Ker p\oplus \Imm p$, ma allora deve succedere che $\Ker p = 0$ o $\Imm p = 0$ (poichè $V$ è indecomponibile), se $\Imm p = 0$ allora $p=0$, se $\Ker p=0$ allora $p=\Id$ poichè $p^2=p$.
 		\end{enumerate}
 	\end{proof}
-	\begin{lemma}
+	\begin{lemma}\label{comp_iso}
 		Siano $V,W$ degli $A$-moduli indecomponibili di dimensione finita su $\K$, siano $\alpha\in \Hom_A(V,W)$ e $\beta\in \Hom_A(W,V)$ tali che $\beta\circ\alpha$ è un isomorfismo su $V$, allora $\alpha$ e $\beta$ sono isomorfismi.
 	\end{lemma}
 	\begin{proof}
@@ -4347,7 +4348,7 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 		\end{enumerate}
 		Ma $W$ è indecomponibile, quindi $\Ker \beta = 0$ o $\Imm \alpha = 0$, la seconda situazione non può accadere (altrimenti $\beta\circ\alpha$ non sarebbe un isomorfismo), ma allora $\Ker \beta = 0$ e $\Imm \alpha = W$, visto che necessariamente $\alpha$ è iniettivo (altrimenti non lo sarebbe $\beta\circ\alpha$) si ha che $\alpha$ è un isomorfismo, e dunque anche $\beta$ lo è.
 	\end{proof}
-	\begin{prop}
+	\begin{prop}\label{end_iso_nilp}
 		Sia $V$ un $A$-modulo indecomponibile e $\phi\in \End_A(V)$, allora $\phi$ è un isomorfismo oppure è nilpotente.
 	\end{prop}
 	\begin{proof}
@@ -4359,7 +4360,7 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 		Queste successioni si devono stabilizzare, sia dunque $N$ tale che $\Ker\phi^N=\Ker\phi^{N+1}$ e $\Imm\phi^N=\Imm\phi^{N+1}$, allora si ha che $\Ker\phi^N\cap\Imm\phi^N=0$ (altrimenti non si sarebbero stabilizzate le successioni), ma allora $V=\Ker\phi^N\oplus\Imm\phi^N$ per questioni di dimensioni.\\
 		Per ipotesi $V$ è indecomponibile dunque $\Imm\phi^N=0$ oppure $\Ker\phi^N=0$, se $\Imm\phi^N=0$ allora $\phi$ è nilpotente, se invece $\Ker\phi^N=0$ allora a maggior ragione $\Ker \phi=0$ e dunque $\phi$ è un isomorfismo.
 	\end{proof}
-	\begin{cor}
+	\begin{cor}\label{sum_nilp}
 		Sia $V$ un $A$-modulo indecomponibile, siano $\theta_1,\ldots,\theta_s\in \End_A(V)$ con $\theta_i$ nilpotente per $i=1,\ldots,s$, allora $\theta_1+\ldots+\theta_s$ è nilpotente.
 	\end{cor}
 	\begin{proof}
@@ -4380,6 +4381,37 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 			\]
 		\end{itemize}
 	\end{proof}
+	\begin{thm}[Krull-Schmidt]\label{thm:krull-schmidt}
+		Sia $A$ una $\K$-algebra di dimensione finita, $V$ un $A$-modulo con $\dim V<\infty$. Allora $V$ si decompone in modo unico come somma di rappresentazioni indecomponibili (a meno di isomorfismo e permutazioni).
+	\end{thm}
+	\begin{proof}
+	 Poiché $V$ ha dimensione finita, per induzione lo spezzo finché non ho tutti addendi diretti indecomponibili. Occorre adesso provare l'unicità.\\
+	 Sia $V=\bigoplus_{i=1}^m W_i=\bigoplus_{i=1}^n W'_i$; allora ho le inclusioni e proiezioni standard: \begin{align*} i_p &:  W_p\to V & \pi_p &: V\to W_p \\ i'_p &:  W'_p\to V & \pi'_p &: V\to W'_p\end{align*}
+	 Definiamo ora $\theta_s=\pi_1\circ i'_s\circ \pi'_s\circ i_1$ seguendo la catena $W_1\xhookrightarrow{i_1} V\xrightarrow{\pi'_s}W'_s\xhookrightarrow{i'_s} V\xhookrightarrow{\pi_1} W_1$.
+	 Poiché le proiezioni e le inclusioni sono omomorfismi di $A$-moduli, allora abbiamo $\theta_s\in\End_A(W_1)$.\\
+	 Osserviamo ora che $\theta_1+\dots+\theta_n=\Id_{W_1}$: se infatti prendiamo una base $\{w'_{i,j}\}_j$ di $W'_i$, concatenandole otteniamo una base di $V$; scriviamo ora un elemento $v\in W_1$ in coordinate: $v=(a_{i,j})$.
+	 La mappa $i_1$ non fa nulla; quando proietto su $W'_s$ invece annullo tutte le coordinate non relative a quel sottospazio, ovvero $\pi'_s\circ i_1(v)=(0,\dots,0,a_{s,1},\dots,a_{s,\dim W'_s},0,\dots,0)$; di nuovo l'inclusione non cambia le coordinate.
+	 Infine $\displaystyle\sum\theta_s(v)=\sum \pi_1\circ i'_s\circ \pi'_s\circ i_1(v)=\pi_1\left( \sum i'_s\circ \pi'_s\circ i_1(v) \right)$ e per quanto detto prima, quando sommiamo su tutti i $W'_s$ è come se reincollassimo tutte le componenti; in particolare $\sum i'_s\circ \pi'_s\circ i_1(v)=(a_{i,j})$ e quindi $\pi_1(a_{i,j})=v$.\\
+	 Per la proposizione \ref{end_iso_nilp}, essendo $V_1$ indecomponibile, ogni $\theta_s$ è un isomorfismo, oppure nilpotente. Se tutti i $\theta_s$ fossero nilpotenti, per il corollario \ref{sum_nilp}, anche $\sum\theta_s=\Id_{W_1}$ sarebbe nilpotente.
+	 Perciò esiste un indice $\tilde s$, che possiamo supporre essere $1$ a meno di riordinare i $W'_i$, tale che $\theta_{\tilde s}$ è un isomorfismo.
+	 Allora per il lemma \ref{comp_iso}, abbiamo che $\phi=\pi_1\circ i'_1$ e $\pi'_1\circ i_1$ sono isomorfismi tra $W_1$ e $W'_1$.\\
+	 Siano ora $Z=\bigoplus_{i=2}^m W_i$ e $Z'=\bigoplus_{i=2}^n W'_i$; osserviamo che $V=W'_1\oplus Z'$, perciò ho la proiezione $\pi:V\to Z'$, che è omomorfismo di moduli. Osserviamo che $\dim Z=\dim Z'$ grazie all'isomorfismo di $W_1$ e $W'_1$.
+	 Possiamo allora definire $\psi: Z\to Z'$ nel modo ovvio $Z\xhookrightarrow{i}V\xrightarrow{\pi}Z'$. Mostriamo che $\psi$ è un isomorfismo; essendo le dimensioni degli spazi uguali, basta l'iniettività.\\
+	 Osserviamo che $\ker\psi=Z\cap\ker\pi=Z\cap i'_1(W'_1)$; se prendiamo $z\in Z\cap i'_1(W'_1)$, avremmo che $\pi_1(z)=0$, essendo $z\in Z$; inoltre $\pi_1(z)=\phi(w)$ per un qualche $w\in W'_1$. Essendo $\phi$ un isomorfismo tra $W_1$ e $W'_1$, si ha $w=\phi^{-1}(0)=0$ da cui $z=i'_1(0)=0$.
+	\end{proof}
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 \subsection{Un teorema di divisibilità}
@@ -4514,31 +4546,6 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
    Osserviamo che $\displaystyle z=\frac{\ord(G)}{\dim V}\cdot \frac{\sum \chi(g^{-1})\chi(g)}{\ord(G)}=\frac{\ord(G)}{\dim V}\cdot\langle \chi,\chi\rangle$; essendo $V$ irriducibile, il prodotto dei caratteri vale $1$.\\
    Quindi si ha che $\dfrac{\ord(G)}{\dim V}\in\Q$ è un intero algebrico, e quindi per l'osservazione \ref{int_alg_raz} sta in $\Z$.
   \end{proof}
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 
 
 
