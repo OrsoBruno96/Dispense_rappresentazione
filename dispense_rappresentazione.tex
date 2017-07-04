@@ -4459,7 +4459,7 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
    \begin{proof}
     Una freccia l'abbiamo appena fatta: basta considerare $\K[G]$ come rappresentzione su se stesso, e applicare \ref{thm:maschke}.\\
     Dimostriamo ora che se $\Char\K\mid\ord G$, allora $A=\K[G]$ non è semisemplice.
-    Sia $s=\sum_{g\in G}e_g$ e $V_0=Ks$ che è banalmente un sottomodulo di $A$.\\
+    Sia $s=\sum_{g\in G}e_g$ e $V_0=\K s$ che è banalmente un sottomodulo di $A$.\\
     Supponiamo per assurdo che $A$ sia semisemplice; allora $V_0$ avrebbe un complementare stabile $A=V_0\oplus V_1$, e avremmo la proiezione $p:A\to V_0$ che è omomorfismo di $A$-moduli.\\
     Allora varrebbe $p(e_g)=p(ge_1)=gp(e_1)=p(e_1)$ poiché su $V_0$ $G$ agisce banalmente. Perciò $p(s)=\sum p(e_g)=\ord G\cdot p(e_1)=0$.\\
     Ma questo è assurdo, poiché dovrebbe essere $p(s)=s$ essendo $p$ la proiezione su $V_0$.
@@ -4469,9 +4469,41 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 
 
 
+\subsection{Struttura di $\K[G]$ come algebra}
+In questa sezione vogliamo dare un teorema di struttura per $\K[G]$ (con $\Char \K  \nmid |G|$).\\
+Cerchiamo ora di descrivere $\K[G]$ come algebra nel caso di $\K=\overline{\K}$.
+\begin{thm}\label{thm:end_matrici}
+	Sia $G$ gruppo finito, $\K=\overline{\K}$ tale che $\Char \K \nmid |G|$, sia $V$ una rappresentazione irriducibile di $\K[G]$ con $\dim V = n$, allora $\End_G(V^{\oplus n}) \cong M_n(\K)$ come $\K$-algebre.
+	E' VERO CHE SI CHIEDEVA CHE V FOSSE IRRIDUCIBILE? PERCHÈ LO USA NELLA DIMOSTRAZIONE MA IO NON LO AVEVO SCRITTO...
+\end{thm}
 
+\begin{proof}
 
+PRIMA FACEVA QUALCHE CONSIDERAZIONE SULLA DIMENSIONE???
+	Sia $A=\K[G]$, considero le immersioni/proiezioni canoniche
+	\begin{align*}
+		q_i:V\to V^{\oplus n}\qquad \text{con }i=1,\ldots,n\\
+		p_i:V^{\oplus n}\to V\qquad \text{con }i=1,\ldots,n
+	\end{align*}
+	Sia $\varphi\in \End_G(V^{\oplus n})$, consideriamo $\varphi_i:V\to V$ definita come $\varphi_{ij} = p_i\circ\varphi\circ q_j\in\End_G(V)$:
+	\[
+		V \xrightarrow{q_i} V^{\oplus n} \xrightarrow{\varphi} V^{\oplus n} \xrightarrow{p_j} V
+	\]
+	$V$ è irriducibile quindi $\varphi_{ij} = c_{ij}\Id_V$ con $c_{ij}\in \K$ (per Schur), dunque trovo un'applicazione
+	\begin{align*}
+		\psi:\End_G(V^{\oplus n})&\to M_n(\K)\\
+		\psi(\varphi)&\to (c_{ij})
+	\end{align*}
+	Mostriamo ora che $\psi$ è un isomorfismo di algebre: $\psi$ è surgettiva, infatti, data $(c_{ij})\in M_n(\K)$, se consideriamo $\varphi = \sum c_{ij} q_i\circ p_j$ abbiamo che $\psi(\varphi) = (c_{ij})$; dimostriamo che è un omomorfismo, infatti siano $\varphi_1 = \sum c_{ij} q_i\circ p_j$ e $\varphi_2 = \sum d_{ij} q_i\circ p_j$, allora $\varphi_1\circ\varphi_2 = \sum c_{ij} d_{hk}\ q_i\circ p_j\circ q_h\circ p_k = \sum c_{ij}d_{jk}\ q_i\circ p_k$ dove l'ultima uguaglianza si ottiene dal fatto che se $j=h$ allora $p_j\circ q_h=\Id_V$, altrimenti è l'endomorfismo nullo, infine $\phi(\varphi_1\circ \varphi_2) = \sum c_{ij}d_{jk}\  q_i\circ p_k$ come per il prodotto tra matrici; la verifica dell'iniettività è immediata.
+\end{proof}
 
+\begin{thm}
+	Sia $\K=\overline{\K}$ con $\Char \K \nmid |G|$ dove $G$ è un gruppo finito. Siano $V_1,\ldots,V_n$ le rappresentazioni irriducibili di $G$ su $\K$ (a meno di isomorfismi) e siano $m_1,\ldots,m_n$ le loro dimensioni. Allora come $\K$-algebre abbiamo un isomorfismo $\K[G] \cong M_{m_1}(\K)\times\ldots\times M_{m_n}(\K)$. In particolare $\K[G]$ è isomorfo ad un prodotto di algebre di matrici e $M_{m_h}(\K) = m_hV_h$.
+\end{thm}
+
+\begin{proof}
+	$\K[G]$ è semisemplice e di dimensione finita, sarà somma diretta di moduli semplici: $\K[G]\cong W_1\otimes \ldots\otimes W_n$ con $W_i$ un $G$-modulo semplice. Si osserva che tutti gli irriducibili di $G$ compaiono tra i $W_i$: avevamo visto che tutti gli irriducibili devono comparire come fattori di composizione delle serie di Jordan-Holder di $A$. Quindi posso riscrivere $\K[G] = \oplus V_i^{p_i}$ dove $p_i$ è la molteplicità di $V_i$, allora $\dim \Hom_G(\K[g],V_i) = \dim\Hom_G(V_i^{\oplus p_i},V_i) = p_i$. Considero ora l'omomorfismo $\psi:\Hom_G(\K[G],V_i)\to V_i$ definito come $\psi(\phi) = \phi(e_1)$, esso è un isomorfismo (la verifica è facile), e quindi $p_i = m_i$. Ma $\K[G]\cong \K[G]^{OP}$ grazie all'applicazione inversa $g\to g^{-1}$, $\K[G]^{OP}$ lo posso pensare come $\End_{\K[G]}(\K[G]) \cong \End_{\K[G]}(\oplus V_i^{m_i}) \cong \oplus\End_{\K[G]}(V_i^{m_i})$ dove l'ultimo isomorfismo segue da Schur. Per il teorema \ref{thm:end_matrici} si ha che $\End_{\K[G]}(V_i^{m_i}) \cong M_{m_i}(\K)$ ma allora $\K[G] \cong \oplus M_{m_i}(\K)$.
+\end{proof}
 
 
 
@@ -4643,7 +4675,7 @@ Fissato un diagramma $D$, siamo interessati ai seguenti due sottogruppi di $S_n$
 		\item $C(D)=\{\sigma\in S_n : \sigma(i) \text{ sta nella stessa colonna di } i\;\forall i=1,\dots,n\}$
 	\end{itemize}
 \end{defn}
-Osserviamo che $R(D)\cup C(D)=\{id\}$.\\
+Osserviamo che $R(D)\cap C(D)=\{id\}$.\\
 Possiamo ora definire l'elemento generatore degli ideali che che ci interessano.
 \begin{defn}
 	Dato un diagramma $D$, il suo simmetrizzatore è $$e_D=\left(\sum_{p\in R(D)}p \right)\left(\sum_{q\in C(D)}q\varepsilon_q\right)$$
