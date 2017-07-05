@@ -90,6 +90,8 @@
 \newcommand{\dsum}{\displaystyle\sum}
 \newcommand{\dint}{\displaystyle\int}
 \newcommand*\quot[2]{{^{\textstyle #1}\big/_{\textstyle #2}}}
+\newcommand{\dx}{\text{d}x}
+\newcommand{\diff}{\text{d}}
 
 
 \DeclareMathOperator{\tr}{tr}
@@ -4289,7 +4291,7 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 		essendo uguali i membri di sinistra ho uguaglianza anche dei membri di destra e quindi segue la tesi.
 	\end{proof}
 	\begin{exmp}
-		Sia $A=\K[G]$ con $\Char \K \not \mid \ord(G)$, allora ogni rappresentazione di dimensione dinita è somma di moduli irriducibili. I fattori di composizione coincidono con gli addendi irriducibili contati con molteplicità.
+		Sia $A=\K[G]$ con $\Char \K \nmid \ord(G)$, allora ogni rappresentazione di dimensione dinita è somma di moduli irriducibili. I fattori di composizione coincidono con gli addendi irriducibili contati con molteplicità.
 	\end{exmp}
 	\begin{rem}
 		Sia $V$ un $A$-modulo, $W\subseteq V$ un sottomodulo, allora esiste sempre una serie di Jordan-Holder che contiene $W$ ($W=V_i$ per qualche $i$): basta considerare prima una serie per $W$ e comporla con la controimmagine tramite la proiezione al quoziente di una serie per $V/W$.
@@ -4409,7 +4411,7 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
   	Sia $V$ un $A$-modulo semisemplice; allora quozienti e sottomoduli di $V$ sono semisemplici.
   \end{lemma}
   \begin{proof}
-   Sia $W\subset V$ un sottomodulo; consideriamo allora $Z\subset W$ stabile. Ma se guardiamo $Z$ come sottomodulo di $V$, che è semisemplice, sappiamo trovare un sottomodulo $Z'\subset V$ tale che $V=z\oplus Z'$; perciò la proiezione $p:V\to Z$ è omomorfismo di $A$-moduli. Se guardo la restrizione $p_{|_{W}}:W\to Z$ è ancora una proiezioni, perciò abbiamo $W=Z\oplus\ker p_{|_{W}}$, che è quello che volevamo, in quanto il nucleo è $A$-stabile.\\
+   Sia $W\subset V$ un sottomodulo; consideriamo allora $Z\subset W$ stabile. Ma se guardiamo $Z$ come sottomodulo di $V$, che è semisemplice, sappiamo trovare un sottomodulo $Z'\subset V$ tale che $V=Z\oplus Z'$; perciò la proiezione $p:V\to Z$ è omomorfismo di $A$-moduli. Se guardo la restrizione $p_{|_{W}}:W\to Z$ è ancora una proiezione, perciò abbiamo $W=Z\oplus\ker p_{|_{W}}$, che è quello che volevamo, in quanto il nucleo è $A$-stabile.\\
    Sia ora $W$ un quoziente di $V$, ovvero $W\cong\faktor{V}{Z}$ per un qualche sottomodulo $Z\subset V$. La proiezione al quoziente $\pi: V\to W$ è un omomorfismo di $A$-moduli, poiché $Z$ è stabile: $a\pi(v)=a(v+Z)=av+aZ=av+Z=\pi(av)$.\\
    Allora $\ker\pi$ è un sottomodulo di $V$, che allora ammette complemento stabile $V=\ker\pi\oplus W'$; sappiamo che $W\cong\faktor{V}{\ker\pi}$, ma allora $W\cong W'$ tramite $\pi_{|_{W'}}$
   \end{proof}
@@ -4485,16 +4487,16 @@ PRIMA FACEVA QUALCHE CONSIDERAZIONE SULLA DIMENSIONE???
 		q_i:V\to V^{\oplus n}\qquad \text{con }i=1,\ldots,n\\
 		p_i:V^{\oplus n}\to V\qquad \text{con }i=1,\ldots,n
 	\end{align*}
-	Sia $\varphi\in \End_G(V^{\oplus n})$, consideriamo $\varphi_i:V\to V$ definita come $\varphi_{ij} = p_i\circ\varphi\circ q_j\in\End_G(V)$:
+	Sia $\varphi\in \End_G(V^{\oplus n})$, consideriamo $\varphi_{ij}:V\to V$ definita come $\varphi_{ij} = p_i\circ\varphi\circ q_j\in\End_G(V)$:
 	\[
 		V \xrightarrow{q_i} V^{\oplus n} \xrightarrow{\varphi} V^{\oplus n} \xrightarrow{p_j} V
 	\]
 	$V$ è irriducibile quindi $\varphi_{ij} = c_{ij}\Id_V$ con $c_{ij}\in \K$ (per Schur), dunque trovo un'applicazione
 	\begin{align*}
 		\psi:\End_G(V^{\oplus n})&\to M_n(\K)\\
-		\psi(\varphi)&\to (c_{ij})
+		\varphi&\to (c_{ij})
 	\end{align*}
-	Mostriamo ora che $\psi$ è un isomorfismo di algebre: $\psi$ è surgettiva, infatti, data $(c_{ij})\in M_n(\K)$, se consideriamo $\varphi = \sum c_{ij} q_i\circ p_j$ abbiamo che $\psi(\varphi) = (c_{ij})$; dimostriamo che è un omomorfismo, infatti siano $\varphi_1 = \sum c_{ij} q_i\circ p_j$ e $\varphi_2 = \sum d_{ij} q_i\circ p_j$, allora $\varphi_1\circ\varphi_2 = \sum c_{ij} d_{hk}\ q_i\circ p_j\circ q_h\circ p_k = \sum c_{ij}d_{jk}\ q_i\circ p_k$ dove l'ultima uguaglianza si ottiene dal fatto che se $j=h$ allora $p_j\circ q_h=\Id_V$, altrimenti è l'endomorfismo nullo, infine $\phi(\varphi_1\circ \varphi_2) = \sum c_{ij}d_{jk}\  q_i\circ p_k$ come per il prodotto tra matrici; la verifica dell'iniettività è immediata.
+	Mostriamo ora che $\psi$ è un isomorfismo di algebre: $\psi$ è surgettiva, infatti, data $(c_{ij})\in M_n(\K)$, se consideriamo $\varphi = \sum c_{ij} q_i\circ p_j$ abbiamo che $\psi(\varphi) = (c_{ij})$; dimostriamo che è un omomorfismo, infatti siano $\varphi_1 = \sum c_{ij} q_i\circ p_j$ e $\varphi_2 = \sum d_{ij} q_i\circ p_j$, allora $\varphi_1\circ\varphi_2 = \sum c_{ij} d_{hk}\ q_i\circ p_j\circ q_h\circ p_k = \sum c_{ij}d_{jk}\ q_i\circ p_k$ dove l'ultima uguaglianza si ottiene dal fatto che se $j=h$ allora $p_j\circ q_h=\Id_V$, altrimenti è l'endomorfismo nullo, infine $\psi(\varphi_1\circ \varphi_2) = \sum c_{ij}d_{jk}\  q_i\circ p_k$ come per il prodotto tra matrici; la verifica dell'iniettività è immediata.
 \end{proof}
 
 \begin{thm}
@@ -4502,16 +4504,63 @@ PRIMA FACEVA QUALCHE CONSIDERAZIONE SULLA DIMENSIONE???
 \end{thm}
 
 \begin{proof}
-	$\K[G]$ è semisemplice e di dimensione finita, sarà somma diretta di moduli semplici: $\K[G]\cong W_1\otimes \ldots\otimes W_n$ con $W_i$ un $G$-modulo semplice. Si osserva che tutti gli irriducibili di $G$ compaiono tra i $W_i$: avevamo visto che tutti gli irriducibili devono comparire come fattori di composizione delle serie di Jordan-Holder di $A$. Quindi posso riscrivere $\K[G] = \oplus V_i^{p_i}$ dove $p_i$ è la molteplicità di $V_i$, allora $\dim \Hom_G(\K[g],V_i) = \dim\Hom_G(V_i^{\oplus p_i},V_i) = p_i$. Considero ora l'omomorfismo $\psi:\Hom_G(\K[G],V_i)\to V_i$ definito come $\psi(\phi) = \phi(e_1)$, esso è un isomorfismo (la verifica è facile), e quindi $p_i = m_i$. Ma $\K[G]\cong \K[G]^{OP}$ grazie all'applicazione inversa $g\to g^{-1}$, $\K[G]^{OP}$ lo posso pensare come $\End_{\K[G]}(\K[G]) \cong \End_{\K[G]}(\oplus V_i^{m_i}) \cong \oplus\End_{\K[G]}(V_i^{m_i})$ dove l'ultimo isomorfismo segue da Schur. Per il teorema \ref{thm:end_matrici} si ha che $\End_{\K[G]}(V_i^{m_i}) \cong M_{m_i}(\K)$ ma allora $\K[G] \cong \oplus M_{m_i}(\K)$.
+	$\K[G]$ è semisemplice e di dimensione finita, sarà somma diretta di moduli semplici: $\K[G]\cong W_1\oplus \ldots\oplus W_n$ con $W_i$ un $G$-modulo semplice. Si osserva che tutti gli irriducibili di $G$ compaiono tra i $W_i$: avevamo visto che tutti gli irriducibili devono comparire come fattori di composizione delle serie di Jordan-Holder di $A$. Quindi posso riscrivere $\K[G] = \oplus V_i^{p_i}$ dove $p_i$ è la molteplicità di $V_i$, allora $\dim \Hom_G(\K[G],V_i) = \dim\Hom_G(V_i^{\oplus p_i},V_i) = p_i$. Considero ora l'omomorfismo $\psi:\Hom_G(\K[G],V_i)\to V_i$ definito come $\psi(\phi) = \phi(e_1)$, esso è un isomorfismo (la verifica è facile), e quindi $p_i = m_i$. Ma $\K[G]\cong \K[G]^{OP}$ grazie all'applicazione inversa $g\to g^{-1}$, $\K[G]^{OP}$ lo posso pensare come $\End_{\K[G]}(\K[G]) \cong \End_{\K[G]}(\oplus V_i^{m_i}) \cong \oplus\End_{\K[G]}(V_i^{m_i})$ dove l'ultimo isomorfismo segue da Schur. Per il teorema \ref{thm:end_matrici} si ha che $\End_{\K[G]}(V_i^{m_i}) \cong M_{m_i}(\K)$ ma allora $\K[G] \cong \oplus M_{m_i}(\K)$.
+\end{proof}
+
+Da adesso considereremo $A$ un'algebra di dimensione finita.
+\begin{prop}
+	Se $A$ è un'algebra semisemplice allora ogni rappresentazione di $A$ di dimensione finita è semisemplice.
+\end{prop}
+
+
+\begin{proof}
+	Sia $V$ un $A$-modulo, $\dim V = r$, consideriamo l'$A$-modulo di dimensione finita $A^{\oplus r}$ dove $A$ agisce per componenti. Sappiamo che $A$ è semisemplice, quindi $A=\oplus_{j=1}^{k} I_j$ con $I_j$ irriducibile (ovvero ideali sinistri minimali), allora $A^r=\oplus_{h=1}^{r}\oplus_{j=1}^{k} I_{hj}$ dove $I_{hj}$ è $I_j$ immerso nella $j$-esima copia di $A$. Gli $I_{hj}$ sono tutti moduli irriducibili quindi $A^r$ è semisemplice. Fissiamo un insieme di generatori $V=\langle v_1,\ldots,v_r\rangle$ e consideriamo l'omomorfismo
+	\begin{align*}
+		\psi:A^r&\to V\\
+		(a_1,\ldots,a_r)&\to a_1v_1+\ldots+a_rv_r
+	\end{align*}
+	$\psi$ è evidentemente surgettiva ed è un omomorfismo di $A$-moduli, quindi $V$ è semisemplice poichè $V\cong A^r/\Ker \psi$ e abbiamo dimostrato che quozienti di semisemplici sono semisemplici (lemma \ref{quoz_smod_ss}).
+\end{proof}
+
+\begin{defn}
+	Un'algebra di divisione $D$ sul campo $\K$ è un'algebra associativa, unitaria su $\K$ tale che ogni suo elemento ammette inverso.
+\end{defn}
+
+\begin{rem}
+	Se $\K=\overline{\K}$ e $D$ è una $\K$-algebra di divisione con $\dim D<\infty$, allora $D=\K$. Infatti $\K\subset D$ (poichè $\K=Span(1)$), supponiamo per assurdo che esista $x\in D\setminus \K$, ma visto che $\dim D < \infty$ allora le potenze di $x$ soddifano un'equazione finita in $\K$ (quindi esiste un polinomio minimo per $x$ a coefficienti in $\K$), ma dato che $\K=\overline{\K}$ si ha che $x\in \K$, assurdo.
+\end{rem}
+
+\begin{rem}
+	Sia $D$ una $\K$-algebra di divisione, considero $M_n(D)$: allora essa è una $\K$-algebra di divisione; se $\dim_{\K}D<\infty$ allora $\dim_{\K} M_n(\K) < \infty$.
+\end{rem}
+
+\begin{thm}
+	Sia $D$ una $\K$-algebra di divisione con $\dim_{\K} D=k$, sia $A=M_n(D)$, allora $A$ è un'algebra semisemplice con un'unica rappresentazione irriducibile: $D^n$.
+\end{thm}
+
+\begin{proof}
+	IO QUI NON CAPISCO TROPPO DAGLI APPUNTI, PER FAVORE QUALCUNO LA SCRIVA...
 \end{proof}
 
 
+\begin{defn}
+	Una $\K$-algebra è \textit{semplice} se non ha ideali bilateri non banali.
+\end{defn}
 
+\begin{prop}
+	Sia $A$ un'algebra semisemplice di dimensione finita, allora $A$ è semplice.
+\end{prop}
+\begin{proof}
+	Definiamo $J\subset A$ la somma di tutti gli ideali sinistri minimali di $A$: $J=\sum_j I_j$. $J$ è evidentemente un ideale sinistro, vediamo che è anche destro: considero $a\in A$, $I\subset A$ un ideale minimale, allora $Ia = 0$ oppure $Ia$ è un ideale minimale sinistro isomorfo a $I$, quindi $Ia\subset J$ e dunque $J$ è un ideale bilatero. $A$ era un'algebra semplice quindi $J=0$ o $J=A$. Se $J=A$ abbiamo finito in quanto abbiamo scritto $A$ come somma di sottomoduli semplici. Ma nell'ipotesi di $\dim A <\infty$ non avviene che $J=0$: si può fare per induzione sulla dimensione: se $A$ è irriducibile abbiamo finito, se invece ha un $A$-sottomodulo ci si può restringere a quello (che ha dimensione strettamente inferiore) e in un numero finito di passi si conclude.
+\end{proof}
 
-
-
-
-
+\begin{exmp}[Algebra di Weyl]
+	Il teorema precedente è falso se $\dim A = \infty$: consideriamo $A=\C\left[ x,\frac{\diff}{\dx} \right]$ l'algebra dei polinomi in $x$ e nelle derivate rispetto a $x$. Più formalmente
+	\[
+		A=\quot{\C\langle x,y\rangle}{(yx=1+xy)}
+	\]
+	infatti $\frac{\diff}{\dx}(xp(x)) = p(x)+x\frac{\diff}{\dx}p(x)$ per cui $\frac{\diff}{\dx}x=1+x\frac{\diff}{\dx}$. $A$ è una $\C$ algebra, $\dim_{\C} A = \infty$, $A$ non ha ideali bilateri propri (è semplice) ma non è semisemplice (in particolare non ha ideali minimali sinistri).
+\end{exmp}
 
 
 
