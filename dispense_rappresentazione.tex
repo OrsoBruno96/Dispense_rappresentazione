@@ -4196,8 +4196,10 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 		Abbiamo un isomomorfismo di algebre $A^{OP}\cong \End_A(A)$ dove $A$ è pensato come $A$-modulo sinistro.
 	\end{prop}
 	\begin{proof}
-		Se $x\in A$, definiamo $r_x:A\to A$ come $r_x(a)=ax$, allora $r_x\in \End_A(A)$ poichè $r_x(ba)=bax = br_x(a)$. Se $\phi\in \End_A(A)$ allora $\phi = r_{\phi(1)}$, e questo implica che l'applicazione che associa a $x$ $r_x$ è surgettiva, la verifica che è iniettiva è immediata.\\
-		BISOGNEREBBE SCRIVERE LE VERIFICHE CHE LUI NON HA FATTO...
+		Se $x\in A$, definiamo $r_x:A\to A$ come $r_x(a)=ax$, allora $r_x\in \End_A(A)$ poichè $r_x(ba)=bax = br_x(a)$.\\
+		Consideriamo allora $\Phi:A^{OP}\to\End_A(A)$ tale che $\Phi(x)=r_x$. Se $\phi\in \End_A(A)$ allora $\phi(a)=\phi(a\cdot1)=a\cdot\phi(1) = r_{\phi(1)}(a)$, cioè $\Phi$ è surgettiva.\\
+		Vediamo ora che $\Phi$  è omomorfismo di algebre: $\Phi(a\ast b)(t)=\Phi(ba)(t)=r_{ba}(t)=tba=r_a(tb)=r_a\circ r_b (t)$.\\
+		Mostriamo infine che è iniettiva: se $\Phi(x)=r_x=\Id$, abbiamo $ax=r_x(a)=a\;\forall a\in A$, e in particolare se $a=1$, abbiamo $x=1$
 	\end{proof}
 \subsection{Ideali e quozienti}
 	\begin{defn}
@@ -4313,7 +4315,7 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 		\]
 		Tutti i fattori di composizione sono isomorfi alla rappresentazione banale (dove $x$ agisce come $0$ e gli scalari agiscono come scalari), dunque l'unico modulo irriducibile è quello banale (OVVERO IL CAMPO K???). In particolare $\K[x]/(x^n)$ ammette un'unica rappresentazione irriducibile a meno di isomorfismo.
 	\end{exmp}
-	\begin{exmp}
+	\begin{exmp}\label{serie_comp_matrici}
 		Sia $A=M_n(\K)$, un modulo irriducibile è $\K^n$, per ogni $i=1,\ldots,n$ sia
 		\[
 			V_i = \left\{ M\in A : M_{p,q} = 0\ \forall q>i \right\}
@@ -4475,14 +4477,12 @@ Per dimostrare questa proposizione abbiamo bisogno di un lemma.
 In questa sezione vogliamo dare un teorema di struttura per $\K[G]$ (con $\Char \K  \nmid |G|$).\\
 Cerchiamo ora di descrivere $\K[G]$ come algebra nel caso di $\K=\overline{\K}$.
 \begin{thm}\label{thm:end_matrici}
-	Sia $G$ gruppo finito, $\K=\overline{\K}$ tale che $\Char \K \nmid |G|$, sia $V$ una rappresentazione irriducibile di $\K[G]$ con $\dim V = n$, allora $\End_G(V^{\oplus n}) \cong M_n(\K)$ come $\K$-algebre.
-	E' VERO CHE SI CHIEDEVA CHE V FOSSE IRRIDUCIBILE? PERCHÈ LO USA NELLA DIMOSTRAZIONE MA IO NON LO AVEVO SCRITTO...
+	Sia $G$ gruppo finito, $\K=\overline{\K}$ tale che $\Char \K \nmid |G|$, e sia $V$ una rappresentazione irriducibile di $\K[G]$. Allora $\dim V <\infty$, e si ha $\End_G(V^{\oplus n}) \cong M_n(\K)$ come $\K$-algebre.
 \end{thm}
 
 \begin{proof}
-
-PRIMA FACEVA QUALCHE CONSIDERAZIONE SULLA DIMENSIONE???
-	Sia $A=\K[G]$, considero le immersioni/proiezioni canoniche
+	Sia $A=\K[G]$, $0\neq v\in V$; allora ho un omomorfismo di rappresentazioni $f(a)=av$, la cui immagine è $V$ essendo semplice. Perciò si ha $V\cong\faktor{A}{\ker f}$, e poiché $A$ ha dimensione finita, anche $V$ ha dimensione finita.\\
+	Considero ora le immersioni/proiezioni canoniche
 	\begin{align*}
 		q_i:V\to V^{\oplus n}\qquad \text{con }i=1,\ldots,n\\
 		p_i:V^{\oplus n}\to V\qquad \text{con }i=1,\ldots,n
@@ -4539,7 +4539,11 @@ Da adesso considereremo $A$ un'algebra di dimensione finita.
 \end{thm}
 
 \begin{proof}
-	IO QUI NON CAPISCO TROPPO DAGLI APPUNTI, PER FAVORE QUALCUNO LA SCRIVA...
+	Come nell'esempio \ref{serie_comp_matrici}, possiamo considerare la serie di composizione di $A$ composta dai sottospazi con le ultime colonne nulle. I quozienti di due sottospazi consecutivi sono isomorfi a $D^n$; verifichiamo ora che $D^n$ è una rappresentazione irriducibile di $A$.\\
+	Prendiamo un $0\neq v\in D^n$, quindi avrà una componente non nulla $v_i$; se prendo la matrice $M$ che ha tutti zeri, tranne $\dfrac1{v_i}$ in posizione $i,i$, allora $Mv=e_i$.
+	Considerando ora le matrici $M_{jk}$ che hanno solo un $1$ sulla $k$-esima riga e $j$-esima colonna; allora $M_{jk}e_j=e_k$, quindi posso generare tutta la base di $D^n$.\\
+	Sappiamo cioè $Av=D^n$ per tutti i $v$ , quindi non esistono sottospazi invarianti non banali, coè $D^n$ è irriducibile.\\
+	Dato che i fattori di composizione della serie descritta prima sono solo $D^n$, e che ogni rappresentazione di $A$ compare come fattore di una serie di $A$, le rappresentazioni di $M_n(D)$ sono solo $V=D^n$.
 \end{proof}
 
 
