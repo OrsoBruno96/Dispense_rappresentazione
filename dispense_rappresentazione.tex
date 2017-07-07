@@ -4552,7 +4552,7 @@ Da adesso considereremo $A$ un'algebra di dimensione finita.
 \end{defn}
 
 \begin{prop}
-	Sia $A$ un'algebra semisemplice di dimensione finita, allora $A$ è semplice.
+	Sia $A$ un'algebra semplice di dimensione finita, allora $A$ è semisemplice.
 \end{prop}
 \begin{proof}
 	Definiamo $J\subset A$ la somma di tutti gli ideali sinistri minimali di $A$: $J=\sum_j I_j$. $J$ è evidentemente un ideale sinistro, vediamo che è anche destro: considero $a\in A$, $I\subset A$ un ideale minimale, allora $Ia = 0$ oppure $Ia$ è un ideale minimale sinistro isomorfo a $I$, quindi $Ia\subset J$ e dunque $J$ è un ideale bilatero. $A$ era un'algebra semplice quindi $J=0$ o $J=A$. Se $J=A$ abbiamo finito in quanto abbiamo scritto $A$ come somma di sottomoduli semplici. Ma nell'ipotesi di $\dim A <\infty$ non avviene che $J=0$: si può fare per induzione sulla dimensione: se $A$ è irriducibile abbiamo finito, se invece ha un $A$-sottomodulo ci si può restringere a quello (che ha dimensione strettamente inferiore) e in un numero finito di passi si conclude.
@@ -4565,6 +4565,44 @@ Da adesso considereremo $A$ un'algebra di dimensione finita.
 	\]
 	infatti $\frac{\diff}{\dx}(xp(x)) = p(x)+x\frac{\diff}{\dx}p(x)$ per cui $\frac{\diff}{\dx}x=1+x\frac{\diff}{\dx}$. $A$ è una $\C$ algebra, $\dim_{\C} A = \infty$, $A$ non ha ideali bilateri propri (è semplice) ma non è semisemplice (in particolare non ha ideali minimali sinistri).
 \end{exmp}
+
+\begin{prop}
+ Se $V$ è un $A$-modulo semisemplice, allora possiede sottomoduli minimali (ovvero rappresentazioni irriducibili)
+\end{prop}
+\begin{proof}
+ Sia $I\subset A$ un ideale massimale di $A$, e $0\neq v\in V$. Osserviamo che $Iv\subset Av$ sono sottomoduli di $V$, quindi sono semisemplici.\\
+ In particolare esiste un $W\subset V$ stabile tale che $Av=Iv\oplus W$; se per assurdo $W$ non fosse irriducibile, avremmo $W=W_1\oplus W_2$, ovvero $Iv\oplus W_1$ sarebbe un sottomodulo di $Av$, cioè del tipo $Jv$ con $I\subset J\subset A$ ideale; ma le due inclusioni sono entrambe proprie grazie a $W_1$ e $W_2$, contraddicendo la massimalità di $I$.
+\end{proof}
+
+\begin{prop}
+ Sia $D$ un'algebra di divisione su $\K$. Allora la $\K$-algebra $M_n(D)$ è semplice.
+\end{prop}
+\begin{proof}
+ Sia $J\subset M_n(D)$ un ideale bilatero non nullo.\\
+ Consideriamo $J_{ij}=\{x\in D:\exists X\in J, x=[X]_{i,j}\}$ ovvero gli elementi di $D$ che compaiono in posizione $ij$ di una qualche matrice di $J$.
+ Vediamo che tutti i $J_{ij}$ sono ideali bilateri di $D$: infatti è ovvio che sia chiuso rispetto alla somma; per vedere che è chiuso a destra e a sinistra per moltiplicazione per $d\in D$, basta moltiplicare a destra o a sinistra per $d\Id$.\\
+ Essendo $D$ un'algebra di divisione, gli ideali possono essere solo $0$ o $D$: se $d\in I\subset D$, allora anche $1=d\cdot\frac1 d\in I$, e allora $a\in I\;\forall a\in D$.\\
+ Quindi ogni $J_{ij}$ è o $0$ o $D$; poiché $J\neq 0$, esiste una coppia di indici per cui $J_{ij}=D$, e in particolare $1\in J_{ij}$.
+ Sia $X\in J$ tale che $[X]_{i,j}=1$; allora, essendo ideale bilatero, anche $E_{ii}XE_{jj}=E_{ij}\in J$, dove $E_{\alpha,\beta}$ sono le matrici elementari (nulle ovunque tranne un $1$ nella posizione $\alpha,\beta$).\\
+ Poiché $E_{ab}E_{bc}=E_{ac}$, è immediato osservare che $E_{ab}=E_{ai}E_{ij}E_{jb}\in J$, perciò $J$ contiene una base di $M_n(D)$, perciò è tutto.
+\end{proof}
+
+\begin{prop}
+ Siano $A_1,\dots,A_n$ algebre semisemplici di dimensione finita. Allora $A=A_1\times\dots\times A_n$ è semisemplice, e gli ideali bilateri di $A$ sono della forma $I=I_1\times\dots\times I_n$, dove $I_i$ è un ideale bilatero di $A_i$.
+\end{prop}
+\begin{proof}
+ Poiché $A_i$ sono semisemplici, possiamo scrivere $A_i=\bigoplus_j I_{ij}$, dove $I_{ij}$ è un ideale minimale, ovvero un modulo semplice.
+ Allora possiamo anche scrivere $A=\bigoplus_i\bigoplus_j I_{ij}$, dove gli ideali sono ancora minimali.\\
+ Sia poi $J\subset A$ un ideale bilatero; se consideriamo $J_j=J\cap A_j$, questo è un ideale bilatero di $A_j$; inoltre $\bigoplus J_j\subset J$.
+ Per vedere che sono uguali, prendiamo $a\in J$ e scriviamolo come $a=a_1+\dots+a_n$ dove $a_i\in A_i$; considero allora l'unità $e_i$ di $A_i$, e vedo che $e_ia=a_i$ appartiene ancora a $J$, cioè $a_i\in J_i$.\\
+ FORSE VA RISCRITTA MEGLIO FORMALIZZANDO CON LE N-UPLE AL POSTO DELLE SOMME? COSÌ È PIÙ EVIDENTE CHE LE COMPONENTI NON SI PARLANO\\
+
+\end{proof}
+
+
+
+
+
 
 
 
