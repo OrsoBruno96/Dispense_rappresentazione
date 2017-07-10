@@ -726,7 +726,10 @@ La proprietà universale per il prodotto tensore $\otimes$ dice che $\exists !\p
             &                            & V\overline{\otimes} W    \\
 \end{diagram}
 \]
-Ma noi conosciamo già un'applicazione lineare che fa commutare i due diagrammi ``più grandi'': l'identità. Quindi per unicità possiamo concludere che $\phi\psi=\psi\phi=id$, ovvero $\phi$ e $\psi$ sono una l'inversa dell'altra e in particolare $\phi$ è un isomorfismo.
+Ma noi conosciamo già delle applicazioni lineari che fanno commutare i due diagrammi ``più grandi'':
+le identità sui rispettivi spazi vettoriali. Quindi per unicità possiamo concludere che 
+$\phi\psi=id_{V\overline{\otimes}W}, \psi\phi=id_{V\otimes W}$,
+ovvero $\phi$ e $\psi$ sono una l'inversa dell'altra e in particolare $\phi$ è un isomorfismo.
 \end{proof}
 
 Si può dimostrare inoltre che dati due spazi vettoriali $V$ e $W$ esiste sempre
@@ -737,7 +740,12 @@ $V\otimes W$ esiste ed è unico a meno di isomorfismo.
 
 
 \begin{note}
-\`E importante notare che non tutti gli elementi $z \in V \otimes W$ si scrivono come $z = v \otimes w$. In particolare, per fare un esempio concreto che mostra che questa cosa non funziona, prendiamo $W = V^*$. Vedremo fra poco che $V\otimes V^*$ è canonicamente isomorfo allo spazio delle applicazioni bilineari da $V$ in $\C$, che sappiamo scriverlo come matrici $n\times n$. Tuttavia se un elemento si scrive in termini di matrici come $z = v\otimes w$, allora la matrice associata a $z$ in una base avrà rango al massimo 1, ben lontano da coprire tutto lo spazio.
+\`E importante notare che non tutti gli elementi $z \in V \otimes W$ si scrivono come $z = v \otimes w$.
+In particolare, per fare un esempio concreto che mostra che questa cosa non funziona, prendiamo $W = V^*$.
+Vedremo fra poco che $V\otimes V^*$ è canonicamente isomorfo allo spazio degli endomorfismi di $V$,
+i cui elementi si possono rappresentare con matrici $n\times n$.
+Tuttavia gli elementi del tipo $z = v\otimes w$ avranno matrice associata di rango minore o uguale a $1$:
+è chiaro che questi elementi non bastano a ``coprire'' tutto lo spazio.
 \end{note}
 
 
@@ -759,7 +767,7 @@ dove $h(v,w)=v\otimes w$ è ovviamente un'applicazione bilineare. Quindi $\exist
             &                       & V\times W               \\
 \end{diagram}
 \]
-tuttavia il diagramma grande commuta anche con $id_{V\otimes W}$ e quindi $i\circ\psi=id_{V\otimes W}\Rightarrow i$ è surgettiva $\Rightarrow \langle A\rangle=V\otimes W$.
+tuttavia il diagramma grande commuta anche con $id_{V\otimes W}$ e quindi $i\circ\psi=id_{V\otimes W}$ dunque $i$ è surgettiva e pertanto $\langle A\rangle=V\otimes W$.
 \end{proof}
 
 
@@ -777,7 +785,7 @@ $id_V \otimes id_W = id_{V\otimes W}$
 \begin{prop}
 Siano $V$ e $W$ $\K-$spazi vettoriali e sia $\{e_i\}_{i\in I}$ una base di $V$. Allora ogni elemento di $V\otimes W$ si scrive in modo unico come:
 \[ \sum_{i\in I} e_i \otimes w_i\]
-con $w_i\in W$.
+con $w_i\in W$ tutti nulli tranne al più una quantità finita di essi.
 \end{prop}
 \begin{proof}
 Sia $x$ un elemento di $V\otimes W$.
@@ -860,9 +868,9 @@ Iniziamo a considerare il caso in cui sia $f$ che $g$ siano diagonalizzabili: pr
 Ora, essendo la traccia una funzione continua e le matrice diagonalizzabili dense nello spazio delle matrici, la proprietà affermata dal lemma si estende al caso generale per continuità.
 \end{proof}
 
-\begin{thm}
-Sia $V$ spazio vettoriale. Allora $V^*\otimes V^*$ è isomorfo allo spazio vettoriale delle forme bilineari $V\times V\to \C$.
-\end{thm}
+\begin{exercise}
+Sia $V$ un $\K-$spazio vettoriale. Allora $V^*\otimes V^*$ è isomorfo allo spazio vettoriale delle forme bilineari $V\times V\to \K$.
+\end{exercise}
 
 
 \subsection{Prodotto esterno e prodotto simmetrico}
@@ -887,9 +895,11 @@ Sia $V$ spazio vettoriale. Allora $V^*\otimes V^*$ è isomorfo allo spazio vetto
 
 \begin{defn}[Prodotto esterno]
 Sia $n$ un intero positivo, $V$ uno spazio vettoriale. Un prodotto esterno è uno spazio vettoriale indicato con $\bigwedge^n V$
-dotato di una funzione $n-$lineare alternante $\wedge: V^n \to \bigwedge^n V$ che manda $(v_1,\ldots,v_n)$ in
-$v_1\wedge v_2\wedge\ldots\wedge v_n \in \bigwedge^n V$, tale che presa comunque una funzione $h: V^n \to Z$ $n-$lineare alternante,
-esiste un'unica $\phi: \bigwedge^n V \to Z $ lineare per cui vale $\phi(v_1\wedge v_2\wedge \ldots \wedge v_n)=h(v_1,\ldots,v_n)$.
+dotato di una funzione $n-$lineare alternante $\wedge: V^n \to \bigwedge^n V$ che manda le $n-$uple $(v_1,\ldots,v_n)$ in
+elementi di $\bigwedge^n V$ che indichiamo con $v_1\wedge v_2\wedge\ldots\wedge v_n$,
+tale che presa comunque una funzione $h: V^n \to Z$ $n-$lineare alternante,
+esiste un'unica $\phi: \bigwedge^n V \to Z $ lineare per cui vale $\phi(v_1\wedge v_2\wedge \ldots \wedge v_n)=h(v_1,\ldots,v_n)$
+per ogni $n-$upla di vettori di $V$.
 \label{defn:prodotto esterno}
 \end{defn}
 
@@ -1009,7 +1019,7 @@ Per $S^2f$ si dimostra in maniera analoga.
 
 \begin{defn}[Rappresentazione]
 	Sia $G$ un gruppo e $V$ uno spazio vettoriale. Una funzione $\rho: G \to GL(V)$ che manda ciascun elemento del gruppo in un'applicazione lineare invertibile di $V$
-	si dice rappresentazione di $G$ se è un omomorfismo di gruppi, ovvero in parole semplici deve rispettare la regola di composizione. In formule, se $s, t \in G$ deve valere
+	si dice rappresentazione di $G$ se è un omomorfismo di gruppi, ovvero deve rispettare la regola di composizione. In formule, se $s, t \in G$ deve valere
 	\[ \rho(st) v = \rho(s)\rho(t) v \qquad \forall v \in V, \quad \forall s,t \in G\]
 \end{defn}
 
@@ -1024,6 +1034,7 @@ su cui è definita una rappresentazione $\rho$ con nomi del tipo $V_\rho$, dove 
 Detto in altri termini, una rappresentazione di un gruppo $G$ è un'azione lineare di $G$ su uno spazio vettoriale $V$.
 Se non c'è ambiguità (cioè se è chiaro quale rappresentazione stiamo considerando)
 possiamo scrivere semplicemente $g\cdot v$ in luogo di $\rho(g)v$ per allegerire la notazione.
+In pratica stiamo ``interpretando'' gli elementi di $G$ come endomorfismi di uno spazio vettoriale.
 \end{rem}
 
 \begin{rem}
@@ -1062,7 +1073,8 @@ Però se $G$ è abeliano tutte le matrici $\rho(s)$ sono simultaneamente diagona
 \label{prop:diagonalizzabilita rappresentazioni}
 \end{prop}
 
-\begin{proof} Se $G$ è un gruppo finito, allora esiste un intero positivo $k$ tale che $g^k = e$. Dato che $\rho:G\to GL(V_\rho)$ mantiene queste proprietà in quanto omomorfismo, dovrà essere $\rho(g)^k = id$.
+\begin{proof} Se $G$ è un gruppo finito, allora se $g\in G$ esiste un intero positivo $k$ tale che $g^k = e$.
+Dato che $\rho:G\to GL(V_\rho)$ è un omomorfismo, dovrà essere $\rho(g)^k = \Id$.
 
 Visto che il polinomio minimo di $\rho(g)$ non ha radici multiple, con il teorema di decomposizione primaria \eqref{thm:dec_primaria} si mostra facilmente che $\rho(g)$ è diagonalizzabile. Inoltre da questa formula è anche evidente che tutti gli autovalori di $\rho(g)$ hanno modulo $1$ e in particolare saranno radici $k-$esime dell'unità.
 
@@ -1117,12 +1129,14 @@ Visto che $\C^*$ è commutativo abbiamo allora che $\rho(g) = \sigma(g)$ per ogn
 in realtà $\rho$ e $\sigma$ sono proprio la stessa rappresentazione.
 \end{proof}
 
-Negli esercizi sarà necessario trovare le possibili rappresentazioni di un gruppo $G$ (che qui supporremo finito), un buon punto di partenza è cercare per prima cosa le rappresentazioni di grado 1. Per fare questo c'è un metodo generale (indicheremo con $\rho$ la rappresentazione cercata e con $\mu_m$ il sottoinsieme di $\C$ che contiene le radici $m$-esime dell'unità):\footnote{stiamo cercando un omomorfismo di gruppi da $G$ a $GL(\C)=\C^*$}:
+Nel tentativo di trovare le possibili rappresentazioni di un gruppo $G$ (che qui supporremo finito), un buon punto di partenza è cercare per prima cosa le rappresentazioni di grado 1. Per fare questo c'è un metodo generale (indicheremo con $\rho$ la rappresentazione cercata e con $\mu_m$ il sottoinsieme di $\C$ che contiene le radici $m$-esime dell'unità):\footnote{stiamo cercando un omomorfismo di gruppi da $G$ a $GL(\C)=\C^*$}:
 \begin{enumerate}
-	\item cercare i generatori del gruppo $G$, che indicheremo con $g_1, \ldots, g_k$
+	\item cercare dei generatori per il gruppo $G$: $g_1, \ldots, g_k$
 	\item per ogni generatore $g_i$ trovare il suo ordine $n_i$ (ovvero il minimo intero $n_i$ tale che $g_i^{n_i}=e$)
 	\item imporre che $\rho(g_i)\in \mu_{n_i}$ per ogni $i=1,\ldots,k$
-	\item imporre infine che $\rho:G\to GL(\C)$ sia veramente un omomorfismo di gruppi (per ora abbiamo solo posto delle condizioni necessarie), per fare ciò bisogna controllare che le \textit{relazioni} con cui può essere presentato il gruppo siano rispettare nell'immagine\footnote{questo in parole povere significa che tutte le regole con cui vengono moltiplicati gli elementi devono essere rispettate, per dare una spiegazione formale servirebbero i prodotti liberi che però non sono necessari per questo corso}.
+	\item imporre infine che $\rho:G\to GL(\C)$ sia veramente un omomorfismo di gruppi (per ora abbiamo solo posto delle condizioni necessarie):
+	 per fare ciò bisogna controllare che le \textit{relazioni} che intercorrono tra i generatori siano rispettate nell'immagine\footnote{questo in parole povere significa che tutte le regole con cui vengono moltiplicati gli elementi devono essere rispettate, per dare una spiegazione formale servirebbero i prodotti liberi che però non sono necessari per questo corso}.
+	 In effetti già le condizioni imposte al punto 3 possono essere considerate come relazioni imposte dai generatori.
 \end{enumerate}
 Questo definisce un omomorfismo da $G$ a $\C^*$: dato $h\in G$ t.c. $h=g_{i_1}^{a_1}\cdots g_{i_t}^{a_t}$, allora $\rho(h) = \rho(g_{i_1})^{a_1}\cdots \rho(g_{i_t})^{a_t}$.
 \begin{rem}
@@ -1131,18 +1145,28 @@ Questo definisce un omomorfismo da $G$ a $\C^*$: dato $h\in G$ t.c. $h=g_{i_1}^{
 
 
 \begin{exmp}[Rappresentazioni di grado 1 di $C_n$]
-Dato $G=C_n$, prendiamo un suo generatore $g$ (un qualsiasi elemento di ordine $n$), imponiamo che $\rho(g)\in \mu_n$ (ovvero $\rho(g)=e^{2k\pi i/n}$ per qualche $k\in \{0,\ldots,n-1\}$). Visto che $\forall h\in G\ \exists k\in \N$ t.c. $h=g^k$, ho già definito $\rho$ su ogni elemento di $G$.\newline
-Ora abbiamo definito tutte le rappresentazioni di $C_n$ di grado 1, ma sono tutte distinte? In effetti mostriamo che in questo case il processo che abbiamo operato ha prodotto tutte rappresentazioni non isomorfe. Supponiamo di avere due rappresentazioni $\rho_1, \rho_2$ trovate con il metodo descritto sopra, supponiamo inoltre di avere $\varphi:\rho_1\to\rho_2$ un isomorfismo di rappresentazioni, vediamo che questo è assurdo: se fosse un isomorfismo di rappresentazioni dovrebbe valere che $\forall x\in \C, \forall g\in G$ $\varphi( \rho_1(g)x ) = \rho_2(g)( \varphi(x) )$, ma $\rho_1(g)$ è la moltiplicazione per uno scalare e $\varphi$ è lineare, quindi vorrebbe dire che $\rho_1(g)\varphi( x ) = \rho_2(g)( \varphi(x) )$, preso $x\neq 0$ si ottiene che $\rho_1(g)=\rho_2(g)\forall g\in G$, e questo è assurdo perchè differiscono almeno su un generatore di $G$.
+Dato $G=C_n$, prendiamo un suo generatore $g$ (un qualsiasi elemento di ordine $n$), imponiamo che $\rho(g)\in \mu_n$ (ovvero $\rho(g)=e^{2k\pi i/n}$ per qualche $k\in \{0,\ldots,n-1\}$).
+Visto che per ogni $h\in G$ esiste un $k\in \N$ tale che $h=g^k$, ho già definito $\rho$ su ogni elemento di $G$.
+Ora abbiamo definito tutte le rappresentazioni di $C_n$ di grado 1, ma sono tutte distinte?
+In effetti mostriamo che in questo case il processo che abbiamo operato ha prodotto tutte rappresentazioni non isomorfe.
+Supponiamo di avere due rappresentazioni $\rho_1, \rho_2$ trovate con il metodo descritto sopra e supponiamo inoltre di avere 
+$\varphi:\rho_1\to\rho_2$ un isomorfismo di rappresentazioni.
+Allora deve valere che $\forall x\in \C, \forall g\in G$ $\varphi( \rho_1(g)x ) = \rho_2(g)\varphi(x)$,
+ma $\rho_1(g)$ è la moltiplicazione per uno scalare e $\varphi$ è lineare, quindi vorrebbe dire che 
+$\rho_1(g)\varphi( x ) = \rho_2(g) \varphi(x)$. Preso $x\neq 0$ si ottiene che $\rho_1(g)=\rho_2(g)$ per ogni $g\in G$.
 \end{exmp}
 
-L'esempio di prima era particolarmente semplice quindi non abbiamo dovuto faticare troppo, però il procedimento descritto è abbastanza laborioso con gruppi più complicati, vediamo un altro metodo che, conoscendo un quoziente ciclico di $G$, fornisce alcune rappresentazioni di grado 1 del gruppo.
-\subparagraph{}
-Sia $G$ un gruppo, $H\trianglelefteq G$ t.c. $G/H$ sia ciclico, allora trovando le rappresentazioni di $G/H$ di grado 1 siamo capaci di ricostruire delle rappresentazioni di grado 1 di $G$: consideriamo $\pi:G\to G/H$ la proiezione al quoziente, ovvero $\pi(g)=gH$, e un omomorfismo di gruppi $\rho:G/H\to \C^*$ (la rappresentazione di $G/H$), allora come omomorfismo $\sigma:G\to GL(\C)$ (ovvero una rappresentazione di $G$) prendiamo l'omomorfismo che fa commutare il seguente diagramma:
+Questo esempio era particolarmente semplice quindi non abbiamo dovuto faticare troppo, però il procedimento descritto è abbastanza
+laborioso con gruppi più complicati: vediamo un altro metodo che permette di trovare alcune rappresentazioni
+di grado $1$ a patto di conoscere un quoziente ciclico di $G$ e le sue rappresentazioni di grado $1$.
+
+Sia $G$ un gruppo, $H$ un suo sottogruppo normale tale che $G/H$ sia ciclico. Allora trovando le rappresentazioni di $G/H$ di grado 1 siamo capaci di ricostruire delle rappresentazioni di grado 1 di $G$: consideriamo $\pi:G\to G/H$ la proiezione al quoziente, ovvero $\pi(g)=gH$, e un omomorfismo di gruppi $\rho:G/H\to \C^*$ (la rappresentazione di $G/H$), allora come omomorfismo $\sigma:G\to GL(\C)$ (ovvero una rappresentazione di $G$) prendiamo l'omomorfismo che fa commutare il seguente diagramma:
 \[\tridiag G \pi {G/H} \rho {GL(\C)} \sigma\]
 ovvero $\sigma(g)=\rho(\pi(g))$.
 
 Questo metodo è particolarmente potente perché, per ogni rappresentazione $\sigma:G\to GL(\C)$, l'immagine è un gruppo ciclico\footnote{\'E abbastanza facile convincersene ricordando che ogni elemeno di $G$ deve essere mandato in una radice dell'unità.}, quindi, in virtù del primo teorema di omomorfismo\eqref{alg:primo_teo_omo}, l'immagine di una qualsiasi rappresentazione $\sigma$ di grado 1 è un quoziente ciclico di $G$.
-Questo implica che in realtà il metodo esposto è in grado di trovare \textbf{tutte} le rappresentazioni di $G$ di grado $1$.
+Questo implica che in realtà il metodo esposto è in grado di trovare \textbf{tutte} le rappresentazioni di $G$ di grado $1$ (a patto di esaminare
+tutti i quozienti ciclici e tutte le loro rappresentazioni di grado $1$)..
 
 
 \begin{exmp}[Rappresentazioni di grado 1 di $S_3$]
@@ -1175,10 +1199,8 @@ Questo implica che in realtà il metodo esposto è in grado di trovare \textbf{t
 \subsection{Operazioni con le rappresentazioni}
 
 \begin{defn}[Somma di rappresentazioni]
-  Date due diverse rappresentazioni dello stesso gruppo $G$, $\rho: G \to GL(V_\rho), \ \sigma: G \to GL(V_\sigma)$ si può definire la rappresentazione somma $\rho + \sigma$ definita sullo spazio vettoriale $V_\rho \oplus V_\sigma$ definita in modo ovvio
-
+  Date due diverse rappresentazioni dello stesso gruppo $G$, $\rho: G \to GL(V_\rho), \ \sigma: G \to GL(V_\sigma)$ si può definire la rappresentazione somma $\rho + \sigma$ sullo spazio vettoriale $V_\rho \oplus V_\sigma$ nel modo ovvio
   \[ (\rho + \sigma)(g) v = \rho(g) \pi_{V_\rho}(v) + \sigma(g) \pi_{V_\sigma}(v) \qquad \forall v \in V_\rho \oplus V_\sigma \]
-
   Questa definizione ha senso, infatti proiettando $v$ sui due spazi di partenza le due rappresentazioni sono definite e rimangono nello spazio di partenza. Si può poi fare la somma se riportiamo il tutto nello spazio più grande.
 \label{defn:somma di rappresentazioni}
 \end{defn}
@@ -1188,17 +1210,16 @@ Matricialmente $(\rho+\sigma)_g$ si rappresenta come
 0 & [\sigma_g]
 \end{bmatrix} \]
 dove si intende ovviamente che la base ha i primi vettori in $V_{\rho}$, i secondi in $V_{\sigma}$.\\
-\textsc{Osservazioni:}
 
+\begin{rem}
+Abbiamo le seguenti proprietà della somma di rappresentazioni:
 \begin{enumerate}
 \item $\deg(\rho+\sigma)=\deg(\rho)+\deg(\sigma)$
 \item $\rho + \sigma \cong \sigma + \rho$
 \item $\rho + (\sigma + \tau) \cong (\rho + \sigma ) + \tau$
 \item Esiste l'elemento neutro che è la rappresentazione di grado 0 ma non esiste l'inverso.
-\item se $\deg(\rho)=1$ allora $\rho(g^{-1})=\rho(g^{-1})^t=\rho^*(g)\Rightarrow \rho^*(g)=\rho(g)^{-1}$.
-
 \end{enumerate}
-
+\end{rem}
 
 
 
@@ -1214,18 +1235,16 @@ dove si intende ovviamente che la base ha i primi vettori in $V_{\rho}$, i secon
 \end{defn}
 
 
-\textsc{Osservazioni:}
-
-
+\begin{rem}
+Abbiamo le seguenti proprietà del prodotto di rappresentazioni:
 \begin{enumerate}
 \item $1\otimes \rho \cong \rho$
 \item $\rho \otimes \sigma \cong \sigma \otimes \rho$
 \item $0 \otimes \rho \cong 0$
 \item $\rho \otimes (\sigma \otimes \tau) \cong (\rho \otimes \sigma)\otimes \tau$
 \item $\rho \otimes (\sigma_1 + \sigma_2) \cong \rho \otimes \sigma_1 + \rho \otimes \sigma_2$
-
 \end{enumerate}
-
+\end{rem}
 
 
 
@@ -1278,17 +1297,12 @@ Notiamo infine che l'isomorfismo trovato è canonico, ovvero non dipende da alcu
 
 
 \begin{defn}[Rappresentazione regolare]
-  Consideriamo un gruppo $G$, per semplicità finito, e consideriamo uno spazio vettoriale $V_\rho$ di dimensione $|G|$ su $\C$. Una base di questo spazio ha sicuramente dimensione $|G|$. Possiamo indicare gli elementi della base con $e_g, \ \ \forall g \in G$. Un generico vettore di questo spazio si scrive quindi come
-
+  Consideriamo un gruppo $G$, per semplicità finito, e consideriamo uno spazio vettoriale $V_\rho$ di dimensione $|G|$ su $\C$.
+  Possiamo indicare gli elementi della base con $e_g$ al variare di $g \in G$. Un generico vettore di questo spazio si scrive quindi come
   \[ v = \dsum_{g \in G} a_g e_g \]
-
-  Dove $a_g$ sono dei numeri complessi. Possiamo definire una rappresentazione di $G$ su questo spazio in questo modo:
-
+  dove $a_g$ sono dei numeri complessi. Possiamo definire una rappresentazione di $G$ su questo spazio nel modo seguente:
   \[ \rho(h)v = \rho(h) \dsum_{g \in G} a_g e_g = \dsum_{g\in G} a_g \rho(h) e_g := \dsum_{g \in G} a_g e_{hg} \]
-
   Notare che questa definizione ha senso in quanto essendo $G$ un gruppo, $gh \in G$ e quindi sicuramente $e_{gh}$ è un elemento della base. Questa particolare rappresentazione di $G$ si chiama \emph{rappresentazione regolare} di $G$
-
-
 
   \label{defn:rappresentazione regolare}
 \end{defn}
@@ -1300,16 +1314,16 @@ Notiamo infine che l'isomorfismo trovato è canonico, ovvero non dipende da alcu
 
 
 \begin{defn}[Sottorappresentazione]
-Sia $\rho$ una rappresentazione di $G$ su $V_{\rho}$, una sottorappresentazione di $\rho$ è un sottospazio vettoriale $W\subseteq V_{\rho}$ tale che $\rho(s)(W)\subseteq W\ \forall\ s\in G$. Posso definire una rappresentazione $\sigma$ con $V_{\sigma}=W$ e $\sigma(s)=\rho(s)|_W$ (la indicherò con $\sigma\subseteq \rho$).
+Sia $\rho$ una rappresentazione di $G$ su $V_{\rho}$. Una sottorappresentazione di $\rho$ è un sottospazio vettoriale $W\subseteq V_{\rho}$ tale che $\rho(s)(W)\subseteq W$ per ogni $s\in G$. Infatti su tale sottospazio c'è in modo naturale una rappresentazione $\sigma:G\to GL(W)$ con $\sigma(s)=\rho(s)|_W$ (potremo scrivere $\sigma\subseteq \rho$).
 \end{defn}
 
-\textbf{Notazione:} $V_{\rho}^G=\{v\in V_{\rho}: \rho(s)v=v\ \forall s\in G\}$.
+\textbf{Notazione:} $V_{\rho}^G=\{v\in V_{\rho}: \rho(s)v=v\ \forall s\in G\}$, il sottospazio dei vettori invarianti.
 
 
 \begin{defn}[Rappresentazione irriducibile]
 Una rappresentazione $\rho$ di $G$ è \textit{irriducibile} se
 \begin{enumerate}
-	\item $\rho \neq 0$ ($\deg(\rho) \geq 1$)
+	\item $\rho \neq 0$ (ovvero $\deg(\rho) \geq 1$)
 	\item $\rho$ non ha sottorappresentazioni non banali (diverse da 0 e $V_{\rho}$).
 \end{enumerate}
 
@@ -1326,8 +1340,7 @@ Attenzione al gioco di parole in italiano: una rappresentazione irriducibile è 
 \end{rem}
 
 
-\begin{rem} Normalmente la cosa che si fa più spesso in teoria della rappresentazione è cercare di scomporre la rappresentazione di un gruppo come somma di rappresentazioni irriducibili. Vedremo quindi adesso diversi teoremi che ci aiuteranno in questi problemi.
-
+\begin{rem} Una cosa che vorremmo saper fare è scomporre la rappresentazione di un gruppo come somma di rappresentazioni irriducibili. Vedremo diversi teoremi che ci aiuteranno in questo tipo di problema.
 \end{rem}
 
 
@@ -1353,15 +1366,10 @@ Per dimostrare questo teorema ci servono diversi lemmi che enunciamo e andiamo a
 \begin{proof}
 
 Lo spazio $V_\rho$ ammette sicuramente una forma hermitiana, che chiamiamo $h$. Ora andiamo a fare una sorta di media per trasformare questa forma in una invariante. Consideriamo quindi
-
 \[h_G(v, w) := \dfrac{1}{|G|} \dsum_{g \in G} h(\rho(g)v,\rho(g) w) \]
-
 \'E abbastanza facile mostrare adesso che effettivamente $h_G$ è invariante sotto l'azione di $G$. Infatti,
-
 \[ h_G(\rho(h)v, \rho(h) w) = \dsum_{g \in G} h(\rho(gh)v , \rho(gh) w)\]
-
-Ma dato che $G$ è un gruppo, questo vuol dire solo \emph{far partire la somma da un indice diverso.} Di conseguenza $h_G$ è $G$-invariante.
-
+Ma dato che $G$ è un gruppo, questo vuol dire solo \emph{eseguire la somma in un ordine diverso.} Di conseguenza $h_G$ è $G$-invariante.
 \end{proof}
 
 
@@ -1614,8 +1622,6 @@ Notare che $\chi_{\rho}$ è una funzione che va dal gruppo in $\C$, ovvero $\chi
 \end{defn}
 
 Vediamo delle proprietà elementari del carattere
-
-\textsc{Osservazioni:}
 \begin{enumerate}
 	\item Se $\deg(\rho) = 1$ allora il carattere di $s$ è uguale a $\rho(s)$
 	\item $\chi_{\rho_1} = \deg(\rho)$. \footnote{Al solito $\rho_1$ è la rappresentazione che manda ogni elemento nell'identità di $V_\rho$}\\
