@@ -49,8 +49,8 @@
 
 
 
-\title{Dispense del corso di Teoria della Rappresentazione}
-\author{Fabio Zoratti}
+\title{Dispense del corso di Teoria delle Rappresentazioni}
+\author{Matematici e fisici del secondo anno, a.a. 2016/2017}
 \date{\today}
 
 
@@ -100,10 +100,10 @@
 \DeclareMathOperator{\Orb}{Orb}
 \DeclareMathOperator{\Stab}{Stab}
 \DeclareMathOperator{\Fix}{Fix}
-\DeclareMathOperator{\Ind}{Ind}
 \DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\Imm}{Im}
 \DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Ind}{Ind}
 \DeclareMathOperator{\Res}{Res}
 \DeclareMathOperator{\Id}{Id}
 \DeclareMathOperator{\Char}{char}
@@ -146,44 +146,47 @@
 \maketitle
 \tableofcontents
 
-
+\newpage
+\section*{Introduzione}
+Qui dovremmo scrivere una introduzione, specificare quali sono le finalità e a chi sono rivolti determinati capitoli, eccetera.
 
 \newpage
-\section{Teoria dei gruppi}
+\section{Nozioni di base di teoria dei gruppi}
 
-\begin{defn}[Gruppo] Un gruppo è un insieme dotato di un'operazione binaria $\cdot : G\times G \to G$ che gode delle seguenti proprietà:
+\subsection{Definizioni e primi risultati}
+
+\begin{defn}[Gruppo] Un gruppo è un insieme $G$ dotato di un'operazione binaria $\cdot : G\times G \to G$ che gode delle seguenti proprietà:
 \begin{enumerate}
 	\item Associatività: presi comunque $a,b,c\in G$ vale che $(a\cdot b)\cdot c = a\cdot(b\cdot c)$
 	\item Esiste $e\in G$, chiamato \emph{unità}, o \emph{identità}, o \emph{elemento neutro}, tale che $\forall a\in G$ vale $e\cdot a = a = a\cdot e$
 	\item Per ogni $a\in G$ esiste un $a'$ tale che $a'\cdot a$ e $a\cdot a'$ sono unità, ovvero si comportano come l'elemento $e$ al punto precedente.
 		  Un tale $a'$ si dice \emph{inverso} di $a$.
 \end{enumerate}
-Per comodità di solito si omette il puntino. Se $G$ è finito, $card(G) = n$, si dice che $G$ ha \emph{ordine} $n$.
+Per comodità di solito si omette il puntino. Se $G$ è finito e ha cardinalità $n$, si dice che $G$ ha \emph{ordine} $n$,
+e si scrive $|G|=n$ oppure $\ord(G)=n$.
 \end{defn}
 
-\paragraph{Esempi}
+\paragraph{Primi esempi di gruppi}
 \begin{enumerate}
 	\item $\mathbb{Z}, \mathbb{Q}, \mathbb{R}, \mathbb{C}$ con l'operazione di somma.
-	\item $\mathbb{Q}^*, \mathbb{R}^*, \mathbb{C}^*$ con l'operazione di moltiplicazione (senza lo 0).
-	\item $GL_n(\mathbb{R})$ oppure $GL(V)$
-	\item $f:I\to I $ biunivoca, con $I$ insieme e con l'operazione di composizione. Nel caso in cui $I$ sia un insieme finito, tanto vale scegliere $I = \{1,2,3,\ldots, n\}$. In tal caso questo gruppo si chiama $S_n$.
+	\item $\mathbb{Q}^*, \mathbb{R}^*, \mathbb{C}^*$ con l'operazione di moltiplicazione (dagli insiemi è stato tolto $0$).
+	\item $GL_n(\mathbb{\K})$ dove $\K$ è un campo o in generale $GL(V)$ dove $V$ è uno spazio vettoriale.
+	\item L'insieme delle funzioni $f:I\to I $ biunivoche, dove $I$ è un insieme e l'operazione di gruppo è la composizione. Nel caso in cui $I$ sia un insieme finito, tanto vale scegliere $I = \{1,2,3,\ldots, n\}$. In tal caso questo gruppo si indica con $S_n$.
 \end{enumerate}
 
-\paragraph{Alcuni teoremi elementari}
+\paragraph{Alcune proprietà elementari}
 \begin{enumerate}
 	\item L'unità $e$ è unica.
 
 	Dimostrazione: supponiamo che $e$ ed $e'$ siano entrambe unità. Allora vale
-
 	\[e = ee' = e' \]
-
 	\item Dato $a\in G$, l'inverso di $a$ è unico (e usualmente si denota con $a^{-1}$).
 
 	Dimostrazione: supponiamo che $a', a''$ siano entrambi inversi di $a$. Allora
-
 	\[(a' a)a'' = a'(aa'') \implies e a'' = a' e \implies a'' = a' \]
-
+	
 	\item Dati $a_1, a_2, \ldots, a_n$, il prodotto $a_1\cdot a_2 \cdots\cdot a_n$ è ben definito senza bisogno di parentesi.
+	
 	\item Se $ab = e$, allora anche $ba = e$, dunque $a$ e $b$ sono uno l'inverso dell'altro.
 
 	Dimostrazione: $ba = bae = babb^{-1} = beb^{-1} = bb^{-1} = e$.
@@ -206,8 +209,7 @@ Sia $G$ un gruppo, $H\subseteq G$ si dice sottogruppo di $G$ se:
 	\item $x,y\in H \implies xy\in H$
 	\item $x\in H \implies x^{-1}\in H$
 \end{itemize}
-e si indica $H \leq G$. In altre parole $H$ è sottogruppo se,
-ereditando l'operazione di $G$, è esso stesso un gruppo.
+e si indica $H \leq G$. Si verifica facilmente che queste condizioni sono quelle necessarie (e sufficienti) a fare in modo che $H$ sia esso stesso un gruppo con l'operazione ereditata da $G$.
 \end{defn}
 
 \begin{exmp}[Sottogruppo generato da un elemento]
@@ -228,83 +230,63 @@ tali che $a^i = a^j$ e osservare che $a^{j-i} = e$. Questi $i$ e $j$ esistono pe
 \end{rem}
 
 
-\begin{defn}[Sottogruppo normale]
-Sia $G$ un gruppo, $H \leq G$ si dice \emph{normale} in $G$ se
-\[
-	\forall h\in H, \forall g\in G\qquad ghg^{-1}\in H
-\]
-e si indica $H \trianglelefteq G$.
-\end{defn}
-
 \begin{defn}[Laterale]
-	Sia $G$ un gruppo e $H<G$ un suo sottogruppo, definiamo \textit{laterale destro} o \textit{classe laterale destra} di $H$
+	Sia $G$ un gruppo e $H<G$ un suo sottogruppo: definiamo \emph{laterale destro} o \emph{classe laterale destra} di $H$
 	un sottoinsieme di $G$ del tipo
-	\[
-		gH=\{ gh\ |\ h\in H\}
-	\]
-\end{defn}
-
-\begin{defn}[Quoziente]\label{defn:quoziente}
-	Sia $G$ un gruppo, $H<G$, chiamiamo \textit{quoziente} di $G$ per $H$ l'insieme delle classi laterali di $H$, che indicheremo con $G/H$, ovvero
-	\[
-		G/H=\{gH\ |\ g\in G\}
-	\]
-	dove vengono identificati gli insiemi uguali (infatti non è detto che se $g,g'\in G$, con $g\neq g'$, allora $gH\neq g'H$).
+	\[gH=\{ gh\ |\ h\in H\}\]
 \end{defn}
 
 \begin{rem}
-	Dato $G$ un gruppo, $H<G$, non è difficile mostrare che tutte le classi laterali di $H$ in $G$ hanno la stessa cardinalità, in particolare hanno tutte la cardinalità della classe $eH$, ma $eH=H$ come insieme, quindi tutte le classi laterali di $H$ hanno la stessa cardinalità di $H$.
+	Dato un gruppo $G$ e un sottogruppo $H<G$, tutte le classi laterali di $H$ hanno la stessa cardinalità di $H$.
+	Consideriamo infatti una classe laterale $gH$ dove $g$ è un certo elemento di $G$. Allora l'applicazione $\phi_g:H\to gH$
+	tale che $\phi_g(h) = gh$ per ogni $h\in H$ è certamente surgettiva. Se fosse $\phi_g(h_1) = \phi_g(h_2)$ allora $gh_1 = gh_2$ e moltiplicando
+	a sinistra per l'inverso di $g$ si otterrebbe $h_1 = h_2$. Quindi $\phi_g$ è iniettiva e in conclusione è bigettiva.
 \end{rem}
 
+\begin{defn}[Quoziente]\label{defn:quoziente}
+	Sia $G$ un gruppo e $H$ un suo sottogruppo: chiamiamo \emph{quoziente} di $G$ per $H$ l'insieme delle classi laterali di $H$, che indicheremo con $G/H$, ovvero
+	\[G/H=\{gH\ |\ g\in G\}\]
+\end{defn}
 
 \begin{thm}
 	Il quoziente di un gruppo $G$ per un suo sottogruppo $H$ fornisce una partizione di $G$: per ogni $g\in G$ esiste un unico $H$-laterale destro $g'H$ tale che $g\in g'H$.
 \end{thm}
 \begin{proof}
-	Si osserva che $g\in gH$ visto che $gH=\{gh\ |\ h\in H\}$ e che $e\in H$, se si avesse che $g\in \alpha H$ allora $g=\alpha h_1$ per qualche $h_1$. Si osserva allora che i due laterali coinciderebbero:
-	\[
-		\alpha H=\{ \alpha h\ |\ h\in H\} = \{ \alpha h_1 h\ |\ h\in H \} = \{ gh\ |\ h\in H\} = gH
-	\]
+	L'esistenza è facile: si osserva che $g\in gH$ visto che $gH=\{gh\ |\ h\in H\}$ e che $e\in H$.
+	Supponiamo ora che $g\in \alpha H$, dunque $g=\alpha h_1$ per qualche $h_1$. Si osserva allora che i due laterali coinciderebbero:
+	\[\alpha H=\{ \alpha h\ |\ h\in H\} = \{ \alpha h_1 h\ |\ h\in H \} = \{ gh\ |\ h\in H\} = gH\]
 \end{proof}
 
+Da quanto abbiamo visto segue subito il seguente risultato:
 \begin{thm}[Teorema di Lagrange]
-	Sia $G$ un gruppo finito, $H<G$, allora $|H|$ divide $|G|$ e, in particolare, $\displaystyle |G/H|=\frac{|G|}{|H|}$; il numero $|G/H|$ viene chiamato \textit{indice} di $H$ in $G$.
+	Sia $G$ un gruppo finito, $H<G$, allora $|H|$ divide $|G|$ e, in particolare, $\displaystyle |G/H|=\frac{|G|}{|H|}$; il numero $|G/H|$ viene chiamato \emph{indice} di $H$ in $G$.
 \end{thm}
 
 
-\begin{defn}[Gruppo quoziente]
-	Sia $G$ gruppo, $H\trianglelefteq G$ (osservare che si richiede che il sottogruppo sia \textit{normale}), allora chiameremo \textit{gruppo quoziente} di $G$ su $H$ l'insieme quoziente come l'abbiamo definito \eqref{defn:quoziente} munito della seguente operazione:
-	\[
-		(g_1H)\cdot(g_2H)=g_1g_2H
-	\]
-	Non riportiamo la dimostrazione del fatto che l'operazione così definita rispetti effettivamente gli assiomi dei gruppi.
+\begin{defn}[Sottogruppo normale]
+Sia $G$ un gruppo, $H \leq G$ si dice \emph{normale} in $G$ se
+\[\forall h\in H, \forall g\in G\qquad ghg^{-1}\in H\]
+e si indica $H \trianglelefteq G$.
 \end{defn}
 
-\begin{rem}
-	Attenzione a non farsi ingannare: ci si può chiedere se, dato $G$ gruppo con $H,K\trianglelefteq G$ tali che $H\cong K$, si possa concludere che $G/H\cong G/K$. Questo in generale è \textbf{falso}! Come esempio si può prendere $G=\Z$, $H=5\Z$ e $K=7\Z$, dove
-	\[
-		5\Z=\{ 5t|\ t\in \Z\}\qquad 7\Z=\{ 7t|\ t\in \Z\}
-	\]
-	Infatti evidentemente $H\cong \Z\cong K$, ma $G/H\cong \Z_5$ mentre $G/K\cong \Z_7$\footnote{Esistono controesempi anche con gruppi finiti.}.
-\end{rem}
+\begin{defn}[Gruppo quoziente]
+	Sia $G$ gruppo, $H\trianglelefteq G$ (osservare che si richiede che il sottogruppo sia \textit{normale}), allora chiameremo \textit{gruppo quoziente} di $G$ su $H$ l'insieme quoziente come l'abbiamo definito \eqref{defn:quoziente} munito della seguente operazione:
+	\[(g_1H)\cdot(g_2H)=g_1g_2H\]
+	Lasciamo come esercizio la dimostrazione del fatto che tale operazione è ben definita, ovvero non dipende dai ``rappresentanti'' $g_1,g_2$, e che rispetta effettivamente gli assiomi di gruppo. In particolare è essenziale il fatto che $H$ sia normale per dimostrare la buona definizione dell'operazione.
+\end{defn}
 
 
 \begin{defn}[Classi di coniugio]
-Sia $G$ un gruppo, $x \in G$, la classe di coniugio di $x$ è l'insieme $\{ gxg^{-1} | g\in G \}$. Si dimostra facilmente che le classi di coniugio di tutti gli elementi di $G$ formano una partizione del gruppo stesso. Si osserva inoltre che un sottogruppo è normale se e solo se è unione di classi di coniugio (\textsc{Attenzione:} è raro che unendo a caso classi di coniugio si ottenga un sottogruppo).
+Sia $G$ un gruppo, $x \in G$, la classe di coniugio di $x$ è l'insieme $\{ gxg^{-1} | g\in G \}$. Si dimostra facilmente che le classi di coniugio di tutti gli elementi di $G$ formano una partizione del gruppo stesso. Si osserva inoltre che un sottogruppo è normale se e solo se è unione di classi di coniugio (ma in generale non è vero che unendo delle classi di coniugio si ottiene un sottogruppo).
 \end{defn}
-
-
 \begin{exmp}[Le classi di coniugio di $GL_n(\C)$]
 Nel caso del gruppo $GL_n(\C)$ due matrici stanno nella stessa classe di coniugio se e solo se sono simili, quindi per ogni classe di coniugio esiste un rappresentante canonico che è la forma di Jordan di una qualsiasi matrice nella classe (con opportune convenzioni sull'ordine dei blocchi e degli autovalori).
 \end{exmp}
 
 \begin{defn}[Centro di un gruppo]
-	Sia $G$ un gruppo, il \textit{centro} di $G$ si indica con $Z(G)$ ed è il sottoinsieme degli elementi che commutano con tutto $G$:
-	\[
-		Z(G)=\{ h\in G\ |\ hg=gh\ \forall g\in G \}
-	\]
+	Sia $G$ un gruppo, il \emph{centro} di $G$ si indica con $Z(G)$ ed è il sottoinsieme degli elementi che commutano con tutto $G$:
+	\[Z(G)=\{ h\in G\ |\ hg=gh\ \forall g\in G \}\]
 	\`E immediato verificare che $Z(G)$ è un sottogruppo normale di $G$.
-
 \end{defn}
 
 \begin{defn}[Prodotto diretto di gruppi]
@@ -314,66 +296,104 @@ Siano $G$ e $H$ gruppi. Si definisce prodotto diretto di $G$ e $H$ il gruppo for
 
 \begin{defn}[Omomorfismo (isomorfismo) di gruppi]
 Siano $G$ ed $H$ gruppi, un'applicazione $\varphi:G\to H$ si dice \textit{omomorfismo di gruppi} se
-\[
-	\forall g_1,g_2\in G\qquad \varphi(g_1 g_2)=\varphi(g_1)\varphi(g_2)
-\]
+\[\forall g_1,g_2\in G\qquad \varphi(g_1 g_2)=\varphi(g_1)\varphi(g_2)\]
 dove la prima moltiplicazione è fatta in $G$ mentre la seconda in $H$.
-Se $\varphi$ è bigettiva, allora si dice \textit{isomorfismo}, e i due gruppi si dicono \emph{isomorfi}.
+Se $\varphi$ è bigettiva, allora si dice \emph{isomorfismo}, e i due gruppi si dicono \emph{isomorfi} (in tal caso si scrive $G\cong H$).
 Indichiamo con $\Hom(G,H)$ l'insieme degli omomorfismi da $G$ ad $H$.
 \end{defn}
 
+Due gruppi isomorfi sono a tutti gli effetti ``lo stesso gruppo'', nel senso che dall'uno all'altro cambiano
+solo i simboli con cui indichiamo gli elementi, e il modo con cui passare da una ``scrittura'' all'altra è dato dall'isomorfismo.
+
+\begin{exercise}
+	Dati $G$ e $H$ due gruppi e $f:G\to H$ un omomorfismo di gruppi, $f(e_G) = e_H$ dove $e_G,e_H$ sono le unità dei rispettivi gruppi.
+\end{exercise}
+
 \begin{defn}
-	Siano $G$ e $H$ gruppi, $f:G\to H$ un omomorfismo di gruppi, allora definiamo
+	Siano $G$ e $H$ gruppi, $f:G\to H$ un omomorfismo di gruppi, allora definiamo il nucleo (kernel) e l'immagine di $f$ rispettivamente come:
 	\begin{gather*}
 		\Ker f = \{g\in G\ |\ f(g)=e_H\}\\
-		\Imm f =\{ h\in H\ |\ \exists g\in G\text{ t.c. }f(g)=h\}
+		\Imm f =\{ h\in H\ |\ \exists g\in G\text{ tale che }f(g)=h\}
 	\end{gather*}
-	Non è difficile verificare che sia $\Ker f$ che $\Im f$ sono sempre sottogruppi rispettivamente di $G$ e di $H$, inoltre si può osserevare che $\Ker f$ è un sottogruppo normale di $G$.
+	dove $e_H$ è l'unità di $H$.
+	Non è difficile verificare che sia $\Ker f$ che $\Imm f$ sono sempre sottogruppi rispettivamente di $G$ e di $H$.
 \end{defn}
-
-\begin{rem}
-	Non è difficile dimostrare che, dati $G$ e $H$ due gruppi e $f:G\to H$ un omomorfismo di gruppi, esso è \textit{iniettivo} se e solo se $\Ker f = \{e\}$.
-\end{rem}
+\begin{exercise}
+	Dati $G$ e $H$ due gruppi e $f:G\to H$ un omomorfismo di gruppi, $\Ker f$ è un sottogruppo normale di $G$.
+\end{exercise}
+\begin{exercise}
+	Dati $G$ e $H$ due gruppi e $f:G\to H$ un omomorfismo di gruppi, esso è \emph{iniettivo} se e solo se $\Ker f = \{e\}$ dove $e\in G$ è l'elemento neutro.
+\end{exercise}
 
 
 \begin{thm}[Primo teorema di omomorfismo]\label{alg:primo_teo_omo}
 	Dati due gruppi $G$ e $H$ e un omomorfismo $f:G\to H$, vale che
 	\[ G/\Ker f \cong \Imm f\]
 \end{thm}
+\begin{proof}[Cenno di dimostrazione]
+	Considerare l'applicazione $\phi:G/\Ker f \to \Imm f$ definita da 
+	\[\phi(g\Ker f) = f(g)\]
+	Dimostrare innanzitutto che è ben definita (questo è il punto fondamentale) e poi che è un omomorfismo di gruppi. Infine, mostrare che è bigettiva.
+\end{proof}
 \begin{rem}
 	Se la $f$ del teorema precedente è iniettiva, allora $G/\Ker f\cong G$ e quindi $G\cong \Imm f$. Invece se $f$ è surgettiva, allora $G/\Ker f\cong H$.
 \end{rem}
 
+\begin{rem}
+	Ci si può chiedere se, dato un gruppo $G$ e due sottogruppi normali $H,K\trianglelefteq G$ tali che $H\cong K$, si possa concludere che $G/H\cong G/K$. Questo in generale è falso! Come esempio si può prendere $G=\Z$, $H=5\Z$ e $K=7\Z$, dove
+	\[5\Z=\{ 5t|\ t\in \Z\}\qquad 7\Z=\{ 7t|\ t\in \Z\}\]
+	sono i sottogruppi generati rispettivamente da $5$ e $7$.
+	Infatti è facile esibire degli isomorfismi $H\cong \Z\cong K$, ma $G/H$ ha $5$ elementi mentre $G/K$ ne ha $7$, quindi non possono essere isomorfi.\footnote{Esistono controesempi anche con gruppi finiti.}
+\end{rem}
 
 
-\begin{defn}[Azione di un gruppo su un insieme] Sia $G$ un gruppo e $I$ un insieme. Chiamiamo azione $a$ di $G$ su $I$ una funzione $a:G\times I \to I$ che rispetti la regola di composizione, ovvero che se $h,g\in G$ e $i \in I$, valga
+\begin{defn}[Azione di un gruppo su un insieme] Sia $G$ un gruppo e $I$ un insieme. Chiamiamo azione di $G$ su $I$ una funzione $a:G\times I \to I$ che rispetti la regola di composizione, ovvero tale che se $h,g\in G$ e $i \in I$, valga
 \[ a(h,a(g,i)) = a(hg, i) \]
-Normalmente si usa una notazione abbreviata in cui invece di scrivere $a(g,i)$ si scrive direttamente $g\cdot i$ o addirittura $gi$
-
-
+e tale che l'elemento neutro $e\in G$ agisca ``banalmente'', ovvero $a(e, i) = i$ per ogni $i\in I$.
+Normalmente si usa una notazione abbreviata in cui invece di scrivere $a(g,i)$ si scrive direttamente $g\cdot i$ o addirittura $gi$, quindi le condizioni date si riscrivono:
+\begin{gather*}
+	h\cdot(g\cdot i) = (hg)\cdot i\\
+	e\cdot i = i
+\end{gather*}
 \label{defn:azione}
 \end{defn}
 
+In pratica un'azione di un gruppo $G$ su un insieme $I$ ci consente di ``interpretare'' ogni elemento $g\in G$ come una funzione $g:I\to I$, e l'operazione
+di gruppo diventa la composizione delle funzioni.
+\begin{exercise}
+Mostrare che in realtà queste funzioni date dagli elementi di $G$ sono bigettive, e che si ha un omomorfismo di gruppi $G\to Big(I)$ dove $Big(I)$ è il gruppo delle funzioni bigettive da $I$ in sé.
+\end{exercise}
 
 \begin{defn}[Azione transitiva]
-Un'azione di un gruppo $G$ su un insieme $I\neq \emptyset$ si dice \textit{transitiva} se $\forall\ i,j\in I\ \exists s\in G$ t.c. $j=s\cdot i$.
+Un'azione di un gruppo $G$ su un insieme $I\neq \emptyset$ si dice \emph{transitiva} se dati comunque due elementi $i,j\in I$ esiste un elemento del gruppo $s\in G$ tale che $j=s\cdot i$.
 \label{defn:azione transitiva}
 \end{defn}
 
 
 \begin{defn}[Orbita di un elemento]
-Sia $G$ un gruppo che agisce sull'insieme $I$, dato $x\in I$ si chiama \textit{orbita} di $x$ in $G$ l'insieme $\Orb_{G}(x)=\{ g\cdot x\ |\ g\in G \}$, se il gruppo utilizzato è chiaro si può scrivere semplicemente $\Orb(x)$. Si osserva subito che un'azione è transitiva se e solo se induce una unica orbita.
+Sia $G$ un gruppo che agisce sull'insieme $I$, dato $x\in I$ si chiama \textit{orbita} di $x$ indotta dall'azione di $G$ l'insieme $\Orb_{G}(x)=\{ g\cdot x\ |\ g\in G \}$, se il gruppo utilizzato è chiaro si può scrivere semplicemente $\Orb(x)$. Si osserva subito che un'azione è transitiva se e solo se induce una unica orbita.
 \label{defn:orbita}
 \end{defn}
 
+\begin{exercise}
+Le orbite indotte da un'azione del gruppo $G$ sull'insieme $I$ formano una partizione dell'insieme $I$. 
+\end{exercise}
 
-\begin{rem} Le orbite di un gruppo $G$ sull'insieme $I$ formano una partizione dell'insieme. La verifica non è difficile. Vale inoltre la formula $|\Orb_G(x)| \cdot |\Stab_G(x)| = |G|$
-\end{rem}
+\begin{exercise}
+Supponiamo di avere un gruppo $G$ che agisce su un insieme $I$. Se $x\in I$ chiamiamo \emph{stabilizzatore} di $x$ l'insieme
+$\Stab(x) = \{g\in G| g\cdot x = x\}$.
+Mostrare che per ogni $x$:
+\begin{enumerate}
+\item $\Stab(x)$ è un sottogruppo di $G$.
+\item $\Orb(x)$ è in corrispondenza biunivoca con l'insieme quoziente $G/\Stab(x)$.
+\end{enumerate}
+Dedurre che se $G$ è un gruppo finito allora vale la formula $|\Orb(x)| \cdot |\Stab(x)| = |G|$.
+\end{exercise}
 
 
 
 \begin{rem}
-	Un gruppo $G$ può agire su se stesso per coniugio, ovvero dati $g\in G$ (qui $G$ è pensato come gruppo che agisce) e $x\in G$ ($G$ pensato come insieme),
+	Un gruppo $G$ può agire su se stesso per coniugio, ovvero dati $g\in G$ (qui $G$ è pensato come gruppo che agisce) e $x\in G$ ($G$ pensato come insieme che ``subisce'' l'azione),
 	si pone $g\cdot x = gxg^{-1}$. Non è difficile verificare che si tratta davvero di una azione.
 	Osserviamo che le classi di coniugio sono le orbite degli elementi generate mediante l'azione per conugio.
 \end{rem}
@@ -382,12 +402,12 @@ Sia $G$ un gruppo che agisce sull'insieme $I$, dato $x\in I$ si chiama \textit{o
 
 
 \begin{defn}[Azione semplicemente transitiva]
-Un'azione di $G$ su un insieme $I\neq \emptyset$ si dice \textit{semplicemente transitiva}
+Un'azione di $G$ su un insieme $I\neq \emptyset$ si dice \emph{semplicemente transitiva}
 se presi comunque $i,j\in I$ esiste un unico $s\in G$ tale che $j=s\cdot i$.
 \end{defn}
 
 
-\begin{defn}[Funzione $G$ equivariante]
+\begin{defn}[Funzione $G-$equivariante]
 Dato un gruppo $G$ che agisce su due insiemi $I$ e $J$, una funzione $\phi: I \to J$ si dice $G$ equivariante se
 \[ \phi(s \cdot_I i) = s \cdot_J \phi(i) \qquad \forall s \in G, \ \ \forall i \in I \]
 \end{defn}
@@ -397,16 +417,16 @@ Dato un gruppo $G$ che agisce su due insiemi $I$ e $J$, una funzione $\phi: I \t
 
 
 \newpage
-\subsection{Proprietà dei gruppi ciclici}
+\subsection{Gruppi ciclici}
 
 \begin{defn}[Gruppo ciclico] Un gruppo $G$ si dice ciclico se esiste un elemento $a\in G$ tale che ogni
 elemento di $G$ è una potenza di $a$, ovvero $G=\langle a\rangle$. Si dice che $a$ è un generatore di $G$.
 \end{defn}
 
-\begin{rem}
+\begin{exercise}
 Sia $G$ un gruppo ciclico di cardinalità $n$ e generatore $a$. Allora $n$ è il più piccolo intero positivo tale che $a^n = e$,
 e ogni elemento di $G$ si scrive in modo unico come $a^k$ con $0\le k < n$.
-\end{rem}
+\end{exercise}
 
 \begin{exmp}[Radici dell'unità]
 Dato $n>0$ intero, l'insieme $\mu_n\subset \C^*$ delle radici $n$-esime dell'unità è un gruppo ciclico con $n$ elementi.
@@ -420,7 +440,7 @@ isomorfismo $f:\langle a\rangle\to\langle b\rangle$ ponendo $f(a^k) = b^k$ per $
 
 
 \begin{prop} Sia $C_n$ un gruppo ciclico di cardinalità $n$. Allora
-\[ n = card(\Hom(C_n,\C^*))\]
+\[ n = |\Hom(C_n,\C^*)|\]
 \end{prop}
 \begin{proof} Sia $a$ un generatore di $C_n$. Fissato $\omega\in\mu_n$ posso definire
 una funzione $f:C_n\to\C^*$ ponendo $f(a^k) = \omega^k$ per $0\le k < n$.
@@ -433,36 +453,32 @@ dell'unità, che chiamiamo $\omega$. A questo punto il fatto che $f$ è omomorfi
 \end{proof}
 
 
-\subsection{Proprietà dei gruppi abeliani}
+\subsection{Gruppi abeliani}
 \begin{defn}[Gruppo abeliano] Un gruppo $G$ si dice abeliano se l'operazione di gruppo è commutativa, cioè $\quad\forall a,b\in G\quad ab=ba$.
 \end{defn}
 
-\begin{rem} Un gruppo ciclico è sempre abeliano.
-\end{rem}
+\begin{exercise} Un gruppo ciclico è sempre abeliano.
+\end{exercise}
 
-Potrebbe essere utile conoscere il seguente risultato, la cui dimostrazione richiederebbe una conoscenza più approfondita della teoria dei gruppi.
+Potrebbe essere utile (ma non è strettamente necessario ai fini di questo corso) conoscere il seguente risultato, la cui dimostrazione richiederebbe una conoscenza più approfondita della teoria dei gruppi.
 \begin{thm}Ogni gruppo abeliano finito è isomorfo al prodotto diretto di gruppi ciclici.
 \end{thm}
-
-\begin{rem} Sia $G$ un gruppo abeliano. Allora
-\[ |G| = card(\Hom(G,\C^*))\]
-
-La dimostrazione si ottiene ricordando che $G$ è prodotto diretto di gruppi ciclici e facendo un ragionamento simile a quello
-della proposizione analoga per gruppi ciclici.
+Sia $G$ un gruppo abeliano. Allora usando il fatto che $G$ è isomorfo al prodotto diretto di alcuni gruppi ciclici e facendo un ragionamento simile a quello
+della proposizione analoga per gruppi ciclici si ottiene che
+\[ |G| = |\Hom(G,\C^*)|\]
 Se invece $G$ non è abeliano allora nella formula precedente all'uguale va sostituito un $>$.
-\end{rem}
+Vedremo comunque come questi risultati seguono facilmente dalla teoria delle rappresentazioni che svilupperemo.
 
 
 
-
-\subsection{Proprietà del gruppi simmetrici}
+\subsection{Gruppi simmetrici}
 Il gruppo simmetrico $S_n$ è stato introdotto come l'insieme delle funzioni bigettive da $\{1,2,\dots,n\}$ in sé, dotato dell'operazione di composizione.
 Dunque $S_n$ agisce in modo naturale su $\{1,2,\dots,n\}$, permutandone gli elementi. Per descrivere un elemento $\sigma \in S_n$
 è spesso conveniente usare la notazione di prodotto di cicli disgiunti, che ora descriviamo informalmente.
 
 Si comincia a costruire la lista $(1, \sigma(1), \sigma^2(1), \dots)$. Visto che abbiamo a disposizione un numero finito di elementi,
-ad un certo punto sarà $\sigma^k(1) = 1$. Allora se scriviamo $(1, \sigma(1), \sigma^2(1), \dots, \sigma^{k-1}(1))$ tutti i numeri tra le
-parentesi saranno diversi tra loro (questo segue dal fatto che $\sigma$ è bigettiva). Inoltre ognuno dei numeri scritti viene mandato da $\sigma$
+ci si convince facilmente (ma non è neanche del tutto banale) che ad un certo punto sarà $\sigma^k(1) = 1$. Allora se scriviamo $(1, \sigma(1), \sigma^2(1), \dots, \sigma^{k-1}(1))$ tutti i numeri nella lista
+saranno diversi tra loro (questo segue dal fatto che $\sigma$ è bigettiva). Inoltre ognuno dei numeri scritti viene mandato da $\sigma$
 nel numero immediatamente successivo nella lista, e l'ultimo numero viene mandato nel primo. Quello che abbiamo appena scritto è un \emph{ciclo}.
 \`E anche possibile che la lista sia semplicemente $(1)$, il che vorrebbe dire che $1$ viene lasciato fisso da $\sigma$.
 Se avessimo cominciato il procedimento con $\sigma(1)$ al posto di $1$ avremmo ottenuto $(\sigma(1), \sigma^2(1), \dots, \sigma^{k-1}(1), 1)$, che
@@ -471,7 +487,7 @@ $(1, \sigma(1), \sigma^2(1), \dots, \sigma^{k-1}(1))$ e $(\sigma(1), \sigma^2(1)
 e un ragionamento analogo vale per gli altri numeri facenti parte della lista: non importa da quale si parte.
 Può darsi che non tutti i numeri da $1$ a $n$ compaiano nel ciclo appena scritto: in tal caso si prende un numero ancora non scritto e si ricomincia da capo
 da lui, creando una nuovo ciclo, e si continua così finché non sono stati scritti tutti i numeri.
-Alla fine ci ritroviamo un elenco di cicli che sono necessariamente disgiunti per via della bigettività di $\sigma$.
+Alla fine ci ritroviamo con un elenco di cicli che sono necessariamente disgiunti per via della bigettività di $\sigma$.
 \`E facile convincersi che in questo modo si descrive completamente $\sigma$. Inoltre a meno di variare
 l'ordine con cui sono scritti i cicli e di cambiare i ``punti di partenza'' dei singoli cicli questa scrittura come cicli disgiunti è unica.
 Riassumiamo quanto detto nel seguente teorema:
@@ -507,7 +523,7 @@ Chi fosse ancora turbato potrebbe scrivere, almeno nel caso $n\ge 2$, $\sigma = 
 \end{proof}
 
 Osserviamo che il teorema precedente assicura solo l'esistenza di una scrittura come prodotto di trasposizioni
-ma non l'unicità. In effetti questa non sussiste, infatti se in fondo ad un prodotto di trasposizioni aggiungo $(1,2)(1,2)$
+ma non l'unicità. In effetti questa non sussiste, infatti se in fondo ad un prodotto di trasposizioni si aggiunge $(1,2)(1,2)$
 allora il risultato non cambia. Per avere un esempio leggermente più sofisticato:
 \[(2,1)(2,3) = (1,3)(1,2)\]
 Tuttavia quello che non cambia è la parità del numero di trasposizioni, come precisato dal seguente teorema.
@@ -518,7 +534,7 @@ Allora $s\equiv t \mod 2$.
 \end{thm}
 \begin{proof}[Cenno di dimostrazione]
 Definiamo la seguente funzione $f:S_n\to\N$:
-\[f(\rho) = card\left(\left\{\quad(a,b)\in\{1,\dots,n\}^2 \quad | \quad a < b, \quad\rho(a) > \rho(b) \quad\right\}\right)\]
+\[f(\rho) = |\left\{\quad(a,b)\in\{1,\dots,n\}^2 \quad | \quad a < b, \quad\rho(a) > \rho(b) \quad\right\}|\]
 Non è difficile verificare che se $\tau\in S_n$ è una trasposizione allora $f(\rho)$ e $f(\tau\rho)$ hanno parità diversa.
 Il risultato segue immediatamente visto che $f(\tau_1\tau_2\dots\tau_t) = f(\sigma_1\sigma_2\dots\sigma_s)$.
 \end{proof}
@@ -543,7 +559,7 @@ chiamato \emph{gruppo alterno} e indicato con $A_n$.
 \end{defn}
 
 
-\subsection{Proprietà dei gruppi diedrali}
+\subsection{Gruppi diedrali}
 
 \begin{defn}[Gruppo diedrale]
 Consideriamo in $\R^2$ un poligono regolare di $n$ lati con centro nell'origine.
@@ -575,7 +591,7 @@ il gruppo $D_n$, che si può presentare nel seguente modo: $$D_n=\langle\rho,\si
 
 
 \newpage
-\section{Algebra lineare}
+\section{Alcuni risultati di algebra lineare}
 In questa sezione diamo alcune definizioni e teoremi di algebra lineare che sono stati utilizzati nel corso o che sono utili per avere una visione d'insieme di certi argomenti. Non saranno presenti le dimostrazioni che possono essere trovate su molti libri di algebra lineare.
 \begin{thm}[Diagonalizzazione simultanea]
 \label{thm:diag_sim}
