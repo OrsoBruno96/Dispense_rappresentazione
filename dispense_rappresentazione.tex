@@ -92,7 +92,7 @@
 \newcommand*\quot[2]{{^{\textstyle #1}\big/_{\textstyle #2}}}
 \newcommand{\dx}{\text{d}x}
 \newcommand{\diff}{\text{d}}
-
+\newcommand{\matrices}{\mathcal{M}}
 
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\Hom}{Hom}
@@ -149,6 +149,7 @@
 \newpage
 \section*{Introduzione}
 Qui dovremmo scrivere una introduzione, specificare quali sono le finalità e a chi sono rivolti determinati capitoli, eccetera.
+
 
 \newpage
 \section{Nozioni di base di teoria dei gruppi}
@@ -593,24 +594,27 @@ il gruppo $D_n$, che si può presentare nel seguente modo: $$D_n=\langle\rho,\si
 \newpage
 \section{Alcuni risultati di algebra lineare}
 In questa sezione diamo alcune definizioni e teoremi di algebra lineare che sono stati utilizzati nel corso o che sono utili per avere una visione d'insieme di certi argomenti. Non saranno presenti le dimostrazioni che possono essere trovate su molti libri di algebra lineare.
+\begin{defn}[Spazio vettoriale duale]
+Se $V$ è un $\K-$spazio vettoriale, indichiamo con $V^*$ lo spazio duale dei funzionali lineari $f:V\to\K$.
+
+Se $V$ è finitamente generato con base $\{v_i\}_{i=1}^n$, allora $V^*$ ammette come base $\{v_i^*\}_{i=1}^n$ (detta \emph{base duale}), dove gli elementi $v_i^*\in V^*$
+sono definiti da $v_i^*(v_j) = \delta_{i,j}$.
+\end{defn}
+
 \begin{thm}[Diagonalizzazione simultanea]
 \label{thm:diag_sim}
-	Date due matrici $M, N\in \mathcal{M}(n,n,\K)$, diremo che sono \textit{simultaneamente diagonalizzabili} se esiste una base comune di autovettori per entrambe.\\
-	Date $M, N\in \mathcal{M}(n,n,\K)$, se esse commutano e sono entrambe diagonalizzabili allora sono simultaneamente diagonalizzabili.
+	Date due matrici $M, N\in \matrices_n(\K)$, diremo che sono \emph{simultaneamente diagonalizzabili} se esiste una base comune di autovettori per entrambe.\\
+	Date $M, N\in \matrices_n(\K)$, se esse commutano e sono entrambe diagonalizzabili allora sono simultaneamente diagonalizzabili.
 \end{thm}
 \begin{cor}
-	Date $M_1,\ldots,M_k \in \mathcal{M}(n,n,\K)$, se $M_iM_j=M_jM_i\ \forall\ i, j$ e ogni $M_i$ è diagonalizzabile, allora esiste una base comune di autovettori per tutte quante.
+	Date $M_1,\ldots,M_k \in \matrices_n(\K)$, se $M_iM_j=M_jM_i\ \forall\ i, j$ e ogni $M_i$ è diagonalizzabile, allora esiste una base comune di autovettori per tutte quante.
 \end{cor}
 
 
 \begin{defn}[Ideale di un endomorfismo]
 	Se $p(x)=a_n x^n+\ldots+a_0$, allora scriviamo $p(f)$ per intendere $a_nf^n+\ldots+a_0f^0$ dove $f^0=\Id$ e $f^k=\underbrace{f\circ\ldots\circ f}_{k \text{ volte}}$.\\
 	Sia $V$ un $\K$-spazio vettoriale, $f:V\to V$ un endomorfismo di $V$. Definiamo \textit{ideale di $f$} l'insieme
-	\[
-		I(f)=\left\{ p(x)\in \K[x]\ |\ p(f)=0 \right\}
-	\]
-
-
+	\[I(f)=\left\{ p(x)\in \K[x]\ |\ p(f)=0 \right\}\]
 \end{defn}
 
 
@@ -621,7 +625,7 @@ In questa sezione diamo alcune definizioni e teoremi di algebra lineare che sono
 \end{thm}
 
 \begin{thm}[Forma canonica di Jordan]
-	Sia $M\in \mathcal{M}(n,n,\K)$ una matrice triangolabile, siano $\lambda_1,\ldots,\lambda_k$ i suoi autovalori, allora $M$ è simile alla sua \textit{forma canonica di Jordan} che è nella forma
+	Sia $M\in \matrices_n(\K)$ una matrice triangolabile, siano $\lambda_1,\ldots,\lambda_k$ i suoi autovalori, allora $M$ è simile alla sua \textit{forma canonica di Jordan} che è nella forma
 	\begin{align*}
 		&\begin{pmatrix}
 			J_1 & & \\
@@ -662,7 +666,7 @@ Siano $V,W$ due $\C$-spazi vettoriali, una funzione $h:V\times V\to W$ si dice \
 
 \newpage
 \section{Algebra multilineare}
-\subsection{Alcune generalizzazioni di algebra lineare}
+\subsection{Base di uno spazio vettoriale}
 
 \begin{defn}[Base di uno spazio vettoriale]
 Sia $V$ un $\K-$spazio vettoriale e $I$ un insieme; una base di $V$ è una funzione $e: I \to V$ tale che
@@ -675,27 +679,28 @@ una funzione $e:I\to V$ che manda $i\to e_i$, in accordo con la definizione che 
 
 Alcuni dei risultati a cui arriveremo sono validi anche per $I$ infiniti, ma per semplicità consideriamo solo
 spazi vettoriali finitamente generati (per cui esiste una base $e: I \to V$ con $I$ insieme finito).
+
 Questo primo lemma dovrebbe essere noto a chiunque abbia un minimo di familiarità con l'algebra lineare:
 \begin{lemma}
-Siano $V,W$ dei $\K-$spazi vettoriali, sia $e:I\to V$ una base di $V$ e $f: I \to W$ una funzione. Allora $\exists!\  \phi: V \to W$ lineare tale che
+Siano $V,W$ degli spazi vettoriali, sia $e:I\to V$ una base di $V$ e $f: I \to W$ una funzione. Allora esiste un'unica $\phi: V \to W$ lineare tale che
 \[\phi(e_i) = f_i \]
-Inoltre $\phi$ è un isomorfismo $\Leftrightarrow$ $f$ è una base.
+Inoltre $\phi$ è un isomorfismo se e solo se $f$ è una base.
 \end{lemma}
 
 \begin{lemma}
 Dato $I$ insieme, esiste uno spazio vettoriale $V$ con base una certa $e:I\to V$.
 \end{lemma}
 \begin{proof}
-Definisco il seguente insieme, che è in modo naturale un $\C-$spazio vettoriale:
-\[ \C^I = \{ v:I\to\C \quad|\quad v \text{ ha supporto finito}\}\]
-Ora è facile osservare che $e:I\to\C^I$ definita da $e_i(j) = \delta_{i,j}$ è una base.
+Definisco il seguente insieme, che è in modo naturale un $\K-$spazio vettoriale:
+\[ \K^I = \{ v:I\to\K \quad|\quad v \text{ ha supporto finito}\}\]
+Ora è facile osservare che $e:I\to\K^I$ definita da $e_i(j) = \delta_{i,j}$ è una base.
 \end{proof}
 
 
 \subsection{Prodotto tensoriale}
 
 \begin{defn}[Prodotto tensoriale]
-   Siano $V, W$ due $\mathbb{C}$-spazi vettoriali. Si dice prodotto tensore di $V$ e $W$,
+   Siano $V, W$ due $\K$-spazi vettoriali. Si dice prodotto tensore di $V$ e $W$,
    e si indica come $V\otimes W$, uno spazio vettoriale con una funzione bilineare
    $\otimes: V \times W \to V\otimes W$ tale che per ogni data funzione bilineare $h: V\times W \to  Z$,
    esiste unica $\phi: V\otimes W \to Z$ lineare per cui $\phi(v \otimes w)=h(v,w)$. Ovvero questa $\phi$ fa commutare il diagramma:
@@ -716,7 +721,7 @@ che così il diagramma commuta e non esiste nessun'altra $\phi$ che fa commutare
 \begin{prop}
 Se ho due prodotti tensoriali $V \otimes W$ e $V \overline{\otimes} W$, allora esiste un unico isomorfismo
 $\phi: V \otimes W \to V \overline{\otimes} W$ tale che, fissati comunque $v\in V, w\in W$, valga
-\[ \phi (v\otimes w) = v \overline{\otimes} w\]
+$\phi (v\otimes w) = v \overline{\otimes} w$.
 \end{prop}
 \begin{proof}
 Considero i seguenti due diagrammi:
@@ -744,7 +749,7 @@ La proprietà universale per il prodotto tensore $\otimes$ dice che $\exists !\p
 \]
 Ma noi conosciamo già delle applicazioni lineari che fanno commutare i due diagrammi ``più grandi'':
 le identità sui rispettivi spazi vettoriali. Quindi per unicità possiamo concludere che 
-$\phi\psi=id_{V\overline{\otimes}W}, \psi\phi=id_{V\otimes W}$,
+$\phi\psi=\Id_{V\overline{\otimes}W}, \psi\phi=\Id_{V\otimes W}$,
 ovvero $\phi$ e $\psi$ sono una l'inversa dell'altra e in particolare $\phi$ è un isomorfismo.
 \end{proof}
 
@@ -770,20 +775,20 @@ L'insieme degli elementi di $V\otimes W$ della forma $v\otimes w$ con $v\in V, w
 \end{prop}
 
 \begin{proof} Consideriamo il sottospazio generato dagli elementi della forma $v\otimes w$:
-\[\langle\{v\otimes w:v\in V,w\in W\}\rangle=\langle A\rangle\]
-Vogliamo quindi dimostrare che $\langle A\rangle=V\otimes W$. Consideriamo il diagramma:
-\[\tridiag{V\times W}{ \otimes }{V \otimes W}{  }{ \langle A\rangle }{h}\]
-dove $h(v,w)=v\otimes w$ è ovviamente un'applicazione bilineare. Quindi $\exists !\psi:V\otimes W\rightarrow \langle A\rangle$ che fa commutare il diagramma. Detta $i:\langle A\rangle\rightarrow V\otimes W$ l'inclusione consideriamo il seguente diagramma:
+\[\langle\{v\otimes w:v\in V,w\in W\}\rangle=A\]
+Vogliamo quindi dimostrare che $A=V\otimes W$. Consideriamo il diagramma:
+\[\tridiag{V\times W}{ \otimes }{V \otimes W}{  }{ A }{h}\]
+dove $h(v,w)=v\otimes w$ è ovviamente un'applicazione bilineare. Quindi $\exists !\psi:V\otimes W\rightarrow A$ che fa commutare il diagramma. Detta $i:A\rightarrow V\otimes W$ l'inclusione consideriamo il seguente diagramma:
 \[
 \begin{diagram}
             &                       & V\otimes W               \\
             & \ruTo^{\otimes}       & \dTo>{\psi}              \\
- V\times W  & \rTo^{h}              & \langle A \rangle   \\
+ V\times W  & \rTo^{h}              & A   \\
             & \rdTo_{i\circ h}      & \dTo>{i}              \\
             &                       & V\times W               \\
 \end{diagram}
 \]
-tuttavia il diagramma grande commuta anche con $id_{V\otimes W}$ e quindi $i\circ\psi=id_{V\otimes W}$ dunque $i$ è surgettiva e pertanto $\langle A\rangle=V\otimes W$.
+tuttavia il diagramma grande commuta anche con $\Id_{V\otimes W}$ e quindi $i\circ\psi=\Id_{V\otimes W}$ dunque $i$ è surgettiva e pertanto $A=V\otimes W$.
 \end{proof}
 
 
@@ -794,7 +799,7 @@ Una funzione con tale proprietà esiste ed è unica poiché l'applicazione $V\ti
 \end{defn}
 
 \begin{rem}
-$id_V \otimes id_W = id_{V\otimes W}$
+$\Id_V \otimes \Id_W = \Id_{V\otimes W}$, poiché coincidono su un insieme di generatori.
 \end{rem}
 
 
@@ -814,8 +819,8 @@ Quindi siamo riusciti ad ottenere una scrittura del tipo che volevamo. Resta da 
 ovvero che gli elementi $\tilde w_i$ sono univocamente determinati.
 
 Consideriamo la base $\{e_i^*\}_{i\in I}$ di $V^*$ duale rispetto a $\{e_i\}_{i\in I}$. Fissato un $k\in I$ possiamo considerare l'applicazione
-lineare $e_k^*\otimes id_W: V\otimes W \to \K\otimes W$. Valutandola in $x$ otteniamo:
-\[ (e_k^*\otimes id_W) \left(\sum_{i\in I} e_i\otimes\tilde w_i \right) = \sum_{i\in I} e_k^*(e_i)\otimes\tilde w_k = 1\otimes \tilde w_k\]
+lineare $e_k^*\otimes \Id_W: V\otimes W \to \K\otimes W$. Valutandola in $x$ otteniamo:
+\[ (e_k^*\otimes \Id_W) \left(\sum_{i\in I} e_i\otimes\tilde w_i \right) = \sum_{i\in I} e_k^*(e_i)\otimes\tilde w_k = 1\otimes \tilde w_k\]
 Ma $\K\otimes W$ è isomorfo in modo naturale a $W$, e questo isomorfismo porta l'elemento $1\otimes \tilde w_k$ in $\tilde w_k$.
 Quest'ultimo, pertanto, è univocamente determinato.
 \end{proof}
@@ -866,7 +871,7 @@ dalla base scelta per scrivere la matrice di un endomorfismo.
 
 \begin{thm}
 Se $f:V\to V$ e $g:W\to W$ sono endomorfismi di spazi vettoriali, allora vale la formula
-\[\tr(f\otimes g) = \tr(f) \tr(g)  \]
+$\tr(f\otimes g) = \tr(f) \tr(g)$
 \label{thm: tracciaprodotto}
 \end{thm}
 \begin{proof}
@@ -885,11 +890,25 @@ Ora, essendo la traccia una funzione continua e le matrice diagonalizzabili dens
 \end{proof}
 
 \begin{exercise}
-Sia $V$ un $\K-$spazio vettoriale. Allora $V^*\otimes V^*$ è isomorfo allo spazio vettoriale delle forme bilineari $V\times V\to \K$.
+Se $V,U,W$ sono spazi vettoriali sul campo $\K$ dimostrare che esistono (unici) i seguenti isomorfismi:
+\begin{enumerate}
+\item $V\otimes U \cong U\otimes V$, in modo tale che i vettori $v\otimes u$ vengano mandati in $u\otimes v$;
+\item $(V\otimes U)\otimes W \cong V\otimes(U\otimes W)$ con $(v\otimes u)\otimes w$ che viene mandato in $v\otimes(u\otimes w)$;
+\item $(V\oplus U)\otimes W \cong (V\otimes W) \oplus (U\otimes W)$ con $(v,u)\otimes w$ che viene mandato in $(v\otimes w, u\otimes w)$.
+\end{enumerate}
+\end{exercise}
+In particolare il punto 2 ci dice che possiamo parlare senza ambiguità dello spazio $V\otimes U \otimes W$, senza bisogno di specificare le parentesi.
+In realtà potevamo definire questo spazio in modo diretto con una proprietà universale che fa corrispondere alle forme trilineari che partono
+da $U\times U\times W$ applicazioni lineari da $U\otimes U\otimes W$. Come esercizio è utile formulare per bene questa proprietà universale 
+e dimostrare che $(V\otimes U)\otimes W$ la soddisfa. Allo stesso modo si possono trattare prodotti tensoriali di un numero arbitrario di spazi vettoriali.
+\begin{exercise}
+Sia $V$ uno spazio vettoriale. Allora $V^*\otimes V^*$ è isomorfo allo spazio vettoriale delle forme bilineari $V\times V\to \K$.
 \end{exercise}
 
 
 \subsection{Prodotto esterno e prodotto simmetrico}
+In questa sezione supponiamo che il campo degli scalari di ogni spazio vettoriale sia $\C$, o comunque un campo a caratteristica $0$.
+
 
 \begin{defn}[Applicazione $n-$lineare simmetrica/alternante]
  Una applicazione $\phi: V^n \to Z$ si dice $n-$lineare se è lineare in ogni componente dopo aver fissato le altre $n-1$.
@@ -898,15 +917,15 @@ Sia $V$ un $\K-$spazio vettoriale. Allora $V^*\otimes V^*$ è isomorfo allo spaz
  alternante se $\phi(v_{s(1)},\ldots,v_{s(n)})=\mathrm{sgn}(s)\phi(v_1,\ldots,v_n)$ per ogni permutazione $s \in S_n$.
 \end{defn}
 
-\begin{prop}
+\begin{exercise}
   Un'applicazione $n-$lineare $h: V^n \to W$ è alternante se e solo se, presi comunque $v_1,\dots,v_n\in V$
   non tutti distinti tra loro, si ha che $h(v_1,\dots,v_n)=0$.
-\end{prop}
+\end{exercise}
 
-\begin{prop}
+\begin{exercise}
   Sia $h: V^n \to W$ un'applicazione $n-$lineare alternante. Se i vettori $v_1,\dots,v_n$ sono linearmente dipendenti allora
   $h(v_1,\dots,v_n)=0$.
-\end{prop}
+\end{exercise}
 
 
 \begin{defn}[Prodotto esterno]
@@ -937,39 +956,104 @@ Sia $V$ uno spazio vettoriale e $n$ un numero naturale.
       $S^nV$ è generato dai vettori del tipo $v_1\dots v_n$.
 \end{itemize}
 \end{prop}
-
+\begin{proof}
+Le dimostrazioni sono del tutto analoghe a quelle viste per il prodotto tensore, e vengono lasciate per esercizio.
+\end{proof}
 
 \begin{defn}[Potenza simmetrica e potenza esterna di un'applicazione lineare]
 Sia $f: V\to V$ un endomorfismo di uno spazio vettoriale. Definiamo
-$\bigwedge^k f : \bigwedge^k V \to \bigwedge^k V$ la funzione che manda $v_1 \wedge \ldots \wedge v_n$ in $f(v_1) \wedge \ldots \wedge f(v_n)$
+$\bigwedge^k f : \bigwedge^k V \to \bigwedge^k V$ la funzione che manda $v_1 \wedge \ldots \wedge v_n$ in $f(v_1) \wedge \ldots \wedge f(v_n)$.
 
-In modo analogo si definisce la potenza simmetrica.
+In modo analogo si definisce la potenza simmetrica (verificare, tramite le proprietà universali, che queste definizioni hanno senso).
 \end{defn}
 
 
-\begin{rem} Siano $V$, $W$, $Z$ spazi vettoriali.
-\begin{itemize}
-   \item $\bigwedge^k \Id_V = \Id_{\bigwedge^kV}$
-   \item Date due applicazioni lineari $f:V\to W$ e $g:W\to Z$ allora $\bigwedge^k(g\circ f) = \bigwedge^kg\circ\bigwedge^kf$
-\end{itemize}
-\end{rem}
+\`E facile osservare che se $V$ è uno spazio vettoriale allora $\bigwedge^k \Id_V = \Id_{\bigwedge^kV}$,
+e che date due applicazioni lineari $f:V\to W$ e $g:W\to Z$ si ha che $\bigwedge^k(g\circ f) = \bigwedge^kg\circ\bigwedge^kf$.
+Chiaramente valgono osservazioni analoghe per i prodotti simmetrici.
 
-\begin{thm}[Dimensione del prodotto esterno]
+\begin{thm}[Base del prodotto esterno]
 Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i\}_{i=1}^n$ una base di $V$ e $k$ un intero positivo.
 Allora l'insieme
 \[E=\{e_{i_1} \wedge e_{i_2}\wedge \ldots \wedge e_{i_k} \quad|\quad 1 \leq i_1 < i_2 <\ldots< i_k \leq n\}\]
 è una base di $\bigwedge^k V$ di cardinalità $|E|= \binom {n}{k}$.
 \label{thm:prodotto esterno}
 \end{thm}
+\begin{proof}
+\`E facile osservare che l'insieme $E$ genera lo spazio $\bigwedge^k V$. Mostriamo ora che gli elementi di $E$ sono indipendenti.
+Fissiamo degli indici $1 \leq i_1 < i_2 <\ldots< i_k \leq n$.
+Per prima cosa osserviamo che la funzione $h:V^k\to\C$ definita da
+\[ h(v_1,\dots,v_k) = e_{i_1}^*(v_1)\dots e_{i_k}^*(v_k) \] 
+è $k-$lineare. Vorremmo in qualche modo renderla alternante, e per farlo usiamo lo stratagemma seguente.
+Presa una qualsiasi permutazione $s\in S_k$
+abbiamo che $h_s(v_1,\dots,v_k) = sgn(s)h(v_{s(1)}, \dots, v_{s(k)})$ è una funzione $k-$lineare. Consideriamo la somma
+\[ H(v_1,\dots, v_k) = \sum_{s\in S_k} h_s(v_1,\dots,v_k) \]
+Non è difficile convincersi che $H$ è alternante. Inoltre, se prendiamo $1 \leq j_1 < j_2 <\ldots< j_k \leq n$ vale la seguente proprietà:
+\[H(e_{j_1}, \dots, e_{j_k}) = \begin{cases}
+1 \qquad\text{ se } (j_1,\dots j_k) = (i_1, \dots i_k)\\
+0 \qquad\text{ altrimenti}
+\end{cases}\]
+Con la proprietà universale del prodotto alternante troviamo un funzionale che vale $1$ su $e_{i_1} \wedge e_{i_2}\wedge \ldots \wedge e_{i_k}$
+e $0$ su gli altri elementi di $E$. Questo dimostra che gli elementi di $E$ sono indipendenti.
+\end{proof}
 
+Osserviamo a questo punto che se $V$ è uno spazio vettoriale con base $\{e_i\}_{i=1}^n$, allora 
+$\bigwedge^kV = 0$ se $k>n$, mentre $\bigwedge^nV\neq 0$. Questo fatto può essere usato
+come dimostrazione dell'invarianza della cardinalità di una base per uno spazio vettoriale.
 
-\begin{thm}[Dimensione del prodotto simmetrico]
+La potenza esterna permette di dare una definizione di determinante di un endomorfismo in un certo
+senso più intrinseca di quella che si vede di solito nei corsi di algebra lineare.
+Supponiamo infatti di avere un endomorfismo $f:V\to V$. Se $V$ ha dimensione $1$ allora $f$ non
+è altro che la moltiplicazione per uno scalare, che chiamiamo $\det f$. Se invece $V$ ha dimensione $n$,
+sappiamo che $\dim\bigwedge^nV=1$, quindi poniamo $\det f = \det(\bigwedge^nf)$.
+Come si vede, questa definizione non dipende da nessuna base fissata per lo spazio $V$.
+Con la definizione tramite potenza esterna risulta immediata la formula di Binet $\det (f\circ g) = \det f \cdot \det g$, in quanto
+sappiamo che $\bigwedge^n(f\circ g) = \bigwedge^nf \circ \bigwedge^ng$.
+\begin{exercise}
+$v_1\wedge \dots \wedge v_k \neq 0$ se e solo se $v_1,\dots,v_k$ sono linearmente indipendenti.
+Dedurre che per un endomorfismo $f:V\to V$ si ha che $\det f\neq 0$ se e solo se $f$ è isomorfismo.
+\end{exercise}
+\begin{exercise}
+Dimostrare l'equivalenza tra la classica definizione di determinante e la definizione tramite potenza esterna.
+\end{exercise}
+
+\begin{lemma}
+Sia $f:V\to W$ un'applicazione lineare e $k$ un intero positivo. Allora:
+\begin{enumerate}
+\item se $f$ è surgettiva allora $\bigwedge^k f:\bigwedge^kV\to \bigwedge^kW$ è surgettiva;
+\item se $f$ è iniettiva allora $\bigwedge^k f:\bigwedge^kV\to \bigwedge^kW$ è iniettiva.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Dimostriamo separatamente i due punti.
+\begin{enumerate}
+\item Sia $w_1\wedge\dots\wedge w_k\in \bigwedge^kW$ e supponiamo $f(v_i) = w_i$ (tali $v_i$ esistono per surgettività di $f$).
+Allora $\bigwedge^kf(v_1\wedge\dots\wedge v_k) = w_1\wedge\dots\wedge w_k$. Visto che l'immagine contiene un insieme di generatori, allora $\bigwedge^kf$ è surgettiva.
+\item Sia $\{e_i\}_{i=1}^n$ base di $V$. Allora $f(e_1),\dots,f(e_n)$ sono indipendenti in $W$ e dunque si possono completare ad una base di $W$.
+Ora si vede chiaramente che la base di $\bigwedge^kV$ introdotta nel teorema \ref{thm:prodotto esterno} viene mandata iniettivamente in una parte
+della base di $\bigwedge^kW$.
+\end{enumerate}
+\end{proof}
+\begin{prop}
+Sia $f:V\to W$ lineare e consideriamo una sua potenza esterna $\bigwedge^kf$. Allora $\bigwedge^kf=0$ se e solo se $k>rango(f)$.
+\end{prop}
+\begin{proof}
+Sia $Z\subseteq W$ l'immagine di $f$. Allora posso scrivere $f = h\circ g$, dove $g:V\to Z$ è surgettiva (non è altro che $f$, con codominio ristretto)
+e $h:Z\to W$ è l'inclusione (quindi iniettiva). Passando alle potenze esterne abbiamo $\bigwedge^kf = \bigwedge^k h \circ \bigwedge^k g$ e per
+il lemma precedente $\bigwedge^k g$ è surgettiva mentre $\bigwedge^k h$ è iniettiva.
+Dunque $\bigwedge^kf = 0$ se e solo se $\bigwedge^kZ=0$ da cui si conclude.
+\end{proof}
+
+\begin{thm}[Base del prodotto simmetrico]
 Sia $V$ uno spazio vettoriale di dimensione $n$, $\{e_i\}_{i=1}^n$ una base di $V$ e $k$ un intero positivo.
 Allora l'insieme
-\[E=\{e_{i_1} \wedge e_{i_2}\wedge\ldots \wedge e_{i_k} \quad|\quad 1 \leq i_1 \leq i_2 \leq\ldots\leq i_k \leq n\}\]
+\[E=\{e_{i_1}e_{i_2}\ldots e_{i_k} \quad|\quad 1 \leq i_1 \leq i_2 \leq\ldots\leq i_k \leq n\}\]
 è una base di $S^k V$ di cardinalità $|E|= \binom {n+k-1}{k}$.
 \label{thm:prodotto simmetrico}
 \end{thm}
+\begin{proof}
+\`E simile a quella per il prodotto esterno, quindi viene lasciata per esercizio.
+\end{proof}
 
 Sia $V$ uno spazio vettoriale di dimensione $n$. Allora sappiamo che:
 \begin{itemize}
@@ -980,7 +1064,7 @@ Sia $V$ uno spazio vettoriale di dimensione $n$. Allora sappiamo che:
 Possiamo definire in modo abbastanza naturale un'applicazione lineare $V\otimes V\to \bigwedge^2V\oplus S^2V$,
 mandando il vettore $v\otimes w$ nella coppia $(v\wedge w, vw)$. In effetti questa applicazione è un isomorfismo.
 \begin{proof}
-Per uguaglianza delle dimensioni degli spazi di partenza e di arrivo, mi basta dimostrare che è surgettiva.
+Per uguaglianza delle dimensioni degli spazi di partenza e di arrivo, basta dimostrare che è surgettiva.
 Per ogni coppia $v\in V$, $w\in W$ abbiamo che:
 \[\frac{v\otimes w + w\otimes v}{2} \to (0, vw)\]
 \[\frac{v\otimes w - w\otimes v}{2} \to (v\wedge w, 0)\]
@@ -988,12 +1072,12 @@ Quindi $\bigwedge^2V$ e $S^2V$ sono contenuti nell'immagine. Ma da questo segue 
 \end{proof}
 
 
-\begin{thm}
-Sia $V$ spazio vettoriale. Allora $S^2V^*$ è isomorfo allo spazio vettoriale delle forme bilineari simmetriche $V\times V\to \C$.
-\end{thm}
-\begin{thm}
-Sia $V$ spazio vettoriale. Allora $\bigwedge^2V^*$ è isomorfo allo spazio vettoriale delle forme bilineari antisimmetriche $V\times V\to \C$.
-\end{thm}
+\begin{exercise}
+Sia $V$ un $\C-$spazio vettoriale. Allora $S^2V^*$ è isomorfo allo spazio vettoriale delle forme bilineari simmetriche $V\times V\to \C$.
+\end{exercise}
+\begin{exercise}
+Sia $V$ un $\C-$spazio vettoriale. Allora $\bigwedge^2V^*$ è isomorfo allo spazio vettoriale delle forme bilineari antisimmetriche $V\times V\to \C$.
+\end{exercise}
 
 
 \begin{prop}
@@ -1007,7 +1091,6 @@ Sia $f: V \to V$ un endomorfismo di uno spazio vettoriale. Allora vale
 \label{thm:tracciasymalt}
 \end{prop}
 
-
 \begin{proof} Sia $\{e_1,\ldots,e_n\}$ una base di $V$, allora $\exists a_{ij}: f(e_j)=\sum_i a_{ij}e_i$. Se $i<j$
 \begin{gather*}
 \bigwedge^2f(e_i\wedge e_j)=f(e_i)\wedge f(e_j)=\left(\sum_k a_{ki}e_k\right)\wedge\left(\sum_l a_{lj}e_l\right)=\\
@@ -1015,7 +1098,6 @@ Sia $f: V \to V$ un endomorfismo di uno spazio vettoriale. Allora vale
 \Rightarrow \tr(\bigwedge^2f)=\sum_{i<j}(a_{ii}a_{jj}-a_{ij}a_{ji})=\frac{1}{2}\sum_{i,j}(a_{ii}a_{jj}-a_{ij}a_{ji})= \dfrac{(\tr(f))^2 - \tr(f^2)}{2}
 \end{gather*}
 Per $S^2f$ si dimostra in maniera analoga.
-
 \end{proof}
 
 
@@ -1032,26 +1114,24 @@ Per $S^2f$ si dimostra in maniera analoga.
 
 \newpage
 \section{Prime proprietà delle rappresentazioni}
-
+\subsection{Definizione e primi esempi}
 \begin{defn}[Rappresentazione]
 	Sia $G$ un gruppo e $V$ uno spazio vettoriale. Una funzione $\rho: G \to GL(V)$ che manda ciascun elemento del gruppo in un'applicazione lineare invertibile di $V$
-	si dice rappresentazione di $G$ se è un omomorfismo di gruppi, ovvero deve rispettare la regola di composizione. In formule, se $s, t \in G$ deve valere
+	si dice rappresentazione di $G$ se è un omomorfismo di gruppi. Quindi deve valere
 	\[ \rho(st) v = \rho(s)\rho(t) v \qquad \forall v \in V, \quad \forall s,t \in G\]
 \end{defn}
 
-La dimensione di $V$ viene detta grado della rappresentazione.
+La dimensione di $V$ (che supporremo sempre finita) viene detta grado della rappresentazione.
 Per il momento consideriamo solo rappresentazioni su spazi vettoriali complessi, ovvero supponiamo che $V$ sia $\C-$spazio vettoriale.
 
 Con un piccolo abuso di linguaggio, spesso indicheremo con il nome di ``rappresentazione'' direttamente $V$, se è chiaro quale sia
 la rappresentazione $\rho$ che stiamo considerando. Spesso indicheremo gli spazi vettoriali
 su cui è definita una rappresentazione $\rho$ con nomi del tipo $V_\rho$, dove il pedice ci ricorda la rappresentazione che stiamo considerando.
 
-\begin{rem}
 Detto in altri termini, una rappresentazione di un gruppo $G$ è un'azione lineare di $G$ su uno spazio vettoriale $V$.
 Se non c'è ambiguità (cioè se è chiaro quale rappresentazione stiamo considerando)
 possiamo scrivere semplicemente $g\cdot v$ in luogo di $\rho(g)v$ per allegerire la notazione.
 In pratica stiamo ``interpretando'' gli elementi di $G$ come endomorfismi di uno spazio vettoriale.
-\end{rem}
 
 \begin{rem}
 $\rho(G)$ è evidentemente un sottogruppo di $GL(V)$, quindi esistono sempre inversi, potenze e valgono tutte le cose che sono vere per i gruppi.
@@ -1059,7 +1139,7 @@ $\rho(G)$ è evidentemente un sottogruppo di $GL(V)$, quindi esistono sempre inv
 
 
 \begin{exmp}
-   La rappresentazione banale, di grado qualsiasi, indicata con $\rho_1$ che manda qualsiasi elemento di $g$ nell'identità di $GL(V_{\rho_1})$, ovvero
+   La rappresentazione banale, di grado qualsiasi, che manda qualsiasi elemento di $g$ nell'identità di $GL(V)$, ovvero
 	\[ \rho(s ) = \Id_{V_{\rho_1}} \qquad \forall s \in G\]
 \end{exmp}
 \begin{exmp}
@@ -1070,13 +1150,20 @@ $\rho(G)$ è evidentemente un sottogruppo di $GL(V)$, quindi esistono sempre inv
 	\[ \rho(s) e_i = e_{s(i)}\]
 	Notare che in questo caso $\deg(\rho) = n$. Notiamo inoltre che se rappresentiamo nella base canonica le matrici associate a $\rho(s)$ queste matrici sono unitarie. Inoltre, ogni colonna (e anche ogni riga) contiene esattamente un 1 e tutti gli altri sono 0.
 
-	Prendiamo come esempio $S_3$ e vediamo cosa succede. Notiamo innanzitutto che $ |S_3| = 3! = 6$
-	FINISCI DI SCRIVERE
+	Prendiamo come esempio $S_3$ che agisce su $\C^3$ e vediamo cosa succede.
+	Una prima cosa a cui siamo interessati è capire se per caso ci sono dei sottospazi di $\C^3$ che sono invarianti rispetto
+	all'azione del gruppo. La risposta in questo caso è semplice: c'è il sottospazio di dimensione $1$ generato da $(1,1,1)$ che
+	viene lasciato ``indisturbato'' dall'azione di $S_3$, perché il gruppo non fa altro che scambiare le coordinate degli elementi,
+	che però sono tutte uguali e quindi non cambia nulla.
+	Riusciamo per caso a scrivere $\C^3 = \langle(1,1,1)\rangle \oplus W$ in  modo che anche $W$ sia invariante? La risposta è sì:
+	basta considerare il sottospazio di dimensione $2$ dei vettori la cui somma delle coordinate è nulla: è chiaro che la somma rimane $0$ anche
+	dopo aver permutato le coordinate a causa dell'azione di qualche permutazione di $S_3$. In questo modo abbiamo
+	``scomposto'' la nostra rappresentazione di grado $3$ in due rappresentazioni di grado $1$ e $2$ rispettivamente.
+	In pratica abbiamo ``diagonalizzato a blocchi'' gli endomorfismi dati dagli elementi di $S_3$.
+	Osserviamo che non si può ottenere una scomposizione più fine di quella che abbiamo appena trovato, perché questo corrisponderebbe
+	a diagonalizzare simultaneamente tutti gli endomorfismi dati dagli elementi di $S_3$: ciò non è possibile perché tali endomorfismi
+	non commutano tutti tra di loro (invece matrici diagonali commutano).
 \end{exmp}
-
-
-
-
 
 
 
@@ -1096,7 +1183,7 @@ Visto che il polinomio minimo di $\rho(g)$ non ha radici multiple, con il teorem
 
 Ricordiamo un teorema di algebra lineare per mostrare che se $G$ è abeliano allora
 tutte le matrici $\rho(g)$ sono simultaneamente diagonalizzabili:
-due endomorfismi di uno spazio vettoriale diagonalizzabili sono simultaneamente diagonalizzabili se e solo se commutano tra loro.
+degli endomorfismi di uno spazio vettoriale diagonalizzabili sono simultaneamente diagonalizzabili se e solo se commutano tra loro.
 \end{proof}
 
 
@@ -1104,33 +1191,19 @@ due endomorfismi di uno spazio vettoriale diagonalizzabili sono simultaneamente 
 
 \begin{defn}[Omomorfismo di rappresentazioni]
 Siano $\rho$ e $\sigma$ due rappresentazioni di $G$ su $V_{\rho}$ e $V_{\sigma}$ rispettivamente. Un omomorfismo di spazi vettorali $\varphi:V_{\rho}\to V_{\sigma}$ si dice \textit{omomorfismo di rappresentazioni} se
-\[
-	\forall\ a\in G, \forall\ v\in V_{\rho}\quad \varphi(\rho(a)(v)) = \sigma(a)(\varphi(v))
-\]
+\[ \forall\ a\in G, \forall\ v\in V_{\rho}\quad \varphi(\rho(a)(v)) = \sigma(a)(\varphi(v)) \]
 oppure equivalentemente
-\[
-	\forall\ a\in G\quad \varphi\circ \rho(a) = \sigma(a)\circ \varphi
-\]
-
-
-%Siano $G, H$ due gruppi e $\rho: G \to V_\rho$ e $\sigma: H \to V_\sigma$ due loro rappresentazioni. Una funzione lineare da $V_\rho \to V_\sigma$ \footnote{Ovvero un omomorfismo da $V_\rho$ a $V_\sigma$} è un omomorfismo di rappresentazioni se rispetta la regola di composizione
-
-
-%\[ \qquad \forall v,w \in V_\rho, V_\sigma\]
-
-
+\[ \forall\ a\in G\quad \varphi\circ \rho(a) = \sigma(a)\circ \varphi \]
+Ovvero se si fa prima agire un elemento del gruppo e poi si applica $\varphi$ si ottiene la stessa cosa che si sarebbe ottenuta
+applicando prima $\varphi$ e poi facendo agire lo stesso elemento del gruppo.
 \end{defn}
 
-
+Indicheremo l'insieme degli omomorfismi tra due rappresentazioni di un gruppo $G$ con $\Hom_G(V_\rho, V_\sigma)$ oppure con $\Hom(\rho, \sigma)$.
 
 \begin{defn}[Rappresentazioni isomorfe]
 Due rappresentazioni si dicono \textit{isomorfe} se esiste un omomorfismo di rappresentazioni tra di loro che è anche bigettivo.
 \end{defn}
 
-
-
-
-\paragraph{Rappresentazioni di grado 1}\label{par:rappr_deg_1}
 Dato un gruppo $G$, le sue rappresentazioni di grado $1$ sono per definizione
 omomorfismi che vanno da $G$ all'insieme degli isomorfismi di $\C-$spazi vettoriali di dimensione $1$.
 Senza perdere di generalità possiamo supporre che lo spazio vettoriale sia proprio $\C$. Dunque le
@@ -1145,16 +1218,16 @@ Visto che $\C^*$ è commutativo abbiamo allora che $\rho(g) = \sigma(g)$ per ogn
 in realtà $\rho$ e $\sigma$ sono proprio la stessa rappresentazione.
 \end{proof}
 
-Nel tentativo di trovare le possibili rappresentazioni di un gruppo $G$ (che qui supporremo finito), un buon punto di partenza è cercare per prima cosa le rappresentazioni di grado 1. Per fare questo c'è un metodo generale (indicheremo con $\rho$ la rappresentazione cercata e con $\mu_m$ il sottoinsieme di $\C$ che contiene le radici $m$-esime dell'unità):\footnote{stiamo cercando un omomorfismo di gruppi da $G$ a $GL(\C)=\C^*$}:
+Nel tentativo di trovare le possibili rappresentazioni di un gruppo $G$ (che qui supporremo finito), un buon punto di partenza è cercare per prima cosa le rappresentazioni di grado 1. Per fare questo c'è un metodo generale (indicheremo con $\rho$ la rappresentazione cercata e con $\mu_m$ il sottoinsieme di $\C$ che contiene le radici $m$-esime dell'unità):\footnote{stiamo cercando un omomorfismo di gruppi da $G$ a $GL(\C)=\C^*$.}
 \begin{enumerate}
 	\item cercare dei generatori per il gruppo $G$: $g_1, \ldots, g_k$
 	\item per ogni generatore $g_i$ trovare il suo ordine $n_i$ (ovvero il minimo intero $n_i$ tale che $g_i^{n_i}=e$)
 	\item imporre che $\rho(g_i)\in \mu_{n_i}$ per ogni $i=1,\ldots,k$
 	\item imporre infine che $\rho:G\to GL(\C)$ sia veramente un omomorfismo di gruppi (per ora abbiamo solo posto delle condizioni necessarie):
-	 per fare ciò bisogna controllare che le \textit{relazioni} che intercorrono tra i generatori siano rispettate nell'immagine\footnote{questo in parole povere significa che tutte le regole con cui vengono moltiplicati gli elementi devono essere rispettate, per dare una spiegazione formale servirebbero i prodotti liberi che però non sono necessari per questo corso}.
+	 per fare ciò bisogna controllare che le \emph{relazioni} che intercorrono tra i generatori siano rispettate nell'immagine.\footnote{questo in parole povere significa che tutte le regole con cui vengono moltiplicati gli elementi devono essere rispettate, per dare una spiegazione formale servirebbero i prodotti liberi che però non sono necessari per questo corso.}
 	 In effetti già le condizioni imposte al punto 3 possono essere considerate come relazioni imposte dai generatori.
 \end{enumerate}
-Questo definisce un omomorfismo da $G$ a $\C^*$: dato $h\in G$ t.c. $h=g_{i_1}^{a_1}\cdots g_{i_t}^{a_t}$, allora $\rho(h) = \rho(g_{i_1})^{a_1}\cdots \rho(g_{i_t})^{a_t}$.
+Questo definisce un omomorfismo da $G$ a $\C^*$: dato $h\in G$ tale che $h=g_{i_1}^{a_1}\cdots g_{i_t}^{a_t}$, allora $\rho(h) = \rho(g_{i_1})^{a_1}\cdots \rho(g_{i_t})^{a_t}$.
 \begin{rem}
 	Non è detto che tutte le rappresentazioni che si ottengono siano non isomorfe, questo metodo solamente le produce tutte.
 \end{rem}
@@ -1181,43 +1254,29 @@ Sia $G$ un gruppo, $H$ un suo sottogruppo normale tale che $G/H$ sia ciclico. Al
 ovvero $\sigma(g)=\rho(\pi(g))$.
 
 Questo metodo è particolarmente potente perché, per ogni rappresentazione $\sigma:G\to GL(\C)$, l'immagine è un gruppo ciclico\footnote{\'E abbastanza facile convincersene ricordando che ogni elemeno di $G$ deve essere mandato in una radice dell'unità.}, quindi, in virtù del primo teorema di omomorfismo\eqref{alg:primo_teo_omo}, l'immagine di una qualsiasi rappresentazione $\sigma$ di grado 1 è un quoziente ciclico di $G$.
-Questo implica che in realtà il metodo esposto è in grado di trovare \textbf{tutte} le rappresentazioni di $G$ di grado $1$ (a patto di esaminare
-tutti i quozienti ciclici e tutte le loro rappresentazioni di grado $1$)..
-
-
-\begin{exmp}[Rappresentazioni di grado 1 di $S_3$]
-
-\end{exmp}
-
-\begin{exmp}[Rappresentazioni di grado 1 di $C_n \times C_n$]
-
-
-(generalizzazione a prodotto di $C_{n_i}$)
-\end{exmp}
+Questo implica che in realtà il metodo esposto è in grado di trovare \emph{tutte} le rappresentazioni di $G$ di grado $1$
+(a patto di esaminare tutti i quozienti ciclici le loro rappresentazioni di grado $1$).
 
 \begin{rem}
-	\'E possibile generalizzare ulteriormente il secondo procedimento descritto. Sia $G$ un gruppo, $H\trianglelefteq G$ tale che conosciamo le rappresentazioni (irriducibili) di $G/H$, allora riusciamo a ricostruire delle rappresentazioni di $G$ allo stesso modo: sia $\rho:G/H\to GL(V)$ rappresentazione di $G/H$, $\pi:G\to G/H$ la proiezione al quoziente, si considera lo stesso omomorfismo $\sigma$ di prima: $\sigma(g) = \rho(\pi(g))$.
+	\`E possibile generalizzare il procedimento descritto. Sia $G$ un gruppo, $H\trianglelefteq G$ tale che conosciamo alcune rappresentazioni di $G/H$, allora riusciamo a ricostruire delle rappresentazioni di $G$ allo stesso modo: sia $\rho:G/H\to GL(V)$ rappresentazione di $G/H$, $\pi:G\to G/H$ la proiezione al quoziente, si considera lo stesso omomorfismo $\sigma$ di prima: $\sigma(g) = \rho(\pi(g))$.
 \end{rem}
 
+\begin{exmp}[Rappresentazioni di grado 1 di $S_3$]
+Conosciamo già due rappresentazioni di $S_3$ di grado 1 (ovvero omomorfismi $G\to\C^*$): quella banale, in cui ogni elemento viene mandato in $1$, 
+e la rappresentazione segno, che in questo caso manda le trasposizioni in $-1$ e gli altri elementi in $1$. Mostriamo che non ce ne sono delle altre.
+Sia $\rho:S_3\to\C^*$ omomorfismo di gruppi.
+\[\rho((1,2,3))^{-1} = \rho((1,3,2)) = \rho((1,2))\rho((1,3)) = \rho((1,3))\rho((1,2)) = \rho((1,2,3)) \]
+Quindi $\rho((1,2,3))$ vale $1$ oppure $-1$. Però $(1,2,3)^3 = (1)$, quindi necessariamente $\rho((1,2,3)) = 1$.
+Visto che $\rho((1,2))^2 = \rho((1)) = 1$, deve essere $\rho((1,2)) = \pm 1$. Distinguendo i due casi si conclude che
+$\rho$ è la rappresentazione banale oppure è la rappresentazione segno.
+\end{exmp}
 
 
-
-
-
-
-
-
-
-
-
-
-\newpage
 \subsection{Operazioni con le rappresentazioni}
 
 \begin{defn}[Somma di rappresentazioni]
-  Date due diverse rappresentazioni dello stesso gruppo $G$, $\rho: G \to GL(V_\rho), \ \sigma: G \to GL(V_\sigma)$ si può definire la rappresentazione somma $\rho + \sigma$ sullo spazio vettoriale $V_\rho \oplus V_\sigma$ nel modo ovvio
-  \[ (\rho + \sigma)(g) v = \rho(g) \pi_{V_\rho}(v) + \sigma(g) \pi_{V_\sigma}(v) \qquad \forall v \in V_\rho \oplus V_\sigma \]
-  Questa definizione ha senso, infatti proiettando $v$ sui due spazi di partenza le due rappresentazioni sono definite e rimangono nello spazio di partenza. Si può poi fare la somma se riportiamo il tutto nello spazio più grande.
+  Date due diverse rappresentazioni dello stesso gruppo $G$, $\rho: G \to GL(V), \ \sigma: G \to GL(W)$ si può definire la rappresentazione somma $\rho + \sigma$ sullo spazio vettoriale $V \oplus W$ nel modo ovvio
+  \[ (\rho + \sigma)_g (v,w) = \rho_g(v) + \sigma_g(w) \qquad \forall (v,w) \in V\oplus W \]
 \label{defn:somma di rappresentazioni}
 \end{defn}
 Matricialmente $(\rho+\sigma)_g$ si rappresenta come
@@ -1225,7 +1284,6 @@ Matricialmente $(\rho+\sigma)_g$ si rappresenta come
 [\rho_g] & 0\\
 0 & [\sigma_g]
 \end{bmatrix} \]
-dove si intende ovviamente che la base ha i primi vettori in $V_{\rho}$, i secondi in $V_{\sigma}$.\\
 
 \begin{rem}
 Abbiamo le seguenti proprietà della somma di rappresentazioni:
@@ -1241,34 +1299,34 @@ Abbiamo le seguenti proprietà della somma di rappresentazioni:
 
 
 \begin{defn}[Prodotto di rappresentazioni]
-  Date due rappresentazioni dello stesso gruppo $G$, $\rho: G \to GL(V_\rho), \sigma: G \to GL(V_\sigma)$ possiamo definire il prodotto di rappresentazioni che si indica con $\rho \otimes \sigma$  ma anche con $\rho\sigma$\footnote{Quest'ultima notazione può portare a confusione in quanto può essere scambiata con la composizione se le due rappresentazioni sono definite sullo stesso spazio, quindi cercheremo di evitarla.} definita sullo spazio $V_\rho \otimes V_\sigma$ tale che
-
+  Date due rappresentazioni dello stesso gruppo $G$, $\rho: G \to GL(V_\rho), \sigma: G \to GL(V_\sigma)$ possiamo definire il prodotto di rappresentazioni che si indica con $\rho \otimes \sigma$  ma anche con $\rho\sigma$\footnote{Quest'ultima notazione può portare a confusione in quanto può essere scambiata con la composizione se le due rappresentazioni sono definite sullo stesso spazio, quindi cercheremo di evitarla.} definito sullo spazio $V_\rho \otimes V_\sigma$ tale che
   \[ \rho \otimes \sigma(g) (v \otimes w) = \rho(g) v \otimes \sigma(g) w \qquad \forall v \in V_\rho, w \in V_\sigma\]
-
-  Non è restrittivo dare la definizione solo per gli elementi di $V_\rho \otimes V_\sigma$ decomponibili, in quanto sappiamo che sono una base dello spazio. Gli altri si otterranno per linearità.
-
 \label{defn:prodotto di rappresentazioni}
 \end{defn}
 
-
-\begin{rem}
+Il seguente esercizio è molto importante e dovrebbe essere svolto con calma, prestando attenzione al fatto
+che si devono esibire degli isomorfismi di rappresentazioni, non semplicemente degli isomorfismi di spazi vettoriali.
+\begin{exercise}
 Abbiamo le seguenti proprietà del prodotto di rappresentazioni:
 \begin{enumerate}
+\item $\deg(\rho\otimes\sigma) = \deg\rho \cdot \deg\sigma$
 \item $1\otimes \rho \cong \rho$
 \item $\rho \otimes \sigma \cong \sigma \otimes \rho$
 \item $0 \otimes \rho \cong 0$
 \item $\rho \otimes (\sigma \otimes \tau) \cong (\rho \otimes \sigma)\otimes \tau$
 \item $\rho \otimes (\sigma_1 + \sigma_2) \cong \rho \otimes \sigma_1 + \rho \otimes \sigma_2$
 \end{enumerate}
-\end{rem}
+\end{exercise}
 
 
 
 
 \begin{defn}[Rappresentazione duale]
-Sia $\rho$ una rappresentazione di $G$ su $V_\rho$. Allora la rappresentazione duale $\rho^*$ è la rappresentazione di $G$ su $V_\rho ^*$ tale che $\rho^*(s)=\rho(s^{-1})^t$
+Sia $\rho$ una rappresentazione di $G$ su $V_\rho$. Allora la rappresentazione duale $\rho^*$ è la rappresentazione di $G$ su $V_\rho ^*$ definita da:
+\[\rho^*(s)f=f\circ \rho(s^{-1}) \]
 \label{defn:rappresentazione duale}
 \end{defn}
+La verifica che si tratti effettivamente di una rappresentazione è molto semplice è viene lasciata per esercizio.
 
 \begin{defn}[Definizione equivalente di duale]
 Sia $\rho$ una rappresentazione di $G$ su $V$. Definiamo la rappresentazione duale $\rho^*$ come l'unica rappresentazione tale che
@@ -1276,14 +1334,14 @@ Sia $\rho$ una rappresentazione di $G$ su $V$. Definiamo la rappresentazione dua
 \end{defn}
 
 \begin{note}
-$\rho^*(s)=\rho(s^{-1})^t=\left(\rho(s)^{-1}\right)^t=\left(\rho(s)^t\right)^{-1}$. Inoltre, notare che la presenza di inverso e trasposto fa in modo che $\rho^*(s)$ sia una rappresentazione.
+Se la matrice di $\rho(s)$ rispetto ad una fissata base di $V$ è una certa $A\in\matrices_n(\C)$, allora la matrice di $\rho^*(s)$ rispetto alla base duale
+è $(A^t)^{-1}$.
 \end{note}
 
 
-\begin{rem}
-	Vale che $(\rho + \sigma)^* \cong \rho^* + \sigma^*$
-\end{rem}
-
+\begin{prop}
+$(\rho + \sigma)^* \cong \rho^* + \sigma^*$
+\end{prop}
 \begin{proof}
 Consideriamo la funzione $\Theta : (V_\rho \oplus V_\sigma)^*\to V_\rho ^* \oplus V_\sigma ^*$ definita da
 \[ \Theta(f) = (f\circ \imath_{V_\rho}, f\circ \imath_{V_\sigma}) \]
@@ -1312,22 +1370,7 @@ Notiamo infine che l'isomorfismo trovato è canonico, ovvero non dipende da alcu
 
 
 
-\begin{defn}[Rappresentazione regolare]
-  Consideriamo un gruppo $G$, per semplicità finito, e consideriamo uno spazio vettoriale $V_\rho$ di dimensione $|G|$ su $\C$.
-  Possiamo indicare gli elementi della base con $e_g$ al variare di $g \in G$. Un generico vettore di questo spazio si scrive quindi come
-  \[ v = \dsum_{g \in G} a_g e_g \]
-  dove $a_g$ sono dei numeri complessi. Possiamo definire una rappresentazione di $G$ su questo spazio nel modo seguente:
-  \[ \rho(h)v = \rho(h) \dsum_{g \in G} a_g e_g = \dsum_{g\in G} a_g \rho(h) e_g := \dsum_{g \in G} a_g e_{hg} \]
-  Notare che questa definizione ha senso in quanto essendo $G$ un gruppo, $gh \in G$ e quindi sicuramente $e_{gh}$ è un elemento della base. Questa particolare rappresentazione di $G$ si chiama \emph{rappresentazione regolare} di $G$
-
-  \label{defn:rappresentazione regolare}
-\end{defn}
-
-
-
 \subsection{Sottospazi invarianti e scomposizione delle rappresentazioni}
-
-
 
 \begin{defn}[Sottorappresentazione]
 Sia $\rho$ una rappresentazione di $G$ su $V_{\rho}$. Una sottorappresentazione di $\rho$ è un sottospazio vettoriale $W\subseteq V_{\rho}$ tale che $\rho(s)(W)\subseteq W$ per ogni $s\in G$. Infatti su tale sottospazio c'è in modo naturale una rappresentazione $\sigma:G\to GL(W)$ con $\sigma(s)=\rho(s)|_W$ (potremo scrivere $\sigma\subseteq \rho$).
@@ -1360,6 +1403,15 @@ Attenzione al gioco di parole in italiano: una rappresentazione irriducibile è 
 \end{rem}
 
 
+\begin{defn}[Rappresentazione regolare]
+  Consideriamo un gruppo finito $G$ e uno spazio vettoriale $V_\rho$ di dimensione $|G|$ su $\C$.
+  Possiamo indicare gli elementi della base con $e_g$ al variare di $g \in G$. Un generico vettore di questo spazio si scrive quindi come
+  \[ v = \dsum_{g \in G} a_g e_g \]
+  dove $a_g$ sono dei numeri complessi. Possiamo definire una rappresentazione di $G$ su questo spazio nel modo seguente:
+  \[ \rho(h)v = \rho(h) \dsum_{g \in G} a_g e_g = \dsum_{g\in G} a_g \rho(h) e_g := \dsum_{g \in G} a_g e_{hg} \]
+  Notare che questa definizione ha senso in quanto essendo $G$ un gruppo, $gh \in G$ e quindi sicuramente $e_{gh}$ è un elemento della base. Questa particolare rappresentazione di $G$ si chiama \emph{rappresentazione regolare} di $G$.
+  \label{defn:rappresentazione regolare}
+\end{defn}
 
 \begin{exmp}[Rappresentazione regolare di $S_3$]
 
