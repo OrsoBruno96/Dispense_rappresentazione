@@ -4754,7 +4754,7 @@ Da adesso considereremo $A$ un'algebra di dimensione finita.
    \begin{itemize}
     \item $r\cdot(m+n)=r\cdot m+r\cdot n\;\forall r\in R\;\forall m,n\in M$
     \item $(r+s)\cdot m=r\cdot m+s\cdot m\;\forall r,s\in R\;\forall m\in M$
-    \item $r\cdot(s\cdot m)=(ab)\cdot m\;\forall r,s\in R\;\forall m\in M$
+    \item $r\cdot(s\cdot m)=(rs)\cdot m\;\forall r,s\in R\;\forall m\in M$
    \end{itemize}
    Diciamo inoltre che $M$ è finitamente generato se lo è come gruppo.
   \end{defn}
@@ -4859,6 +4859,31 @@ Da adesso considereremo $A$ un'algebra di dimensione finita.
    Osserviamo che $\displaystyle z=\frac{\ord(G)}{\dim V}\cdot \frac{\sum \chi(g^{-1})\chi(g)}{\ord(G)}=\frac{\ord(G)}{\dim V}\cdot\langle \chi,\chi\rangle$; essendo $V$ irriducibile, il prodotto dei caratteri vale $1$.\\
    Quindi si ha che $\dfrac{\ord(G)}{\dim V}\in\Q$ è un intero algebrico, e quindi per l'osservazione \ref{int_alg_raz} sta in $\Z$.
   \end{proof}
+
+Diamo ora una condizione più stringente di divisibilità.
+\begin{cor}[del teorema \ref{dim_mid_ordine}]
+	Sia $G$ un gruppo finito, sia $Z\subset G$ il suo centro, sia $V$ una rappresentazione irriducibile di $G$ su $\C$, allora
+	\[
+		\dim V\ |\ [G:Z]
+	\]
+\end{cor}
+\begin{proof}
+	Sia $n\in \N$, $\rho:G\to GL(V)$ la rappresentazione irriducibile data, consideriamo allora
+	\[
+		\rho_n:\underbrace{G\times\dots\times G}_{n\text{ volte}} \to GL(V^{\otimes n})
+	\]
+	definita come $\rho_n(g_1,\ldots,g_n)(v_1\otimes\cdots\otimes v_n) = (\rho(g_1)v_1\otimes\cdots\otimes \rho(g_n)v_n)$, e
+	\[
+		H = \{ (z_1,\ldots,z_n)\in Z^n\ |\ z_1\cdots z_n = 1 \}
+	\]
+	Si osserva subito che $|H|=|Z|^{n-1}$ e che $H \triangleleft G^n$, inoltre tramite il carattere si può vedere che $\rho_n$ è ancora irriducibile\footnote{L'osservazione cruciale è che il carattere è moltiplicativo anche nel caso di questo "prodotto" di rappresentazioni.}. Si nota che la rappresentazione $\rho_n$ appena considerata passa al quoziente in $G^n/H$ poichè $\rho_n(H) = \Id$ e che quindi $\overline{\rho_n}:G^n/H\to GL(V^{\otimes n})$ è ancora irriducibile. Per il teorema appena dimostrato si ha che
+	\[
+		(\dim V)^n \Big| \frac{|G|^n}{|H|}\qquad \text{e dunque}\quad (\dim V)^n\cdot \alpha_n = \frac{|G|^n}{|Z|^{n-1}}\quad \text{per qualche }\alpha_n\in \N
+	\]
+	Ma allora $\displaystyle |Z|\alpha_n = \left(\frac{[G:Z]}{\dim V}\right)^n$, se $\dim V$ non dividesse $[G:Z]$ si incontrerebbero dei problemi visto che l'uguaglianza scritta sopra dovrebbe valere per ogni $n\in \N$ (si avrebbe un denominatore che cresce).
+
+
+\end{proof}
 
 
 
